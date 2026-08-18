@@ -65,6 +65,10 @@ export default function TablePage() {
           " " +
           n.team +
           " " +
+          (n.teamGithub || "") +
+          " " +
+          (n.teamX || "") +
+          " " +
           n.languages.join(" ") +
           " " +
           n.usedBy +
@@ -281,6 +285,9 @@ export default function TablePage() {
               <th className="sortable" onClick={() => setSort("team")}>
                 Team{arrow("team")}
               </th>
+              <th className="c-contact" title="GitHub org & X handle to reach the team">
+                Contact
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -296,6 +303,58 @@ export default function TablePage() {
         </table>
         {rows.length === 0 && <div className="empty">No tools match those filters.</div>}
       </div>
+    </div>
+  );
+}
+
+function GhMark() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+    </svg>
+  );
+}
+
+function ContactBlock({ n }: { n: ToolNode }) {
+  const team = GRAPH.teams?.[n.team];
+  const org = n.teamGithub || team?.githubOrg || null;
+  const x = n.teamX || team?.x || null;
+  const maintainers = team?.maintainers ?? [];
+  if (!org && !x && maintainers.length === 0) return null;
+  return (
+    <div className="detail-block contact-block">
+      <div className="k">Contact</div>
+      <div className="contact-links">
+        {org && (
+          <a href={`https://github.com/${org}`} target="_blank" rel="noopener noreferrer">
+            <GhMark /> @{org}
+          </a>
+        )}
+        {x && (
+          <a href={`https://x.com/${x}`} target="_blank" rel="noopener noreferrer">
+            𝕏 @{x}
+          </a>
+        )}
+      </div>
+      {maintainers.length > 0 && (
+        <div className="maintainers">
+          <span className="mnt-label" title="Top human contributors — @-mention one of these, since a GitHub @org does not notify anyone">
+            Ping
+          </span>
+          {maintainers.map((m) => (
+            <span key={m.login} className="mnt">
+              <a href={`https://github.com/${m.login}`} target="_blank" rel="noopener noreferrer">
+                @{m.login}
+              </a>
+              {m.x && (
+                <a className="mnt-x" href={`https://x.com/${m.x}`} target="_blank" rel="noopener noreferrer" title={`X: @${m.x}`}>
+                  𝕏
+                </a>
+              )}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -361,10 +420,37 @@ function RowGroup({
         </td>
         <td className="num muted">{n.degree || "—"}</td>
         <td className="team-cell">{n.team}</td>
+        <td className="contact-cell" onClick={(e) => e.stopPropagation()}>
+          {n.teamGithub && (
+            <a
+              className="contact-ic gh"
+              href={`https://github.com/${n.teamGithub}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`GitHub: @${n.teamGithub}`}
+              aria-label={`GitHub org @${n.teamGithub}`}
+            >
+              <GhMark />
+            </a>
+          )}
+          {n.teamX && (
+            <a
+              className="contact-ic x"
+              href={`https://x.com/${n.teamX}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`X: @${n.teamX}`}
+              aria-label={`X @${n.teamX}`}
+            >
+              𝕏
+            </a>
+          )}
+          {!n.teamGithub && !n.teamX && <span className="muted">—</span>}
+        </td>
       </tr>
       {open && (
         <tr className="detail-row">
-          <td colSpan={10}>
+          <td colSpan={11}>
             <div className="detail-grid">
               <div className="detail-main">
                 <p className="detail-desc">{n.description}</p>
@@ -416,6 +502,7 @@ function RowGroup({
                 </div>
               </div>
               <div className="detail-side">
+                <ContactBlock n={n} />
                 <div className="detail-block">
                   <div className="k">Dependencies</div>
                   <div className="v">{n.dependencies}</div>
