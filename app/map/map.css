@@ -281,6 +281,41 @@
   .ar-pill .ar-llms { font-family: var(--mono); font-size: 9px; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 1px 4px; margin-left: 2px; }
   .team-cell { color: var(--muted); font-size: 12.5px; max-width: 240px; }
 
+  /* Contact column — GitHub org + X handle icons */
+  th.c-contact { white-space: nowrap; }
+  .contact-cell { white-space: nowrap; }
+  .contact-cell .contact-ic {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 20px; border-radius: 5px; color: var(--muted);
+    text-decoration: none; line-height: 1;
+  }
+  .contact-cell .contact-ic + .contact-ic { margin-left: 3px; }
+  .contact-cell .contact-ic.x { font-size: 13px; }
+  .contact-cell .contact-ic:hover { color: var(--accent); background: var(--accent-soft); }
+  .contact-cell .muted { color: var(--faint); }
+
+  /* Contact block inside the expanded detail */
+  .contact-block .contact-links { display: flex; flex-wrap: wrap; gap: 6px; }
+  .contact-block .contact-links a {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: var(--mono); font-size: 12px; text-decoration: none;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 2px 8px; border-radius: 6px;
+  }
+  .contact-block .contact-links a:hover { text-decoration: underline; }
+  .contact-block .maintainers { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+  .contact-block .mnt-label {
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .contact-block .mnt {
+    display: inline-flex; align-items: center; overflow: hidden;
+    border-radius: 6px; background: var(--paper-2);
+  }
+  .contact-block .mnt a { font-family: var(--mono); font-size: 12px; text-decoration: none; color: var(--ink-soft); padding: 1px 7px; }
+  .contact-block .mnt a:hover { color: var(--accent); }
+  .contact-block .mnt .mnt-x { border-left: 1px solid var(--line); font-size: 11px; padding: 1px 6px; }
+
   /* enrichment properties inside expanded row */
   .prop-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));

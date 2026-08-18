@@ -18,10 +18,14 @@
       "fundingSource",
       "docsUrl",
       "productionReadiness",
-      "onOfficialPortal"
+      "onOfficialPortal",
+      "teamGithub",
+      "teamX"
     ],
     "communitySource": "State of the Developer Ecosystem 2025 (Cardano Foundation), n=109",
-    "edgeCount": 248
+    "edgeCount": 248,
+    "contactsNote": "teamGithub / teamX are the GitHub org and verified X/Twitter handle for each node's team. The top-level `teams` map holds, per team, its githubOrg, x, and top human maintainers (login + x) to @-mention (GitHub @org does not notify).",
+    "contactsGenerated": "2026-08-18"
   },
   "categories": [
     {
@@ -172,7 +176,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 1600,
-      "degree": 29
+      "degree": 29,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "plinth-plutus-tx",
@@ -242,7 +248,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "aiken",
@@ -320,7 +328,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 584,
-      "degree": 17
+      "degree": 17,
+      "teamGithub": "aiken-lang",
+      "teamX": "aiken_eng"
     },
     {
       "id": "plutarch",
@@ -392,7 +402,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 134,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Plutonomicon",
+      "teamX": null
     },
     {
       "id": "helios",
@@ -456,7 +468,9 @@
       "lastCommit": "2026-03-03",
       "statusReason": "active — pushed 5mo ago",
       "starsNum": 148,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "HeliosLang",
+      "teamX": "helios_lang"
     },
     {
       "id": "plu-ts",
@@ -518,7 +532,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "HarmonicLabs",
+      "teamX": "hlabs_tech"
     },
     {
       "id": "pebble",
@@ -581,7 +597,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 179,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "HarmonicLabs",
+      "teamX": "hlabs_tech"
     },
     {
       "id": "opshin",
@@ -654,7 +672,9 @@
       "lastCommit": "2026-06-24",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 168,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "OpShin",
+      "teamX": "OpShinDev"
     },
     {
       "id": "scalus",
@@ -726,7 +746,9 @@
       "lastCommit": "2026-07-18",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 105,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "scalus3",
+      "teamX": "scalus3"
     },
     {
       "id": "marlowe",
@@ -793,7 +815,9 @@
       "lastCommit": "2025-12-28",
       "statusReason": "active — pushed 7mo ago",
       "starsNum": 99,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "marlowe-lang",
+      "teamX": "marlowe_io"
     },
     {
       "id": "pluto",
@@ -856,7 +880,9 @@
       "lastCommit": "2022-02-26",
       "statusReason": "curated: self-described experimental",
       "starsNum": 32,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Plutonomicon",
+      "teamX": null
     },
     {
       "id": "plutonomy",
@@ -918,7 +944,9 @@
       "lastCommit": "2023-01-19",
       "statusReason": "no pushes for 42mo",
       "starsNum": 39,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "well-typed",
+      "teamX": "welltyped"
     },
     {
       "id": "gastronomy",
@@ -983,7 +1011,9 @@
       "lastCommit": "2025-12-03",
       "statusReason": "active — pushed 8mo ago",
       "starsNum": 21,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "SundaeSwap-finance",
+      "teamX": "sundaeswap"
     },
     {
       "id": "plutus-halo2-verifier-gen",
@@ -1047,7 +1077,9 @@
       "lastCommit": "2026-07-10",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 12,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "gnark-cardano",
@@ -1110,7 +1142,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "cardinal",
@@ -1174,7 +1208,9 @@
       "lastCommit": "2025-06-11",
       "statusReason": "slowing — last push 13mo ago",
       "starsNum": 17,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "hebi",
@@ -1235,7 +1271,9 @@
       "lastCommit": "2024-04-05",
       "statusReason": "GitHub repo archived",
       "starsNum": 5,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "OpShin",
+      "teamX": "OpShinDev"
     },
     {
       "id": "plutus-simple-model",
@@ -1297,7 +1335,9 @@
       "lastCommit": "2025-01-08",
       "statusReason": "GitHub repo archived",
       "starsNum": 31,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "mlabs-haskell",
+      "teamX": "MLabs10"
     },
     {
       "id": "lucid-evolution",
@@ -1373,7 +1413,9 @@
       "lastCommit": "2026-07-18",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 87,
-      "degree": 6
+      "degree": 6,
+      "teamGithub": "Anastasia-Labs",
+      "teamX": "AnastasiaLabs"
     },
     {
       "id": "lucid",
@@ -1436,7 +1478,9 @@
       "lastCommit": "2026-04-07",
       "statusReason": "curated: superseded by Lucid Evolution",
       "starsNum": 359,
-      "degree": 5
+      "degree": 5,
+      "teamGithub": "spacebudz",
+      "teamX": "spacebudznft"
     },
     {
       "id": "meshjs-mesh-sdk",
@@ -1514,7 +1558,9 @@
       "lastCommit": "2026-06-19",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 270,
-      "degree": 6
+      "degree": 6,
+      "teamGithub": "MeshJS",
+      "teamX": "meshsdk"
     },
     {
       "id": "cardano-serialization-lib-csl",
@@ -1583,7 +1629,9 @@
       "lastCommit": "2026-07-17",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 250,
-      "degree": 11
+      "degree": 11,
+      "teamGithub": "Emurgo",
+      "teamX": "emurgo_io"
     },
     {
       "id": "cardano-multiplatform-lib-cml",
@@ -1652,7 +1700,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 105,
-      "degree": 7
+      "degree": 7,
+      "teamGithub": "dcSpark",
+      "teamX": "dcspark_io"
     },
     {
       "id": "pycardano",
@@ -1722,7 +1772,9 @@
       "lastCommit": "2026-06-14",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 253,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Python-Cardano",
+      "teamX": "PyCardano"
     },
     {
       "id": "blaze",
@@ -1795,7 +1847,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 66,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "butaneprotocol",
+      "teamX": "butaneprotocol"
     },
     {
       "id": "cardano-transaction-lib-ctl",
@@ -1860,7 +1914,9 @@
       "lastCommit": "2026-07-16",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 93,
-      "degree": 4
+      "degree": 4,
+      "teamGithub": "Plutonomicon",
+      "teamX": null
     },
     {
       "id": "atlas",
@@ -1924,7 +1980,9 @@
       "lastCommit": "2026-02-03",
       "statusReason": "active — pushed 6mo ago",
       "starsNum": 74,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "geniusyield",
+      "teamX": "GeniusyieldO"
     },
     {
       "id": "kuber",
@@ -1990,7 +2048,9 @@
       "lastCommit": "2026-05-22",
       "statusReason": "active — pushed 2mo ago",
       "starsNum": 54,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "dQuadrant",
+      "teamX": "DquadrantNL"
     },
     {
       "id": "evolution-sdk",
@@ -2056,7 +2116,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 18,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "cardano-js-sdk",
@@ -2119,7 +2181,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 238,
-      "degree": 4
+      "degree": 4,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "bloxbean-cardano-client-library",
@@ -2182,7 +2246,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 132,
-      "degree": 7
+      "degree": 7,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     },
     {
       "id": "pallas",
@@ -2246,7 +2312,9 @@
       "lastCommit": "2026-07-01",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 203,
-      "degree": 5
+      "degree": 5,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "whisky",
@@ -2308,7 +2376,9 @@
       "lastCommit": "2026-03-17",
       "statusReason": "active — pushed 4mo ago",
       "starsNum": 16,
-      "degree": 4
+      "degree": 4,
+      "teamGithub": "sidan-lab",
+      "teamX": "sidan_lab"
     },
     {
       "id": "cardano-c",
@@ -2371,7 +2441,9 @@
       "lastCommit": "2026-07-19",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 25,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Biglup",
+      "teamX": null
     },
     {
       "id": "cometa-js",
@@ -2433,7 +2505,9 @@
       "lastCommit": "2025-12-24",
       "statusReason": "active — pushed 7mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Biglup",
+      "teamX": null
     },
     {
       "id": "apollo",
@@ -2495,7 +2569,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 28,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "Salvionied",
+      "teamX": "ZhaataC"
     },
     {
       "id": "elm-cardano",
@@ -2556,7 +2632,9 @@
       "lastCommit": "2026-05-06",
       "statusReason": "active — pushed 3mo ago",
       "starsNum": 27,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "mpizenberg",
+      "teamX": "mattpiz"
     },
     {
       "id": "typhonjs",
@@ -2618,7 +2696,9 @@
       "lastCommit": "2026-07-10",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 64,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "StricaHQ",
+      "teamX": "StricaHQ"
     },
     {
       "id": "cardano-web3-js",
@@ -2680,7 +2760,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 47,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "xray-network",
+      "teamX": "xray_network"
     },
     {
       "id": "cardanocli-js",
@@ -2743,7 +2825,9 @@
       "lastCommit": "2024-05-26",
       "statusReason": "no pushes for 26mo",
       "starsNum": 177,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "miguelaeh",
+      "teamX": "miguelaeh_"
     },
     {
       "id": "tx3",
@@ -2807,7 +2891,9 @@
       "lastCommit": "2026-07-15",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 69,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "cardanokit",
@@ -2870,7 +2956,9 @@
       "lastCommit": "2025-10-09",
       "statusReason": "active — pushed 9mo ago",
       "starsNum": 17,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "TokeoPay",
+      "teamX": "Tokeo_io"
     },
     {
       "id": "hydra-sdk",
@@ -2932,7 +3020,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Vtechcom",
+      "teamX": "VtechcomLabs"
     },
     {
       "id": "cardano-addresses",
@@ -2995,7 +3085,9 @@
       "lastCommit": "2026-07-20",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 161,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "bech32",
@@ -3056,7 +3148,9 @@
       "lastCommit": "2026-04-20",
       "statusReason": "active — pushed 3mo ago",
       "starsNum": 49,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "blockfrost",
@@ -3124,7 +3218,9 @@
       "lastCommit": null,
       "statusReason": "repo unreachable — kept prior status",
       "starsNum": 0,
-      "degree": 10
+      "degree": 10,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "koios",
@@ -3190,7 +3286,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 22,
-      "degree": 10
+      "degree": 10,
+      "teamGithub": "cardano-community",
+      "teamX": "CardanoKoios"
     },
     {
       "id": "maestro",
@@ -3258,7 +3356,9 @@
       "lastCommit": null,
       "statusReason": "repo unreachable — kept prior status",
       "starsNum": 0,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "anvil",
@@ -3321,7 +3421,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "nownodes",
@@ -3386,7 +3488,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "tangocrypto",
@@ -3449,7 +3553,9 @@
       "lastCommit": null,
       "statusReason": "repo unreachable — kept prior status",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "getblock",
@@ -3513,7 +3619,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "nftcdn",
@@ -3574,7 +3682,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "cardano-on-bigquery",
@@ -3636,7 +3746,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "dandelion-apis",
@@ -3698,7 +3810,9 @@
       "lastCommit": "2024-05-23",
       "statusReason": "no pushes for 26mo",
       "starsNum": 13,
-      "degree": 4
+      "degree": 4,
+      "teamGithub": "gimbalabs",
+      "teamX": "gimbalabs"
     },
     {
       "id": "cardano-db-sync",
@@ -3765,7 +3879,9 @@
       "lastCommit": "2026-07-17",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 317,
-      "degree": 10
+      "degree": 10,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "cardano-graphql",
@@ -3829,7 +3945,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 263,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "kupo",
@@ -3895,7 +4013,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 138,
-      "degree": 6
+      "degree": 6,
+      "teamGithub": "CardanoSolutions",
+      "teamX": null
     },
     {
       "id": "oura",
@@ -3961,7 +4081,9 @@
       "lastCommit": "2026-06-15",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 289,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "carp",
@@ -4024,7 +4146,9 @@
       "lastCommit": "2024-10-01",
       "statusReason": "slowing — last push 22mo ago",
       "starsNum": 107,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "dcSpark",
+      "teamX": "dcspark_io"
     },
     {
       "id": "dolos",
@@ -4092,7 +4216,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 133,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "scrolls",
@@ -4155,7 +4281,9 @@
       "lastCommit": "2025-01-13",
       "statusReason": "slowing — last push 18mo ago",
       "starsNum": 105,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "marconi",
@@ -4218,7 +4346,9 @@
       "lastCommit": "2026-06-19",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 14,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "adder",
@@ -4281,7 +4411,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 38,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blinklabs-io",
+      "teamX": "blinklabs_io"
     },
     {
       "id": "mumak",
@@ -4342,7 +4474,9 @@
       "lastCommit": "2024-11-26",
       "statusReason": "slowing — last push 20mo ago",
       "starsNum": 19,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "argus-cardano-sync",
@@ -4404,7 +4538,9 @@
       "lastCommit": "2026-06-21",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 8,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "SAIB-Inc",
+      "teamX": "saibdev"
     },
     {
       "id": "cf-ledger-sync",
@@ -4466,7 +4602,9 @@
       "lastCommit": "2025-07-04",
       "statusReason": "slowing — last push 13mo ago",
       "starsNum": 27,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "yaci-store",
@@ -4531,7 +4669,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 49,
-      "degree": 5
+      "degree": 5,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     },
     {
       "id": "pg-cardano",
@@ -4592,7 +4732,9 @@
       "lastCommit": "2026-02-14",
       "statusReason": "active — pushed 5mo ago",
       "starsNum": 12,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "cardano-community",
+      "teamX": "CardanoKoios"
     },
     {
       "id": "cardano-node",
@@ -4662,7 +4804,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 3200,
-      "degree": 39
+      "degree": 39,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "cardano-cli",
@@ -4732,7 +4876,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 72,
-      "degree": 5
+      "degree": 5,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "ogmios",
@@ -4800,7 +4946,9 @@
       "lastCommit": "2026-07-08",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 326,
-      "degree": 13
+      "degree": 13,
+      "teamGithub": "CardanoSolutions",
+      "teamX": null
     },
     {
       "id": "gouroboros",
@@ -4863,7 +5011,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 83,
-      "degree": 6
+      "degree": 6,
+      "teamGithub": "blinklabs-io",
+      "teamX": "blinklabs_io"
     },
     {
       "id": "cardano-node-api",
@@ -4924,7 +5074,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 16,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "blinklabs-io",
+      "teamX": "blinklabs_io"
     },
     {
       "id": "utxorpc",
@@ -4985,7 +5137,9 @@
       "lastCommit": "2026-07-06",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 34,
-      "degree": 4
+      "degree": 4,
+      "teamGithub": "Vtechcom",
+      "teamX": "VtechcomLabs"
     },
     {
       "id": "dingo",
@@ -5049,7 +5203,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 45,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "blinklabs-io",
+      "teamX": "blinklabs_io"
     },
     {
       "id": "amaru",
@@ -5112,7 +5268,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 105,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "pragma-org",
+      "teamX": "pragma_org"
     },
     {
       "id": "cardano-submit-api",
@@ -5180,7 +5338,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "cardano-wallet",
@@ -5244,7 +5404,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "curated: officially maintenance mode (CF, since 2025)",
       "starsNum": 822,
-      "degree": 5
+      "degree": 5,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "hydra",
@@ -5316,7 +5478,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 337,
-      "degree": 4
+      "degree": 4,
+      "teamGithub": "cardano-scaling",
+      "teamX": null
     },
     {
       "id": "mithril",
@@ -5383,7 +5547,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 152,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "midgard",
@@ -5446,7 +5612,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 24,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "Anastasia-Labs",
+      "teamX": "AnastasiaLabs"
     },
     {
       "id": "hydra-pay",
@@ -5509,7 +5677,9 @@
       "lastCommit": "2023-09-01",
       "statusReason": "no pushes for 35mo",
       "starsNum": 39,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "obsidiansystems",
+      "teamX": "obsidian_llc"
     },
     {
       "id": "balius",
@@ -5573,7 +5743,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 35,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "midnight",
@@ -5638,7 +5810,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "partner-chains",
@@ -5701,7 +5875,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "milkomeda-c1",
@@ -5764,7 +5940,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "dcSpark",
+      "teamX": "dcspark_io"
     },
     {
       "id": "leios-peras",
@@ -5827,7 +6005,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "cardano-connect-with-wallet",
@@ -5895,7 +6075,9 @@
       "lastCommit": "2026-05-16",
       "statusReason": "active — pushed 2mo ago",
       "starsNum": 90,
-      "degree": 9
+      "degree": 9,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "weld",
@@ -5960,7 +6142,9 @@
       "lastCommit": "2026-06-19",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 31,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "Cardano-Forge",
+      "teamX": "ada_anvil"
     },
     {
       "id": "cardano-peer-connect",
@@ -6025,7 +6209,9 @@
       "lastCommit": "2026-05-05",
       "statusReason": "active — pushed 3mo ago",
       "starsNum": 18,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "fabianbormann",
+      "teamX": null
     },
     {
       "id": "use-cardano",
@@ -6089,7 +6275,9 @@
       "lastCommit": "2024-02-09",
       "statusReason": "no pushes for 29mo",
       "starsNum": 16,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Vtechcom",
+      "teamX": "VtechcomLabs"
     },
     {
       "id": "cardano-wallet-interface",
@@ -6151,7 +6339,9 @@
       "lastCommit": "2022-07-21",
       "statusReason": "no pushes for 48mo",
       "starsNum": 38,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "HarmonicPool",
+      "teamX": "HarmonicPool"
     },
     {
       "id": "utxos",
@@ -6214,7 +6404,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "lace",
@@ -6284,7 +6476,9 @@
       "lastCommit": "2026-07-20",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 50,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "yoroi",
@@ -6354,7 +6548,9 @@
       "lastCommit": "2026-05-13",
       "statusReason": "active — pushed 2mo ago",
       "starsNum": 179,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "Emurgo",
+      "teamX": "emurgo_io"
     },
     {
       "id": "nami",
@@ -6418,7 +6614,9 @@
       "lastCommit": "2025-02-06",
       "statusReason": "GitHub repo archived",
       "starsNum": 372,
-      "degree": 4
+      "degree": 4,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "eternl",
@@ -6482,7 +6680,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 4
+      "degree": 4,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "typhon",
@@ -6546,7 +6746,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "StricaHQ",
+      "teamX": "StricaHQ"
     },
     {
       "id": "nufi",
@@ -6609,7 +6811,9 @@
       "lastCommit": "2026-04-27",
       "statusReason": "active — pushed 3mo ago",
       "starsNum": 9,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "nufi-official",
+      "teamX": "nufiwallet"
     },
     {
       "id": "vespr",
@@ -6676,7 +6880,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "begin",
@@ -6740,7 +6946,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "gero-wallet",
@@ -6804,7 +7012,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "flint",
@@ -6868,7 +7078,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "dcSpark",
+      "teamX": "dcspark_io"
     },
     {
       "id": "cshell",
@@ -6931,7 +7143,9 @@
       "lastCommit": "2026-07-08",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 19,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "bursa",
@@ -6992,7 +7206,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 10,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blinklabs-io",
+      "teamX": "blinklabs_io"
     },
     {
       "id": "cardano-hw-cli",
@@ -7059,7 +7275,9 @@
       "lastCommit": "2026-07-10",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 73,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "vacuumlabs",
+      "teamX": "vacuumlabs"
     },
     {
       "id": "cardano-signer",
@@ -7130,7 +7348,9 @@
       "lastCommit": "2026-02-26",
       "statusReason": "active — pushed 5mo ago",
       "starsNum": 55,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "gitmachtl",
+      "teamX": "ATADA_Stakepool"
     },
     {
       "id": "ledgerjs-hw-app-cardano",
@@ -7191,7 +7411,9 @@
       "lastCommit": "2026-07-07",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 30,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "yaci-devkit",
@@ -7257,7 +7479,9 @@
       "lastCommit": "2026-07-15",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 69,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     },
     {
       "id": "plutip",
@@ -7321,7 +7545,9 @@
       "lastCommit": "2024-11-24",
       "statusReason": "slowing — last push 20mo ago",
       "starsNum": 55,
-      "degree": 3
+      "degree": 3,
+      "teamGithub": "mlabs-haskell",
+      "teamX": "MLabs10"
     },
     {
       "id": "cardano-testnet",
@@ -7383,7 +7609,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "naumachia",
@@ -7446,7 +7674,9 @@
       "lastCommit": "2024-04-20",
       "statusReason": "no pushes for 27mo",
       "starsNum": 55,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "free-honey",
+      "teamX": null
     },
     {
       "id": "demeter",
@@ -7513,7 +7743,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 5
+      "degree": 5,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "intelliada",
@@ -7574,7 +7806,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     },
     {
       "id": "cardanovsc",
@@ -7636,7 +7870,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 1,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "datum-explorer",
@@ -7699,7 +7935,9 @@
       "lastCommit": "2025-12-12",
       "statusReason": "active — pushed 7mo ago",
       "starsNum": 1,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "WingRiders",
+      "teamX": "wingriderscom"
     },
     {
       "id": "lace-anatomy",
@@ -7760,7 +7998,9 @@
       "lastCommit": "2024-12-06",
       "statusReason": "slowing — last push 19mo ago",
       "starsNum": 23,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "sorbet",
@@ -7825,7 +8065,9 @@
       "lastCommit": "2026-06-06",
       "statusReason": "active — pushed 2mo ago",
       "starsNum": 16,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "SundaeSwap-finance",
+      "teamX": "sundaeswap"
     },
     {
       "id": "cardano-dev-wallet",
@@ -7889,7 +8131,9 @@
       "lastCommit": "2025-06-02",
       "statusReason": "slowing — last push 14mo ago",
       "starsNum": 13,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "mlabs-haskell",
+      "teamX": "MLabs10"
     },
     {
       "id": "plutus-playground",
@@ -7952,7 +8196,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "marlowe-playground",
@@ -8018,7 +8264,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "kuberide",
@@ -8084,7 +8332,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "dQuadrant",
+      "teamX": "DquadrantNL"
     },
     {
       "id": "cardano-cli-guru",
@@ -8146,7 +8396,9 @@
       "lastCommit": "2024-02-05",
       "statusReason": "no pushes for 30mo",
       "starsNum": 1,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "ajnabi-workshop",
+      "teamX": null
     },
     {
       "id": "quickcheck-dynamic",
@@ -8208,7 +8460,9 @@
       "lastCommit": "2026-05-04",
       "statusReason": "active — pushed 3mo ago",
       "starsNum": 35,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "frankenwallet",
@@ -8269,7 +8523,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "Vtechcom",
+      "teamX": "VtechcomLabs"
     },
     {
       "id": "mesh-mimir",
@@ -8334,7 +8590,9 @@
       "lastCommit": null,
       "statusReason": "repo unreachable — kept prior status",
       "starsNum": 2,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "MeshJS",
+      "teamX": "meshsdk"
     },
     {
       "id": "guild-operators-suite",
@@ -8400,7 +8658,9 @@
       "lastCommit": "2026-07-17",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 365,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-community",
+      "teamX": "CardanoKoios"
     },
     {
       "id": "cncli",
@@ -8461,7 +8721,9 @@
       "lastCommit": "2025-11-23",
       "statusReason": "active — pushed 8mo ago",
       "starsNum": 57,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-community",
+      "teamX": "CardanoKoios"
     },
     {
       "id": "stakepool-operator-scripts",
@@ -8523,7 +8785,9 @@
       "lastCommit": "2026-07-17",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 281,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "gitmachtl",
+      "teamX": "ATADA_Stakepool"
     },
     {
       "id": "txtop",
@@ -8585,7 +8849,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 25,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blinklabs-io",
+      "teamX": "blinklabs_io"
     },
     {
       "id": "cardano-up",
@@ -8647,7 +8913,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 25,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blinklabs-io",
+      "teamX": "blinklabs_io"
     },
     {
       "id": "cf-java-rewards-calculation",
@@ -8708,7 +8976,9 @@
       "lastCommit": "2026-06-07",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 21,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "cardano-node-audit",
@@ -8768,7 +9038,9 @@
       "lastCommit": "2025-05-19",
       "statusReason": "slowing — last push 14mo ago",
       "starsNum": 7,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Kirael12",
+      "teamX": null
     },
     {
       "id": "govtool",
@@ -8833,7 +9105,9 @@
       "lastCommit": "2026-07-14",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 20,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "zhuli",
@@ -8897,7 +9171,9 @@
       "lastCommit": "2024-09-24",
       "statusReason": "slowing — last push 22mo ago",
       "starsNum": 7,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "CardanoSolutions",
+      "teamX": null
     },
     {
       "id": "1694-io",
@@ -8958,7 +9234,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "cardano-rosetta-java",
@@ -9020,7 +9298,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 27,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "cardano-rosetta-legacy",
@@ -9080,7 +9360,9 @@
       "lastCommit": "2026-03-02",
       "statusReason": "GitHub repo archived",
       "starsNum": 97,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "cardanoscan-api",
@@ -9143,7 +9425,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "adastat-api",
@@ -9207,7 +9491,9 @@
       "lastCommit": "2026-07-31",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 11,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "Vtechcom",
+      "teamX": "VtechcomLabs"
     },
     {
       "id": "cardano-token-registry",
@@ -9271,7 +9557,9 @@
       "lastCommit": "2026-07-20",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 304,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "cardano-name-service-cns",
@@ -9335,7 +9623,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "ada-handle",
@@ -9396,7 +9686,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "cardanopress",
@@ -9458,7 +9750,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "odatano",
@@ -9524,7 +9818,9 @@
       "lastCommit": "2026-07-16",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 11,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "gimbalabs",
@@ -9587,7 +9883,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "charli3",
@@ -9657,7 +9955,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "orcfax",
@@ -9725,7 +10025,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "hyperledger-identus",
@@ -9797,7 +10099,9 @@
       "lastCommit": "2026-06-22",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 94,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "hyperledger-identus",
+      "teamX": null
     },
     {
       "id": "taptools-api",
@@ -9862,7 +10166,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "dexhunter",
@@ -9927,7 +10233,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "nmkr-studio-api",
@@ -9998,7 +10306,9 @@
       "lastCommit": "2025-10-16",
       "statusReason": "active — pushed 9mo ago",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "nftmakerio",
+      "teamX": "nmkr_io"
     },
     {
       "id": "cardano-crypto-js",
@@ -10065,7 +10375,9 @@
       "lastCommit": "2026-02-28",
       "statusReason": "active — pushed 5mo ago",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "vacuumlabs",
+      "teamX": "vacuumlabs"
     },
     {
       "id": "cardano-wallet-js",
@@ -10134,7 +10446,9 @@
       "lastCommit": "2024-02-21",
       "statusReason": "no pushes for 29mo",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "tango-crypto",
+      "teamX": "tango_crypto"
     },
     {
       "id": "libcardano",
@@ -10197,7 +10511,9 @@
       "lastCommit": "2026-06-14",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 3,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "ViperScience",
+      "teamX": "viperscience"
     },
     {
       "id": "cardanosharp",
@@ -10264,7 +10580,9 @@
       "lastCommit": "2024-09-03",
       "statusReason": "slowing — last push 23mo ago",
       "starsNum": 0,
-      "degree": 4
+      "degree": 4,
+      "teamGithub": "CardanoSharp",
+      "teamX": null
     },
     {
       "id": "cddl-codegen",
@@ -10327,7 +10645,9 @@
       "lastCommit": "2026-07-20",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "dcSpark",
+      "teamX": "dcspark_io"
     },
     {
       "id": "catalyst-toolbox",
@@ -10390,7 +10710,9 @@
       "lastCommit": null,
       "statusReason": "repo unreachable — kept prior status",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "catalyst-core",
@@ -10453,7 +10775,9 @@
       "lastCommit": null,
       "statusReason": "repo unreachable — kept prior status",
       "starsNum": 0,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "cbor-app",
@@ -10516,7 +10840,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "Vtechcom",
+      "teamX": "VtechcomLabs"
     },
     {
       "id": "cquisitor",
@@ -10580,7 +10906,9 @@
       "lastCommit": "2026-07-01",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 38,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "cardananium",
+      "teamX": null
     },
     {
       "id": "cquisitor-lib",
@@ -10644,7 +10972,9 @@
       "lastCommit": "2026-07-01",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 2,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardananium",
+      "teamX": null
     },
     {
       "id": "cardano-hw-interop-lib",
@@ -10708,7 +11038,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 5,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "vacuumlabs",
+      "teamX": "vacuumlabs"
     },
     {
       "id": "testnet-faucet",
@@ -10774,7 +11106,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "cardano-dapp-wallet-connector",
@@ -10838,7 +11172,9 @@
       "lastCommit": "2026-02-12",
       "statusReason": "active — pushed 5mo ago",
       "starsNum": 9,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "projectNEWM",
+      "teamX": "projectNEWM"
     },
     {
       "id": "cexplorer",
@@ -10905,7 +11241,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "pool-pm",
@@ -10969,7 +11307,9 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": null,
+      "teamX": null
     },
     {
       "id": "pyth-lazer-cardano",
@@ -11035,7 +11375,9 @@
       "lastCommit": "2026-04-20",
       "statusReason": "active — pushed 3mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "pyth-network",
+      "teamX": "PythNetwork"
     },
     {
       "id": "cardano-open-oracle-protocol",
@@ -11098,7 +11440,9 @@
       "lastCommit": "2024-03-20",
       "statusReason": "no pushes for 28mo",
       "starsNum": 21,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "mlabs-haskell",
+      "teamX": "MLabs10"
     },
     {
       "id": "purus",
@@ -11160,7 +11504,9 @@
       "lastCommit": "2025-02-11",
       "statusReason": "slowing — last push 17mo ago",
       "starsNum": 8,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "mlabs-haskell",
+      "teamX": "MLabs10"
     },
     {
       "id": "pluthon",
@@ -11221,7 +11567,9 @@
       "lastCommit": "2025-10-14",
       "statusReason": "active — pushed 9mo ago",
       "starsNum": 8,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "OpShin",
+      "teamX": "OpShinDev"
     },
     {
       "id": "imperator",
@@ -11282,7 +11630,9 @@
       "lastCommit": "2023-01-24",
       "statusReason": "GitHub repo archived",
       "starsNum": 28,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "OpShin",
+      "teamX": "OpShinDev"
     },
     {
       "id": "julc",
@@ -11343,7 +11693,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 7,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     },
     {
       "id": "shrinker",
@@ -11404,7 +11756,9 @@
       "lastCommit": "2022-02-26",
       "statusReason": "no pushes for 53mo",
       "starsNum": 5,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Plutonomicon",
+      "teamX": null
     },
     {
       "id": "telchar",
@@ -11468,7 +11822,9 @@
       "lastCommit": "2025-03-20",
       "statusReason": "slowing — last push 16mo ago",
       "starsNum": 13,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "plutigo",
@@ -11530,7 +11886,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 38,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blinklabs-io",
+      "teamX": "blinklabs_io"
     },
     {
       "id": "uplc-turbo",
@@ -11591,7 +11949,9 @@
       "lastCommit": "2025-11-18",
       "statusReason": "active — pushed 8mo ago",
       "starsNum": 7,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "de-uplc",
@@ -11653,7 +12013,9 @@
       "lastCommit": "2026-02-02",
       "statusReason": "active — pushed 6mo ago",
       "starsNum": 6,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardananium",
+      "teamX": null
     },
     {
       "id": "de-uplc-web",
@@ -11717,7 +12079,9 @@
       "lastCommit": "2026-07-26",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 2,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "cardananium",
+      "teamX": null
     },
     {
       "id": "clb",
@@ -11781,7 +12145,9 @@
       "lastCommit": "2025-11-05",
       "statusReason": "active — pushed 8mo ago",
       "starsNum": 10,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "mlabs-haskell",
+      "teamX": "MLabs10"
     },
     {
       "id": "mockfrost",
@@ -11842,7 +12208,9 @@
       "lastCommit": "2026-02-07",
       "statusReason": "active — pushed 5mo ago",
       "starsNum": 21,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "OpShin",
+      "teamX": "OpShinDev"
     },
     {
       "id": "vodka",
@@ -11904,7 +12272,9 @@
       "lastCommit": "2026-02-20",
       "statusReason": "active — pushed 5mo ago",
       "starsNum": 30,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "sidan-lab",
+      "teamX": "sidan_lab"
     },
     {
       "id": "quickcheck-contractmodel",
@@ -11965,7 +12335,9 @@
       "lastCommit": "2026-04-30",
       "statusReason": "active — pushed 3mo ago",
       "starsNum": 7,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "smartcode-verifier",
@@ -12026,7 +12398,9 @@
       "lastCommit": "2026-04-20",
       "statusReason": "active — pushed 3mo ago",
       "starsNum": 9,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "bot-plutus-interface",
@@ -12087,7 +12461,9 @@
       "lastCommit": "2023-05-05",
       "statusReason": "no pushes for 39mo",
       "starsNum": 21,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "mlabs-haskell",
+      "teamX": "MLabs10"
     },
     {
       "id": "aicone",
@@ -12149,7 +12525,9 @@
       "lastCommit": "2026-01-13",
       "statusReason": "active — pushed 6mo ago",
       "starsNum": 10,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "SundaeSwap-finance",
+      "teamX": "sundaeswap"
     },
     {
       "id": "merkle-patricia-forestry",
@@ -12213,7 +12591,9 @@
       "lastCommit": "2026-07-15",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Anastasia-Labs",
+      "teamX": "AnastasiaLabs"
     },
     {
       "id": "aiken-linked-list",
@@ -12274,7 +12654,9 @@
       "lastCommit": "2024-05-14",
       "statusReason": "no pushes for 26mo",
       "starsNum": 4,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Anastasia-Labs",
+      "teamX": "AnastasiaLabs"
     },
     {
       "id": "sutra",
@@ -12336,7 +12718,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txbody-org",
+      "teamX": null
     },
     {
       "id": "rum",
@@ -12397,7 +12781,9 @@
       "lastCommit": "2026-03-22",
       "statusReason": "active — pushed 4mo ago",
       "starsNum": 12,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "sidan-lab",
+      "teamX": "sidan_lab"
     },
     {
       "id": "gin",
@@ -12458,7 +12844,9 @@
       "lastCommit": "2025-11-10",
       "statusReason": "active — pushed 8mo ago",
       "starsNum": 7,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "sidan-lab",
+      "teamX": "sidan_lab"
     },
     {
       "id": "chrysalis",
@@ -12520,7 +12908,9 @@
       "lastCommit": "2026-06-29",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 9,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "SAIB-Inc",
+      "teamX": "saibdev"
     },
     {
       "id": "buildooor",
@@ -12581,7 +12971,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 9,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "HarmonicLabs",
+      "teamX": "hlabs_tech"
     },
     {
       "id": "cardano-data-lite",
@@ -12643,7 +13035,9 @@
       "lastCommit": "2025-12-26",
       "statusReason": "active — pushed 7mo ago",
       "starsNum": 4,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "mlabs-haskell",
+      "teamX": "MLabs10"
     },
     {
       "id": "cab",
@@ -12705,7 +13099,9 @@
       "lastCommit": "2025-02-14",
       "statusReason": "slowing — last push 17mo ago",
       "starsNum": 6,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "WingRiders",
+      "teamX": "wingriderscom"
     },
     {
       "id": "marlowe-ts-sdk",
@@ -12767,7 +13163,9 @@
       "lastCommit": "2025-03-26",
       "statusReason": "slowing — last push 16mo ago",
       "starsNum": 23,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "marlowe-lang",
+      "teamX": "marlowe_io"
     },
     {
       "id": "sc-tools",
@@ -12832,7 +13230,9 @@
       "lastCommit": "2026-06-09",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 20,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "bip32ed25519",
@@ -12894,7 +13294,9 @@
       "lastCommit": "2025-07-17",
       "statusReason": "active — pushed 12mo ago",
       "starsNum": 18,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "StricaHQ",
+      "teamX": "StricaHQ"
     },
     {
       "id": "sundae-sdk",
@@ -12957,7 +13359,9 @@
       "lastCommit": "2026-07-10",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 19,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "SundaeSwap-finance",
+      "teamX": "sundaeswap"
     },
     {
       "id": "minswap-sdk",
@@ -13019,7 +13423,9 @@
       "lastCommit": "2026-03-22",
       "statusReason": "active — pushed 4mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "minswap",
+      "teamX": "minswapdex"
     },
     {
       "id": "geniusyield-sdk",
@@ -13080,7 +13486,9 @@
       "lastCommit": "2026-06-08",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 1,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "geniusyield",
+      "teamX": "GeniusyieldO"
     },
     {
       "id": "dexter",
@@ -13142,7 +13550,9 @@
       "lastCommit": "2026-03-30",
       "statusReason": "active — pushed 4mo ago",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "IndigoProtocol",
+      "teamX": "Indigo_Protocol"
     },
     {
       "id": "spectrum-dex-sdk",
@@ -13203,7 +13613,9 @@
       "lastCommit": "2023-11-09",
       "statusReason": "no pushes for 32mo",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "spectrum-finance",
+      "teamX": "SpectrumLabs_"
     },
     {
       "id": "iris",
@@ -13265,7 +13677,9 @@
       "lastCommit": "2026-04-14",
       "statusReason": "active — pushed 3mo ago",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "IndigoProtocol",
+      "teamX": "Indigo_Protocol"
     },
     {
       "id": "gerolamo",
@@ -13326,7 +13740,9 @@
       "lastCommit": "2026-07-20",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 5,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "HarmonicLabs",
+      "teamX": "hlabs_tech"
     },
     {
       "id": "yaci",
@@ -13388,7 +13804,9 @@
       "lastCommit": "2026-07-19",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 32,
-      "degree": 5
+      "degree": 5,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     },
     {
       "id": "ouroboros-miniprotocols-ts",
@@ -13449,7 +13867,9 @@
       "lastCommit": "2026-03-29",
       "statusReason": "active — pushed 4mo ago",
       "starsNum": 15,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "HarmonicLabs",
+      "teamX": "hlabs_tech"
     },
     {
       "id": "ouroboros-network-js",
@@ -13510,7 +13930,9 @@
       "lastCommit": "2025-08-23",
       "statusReason": "active — pushed 11mo ago",
       "starsNum": 19,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "StricaHQ",
+      "teamX": "StricaHQ"
     },
     {
       "id": "boros",
@@ -13572,7 +13994,9 @@
       "lastCommit": "2026-03-27",
       "statusReason": "active — pushed 4mo ago",
       "starsNum": 19,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "kogmios",
@@ -13634,7 +14058,9 @@
       "lastCommit": "2026-01-30",
       "statusReason": "active — pushed 6mo ago",
       "starsNum": 7,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "projectNEWM",
+      "teamX": "projectNEWM"
     },
     {
       "id": "xogmios",
@@ -13695,7 +14121,9 @@
       "lastCommit": "2025-09-01",
       "statusReason": "active — pushed 11mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "wowica",
+      "teamX": "workwithcardano"
     },
     {
       "id": "ogmiosdotnet",
@@ -13756,7 +14184,9 @@
       "lastCommit": "2026-06-14",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 0,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "ItsDaveB",
+      "teamX": "ItsDave_ADA"
     },
     {
       "id": "ogmiosdotnet-blockchainevents",
@@ -13819,7 +14249,9 @@
       "lastCommit": "2026-08-01",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 5,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "ItsDaveB",
+      "teamX": "ItsDave_ADA"
     },
     {
       "id": "metis",
@@ -13883,7 +14315,9 @@
       "lastCommit": "2026-06-05",
       "statusReason": "active — pushed 2mo ago",
       "starsNum": 20,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "gamechanger-gcscript",
@@ -13948,7 +14382,9 @@
       "lastCommit": "2026-05-18",
       "statusReason": "active — pushed 2mo ago",
       "starsNum": 4,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "GameChangerFinance",
+      "teamX": "GameChangerOk"
     },
     {
       "id": "cscli",
@@ -14010,7 +14446,9 @@
       "lastCommit": "2022-10-18",
       "statusReason": "no pushes for 45mo",
       "starsNum": 17,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "CardanoSharp",
+      "teamX": null
     },
     {
       "id": "cardanosharp-blazor",
@@ -14072,7 +14510,9 @@
       "lastCommit": "2024-12-03",
       "statusReason": "slowing — last push 20mo ago",
       "starsNum": 14,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "CardanoSharp",
+      "teamX": null
     },
     {
       "id": "cardaminal",
@@ -14134,7 +14574,9 @@
       "lastCommit": "2025-10-22",
       "statusReason": "active — pushed 9mo ago",
       "starsNum": 10,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "devx",
@@ -14196,7 +14638,9 @@
       "lastCommit": "2026-07-19",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 51,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "cardano-mcp",
@@ -14259,7 +14703,9 @@
       "lastCommit": "2026-06-17",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "lidonation",
+      "teamX": "LidoNation"
     },
     {
       "id": "create-evolution-app",
@@ -14321,7 +14767,9 @@
       "lastCommit": "2025-06-03",
       "statusReason": "slowing — last push 14mo ago",
       "starsNum": 5,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Anastasia-Labs",
+      "teamX": "AnastasiaLabs"
     },
     {
       "id": "cardano-launcher",
@@ -14383,7 +14831,9 @@
       "lastCommit": "2025-10-22",
       "statusReason": "active — pushed 9mo ago",
       "starsNum": 34,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "IntersectMBO",
+      "teamX": "IntersectMBO"
     },
     {
       "id": "toolkit-for-cardano",
@@ -14448,7 +14898,9 @@
       "lastCommit": "2021-10-26",
       "statusReason": "no pushes for 57mo",
       "starsNum": 134,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "SundaeSwap-finance",
+      "teamX": "sundaeswap"
     },
     {
       "id": "cardano-caniuse",
@@ -14509,7 +14961,9 @@
       "lastCommit": "2023-10-04",
       "statusReason": "no pushes for 34mo",
       "starsNum": 15,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "dcSpark",
+      "teamX": "dcspark_io"
     },
     {
       "id": "plutus-cborhex-automation",
@@ -14570,7 +15024,9 @@
       "lastCommit": "2022-12-16",
       "statusReason": "no pushes for 43mo",
       "starsNum": 16,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "sidan-lab",
+      "teamX": "sidan_lab"
     },
     {
       "id": "pix",
@@ -14632,7 +15088,9 @@
       "lastCommit": "2022-05-20",
       "statusReason": "no pushes for 50mo",
       "starsNum": 37,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "txpipe",
+      "teamX": "txpipe_tools"
     },
     {
       "id": "metadraft",
@@ -14694,7 +15152,9 @@
       "lastCommit": "2025-02-18",
       "statusReason": "slowing — last push 17mo ago",
       "starsNum": 4,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "Cardano-Forge",
+      "teamX": "ada_anvil"
     },
     {
       "id": "nview",
@@ -14756,7 +15216,9 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 40,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blinklabs-io",
+      "teamX": "blinklabs_io"
     },
     {
       "id": "offchain-metadata-tools",
@@ -14818,7 +15280,9 @@
       "lastCommit": "2026-07-20",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 50,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "keria",
@@ -14881,7 +15345,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "koios-python",
@@ -14943,7 +15409,9 @@
       "lastCommit": "2024-03-02",
       "statusReason": "no pushes for 29mo",
       "starsNum": 19,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-community",
+      "teamX": "CardanoKoios"
     },
     {
       "id": "koios-go-client",
@@ -15004,7 +15472,9 @@
       "lastCommit": "2024-05-30",
       "statusReason": "no pushes for 26mo",
       "starsNum": 11,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-community",
+      "teamX": "CardanoKoios"
     },
     {
       "id": "koios-java-client",
@@ -15065,7 +15535,9 @@
       "lastCommit": "2025-06-15",
       "statusReason": "slowing — last push 13mo ago",
       "starsNum": 19,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-community",
+      "teamX": "CardanoKoios"
     },
     {
       "id": "koios-cli",
@@ -15126,7 +15598,9 @@
       "lastCommit": "2024-05-31",
       "statusReason": "no pushes for 26mo",
       "starsNum": 6,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-community",
+      "teamX": "CardanoKoios"
     },
     {
       "id": "cardanosharp-koios",
@@ -15187,7 +15661,9 @@
       "lastCommit": "2024-04-15",
       "statusReason": "no pushes for 27mo",
       "starsNum": 6,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "cardano-community",
+      "teamX": "CardanoKoios"
     },
     {
       "id": "cardano-academy",
@@ -15249,7 +15725,9 @@
       "lastCommit": "2026-05-19",
       "statusReason": "active — pushed 2mo ago",
       "starsNum": 0,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "plutus-pioneer-program",
@@ -15311,7 +15789,9 @@
       "lastCommit": "2025-12-02",
       "statusReason": "active — pushed 8mo ago",
       "starsNum": 1369,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "cardano-ctf",
@@ -15375,7 +15855,9 @@
       "lastCommit": "2026-06-28",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 34,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Invariant-0",
+      "teamX": "invariant0_com"
     },
     {
       "id": "jambhala",
@@ -15437,7 +15919,9 @@
       "lastCommit": "2025-01-16",
       "statusReason": "slowing — last push 18mo ago",
       "starsNum": 26,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "ajnabi-workshop",
+      "teamX": null
     },
     {
       "id": "vscode-aiken",
@@ -15499,7 +15983,9 @@
       "lastCommit": "2026-01-03",
       "statusReason": "active — pushed 7mo ago",
       "starsNum": 20,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "aiken-lang",
+      "teamX": "aiken_eng"
     },
     {
       "id": "blockfrost-cardano-cli",
@@ -15561,7 +16047,9 @@
       "lastCommit": "2022-08-31",
       "statusReason": "no pushes for 47mo",
       "starsNum": 24,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blockfrost",
+      "teamX": "blockfrost_io"
     },
     {
       "id": "adalite",
@@ -15623,7 +16111,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 231,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "vacuumlabs",
+      "teamX": "vacuumlabs"
     },
     {
       "id": "veridian-wallet",
@@ -15685,7 +16175,9 @@
       "lastCommit": "2026-07-13",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 143,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "catalyst-voices",
@@ -15747,7 +16239,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 40,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "cardano-ibc-incubator",
@@ -15811,7 +16305,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 30,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "lambda-buffers",
@@ -15873,7 +16369,9 @@
       "lastCommit": "2026-07-19",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 32,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "mlabs-haskell",
+      "teamX": "MLabs10"
     },
     {
       "id": "blockfrost-js",
@@ -15935,7 +16433,9 @@
       "lastCommit": "2026-06-18",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 108,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blockfrost",
+      "teamX": "blockfrost_io"
     },
     {
       "id": "blockfrost-python",
@@ -15996,7 +16496,9 @@
       "lastCommit": "2026-03-16",
       "statusReason": "active — pushed 4mo ago",
       "starsNum": 75,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blockfrost",
+      "teamX": "blockfrost_io"
     },
     {
       "id": "blockfrost-go",
@@ -16056,7 +16558,9 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 25,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blockfrost",
+      "teamX": "blockfrost_io"
     },
     {
       "id": "cardano-go",
@@ -16118,7 +16622,9 @@
       "lastCommit": "2024-05-17",
       "statusReason": "no pushes for 26mo",
       "starsNum": 58,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "echovl",
+      "teamX": null
     },
     {
       "id": "go-cardano-serialization",
@@ -16179,7 +16685,9 @@
       "lastCommit": "2023-04-04",
       "statusReason": "no pushes for 40mo",
       "starsNum": 35,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "fivebinaries",
+      "teamX": "fivebinaries"
     },
     {
       "id": "cardano-wallet-sdk-dart",
@@ -16241,7 +16749,9 @@
       "lastCommit": "2023-01-20",
       "statusReason": "no pushes for 42mo",
       "starsNum": 38,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "reaster",
+      "teamX": null
     },
     {
       "id": "cardano-python-emesik",
@@ -16303,7 +16813,9 @@
       "lastCommit": "2022-04-27",
       "statusReason": "no pushes for 51mo",
       "starsNum": 112,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "emesik",
+      "teamX": null
     },
     {
       "id": "dab",
@@ -16364,7 +16876,9 @@
       "lastCommit": "2022-06-07",
       "statusReason": "no pushes for 49mo",
       "starsNum": 36,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "cardano-foundation",
+      "teamX": "Cardano_CF"
     },
     {
       "id": "csl-mobile-bridge",
@@ -16425,7 +16939,9 @@
       "lastCommit": "2026-05-13",
       "statusReason": "active — pushed 2mo ago",
       "starsNum": 21,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "Emurgo",
+      "teamX": "emurgo_io"
     },
     {
       "id": "aiken-stdlib",
@@ -16486,7 +17002,9 @@
       "lastCommit": "2026-06-10",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 59,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "aiken-lang",
+      "teamX": "aiken_eng"
     },
     {
       "id": "blockfrost-backend-ryo",
@@ -16547,7 +17065,9 @@
       "lastCommit": "2026-07-16",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 85,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "blockfrost",
+      "teamX": "blockfrost_io"
     },
     {
       "id": "masumi",
@@ -16614,7 +17134,9 @@
       "lastCommit": "2026-07-31",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 14,
-      "degree": 5
+      "degree": 5,
+      "teamGithub": "masumi-network",
+      "teamX": "MasumiNetwork"
     },
     {
       "id": "masumi-registry-service",
@@ -16680,7 +17202,9 @@
       "lastCommit": "2026-07-31",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 6,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "masumi-network",
+      "teamX": "MasumiNetwork"
     },
     {
       "id": "sokosumi",
@@ -16745,7 +17269,9 @@
       "lastCommit": "2026-08-02",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 11,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "masumi-network",
+      "teamX": "MasumiNetwork"
     },
     {
       "id": "x402-cardano",
@@ -16807,7 +17333,9 @@
       "lastCommit": "2025-10-26",
       "statusReason": "active — pushed 9mo ago",
       "starsNum": 2,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "masumi-network",
+      "teamX": "MasumiNetwork"
     },
     {
       "id": "epora-wallet",
@@ -16877,7 +17405,9 @@
       "lastCommit": "2026-07-31",
       "statusReason": "experimental — pushed 0mo ago",
       "starsNum": 1,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "schaier-io",
+      "teamX": null
     },
     {
       "id": "adapools-xyz",
@@ -16942,7 +17472,9 @@
       "lastCommit": "2026-08-05",
       "statusReason": "experimental — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "schmidko",
+      "teamX": null
     },
     {
       "id": "daedalus",
@@ -17009,7 +17541,9 @@
       "lastCommit": "2026-08-06",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 1243,
-      "degree": 2
+      "degree": 2,
+      "teamGithub": "input-output-hk",
+      "teamX": "IOGroup"
     },
     {
       "id": "yano",
@@ -17070,7 +17604,9 @@
       "lastCommit": "2026-08-08",
       "statusReason": "active — latest v0.1.0-pre12 (2026-07-27), pushed 2026-08-08",
       "starsNum": 3,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     },
     {
       "id": "zeroj",
@@ -17131,7 +17667,9 @@
       "lastCommit": "2026-08-04",
       "statusReason": "active — latest v0.1.0-pre11 (2026-07-29), pushed 2026-08-04",
       "starsNum": 2,
-      "degree": 0
+      "degree": 0,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     },
     {
       "id": "cardano-client-bindings",
@@ -17192,7 +17730,9 @@
       "lastCommit": "2026-07-28",
       "statusReason": "active — latest v0.1.0-pre6 (2026-07-28), pushed 2026-07-28",
       "starsNum": 3,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     },
     {
       "id": "yaci-bridge",
@@ -17255,7 +17795,9 @@
       "lastCommit": "2026-03-04",
       "statusReason": "active — no tagged release; pushed 2026-03-04",
       "starsNum": 2,
-      "degree": 1
+      "degree": 1,
+      "teamGithub": "bloxbean",
+      "teamX": "BloxBean"
     }
   ],
   "links": [
@@ -18499,5 +19041,2611 @@
       "target": "bloxbean-cardano-client-library",
       "type": "depends"
     }
-  ]
+  ],
+  "teams": {
+    "TxPipe": {
+      "githubOrg": "txpipe",
+      "x": "txpipe_tools",
+      "maintainers": [
+        {
+          "login": "scarmuega",
+          "x": "santicarmuega"
+        },
+        {
+          "login": "gonzalezzfelipe",
+          "x": null
+        },
+        {
+          "login": "rvcas",
+          "x": "rvcas"
+        },
+        {
+          "login": "paulobressan",
+          "x": "Paulo_BressanJr"
+        },
+        {
+          "login": "mduthey",
+          "x": null
+        }
+      ]
+    },
+    "Cardano Foundation": {
+      "githubOrg": "cardano-foundation",
+      "x": "Cardano_CF",
+      "maintainers": [
+        {
+          "login": "jonathanknowles",
+          "x": null
+        },
+        {
+          "login": "KtorZ",
+          "x": "_KtorZ_"
+        },
+        {
+          "login": "paolino",
+          "x": null
+        },
+        {
+          "login": "paweljakubas",
+          "x": null
+        },
+        {
+          "login": "rvl",
+          "x": null
+        }
+      ]
+    },
+    "IOG": {
+      "githubOrg": "input-output-hk",
+      "x": "IOGroup",
+      "maintainers": [
+        {
+          "login": "jpraynaud",
+          "x": null
+        },
+        {
+          "login": "Alenar",
+          "x": null
+        },
+        {
+          "login": "dkijania",
+          "x": null
+        },
+        {
+          "login": "NicolasDP",
+          "x": null
+        },
+        {
+          "login": "nikolaglumac",
+          "x": "NikolaGlumac"
+        }
+      ]
+    },
+    "Blink Labs": {
+      "githubOrg": "blinklabs-io",
+      "x": "blinklabs_io",
+      "maintainers": [
+        {
+          "login": "wolf31o2",
+          "x": "wolf31o2"
+        },
+        {
+          "login": "agaffney",
+          "x": null
+        },
+        {
+          "login": "arepala-uml",
+          "x": null
+        },
+        {
+          "login": "verbotenj",
+          "x": null
+        },
+        {
+          "login": "cryptodj413",
+          "x": null
+        }
+      ]
+    },
+    "BloxBean": {
+      "githubOrg": "bloxbean",
+      "x": "BloxBean",
+      "maintainers": [
+        {
+          "login": "satran004",
+          "x": "satran004"
+        },
+        {
+          "login": "Sotatek-HuyLe3a",
+          "x": null
+        },
+        {
+          "login": "ducpm2303",
+          "x": null
+        },
+        {
+          "login": "edridudi",
+          "x": "IsraeliCardano"
+        },
+        {
+          "login": "matiwinnetou",
+          "x": "matiwinnetou"
+        }
+      ]
+    },
+    "MLabs": {
+      "githubOrg": "mlabs-haskell",
+      "x": "MLabs10",
+      "maintainers": [
+        {
+          "login": "paf31",
+          "x": "paf31"
+        },
+        {
+          "login": "bladyjoker",
+          "x": null
+        },
+        {
+          "login": "garyb",
+          "x": null
+        },
+        {
+          "login": "szg251",
+          "x": "gege251"
+        },
+        {
+          "login": "itsfarseen",
+          "x": null
+        }
+      ]
+    },
+    "Cardano Community": {
+      "githubOrg": "cardano-community",
+      "x": "CardanoKoios",
+      "maintainers": [
+        {
+          "login": "rdlrt",
+          "x": null
+        },
+        {
+          "login": "mkungla",
+          "x": "markokungla"
+        },
+        {
+          "login": "Scitz0",
+          "x": null
+        },
+        {
+          "login": "AndrewWestberg",
+          "x": "amw7"
+        },
+        {
+          "login": "QuixoteSystems",
+          "x": null
+        }
+      ]
+    },
+    "Community": {
+      "githubOrg": "Vtechcom",
+      "x": "VtechcomLabs",
+      "maintainers": [
+        {
+          "login": "aniadev",
+          "x": null
+        },
+        {
+          "login": "venom-vu",
+          "x": "venom_vux"
+        },
+        {
+          "login": "makalap",
+          "x": null
+        },
+        {
+          "login": "hham9",
+          "x": null
+        },
+        {
+          "login": "cuongtrinhvtechcom",
+          "x": null
+        }
+      ]
+    },
+    "IntersectMBO": {
+      "githubOrg": "IntersectMBO",
+      "x": "IntersectMBO",
+      "maintainers": [
+        {
+          "login": "Jimbo4350",
+          "x": null
+        },
+        {
+          "login": "newhoggy",
+          "x": null
+        },
+        {
+          "login": "erikd",
+          "x": null
+        },
+        {
+          "login": "deepfire",
+          "x": null
+        },
+        {
+          "login": "MSzalowski",
+          "x": null
+        }
+      ]
+    },
+    "Blockfrost": {
+      "githubOrg": "blockfrost",
+      "x": "blockfrost_io",
+      "maintainers": [
+        {
+          "login": "vladimirvolek",
+          "x": null
+        },
+        {
+          "login": "slowbackspace",
+          "x": "slowbackspace"
+        },
+        {
+          "login": "HannesKimara",
+          "x": null
+        },
+        {
+          "login": "1000101",
+          "x": null
+        },
+        {
+          "login": "sorki",
+          "x": null
+        }
+      ]
+    },
+    "dcSpark": {
+      "githubOrg": "dcSpark",
+      "x": "dcspark_io",
+      "maintainers": [
+        {
+          "login": "SebastienGllmt",
+          "x": "SebastienGllmt"
+        },
+        {
+          "login": "rooooooooob",
+          "x": null
+        },
+        {
+          "login": "gostkin",
+          "x": null
+        },
+        {
+          "login": "rvcas",
+          "x": "rvcas"
+        },
+        {
+          "login": "Mercurial",
+          "x": null
+        }
+      ]
+    },
+    "Harmonic Labs": {
+      "githubOrg": "HarmonicLabs",
+      "x": "hlabs_tech",
+      "maintainers": [
+        {
+          "login": "michele-nuzzi",
+          "x": "MicheleHarmonic"
+        },
+        {
+          "login": "RaffaBux",
+          "x": null
+        },
+        {
+          "login": "HarmonicPool",
+          "x": "HarmonicPool"
+        },
+        {
+          "login": "HariAmoor-professional",
+          "x": "HPA1999"
+        },
+        {
+          "login": "bakon11",
+          "x": "anothervariable"
+        }
+      ]
+    },
+    "sidan-lab": {
+      "githubOrg": "sidan-lab",
+      "x": "sidan_lab",
+      "maintainers": [
+        {
+          "login": "HinsonSIDAN",
+          "x": "HinsonSIDAN"
+        },
+        {
+          "login": "twwu123",
+          "x": null
+        },
+        {
+          "login": "aleeusgr",
+          "x": "alexeusgr"
+        },
+        {
+          "login": "kenlau666",
+          "x": null
+        },
+        {
+          "login": "lisicky",
+          "x": null
+        }
+      ]
+    },
+    "Anastasia Labs": {
+      "githubOrg": "Anastasia-Labs",
+      "x": "AnastasiaLabs",
+      "maintainers": [
+        {
+          "login": "keyan-m",
+          "x": null
+        },
+        {
+          "login": "solidsnakedev",
+          "x": null
+        },
+        {
+          "login": "hadelive",
+          "x": null
+        },
+        {
+          "login": "Cauterization",
+          "x": null
+        },
+        {
+          "login": "VenInf",
+          "x": null
+        }
+      ]
+    },
+    "Cardananium": {
+      "githubOrg": "cardananium",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "lisicky",
+          "x": null
+        },
+        {
+          "login": "Quantumplation",
+          "x": null
+        },
+        {
+          "login": "Nebyt",
+          "x": null
+        },
+        {
+          "login": "twwu123",
+          "x": null
+        },
+        {
+          "login": "QSchlegel",
+          "x": null
+        }
+      ]
+    },
+    "Masumi Network": {
+      "githubOrg": "masumi-network",
+      "x": "MasumiNetwork",
+      "maintainers": [
+        {
+          "login": "schaier-io",
+          "x": null
+        },
+        {
+          "login": "mrosberghaus",
+          "x": "LaceSatoshi"
+        },
+        {
+          "login": "bytegen-dev",
+          "x": "bytegen_dev"
+        },
+        {
+          "login": "Cryptonean",
+          "x": null
+        },
+        {
+          "login": "francisluz",
+          "x": "francisluz"
+        }
+      ]
+    },
+    "StricaHQ": {
+      "githubOrg": "StricaHQ",
+      "x": "StricaHQ",
+      "maintainers": [
+        {
+          "login": "ashisherc",
+          "x": "ashisherc"
+        },
+        {
+          "login": "pavanvora",
+          "x": null
+        },
+        {
+          "login": "longngn",
+          "x": "ngnlong"
+        },
+        {
+          "login": "Prashanthsoordelu",
+          "x": "soordeluP"
+        },
+        {
+          "login": "mahnunchik",
+          "x": "mahnunchik"
+        }
+      ]
+    },
+    "Sundae Labs": {
+      "githubOrg": "SundaeSwap-finance",
+      "x": "sundaeswap",
+      "maintainers": [
+        {
+          "login": "cjkoepke",
+          "x": null
+        },
+        {
+          "login": "Quantumplation",
+          "x": null
+        },
+        {
+          "login": "Luivatra",
+          "x": null
+        },
+        {
+          "login": "SupernaviX",
+          "x": null
+        },
+        {
+          "login": "paul-fg",
+          "x": null
+        }
+      ]
+    },
+    "Vacuumlabs": {
+      "githubOrg": "vacuumlabs",
+      "x": "vacuumlabs",
+      "maintainers": [
+        {
+          "login": "refi93",
+          "x": null
+        },
+        {
+          "login": "PeterBenc",
+          "x": null
+        },
+        {
+          "login": "DavidTranDucVL",
+          "x": null
+        },
+        {
+          "login": "xdzurman",
+          "x": null
+        },
+        {
+          "login": "davidmisiak",
+          "x": null
+        }
+      ]
+    },
+    "CardanoSolutions": {
+      "githubOrg": "CardanoSolutions",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "KtorZ",
+          "x": "_KtorZ_"
+        },
+        {
+          "login": "rhyslbw",
+          "x": null
+        },
+        {
+          "login": "notunrandom",
+          "x": null
+        },
+        {
+          "login": "johnalotoski",
+          "x": null
+        },
+        {
+          "login": "ch1bo",
+          "x": "ch1bo_"
+        }
+      ]
+    },
+    "Emurgo": {
+      "githubOrg": "Emurgo",
+      "x": "emurgo_io",
+      "maintainers": [
+        {
+          "login": "stackchain",
+          "x": "_stackchain_"
+        },
+        {
+          "login": "zuzunker",
+          "x": null
+        },
+        {
+          "login": "lisicky",
+          "x": null
+        },
+        {
+          "login": "banklesss",
+          "x": null
+        },
+        {
+          "login": "jorbuedo",
+          "x": null
+        }
+      ]
+    },
+    "Input Output (IOG)": {
+      "githubOrg": "input-output-hk",
+      "x": "IOGroup",
+      "maintainers": [
+        {
+          "login": "jpraynaud",
+          "x": null
+        },
+        {
+          "login": "Alenar",
+          "x": null
+        },
+        {
+          "login": "dkijania",
+          "x": null
+        },
+        {
+          "login": "NicolasDP",
+          "x": null
+        },
+        {
+          "login": "nikolaglumac",
+          "x": "NikolaGlumac"
+        }
+      ]
+    },
+    "IntersectMBO (IOG)": {
+      "githubOrg": "input-output-hk",
+      "x": "IOGroup",
+      "maintainers": [
+        {
+          "login": "jpraynaud",
+          "x": null
+        },
+        {
+          "login": "Alenar",
+          "x": null
+        },
+        {
+          "login": "dkijania",
+          "x": null
+        },
+        {
+          "login": "NicolasDP",
+          "x": null
+        },
+        {
+          "login": "nikolaglumac",
+          "x": "NikolaGlumac"
+        }
+      ]
+    },
+    "OpShin": {
+      "githubOrg": "OpShin",
+      "x": "OpShinDev",
+      "maintainers": [
+        {
+          "login": "nielstron",
+          "x": "nielstron"
+        },
+        {
+          "login": "SCMusson",
+          "x": null
+        },
+        {
+          "login": "juliusfrost",
+          "x": "Julius_Frost"
+        },
+        {
+          "login": "pcjordan",
+          "x": null
+        },
+        {
+          "login": "chrissiwaffler",
+          "x": "chrissiwaffler"
+        }
+      ]
+    },
+    "aiken-lang": {
+      "githubOrg": "aiken-lang",
+      "x": "aiken_eng",
+      "maintainers": [
+        {
+          "login": "KtorZ",
+          "x": "_KtorZ_"
+        },
+        {
+          "login": "rvcas",
+          "x": "rvcas"
+        },
+        {
+          "login": "MicroProofs",
+          "x": "microproofs"
+        },
+        {
+          "login": "alessandrokonrad",
+          "x": null
+        },
+        {
+          "login": "micahkendall",
+          "x": "MicahAlexKenda1"
+        }
+      ]
+    },
+    "Biglup": {
+      "githubOrg": "Biglup",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "AngelCastilloB",
+          "x": null
+        },
+        {
+          "login": "luisdbianchi",
+          "x": null
+        }
+      ]
+    },
+    "CardanoSharp": {
+      "githubOrg": "CardanoSharp",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "nothingalike",
+          "x": null
+        },
+        {
+          "login": "nicholas-maselli",
+          "x": "NickBuilds11"
+        },
+        {
+          "login": "lilpaul",
+          "x": null
+        },
+        {
+          "login": "safestak-keith",
+          "x": null
+        },
+        {
+          "login": "Daniel-SchaeferJ",
+          "x": null
+        }
+      ]
+    },
+    "dQuadrant": {
+      "githubOrg": "dQuadrant",
+      "x": "DquadrantNL",
+      "maintainers": [
+        {
+          "login": "mesudip",
+          "x": null
+        },
+        {
+          "login": "reeshavacharya",
+          "x": null
+        },
+        {
+          "login": "nabinpkl",
+          "x": null
+        },
+        {
+          "login": "NabinKawan",
+          "x": null
+        },
+        {
+          "login": "kushal2060",
+          "x": null
+        }
+      ]
+    },
+    "IOG / Cardano Foundation": {
+      "githubOrg": "input-output-hk",
+      "x": "IOGroup",
+      "maintainers": [
+        {
+          "login": "jpraynaud",
+          "x": null
+        },
+        {
+          "login": "Alenar",
+          "x": null
+        },
+        {
+          "login": "dkijania",
+          "x": null
+        },
+        {
+          "login": "NicolasDP",
+          "x": null
+        },
+        {
+          "login": "nikolaglumac",
+          "x": "NikolaGlumac"
+        }
+      ]
+    },
+    "ItsDaveB": {
+      "githubOrg": "ItsDaveB",
+      "x": "ItsDave_ADA",
+      "maintainers": [
+        {
+          "login": "ItsDaveB",
+          "x": "ItsDave_ADA"
+        },
+        {
+          "login": "cursoragent",
+          "x": null
+        }
+      ]
+    },
+    "Marlowe Language CIC": {
+      "githubOrg": "marlowe-lang",
+      "x": "marlowe_io",
+      "maintainers": [
+        {
+          "login": "michaelpj",
+          "x": "mpeytonjones"
+        },
+        {
+          "login": "bwbush",
+          "x": null
+        },
+        {
+          "login": "jmchapman",
+          "x": null
+        },
+        {
+          "login": "hrajchert",
+          "x": null
+        },
+        {
+          "login": "j-mueller",
+          "x": null
+        }
+      ]
+    },
+    "Martin Lang (gitmachtl)": {
+      "githubOrg": "gitmachtl",
+      "x": "ATADA_Stakepool",
+      "maintainers": [
+        {
+          "login": "gitmachtl",
+          "x": "ATADA_Stakepool"
+        },
+        {
+          "login": "AndrewWestberg",
+          "x": "amw7"
+        },
+        {
+          "login": "stakepool247",
+          "x": null
+        },
+        {
+          "login": "danielSanchezQ",
+          "x": null
+        },
+        {
+          "login": "Ryun1",
+          "x": "Ryun1_"
+        }
+      ]
+    },
+    "MeshJS": {
+      "githubOrg": "MeshJS",
+      "x": "meshsdk",
+      "maintainers": [
+        {
+          "login": "jinglescode",
+          "x": "jinglescode"
+        },
+        {
+          "login": "twwu123",
+          "x": null
+        },
+        {
+          "login": "HinsonSIDAN",
+          "x": "HinsonSIDAN"
+        },
+        {
+          "login": "abdelkrimdev",
+          "x": "abdelkrimdev"
+        },
+        {
+          "login": "Temasar1",
+          "x": "temasar_1"
+        }
+      ]
+    },
+    "OpShin community": {
+      "githubOrg": "OpShin",
+      "x": "OpShinDev",
+      "maintainers": [
+        {
+          "login": "nielstron",
+          "x": "nielstron"
+        },
+        {
+          "login": "SCMusson",
+          "x": null
+        },
+        {
+          "login": "juliusfrost",
+          "x": "Julius_Frost"
+        },
+        {
+          "login": "pcjordan",
+          "x": null
+        },
+        {
+          "login": "chrissiwaffler",
+          "x": "chrissiwaffler"
+        }
+      ]
+    },
+    "Plutonomicon community": {
+      "githubOrg": "Plutonomicon",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "klntsky",
+          "x": "klntsky"
+        },
+        {
+          "login": "ngua",
+          "x": null
+        },
+        {
+          "login": "errfrom",
+          "x": null
+        },
+        {
+          "login": "L-as",
+          "x": null
+        },
+        {
+          "login": "kozross",
+          "x": null
+        }
+      ]
+    },
+    "SAIB Inc": {
+      "githubOrg": "SAIB-Inc",
+      "x": "saibdev",
+      "maintainers": [
+        {
+          "login": "Mercurial",
+          "x": null
+        },
+        {
+          "login": "rjlacanlaled",
+          "x": null
+        },
+        {
+          "login": "ricomiles",
+          "x": null
+        },
+        {
+          "login": "Katteu",
+          "x": null
+        },
+        {
+          "login": "0xAccretion",
+          "x": null
+        }
+      ]
+    },
+    "WingRiders": {
+      "githubOrg": "WingRiders",
+      "x": "wingriderscom",
+      "maintainers": [
+        {
+          "login": "TechRiderWR",
+          "x": "WRTechRider"
+        }
+      ]
+    },
+    "Ada Anvil": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "ADA Handle": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "AIQUANT Technologies": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "ajnabi-workshop": {
+      "githubOrg": "ajnabi-workshop",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "iburzynski",
+          "x": null
+        },
+        {
+          "login": "ian-emurgo",
+          "x": null
+        },
+        {
+          "login": "cryptophonic",
+          "x": null
+        }
+      ]
+    },
+    "Alexander Nemish (scalus3)": {
+      "githubOrg": "scalus3",
+      "x": "scalus3",
+      "maintainers": [
+        {
+          "login": "nau",
+          "x": "atlanter"
+        },
+        {
+          "login": "rssh",
+          "x": "rssh1"
+        },
+        {
+          "login": "sae3023",
+          "x": null
+        },
+        {
+          "login": "roman-hulenko",
+          "x": null
+        },
+        {
+          "login": "sergey-scherbina",
+          "x": null
+        }
+      ]
+    },
+    "Anastasia Labs (+IOG)": {
+      "githubOrg": "Anastasia-Labs",
+      "x": "AnastasiaLabs",
+      "maintainers": [
+        {
+          "login": "keyan-m",
+          "x": null
+        },
+        {
+          "login": "solidsnakedev",
+          "x": null
+        },
+        {
+          "login": "hadelive",
+          "x": null
+        },
+        {
+          "login": "Cauterization",
+          "x": null
+        },
+        {
+          "login": "VenInf",
+          "x": null
+        }
+      ]
+    },
+    "Begin": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Blockchain Applied": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Blockfrost (blockfrost.io)": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "BloxBean (CF-backed)": {
+      "githubOrg": "bloxbean",
+      "x": "BloxBean",
+      "maintainers": [
+        {
+          "login": "satran004",
+          "x": "satran004"
+        },
+        {
+          "login": "Sotatek-HuyLe3a",
+          "x": null
+        },
+        {
+          "login": "ducpm2303",
+          "x": null
+        },
+        {
+          "login": "edridudi",
+          "x": "IsraeliCardano"
+        },
+        {
+          "login": "matiwinnetou",
+          "x": "matiwinnetou"
+        }
+      ]
+    },
+    "Butane Protocol": {
+      "githubOrg": "butaneprotocol",
+      "x": "butaneprotocol",
+      "maintainers": [
+        {
+          "login": "micahkendall",
+          "x": "MicahAlexKenda1"
+        },
+        {
+          "login": "EzePze",
+          "x": "JayTayArray"
+        },
+        {
+          "login": "rvcas",
+          "x": "rvcas"
+        },
+        {
+          "login": "cjkoepke",
+          "x": null
+        },
+        {
+          "login": "caike",
+          "x": "caike"
+        }
+      ]
+    },
+    "Cardano Community (Guild)": {
+      "githubOrg": "cardano-community",
+      "x": "CardanoKoios",
+      "maintainers": [
+        {
+          "login": "rdlrt",
+          "x": null
+        },
+        {
+          "login": "mkungla",
+          "x": "markokungla"
+        },
+        {
+          "login": "Scitz0",
+          "x": null
+        },
+        {
+          "login": "AndrewWestberg",
+          "x": "amw7"
+        },
+        {
+          "login": "QuixoteSystems",
+          "x": null
+        }
+      ]
+    },
+    "Cardano Forge / Ada Anvil": {
+      "githubOrg": "Cardano-Forge",
+      "x": "ada_anvil",
+      "maintainers": [
+        {
+          "login": "JFKFred",
+          "x": null
+        },
+        {
+          "login": "mrabdibdi-anvil",
+          "x": null
+        },
+        {
+          "login": "pChausseC",
+          "x": null
+        },
+        {
+          "login": "Dodilanne",
+          "x": null
+        },
+        {
+          "login": "jbergeron03",
+          "x": null
+        }
+      ]
+    },
+    "Cardano Foundation / Ledger": {
+      "githubOrg": "cardano-foundation",
+      "x": "Cardano_CF",
+      "maintainers": [
+        {
+          "login": "jonathanknowles",
+          "x": null
+        },
+        {
+          "login": "KtorZ",
+          "x": "_KtorZ_"
+        },
+        {
+          "login": "paolino",
+          "x": null
+        },
+        {
+          "login": "paweljakubas",
+          "x": null
+        },
+        {
+          "login": "rvl",
+          "x": null
+        }
+      ]
+    },
+    "cardano-community": {
+      "githubOrg": "cardano-community",
+      "x": "CardanoKoios",
+      "maintainers": [
+        {
+          "login": "rdlrt",
+          "x": null
+        },
+        {
+          "login": "mkungla",
+          "x": "markokungla"
+        },
+        {
+          "login": "Scitz0",
+          "x": null
+        },
+        {
+          "login": "AndrewWestberg",
+          "x": "amw7"
+        },
+        {
+          "login": "QuixoteSystems",
+          "x": null
+        }
+      ]
+    },
+    "Cardano-Forge / Ada Anvil": {
+      "githubOrg": "Cardano-Forge",
+      "x": "ada_anvil",
+      "maintainers": [
+        {
+          "login": "JFKFred",
+          "x": null
+        },
+        {
+          "login": "mrabdibdi-anvil",
+          "x": null
+        },
+        {
+          "login": "pChausseC",
+          "x": null
+        },
+        {
+          "login": "Dodilanne",
+          "x": null
+        },
+        {
+          "login": "jbergeron03",
+          "x": null
+        }
+      ]
+    },
+    "Cardanopress": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Cardanoscan": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "CardanoSharp / community": {
+      "githubOrg": "CardanoSharp",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "nothingalike",
+          "x": null
+        },
+        {
+          "login": "nicholas-maselli",
+          "x": "NickBuilds11"
+        },
+        {
+          "login": "lilpaul",
+          "x": null
+        },
+        {
+          "login": "safestak-keith",
+          "x": null
+        },
+        {
+          "login": "Daniel-SchaeferJ",
+          "x": null
+        }
+      ]
+    },
+    "Cexplorer": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Charli3": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Community (ajnabi-workshop)": {
+      "githubOrg": "ajnabi-workshop",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "iburzynski",
+          "x": null
+        },
+        {
+          "login": "ian-emurgo",
+          "x": null
+        },
+        {
+          "login": "cryptophonic",
+          "x": null
+        }
+      ]
+    },
+    "Community (Kirael12)": {
+      "githubOrg": "Kirael12",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "Kirael12",
+          "x": null
+        },
+        {
+          "login": "coincashew",
+          "x": "coincashew_"
+        }
+      ]
+    },
+    "Community (miguelaeh)": {
+      "githubOrg": "miguelaeh",
+      "x": "miguelaeh_",
+      "maintainers": [
+        {
+          "login": "alessandrokonrad",
+          "x": null
+        },
+        {
+          "login": "miguelaeh",
+          "x": "miguelaeh_"
+        },
+        {
+          "login": "osephson",
+          "x": null
+        },
+        {
+          "login": "pyropy",
+          "x": "pyr0py"
+        },
+        {
+          "login": "BertrandD",
+          "x": null
+        }
+      ]
+    },
+    "DexHunter": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "echovl": {
+      "githubOrg": "echovl",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "echovl",
+          "x": null
+        },
+        {
+          "login": "emmecorelli",
+          "x": null
+        },
+        {
+          "login": "tclairet",
+          "x": null
+        },
+        {
+          "login": "visopsys",
+          "x": null
+        },
+        {
+          "login": "sean118",
+          "x": null
+        }
+      ]
+    },
+    "elm-cardano": {
+      "githubOrg": "mpizenberg",
+      "x": "mattpiz",
+      "maintainers": [
+        {
+          "login": "mpizenberg",
+          "x": "mattpiz"
+        },
+        {
+          "login": "rvcas",
+          "x": "rvcas"
+        },
+        {
+          "login": "KtorZ",
+          "x": "_KtorZ_"
+        },
+        {
+          "login": "keyan-m",
+          "x": null
+        },
+        {
+          "login": "tillydray",
+          "x": null
+        }
+      ]
+    },
+    "emesik": {
+      "githubOrg": "emesik",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "emesik",
+          "x": null
+        }
+      ]
+    },
+    "Emurgo (Adaverse)": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "EMURGO / dcSpark": {
+      "githubOrg": "dcSpark",
+      "x": "dcspark_io",
+      "maintainers": [
+        {
+          "login": "SebastienGllmt",
+          "x": "SebastienGllmt"
+        },
+        {
+          "login": "rooooooooob",
+          "x": null
+        },
+        {
+          "login": "gostkin",
+          "x": null
+        },
+        {
+          "login": "rvcas",
+          "x": "rvcas"
+        },
+        {
+          "login": "Mercurial",
+          "x": null
+        }
+      ]
+    },
+    "Eternl": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "fabianbormann / community": {
+      "githubOrg": "fabianbormann",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "fabianbormann",
+          "x": null
+        },
+        {
+          "login": "marcuspuchalla",
+          "x": null
+        },
+        {
+          "login": "jorgenavben",
+          "x": null
+        },
+        {
+          "login": "Sotatek-HocNguyena",
+          "x": null
+        },
+        {
+          "login": "Tknott95",
+          "x": "TrevorKnottOG"
+        }
+      ]
+    },
+    "Five Binaries": {
+      "githubOrg": "fivebinaries",
+      "x": "fivebinaries",
+      "maintainers": [
+        {
+          "login": "HannesKimara",
+          "x": null
+        },
+        {
+          "login": "mmahut",
+          "x": null
+        },
+        {
+          "login": "sean118",
+          "x": null
+        },
+        {
+          "login": "a5i",
+          "x": null
+        },
+        {
+          "login": "mnagy",
+          "x": null
+        }
+      ]
+    },
+    "free-honey (community)": {
+      "githubOrg": "free-honey",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "MitchTurner",
+          "x": "mtchtrnr"
+        },
+        {
+          "login": "ch1n3du",
+          "x": "ch1n3du3"
+        },
+        {
+          "login": "nielstron",
+          "x": "nielstron"
+        },
+        {
+          "login": "MicroProofs",
+          "x": "microproofs"
+        },
+        {
+          "login": "kettlebell",
+          "x": null
+        }
+      ]
+    },
+    "GameChanger Finance": {
+      "githubOrg": "GameChangerFinance",
+      "x": "GameChangerOk",
+      "maintainers": [
+        {
+          "login": "zxpectre",
+          "x": null
+        },
+        {
+          "login": "keyan-m",
+          "x": null
+        }
+      ]
+    },
+    "GeniusYield": {
+      "githubOrg": "geniusyield",
+      "x": "GeniusyieldO",
+      "maintainers": [
+        {
+          "login": "sourabhxyz",
+          "x": "SourabhLight"
+        },
+        {
+          "login": "4TT1L4",
+          "x": null
+        },
+        {
+          "login": "TotallyNotChase",
+          "x": null
+        },
+        {
+          "login": "ajuggler",
+          "x": "a_juggler"
+        },
+        {
+          "login": "piyushthapa",
+          "x": "Piyushchain"
+        }
+      ]
+    },
+    "GeniusYield (+Well-Typed, MLabs, Plank)": {
+      "githubOrg": "geniusyield",
+      "x": "GeniusyieldO",
+      "maintainers": [
+        {
+          "login": "sourabhxyz",
+          "x": "SourabhLight"
+        },
+        {
+          "login": "4TT1L4",
+          "x": null
+        },
+        {
+          "login": "TotallyNotChase",
+          "x": null
+        },
+        {
+          "login": "ajuggler",
+          "x": "a_juggler"
+        },
+        {
+          "login": "piyushthapa",
+          "x": "Piyushchain"
+        }
+      ]
+    },
+    "Gero Labs": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "GetBlock": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Gimbalabs (community)": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Gimbalabs / La PEACEpool": {
+      "githubOrg": "gimbalabs",
+      "x": "gimbalabs",
+      "maintainers": [
+        {
+          "login": "rcmorano",
+          "x": "rc_morano"
+        },
+        {
+          "login": "nemo83",
+          "x": null
+        },
+        {
+          "login": "joeydouglas",
+          "x": null
+        },
+        {
+          "login": "ADAmint2019",
+          "x": null
+        }
+      ]
+    },
+    "Governance community": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "HarmonicPool": {
+      "githubOrg": "HarmonicPool",
+      "x": "HarmonicPool",
+      "maintainers": [
+        {
+          "login": "michele-nuzzi",
+          "x": "MicheleHarmonic"
+        },
+        {
+          "login": "HarmonicPool",
+          "x": "HarmonicPool"
+        }
+      ]
+    },
+    "HeliosLang community": {
+      "githubOrg": "HeliosLang",
+      "x": "helios_lang",
+      "maintainers": [
+        {
+          "login": "christianschmitz",
+          "x": null
+        },
+        {
+          "login": "rjharmon",
+          "x": null
+        },
+        {
+          "login": "gavinharris-dev",
+          "x": "gavlaaharris"
+        },
+        {
+          "login": "nielstron",
+          "x": "nielstron"
+        },
+        {
+          "login": "hai-kreate",
+          "x": "hai_kreate"
+        }
+      ]
+    },
+    "Hyperledger / IOG": {
+      "githubOrg": "hyperledger-identus",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "essbante-io",
+          "x": null
+        },
+        {
+          "login": "yshyn-iohk",
+          "x": null
+        },
+        {
+          "login": "FabioPinheiro",
+          "x": "fabiomgpinheiro"
+        },
+        {
+          "login": "Aaravanand00",
+          "x": null
+        },
+        {
+          "login": "elribonazo",
+          "x": null
+        }
+      ]
+    },
+    "Indigo Protocol": {
+      "githubOrg": "IndigoProtocol",
+      "x": "Indigo_Protocol",
+      "maintainers": [
+        {
+          "login": "Sluder",
+          "x": null
+        },
+        {
+          "login": "adacapo21",
+          "x": "0xAggelos"
+        },
+        {
+          "login": "ItsDaveB",
+          "x": "ItsDave_ADA"
+        },
+        {
+          "login": "codybutz",
+          "x": "codyjbutz"
+        },
+        {
+          "login": "karleitner",
+          "x": null
+        }
+      ]
+    },
+    "Indigo Protocol / VyFi": {
+      "githubOrg": "IndigoProtocol",
+      "x": "Indigo_Protocol",
+      "maintainers": [
+        {
+          "login": "Sluder",
+          "x": null
+        },
+        {
+          "login": "adacapo21",
+          "x": "0xAggelos"
+        },
+        {
+          "login": "ItsDaveB",
+          "x": "ItsDave_ADA"
+        },
+        {
+          "login": "codybutz",
+          "x": "codyjbutz"
+        },
+        {
+          "login": "karleitner",
+          "x": null
+        }
+      ]
+    },
+    "Input Output": {
+      "githubOrg": "input-output-hk",
+      "x": "IOGroup",
+      "maintainers": [
+        {
+          "login": "jpraynaud",
+          "x": null
+        },
+        {
+          "login": "Alenar",
+          "x": null
+        },
+        {
+          "login": "dkijania",
+          "x": null
+        },
+        {
+          "login": "NicolasDP",
+          "x": null
+        },
+        {
+          "login": "nikolaglumac",
+          "x": "NikolaGlumac"
+        }
+      ]
+    },
+    "Intersect / IOG / CF": {
+      "githubOrg": "IntersectMBO",
+      "x": "IntersectMBO",
+      "maintainers": [
+        {
+          "login": "Jimbo4350",
+          "x": null
+        },
+        {
+          "login": "newhoggy",
+          "x": null
+        },
+        {
+          "login": "erikd",
+          "x": null
+        },
+        {
+          "login": "deepfire",
+          "x": null
+        },
+        {
+          "login": "MSzalowski",
+          "x": null
+        }
+      ]
+    },
+    "IntersectMBO / Blink Labs": {
+      "githubOrg": "IntersectMBO",
+      "x": "IntersectMBO",
+      "maintainers": [
+        {
+          "login": "Jimbo4350",
+          "x": null
+        },
+        {
+          "login": "newhoggy",
+          "x": null
+        },
+        {
+          "login": "erikd",
+          "x": null
+        },
+        {
+          "login": "deepfire",
+          "x": null
+        },
+        {
+          "login": "MSzalowski",
+          "x": null
+        }
+      ]
+    },
+    "IntersectMBO / community": {
+      "githubOrg": "IntersectMBO",
+      "x": "IntersectMBO",
+      "maintainers": [
+        {
+          "login": "Jimbo4350",
+          "x": null
+        },
+        {
+          "login": "newhoggy",
+          "x": null
+        },
+        {
+          "login": "erikd",
+          "x": null
+        },
+        {
+          "login": "deepfire",
+          "x": null
+        },
+        {
+          "login": "MSzalowski",
+          "x": null
+        }
+      ]
+    },
+    "IO / community": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "IO Research": {
+      "githubOrg": "input-output-hk",
+      "x": "IOGroup",
+      "maintainers": [
+        {
+          "login": "jpraynaud",
+          "x": null
+        },
+        {
+          "login": "Alenar",
+          "x": null
+        },
+        {
+          "login": "dkijania",
+          "x": null
+        },
+        {
+          "login": "NicolasDP",
+          "x": null
+        },
+        {
+          "login": "nikolaglumac",
+          "x": "NikolaGlumac"
+        }
+      ]
+    },
+    "IOG / cardano-scaling": {
+      "githubOrg": "cardano-scaling",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "ch1bo",
+          "x": "ch1bo_"
+        },
+        {
+          "login": "v0d1ch",
+          "x": "Webmarmun"
+        },
+        {
+          "login": "abailly",
+          "x": "dr_c0d3"
+        },
+        {
+          "login": "ffakenz",
+          "x": null
+        },
+        {
+          "login": "KtorZ",
+          "x": "_KtorZ_"
+        }
+      ]
+    },
+    "IOG / Catalyst": {
+      "githubOrg": "cardano-foundation",
+      "x": "Cardano_CF",
+      "maintainers": [
+        {
+          "login": "jonathanknowles",
+          "x": null
+        },
+        {
+          "login": "KtorZ",
+          "x": "_KtorZ_"
+        },
+        {
+          "login": "paolino",
+          "x": null
+        },
+        {
+          "login": "paweljakubas",
+          "x": null
+        },
+        {
+          "login": "rvl",
+          "x": null
+        }
+      ]
+    },
+    "IOG Research": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Lidonation": {
+      "githubOrg": "lidonation",
+      "x": "LidoNation",
+      "maintainers": [
+        {
+          "login": "Emmanuel-Tyty",
+          "x": null
+        }
+      ]
+    },
+    "Maestro Labs": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Minswap": {
+      "githubOrg": "minswap",
+      "x": "minswapdex",
+      "maintainers": [
+        {
+          "login": "longngn",
+          "x": "ngnlong"
+        },
+        {
+          "login": "h2physics",
+          "x": "richard_ng_42"
+        },
+        {
+          "login": "harryboiz",
+          "x": null
+        },
+        {
+          "login": "m1n999999",
+          "x": null
+        },
+        {
+          "login": "lednhatkhanh",
+          "x": "lednhatkhanh"
+        }
+      ]
+    },
+    "MLabs / Plutonomicon": {
+      "githubOrg": "Plutonomicon",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "klntsky",
+          "x": "klntsky"
+        },
+        {
+          "login": "ngua",
+          "x": null
+        },
+        {
+          "login": "errfrom",
+          "x": null
+        },
+        {
+          "login": "L-as",
+          "x": null
+        },
+        {
+          "login": "kozross",
+          "x": null
+        }
+      ]
+    },
+    "NFTCDN": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "NMKR": {
+      "githubOrg": "nftmakerio",
+      "x": "nmkr_io",
+      "maintainers": [
+        {
+          "login": "SLFMR1",
+          "x": null
+        },
+        {
+          "login": "tobler",
+          "x": null
+        }
+      ]
+    },
+    "No Witness Labs / IntersectMBO": {
+      "githubOrg": "IntersectMBO",
+      "x": "IntersectMBO",
+      "maintainers": [
+        {
+          "login": "Jimbo4350",
+          "x": null
+        },
+        {
+          "login": "newhoggy",
+          "x": null
+        },
+        {
+          "login": "erikd",
+          "x": null
+        },
+        {
+          "login": "deepfire",
+          "x": null
+        },
+        {
+          "login": "MSzalowski",
+          "x": null
+        }
+      ]
+    },
+    "NOWNodes": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "NuFi (ex-AdaLite)": {
+      "githubOrg": "nufi-official",
+      "x": "nufiwallet",
+      "maintainers": [
+        {
+          "login": "refi93",
+          "x": null
+        },
+        {
+          "login": "izri16",
+          "x": null
+        },
+        {
+          "login": "AndrejZelonka",
+          "x": null
+        },
+        {
+          "login": "lskba",
+          "x": null
+        },
+        {
+          "login": "PeterBenc",
+          "x": null
+        }
+      ]
+    },
+    "Obsidian Systems": {
+      "githubOrg": "obsidiansystems",
+      "x": "obsidian_llc",
+      "maintainers": [
+        {
+          "login": "Yasuke",
+          "x": null
+        },
+        {
+          "login": "parenthetical",
+          "x": null
+        },
+        {
+          "login": "luigy",
+          "x": null
+        },
+        {
+          "login": "ali-abrar",
+          "x": null
+        },
+        {
+          "login": "hSloan",
+          "x": null
+        }
+      ]
+    },
+    "ODATANO": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Orcfax": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Plutonomicon": {
+      "githubOrg": "Plutonomicon",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "klntsky",
+          "x": "klntsky"
+        },
+        {
+          "login": "ngua",
+          "x": null
+        },
+        {
+          "login": "errfrom",
+          "x": null
+        },
+        {
+          "login": "L-as",
+          "x": null
+        },
+        {
+          "login": "kozross",
+          "x": null
+        }
+      ]
+    },
+    "pool.pm": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "PRAGMA": {
+      "githubOrg": "pragma-org",
+      "x": "pragma_org",
+      "maintainers": [
+        {
+          "login": "KtorZ",
+          "x": "_KtorZ_"
+        },
+        {
+          "login": "jeluard",
+          "x": null
+        },
+        {
+          "login": "abailly",
+          "x": "dr_c0d3"
+        },
+        {
+          "login": "yHSJ",
+          "x": "JSHyCS"
+        },
+        {
+          "login": "rkuhn",
+          "x": null
+        }
+      ]
+    },
+    "Project NEWM": {
+      "githubOrg": "projectNEWM",
+      "x": "projectNEWM",
+      "maintainers": [
+        {
+          "login": "scandycuz",
+          "x": null
+        },
+        {
+          "login": "AndrewWestberg",
+          "x": "amw7"
+        },
+        {
+          "login": "escobarjonatan",
+          "x": null
+        },
+        {
+          "login": "jmateoac",
+          "x": null
+        }
+      ]
+    },
+    "projectNEWM": {
+      "githubOrg": "projectNEWM",
+      "x": "projectNEWM",
+      "maintainers": [
+        {
+          "login": "scandycuz",
+          "x": null
+        },
+        {
+          "login": "AndrewWestberg",
+          "x": "amw7"
+        },
+        {
+          "login": "escobarjonatan",
+          "x": null
+        },
+        {
+          "login": "jmateoac",
+          "x": null
+        }
+      ]
+    },
+    "Pyth Network": {
+      "githubOrg": "pyth-network",
+      "x": "PythNetwork",
+      "maintainers": [
+        {
+          "login": "matej-douro",
+          "x": null
+        }
+      ]
+    },
+    "Python-Cardano community": {
+      "githubOrg": "Python-Cardano",
+      "x": "PyCardano",
+      "maintainers": [
+        {
+          "login": "cffls",
+          "x": null
+        },
+        {
+          "login": "nielstron",
+          "x": "nielstron"
+        },
+        {
+          "login": "theeldermillenial",
+          "x": null
+        },
+        {
+          "login": "daehan-koreapool",
+          "x": null
+        },
+        {
+          "login": "Cat-Treat",
+          "x": null
+        }
+      ]
+    },
+    "QuviQ / IOG": {
+      "githubOrg": "input-output-hk",
+      "x": "IOGroup",
+      "maintainers": [
+        {
+          "login": "jpraynaud",
+          "x": null
+        },
+        {
+          "login": "Alenar",
+          "x": null
+        },
+        {
+          "login": "dkijania",
+          "x": null
+        },
+        {
+          "login": "NicolasDP",
+          "x": null
+        },
+        {
+          "login": "nikolaglumac",
+          "x": "NikolaGlumac"
+        }
+      ]
+    },
+    "reaster": {
+      "githubOrg": "reaster",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "reaster",
+          "x": null
+        }
+      ]
+    },
+    "Salvionied": {
+      "githubOrg": "Salvionied",
+      "x": "ZhaataC",
+      "maintainers": [
+        {
+          "login": "Salvionied",
+          "x": "ZhaataC"
+        },
+        {
+          "login": "wolf31o2",
+          "x": "wolf31o2"
+        },
+        {
+          "login": "MIxAxIM",
+          "x": "MI_xAx_IM"
+        },
+        {
+          "login": "rrruko",
+          "x": null
+        },
+        {
+          "login": "Quantumplation",
+          "x": null
+        }
+      ]
+    },
+    "schaier-io": {
+      "githubOrg": "schaier-io",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "schaier-io",
+          "x": null
+        }
+      ]
+    },
+    "schmidko": {
+      "githubOrg": "schmidko",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "schmidko",
+          "x": null
+        }
+      ]
+    },
+    "SpaceBudz": {
+      "githubOrg": "spacebudz",
+      "x": "spacebudznft",
+      "maintainers": [
+        {
+          "login": "alessandrokonrad",
+          "x": null
+        },
+        {
+          "login": "sourabhxyz",
+          "x": "SourabhLight"
+        },
+        {
+          "login": "GGAlanSmithee",
+          "x": null
+        },
+        {
+          "login": "TotallyNotChase",
+          "x": null
+        },
+        {
+          "login": "zing-rsa",
+          "x": "zing_rsa"
+        }
+      ]
+    },
+    "Spectrum Finance": {
+      "githubOrg": "spectrum-finance",
+      "x": "SpectrumLabs_",
+      "maintainers": [
+        {
+          "login": "oskin1",
+          "x": null
+        },
+        {
+          "login": "GusevTimofey",
+          "x": null
+        },
+        {
+          "login": "Bromel777",
+          "x": null
+        }
+      ]
+    },
+    "SundaeSwap": {
+      "githubOrg": "SundaeSwap-finance",
+      "x": "sundaeswap",
+      "maintainers": [
+        {
+          "login": "cjkoepke",
+          "x": null
+        },
+        {
+          "login": "Quantumplation",
+          "x": null
+        },
+        {
+          "login": "Luivatra",
+          "x": null
+        },
+        {
+          "login": "SupernaviX",
+          "x": null
+        },
+        {
+          "login": "paul-fg",
+          "x": null
+        }
+      ]
+    },
+    "Tango Crypto": {
+      "githubOrg": "tango-crypto",
+      "x": "tango_crypto",
+      "maintainers": [
+        {
+          "login": "leobel",
+          "x": "leobelizquierdo"
+        },
+        {
+          "login": "javiertc",
+          "x": "javiertc86"
+        },
+        {
+          "login": "jlimas",
+          "x": "jlimase"
+        },
+        {
+          "login": "rhyslbw",
+          "x": null
+        },
+        {
+          "login": "yanisurbis",
+          "x": null
+        }
+      ]
+    },
+    "TangoCrypto": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "TapTools": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Tokeo": {
+      "githubOrg": "TokeoPay",
+      "x": "Tokeo_io",
+      "maintainers": [
+        {
+          "login": "gavinharris-dev",
+          "x": "gavlaaharris"
+        },
+        {
+          "login": "MagicFlow29",
+          "x": null
+        }
+      ]
+    },
+    "txbody.org": {
+      "githubOrg": "txbody-org",
+      "x": null,
+      "maintainers": [
+        {
+          "login": "piyushthapa",
+          "x": "Piyushchain"
+        },
+        {
+          "login": "aathapa",
+          "x": null
+        },
+        {
+          "login": "karkigrishmin",
+          "x": "karkigrishmin"
+        },
+        {
+          "login": "caike",
+          "x": "caike"
+        }
+      ]
+    },
+    "TxPipe (CF-sponsored)": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "TxPipe / IntersectMBO": {
+      "githubOrg": "txpipe",
+      "x": "txpipe_tools",
+      "maintainers": [
+        {
+          "login": "scarmuega",
+          "x": "santicarmuega"
+        },
+        {
+          "login": "gonzalezzfelipe",
+          "x": null
+        },
+        {
+          "login": "rvcas",
+          "x": "rvcas"
+        },
+        {
+          "login": "paulobressan",
+          "x": "Paulo_BressanJr"
+        },
+        {
+          "login": "mduthey",
+          "x": null
+        }
+      ]
+    },
+    "TxPipe + Cardano Foundation": {
+      "githubOrg": "aiken-lang",
+      "x": "aiken_eng",
+      "maintainers": [
+        {
+          "login": "KtorZ",
+          "x": "_KtorZ_"
+        },
+        {
+          "login": "rvcas",
+          "x": "rvcas"
+        },
+        {
+          "login": "MicroProofs",
+          "x": "microproofs"
+        },
+        {
+          "login": "alessandrokonrad",
+          "x": null
+        },
+        {
+          "login": "micahkendall",
+          "x": "MicahAlexKenda1"
+        }
+      ]
+    },
+    "UTxOS": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Vacuumlabs (Invariant0)": {
+      "githubOrg": "Invariant-0",
+      "x": "invariant0_com",
+      "maintainers": [
+        {
+          "login": "cptmikx",
+          "x": null
+        },
+        {
+          "login": "ananasj",
+          "x": null
+        },
+        {
+          "login": "caike",
+          "x": "caike"
+        },
+        {
+          "login": "michal-sladecek",
+          "x": null
+        }
+      ]
+    },
+    "VESPR": {
+      "githubOrg": null,
+      "x": null,
+      "maintainers": []
+    },
+    "Viper Science": {
+      "githubOrg": "ViperScience",
+      "x": "viperscience",
+      "maintainers": [
+        {
+          "login": "nalyd88",
+          "x": "nalyd88"
+        },
+        {
+          "login": "wrmarchetto",
+          "x": null
+        }
+      ]
+    },
+    "Well-Typed": {
+      "githubOrg": "well-typed",
+      "x": "welltyped",
+      "maintainers": [
+        {
+          "login": "phadej",
+          "x": null
+        },
+        {
+          "login": "kosmikus",
+          "x": "kosmikus"
+        },
+        {
+          "login": "adamgundry",
+          "x": null
+        },
+        {
+          "login": "edsko",
+          "x": null
+        },
+        {
+          "login": "novadev94",
+          "x": null
+        }
+      ]
+    },
+    "wowica": {
+      "githubOrg": "wowica",
+      "x": "workwithcardano",
+      "maintainers": [
+        {
+          "login": "caike",
+          "x": "caike"
+        },
+        {
+          "login": "rohlacanna",
+          "x": "_originalromulo"
+        }
+      ]
+    },
+    "XRAY Network": {
+      "githubOrg": "xray-network",
+      "x": "xray_network",
+      "maintainers": [
+        {
+          "login": "xray-robot",
+          "x": null
+        },
+        {
+          "login": "dipsy-hash",
+          "x": null
+        }
+      ]
+    }
+  }
 }

@@ -50,6 +50,9 @@ export interface ToolNode {
   communityRank?: number | null;
   lastCommit?: string | null;
   statusReason?: string | null;
+  // contact handles for the node's team (see the top-level `teams` map for maintainers)
+  teamGithub?: string | null; // GitHub org/owner handle
+  teamX?: string | null; // verified X/Twitter handle
   // added at runtime by force-graph
   x?: number;
   y?: number;
@@ -67,6 +70,18 @@ export interface Category {
   count: number;
 }
 
+export interface TeamMaintainer {
+  login: string; // GitHub username
+  x: string | null; // verified X/Twitter handle, if known
+}
+
+// Contact info for a team, keyed by team name in Graph.teams.
+export interface TeamContact {
+  githubOrg: string | null; // GitHub org/owner handle
+  x: string | null; // verified X/Twitter handle for the org/team
+  maintainers: TeamMaintainer[]; // top human contributors to @-mention (GitHub @org does not notify)
+}
+
 export interface Graph {
   meta: {
     title: string;
@@ -81,6 +96,7 @@ export interface Graph {
   linkTypes: Record<LinkType, string>;
   nodes: ToolNode[];
   links: ToolLink[];
+  teams?: Record<string, TeamContact>; // team name -> contact handles + maintainers
 }
 
 export const STATUS_COLORS: Record<Status, string> = {
