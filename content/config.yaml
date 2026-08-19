@@ -57,6 +57,9 @@ repos:
   - url: "https://github.com/blinklabs-io/cardano-up"
     deliverable: D3
     teamOnly: true
+  - url: "https://github.com/cardano-foundation/cardano-dev-skills"
+    deliverable: D8
+    teamOnly: true
 
 # Curated jump-off points shown on the Links hub (built in a later slice).
 links:
