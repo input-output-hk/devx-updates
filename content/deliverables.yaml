@@ -299,6 +299,13 @@
   quarter: ongoing
   status: in-progress
   statusUpdatedAt: 2026-07-06
+  updates:
+    - date: "2026-06-22"
+      description: Contributed a per-command context flag to cardano-up.
+      week: "2026-W26"
+    - date: "2026-08-13"
+      description: Contributed sources and skills to cardano-dev-skills.
+      week: "2026-W33"
   summary: >-
     Address high-ROI opportunities surfaced through ecosystem alignment, with
     transparent reporting of what we picked and why.
