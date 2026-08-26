@@ -101,6 +101,9 @@
     - date: "2026-07-10"
       description: Automated release pipeline wired up (cargo dist + npm).
       week: "2026-W28"
+    - date: "2026-08-23"
+      description: First releases shipped — v0.2.0 and v0.2.1 — with categorized release notes generated from Conventional Commits. The CLI is now the only surface (the web builder was dropped), projects can be edited after generation with `add`/`remove`, and the first external contributions landed (a Dingo devnet provider plus Yaci fixes).
+      week: "2026-W34"
   summary: >-
     A "create-react-app" for Cardano: pick a stack, get a project set up and
     ready to build in minutes, with AI/LLM-native commands and a plugin system.
