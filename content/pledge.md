@@ -106,4 +106,5 @@ Let's build the developer experience Cardano deserves, together.
 | [Christian Taylor](https://github.com/ThatGuyLLC) | Founder, Open Source Cowboy - [Open Source Cowboy](https://www.opensourcecowboy.com) |
 | [Oleksii Khodakivskyi](https://github.com/fernweh0) | CEO - [Lantr Engineering](https://lantr.io/) |
 | [Abid](https://github.com/ArmanAbid) | Founder - [ChainTask](https://chaintask.net) \| [AdaState](https://adastate.com) |
+| [Piyush Thapa](https://github.com/piyushthapa) | Co-Founder, CTO - [TxBody](https://txbody.io/) |
 | [](https://github.com/) | []() |
