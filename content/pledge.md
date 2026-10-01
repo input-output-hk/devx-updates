@@ -107,4 +107,9 @@ Let's build the developer experience Cardano deserves, together.
 | [Oleksii Khodakivskyi](https://github.com/fernweh0) | CEO - [Lantr Engineering](https://lantr.io/) |
 | [Abid](https://github.com/ArmanAbid) | Founder - [ChainTask](https://chaintask.net) \| [AdaState](https://adastate.com) |
 | [Piyush Thapa](https://github.com/piyushthapa) | Co-Founder, CTO - [TxBody](https://txbody.io/) |
+| [Sasha Bogicevic](https://github.com/v0d1ch) | Hydra/Senior Haskell Developer - [Input Output Global](https://iog.io) |
+| [Ashish Prajapati](https://github.com/ashisherc) | Founder - [Cardanoscan](https://cardanoscan.io) |
+| [Sandro](https://github.com/schaier-io) | Lead Developer Masumi - [Masumi](https://www.masumi.network/) \| [NMKR](https://www.nmkr.io/) |
+| [Nicole Bess Best](https://github.com/osmesirius-ship-it) | Lead architect - [daxda.ai](https://daxda.ai) |
+| [theeldermillenial](https://github.com/theeldermillenial) | [Charli3](https://charli3.io) |
 | [](https://github.com/) | []() |
