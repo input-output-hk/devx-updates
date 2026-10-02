@@ -112,4 +112,5 @@ Let's build the developer experience Cardano deserves, together.
 | [Sandro](https://github.com/schaier-io) | Lead Developer Masumi - [Masumi](https://www.masumi.network/) \| [NMKR](https://www.nmkr.io/) |
 | [Nicole Bess Best](https://github.com/osmesirius-ship-it) | Lead architect - [daxda.ai](https://daxda.ai) |
 | [theeldermillenial](https://github.com/theeldermillenial) | [Charli3](https://charli3.io) |
+| [Rafael Korbas](https://github.com/refi93) | Co-Founder, CTO - [NUFI](https://nu.fi) \| [AdaLite](https://adalite.io) |
 | [](https://github.com/) | []() |
