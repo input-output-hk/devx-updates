@@ -118,4 +118,5 @@ Let's build the developer experience Cardano deserves, together.
 | [Jonathan Rodriguez](https://github.com/solidsnakedev) | CEO - [No.Witness Labs](https://nowitnesslabs.com/) |
 | [Phil Isenmann](https://github.com/SLFMR1) | Chief of Staff - [NMKR](https://nmkr.io) |
 | [Dave B (ItsDave_ADA)](https://github.com/ItsDaveB) | Lead Developer - Independent Cardano Contributor |
+| [Marko Kungla](https://github.com/mkungla) | Independent Cardano Contributor |
 | [](https://github.com/) | []() |
