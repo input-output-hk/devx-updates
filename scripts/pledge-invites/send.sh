@@ -37,7 +37,11 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   if grep -qix "$login" sent.log; then log "skip  @$login (in sent.log)"; continue; fi
   if grep -qx "${login,,}" <<<"$(signed_logins)"; then log "skip  @$login (already signed)"; continue; fi
 
-  [[ -z "$name" ]] && name=$(gh api "users/$login" --jq '.name // empty' 2>/dev/null || true)
+  # A renamed/deleted account 404s; skip it (not logged, so a fixed login is picked up next run).
+  if ! gh_name=$(gh api "users/$login" --jq '.name // ""' 2>/dev/null); then
+    log "skip  @$login (no such GitHub user)"; continue
+  fi
+  [[ -z "$name" ]] && name=$gh_name
   [[ -z "$name" ]] && name=$login
   title="@$login, would you sign the Cardano Tooling Collaboration Pledge?"
   body=$(NAME="$name" LOGIN="$login" perl -pe 's/\{\{NAME\}\}/$ENV{NAME}/g; s/\{\{LOGIN\}\}/$ENV{LOGIN}/g' template.md)
