@@ -113,4 +113,9 @@ Let's build the developer experience Cardano deserves, together.
 | [Nicole Bess Best](https://github.com/osmesirius-ship-it) | Lead architect - [daxda.ai](https://daxda.ai) |
 | [theeldermillenial](https://github.com/theeldermillenial) | [Charli3](https://charli3.io) |
 | [Rafael Korbas](https://github.com/refi93) | Co-Founder, CTO - [NUFI](https://nu.fi) \| [AdaLite](https://adalite.io) |
+| [James Dunseith](https://github.com/workshop-maybe) | CEO - [Andamio](https://andamio.io) |
+| [Jesse L Anderson](https://github.com/papag00se) | ADA Handle / Founder, CIO - [Kora Labs LLC](https://koralabs.io) \| [ADA Handle](https://handle.me) |
+| [Jonathan Rodriguez](https://github.com/solidsnakedev) | CEO - [No.Witness Labs](https://nowitnesslabs.com/) |
+| [Phil Isenmann](https://github.com/SLFMR1) | Chief of Staff - [NMKR](https://nmkr.io) |
+| [Dave B (ItsDave_ADA)](https://github.com/ItsDaveB) | Lead Developer - Independent Cardano Contributor |
 | [](https://github.com/) | []() |
