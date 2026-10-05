@@ -106,4 +106,17 @@ Let's build the developer experience Cardano deserves, together.
 | [Christian Taylor](https://github.com/ThatGuyLLC) | Founder, Open Source Cowboy - [Open Source Cowboy](https://www.opensourcecowboy.com) |
 | [Oleksii Khodakivskyi](https://github.com/fernweh0) | CEO - [Lantr Engineering](https://lantr.io/) |
 | [Abid](https://github.com/ArmanAbid) | Founder - [ChainTask](https://chaintask.net) \| [AdaState](https://adastate.com) |
+| [Piyush Thapa](https://github.com/piyushthapa) | Co-Founder, CTO - [TxBody](https://txbody.io/) |
+| [Sasha Bogicevic](https://github.com/v0d1ch) | Hydra/Senior Haskell Developer - [Input Output Global](https://iog.io) |
+| [Ashish Prajapati](https://github.com/ashisherc) | Founder - [Cardanoscan](https://cardanoscan.io) |
+| [Sandro](https://github.com/schaier-io) | Lead Developer Masumi - [Masumi](https://www.masumi.network/) \| [NMKR](https://www.nmkr.io/) |
+| [Nicole Bess Best](https://github.com/osmesirius-ship-it) | Lead architect - [daxda.ai](https://daxda.ai) |
+| [theeldermillenial](https://github.com/theeldermillenial) | [Charli3](https://charli3.io) |
+| [Rafael Korbas](https://github.com/refi93) | Co-Founder, CTO - [NUFI](https://nu.fi) \| [AdaLite](https://adalite.io) |
+| [James Dunseith](https://github.com/workshop-maybe) | CEO - [Andamio](https://andamio.io) |
+| [Jesse L Anderson](https://github.com/papag00se) | ADA Handle / Founder, CIO - [Kora Labs LLC](https://koralabs.io) \| [ADA Handle](https://handle.me) |
+| [Jonathan Rodriguez](https://github.com/solidsnakedev) | CEO - [No.Witness Labs](https://nowitnesslabs.com/) |
+| [Phil Isenmann](https://github.com/SLFMR1) | Chief of Staff - [NMKR](https://nmkr.io) |
+| [Dave B (ItsDave_ADA)](https://github.com/ItsDaveB) | Lead Developer - Independent Cardano Contributor |
+| [Marko Kungla](https://github.com/mkungla) | Independent Cardano Contributor |
 | [](https://github.com/) | []() |

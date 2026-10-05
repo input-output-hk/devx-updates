@@ -19908,10 +19908,6 @@
       "x": null,
       "maintainers": [
         {
-          "login": "klntsky",
-          "x": "klntsky"
-        },
-        {
           "login": "ngua",
           "x": null
         },
@@ -20996,10 +20992,6 @@
       "x": null,
       "maintainers": [
         {
-          "login": "klntsky",
-          "x": "klntsky"
-        },
-        {
           "login": "ngua",
           "x": null
         },
@@ -21133,10 +21125,6 @@
       "githubOrg": "Plutonomicon",
       "x": null,
       "maintainers": [
-        {
-          "login": "klntsky",
-          "x": "klntsky"
-        },
         {
           "login": "ngua",
           "x": null
