@@ -1,0 +1,29 @@
+cabal.project --- 1/2 --- Text
+12 -- run `nix flake lock --update-inpu  12 -- run `nix flake lock --update-inpu
+.. t hackage` after updating the hackag  .. t hackage` after updating the hackag
+.. e index-state.                        .. e index-state.
+13 -- run `nix flake lock --update-inpu  13 -- run `nix flake lock --update-inpu
+.. t CHaP` after updating the cardano-h  .. t CHaP` after updating the cardano-h
+.. askell-packages index-state.          .. askell-packages index-state.
+14 index-state:                          14 index-state:
+15   , hackage.haskell.org 2026-05-26T0  15   , hackage.haskell.org 2026-10-07T0
+.. 7:00:45Z                              .. 0:00:00Z
+16   , cardano-haskell-packages 2026-05  16   , cardano-haskell-packages 2026-10
+.. -25T13:25:40Z                         .. -07T00:00:00Z
+17                                       17 
+18 packages:                             18 packages:
+19   marlowe-binaries                    19   marlowe-binaries
+
+cabal.project --- 2/2 --- Text
+53   flags: +use-pkg-config              53   flags: +use-pkg-config
+54                                       54 
+55 constraints:                          55 constraints:
+56     cardano-api ^>=11.0               56     cardano-api ==11.8.0.0
+57   , cardano-crypto-class ^>=2.3       57   , cardano-crypto-class ^>=2.6
+58   , plutus-core ^>=1.63               58   , plutus-core ^>=1.71
+59   , plutus-ledger-api ^>=1.63         59   , plutus-ledger-api ^>=1.71
+60   , validation <1.2                   60   , validation ^>=1.2
+61                                       61 
+62 source-repository-package             62 source-repository-package
+63    type: git                          63    type: git
+

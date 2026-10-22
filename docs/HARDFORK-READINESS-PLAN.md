@@ -434,6 +434,28 @@ tools that name the era themselves or use Pallas for primitives, addresses
 and hashing). Pallas enters the fix order at step 7: 17 upstream fixes now
 unlock 79 tools; tools with a confirmed gap rise from 102 to 110.
 
+### Bump solves for Marlowe and Marconi (2026-10-22)
+
+Compiling either tool against cardano-api 11.8.0.0 does not fit this machine
+(4 cores, 7 GB RAM, under 12 GB free), and both readings already record own
+era work, so only the dependency solve ran (`scripts/readiness/bump-solve`,
+GHC 9.6.7 with blst 0.3.14 and liburing 2.5 added to the Atlas pilot's
+worker):
+
+- Marlowe resolves on cardano-api 11.8.0.0, but only with four companion pins
+  raised across majors: cardano-crypto-class ^>=2.6, plutus-core and
+  plutus-ledger-api ^>=1.71, validation ^>=1.2. Each is a possible API break;
+  compilation is not established.
+- Marconi does not resolve, even for shipped code. Its build files name the
+  standalone consensus and network packages that ouroboros-consensus 5.1 and
+  ouroboros-network carry as sub-libraries, its tests pin a
+  cardano-node-emulator with no cardano-api 11.x release, and its baseline
+  needs GHC 9.2.8. Its reading wrongly called the repository archived; that
+  is corrected.
+
+The derived bump-ready list is unchanged: it compares pins with the first
+fixed release and does not model companion pins. Whether it should is open.
+
 ### Current state and handoff (2026-10-21)
 
 The session moves to a machine with more disk. Everything needed is in the
@@ -480,7 +502,9 @@ tests pass; `/map/dijkstra` and tool pages were checked in a browser.
    first Dijkstra block (`probe first-blocks` writes it as hex).
    Done 2026-10-22; see [R4 codec runs](#r4-codec-runs-2026-10-22).
 4. The two bump-ready Haskell tools, Marlowe and Marconi, built against
-   cardano-api 11.8.0.0.
+   cardano-api 11.8.0.0. Dependency solves done 2026-10-22; see
+   [Bump solves](#bump-solves-for-marlowe-and-marconi-2026-10-22). Compiling
+   needs more disk and RAM than this machine has.
 5. Remaining R2 work: hosted API providers (owner), weekly re-observation.
 6. R5 outreach is the owner's alone: prepare material, never contact
    maintainers or open issues.

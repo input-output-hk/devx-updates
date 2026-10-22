@@ -5,7 +5,8 @@
     "Every bump-ready tool was read at its classified revision for era-specific code in shipped paths: fixed era types, exhaustive era cases, era tables and per-era parameter or schema handling.",
     "own-work needs a quoted line that stops before Dijkstra; prepared and generic need the quoted lines that make the era handling Dijkstra-aware or era-generic; undetermined records what a run must settle.",
     "Version distance is derived, not recorded: the unlock report compares each pin with the first fixed release on its line (PVP for the Haskell component set, semver otherwise).",
-    "R4: devnet results replace a reading where a run decided it (devnet.json)."
+    "R4: devnet results replace a reading where a run decided it (devnet.json).",
+    "Bump solves (2026-10-22): a cabal dry-run solve of the bumped project, recipe and diffs in scripts/readiness/bump-solve, informs the summary; it compiles nothing and does not change the derived bump-ready list."
   ],
   "upgrades": [
     {
@@ -157,7 +158,7 @@
       "tool": "marconi",
       "revision": "d39923eb7b81156f5783e6252469b321ad89a253",
       "eraHandling": "own-work",
-      "summary": "Maps eras exhaustively up to Conway and fixes its UTxO output type to Conway, on cardano-api 8.20 and its removed CardanoMode API; the upgrade to cardano-api 11.8 is a port. The repository is archived.",
+      "summary": "Maps eras exhaustively up to Conway and fixes its UTxO output type to Conway, on cardano-api 8.20 and its removed CardanoMode API; the upgrade to cardano-api 11.8 is a port. A dependency solve (2026-10-22, scripts/readiness/bump-solve) does not resolve even for shipped code: its build files name ouroboros-network-protocols and the ouroboros-consensus protocol, diffusion and cardano packages, which consensus 5.1 carries as sub-libraries; its tests pin a cardano-node-emulator that no release supports on cardano-api 11.x; and the compiler moves from GHC 9.2.8 to 9.6.7.",
       "evidence": [
         {
           "repo": "input-output-hk/marconi",
@@ -186,7 +187,7 @@
       "tool": "marlowe",
       "revision": "826b5fc5cf6ee77d40936d403301b5a65ec85ab9",
       "eraHandling": "own-work",
-      "summary": "The CLI offers only the Conway era and maps Plutus script versions per era up to PlutusV3 in Conway; Dijkstra and PlutusV4 need new cases.",
+      "summary": "The CLI offers only the Conway era and maps Plutus script versions per era up to PlutusV3 in Conway; Dijkstra and PlutusV4 need new cases. A dependency solve (2026-10-22, scripts/readiness/bump-solve) resolves cardano-api 11.8.0.0 on GHC 9.6.7 only with four companion pins raised across majors: cardano-crypto-class to ^>=2.6, plutus-core and plutus-ledger-api to ^>=1.71, and validation to ^>=1.2; nothing was compiled.",
       "evidence": [
         {
           "repo": "marlowe-lang/marlowe-cardano",
