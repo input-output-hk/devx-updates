@@ -50,6 +50,9 @@ export function toolLeads(site: DijkstraSite, id: string): Lead[] {
   return site.leads.leads.filter((l) => l.tool === id).sort((a, b) => order[a.decision] - order[b.decision] || (a.via < b.via ? -1 : 1));
 }
 
+/** A gap inherited through a service rule rather than a component comes from a deprecated provider (Maestro). */
+export const viaLabel = (via: string) => via.startsWith("service:") ? `${via.slice("service:".length)} (deprecated)` : via;
+
 export function componentStatus(site: DijkstraSite, id: string) {
   const component = site.boundary.components.find((c) => c.id === id);
   return component ? worstStatus(component) : undefined;

@@ -1,6 +1,6 @@
 # Dependency review task briefs
 
-These tasks support the [dependency mapping and hardfork-readiness plan](./HARDFORK-READINESS-PLAN.md). The project owner launches reviews manually when needed. No LLM API integration or automatic execution is required.
+These tasks support [dependency mapping and hardfork readiness](./HARDFORK-READINESS.md). The project owner launches reviews manually when needed. No LLM API integration or automatic execution is required.
 
 Packet export and result import are implemented. Use `npm run readiness -- export-review` and the JSON template it produces. The exact supported interchange fields and commands are in [Readiness operations](./READINESS-OPERATIONS.md#manual-review-handoff); the YAML example below describes the broader conceptual finding format. Relationship, capability and gap findings are importable. For capabilities use the [capability format](./CAPABILITY-REVIEW-FORMAT.md), copied into each packet as `CAPABILITIES.md`. Record other unresolved questions as gaps. A missing native graph is a recorded limitation, not a reason to invent resolved dependencies.
 

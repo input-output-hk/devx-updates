@@ -25,7 +25,7 @@
       "platform": "all-lockfile-targets"
     },
     {
-      "toolId": "blockfrost-backend-ryo",
+      "toolId": "blockfrost",
       "revision": "6d0000098ac865ebad3910732427f55bbb65fe9d",
       "adapter": "yarn-lock",
       "roots": [

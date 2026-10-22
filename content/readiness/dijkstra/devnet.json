@@ -212,7 +212,7 @@
    "summary": "db-sync on Postgres 16 indexed all 19 Conway blocks of the devnet, then failed to decode the first Dijkstra block in chain-sync and kept reconnecting and failing every few seconds, with the same DeserialiseFailure as Kupo; nothing after the fork is indexed. A run started while db-sync was still creating its indexes at the fork committed only one block and then went silent. Blockfrost RYO v6.8.1 on that database reports the last Conway block, epoch 1 parameters at protocol version 10 and an era list without Dijkstra as current while the node is in Dijkstra at protocol version 12. Its own Dijkstra handling (the protocol table that ends at 11, the Conway parameter columns) is not reached, because db-sync records no Dijkstra epoch. Koios was not run: it reads the same db-sync tables.",
    "results": [
     { "kind": "component", "id": "cardano-db-sync", "version": "13.7.2.1", "outcome": "fail" },
-    { "kind": "component", "id": "blockfrost-backend-ryo", "version": "v6.8.1", "outcome": "fail", "note": "Inherited: it serves db-sync's last pre-fork state as current; its own Dijkstra code paths were not reached." }
+    { "kind": "component", "id": "blockfrost", "version": "v6.8.1", "outcome": "fail", "note": "Inherited: it serves db-sync's last pre-fork state as current; its own Dijkstra code paths were not reached." }
    ],
    "observed": [
     "node tip: {\"epoch\":40,\"era\":\"Dijkstra\",\"block\":378}",

@@ -1,6 +1,6 @@
 {
-  "snapshot": "d19a7de8cf3452647caedc1b4a444545815f3979f9979f7a257ac432f3bc19ad",
-  "catalogTools": 269,
+  "snapshot": "efdeca9c323a562f876305f4471031ac2d508bb52427da0a06859efa6320e98f",
+  "catalogTools": 268,
   "ranking": [
     "verifiedCapabilities",
     "potentialCapabilities",
@@ -1988,6 +1988,19 @@
       "issueUrl": null
     },
     {
+      "id": "gap:a7a66be92e5a41ec7beb3a1f",
+      "area": "resolution",
+      "reason": "Yarn source fsevents@patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:12158e4e8f672fab9a6cc8a17fef34b88f3dcf560e5e1ab1b2805ee481175556",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
       "id": "gap:08d723e628ab4e7048ff4ff9",
       "area": "capability",
       "reason": "Chain-facing capabilities have not been reviewed.",
@@ -2829,19 +2842,6 @@
       "name": "create-evolution-app",
       "maintainer": "Anastasia Labs",
       "taskId": "coverage:19456f1ef3badca10369e841924113835da5017edd10eea1b34a2f81d2b34a81",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:f919933aafc583117e73c561",
-      "area": "resolution",
-      "reason": "38 Yarn package records declare peers; consumer-specific peer bindings remain unresolved and no peer edges were guessed.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:195f0bffd2e4a9b5acbabf51502a695b561dcf028b7aaf716491edffc4cf002f",
       "owner": null,
       "issueUrl": null
     },
@@ -3778,19 +3778,6 @@
       "issueUrl": null
     },
     {
-      "id": "gap:4ddb5ba8186a4fd2907b770b",
-      "area": "resolution",
-      "reason": "Yarn source resolve@patch:resolve@npm%3A1.22.11#~builtin<compat/resolve>::version=1.22.11&hash=c3c19d needs separate Git/local/patch/artifact verification.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:2201819dc5da349f3b4b3de6e09eff19dad70059f556a7a45abfdbb364ffdd82",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
       "id": "gap:8859a277ca7d99679d6b4cd3",
       "area": "resolution",
       "reason": "Optional peerDependencies terser from node_modules/vite has no locked occurrence.",
@@ -4334,6 +4321,19 @@
       "issueUrl": null
     },
     {
+      "id": "gap:939fc9e40ab74d987bc22f23",
+      "area": "resolution",
+      "reason": "Captured .yarnrc.yml declares yarnPath; its effect on installed dependency behavior needs separate verification.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:26c1da1a58dc67fd3cbcc3033f230b00dbaaaac2dd7713861dc0b7ff11e47bc4",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
       "id": "gap:08d723e628ab4e7048ff4ff9",
       "area": "capability",
       "reason": "Chain-facing capabilities have not been reviewed.",
@@ -4369,6 +4369,19 @@
       "name": "Bursa",
       "maintainer": "Blink Labs",
       "taskId": "coverage:27352cf0de54d8f622aecafbb8a60d4b9bbb6a317ab4c57905c6f609ee34fbd5",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
+      "id": "gap:f4d219a80fdf0ec64e9a9451",
+      "area": "resolution",
+      "reason": "Yarn source resolve@patch:resolve@npm%3A1.22.11#~builtin<compat/resolve>::version=1.22.11&hash=c3c19d needs separate Git/local/patch/artifact verification.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:27b81a64d34f5889f12880b968382e9a3f58df56e66bb8a186b314fb2cd9ffdb",
       "owner": null,
       "issueUrl": null
     },
@@ -4523,7 +4536,7 @@
       "code": "capabilities-unreviewed",
       "toolId": "blockfrost",
       "name": "Blockfrost",
-      "maintainer": "Blockfrost (blockfrost.io)",
+      "maintainer": "Blockfrost",
       "taskId": "coverage:294596d60fe13282eaf0083b3aafce26c3d225690dcaab68295cfcd8e53d1092",
       "owner": null,
       "issueUrl": null
@@ -5061,19 +5074,6 @@
       "name": "Evolution SDK",
       "maintainer": "No Witness Labs / IntersectMBO",
       "taskId": "coverage:30d77f1e359d1b66d3fdd6706a3d14851f2617d42fbc8e7ad326e01d508cb923",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:b33c4f9e67e77b9535e0f2cd",
-      "area": "resolution",
-      "reason": "No native dependency resolution has been imported.",
-      "nextAction": "Collect a native resolution for a declared release/profile.",
-      "code": "native-resolution-missing",
-      "toolId": "blockfrost",
-      "name": "Blockfrost",
-      "maintainer": "Blockfrost (blockfrost.io)",
-      "taskId": "coverage:30ea0b49173de8880a696b665661a0715b47773058561d6a7370cf725fd6a64f",
       "owner": null,
       "issueUrl": null
     },
@@ -6752,6 +6752,19 @@
       "issueUrl": null
     },
     {
+      "id": "gap:e59943154f2ba2848936198c",
+      "area": "resolution",
+      "reason": "Captured .yarnrc.yml declares plugins; its effect on installed dependency behavior needs separate verification.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:42ac6059f3fb16beacd0912e5a68cf83373dff10a271f02b9f01890ea68975d0",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
       "id": "gap:b33c4f9e67e77b9535e0f2cd",
       "area": "resolution",
       "reason": "No native dependency resolution has been imported.",
@@ -8112,6 +8125,19 @@
       "issueUrl": null
     },
     {
+      "id": "gap:c9cae2c95a6c2e61436f21dc",
+      "area": "resolution",
+      "reason": "Yarn source typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=f3b441 needs separate Git/local/patch/artifact verification.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:50af8ae711f29e536c282003b0a6c0216ab3a2f7ccbfc7fbbe96028f7fc502dc",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
       "id": "gap:08d723e628ab4e7048ff4ff9",
       "area": "capability",
       "reason": "Chain-facing capabilities have not been reviewed.",
@@ -8134,19 +8160,6 @@
       "name": "cardano-go",
       "maintainer": "echovl",
       "taskId": "coverage:50f98562434c43337a3b2ae5ab17bc31ff737562a04550208ab830b340730b4f",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:0c3862b95f6b2737c8fa94ff",
-      "area": "resolution",
-      "reason": "Captured .yarnrc.yml declares plugins; its effect on installed dependency behavior needs separate verification.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:511dd56ad82d90cdcc764dada15cc38503f542c3367bcb4a43054ada6b0310d7",
       "owner": null,
       "issueUrl": null
     },
@@ -9289,19 +9302,6 @@
       "issueUrl": null
     },
     {
-      "id": "gap:1181110efc937467320ee99b",
-      "area": "resolution",
-      "reason": "Yarn source typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=f3b441 needs separate Git/local/patch/artifact verification.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:5b529e7f882dcbc40b1854b4a8a1d91c5ce21cd6f904a3e86e7af8d24109c679",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
       "id": "gap:b33c4f9e67e77b9535e0f2cd",
       "area": "resolution",
       "reason": "No native dependency resolution has been imported.",
@@ -9866,6 +9866,19 @@
       "name": "Balius",
       "maintainer": "TxPipe",
       "taskId": "coverage:5f4aa44f662dfc0c6e1e623b68b2a136855afe03a1990dd55204d3d6ff0dc419",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
+      "id": "gap:3365ca714ac4793c7ad3bff4",
+      "area": "resolution",
+      "reason": "Yarn lock selections are not an installed dependency inventory. Hoisting, virtual peer contexts, platform/optional pruning, native bundles and published artifact correspondence remain unverified; Classic locks also omit transitive peer declarations.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:5f9d8056a0fc9ed0a76125bebae69f3c9dc98c9efc2b595759a008b8a0765dd6",
       "owner": null,
       "issueUrl": null
     },
@@ -11938,6 +11951,20 @@
       "issueUrl": null
     },
     {
+      "id": "gap:7094273bbf698481541c9c51",
+      "area": "artifact",
+      "reason": "Blockfrost RYO tag and manifest agree on 6.8.0; the retained project declares Yarn 3.6.3 with lock metadata v6. The hosted Blockfrost API runs this backend; this source reconstruction does not identify the deployed hosted release or a built RYO container/Nix artifact.",
+      "nextAction": "Verify the deployed release and the RYO container/Nix artifact against this source.",
+      "code": "application-scope:blockfrost:artifact",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:755543d68885b020840ff33eefe08e06ef55efeb92afd7eed7b91a29eee642b6",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
       "id": "gap:08d723e628ab4e7048ff4ff9",
       "area": "capability",
       "reason": "Chain-facing capabilities have not been reviewed.",
@@ -12012,6 +12039,18 @@
       "name": "Catalyst Voices",
       "maintainer": "IOG / Catalyst",
       "taskId": "coverage:7661df16acfa6ded4c3257d54ded7133361f5e2c2dfaf3810d8e63f9ade8a910",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
+      "id": "gap:ccd120d62205d2bd8fa69b2f",
+      "area": "artifact",
+      "reason": "Source release identified; published package/binary correspondence and supported profiles need verification.",
+      "nextAction": "Confirm distribution artifacts and production configuration with release evidence.",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:76deb06fbc696bc236fa97a17ab4455452897373aea683c4b004d09421ab2d6a",
       "owner": null,
       "issueUrl": null
     },
@@ -13392,18 +13431,6 @@
       "issueUrl": null
     },
     {
-      "id": "gap:ccd120d62205d2bd8fa69b2f",
-      "area": "artifact",
-      "reason": "Source release identified; published package/binary correspondence and supported profiles need verification.",
-      "nextAction": "Confirm distribution artifacts and production configuration with release evidence.",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:846920d9fd43a020ea5ec75560dd02c4825dfdb547ea7236e55225ad36ceb0cc",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
       "id": "gap:751eba46697ba98fe5365f9d",
       "area": "discovery",
       "reason": "Error: No GitHub source repository in catalog reference: docs.cns.space",
@@ -13425,19 +13452,6 @@
       "name": "Lace",
       "maintainer": "Input Output (IOG)",
       "taskId": "coverage:84a79c7b4d0eb87a8d553efa183c679e54c52ee4390e27b403b867b9abfa733f",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:579cf7b507f0109baabd857e",
-      "area": "resolution",
-      "reason": "Captured .yarnrc.yml declares yarnPath; its effect on installed dependency behavior needs separate verification.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:84b70f036e21e6846d4cea4b1d1a20bd3aed6446f60ff68b34252af0f0e9b0d4",
       "owner": null,
       "issueUrl": null
     },
@@ -13527,19 +13541,6 @@
       "name": "SmartCode Verifier",
       "maintainer": "IOG",
       "taskId": "coverage:8570cf7d5e09df3bf37535bf19a4dabca862c9bde2402e3b7eab5f6498ef9825",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:e9440fb3e16294cc2e484e6a",
-      "area": "resolution",
-      "reason": "Yarn source fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:85a148480d6795db36183e965d412881779b6da5bafbb7628c0fd374705d1674",
       "owner": null,
       "issueUrl": null
     },
@@ -15794,6 +15795,20 @@
       "issueUrl": null
     },
     {
+      "id": "gap:b6d3a0cbafa3e59596680917",
+      "area": "integration",
+      "reason": "Retained README/configuration describe cardano-db-sync/PostgreSQL, node data, off-chain token metadata and optional Mithril proxying; the README also calls for pg_cardano database extensions. Those services, extensions and container/Nix inputs have no inventories in this Yarn profile.",
+      "nextAction": "Collect database extension, node/db-sync and enabled provider/image identities for the selected RYO deployment before compatibility assessment.",
+      "code": "application-scope:blockfrost:integration",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:a066d2cc264cbb3934df9900066bbeaa192e87274bab2a5b041906b561b85a47",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
       "id": "gap:08d723e628ab4e7048ff4ff9",
       "area": "capability",
       "reason": "Chain-facing capabilities have not been reviewed.",
@@ -15866,18 +15881,6 @@
       "name": "CardanoSharp Blazor",
       "maintainer": "CardanoSharp",
       "taskId": "coverage:a13cabb2d42eb92145ad613aadcc337ca99547d997ac699ebdca6e4229b6e091",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:22d16830721fa041101676ca",
-      "area": "discovery",
-      "reason": "Error: No GitHub source repository in catalog reference: github.com/blockfrost",
-      "nextAction": "Retry discovery; inspect repository identity and API availability.",
-      "toolId": "blockfrost",
-      "name": "Blockfrost",
-      "maintainer": "Blockfrost (blockfrost.io)",
-      "taskId": "coverage:a1a2e787886ee78320bbd716e234a51ace0d58f2be9717e103aafd52774dee64",
       "owner": null,
       "issueUrl": null
     },
@@ -17970,7 +17973,7 @@
       "code": "integration-unreviewed",
       "toolId": "blockfrost",
       "name": "Blockfrost",
-      "maintainer": "Blockfrost (blockfrost.io)",
+      "maintainer": "Blockfrost",
       "taskId": "coverage:b85ce4b1a4138a204f9a783ee0ce8b636e88de3dcfa9812507099564570e1a46",
       "owner": null,
       "issueUrl": null
@@ -19444,19 +19447,6 @@
       "issueUrl": null
     },
     {
-      "id": "gap:08d723e628ab4e7048ff4ff9",
-      "area": "capability",
-      "reason": "Chain-facing capabilities have not been reviewed.",
-      "nextAction": "Review production entry points and integration behavior.",
-      "code": "capabilities-unreviewed",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:c64da20722a7fb196a77a6aa4ce9600411adc87430f0873910630303b7dccb07",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
       "id": "gap:4abbaad672af9beef40f0088",
       "area": "artifact",
       "reason": "No GitHub stable release was found; default-branch source is discovery evidence only.",
@@ -19832,6 +19822,19 @@
       "issueUrl": null
     },
     {
+      "id": "gap:d47ed476ec1a1d9690177636",
+      "area": "resolution",
+      "reason": "Yarn source fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:ca6d5474f6efab9106e6e10fb2135dd25333e98115a9a2ec4ac2f1c698744e6c",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
       "id": "gap:bf02759da52b5b94ee579a6a",
       "area": "resolution",
       "reason": "Optional peerDependencies @remix-run/react from node_modules/react-scan has no locked occurrence.",
@@ -19957,20 +19960,6 @@
       "name": "Blockfrost JS SDK",
       "maintainer": "Blockfrost",
       "taskId": "coverage:cbde05d8b06fd23e13bc8cbabb4b702db724e96cac227b478dd1c2703f044c75",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:2456814604d57cbf9e700d5f",
-      "area": "artifact",
-      "reason": "Blockfrost RYO tag and manifest agree on 6.8.0; the retained project declares Yarn 3.6.3 with lock metadata v6. This source reconstruction does not identify a deployed Blockfrost hosted API or a built RYO container/Nix artifact.",
-      "nextAction": "Verify the specific RYO release artifact and deployment configuration; keep hosted Blockfrost service identity separate.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "code": "application-scope:blockfrost-backend-ryo:artifact",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:cbf768e96e8844875bb554d80d7f2e357c8356dd2f43b0bdfae88c00ab71198b",
       "owner": null,
       "issueUrl": null
     },
@@ -22170,6 +22159,19 @@
       "issueUrl": null
     },
     {
+      "id": "gap:2b74b3ab8518daae7b956467",
+      "area": "resolution",
+      "reason": "38 Yarn package records declare peers; consumer-specific peer bindings remain unresolved and no peer edges were guessed.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "toolId": "blockfrost",
+      "name": "Blockfrost",
+      "maintainer": "Blockfrost",
+      "taskId": "coverage:e3cb68354c9c549b3ed257c134454537a2b9a33353d3c71c8d49a6cdc2d73cc7",
+      "owner": null,
+      "issueUrl": null
+    },
+    {
       "id": "gap:990fc2e8e97a263e89481bf6",
       "area": "resolution",
       "reason": "Captured .yarnrc.yml declares packageExtensions; its effect on installed dependency behavior needs separate verification.",
@@ -22281,19 +22283,6 @@
       "name": "Dexter",
       "maintainer": "Indigo Protocol / VyFi",
       "taskId": "coverage:e480b8b629db40cba9fd674da7aa57448db10203fae0e866ca433cb571f28e56",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:1921259e024e334d6073ba19",
-      "area": "resolution",
-      "reason": "Yarn lock selections are not an installed dependency inventory. Hoisting, virtual peer contexts, platform/optional pruning, native bundles and published artifact correspondence remain unverified; Classic locks also omit transitive peer declarations.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:e499e7b292f832e98f25f4c001176a5f618150e61656e403c928f1f1c986ee57",
       "owner": null,
       "issueUrl": null
     },
@@ -23262,19 +23251,6 @@
       "issueUrl": null
     },
     {
-      "id": "gap:1e1b6ed6fb16f75fd33611cc",
-      "area": "integration",
-      "reason": "Runtime, bundled, and service dependencies have not been reviewed.",
-      "nextAction": "Export a discovery review packet.",
-      "code": "integration-unreviewed",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:efb56d3a904796ebf29387c2bc1286a641a31eb77c90e2df1057d3a970a4b9c7",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
       "id": "gap:687e297ba6076c160567e6fa",
       "area": "resolution",
       "reason": "Optional peerDependencies expo-localization from node_modules/@trezor/env-utils has no locked occurrence.",
@@ -23693,19 +23669,6 @@
       "name": "TapTools API",
       "maintainer": "TapTools",
       "taskId": "coverage:f41a7616ed42a334e0e6b9bd26ee33536eadb9a7f371cae0660580d30ec5ea30",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:69cd126220a1e84348434baa",
-      "area": "resolution",
-      "reason": "Yarn source fsevents@patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:f429a56a83215a1dd66fb353789c60e89979fc30793648e7423d6caeb49e00ae",
       "owner": null,
       "issueUrl": null
     },
@@ -24162,18 +24125,6 @@
       "issueUrl": null
     },
     {
-      "id": "gap:526ab79e8b4a53f822a5fa08",
-      "area": "artifact",
-      "reason": "Release and source identity have not been verified.",
-      "nextAction": "Discover published artifacts and pin the release source.",
-      "toolId": "blockfrost",
-      "name": "Blockfrost",
-      "maintainer": "Blockfrost (blockfrost.io)",
-      "taskId": "coverage:fa63d6c0e4ce8fe29c898ff7c49b3dbd8801da5cc2e99b3353d7e3590f098c83",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
       "id": "gap:1e1b6ed6fb16f75fd33611cc",
       "area": "integration",
       "reason": "Runtime, bundled, and service dependencies have not been reviewed.",
@@ -24481,20 +24432,6 @@
       "name": "Lace",
       "maintainer": "Input Output (IOG)",
       "taskId": "coverage:fde826cf1198909d82c573060bc09f6d773cda660195c9f31645ef27860b6066",
-      "owner": null,
-      "issueUrl": null
-    },
-    {
-      "id": "gap:fcefa20ed72da693df0eddfa",
-      "area": "integration",
-      "reason": "Retained README/configuration describe cardano-db-sync/PostgreSQL, node data, off-chain token metadata and optional Mithril proxying; the README also calls for pg_cardano database extensions. Those services, extensions and container/Nix inputs have no inventories in this Yarn profile.",
-      "nextAction": "Collect database extension, node/db-sync and enabled provider/image identities for the selected RYO deployment before compatibility assessment.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "code": "application-scope:blockfrost-backend-ryo:integration",
-      "toolId": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "maintainer": "Blockfrost",
-      "taskId": "coverage:fe09faeab853f39ae06f2aecb806cdec0ce0d7f844a4c096fe2e1399097c87a7",
       "owner": null,
       "issueUrl": null
     },
@@ -586931,39 +586868,39 @@
       },
       "uncertainties": [
         "No current, component-specific runtime capability evidence.",
-        "Blockfrost Backend (RYO): Chain-facing capabilities have not been reviewed.",
-        "Blockfrost Backend (RYO): Captured .yarnrc.yml declares plugins; its effect on installed dependency behavior needs separate verification.",
-        "Blockfrost Backend (RYO): Yarn source typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=f3b441 needs separate Git/local/patch/artifact verification.",
-        "Blockfrost Backend (RYO): Yarn lock selections are not an installed dependency inventory. Hoisting, virtual peer contexts, platform/optional pruning, native bundles and published artifact correspondence remain unverified; Classic locks also omit transitive peer declarations.",
-        "Blockfrost Backend (RYO): Runtime, bundled, and service dependencies have not been reviewed.",
-        "Blockfrost Backend (RYO): Blockfrost RYO tag and manifest agree on 6.8.0; the retained project declares Yarn 3.6.3 with lock metadata v6. This source reconstruction does not identify a deployed Blockfrost hosted API or a built RYO container/Nix artifact.",
-        "Blockfrost Backend (RYO): Yarn source resolve@patch:resolve@npm%3A1.22.11#~builtin<compat/resolve>::version=1.22.11&hash=c3c19d needs separate Git/local/patch/artifact verification.",
-        "Blockfrost Backend (RYO): Captured .yarnrc.yml declares yarnPath; its effect on installed dependency behavior needs separate verification.",
-        "Blockfrost Backend (RYO): Yarn source fsevents@patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
-        "Blockfrost Backend (RYO): Source release identified; published package/binary correspondence and supported profiles need verification.",
-        "Blockfrost Backend (RYO): Yarn source fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
-        "Blockfrost Backend (RYO): 38 Yarn package records declare peers; consumer-specific peer bindings remain unresolved and no peer edges were guessed.",
-        "Blockfrost Backend (RYO): Retained README/configuration describe cardano-db-sync/PostgreSQL, node data, off-chain token metadata and optional Mithril proxying; the README also calls for pg_cardano database extensions. Those services, extensions and container/Nix inputs have no inventories in this Yarn profile."
+        "Blockfrost: Chain-facing capabilities have not been reviewed.",
+        "Blockfrost: Runtime, bundled, and service dependencies have not been reviewed.",
+        "Blockfrost: 38 Yarn package records declare peers; consumer-specific peer bindings remain unresolved and no peer edges were guessed.",
+        "Blockfrost: Yarn lock selections are not an installed dependency inventory. Hoisting, virtual peer contexts, platform/optional pruning, native bundles and published artifact correspondence remain unverified; Classic locks also omit transitive peer declarations.",
+        "Blockfrost: Blockfrost RYO tag and manifest agree on 6.8.0; the retained project declares Yarn 3.6.3 with lock metadata v6. The hosted Blockfrost API runs this backend; this source reconstruction does not identify the deployed hosted release or a built RYO container/Nix artifact.",
+        "Blockfrost: Captured .yarnrc.yml declares yarnPath; its effect on installed dependency behavior needs separate verification.",
+        "Blockfrost: Yarn source fsevents@patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
+        "Blockfrost: Retained README/configuration describe cardano-db-sync/PostgreSQL, node data, off-chain token metadata and optional Mithril proxying; the README also calls for pg_cardano database extensions. Those services, extensions and container/Nix inputs have no inventories in this Yarn profile.",
+        "Blockfrost: Yarn source typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=f3b441 needs separate Git/local/patch/artifact verification.",
+        "Blockfrost: Source release identified; published package/binary correspondence and supported profiles need verification.",
+        "Blockfrost: Yarn source fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
+        "Blockfrost: Captured .yarnrc.yml declares plugins; its effect on installed dependency behavior needs separate verification.",
+        "Blockfrost: Yarn source resolve@patch:resolve@npm%3A1.22.11#~builtin<compat/resolve>::version=1.22.11&hash=c3c19d needs separate Git/local/patch/artifact verification."
       ],
       "capabilities": [],
       "maintainerHints": [
         {
-          "toolId": "blockfrost-backend-ryo",
-          "name": "Blockfrost Backend (RYO)",
+          "toolId": "blockfrost",
+          "name": "Blockfrost",
           "maintainer": "Blockfrost"
         }
       ],
       "rootScopes": [
         {
-          "toolId": "blockfrost-backend-ryo",
-          "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
+          "toolId": "blockfrost",
+          "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
           "release": "v6.8.0",
           "revision": "6d0000098ac865ebad3910732427f55bbb65fe9d",
           "platform": "all-lockfile-targets",
           "evidenceIds": [
             "evidence:49567fa1c18acaea1a1515de99f5891cdc8f09771fb57d218b01db4040b65ce9",
             "evidence:722c56eaf9e596272d8d22103b418b1e4c19c51f48279bb1fb0836838ddf7fe5",
-            "evidence:993d224f6fc0a29c8230cad7b001b3d004de6b32998a8eb2f60af8fb23570260",
+            "evidence:91f7a99d764e6af3791d32940c6ca2077221cd5020bfab7d3f8e7d633a860e0b",
             "evidence:a5baddfe41dbfc602bd8b60eaaca7829f7bdfb1c55a87f42bdc1de23f30d6313",
             "evidence:f3da003e176fbe64603db8978dbb8d4f8371f0e7e2dc25673f9d835389ccbe8e"
           ]

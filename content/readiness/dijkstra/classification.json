@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-22T12:38:17.768Z",
- "rulesDigest": "21943e437a6632aceb372d2843953221b5a9b47e337d6cf9289182f3e3c01f7d",
+ "generatedAt": "2026-10-22T14:32:41.907Z",
+ "rulesDigest": "259035e3c762db7e45c29d850d85a4af0a639858492d7c57f121999c9c9e6eaf",
  "changeTarget": {
   "name": "Dijkstra",
   "majorProtocolVersion": 12,
@@ -92,7 +92,7 @@
   "implements": 65,
   "dependency": 86,
   "service": 45,
-  "unknown": 42,
+  "unknown": 41,
   "auxiliary": 4,
   "marker": 9,
   "none-found": 18
@@ -1816,7 +1816,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 14,
        "scope": "auxiliary"
@@ -1944,7 +1944,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 14,
        "scope": "auxiliary"
@@ -2005,7 +2005,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 14,
        "scope": "auxiliary"
@@ -2788,7 +2788,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -2972,7 +2972,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -3068,7 +3068,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 3,
        "scope": "shipped"
@@ -5131,7 +5131,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -5280,7 +5280,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -5355,7 +5355,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 6,
        "scope": "shipped"
@@ -5892,7 +5892,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 76,
        "scope": "shipped"
@@ -6034,7 +6034,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 76,
        "scope": "shipped"
@@ -6123,7 +6123,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 76,
        "scope": "shipped"
@@ -6730,7 +6730,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -6865,7 +6865,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -6899,7 +6899,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 6,
        "scope": "shipped"
@@ -7503,7 +7503,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -7687,7 +7687,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -7790,7 +7790,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 2,
        "scope": "shipped"
@@ -8461,7 +8461,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -8569,7 +8569,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -8651,7 +8651,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 3,
        "scope": "shipped"
@@ -10284,7 +10284,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -10413,7 +10413,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -10481,7 +10481,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 3,
        "scope": "shipped"
@@ -10942,7 +10942,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -11085,7 +11085,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -11146,7 +11146,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -11643,7 +11643,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 5,
        "scope": "auxiliary"
@@ -11758,7 +11758,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 5,
        "scope": "auxiliary"
@@ -11854,7 +11854,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 5,
        "scope": "auxiliary"
@@ -12341,7 +12341,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "shipped"
@@ -12477,7 +12477,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "shipped"
@@ -12559,7 +12559,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 7,
        "scope": "shipped"
@@ -13499,7 +13499,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -13656,7 +13656,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -13759,7 +13759,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 2,
        "scope": "shipped"
@@ -14366,7 +14366,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
@@ -14388,7 +14388,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 10,
        "scope": "shipped"
       },
@@ -14543,7 +14543,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
@@ -14558,7 +14558,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 10,
        "scope": "shipped"
       },
@@ -14639,7 +14639,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 11,
        "scope": "shipped"
@@ -14661,7 +14661,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 10,
        "scope": "shipped"
       },
@@ -15237,7 +15237,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
@@ -15366,7 +15366,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
@@ -15434,7 +15434,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "auxiliary"
@@ -15880,7 +15880,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 44,
        "scope": "shipped"
@@ -16051,7 +16051,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 44,
        "scope": "shipped"
@@ -16168,7 +16168,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 44,
        "scope": "shipped"
@@ -16789,7 +16789,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 13,
        "scope": "shipped"
@@ -16797,7 +16797,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
       }
@@ -16939,7 +16939,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 13,
        "scope": "shipped"
@@ -16947,7 +16947,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
       }
@@ -17070,7 +17070,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 13,
        "scope": "shipped"
@@ -17078,7 +17078,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
       }
@@ -17657,7 +17657,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 10,
        "scope": "auxiliary"
@@ -17842,7 +17842,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 10,
        "scope": "auxiliary"
@@ -17952,7 +17952,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 10,
        "scope": "auxiliary"
@@ -18618,7 +18618,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "shipped"
@@ -18795,7 +18795,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "shipped"
@@ -18905,7 +18905,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 7,
        "scope": "shipped"
@@ -19518,7 +19518,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -19533,7 +19533,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -19675,7 +19675,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -19683,7 +19683,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -19764,7 +19764,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -19779,7 +19779,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -20307,7 +20307,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -20464,7 +20464,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -20546,7 +20546,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 6,
        "scope": "shipped"
@@ -21031,7 +21031,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "auxiliary"
@@ -21091,7 +21091,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "auxiliary"
@@ -21145,7 +21145,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 4,
        "scope": "auxiliary"
@@ -23071,7 +23071,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 8,
        "scope": "shipped"
@@ -23207,7 +23207,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 8,
        "scope": "shipped"
@@ -23317,7 +23317,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 8,
        "scope": "shipped"
@@ -24733,7 +24733,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -24876,7 +24876,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -24965,7 +24965,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 4,
        "scope": "shipped"
@@ -27114,7 +27114,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "auxiliary"
@@ -27216,7 +27216,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "auxiliary"
@@ -27298,7 +27298,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 3,
        "scope": "auxiliary"
@@ -29390,7 +29390,7 @@
    }
   },
   {
-   "id": "blockfrost-backend-ryo",
+   "id": "blockfrost",
    "repo": "blockfrost/blockfrost-backend-ryo",
    "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
    "scan": {
@@ -29419,7 +29419,7 @@
      "channels": [
       {
        "channel": "implements",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 0,
        "scope": "shipped"
@@ -29465,7 +29465,7 @@
      "channels": [
       {
        "channel": "implements",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 0,
        "scope": "shipped"
@@ -29505,7 +29505,7 @@
      "channels": [
       {
        "channel": "implements",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 0,
        "scope": "shipped"
@@ -29941,7 +29941,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 5,
        "scope": "auxiliary"
@@ -30002,7 +30002,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 5,
        "scope": "auxiliary"
@@ -30063,7 +30063,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 5,
        "scope": "auxiliary"
@@ -30884,7 +30884,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -30944,7 +30944,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -30991,7 +30991,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 6,
        "scope": "shipped"
@@ -36380,7 +36380,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 10,
        "scope": "shipped"
@@ -36613,7 +36613,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 10,
        "scope": "shipped"
@@ -36758,7 +36758,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 10,
        "scope": "shipped"
@@ -38655,7 +38655,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
@@ -38756,7 +38756,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
@@ -38838,7 +38838,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "auxiliary"
@@ -41351,7 +41351,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -41486,7 +41486,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -41561,7 +41561,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 6,
        "scope": "shipped"
@@ -42091,7 +42091,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "shipped"
@@ -42185,7 +42185,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "shipped"
@@ -42239,7 +42239,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 7,
        "scope": "shipped"
@@ -42707,7 +42707,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -42926,7 +42926,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -43057,7 +43057,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 6,
        "scope": "shipped"
@@ -44575,7 +44575,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -44662,7 +44662,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -44716,7 +44716,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 4,
        "scope": "shipped"
@@ -45031,7 +45031,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "shipped"
@@ -45060,7 +45060,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -45154,7 +45154,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "shipped"
@@ -45176,7 +45176,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -45243,7 +45243,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 7,
        "scope": "shipped"
@@ -45272,7 +45272,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -45811,7 +45811,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
@@ -45933,7 +45933,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
@@ -46001,7 +46001,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 11,
        "scope": "shipped"
@@ -46443,7 +46443,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 186,
        "scope": "shipped"
@@ -46579,7 +46579,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 186,
        "scope": "shipped"
@@ -46640,7 +46640,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 186,
        "scope": "shipped"
@@ -47168,7 +47168,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 15,
        "scope": "auxiliary"
@@ -47325,7 +47325,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 15,
        "scope": "auxiliary"
@@ -47407,7 +47407,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 15,
        "scope": "auxiliary"
@@ -47932,7 +47932,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -48039,7 +48039,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -48066,7 +48066,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 3,
        "scope": "shipped"
@@ -49053,7 +49053,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 41,
        "scope": "shipped"
@@ -49147,7 +49147,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 41,
        "scope": "shipped"
@@ -49201,7 +49201,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 41,
        "scope": "shipped"
@@ -50591,7 +50591,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 20,
        "scope": "shipped"
@@ -50692,7 +50692,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 20,
        "scope": "shipped"
@@ -50746,7 +50746,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 20,
        "scope": "shipped"
@@ -51087,7 +51087,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 19,
        "scope": "shipped"
@@ -51181,7 +51181,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 19,
        "scope": "shipped"
@@ -51235,7 +51235,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 19,
        "scope": "shipped"
@@ -52332,7 +52332,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "auxiliary"
@@ -52347,7 +52347,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       }
@@ -52419,7 +52419,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 7,
        "scope": "auxiliary"
@@ -52427,12 +52427,12 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       }
      ],
-     "readiness": "unassessed"
+     "readiness": "gap"
     },
     {
      "surface": "stake-pool-registration",
@@ -52480,7 +52480,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 7,
        "scope": "auxiliary"
@@ -52495,7 +52495,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       }
@@ -54023,7 +54023,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 376,
        "scope": "shipped"
@@ -54083,7 +54083,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 376,
        "scope": "shipped"
@@ -54123,7 +54123,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 376,
        "scope": "shipped"
@@ -54279,7 +54279,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -54360,7 +54360,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -54414,7 +54414,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -54999,7 +54999,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -55021,7 +55021,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       }
@@ -55094,7 +55094,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -55109,7 +55109,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       }
@@ -55155,7 +55155,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 4,
        "scope": "shipped"
@@ -55177,7 +55177,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       }
@@ -55707,7 +55707,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 32,
        "scope": "auxiliary"
@@ -55774,7 +55774,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 32,
        "scope": "auxiliary"
@@ -55835,7 +55835,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 32,
        "scope": "auxiliary"
@@ -56788,7 +56788,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
@@ -56855,7 +56855,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
@@ -56916,7 +56916,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 11,
        "scope": "shipped"
@@ -58264,7 +58264,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 73,
        "scope": "shipped"
@@ -58352,7 +58352,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 73,
        "scope": "shipped"
@@ -58427,7 +58427,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 73,
        "scope": "shipped"
@@ -58867,7 +58867,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 16,
        "scope": "shipped"
       }
@@ -58941,7 +58941,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 16,
        "scope": "shipped"
       }
@@ -59009,7 +59009,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 16,
        "scope": "shipped"
       }
@@ -59250,7 +59250,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -59331,7 +59331,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -59371,7 +59371,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -59933,7 +59933,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -60021,7 +60021,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -60061,7 +60061,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -61041,7 +61041,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -61101,7 +61101,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -61141,7 +61141,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 4,
        "scope": "shipped"
@@ -61355,7 +61355,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -61422,7 +61422,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -61455,7 +61455,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -61828,7 +61828,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -61868,7 +61868,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -61915,7 +61915,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 4,
        "scope": "shipped"
@@ -62731,7 +62731,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 5,
        "scope": "shipped"
@@ -62792,7 +62792,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 5,
        "scope": "shipped"
@@ -62881,7 +62881,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 5,
        "scope": "shipped"
@@ -63565,7 +63565,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -63598,7 +63598,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -63631,7 +63631,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 3,
        "scope": "shipped"
@@ -63749,7 +63749,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
@@ -63782,7 +63782,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
@@ -63815,7 +63815,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 11,
        "scope": "shipped"
@@ -64176,7 +64176,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -64189,7 +64189,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -64229,7 +64229,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -68791,7 +68791,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -68948,7 +68948,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -69030,7 +69030,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 6,
        "scope": "shipped"
@@ -69525,7 +69525,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
@@ -69640,7 +69640,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
@@ -69701,7 +69701,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "auxiliary"
@@ -70982,7 +70982,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "auxiliary"
@@ -71049,7 +71049,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "auxiliary"
@@ -71117,7 +71117,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 2,
        "scope": "auxiliary"
@@ -72269,7 +72269,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -72322,7 +72322,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -72376,7 +72376,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 2,
        "scope": "shipped"
@@ -72966,7 +72966,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -72988,7 +72988,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -73054,7 +73054,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -73069,7 +73069,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -73108,7 +73108,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 3,
        "scope": "shipped"
@@ -73130,7 +73130,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -73621,7 +73621,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 13,
        "scope": "shipped"
@@ -73674,7 +73674,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 13,
        "scope": "shipped"
@@ -73694,7 +73694,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 13,
        "scope": "shipped"
@@ -73809,7 +73809,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 139,
        "scope": "shipped"
@@ -73855,7 +73855,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 139,
        "scope": "shipped"
@@ -73875,7 +73875,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 139,
        "scope": "shipped"
@@ -75034,7 +75034,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 30,
        "scope": "shipped"
@@ -75042,7 +75042,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 23,
        "scope": "shipped"
       },
@@ -75087,7 +75087,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 30,
        "scope": "shipped"
@@ -75095,7 +75095,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 23,
        "scope": "shipped"
       },
@@ -75114,7 +75114,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 30,
        "scope": "shipped"
@@ -75122,7 +75122,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 23,
        "scope": "shipped"
       },
@@ -75606,7 +75606,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 17,
        "scope": "shipped"
@@ -75621,7 +75621,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 14,
        "scope": "shipped"
       }
@@ -75646,7 +75646,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 17,
        "scope": "shipped"
@@ -75654,7 +75654,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 14,
        "scope": "shipped"
       }
@@ -75686,7 +75686,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 17,
        "scope": "shipped"
@@ -75701,7 +75701,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 14,
        "scope": "shipped"
       }
@@ -76472,7 +76472,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 15,
        "scope": "shipped"
@@ -76492,7 +76492,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 15,
        "scope": "shipped"
@@ -76518,7 +76518,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 15,
        "scope": "shipped"
@@ -76660,7 +76660,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -76680,7 +76680,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -76720,7 +76720,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 4,
        "scope": "shipped"
@@ -76881,7 +76881,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -76901,7 +76901,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -76941,7 +76941,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 2,
        "scope": "shipped"
@@ -77102,7 +77102,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 10,
        "scope": "shipped"
@@ -77135,7 +77135,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 10,
        "scope": "shipped"
@@ -77148,7 +77148,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 10,
        "scope": "shipped"
@@ -77262,7 +77262,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -77282,7 +77282,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -77302,7 +77302,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 2,
        "scope": "shipped"
@@ -77416,7 +77416,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -77462,7 +77462,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -77475,7 +77475,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -77578,7 +77578,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -77586,7 +77586,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       }
@@ -77598,7 +77598,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
@@ -77606,7 +77606,7 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       }
@@ -77618,7 +77618,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 4,
        "scope": "shipped"
@@ -77626,12 +77626,12 @@
       {
        "channel": "service",
        "via": "service:maestro",
-       "readiness": "unassessed",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       }
      ],
-     "readiness": "unassessed"
+     "readiness": "gap"
     }
    ],
    "hits": [
@@ -77730,7 +77730,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -77763,7 +77763,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
@@ -77776,7 +77776,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 2,
        "scope": "shipped"
@@ -77847,6 +77847,161 @@
    "activity": {
     "archived": false,
     "pushedAt": "2026-10-14T08:54:18Z"
+   }
+  },
+  {
+   "id": "cardanokit",
+   "repo": "TokeoPay/CardanoKit",
+   "revision": "d14dcf9b14de92ed7d63c7ba3af678e0bb02ab41",
+   "scan": {
+    "status": "scanned",
+    "files": 32,
+    "skipped": 1
+   },
+   "exposure": "service",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "service:maestro",
+       "readiness": "gap",
+       "lines": 7,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "unassessed"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:maestro",
+       "readiness": "gap",
+       "lines": 7,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "service:maestro",
+       "readiness": "gap",
+       "lines": 7,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Sources/CardanoKit/TxBuilding/TransactionBuilderConfig.swift",
+       "line": 11,
+       "quote": "public class CostModels {"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 2,
+     "lines": 2,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Sources/CardanoKit/Provider/Maestro/MaestroTypes.swift",
+       "line": 197,
+       "quote": "let plutusV3: [Int]?"
+      },
+      {
+       "path": "Sources/CardanoKit/Provider/Maestro/MaestroTypes.swift",
+       "line": 202,
+       "quote": "case plutusV3 = \"plutus_v3\""
+      },
+      {
+       "path": "Tests/CardanoKitTests/TextTxDataProvider.swift",
+       "line": 55,
+       "quote": "{\"data\":{\"min_fee_coefficient\":44,\"min_fee_constant\":{\"ada\":{\"lovelace\":155381}},\"min_fee_reference_scripts\":{\"base\":15.0,\"range\":25600,\"multiplier\":1.2},\"max_block_body_size\":{\"bytes\":90112},\"max_blo"
+      }
+     ]
+    },
+    {
+     "rule": "service:blockfrost",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 0,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "TechnicalDesign.md",
+       "line": 272,
+       "quote": "let provider = BlockfrostProvider(apiKey: \"project_id\", network: .mainnet)"
+      }
+     ]
+    },
+    {
+     "rule": "service:maestro",
+     "files": 2,
+     "lines": 7,
+     "auxLines": 0,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "Sources/CardanoKit/Provider/Maestro/MaestroDataProvider.swift",
+       "line": 20,
+       "quote": "return \"https://mainnet.gomaestro-api.org\""
+      },
+      {
+       "path": "Sources/CardanoKit/Provider/Maestro/MaestroDataProvider.swift",
+       "line": 22,
+       "quote": "return \"https://mainnet.gomaestro-api.org/\""
+      },
+      {
+       "path": "Sources/CardanoKit/Provider/Maestro/MaestroDataProvider.swift",
+       "line": 24,
+       "quote": "return \"https://mainnet.gomaestro-api.org/\""
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2025-10-09T04:00:55Z"
    }
   },
   {
@@ -78222,7 +78377,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -78235,7 +78390,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
@@ -78255,7 +78410,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 6,
        "scope": "shipped"
@@ -78336,7 +78491,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 16,
        "scope": "shipped"
@@ -78349,7 +78504,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 16,
        "scope": "shipped"
@@ -78362,7 +78517,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 16,
        "scope": "shipped"
@@ -78433,7 +78588,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -78446,7 +78601,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
@@ -78459,7 +78614,7 @@
      "channels": [
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 3,
        "scope": "shipped"
@@ -78497,161 +78652,6 @@
    "activity": {
     "archived": false,
     "pushedAt": "2025-03-26T12:00:20Z"
-   }
-  },
-  {
-   "id": "cardanokit",
-   "repo": "TokeoPay/CardanoKit",
-   "revision": "d14dcf9b14de92ed7d63c7ba3af678e0bb02ab41",
-   "scan": {
-    "status": "scanned",
-    "files": 32,
-    "skipped": 1
-   },
-   "exposure": "service",
-   "readiness": "unassessed",
-   "surfaces": [
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "service:maestro",
-       "readiness": "unassessed",
-       "lines": 7,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:maestro",
-       "readiness": "unassessed",
-       "lines": 7,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "service:maestro",
-       "readiness": "unassessed",
-       "lines": 7,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Sources/CardanoKit/TxBuilding/TransactionBuilderConfig.swift",
-       "line": 11,
-       "quote": "public class CostModels {"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 2,
-     "lines": 2,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Sources/CardanoKit/Provider/Maestro/MaestroTypes.swift",
-       "line": 197,
-       "quote": "let plutusV3: [Int]?"
-      },
-      {
-       "path": "Sources/CardanoKit/Provider/Maestro/MaestroTypes.swift",
-       "line": 202,
-       "quote": "case plutusV3 = \"plutus_v3\""
-      },
-      {
-       "path": "Tests/CardanoKitTests/TextTxDataProvider.swift",
-       "line": 55,
-       "quote": "{\"data\":{\"min_fee_coefficient\":44,\"min_fee_constant\":{\"ada\":{\"lovelace\":155381}},\"min_fee_reference_scripts\":{\"base\":15.0,\"range\":25600,\"multiplier\":1.2},\"max_block_body_size\":{\"bytes\":90112},\"max_blo"
-      }
-     ]
-    },
-    {
-     "rule": "service:blockfrost",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 0,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "TechnicalDesign.md",
-       "line": 272,
-       "quote": "let provider = BlockfrostProvider(apiKey: \"project_id\", network: .mainnet)"
-      }
-     ]
-    },
-    {
-     "rule": "service:maestro",
-     "files": 2,
-     "lines": 7,
-     "auxLines": 0,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "Sources/CardanoKit/Provider/Maestro/MaestroDataProvider.swift",
-       "line": 20,
-       "quote": "return \"https://mainnet.gomaestro-api.org\""
-      },
-      {
-       "path": "Sources/CardanoKit/Provider/Maestro/MaestroDataProvider.swift",
-       "line": 22,
-       "quote": "return \"https://mainnet.gomaestro-api.org/\""
-      },
-      {
-       "path": "Sources/CardanoKit/Provider/Maestro/MaestroDataProvider.swift",
-       "line": 24,
-       "quote": "return \"https://mainnet.gomaestro-api.org/\""
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2025-10-09T04:00:55Z"
    }
   },
   {
@@ -79108,21 +79108,6 @@
   {
    "id": "begin",
    "repo": "begin.is",
-   "revision": null,
-   "scan": {
-    "status": "no-public-source",
-    "files": 0,
-    "skipped": 0,
-    "note": "The catalog names no GitHub repository; classify through its documented services."
-   },
-   "exposure": "unknown",
-   "readiness": "unassessed",
-   "surfaces": [],
-   "hits": []
-  },
-  {
-   "id": "blockfrost",
-   "repo": "github.com/blockfrost",
    "revision": null,
    "scan": {
     "status": "no-public-source",
@@ -79726,7 +79711,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "auxiliary"
@@ -79787,7 +79772,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "gap",
        "lines": 2,
        "scope": "auxiliary"
@@ -79848,7 +79833,7 @@
       },
       {
        "channel": "service",
-       "via": "blockfrost-backend-ryo",
+       "via": "blockfrost",
        "readiness": "no-evidence",
        "lines": 2,
        "scope": "auxiliary"

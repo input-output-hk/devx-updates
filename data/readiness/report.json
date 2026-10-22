@@ -1,12 +1,12 @@
 {
-  "snapshot": "d19a7de8cf3452647caedc1b4a444545815f3979f9979f7a257ac432f3bc19ad",
-  "tools": 269,
+  "snapshot": "efdeca9c323a562f876305f4471031ac2d508bb52427da0a06859efa6320e98f",
+  "tools": 268,
   "discovered": 227,
   "withProfiles": 45,
   "profiles": 55,
   "completeProfiles": 7,
   "capabilityFindings": [],
-  "unresolvedTools": 224,
+  "unresolvedTools": 223,
   "gaps": [
     {
       "toolId": "1694-io",
@@ -1106,130 +1106,92 @@
     },
     {
       "toolId": "blockfrost",
-      "id": "gap:22d16830721fa041101676ca",
-      "area": "discovery",
-      "reason": "Error: No GitHub source repository in catalog reference: github.com/blockfrost",
-      "nextAction": "Retry discovery; inspect repository identity and API availability."
+      "id": "gap:2b74b3ab8518daae7b956467",
+      "area": "resolution",
+      "reason": "38 Yarn package records declare peers; consumer-specific peer bindings remain unresolved and no peer edges were guessed.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
     },
     {
       "toolId": "blockfrost",
-      "id": "gap:526ab79e8b4a53f822a5fa08",
-      "area": "artifact",
-      "reason": "Release and source identity have not been verified.",
-      "nextAction": "Discover published artifacts and pin the release source."
-    },
-    {
-      "toolId": "blockfrost",
-      "id": "gap:b33c4f9e67e77b9535e0f2cd",
-      "area": "resolution",
-      "reason": "No native dependency resolution has been imported.",
-      "nextAction": "Collect a native resolution for a declared release/profile.",
-      "code": "native-resolution-missing"
-    },
-    {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:08d723e628ab4e7048ff4ff9",
-      "area": "capability",
-      "reason": "Chain-facing capabilities have not been reviewed.",
-      "nextAction": "Review production entry points and integration behavior.",
-      "code": "capabilities-unreviewed"
-    },
-    {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:0c3862b95f6b2737c8fa94ff",
-      "area": "resolution",
-      "reason": "Captured .yarnrc.yml declares plugins; its effect on installed dependency behavior needs separate verification.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7"
-    },
-    {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:1181110efc937467320ee99b",
-      "area": "resolution",
-      "reason": "Yarn source typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=f3b441 needs separate Git/local/patch/artifact verification.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7"
-    },
-    {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:1921259e024e334d6073ba19",
+      "id": "gap:3365ca714ac4793c7ad3bff4",
       "area": "resolution",
       "reason": "Yarn lock selections are not an installed dependency inventory. Hoisting, virtual peer contexts, platform/optional pruning, native bundles and published artifact correspondence remain unverified; Classic locks also omit transitive peer declarations.",
       "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7"
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
     },
     {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:1e1b6ed6fb16f75fd33611cc",
-      "area": "integration",
-      "reason": "Runtime, bundled, and service dependencies have not been reviewed.",
-      "nextAction": "Export a discovery review packet.",
-      "code": "integration-unreviewed"
-    },
-    {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:2456814604d57cbf9e700d5f",
+      "toolId": "blockfrost",
+      "id": "gap:7094273bbf698481541c9c51",
       "area": "artifact",
-      "reason": "Blockfrost RYO tag and manifest agree on 6.8.0; the retained project declares Yarn 3.6.3 with lock metadata v6. This source reconstruction does not identify a deployed Blockfrost hosted API or a built RYO container/Nix artifact.",
-      "nextAction": "Verify the specific RYO release artifact and deployment configuration; keep hosted Blockfrost service identity separate.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "code": "application-scope:blockfrost-backend-ryo:artifact"
+      "reason": "Blockfrost RYO tag and manifest agree on 6.8.0; the retained project declares Yarn 3.6.3 with lock metadata v6. The hosted Blockfrost API runs this backend; this source reconstruction does not identify the deployed hosted release or a built RYO container/Nix artifact.",
+      "nextAction": "Verify the deployed release and the RYO container/Nix artifact against this source.",
+      "code": "application-scope:blockfrost:artifact",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
     },
     {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:4ddb5ba8186a4fd2907b770b",
-      "area": "resolution",
-      "reason": "Yarn source resolve@patch:resolve@npm%3A1.22.11#~builtin<compat/resolve>::version=1.22.11&hash=c3c19d needs separate Git/local/patch/artifact verification.",
-      "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7"
-    },
-    {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:579cf7b507f0109baabd857e",
+      "toolId": "blockfrost",
+      "id": "gap:939fc9e40ab74d987bc22f23",
       "area": "resolution",
       "reason": "Captured .yarnrc.yml declares yarnPath; its effect on installed dependency behavior needs separate verification.",
       "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7"
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
     },
     {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:69cd126220a1e84348434baa",
+      "toolId": "blockfrost",
+      "id": "gap:a7a66be92e5a41ec7beb3a1f",
       "area": "resolution",
       "reason": "Yarn source fsevents@patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
       "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7"
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
     },
     {
-      "toolId": "blockfrost-backend-ryo",
+      "toolId": "blockfrost",
+      "id": "gap:b6d3a0cbafa3e59596680917",
+      "area": "integration",
+      "reason": "Retained README/configuration describe cardano-db-sync/PostgreSQL, node data, off-chain token metadata and optional Mithril proxying; the README also calls for pg_cardano database extensions. Those services, extensions and container/Nix inputs have no inventories in this Yarn profile.",
+      "nextAction": "Collect database extension, node/db-sync and enabled provider/image identities for the selected RYO deployment before compatibility assessment.",
+      "code": "application-scope:blockfrost:integration",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
+    },
+    {
+      "toolId": "blockfrost",
+      "id": "gap:c9cae2c95a6c2e61436f21dc",
+      "area": "resolution",
+      "reason": "Yarn source typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=f3b441 needs separate Git/local/patch/artifact verification.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
+    },
+    {
+      "toolId": "blockfrost",
       "id": "gap:ccd120d62205d2bd8fa69b2f",
       "area": "artifact",
       "reason": "Source release identified; published package/binary correspondence and supported profiles need verification.",
       "nextAction": "Confirm distribution artifacts and production configuration with release evidence."
     },
     {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:e9440fb3e16294cc2e484e6a",
+      "toolId": "blockfrost",
+      "id": "gap:d47ed476ec1a1d9690177636",
       "area": "resolution",
       "reason": "Yarn source fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1 needs separate Git/local/patch/artifact verification.",
       "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7"
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
     },
     {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:f919933aafc583117e73c561",
+      "toolId": "blockfrost",
+      "id": "gap:e59943154f2ba2848936198c",
       "area": "resolution",
-      "reason": "38 Yarn package records declare peers; consumer-specific peer bindings remain unresolved and no peer edges were guessed.",
+      "reason": "Captured .yarnrc.yml declares plugins; its effect on installed dependency behavior needs separate verification.",
       "nextAction": "Recollect a complete native build plan for this profile.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7"
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
     },
     {
-      "toolId": "blockfrost-backend-ryo",
-      "id": "gap:fcefa20ed72da693df0eddfa",
-      "area": "integration",
-      "reason": "Retained README/configuration describe cardano-db-sync/PostgreSQL, node data, off-chain token metadata and optional Mithril proxying; the README also calls for pg_cardano database extensions. Those services, extensions and container/Nix inputs have no inventories in this Yarn profile.",
-      "nextAction": "Collect database extension, node/db-sync and enabled provider/image identities for the selected RYO deployment before compatibility assessment.",
-      "profileId": "profile:blockfrost-backend-ryo:b918679eea786362ad36bbe7",
-      "code": "application-scope:blockfrost-backend-ryo:integration"
+      "toolId": "blockfrost",
+      "id": "gap:f4d219a80fdf0ec64e9a9451",
+      "area": "resolution",
+      "reason": "Yarn source resolve@patch:resolve@npm%3A1.22.11#~builtin<compat/resolve>::version=1.22.11&hash=c3c19d needs separate Git/local/patch/artifact verification.",
+      "nextAction": "Recollect a complete native build plan for this profile.",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798"
     },
     {
       "toolId": "blockfrost-cardano-cli",

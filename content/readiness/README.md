@@ -58,7 +58,7 @@ lock inputs. No package installation or application scripts run.
 | --- | --- | --- |
 | ODATANO | `@odatano/core`, npm root `.` | Tag/manifest 1.9.0 versus lock root 1.7.10; runtime, optional, development and peer declarations agree. Preserve the lock version. Router and wallet applications, generated CDS models, SAP deployment, HSM/native PKCS#11 artifacts and configured chain backends remain separate boundaries. |
 | Cardano MCP | `cardano-mcp` | Manifest 0.1.0 on default-branch source; Yarn 1.22.22 / Classic v1 lock. Demo/documentation roots are excluded. External providers/indexers, the invoked Aiken executable, serialization WASM and supported release/deployment mapping remain unresolved. |
-| Blockfrost RYO | `blockfrost-backend-ryo` | Tag/manifest 6.8.0; Yarn 3.6.3 / metadata v6. This is the RYO service source, not an identified hosted Blockfrost deployment. Node/db-sync, PostgreSQL extensions, token metadata, optional Mithril and built container/Nix inventories require separate evidence. |
+| Blockfrost (`blockfrost`) | `blockfrost-backend-ryo` | Tag/manifest 6.8.0; Yarn 3.6.3 / metadata v6. The run-your-own backend is the catalog's Blockfrost source and the hosted API runs it; the deployed hosted release is not identified. Node/db-sync, PostgreSQL extensions, token metadata, optional Mithril and built container/Nix inventories require separate evidence. |
 
 All profiles use `all-lockfile-targets` and remain partial source reconstructions.
 Retained source and authored gaps record the production configuration and artifact
@@ -107,7 +107,7 @@ updating the request. See `docs/READINESS-OPERATIONS.md` for resume semantics.
 ## Higher-level workflow batch
 
 `workflow-batch.json` prioritizes missing user workflows over collector convenience,
-as agreed in `docs/HARDFORK-READINESS-PLAN.md`. The existing batch already includes
+as recorded in `docs/HARDFORK-READINESS.md`. The existing batch already includes
 transaction SDKs and wallet connectors; this batch adds a wallet application,
 governance application, another transaction framework, Hydra workflows, and a
 multi-DEX consumer. This is a coverage selection, not an adoption ranking.

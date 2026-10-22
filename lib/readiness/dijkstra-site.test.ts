@@ -4,7 +4,7 @@ import { citationUrl, devnetResults, dijkstraSite, toolLeads } from "./dijkstra-
 
 test("the site view loads every committed Dijkstra register and links to pinned lines", () => {
   const site = dijkstraSite();
-  assert.equal(site.classification.tools.size, 269);
+  assert.equal(site.classification.tools.size, 268);
   const confirmed = new Set(site.leads.leads.filter((l) => l.decision === "confirmed").map((l) => l.tool));
   for (const tool of confirmed) assert.ok(site.classification.tools.has(tool), `${tool} is a classified tool`);
   for (const c of site.unlocks.components) for (const u of c.unlocks) assert.ok(site.classification.tools.has(u.tool), `${u.tool} links to a tool page`);

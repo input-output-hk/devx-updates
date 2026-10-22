@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import { citationUrl, componentStatus, dijkstraSite, toolUpgrade, waitingLinks, type Waiting } from "@/lib/readiness/dijkstra-site";
+import { citationUrl, componentStatus, dijkstraSite, toolUpgrade, viaLabel, waitingLinks, type Waiting } from "@/lib/readiness/dijkstra-site";
 import type { Citation } from "@/lib/readiness/dijkstra";
 import { resultsFor, type Result } from "@/lib/readiness/devnet";
 
@@ -14,6 +14,11 @@ const Chip = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-block rounded-md border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[11px] leading-tight text-muted">{children}</span>
 );
 const ToolLink = ({ id }: { id: string }) => <Link href={`/map/readiness/${id}`} className="font-medium">{id}</Link>;
+// A service rule that is itself a gap is a deprecated provider (Maestro): the fix is moving off it, on the provider's page.
+const RETIRED = "service:";
+const FixLink = ({ id }: { id: string }) => id.startsWith(RETIRED)
+  ? <Link href={`/map/readiness/${id.slice(RETIRED.length)}`} className="font-medium">move off {id.slice(RETIRED.length)}</Link>
+  : <ToolLink id={id} />;
 
 const HANDLING = {
   "own-work": ["Own code must change", "text-status-blocked"],
@@ -142,7 +147,7 @@ export default function DijkstraPage() {
           <li key={f.component} className="rounded-xl border border-border bg-surface px-4 py-3">
             <details>
               <summary className="cursor-pointer text-sm">
-                <span className="tabular-nums text-muted">{i + 1}.</span> <span className="font-medium">{f.component}</span>{" "}
+                <span className="tabular-nums text-muted">{i + 1}.</span> <span className="font-medium">{f.component.startsWith(RETIRED) ? `move off ${f.component.slice(RETIRED.length)}` : f.component}</span>{" "}
                 <span className="text-muted">· +{f.added.length} → {f.unlocked} tools unlocked</span>
               </summary>
               <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm">{f.added.map((t) => <li key={t}><ToolLink id={t} /></li>)}</ul>
@@ -153,8 +158,8 @@ export default function DijkstraPage() {
         <div className="mt-4 grid gap-4 lg:grid-cols-2">{unlocks.components.map((c) => (
           <article key={c.component} className="rounded-xl border border-border bg-surface p-5">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="font-display text-lg font-semibold"><ToolLink id={c.component} /></h3>
-              <span className="text-xs text-muted">R2 status: {componentStatus(site, c.component) ?? "not a boundary component"}</span>
+              <h3 className="font-display text-lg font-semibold"><FixLink id={c.component} /></h3>
+              <span className="text-xs text-muted">R2 status: {componentStatus(site, c.component) ?? (c.component.startsWith(RETIRED) ? "deprecated provider" : "not a boundary component")}</span>
             </div>
             {c.ownGap.length > 0 && <p className="mt-2 flex flex-wrap items-center gap-1 text-xs"><span className="text-status-blocked">Own gap:</span>{c.ownGap.map((s) => <Chip key={s}>{s}</Chip>)}</p>}
             <h4 className="mt-4 text-sm font-medium">Unlocks {c.unlocks.length} {c.unlocks.length === 1 ? "tool" : "tools"}</h4>
@@ -165,9 +170,9 @@ export default function DijkstraPage() {
                 {u.bumps.length > 0 && <span className="text-xs text-muted"> · then raise {u.bumps.join(", ")}</span>}
               </li>
             ))}</ul>
-            {c.partial.length > 0 && <p className="mt-3 text-sm text-muted">Also needed by {c.partial.map((p, i) => <span key={p.tool}>{i > 0 && ", "}<ToolLink id={p.tool} /> (still waits on {p.stillBlockedBy.join(", ")})</span>)}</p>}
+            {c.partial.length > 0 && <p className="mt-3 text-sm text-muted">Also needed by {c.partial.map((p, i) => <span key={p.tool}>{i > 0 && ", "}<ToolLink id={p.tool} /> (still waits on {p.stillBlockedBy.map(viaLabel).join(", ")})</span>)}</p>}
             {c.downstream.length > 0 && <details className="mt-3 text-sm"><summary className="cursor-pointer text-muted">{c.downstream.length} downstream {c.downstream.length === 1 ? "tool" : "tools"} with an unconfirmed link</summary>
-              <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">{c.downstream.map((d) => <li key={d.tool}><ToolLink id={d.tool} /> <span className="text-xs text-muted">via {d.via}</span></li>)}</ul>
+              <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">{c.downstream.map((d) => <li key={d.tool}><ToolLink id={d.tool} /> <span className="text-xs text-muted">via {viaLabel(d.via)}</span></li>)}</ul>
             </details>}
           </article>
         ))}</div>
@@ -233,10 +238,10 @@ export default function DijkstraPage() {
         </p>
         <div className="mt-4 space-y-3">{confirmedTools.map((tool) => (
           <details key={tool} className="rounded-xl border border-border bg-surface p-4">
-            <summary className="cursor-pointer"><ToolLink id={tool} /> <span className="text-sm text-muted">· {confirmed.filter((l) => l.tool === tool).map((l) => l.via).filter((v, i, a) => a.indexOf(v) === i).join(", ")}</span></summary>
+            <summary className="cursor-pointer"><ToolLink id={tool} /> <span className="text-sm text-muted">· {confirmed.filter((l) => l.tool === tool).map((l) => viaLabel(l.via)).filter((v, i, a) => a.indexOf(v) === i).join(", ")}</span></summary>
             <div className="mt-3 space-y-4">{confirmed.filter((l) => l.tool === tool).map((l) => (
               <div key={`${l.via}:${l.surfaces.join()}`}>
-                <p className="flex flex-wrap items-center gap-1 text-sm"><span className="font-medium">{l.via}</span>{l.surfaces.map((s) => <Chip key={s}>{s}</Chip>)}</p>
+                <p className="flex flex-wrap items-center gap-1 text-sm"><span className="font-medium">{viaLabel(l.via)}</span>{l.surfaces.map((s) => <Chip key={s}>{s}</Chip>)}</p>
                 <p className="mt-1 text-sm text-muted">{l.summary}</p>
                 <Evidence lead={l} />
               </div>
@@ -247,7 +252,7 @@ export default function DijkstraPage() {
           <summary className="cursor-pointer font-medium">Not reached or undetermined ({others.length} decisions)</summary>
           <ul className="mt-3 space-y-3">{others.map((l) => (
             <li key={`${l.tool}:${l.via}:${l.surfaces.join()}`} className="text-sm">
-              <ToolLink id={l.tool} /> <span className="text-muted">· {l.via} · {l.decision}</span>
+              <ToolLink id={l.tool} /> <span className="text-muted">· {viaLabel(l.via)} · {l.decision}</span>
               <span className="ml-1 inline-flex flex-wrap gap-1 align-middle">{l.surfaces.map((s) => <Chip key={s}>{s}</Chip>)}</span>
               <p className="mt-1 text-muted">{l.summary}</p>
               {l.evidence.length > 0 && <Evidence lead={l} />}

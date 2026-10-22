@@ -1,13 +1,14 @@
 {
  "schemaVersion": 1,
- "reviewed": "2026-10-20",
+ "reviewed": "2026-10-22",
  "method": [
   "Every shipped gap channel in classification.json was read at the classified revision in the tool's shipped code (tests, examples, benchmarks, demos and CI scripts excluded).",
   "confirmed: a shipped path uses the gapped capability, so the tool fails or misbehaves after the hardfork until the dependency moves; not-reached: shipped code uses the dependency only outside it; undetermined: reading cannot decide.",
   "Each decision quotes the lines it rests on; check-leads --verify-sources re-reads every quote at its pinned revision.",
   "Service links are decided per capability used: Ogmios chain-sync reaches block, transaction and era surfaces, submission reaches transaction and era, evaluation reaches Plutus and transaction, and the parameter query reaches protocol parameters; any read of Kupo or db-sync chain data reaches block, transaction and era (neither indexes Dijkstra blocks), db-sync parameter and pool surfaces only through epoch_param and pool tables; Blockfrost era identity only through /network/eras and parameters through the epoch parameter endpoints; Koios era identity through era fields (/tip, block and epoch info) and parameters through /epoch_params or /cli_protocol_params. Hosted Blockfrost and Koios consumers inherit the self-hosted verdicts.",
   "gouroboros era identity and block encoding (R4 devnet) are reached when shipped code passes raw transaction bytes to DetermineTransactionType or decodes blocks or headers received from a node; building and serializing its own transactions with gouroboros types does not reach them.",
-  "Pallas era identity and block encoding (R4 devnet, 2026-10-22) are reached when shipped code decodes blocks or headers from a chain or node with MultiEraBlock or MultiEraHeader, or passes externally supplied transaction bytes to MultiEraTx::decode, which does not detect Dijkstra's three-element form; decode_for_era with an era the caller names, and Pallas primitives, addresses, keys and hashing, do not reach them."
+  "Pallas era identity and block encoding (R4 devnet, 2026-10-22) are reached when shipped code decodes blocks or headers from a chain or node with MultiEraBlock or MultiEraHeader, or passes externally supplied transaction bytes to MultiEraTx::decode, which does not detect Dijkstra's three-element form; decode_for_era with an era the caller names, and Pallas primitives, addresses, keys and hashing, do not reach them.",
+  "Maestro is deprecated (2026-10-22) and will not gain Dijkstra support: any shipped call to it reaches all three provider surfaces (era identity, transactions, protocol parameters), so it is decided per tool rather than per capability; mentions in documentation, data or an unused client are not reached."
  ],
  "leads": [
   {
@@ -1817,7 +1818,7 @@
   {
    "tool": "adalite",
    "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -2084,7 +2085,7 @@
   {
    "tool": "apollo",
    "revision": "ce93350dd2ca6bd8fa6278dad1559edf492340d5",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -2103,7 +2104,7 @@
   {
    "tool": "apollo",
    "revision": "ce93350dd2ca6bd8fa6278dad1559edf492340d5",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -2227,7 +2228,7 @@
   {
    "tool": "atlas",
    "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -2246,7 +2247,7 @@
   {
    "tool": "atlas",
    "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -2323,7 +2324,7 @@
   {
    "tool": "blaze",
    "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -2342,7 +2343,7 @@
   {
    "tool": "blaze",
    "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -2359,7 +2360,7 @@
    ]
   },
   {
-   "tool": "blockfrost-backend-ryo",
+   "tool": "blockfrost",
    "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
    "via": "cardano-db-sync",
    "surfaces": [
@@ -2391,7 +2392,7 @@
   {
    "tool": "blockfrost-cardano-cli",
    "revision": "2ed5515009ab2ef7df6204975308e10a9e12de3c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -2410,7 +2411,7 @@
   {
    "tool": "blockfrost-cardano-cli",
    "revision": "2ed5515009ab2ef7df6204975308e10a9e12de3c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -2429,7 +2430,7 @@
   {
    "tool": "blockfrost-go",
    "revision": "7c2f324c451977a542722ebcb6ec1c70f3d26b1e",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -2456,7 +2457,7 @@
   {
    "tool": "blockfrost-js",
    "revision": "cb8c6b6c5b92bb32825d5504fb4714d9d3da50ba",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -2483,7 +2484,7 @@
   {
    "tool": "blockfrost-python",
    "revision": "2e25f5ae8f9de004b5a6f9620bad08369e609413",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -2661,7 +2662,7 @@
   {
    "tool": "bloxbean-cardano-client-library",
    "revision": "dfd8540d91a17f18a0b93320f9aa020eec43fbdb",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -2680,7 +2681,7 @@
   {
    "tool": "bloxbean-cardano-client-library",
    "revision": "dfd8540d91a17f18a0b93320f9aa020eec43fbdb",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -2796,7 +2797,7 @@
   {
    "tool": "cardano-cli-guru",
    "revision": "2904b58b35c5cab9d1c6550b0b4be26eb272c348",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -2816,7 +2817,7 @@
   {
    "tool": "cardano-client-bindings",
    "revision": "54b8ca747cd66c4a51cf1130bb19b1a7e0b14bd1",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -2835,7 +2836,7 @@
   {
    "tool": "cardano-client-bindings",
    "revision": "54b8ca747cd66c4a51cf1130bb19b1a7e0b14bd1",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -2895,7 +2896,7 @@
   {
    "tool": "cardano-ctf",
    "revision": "43de1e4186674f10563f30b29cc2bc1f743cf30d",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -2914,7 +2915,7 @@
   {
    "tool": "cardano-ctf",
    "revision": "43de1e4186674f10563f30b29cc2bc1f743cf30d",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -2995,7 +2996,7 @@
   {
    "tool": "cardano-dev-wallet",
    "revision": "e846a7c5d2747609d791d7d47d5423616718cb34",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -3015,7 +3016,7 @@
   {
    "tool": "cardano-go",
    "revision": "5d486b0c6bdd44de894eeabec0755234f3fa3cd8",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -3034,7 +3035,7 @@
   {
    "tool": "cardano-go",
    "revision": "5d486b0c6bdd44de894eeabec0755234f3fa3cd8",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -3164,7 +3165,7 @@
   {
    "tool": "cardano-ibc-incubator",
    "revision": "5377651afad44901eee18044c6edce58a0e880fa",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -3183,7 +3184,7 @@
   {
    "tool": "cardano-ibc-incubator",
    "revision": "5377651afad44901eee18044c6edce58a0e880fa",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -3298,7 +3299,7 @@
   {
    "tool": "cardano-js-sdk",
    "revision": "48019e49c826ea77d81be0e2d2907f94406f5e04",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -3339,7 +3340,7 @@
   {
    "tool": "cardano-mcp",
    "revision": "9fe85c6552770915b767c966b3663234b22674e2",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -3358,7 +3359,7 @@
   {
    "tool": "cardano-mcp",
    "revision": "9fe85c6552770915b767c966b3663234b22674e2",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -3427,7 +3428,7 @@
   {
    "tool": "cardano-token-registry",
    "revision": "a7f2aed87c594ccaa42776ce6cff1faaec7ca86d",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -3508,7 +3509,7 @@
   {
    "tool": "cardano-transaction-lib-ctl",
    "revision": "2ae739437420be191bca87fbe836eb999782b1ef",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -3527,7 +3528,7 @@
   {
    "tool": "cardano-transaction-lib-ctl",
    "revision": "2ae739437420be191bca87fbe836eb999782b1ef",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -3592,7 +3593,7 @@
   {
    "tool": "cardano-wallet-interface",
    "revision": "3b9451fcaf7fc79bc9e8b56f227b42657d69a21c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -3611,7 +3612,7 @@
   {
    "tool": "cardano-wallet-interface",
    "revision": "3b9451fcaf7fc79bc9e8b56f227b42657d69a21c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -3650,7 +3651,7 @@
   {
    "tool": "cardano-wallet-sdk-dart",
    "revision": "102548217f34c466be0b017d0a5e36b2caff8c9b",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -4070,7 +4071,7 @@
   {
    "tool": "chrysalis",
    "revision": "7c45d47c87c63520cea84212dbd01ecc8d372ac3",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -4089,7 +4090,7 @@
   {
    "tool": "chrysalis",
    "revision": "7c45d47c87c63520cea84212dbd01ecc8d372ac3",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -4108,7 +4109,7 @@
   {
    "tool": "cometa-js",
    "revision": "9f88d966b872f7ebed3e93a26aa1598cca90fda4",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -4127,7 +4128,7 @@
   {
    "tool": "cometa-js",
    "revision": "9f88d966b872f7ebed3e93a26aa1598cca90fda4",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -4146,7 +4147,7 @@
   {
    "tool": "cquisitor",
    "revision": "99346c2742c1b6c45b84f5f081f5e822833180ff",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -4184,7 +4185,7 @@
   {
    "tool": "cquisitor",
    "revision": "99346c2742c1b6c45b84f5f081f5e822833180ff",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -4222,7 +4223,7 @@
   {
    "tool": "cquisitor-lib",
    "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -4260,7 +4261,7 @@
   {
    "tool": "cquisitor-lib",
    "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -4420,7 +4421,7 @@
   {
    "tool": "dab",
    "revision": "926c590386c1d5be2d6de5d16d8e4f251207467e",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -4627,7 +4628,7 @@
   {
    "tool": "dexter",
    "revision": "44a57eb0f6f80650f1ed34a7765c787afa27f1ab",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -4714,7 +4715,7 @@
   {
    "tool": "dingo",
    "revision": "fdc2e62c63930ab261a0d0c90e4de5462a5e0bca",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -4821,7 +4822,7 @@
   {
    "tool": "dolos",
    "revision": "378b8b0eda64d7ba3364216224155e461fe56cb0",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -4884,7 +4885,7 @@
   {
    "tool": "epora-wallet",
    "revision": "8e6fd820d21e901f019af71eec8150400b1e9669",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -4903,7 +4904,7 @@
   {
    "tool": "epora-wallet",
    "revision": "8e6fd820d21e901f019af71eec8150400b1e9669",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -5052,7 +5053,7 @@
   {
    "tool": "evolution-sdk",
    "revision": "55322695020b4aca2cf49731b595a975b587344c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -5071,7 +5072,7 @@
   {
    "tool": "evolution-sdk",
    "revision": "55322695020b4aca2cf49731b595a975b587344c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -5151,7 +5152,7 @@
   {
    "tool": "gamechanger-gcscript",
    "revision": "f061a5a2cbad42e94a704375df805c9e558ba0a5",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -5191,7 +5192,7 @@
   {
    "tool": "gastronomy",
    "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -5249,7 +5250,7 @@
   {
    "tool": "gerolamo",
    "revision": "0e6421e9069eaf4ab505ca90fff7c3fa7e1833ea",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -5269,7 +5270,7 @@
   {
    "tool": "go-cardano-serialization",
    "revision": "ec9b850865882fb1122d3f373670a76eb6b33d55",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -5288,7 +5289,7 @@
   {
    "tool": "go-cardano-serialization",
    "revision": "ec9b850865882fb1122d3f373670a76eb6b33d55",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -5337,7 +5338,7 @@
   {
    "tool": "govtool",
    "revision": "e6a22b69b42eae7bfee9fd6779cf297ba50283f3",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -5541,7 +5542,7 @@
   {
    "tool": "hydra",
    "revision": "1b10c014295bf3e360431b4e0a24629388e50aa2",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -5609,7 +5610,7 @@
   {
    "tool": "hydra-sdk",
    "revision": "2829131cb08249ad468da6d96c131050286e1987",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -5629,7 +5630,7 @@
   {
    "tool": "intelliada",
    "revision": "b3d3fceaf12a6fc094266b19dfd27dcae2e60cd3",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -5648,7 +5649,7 @@
   {
    "tool": "intelliada",
    "revision": "b3d3fceaf12a6fc094266b19dfd27dcae2e60cd3",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -5990,7 +5991,7 @@
   {
    "tool": "lace",
    "revision": "e5da9457ab2ad0656b6819cc1c844fee487d113d",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -6215,7 +6216,7 @@
   {
    "tool": "lucid-evolution",
    "revision": "ae579343fe173d33902c76ef76ac80228312428f",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -6234,7 +6235,7 @@
   {
    "tool": "lucid-evolution",
    "revision": "ae579343fe173d33902c76ef76ac80228312428f",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -6312,7 +6313,7 @@
   {
    "tool": "marlowe-ts-sdk",
    "revision": "1242de8946046ac6a735bf550512b72ff37b5265",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -6332,7 +6333,7 @@
   {
    "tool": "masumi",
    "revision": "dd0a1e12e2e9fddba028512355d0eaf7cc85efac",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -6351,7 +6352,7 @@
   {
    "tool": "masumi",
    "revision": "dd0a1e12e2e9fddba028512355d0eaf7cc85efac",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -6431,7 +6432,7 @@
   {
    "tool": "masumi-registry-service",
    "revision": "3b0ab26f340174acbed0d4eb6afba1bb6697d524",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -6474,7 +6475,7 @@
   {
    "tool": "meshjs-mesh-sdk",
    "revision": "0e5138cca0de0defcf73106cf035a30233cd5159",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -6579,7 +6580,7 @@
   {
    "tool": "minswap-sdk",
    "revision": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -6684,7 +6685,7 @@
   {
    "tool": "mithril",
    "revision": "da71559f40da5f360df293563fd2d9b33a3ea51c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -6748,7 +6749,7 @@
   {
    "tool": "nami",
    "revision": "e52e0bdb02eb1ec224db26f48b0192685a30f99e",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -6767,7 +6768,7 @@
   {
    "tool": "nami",
    "revision": "e52e0bdb02eb1ec224db26f48b0192685a30f99e",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -6871,7 +6872,7 @@
   {
    "tool": "odatano",
    "revision": "819009515bf62f4db368371ffda0918cb707540c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -6890,7 +6891,7 @@
   {
    "tool": "odatano",
    "revision": "819009515bf62f4db368371ffda0918cb707540c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -7162,7 +7163,7 @@
   {
    "tool": "plutus-halo2-verifier-gen",
    "revision": "b95783e64082185f8cbffcf070df2358bab4275b",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -7181,7 +7182,7 @@
   {
    "tool": "plutus-halo2-verifier-gen",
    "revision": "b95783e64082185f8cbffcf070df2358bab4275b",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -7200,7 +7201,7 @@
   {
    "tool": "plutus-pioneer-program",
    "revision": "c459fa9830e9008423038713851a5e0f2f88a1b4",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -7219,7 +7220,7 @@
   {
    "tool": "plutus-pioneer-program",
    "revision": "c459fa9830e9008423038713851a5e0f2f88a1b4",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -7337,7 +7338,7 @@
   {
    "tool": "pycardano",
    "revision": "877be3ad9a2221fce7eac777c9927430cbc3b868",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -7356,7 +7357,7 @@
   {
    "tool": "pycardano",
    "revision": "877be3ad9a2221fce7eac777c9927430cbc3b868",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -7396,7 +7397,7 @@
   {
    "tool": "rum",
    "revision": "c9c0ea3f1be4ad370bc4816f3871fdbbce722bbe",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -7416,7 +7417,7 @@
   {
    "tool": "sc-tools",
    "revision": "4546122230491db4839a4a42fc2bc601f7900909",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -7443,7 +7444,7 @@
   {
    "tool": "scalus",
    "revision": "5e9c749b74872a998876aaa4b1dff790f9620c73",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -7554,7 +7555,7 @@
   {
    "tool": "sorbet",
    "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -7594,7 +7595,7 @@
   {
    "tool": "sundae-sdk",
    "revision": "9f032253e0711e3a308068ed55cc85b5de71a348",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -7613,7 +7614,7 @@
   {
    "tool": "sundae-sdk",
    "revision": "9f032253e0711e3a308068ed55cc85b5de71a348",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -7745,7 +7746,7 @@
   {
    "tool": "sutra",
    "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -7764,7 +7765,7 @@
   {
    "tool": "sutra",
    "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -7844,7 +7845,7 @@
   {
    "tool": "use-cardano",
    "revision": "97732b233144cc254a2259c51968073971fe7e4d",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -7863,7 +7864,7 @@
   {
    "tool": "use-cardano",
    "revision": "97732b233144cc254a2259c51968073971fe7e4d",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -7905,7 +7906,7 @@
   {
    "tool": "whisky",
    "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -7924,7 +7925,7 @@
   {
    "tool": "whisky",
    "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -8081,7 +8082,7 @@
   {
    "tool": "yaci-store",
    "revision": "97b70ca85b260e11fb10c0226c5e3d717adba07c",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -8121,7 +8122,7 @@
   {
    "tool": "yano",
    "revision": "b511fc862785c26ca52784b85d9925c1c20243b3",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity",
     "protocol-parameters"
@@ -8245,7 +8246,7 @@
   {
    "tool": "zhuli",
    "revision": "fa25f977ef6a981e09918ea09d7e1d6650879463",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
    ],
@@ -8264,7 +8265,7 @@
   {
    "tool": "zhuli",
    "revision": "fa25f977ef6a981e09918ea09d7e1d6650879463",
-   "via": "blockfrost-backend-ryo",
+   "via": "blockfrost",
    "surfaces": [
     "era-identity"
    ],
@@ -10966,6 +10967,293 @@
      "path": "cli/src/main.rs",
      "line": 8,
      "quote": "use pallas_primitives"
+    }
+   ]
+  },
+  {
+   "tool": "evolution-sdk",
+   "revision": "55322695020b4aca2cf49731b595a975b587344c",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Ships a Maestro provider as a client option; Maestro is deprecated, so that provider path needs another backend.",
+   "evidence": [
+    {
+     "repo": "IntersectMBO/evolution-sdk",
+     "revision": "55322695020b4aca2cf49731b595a975b587344c",
+     "path": "packages/evolution/src/sdk/client/internal/Providers.ts",
+     "line": 20,
+     "quote": "new Maestro.MaestroProvider(config.baseUrl, config.apiKey, config.turboSubmit)"
+    }
+   ]
+  },
+  {
+   "tool": "whisky",
+   "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "whisky-provider exports a Maestro fetcher, evaluator and submitter; on a deprecated provider every one of them needs replacing.",
+   "evidence": [
+    {
+     "repo": "sidan-lab/whisky",
+     "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+     "path": "packages/whisky-provider/src/lib.rs",
+     "line": 4,
+     "quote": "pub use maestro::MaestroProvider;"
+    },
+    {
+     "repo": "sidan-lab/whisky",
+     "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+     "path": "packages/whisky-provider/src/maestro/submitter.rs",
+     "line": 9,
+     "quote": "let url = \"/txmanager\";"
+    }
+   ]
+  },
+  {
+   "tool": "blaze",
+   "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "blaze-query's Maestro provider reads protocol parameters and submits transactions through Maestro.",
+   "evidence": [
+    {
+     "repo": "butaneprotocol/blaze-cardano",
+     "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+     "path": "packages/blaze-query/src/maestro.ts",
+     "line": 66,
+     "quote": "const query = `/protocol-parameters`;"
+    },
+    {
+     "repo": "butaneprotocol/blaze-cardano",
+     "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+     "path": "packages/blaze-query/src/maestro.ts",
+     "line": 368,
+     "quote": "const query = `/txmanager`;"
+    }
+   ]
+  },
+  {
+   "tool": "govtool",
+   "revision": "e6a22b69b42eae7bfee9fd6779cf297ba50283f3",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Maestro appears only in the text of a published budget proposal (an applicant's job title); GovTool does not call it.",
+   "evidence": [
+    {
+     "repo": "IntersectMBO/govtool",
+     "revision": "e6a22b69b42eae7bfee9fd6779cf297ba50283f3",
+     "path": "govtool/frontend/public/budget-proposals-2025/8.json",
+     "line": 1,
+     "quote": "DevEx at gomaestro.org"
+    }
+   ]
+  },
+  {
+   "tool": "lucid",
+   "revision": "ee095ed04951461d01c439b815920616a9e593a0",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Lucid's Maestro provider fetches protocol parameters and submits through Maestro's transaction manager.",
+   "evidence": [
+    {
+     "repo": "spacebudz/lucid",
+     "revision": "ee095ed04951461d01c439b815920616a9e593a0",
+     "path": "lib/provider/maestro.ts",
+     "line": 38,
+     "quote": "const timestampedResult = await fetch(`${this.url}/protocol-parameters`, {"
+    },
+    {
+     "repo": "spacebudz/lucid",
+     "revision": "ee095ed04951461d01c439b815920616a9e593a0",
+     "path": "lib/provider/maestro.ts",
+     "line": 252,
+     "quote": "let queryUrl = `${this.url}/txmanager`;"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-mcp",
+   "revision": "9fe85c6552770915b767c966b3663234b22674e2",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Defines Maestro base URLs and a Maestro client, but no shipped module imports or calls the client.",
+   "evidence": [
+    {
+     "repo": "lidonation/Cardano-mcp",
+     "revision": "9fe85c6552770915b767c966b3663234b22674e2",
+     "path": "src/lib/maestro.ts",
+     "line": 39,
+     "quote": "export async function maestro<T>("
+    }
+   ]
+  },
+  {
+   "tool": "nmkr-studio-api",
+   "revision": "5c8f0d18761167611c729e6eae69be67bdd5e981",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The shared NMKR functions read UTxOs from Maestro and submit turbo transactions through it.",
+   "evidence": [
+    {
+     "repo": "nftmakerio/NMKR-Studio",
+     "revision": "5c8f0d18761167611c729e6eae69be67bdd5e981",
+     "path": "NMKR.Shared/Functions/Meastro/MaestroFunctions.cs",
+     "line": 18,
+     "quote": "GeneralConfigurationClass.MaestroConfiguration.ApiUrl}/addresses/{address}/utxos"
+    },
+    {
+     "repo": "nftmakerio/NMKR-Studio",
+     "revision": "5c8f0d18761167611c729e6eae69be67bdd5e981",
+     "path": "NMKR.Shared/Functions/Meastro/MaestroFunctions.cs",
+     "line": 113,
+     "quote": "private static async Task<SubmissionResultClass> SubmitTurboTransactionAsync(byte[] signedTx)"
+    }
+   ]
+  },
+  {
+   "tool": "sutra",
+   "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Sutra's Maestro provider reads protocol parameters and submits transactions through Maestro.",
+   "evidence": [
+    {
+     "repo": "txbody-org/sutra-cardano",
+     "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
+     "path": "lib/sutra/provider/maestro/client.ex",
+     "line": 77,
+     "quote": "Req.get!(client, url: \"protocol-parameters\").body[\"data\"]"
+    },
+    {
+     "repo": "txbody-org/sutra-cardano",
+     "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
+     "path": "lib/sutra/provider/maestro/client.ex",
+     "line": 84,
+     "quote": "url: \"txmanager\","
+    }
+   ]
+  },
+  {
+   "tool": "minswap-sdk",
+   "revision": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The Maestro adapter reads pool UTxOs and asset information from Maestro to build swaps.",
+   "evidence": [
+    {
+     "repo": "minswap/sdk",
+     "revision": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+     "path": "src/adapters/maestro.ts",
+     "line": 74,
+     "quote": "const utxos = await this.maestroClient.addresses.utxosByPaymentCred("
+    }
+   ]
+  },
+  {
+   "tool": "rum",
+   "revision": "c9c0ea3f1be4ad370bc4816f3871fdbbce722bbe",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "rum's Maestro provider submits transactions through Maestro's transaction manager.",
+   "evidence": [
+    {
+     "repo": "sidan-lab/rum",
+     "revision": "c9c0ea3f1be4ad370bc4816f3871fdbbce722bbe",
+     "path": "maestro.go",
+     "line": 24,
+     "quote": "txHash, err := ms.maestroClient.TxManagerSubmit(txCbor)"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-cli-guru",
+   "revision": "2904b58b35c5cab9d1c6550b0b4be26eb272c348",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The shipped maestro helper script sends every query to the Maestro API.",
+   "evidence": [
+    {
+     "repo": "ajnabi-workshop/cardano-cli-guru",
+     "revision": "2904b58b35c5cab9d1c6550b0b4be26eb272c348",
+     "path": "scripts/maestro",
+     "line": 40,
+     "quote": "curl -H \"api-key: $project_id\" -H \"Accept: application/json\" \"$MAESTRO_URL/$query\" | jq"
+    }
+   ]
+  },
+  {
+   "tool": "cardanokit",
+   "revision": "d14dcf9b14de92ed7d63c7ba3af678e0bb02ab41",
+   "via": "service:maestro",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "CardanoKit's Maestro data provider fetches protocol parameters from Maestro.",
+   "evidence": [
+    {
+     "repo": "TokeoPay/CardanoKit",
+     "revision": "d14dcf9b14de92ed7d63c7ba3af678e0bb02ab41",
+     "path": "Sources/CardanoKit/Provider/Maestro/MaestroDataProvider.swift",
+     "line": 45,
+     "quote": "path: \"/v1/protocol-parameters\","
     }
    ]
   }

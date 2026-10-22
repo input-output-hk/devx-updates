@@ -88,9 +88,10 @@ export const RULES: Rule[] = [
   upstream("cardano-ledger", /\bcardano-ledger-(?:api|core|conway|dijkstra|babbage|alonzo|shelley|binary)\b/, ["era-identity", "transaction-encoding", "transaction-rules", "protocol-parameters"]),
   upstream("ouroboros-consensus", /\bouroboros-consensus(?:-cardano)?\b|\bouroboros-network(?:-protocols)?\b/, ["node-to-client-protocol", "block-encoding", "era-identity"]),
 
-  service("blockfrost", /blockfrost\.io|@blockfrost\/|blockfrost[-_](?:js|python|go|rust|java|dotnet|haskell)\b|\bBlockfrost(?:Provider|API|Api|Client)\b/i, { component: "blockfrost-backend-ryo" }),
+  service("blockfrost", /blockfrost\.io|@blockfrost\/|blockfrost[-_](?:js|python|go|rust|java|dotnet|haskell)\b|\bBlockfrost(?:Provider|API|Api|Client)\b/i, { component: "blockfrost" }),
   service("koios", /koios\.rest|\bKoios(?:Provider|Client|Api)\b|koios[-_](?:client|python|go|java)\b/i, { component: "koios" }),
-  service("maestro", /gomaestro(?:-api)?\.org|\bMaestro(?:Provider|Client)\b|@maestro-org\//i, { surfaces: PROVIDER, readiness: "unassessed" }),
+  // Maestro is deprecated (2026-10-22): no Dijkstra support will follow, so a shipped call is a gap until the tool moves provider.
+  service("maestro", /gomaestro(?:-api)?\.org|\bMaestro(?:Provider|Client)\b|@maestro-org\//i, { surfaces: PROVIDER, readiness: "gap" }),
   service("ogmios", /\bogmios\b/i, { component: "ogmios" }),
   service("kupo", /\bkupo\b|\bkupmios\b/i, { component: "kupo" }),
   service("cardano-db-sync", /cardano-db-sync|\bdb-?sync\b|\bdbsync\b|\bma_tx_out\b/i, { component: "cardano-db-sync" }),

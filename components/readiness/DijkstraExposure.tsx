@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { citationUrl, componentStatus, devnetResults, dijkstraSite, toolLeads, toolUpgrade, waitingLinks } from "@/lib/readiness/dijkstra-site";
+import { citationUrl, componentStatus, devnetResults, dijkstraSite, toolLeads, toolUpgrade, viaLabel, waitingLinks } from "@/lib/readiness/dijkstra-site";
 
 const Chip = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-block rounded-md border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[11px] leading-tight text-muted">{children}</span>
@@ -54,7 +54,7 @@ export default function DijkstraExposure({ id }: { id: string }) {
       <ul className="mt-1 space-y-1 text-sm">{blockers.blockers.map((b) => (
         <li key={`${b.kind}:${b.via}`} className="flex flex-wrap items-center gap-1">
           <span className={b.kind === "own-bump" ? "text-status-progress" : "text-status-blocked"}>{b.kind === "own-bump" ? "upgrade" : b.kind === "own-gap" ? "own gap" : "upstream fix"}</span>
-          <span>{b.kind === "own-bump" ? b.pin : b.via}</span>{b.surfaces.map((s) => <Chip key={s}>{s}</Chip>)}
+          <span>{b.kind === "own-bump" ? b.pin : viaLabel(b.via)}</span>{b.surfaces.map((s) => <Chip key={s}>{s}</Chip>)}
         </li>
       ))}</ul>
     </div>}
@@ -93,7 +93,7 @@ export default function DijkstraExposure({ id }: { id: string }) {
         <li key={`${l.via}:${l.surfaces.join()}`} className="text-sm">
           <p className="flex flex-wrap items-center gap-1">
             <span className={l.decision === "confirmed" ? "font-medium text-status-blocked" : "font-medium text-muted"}>{l.decision}</span>
-            <span>· {l.via}</span>{l.surfaces.map((s) => <Chip key={s}>{s}</Chip>)}
+            <span>· {viaLabel(l.via)}</span>{l.surfaces.map((s) => <Chip key={s}>{s}</Chip>)}
           </p>
           <p className="mt-1 text-muted">{l.summary}</p>
           <ul className="mt-1 space-y-1">{l.evidence.map((c) => (

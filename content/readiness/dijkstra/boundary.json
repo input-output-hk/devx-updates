@@ -9,7 +9,8 @@
     "Status is per surface group; a component is only as ready as its worst assessment. no-evidence is never a pass.",
     "firstReleases names, per release line, the earliest tag whose source contains every cited source quote (for gouroboros ledger types: the earliest tag whose vendored Dijkstra CDDL is identical to the one compared with the target; for plutus-ledger-api: the target component-set version). Consumer pins are judged only against firstReleases.",
     "in-progress needs visible work toward the target definitions (a branch, an open pull request, or unreleased code on the default branch). A release built only against superseded Dijkstra definitions, with no such work, is a gap.",
-    "R4: a devnet result can back an assessment as evidence of kind devnet, naming the check in devnet.json and the version exercised. verified needs a passing result; a failing result cannot back released or verified. Where the target CDDL and the node disagree, the node at the integration revision decides: its Dijkstra header is the ten-field Praos header (devnet check block-shape)."
+    "R4: a devnet result can back an assessment as evidence of kind devnet, naming the check in devnet.json and the version exercised. verified needs a passing result; a failing result cannot back released or verified. Where the target CDDL and the node disagree, the node at the integration revision decides: its Dijkstra header is the ten-field Praos header (devnet check block-shape).",
+    "Blockfrost is one component (owner decision, 2026-10-22): its source is the run-your-own backend, which the hosted API runs, so hosted and self-hosted consumers share its statuses. Maestro is deprecated and is not a component; the classification treats a shipped call to it as a gap."
   ],
   "components": [
     {
@@ -3219,7 +3220,7 @@
       ]
     },
     {
-      "id": "blockfrost-backend-ryo",
+      "id": "blockfrost",
       "repo": "blockfrost/blockfrost-backend-ryo",
       "roles": [
         "chain-indexer"

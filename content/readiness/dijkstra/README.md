@@ -3,8 +3,8 @@
 `changes.json` lists what the Dijkstra hard fork (protocol version 12) changes,
 which **surface** each change touches, when it takes effect, and the exact source
 lines it rests on. It is the input for the boundary register (R2) and the
-classification of catalog tools (R3) in the
-[plan revision](../../../docs/HARDFORK-READINESS-PLAN.md#plan-revision-2026-10-19-change-first-assessment).
+classification of catalog tools (R3) described in
+[Dependency mapping and hardfork readiness](../../../docs/HARDFORK-READINESS.md).
 
 ## What it is pinned to
 
@@ -93,33 +93,37 @@ holds the 24 upgrade parameters, including the PlutusV4 cost model as an array.
 
 ## Devnet run (`devnet.json`, R4)
 
-On 2026-10-20 the integration node (`34ae34db`, IOG's static Hydra build) ran
-a one-pool devnet that forked to Dijkstra at epoch 2. The test trigger left the
-protocol version at 10, so two governance hard forks raised it to 12 before the
-checks. The recipe and probes are in `scripts/readiness/devnet` (see its
-README). Each check records a pass or fail per change, component or tool
-version, with the output it rests on:
+The integration node (`34ae34db`, IOG's static Hydra build) runs a one-pool
+devnet that forks to Dijkstra at epoch 2. The test trigger leaves the protocol
+version at 10, so two governance hard forks raise it to 12 before the checks.
+The recipe and probes are in `scripts/readiness/devnet` (see its README); it
+was first run on 2026-10-20 and reproduced on another machine on 2026-10-22
+with identical errors and decoder offsets. Each check records a pass or fail
+per change, component or tool version, with the output it rests on:
 
 | Check | Result |
 | --- | --- |
 | `fork-to-pv12` | Dijkstra at protocol version 12; 54 protocol parameters |
-| `n2c-handshake` | Only V23 is accepted; gouroboros 0.208.5 is refused, v0.213.x, Ogmios v7.0.0 and Kupo v2.12 connect |
+| `n2c-handshake` | Only V23 is accepted; gouroboros 0.208.5 is refused; v0.213.x, Ogmios v7.0.0, Kupo v2.12 and cardano-db-sync 13.7.2.1 connect |
 | `cross-era-submission` | Conway payments, deposit registrations, required signers and metadata accepted; deposit-less registration rejected; the mempool returns every transaction in the three-element Dijkstra form |
 | `block-shape` | Non-segregated body confirmed; the header is still the ten-field Praos header with `[12, 0]`, contradicting `header-version-info`; gouroboros v0.213.0–v0.213.9 stop at the first Dijkstra block |
 | `service-decoding` | Ogmios v7.0.0 and Kupo v2.12 exit at the first Dijkstra block |
 | `tx-era-detection` | gouroboros's `DetermineTransactionType` cannot place ordinary Dijkstra transactions, and `NextTx` drops the era id; txtop's mempool view and cardano-node-api's submission and mempool listing fail |
 | `tool-upgrades` | txtop builds unchanged on v0.213.0 and connects; cardano-node-api builds on no v0.213.x without patching adder and its own code, and then reads Dijkstra UTxOs |
+| `pallas-chain-sync` | No Pallas revision decodes a Dijkstra block: v1.4.0 and main have no Dijkstra era in traversal, and the `dijkstra` branch requires the CDDL's twelve-field header |
+| `pallas-transactions` | `MultiEraTx::decode` does not detect the three-element form in any revision; `decode_for_era(Dijkstra)` on the `dijkstra` branch reads all captured transactions |
+| `cml-decoding` | CML 6.2.0 decodes none of 1017 Dijkstra blocks and no three-element transaction |
+| `js-sdk-transactions` | `@cardano-sdk/core` 0.47.1 decodes all fifteen transactions, re-encodes them byte for byte and reproduces their ids (plain payments, a deposit registration, a required signer and metadata) |
+| `db-sync-and-blockfrost` | db-sync indexes every Conway block, then fails on the first Dijkstra block with `DeserialiseFailure 863` and keeps reconnecting; Blockfrost serves that frozen database as current (last Conway block, protocol version 10, no Dijkstra era) |
 
-Consequences in the registers: gouroboros is a gap on era identity and block
-encoding. Its V23 support, and Ogmios's and Kupo's, is `verified`. Boundary
-evidence of kind `devnet` cites a check and version: `verified` needs a pass,
-and a failing result cannot back `released`. txtop and cardano-node-api are no
-longer bump-ready, and summaries that relied on the CDDL header (CML, Pallas,
-Kupo, cardano-wallet, cncli, IBC incubator) now say what the node emits.
-
-Not run here: db-sync, Blockfrost and Koios (Postgres needs more disk than
-was free), Haskell tools (Marlowe, Marconi), and other codecs that follow the
-CDDL header (Pallas main, CML, cardano-js-sdk).
+Consequences in the registers: gouroboros and Pallas are gaps on era identity
+and block encoding. Node-to-client V23 support is `verified` for gouroboros,
+Ogmios, Kupo and db-sync. Boundary evidence of kind `devnet` cites a check and
+version: `verified` needs a pass, and a failing result cannot back `released`.
+txtop and cardano-node-api are not bump-ready. Blockfrost's own Dijkstra gaps
+(a protocol table ending at 11, Conway parameter columns) are not reached on
+the devnet, because db-sync never records a Dijkstra epoch; its result is
+recorded as inherited. Koios reads the same db-sync tables and is not run.
 
 ```sh
 npm run readiness -- check-devnet   # subjects known, recipes present, boundary evidence consistent
@@ -132,8 +136,9 @@ npm run readiness -- check-devnet   # subjects known, recipes present, boundary 
 ## Boundary register (`boundary.json`)
 
 `boundary.json` records the 61 catalog components that implement a changed
-surface directly, observed at their default-branch heads on 2026-10-19 (Koios,
-Blockfrost RYO, Ogmios, Kupo, db-sync and Kuber re-observed on 2026-10-20), with
+surface directly, observed at their default-branch heads on 2026-10-19 and
+2026-10-20 (Pallas, CML, cardano-js-sdk and db-sync updated from the devnet on
+2026-10-22), with 202 evidence items and
 a status for each surface group: `gap` (cited code cannot work against the
 target), `no-evidence` (nothing found; never a pass), `tracked`, `in-progress`,
 `released` and `verified` (R4). `in-progress` needs visible work toward the
@@ -145,11 +150,16 @@ records URL, state and date.
 
 | Worst status | Components |
 | --- | --- |
-| gap | 47, including every ledger codec without Dijkstra work (CML, cardano-client-lib, PyCardano, cardano-data-lite, CardanoSharp, TyphonJS, cometa.js, elm-cardano, Evolution SDK, Mesh, Lucid Evolution, Whisky, buildooor, cquisitor-lib), both hardware-wallet libraries, every script compiler (Aiken, OpShin, Helios, Plutarch, JuLC, plu-ts, uplc-turbo), the Pallas- or Yaci-based indexers without Dijkstra decoding (Oura, Dolos, Mithril, Carp, Scrolls, cf-ledger-sync, Rosetta Java), Cardano GraphQL, Atlas, CTL, and the earlier gaps (cardano-wallet, Adder, ouroboros-miniprotocols-ts, Hydra, CSL, cardano-js-sdk, cardano-c, Scalus, Ogmios, Kupo, db-sync, Kuber, Koios, Blockfrost RYO) |
+| gap | 49: every ledger codec without Dijkstra work (CSL, CML, cardano-client-lib, PyCardano, cardano-c, cometa.js, cardano-data-lite, CardanoSharp, TyphonJS, elm-cardano, buildooor, plu-ts, Evolution SDK, Mesh, Lucid Evolution, Whisky, cquisitor-lib), Pallas and gouroboros (blocks and era identity), both hardware-wallet libraries, every script compiler (Aiken, OpShin, Helios, Plutarch, JuLC, uplc-turbo, Scalus), the indexers without Dijkstra decoding (Oura, Dolos, Mithril, Carp, Scrolls, cf-ledger-sync, Rosetta Java), the service layer (Ogmios, Kupo, db-sync, Koios, Blockfrost, Cardano GraphQL, Kuber), cardano-wallet, cardano-js-sdk, ouroboros-miniprotocols-ts, Adder, Hydra, Atlas and CTL |
 | no-evidence | ouroboros-network-js (proposes one caller-chosen version), cncli (consensus participation) |
 | tracked | Apollo |
-| in-progress | Pallas, Yaci, Amaru, Dingo, yaci-store, UTxO RPC, Blaze, Yaci DevKit |
-| released | Gouroboros, Plutus, plutigo |
+| in-progress | Yaci, Amaru, Dingo, yaci-store, UTxO RPC, Blaze, Yaci DevKit |
+| released | Plutus, plutigo |
+
+Blockfrost is the catalog's single Blockfrost entry; its source is the
+run-your-own backend, which the hosted API runs, so hosted consumers inherit
+its verdict. Maestro is deprecated and is not a boundary component: the
+classification treats any shipped call to it as a gap (see below).
 
 The 35 components that had no evidence were re-observed at their heads on
 2026-10-20 and judged by what their code enumerates: transaction-body keys
@@ -179,7 +189,7 @@ What it shows:
 
 ## Classification of all catalog tools (`classification.json`)
 
-`classification.json` records, for every one of the 269 catalog tools, which
+`classification.json` records, for every one of the 268 catalog tools, which
 changed surfaces it touches, through which channel, and the readiness it
 inherits. Each tool's repository was scanned at its default-branch head:
 
@@ -194,7 +204,9 @@ inherits. Each tool's repository was scanned at its default-branch head:
   compared the same way with the 11.2 component-set versions above.
 - **service**: code calls Blockfrost, Koios, Maestro, Ogmios, Kupo, db-sync,
   UTxO RPC/Dolos, the cardano-wallet API, a node socket, cardano-cli commands
-  or the submit API.
+  or the submit API. Maestro is deprecated (2026-10-22), so a shipped call to
+  it is a `gap` on era identity, transactions and protocol parameters until the
+  tool changes provider.
 - **marker**: closed era lists, PlutusV3 enums, cost models, raw CBOR codecs,
   segregated block-body fields, legacy stake certificates, script context,
   pool registration, node-to-client code or node configuration and genesis
@@ -223,20 +235,20 @@ last pushed.
 | auxiliary only | 4 |
 | marker only | 9 |
 | none found | 18 |
-| no public source | 42 |
+| no public source | 41 |
 
 Changed surfaces touched through shipped coupling (implements, dependency or
 service): transaction encoding 176, era identity 173, protocol parameters 173,
 PlutusV4/language 159, block encoding 138, node-to-client 131, transaction
 rules 128, stake-pool registration 117, script context 68, cardano-cli 43,
-consensus participation 28, cardano-api 26. The most used services are
-Blockfrost (66), Ogmios (62), node sockets (61), cardano-cli (43), Koios (37),
-db-sync (34) and Kupo (31).
+consensus participation 28, cardano-api 26, node configuration 4. The most
+used services in shipped code are Blockfrost (63), Ogmios (59), node sockets
+(57), cardano-cli (39), Koios (37), db-sync (31), Kupo (31), UTxO RPC (24),
+the submit API (21) and Maestro (12).
 
-Readiness of the 204 tools outside the boundary: 35 gap, 21 in-progress,
-11 upstream, 2 released, 55 no-evidence, 80 unassessed. Nine catalog
-repositories are archived, among them cardano-node-api, cardano-rosetta-legacy
-and Nami.
+Readiness of the 207 tools outside the boundary: 116 gap, 2 in-progress,
+15 upstream, 2 released, 72 unassessed. Nine catalog repositories are
+archived, among them cardano-node-api, cardano-rosetta-legacy and Nami.
 
 The scan is lexical: a dependency proves coupling to a component, not use of a
 changed feature. Every inherited gap is therefore read in shipped code and
@@ -244,19 +256,25 @@ decided in `leads.json`.
 
 ## Lead confirmation (`leads.json`)
 
-`leads.json` decides, for every tool that inherits a gap (35 outside the
-boundary and 23 boundary components inheriting from other components), whether
-shipped code actually reaches it, per tool, dependency and surface
-(170 decisions in 86 entries, each quoting the lines it rests on):
+`leads.json` decides, for every tool that inherits a gap, whether shipped code
+actually reaches it, per tool, dependency and surface, each decision quoting
+the lines it rests on:
 
 - `confirmed`: a shipped path uses the gapped capability, so the tool fails or
-  misbehaves after the hardfork until the dependency moves (90 surfaces).
+  misbehaves after the hardfork until the dependency moves (505 decisions).
 - `not-reached`: shipped code uses the dependency only outside the gap
-  (65 surfaces).
+  (711 decisions).
 - `undetermined`: reading cannot decide; R4 execution or the maintainer must
-  (15 surfaces).
+  (25 decisions).
 
-**21 tools outside the boundary have a confirmed gap:**
+The register holds 527 entries and 1,241 decisions, none unreviewed or stale.
+**112 tools have a confirmed gap**: 76 outside the boundary and 36 boundary
+components that inherit one from another component. The passes below added
+them in order; each pass's figures are as of that pass.
+
+### Libraries and node-to-client (2026-10-20)
+
+The first pass (170 decisions) confirmed **21 tools outside the boundary**:
 
 | Through | Tools | What breaks |
 | --- | --- | --- |
@@ -313,9 +331,9 @@ wrong cardano-node-api lead (it evaluates PlutusV4 at line 1233 of
 --reclassify` recomputes at the recorded revisions, reusing cached scans and
 rescanning at the same revision when the rules changed.
 
-### Service-layer reading (2026-10-20)
+### Service-layer reading (2026-10-20, Maestro 2026-10-22)
 
-Moving Ogmios, Kupo, db-sync, Koios and Blockfrost RYO to `gap` added 221
+Moving Ogmios, Kupo, db-sync, Koios and Blockfrost to `gap` added 221
 inherited links across 117 tools; every one is now decided (`leads.json` has
 393 entries, 913 tool/dependency/surface decisions, all quotes re-read with
 `--verify-sources`). Service links are decided per capability the tool uses:
@@ -326,10 +344,14 @@ inherited links across 117 tools; every one is now decided (`leads.json` has
 | Kupo | reads any indexed data; Kupo cannot index Dijkstra blocks, so matches stop at the fork | 21 |
 | db-sync | reads chain tables (block, transaction, era); parameters and pools only through `epoch_param` and pool tables | 13 |
 | Koios | reads era fields (`/tip`, block and epoch info) or `/epoch_params` / `/cli_protocol_params` | 22 |
-| Blockfrost RYO | calls `/network/eras` (throws on protocol 12) or the epoch parameter endpoints | 41 |
+| Blockfrost | calls `/network/eras` (throws on protocol 12) or the epoch parameter endpoints; hosted and self-hosted alike | 41 |
+| Maestro (deprecated) | calls Maestro at all: it will not gain Dijkstra support, so every provider surface is reached | 10 |
 
-97 tools now have a confirmed gap (70 outside the boundary, 27 boundary
-components). Typical not-reached cases: tools that implement these APIs
+After this pass 97 tools had a confirmed gap. Maestro was added on
+2026-10-22: ten tools ship a Maestro provider or client call (Evolution SDK,
+Whisky, Blaze, Lucid, NMKR Studio, Sutra, Minswap SDK, rum, cardano-cli-guru,
+CardanoKit); GovTool names it only in published proposal text and Cardano MCP
+defines a client nothing imports. Typical not-reached cases: tools that implement these APIs
 themselves (Dingo, Dolos, Yaci Store, Yano, Gerolamo), providers used only for
 UTxOs and submission, and services named only in comments, fixtures or
 deployment examples. Undetermined: CAB and CTL relay through code outside the
@@ -348,8 +370,16 @@ one did not build, and reading era data, is confirmed. Hardware-wallet
 libraries are reached by tools that sign transactions built elsewhere
 (cardano-hw-cli, Lace, Yoroi, Nami, Bursa, cardano-js-sdk's Ledger agent);
 Mithril only by tools that use its chain reader, not snapshot download.
-`leads.json` now holds 490 entries and 1157 decisions; 101 tools have a
-confirmed gap.
+After this pass 101 tools had a confirmed gap.
+
+### Pallas reading (2026-10-22)
+
+The devnet made Pallas a gap on era identity and block encoding. Its 22 new
+links were read: 9 confirmed (Mithril, cncli, Dolos, Oura, Scrolls, Boros,
+Cardaminal, lace-anatomy, Mumak decode blocks or headers from a chain, or
+foreign transaction bytes through `MultiEraTx::decode`) and 13 not reached
+(tools that name the era themselves or use Pallas for primitives, addresses
+and hashing).
 
 ## Unlock report (`unlocks.json`)
 
@@ -365,23 +395,26 @@ with an unconfirmed shipped link to anything unlocked.
 
 Most SDKs wait on several services or libraries at once, so single fixes
 understate the effect. `fixOrder` adds, at each step, the component that
-unlocks the most tools on top of the earlier steps (2026-10-20):
+unlocks the most tools on top of the earlier steps. Maestro's step is a
+migration, not a fix: its consumers move to another provider.
 
 | Step | Fix | Tools unlocked (running total) |
 | --- | --- | --- |
-| 1 | Blockfrost RYO | 13 |
-| 2 | Ogmios | 24 |
-| 3 | Koios | 33 |
-| 4 | Kupo | 43 |
-| 5 | db-sync | 51 |
-| 6 | CSL | 56 |
-| 7 | gouroboros | 59 |
-| 8 | ledgerjs-hw-app-cardano | 61 |
-| 9 | cardano-js-sdk | 63 |
-| 10 | cardano-wallet | 65 |
-| 11 | cardano-client-lib | 67 |
-| 12 | Scalus | 69 |
-| 13–16 | cquisitor-lib, cardano-hw-interop-lib, CML, ouroboros-miniprotocols-ts | 74 |
+| 1 | Blockfrost | 13 |
+| 2 | Ogmios | 23 |
+| 3 | Koios | 32 |
+| 4 | Kupo | 39 |
+| 5 | db-sync | 46 |
+| 6 | Move off Maestro | 53 |
+| 7 | CSL | 58 |
+| 8 | Pallas | 63 |
+| 9 | gouroboros | 66 |
+| 10 | ledgerjs-hw-app-cardano | 68 |
+| 11 | cardano-js-sdk | 70 |
+| 12 | cardano-wallet | 72 |
+| 13 | cardano-client-lib | 74 |
+| 14 | Scalus | 76 |
+| 15–18 | cquisitor-lib, cardano-hw-interop-lib, CML, ouroboros-miniprotocols-ts | 81 |
 
 Tools that are boundary components with a gap of their own (Mesh, Lucid
 Evolution, Evolution SDK, yaci-store, Adder, Hydra and others) are never
