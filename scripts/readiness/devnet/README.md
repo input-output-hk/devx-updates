@@ -41,3 +41,10 @@ socket paths are limited to 108 bytes.
    `... decode < labeled`. For cardano-js-sdk, `npm install --ignore-scripts @cardano-sdk/core@0.47.1` into its own
    directory and run `node js-probe/probe.cjs <that directory> < labeled`. The text envelopes from step 5
    (`jq -r .cborHex $DEVNET_DIR/work/tx/*.signed`, each line prefixed with a name) are decoded the same way.
+10. Service layer (2026-10-22). `./service-layer.sh` runs cardano-db-sync 13.7.2.1 on a `postgres:16` container
+    (port 5433) against the devnet for 150 s, then Blockfrost RYO v6.8.1 on its database (port 3100), and prints
+    each one's state next to the node's tip; `./service-layer.sh stop` removes both. Needs docker and about 2 GB.
+    db-sync requires the genesis hashes in the node config and Shelley's systemStart to equal Byron's
+    whole-second startTime; cardano-testnet writes neither, so the script gives db-sync its own node config and a
+    Shelley genesis copy rounded to Byron's second. Koios was not run: it reads the same db-sync tables.
+

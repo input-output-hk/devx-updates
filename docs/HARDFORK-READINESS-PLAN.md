@@ -16,7 +16,7 @@ This checklist records delivered behavior and verification, not just code starte
 - [x] R1: Dijkstra change register and surface vocabulary — 19 changes and 2 checked-unchanged areas, 73 verified citations; `header-version-info` corrected by the devnet (the node still emits the ten-field header). JSON representations beyond the era commands remain a known limit.
 - [ ] R2: boundary-component register with per-component Dijkstra status — 61 components, 200 evidence items, all assessed (worst status: 49 gap, 2 no-evidence, 1 tracked, 7 in-progress, 2 released); weekly re-observation and hosted API-provider entries remain.
 - [ ] R3: surface classification of all 269 catalog tools — full scan (227 scanned, 42 without public source); every inherited gap decided from shipped code (515 lead entries, 1205 decisions, 110 tools with a confirmed gap, none unreviewed); unlock report, fix order and upgrade readings derived.
-- [ ] R4: devnet/testnet verification of boundary components, then representative consumers — first run 2026-10-20, reproduced and extended to the codecs 2026-10-22 (`devnet.json`: 11 checks, 36 results, 18 failing); service layer with Postgres and the Haskell tools remain.
+- [ ] R4: devnet/testnet verification of boundary components, then representative consumers — first run 2026-10-20, reproduced and extended to the codecs 2026-10-22 (`devnet.json`: 12 checks, 39 results, 20 failing); db-sync and Blockfrost RYO run, Koios and compiling the Haskell tools remain.
 - [ ] R5: fix propagation through direct reverse dependencies and maintainer outreach.
 
 ## Plan revision (2026-10-19): change-first assessment
@@ -434,6 +434,27 @@ tools that name the era themselves or use Pallas for primitives, addresses
 and hashing). Pallas enters the fix order at step 7: 17 upstream fixes now
 unlock 79 tools; tools with a confirmed gap rise from 102 to 110.
 
+### R4 service layer (2026-10-22)
+
+Recipe step 10 (`scripts/readiness/devnet/service-layer.sh`, about 2 GB, not
+the 10 GB the handoff guessed) runs cardano-db-sync 13.7.2.1 on Postgres 16
+and Blockfrost RYO v6.8.1 on its database:
+
+- db-sync handshakes with the V23-only node and indexes all 19 Conway blocks,
+  then fails to decode the first Dijkstra block with Kupo's
+  `DeserialiseFailure 863` and keeps reconnecting and failing; nothing after
+  the fork is indexed. Its node-to-client assessment becomes `verified`; its
+  block, era and parameter gap now cites the run.
+- Blockfrost serves that frozen database as current: the last Conway block,
+  epoch 1 parameters at protocol version 10, and no Dijkstra era, while the
+  node is at protocol version 12. Its own Dijkstra gaps (protocol table ending
+  at 11, Conway parameter columns) are not reached, because db-sync never
+  records a Dijkstra epoch, so the result is recorded as inherited.
+- Koios was not run: every endpoint reads the same db-sync tables.
+
+The fix order is unchanged: db-sync was already a gap. Its fix is what lets
+Blockfrost and Koios be tested for their own Dijkstra handling at all.
+
 ### Bump solves for Marlowe and Marconi (2026-10-22)
 
 Compiling either tool against cardano-api 11.8.0.0 does not fit this machine
@@ -477,7 +498,7 @@ push the new machine starts from the pre-R1 state. `AGENTS.md` has an uncommitte
 | R3 leads | `leads.json` | 1205 decisions, 0 unreviewed, 0 stale |
 | Unlocks | `unlocks.json` | fix order: 17 upstream fixes unlock 79 tools; bump-ready: Marlowe, Marconi |
 | Upgrades | `upgrades.json` | 11 readings (8 own-work, 1 prepared, 2 generic) |
-| R4 devnet | `devnet.json` | 11 checks, 36 results, 18 failing |
+| R4 devnet | `devnet.json` | 12 checks, 39 results, 20 failing |
 
 All of these pass `check-changes`, `check-boundary`, `check-leads` and
 `check-upgrades` with `--verify-sources`, and `check-devnet`; 148 readiness
@@ -496,6 +517,8 @@ tests pass; `/map/dijkstra` and tool pages were checked in a browser.
    devnet, then Blockfrost RYO and Koios on top of it. Ogmios v7.0.0 and Kupo
    v2.12 already fail at the first Dijkstra block; record each as a check in
    `devnet.json` and cite it from `boundary.json` (kind `devnet`).
+   db-sync and Blockfrost done 2026-10-22; see
+   [Service layer](#r4-service-layer-2026-10-22). Koios not run.
 3. Codecs that follow the CDDL header: Pallas main (and cncli, Oura, Dolos
    through it), CML, cardano-js-sdk. gouroboros shows that following the CDDL
    header breaks against the node, so each needs a decode run of the node's

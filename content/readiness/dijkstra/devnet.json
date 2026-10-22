@@ -13,7 +13,8 @@
    "Node configuration adds ExperimentalHardForksEnabled and TestDijkstraHardForkAtEpoch 2 to the generated DijkstraGenesisFile and ExperimentalProtocolsEnabled.",
    "The test fork trigger moves the chain into Dijkstra at epoch 2 but leaves the protocol version at 10; two hard-fork initiation actions, ratified by the DReps and the pool, raised it to 11 and then 12 before any transaction or tool check ran.",
    "Every check below ran against protocol version 12 except the Ogmios and Kupo runs and the handshake probe, which do not depend on it.",
-   "The pallas-chain-sync, pallas-transactions, cml-decoding and js-sdk-transactions checks ran on 2026-10-22 against a fresh devnet from the same recipe, after the other seven checks reproduced there unchanged (same results, error messages and decoder offsets; only slots and hashes differ)."
+   "The pallas-chain-sync, pallas-transactions, cml-decoding and js-sdk-transactions checks ran on 2026-10-22 against a fresh devnet from the same recipe, after the other seven checks reproduced there unchanged (same results, error messages and decoder offsets; only slots and hashes differ).",
+   "The db-sync-and-blockfrost check and db-sync's handshake result ran on 2026-10-22 on another fresh devnet. db-sync is given a copy of the Shelley genesis whose systemStart is rounded to Byron's whole-second startTime, which it requires and cardano-testnet does not write, so its slot times are off by under a second."
   ],
   "recipe": "scripts/readiness/devnet/README.md"
  },
@@ -45,16 +46,18 @@
     { "kind": "component", "id": "gouroboros", "version": "v0.213.0", "outcome": "pass" },
     { "kind": "component", "id": "gouroboros", "version": "v0.213.9", "outcome": "pass" },
     { "kind": "component", "id": "ogmios", "version": "v7.0.0", "outcome": "pass" },
-    { "kind": "component", "id": "kupo", "version": "v2.12", "outcome": "pass" }
+    { "kind": "component", "id": "kupo", "version": "v2.12", "outcome": "pass" },
+    { "kind": "component", "id": "cardano-db-sync", "version": "13.7.2.1", "outcome": "pass", "note": "2026-10-22: chain-sync ran and indexed every Conway block from the V23-only node." }
    ],
    "observed": [
     "offered V16..V22: refused, reason VersionMismatch ['V23']",
     "offered V23..V23: accepted V23 [42, False]",
     "gouroboros 0.208.5: dial: handshake: version mismatch (supported versions: [32791])",
     "gouroboros v0.213.0 and v0.213.9: handshake ok; mempool capacity 25294848 size 0 transactions 0",
-    "ogmios v7.0.0 health at start: \"connectionStatus\":\"connected\",\"currentEra\":\"dijkstra\""
+    "ogmios v7.0.0 health at start: \"connectionStatus\":\"connected\",\"currentEra\":\"dijkstra\"",
+    "cardano-db-sync 13.7.2.1 (2026-10-22): Starting ChainSync client; Insert Conway Block: epoch 0, slot 16, block 0, then blocks through 18"
    ],
-   "recipe": ["scripts/readiness/devnet/handshake.py", "scripts/readiness/devnet/probe/main.go", "scripts/readiness/devnet/services.sh"]
+   "recipe": ["scripts/readiness/devnet/handshake.py", "scripts/readiness/devnet/probe/main.go", "scripts/readiness/devnet/services.sh", "scripts/readiness/devnet/service-layer.sh"]
   },
   {
    "id": "cross-era-submission",
@@ -202,6 +205,22 @@
     "the five Conway-built envelopes (84a3/84a4) and three Dijkstra-built envelopes: decoded, round-trip exact"
    ],
    "recipe": ["scripts/readiness/devnet/js-probe/probe.cjs", "scripts/readiness/devnet/transactions.sh"]
+  },
+  {
+   "id": "db-sync-and-blockfrost",
+   "title": "cardano-db-sync 13.7.2.1 stops at the first Dijkstra block, and Blockfrost RYO serves the pre-fork chain as current",
+   "summary": "db-sync on Postgres 16 indexed all 19 Conway blocks of the devnet, then failed to decode the first Dijkstra block in chain-sync and kept reconnecting and failing every few seconds, with the same DeserialiseFailure as Kupo; nothing after the fork is indexed. A run started while db-sync was still creating its indexes at the fork committed only one block and then went silent. Blockfrost RYO v6.8.1 on that database reports the last Conway block, epoch 1 parameters at protocol version 10 and an era list without Dijkstra as current while the node is in Dijkstra at protocol version 12. Its own Dijkstra handling (the protocol table that ends at 11, the Conway parameter columns) is not reached, because db-sync records no Dijkstra epoch. Koios was not run: it reads the same db-sync tables.",
+   "results": [
+    { "kind": "component", "id": "cardano-db-sync", "version": "13.7.2.1", "outcome": "fail" },
+    { "kind": "component", "id": "blockfrost-backend-ryo", "version": "v6.8.1", "outcome": "fail", "note": "Inherited: it serves db-sync's last pre-fork state as current; its own Dijkstra code paths were not reached." }
+   ],
+   "observed": [
+    "node tip: {\"epoch\":40,\"era\":\"Dijkstra\",\"block\":378}",
+    "db-sync running; blocks indexed: 19, highest: 18 (slot 355, epoch 1); the chain has 19 Conway blocks",
+    "db-sync: 30 chain-sync decoder failures in 150 s: DecoderFailure (ChainSync (HardForkBlock ... DijkstraEra ...)) ServerHasAgency (SingNext SingCanAwait) (DeserialiseFailure 863 \"expected list len or indef\")",
+    "blockfrost /blocks/latest: {\"height\":18,\"slot\":355,\"epoch\":1}; /epochs/latest/parameters: {\"epoch\":1,\"protocol_major_ver\":10}; /network/eras: two eras, none for Dijkstra"
+   ],
+   "recipe": ["scripts/readiness/devnet/service-layer.sh"]
   }
  ]
 }

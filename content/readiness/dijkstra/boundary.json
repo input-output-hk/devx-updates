@@ -2571,8 +2571,8 @@
           "surfaces": [
             "node-to-client-protocol"
           ],
-          "status": "released",
-          "summary": "Takes its version table from ouroboros-consensus; the release builds on cardano-node 11.0.1 (ouroboros-consensus 3.0.1), which includes V23.",
+          "status": "verified",
+          "summary": "Takes its version table from ouroboros-consensus; the release builds on cardano-node 11.0.1 (ouroboros-consensus 3.0.1), which includes V23. On the devnet, 13.7.2.1 handshakes with the V23-only node and indexes every Conway block (devnet check n2c-handshake).",
           "releasedIn": {
             "tag": "13.7.2.1",
             "date": "2026-06-17"
@@ -2585,6 +2585,11 @@
               "path": "cardano-db-sync/src/Cardano/DbSync/Sync.hs",
               "line": 75,
               "quote": "import Ouroboros.Consensus.Node.NetworkProtocolVersion (BlockNodeToClientVersion, supportedNodeToClientVersions)"
+            },
+            {
+              "kind": "devnet",
+              "check": "n2c-handshake",
+              "version": "13.7.2.1"
             }
           ]
         },
@@ -2597,7 +2602,7 @@
             "stake-pool-registration"
           ],
           "status": "gap",
-          "summary": "Main has Dijkstra code paths marked TODO(Dijkstra) on libraries from CHaP index 2026-05-03 (cardano-ledger-dijkstra 0.2.0.1); the integration issue is open and schema changes for new fields are not visible. No branch or open pull request targets the 11.2 component set.",
+          "summary": "Main has Dijkstra code paths marked TODO(Dijkstra) on libraries from CHaP index 2026-05-03 (cardano-ledger-dijkstra 0.2.0.1); the integration issue is open and schema changes for new fields are not visible. No branch or open pull request targets the 11.2 component set. On the devnet, 13.7.2.1 cannot decode the first Dijkstra block and indexes nothing after the fork (devnet check db-sync-and-blockfrost).",
           "evidence": [
             {
               "kind": "source",
@@ -2621,6 +2626,11 @@
               "title": "Integrate Dijkstra",
               "state": "open",
               "date": "2026-04-30"
+            },
+            {
+              "kind": "devnet",
+              "check": "db-sync-and-blockfrost",
+              "version": "13.7.2.1"
             }
           ]
         }

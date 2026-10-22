@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-22T11:08:51.307Z",
+ "generatedAt": "2026-10-22T12:38:17.768Z",
  "rulesDigest": "21943e437a6632aceb372d2843953221b5a9b47e337d6cf9289182f3e3c01f7d",
  "changeTarget": {
   "name": "Dijkstra",
@@ -1161,7 +1161,7 @@
       {
        "channel": "implements",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 0,
        "scope": "shipped"
       },
@@ -2857,7 +2857,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 20,
        "scope": "shipped"
       },
@@ -4458,7 +4458,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 1,
        "scope": "shipped"
       },
@@ -5940,7 +5940,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 123,
        "scope": "shipped"
       },
@@ -8509,7 +8509,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 9,
        "scope": "shipped"
       },
@@ -12376,7 +12376,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 14,
        "scope": "shipped"
       },
@@ -13548,7 +13548,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 165,
        "scope": "shipped"
       },
@@ -18680,7 +18680,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 46,
        "scope": "shipped"
       },
@@ -21826,7 +21826,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 8,
        "scope": "shipped"
       },
@@ -22329,7 +22329,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 71,
        "scope": "shipped"
       },
@@ -23106,7 +23106,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 5,
        "scope": "shipped"
       },
@@ -23118,7 +23118,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "plutus-language",
@@ -27642,7 +27642,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 35,
        "scope": "shipped"
       },
@@ -28364,7 +28364,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 33,
        "scope": "shipped"
       },
@@ -29440,12 +29440,12 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 134,
        "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "plutus-language",
@@ -36442,7 +36442,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 4,
        "scope": "shipped"
       },
@@ -39348,7 +39348,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 6,
        "scope": "auxiliary"
       },
@@ -41406,7 +41406,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 2,
        "scope": "shipped"
       },
@@ -42119,7 +42119,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 15,
        "scope": "shipped"
       },
@@ -42762,7 +42762,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 22,
        "scope": "shipped"
       },
@@ -45080,7 +45080,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 258,
        "scope": "shipped"
       },
@@ -45106,7 +45106,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "plutus-language",
@@ -49502,7 +49502,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 77,
        "scope": "shipped"
       },
@@ -53823,12 +53823,12 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "plutus-language",
@@ -55735,12 +55735,12 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 55,
        "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "plutus-language",
@@ -56123,12 +56123,12 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 62,
        "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "plutus-language",
@@ -58880,7 +58880,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 14,
        "scope": "shipped"
       },
@@ -70146,7 +70146,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 123,
        "scope": "shipped"
       },
@@ -70528,7 +70528,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 62,
        "scope": "shipped"
       },
@@ -71003,7 +71003,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 8,
        "scope": "shipped"
       },
@@ -71015,7 +71015,7 @@
        "scope": "auxiliary"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "plutus-language",
@@ -71700,12 +71700,12 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 40,
        "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "plutus-language",
@@ -72297,12 +72297,12 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 6,
        "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "plutus-language",
@@ -72646,7 +72646,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 161,
        "scope": "shipped"
       },
@@ -73432,7 +73432,7 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 23,
        "scope": "shipped"
       },
@@ -74243,12 +74243,12 @@
       {
        "channel": "service",
        "via": "cardano-db-sync",
-       "readiness": "released",
+       "readiness": "verified",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "verified"
     },
     {
      "surface": "protocol-parameters",

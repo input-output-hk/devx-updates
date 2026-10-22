@@ -79,5 +79,5 @@ test("the committed devnet register matches the committed registers and recipe",
   for (const path of [devnet.run.recipe, ...devnet.checks.flatMap((c) => c.recipe)]) assert.ok(existsSync(path), `${path} exists`);
   assert.deepEqual(resultsFor(devnet, "change", "header-version-info").map((r) => r.result.outcome), ["fail"], "the node emits the ten-field header");
   const verified = boundary.components.filter((c) => c.assessments.some((a) => a.status === "verified")).map((c) => c.id).sort();
-  assert.deepEqual(verified, ["gouroboros", "kupo", "ogmios"]);
+  assert.deepEqual(verified, ["cardano-db-sync", "gouroboros", "kupo", "ogmios"]);
 });
