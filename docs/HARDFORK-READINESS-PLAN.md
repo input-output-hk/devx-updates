@@ -14,9 +14,9 @@ This checklist records delivered behavior and verification, not just code starte
 - [x] Phase 5: resumable refresh, snapshot comparisons, freshness reporting, and scheduled collection for registered profiles.
 - [ ] Phase 6: target-specific compatibility testing. Gated on the selected hardfork environment and change analysis.
 - [x] R1: Dijkstra change register and surface vocabulary — 19 changes and 2 checked-unchanged areas, 73 verified citations; `header-version-info` corrected by the devnet (the node still emits the ten-field header). JSON representations beyond the era commands remain a known limit.
-- [ ] R2: boundary-component register with per-component Dijkstra status — 61 components, 189 evidence items, all assessed (worst status: 48 gap, 2 no-evidence, 1 tracked, 8 in-progress, 2 released); weekly re-observation and hosted API-provider entries remain.
-- [ ] R3: surface classification of all 269 catalog tools — full scan (227 scanned, 42 without public source); every inherited gap decided from shipped code (493 lead entries, 1161 decisions, 102 tools with a confirmed gap, none unreviewed); unlock report, fix order and upgrade readings derived.
-- [ ] R4: devnet/testnet verification of boundary components, then representative consumers — first run 2026-10-20 (`devnet.json`: 7 checks, 28 results, 12 failing); service layer with Postgres, Haskell tools and CDDL-following codecs remain.
+- [ ] R2: boundary-component register with per-component Dijkstra status — 61 components, 200 evidence items, all assessed (worst status: 49 gap, 2 no-evidence, 1 tracked, 7 in-progress, 2 released); weekly re-observation and hosted API-provider entries remain.
+- [ ] R3: surface classification of all 269 catalog tools — full scan (227 scanned, 42 without public source); every inherited gap decided from shipped code (515 lead entries, 1205 decisions, 110 tools with a confirmed gap, none unreviewed); unlock report, fix order and upgrade readings derived.
+- [ ] R4: devnet/testnet verification of boundary components, then representative consumers — first run 2026-10-20, reproduced and extended to the codecs 2026-10-22 (`devnet.json`: 11 checks, 36 results, 18 failing); service layer with Postgres and the Haskell tools remain.
 - [ ] R5: fix propagation through direct reverse dependencies and maintainer outreach.
 
 ## Plan revision (2026-10-19): change-first assessment
@@ -402,6 +402,38 @@ Next: db-sync with Postgres, Blockfrost and Koios on a machine with more disk;
 the Haskell bump-ready tools; and devnet runs of the codecs whose block support
 follows the CDDL header (Pallas main, CML, cardano-js-sdk).
 
+### R4 codec runs (2026-10-22)
+
+Recipe step 9 (`scripts/readiness/devnet/README.md`) chain-syncs the devnet
+through Pallas, dumps every raw block, and decodes the blocks and the step-5
+transactions with each codec. Four new checks in `devnet.json`:
+
+- `pallas-chain-sync`: no Pallas revision decodes a Dijkstra block. v1.4.0
+  and main have no Dijkstra era in traversal; the Dijkstra decoder (PRs #800,
+  #817) is on Pallas's `dijkstra` branch, not main as R2 recorded, behind the
+  `unstable` feature. Its header requires the CDDL's twelve fields, and the
+  node emits ten. That header has been in Pallas's Dijkstra primitives since
+  #799, so R2's note that Pallas matched the node's header was wrong.
+- `pallas-transactions`: `MultiEraTx::decode` does not detect the
+  three-element mempool form in any revision; `decode_for_era(Dijkstra)` on
+  the branch reads all seven captured transactions.
+- `cml-decoding`: CML 6.2.0 decodes none of 1017 Dijkstra blocks and no
+  three-element transaction; it has no Dijkstra branch or pull request.
+- `js-sdk-transactions`: `@cardano-sdk/core` 0.47.1 decodes all fifteen
+  transactions, re-encodes them byte for byte and reproduces their ids. Only
+  plain payments, a deposit registration, a required signer and metadata were
+  covered.
+
+R2 now records Pallas era identity and block encoding as `gap`, with no work
+toward the node's header; CML and cardano-js-sdk cite their checks without a
+status change. Reclassification changed 24 tools that reach Pallas for those
+surfaces. The 22 new leads were read at their classified revisions (method
+line added to `leads.json`): 9 confirmed (mithril, cncli, dolos, oura,
+scrolls, boros, cardaminal, lace-anatomy, mumak) and 13 not-reached (the
+tools that name the era themselves or use Pallas for primitives, addresses
+and hashing). Pallas enters the fix order at step 7: 17 upstream fixes now
+unlock 79 tools; tools with a confirmed gap rise from 102 to 110.
+
 ### Current state and handoff (2026-10-21)
 
 The session moves to a machine with more disk. Everything needed is in the
@@ -418,12 +450,12 @@ push the new machine starts from the pre-R1 state. `AGENTS.md` has an uncommitte
 | Register | File | State |
 | --- | --- | --- |
 | R1 changes | `content/readiness/dijkstra/changes.json` | 19 changes, 73 citations, all re-verified |
-| R2 boundary | `boundary.json` | 61 components; gouroboros, Ogmios and Kupo `verified` for V23 only |
+| R2 boundary | `boundary.json` | 61 components, 200 evidence items; gouroboros, Ogmios and Kupo `verified` for V23 only; Pallas now `gap` (2026-10-22) |
 | R3 classification | `classification.json` | 269 tools, reclassified after the devnet |
-| R3 leads | `leads.json` | 1161 decisions, 0 unreviewed, 0 stale |
-| Unlocks | `unlocks.json` | fix order: 16 upstream fixes unlock 74 tools; bump-ready: Marlowe, Marconi |
+| R3 leads | `leads.json` | 1205 decisions, 0 unreviewed, 0 stale |
+| Unlocks | `unlocks.json` | fix order: 17 upstream fixes unlock 79 tools; bump-ready: Marlowe, Marconi |
 | Upgrades | `upgrades.json` | 11 readings (8 own-work, 1 prepared, 2 generic) |
-| R4 devnet | `devnet.json` | 7 checks, 28 results, 12 failing |
+| R4 devnet | `devnet.json` | 11 checks, 36 results, 18 failing |
 
 All of these pass `check-changes`, `check-boundary`, `check-leads` and
 `check-upgrades` with `--verify-sources`, and `check-devnet`; 148 readiness
@@ -435,6 +467,9 @@ tests pass; `/map/dijkstra` and tool pages were checked in a browser.
    (`scripts/readiness/devnet/README.md`, steps 1–8; ~2.5 GB). The node
    artifact is IOG Hydra build 15172667 for `34ae34db`; if 11.2 is tagged by
    then, compare its revision with `changes.json`'s `target` first.
+   Done 2026-10-22: all eight steps reproduce on the new machine — the same 7
+   checks, 28 results and 12 failures, with identical error messages and
+   decoder offsets; only slots and hashes differ. 11.2 was still untagged.
 2. Service layer (needs ~10 GB more): cardano-db-sync with Postgres against the
    devnet, then Blockfrost RYO and Koios on top of it. Ogmios v7.0.0 and Kupo
    v2.12 already fail at the first Dijkstra block; record each as a check in
@@ -443,6 +478,7 @@ tests pass; `/map/dijkstra` and tool pages were checked in a browser.
    through it), CML, cardano-js-sdk. gouroboros shows that following the CDDL
    header breaks against the node, so each needs a decode run of the node's
    first Dijkstra block (`probe first-blocks` writes it as hex).
+   Done 2026-10-22; see [R4 codec runs](#r4-codec-runs-2026-10-22).
 4. The two bump-ready Haskell tools, Marlowe and Marconi, built against
    cardano-api 11.8.0.0.
 5. Remaining R2 work: hosted API providers (owner), weekly re-observation.

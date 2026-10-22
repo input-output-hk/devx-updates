@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-20T18:59:07.851Z",
+ "generatedAt": "2026-10-22T11:08:51.307Z",
  "rulesDigest": "21943e437a6632aceb372d2843953221b5a9b47e337d6cf9289182f3e3c01f7d",
  "changeTarget": {
   "name": "Dijkstra",
@@ -137,7 +137,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -239,7 +239,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -8374,14 +8374,14 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       },
@@ -8441,14 +8441,14 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       },
@@ -9033,6 +9033,656 @@
    "activity": {
     "archived": false,
     "pushedAt": "2026-10-20T09:02:13Z"
+   }
+  },
+  {
+   "id": "pallas",
+   "repo": "txpipe/pallas",
+   "revision": "e6c38ac567ee907db6a3cfdbbcaae1b47908d839",
+   "scan": {
+    "status": "scanned",
+    "files": 508,
+    "skipped": 37
+   },
+   "exposure": "implements",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "amaru",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 15,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 872,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:segregated-block-body",
+       "readiness": "unassessed",
+       "lines": 42,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 37,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "consensus-participation",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "amaru",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "amaru",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:closed-era-list",
+       "readiness": "unassessed",
+       "lines": 13,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-configuration",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:genesis-config",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "unassessed"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "pallas",
+       "readiness": "released",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:node-to-client",
+       "readiness": "unassessed",
+       "lines": 103,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:node-socket",
+       "readiness": "upstream",
+       "lines": 2,
+       "scope": "auxiliary"
+      }
+     ],
+     "readiness": "released"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 46,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "plutus-script-context",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:script-context",
+       "readiness": "unassessed",
+       "lines": 48,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "unassessed"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 189,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:pool-registration",
+       "readiness": "unassessed",
+       "lines": 41,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "amaru",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 15,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:legacy-stake-certificate",
+       "readiness": "unassessed",
+       "lines": 36,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 872,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:submit-api",
+       "readiness": "upstream",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 37,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 0,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:amaru",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pallas-validate/Cargo.toml",
+       "line": 28,
+       "quote": "amaru-uplc = { version = \"0.1.0\", optional = true }"
+      }
+     ],
+     "pins": [
+      {
+       "path": "pallas-validate/Cargo.toml",
+       "line": 28,
+       "quote": "amaru-uplc = { version = \"0.1.0\", optional = true }"
+      }
+     ]
+    },
+    {
+     "rule": "dependency:utxorpc",
+     "files": 3,
+     "lines": 15,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 22,
+       "quote": "\"pallas-utxorpc\","
+      },
+      {
+       "path": "Cargo.toml",
+       "line": 63,
+       "quote": "pallas-utxorpc = { version = \"=1.4.0\", path = \"pallas-utxorpc\" }"
+      },
+      {
+       "path": "pallas-utxorpc/Cargo.toml",
+       "line": 2,
+       "quote": "name = \"pallas-utxorpc\""
+      }
+     ],
+     "pins": [
+      {
+       "path": "Cargo.toml",
+       "line": 63,
+       "quote": "pallas-utxorpc = { version = \"=1.4.0\", path = \"pallas-utxorpc\" }"
+      },
+      {
+       "path": "pallas-utxorpc/Cargo.toml",
+       "line": 16,
+       "quote": "utxorpc-spec = { version = \"0.19\", default-features = false, features = ["
+      }
+     ]
+    },
+    {
+     "rule": "marker:closed-era-list",
+     "files": 16,
+     "lines": 13,
+     "auxLines": 0,
+     "docLines": 4,
+     "examples": [
+      {
+       "path": "pallas-configs/src/lib.rs",
+       "line": 26,
+       "quote": "//! - [`byron`], [`shelley`], [`alonzo`], [`conway`] — one module per era,"
+      },
+      {
+       "path": "pallas-primitives/src/conway/defs.cddl",
+       "line": 289,
+       "quote": "; Allegra, Mary, Alonzo, Babbage, and Conway."
+      },
+      {
+       "path": "pallas-primitives/src/lib.rs",
+       "line": 33,
+       "quote": "//! - [`byron`], [`alonzo`], [`babbage`], [`conway`] — one module per era,"
+      }
+     ]
+    },
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 35,
+     "lines": 189,
+     "auxLines": 39,
+     "docLines": 11,
+     "examples": [
+      {
+       "path": "pallas-configs/src/alonzo.rs",
+       "line": 190,
+       "quote": "pub struct CostModel(Language, Vec<i64>);"
+      },
+      {
+       "path": "pallas-configs/src/alonzo.rs",
+       "line": 192,
+       "quote": "impl From<CostModel> for Vec<i64> {"
+      },
+      {
+       "path": "pallas-configs/src/alonzo.rs",
+       "line": 193,
+       "quote": "fn from(value: CostModel) -> Self {"
+      }
+     ]
+    },
+    {
+     "rule": "marker:genesis-config",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pallas-configs/src/conway.rs",
+       "line": 96,
+       "quote": ".join(format!(\"{network}-conway-genesis.json\"));"
+      }
+     ]
+    },
+    {
+     "rule": "marker:legacy-stake-certificate",
+     "files": 11,
+     "lines": 36,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pallas-hardano/src/display/haskell_display.rs",
+       "line": 2291,
+       "quote": "StakeRegistration(cred) => {"
+      },
+      {
+       "path": "pallas-hardano/src/display/haskell_display.rs",
+       "line": 2294,
+       "quote": "StakeDeregistration(cred) => {"
+      },
+      {
+       "path": "pallas-network/src/miniprotocols/localtxsubmission/codec.rs",
+       "line": 520,
+       "quote": "Ok(Certificate::StakeRegistration(a))"
+      }
+     ]
+    },
+    {
+     "rule": "marker:node-to-client",
+     "files": 29,
+     "lines": 103,
+     "auxLines": 1,
+     "docLines": 14,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 31,
+       "quote": "\"examples/n2c-miniprotocols\","
+      },
+      {
+       "path": "pallas-network/src/facades.rs",
+       "line": 13,
+       "quote": "use crate::miniprotocols::handshake::{Confirmation, VersionNumber, VersionTable, n2c, n2n};"
+      },
+      {
+       "path": "pallas-network/src/facades.rs",
+       "line": 392,
+       "quote": "/// Client of N2C Ouroboros"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 18,
+     "lines": 46,
+     "auxLines": 4,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pallas-hardano/src/display/haskell_display.rs",
+       "line": 546,
+       "quote": "PlutusV3 => \"PlutusV3\".to_string(),"
+      },
+      {
+       "path": "pallas-hardano/src/display/haskell_display.rs",
+       "line": 1758,
+       "quote": "\"PlutusScript PlutusV3 {}\","
+      },
+      {
+       "path": "pallas-hardano/src/display/haskell_display.rs",
+       "line": 2655,
+       "quote": "display_cost_model(3, &self.plutus_v3),"
+      }
+     ]
+    },
+    {
+     "rule": "marker:pool-registration",
+     "files": 19,
+     "lines": 41,
+     "auxLines": 11,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pallas-hardano/src/display/haskell_display.rs",
+       "line": 2302,
+       "quote": "PoolRegistration {"
+      },
+      {
+       "path": "pallas-hardano/src/display/haskell_display.rs",
+       "line": 2313,
+       "quote": "\"RegPool (PoolParams {{ppId = {}, ppVrf = {}, ppPledge = {}, ppCost = {}, ppMargin = {}, ppRewardAccount = {}, ppOwners = {}, ppRelays = {}, ppMetadata = {}}})\","
+      },
+      {
+       "path": "pallas-network/src/miniprotocols/localstate/queries_v16/mod.rs",
+       "line": 495,
+       "quote": "// Essentially the `PoolRegistration` component of `Certificate` at"
+      }
+     ]
+    },
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 93,
+     "lines": 872,
+     "auxLines": 112,
+     "docLines": 19,
+     "examples": [
+      {
+       "path": "pallas-addresses/src/byron.rs",
+       "line": 2,
+       "quote": "minicbor::{self, Decode, Encode, bytes::ByteVec},"
+      },
+      {
+       "path": "pallas-addresses/src/byron.rs",
+       "line": 21,
+       "quote": "impl<'b, C> minicbor::Decode<'b, C> for AddrDistr {"
+      },
+      {
+       "path": "pallas-addresses/src/byron.rs",
+       "line": 22,
+       "quote": "fn decode(d: &mut minicbor::Decoder<'b>, ctx: &mut C) -> Result<Self, minicbor::decode::Error> {"
+      }
+     ]
+    },
+    {
+     "rule": "marker:script-context",
+     "files": 6,
+     "lines": 48,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pallas-validate/src/phase2/evaluator.rs",
+       "line": 37,
+       "quote": "script_context: &PlutusData,"
+      },
+      {
+       "path": "pallas-validate/src/phase2/evaluator.rs",
+       "line": 50,
+       "quote": "let script_context_term = plutus_data_to_term(&arena, script_context);"
+      },
+      {
+       "path": "pallas-validate/src/phase2/mod.rs",
+       "line": 4,
+       "quote": "pub mod script_context;"
+      }
+     ]
+    },
+    {
+     "rule": "marker:segregated-block-body",
+     "files": 13,
+     "lines": 42,
+     "auxLines": 1,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "pallas-primitives/src/alonzo/defs.cddl",
+       "line": 3,
+       "quote": ", transaction_bodies         : [* transaction_body]"
+      },
+      {
+       "path": "pallas-primitives/src/alonzo/defs.cddl",
+       "line": 4,
+       "quote": ", transaction_witness_sets   : [* transaction_witness_set]"
+      },
+      {
+       "path": "pallas-primitives/src/alonzo/defs.cddl",
+       "line": 6,
+       "quote": ", invalid_transactions       : [* transaction_index ]"
+      }
+     ]
+    },
+    {
+     "rule": "service:node-socket",
+     "files": 2,
+     "lines": 0,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "examples/crawler/src/main.rs",
+       "line": 100,
+       "quote": "#[arg(short, long, env(\"CARDANO_NODE_SOCKET_PATH\"))]"
+      },
+      {
+       "path": "examples/n2c-miniprotocols/src/main.rs",
+       "line": 263,
+       "quote": "const SOCKET_PATH: &str = \"/tmp/node.socket\";"
+      }
+     ]
+    },
+    {
+     "rule": "service:submit-api",
+     "files": 1,
+     "lines": 3,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pallas-hardano/src/display/haskell_error.rs",
+       "line": 8,
+       "quote": "/// Mimicks the json data structure of the error response from the cardano-submit-api"
+      },
+      {
+       "path": "pallas-hardano/src/display/haskell_error.rs",
+       "line": 24,
+       "quote": "/// <https://github.com/IntersectMBO/cardano-node/blob/9dbf0b141e67ec2dfd677c77c63b1673cf9c5f3e/cardano-submit-api/src/Cardano/TxSubmit/Types.hs#L54>"
+      },
+      {
+       "path": "pallas-hardano/src/display/haskell_error.rs",
+       "line": 35,
+       "quote": "// https://github.com/IntersectMBO/cardano-node/blob/9dbf0b141e67ec2dfd677c77c63b1673cf9c5f3e/cardano-submit-api/src/Cardano/TxSubmit/Types.hs#L92"
+      }
+     ]
+    },
+    {
+     "rule": "service:utxorpc",
+     "files": 12,
+     "lines": 37,
+     "auxLines": 1,
+     "docLines": 21,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 22,
+       "quote": "\"pallas-utxorpc\","
+      },
+      {
+       "path": "Cargo.toml",
+       "line": 63,
+       "quote": "pallas-utxorpc = { version = \"=1.4.0\", path = \"pallas-utxorpc\" }"
+      },
+      {
+       "path": "pallas-utxorpc/Cargo.toml",
+       "line": 2,
+       "quote": "name = \"pallas-utxorpc\""
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-10-15T14:48:30Z"
    }
   },
   {
@@ -12283,6 +12933,439 @@
    }
   },
   {
+   "id": "cncli",
+   "repo": "cardano-community/cncli",
+   "revision": "54700531bbb473886f482ce8d8010d0ec89a7465",
+   "scan": {
+    "status": "scanned",
+    "files": 53,
+    "skipped": 7
+   },
+   "exposure": "implements",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "cncli",
+       "readiness": "in-progress",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 13,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "cardano-cli",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "service:cardano-cli",
+       "readiness": "upstream",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "upstream"
+    },
+    {
+     "surface": "consensus-participation",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "cncli",
+       "readiness": "no-evidence",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "no-evidence"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "dependency:cardano-ledger",
+       "readiness": "upstream",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:closed-era-list",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "released",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:node-socket",
+       "readiness": "upstream",
+       "lines": 8,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "upstream"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "dependency:cardano-ledger",
+       "readiness": "upstream",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:pool-registration",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "dependency:cardano-ledger",
+       "readiness": "upstream",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 13,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "dependency:cardano-ledger",
+       "readiness": "upstream",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:cardano-ledger",
+     "files": 2,
+     "lines": 0,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "tests/reference/leaderlog/cabal.project",
+       "line": 20,
+       "quote": "cardano-ledger-core == 1.21.0.0,"
+      },
+      {
+       "path": "tests/reference/leaderlog/leaderlog-oracle.cabal",
+       "line": 15,
+       "quote": "cardano-ledger-core == 1.21.0.0,"
+      }
+     ]
+    },
+    {
+     "rule": "dependency:pallas",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 15,
+       "quote": "pallas-network = { git = \"https://github.com/txpipe/pallas\", rev = \"d1dfe10e2bac83c7d3b5371a72814354a5acd1ba\" }"
+      }
+     ]
+    },
+    {
+     "rule": "dependency:pallas-codecs",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 16,
+       "quote": "pallas-traverse = { git = \"https://github.com/txpipe/pallas\", rev = \"d1dfe10e2bac83c7d3b5371a72814354a5acd1ba\" }"
+      }
+     ]
+    },
+    {
+     "rule": "marker:closed-era-list",
+     "files": 2,
+     "lines": 2,
+     "auxLines": 0,
+     "docLines": 2,
+     "examples": [
+      {
+       "path": "src/lib.rs",
+       "line": 177,
+       "quote": "help = \"Consensus algorithm - Alonzo and earlier uses tpraos, Babbage uses praos, Conway uses cpraos\""
+      },
+      {
+       "path": "src/lib.rs",
+       "line": 292,
+       "quote": "help = \"Consensus algorithm - Alonzo and earlier uses tpraos, Babbage uses praos, Conway uses cpraos\""
+      },
+      {
+       "path": "USAGE.md",
+       "line": 316,
+       "quote": "Consensus algorithm - Alonzo and earlier uses tpraos, Babbage uses praos, Conway uses cpraos [default:"
+      }
+     ]
+    },
+    {
+     "rule": "marker:pool-registration",
+     "files": 2,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "src/lib.rs",
+       "line": 318,
+       "quote": "help = \"pool's vrf hash in hex retrieved from 'cardano-cli query pool-params...'\""
+      },
+      {
+       "path": "USAGE.md",
+       "line": 616,
+       "quote": "pool's vrf hash in hex retrieved from 'cardano-cli query pool-params...'"
+      }
+     ]
+    },
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 4,
+     "lines": 13,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 21,
+       "quote": "minicbor = { version = \"0.26.5\", features = [\"std\", \"half\", \"derive\"] }"
+      },
+      {
+       "path": "Cargo.toml",
+       "line": 28,
+       "quote": "serde_cbor = \"0.11\""
+      },
+      {
+       "path": "src/nodeclient/leaderlog/deserialize.rs",
+       "line": 3,
+       "quote": "use serde_cbor::{de, Value};"
+      }
+     ]
+    },
+    {
+     "rule": "service:cardano-cli",
+     "files": 2,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "src/lib.rs",
+       "line": 318,
+       "quote": "help = \"pool's vrf hash in hex retrieved from 'cardano-cli query pool-params...'\""
+      },
+      {
+       "path": "USAGE.md",
+       "line": 616,
+       "quote": "pool's vrf hash in hex retrieved from 'cardano-cli query pool-params...'"
+      }
+     ]
+    },
+    {
+     "rule": "service:node-socket",
+     "files": 6,
+     "lines": 8,
+     "auxLines": 0,
+     "docLines": 7,
+     "examples": [
+      {
+       "path": "scripts/cncli-leaderlog-current.sh",
+       "line": 7,
+       "quote": ": \"${CARDANO_NODE_SOCKET_PATH:?Set your node socket path}\""
+      },
+      {
+       "path": "scripts/cncli-leaderlog-current.sh",
+       "line": 8,
+       "quote": "export CARDANO_NODE_SOCKET_PATH"
+      },
+      {
+       "path": "scripts/cncli-leaderlog-next.sh",
+       "line": 7,
+       "quote": ": \"${CARDANO_NODE_SOCKET_PATH:?Set your node socket path}\""
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-10-18T22:20:24Z"
+   }
+  },
+  {
    "id": "dolos",
    "repo": "txpipe/dolos",
    "revision": "378b8b0eda64d7ba3364216224155e461fe56cb0",
@@ -12314,7 +13397,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -12403,7 +13486,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -15618,14 +16701,14 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
       },
@@ -15644,7 +16727,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "consensus-participation",
@@ -15693,14 +16776,14 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 11,
        "scope": "shipped"
       },
@@ -18381,7 +19464,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -18429,7 +19512,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -21920,7 +23003,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
       },
@@ -21975,7 +23058,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
       },
@@ -25024,7 +26107,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -25071,7 +26154,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
@@ -25462,14 +26545,14 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -25530,14 +26613,14 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -25991,7 +27074,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       },
@@ -26003,7 +27086,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -26025,7 +27108,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
       },
@@ -26037,7 +27120,7 @@
        "scope": "auxiliary"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "plutus-language",
@@ -31419,439 +32502,6 @@
    }
   },
   {
-   "id": "cncli",
-   "repo": "cardano-community/cncli",
-   "revision": "54700531bbb473886f482ce8d8010d0ec89a7465",
-   "scan": {
-    "status": "scanned",
-    "files": 53,
-    "skipped": 7
-   },
-   "exposure": "implements",
-   "readiness": "no-evidence",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "cncli",
-       "readiness": "in-progress",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 13,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "cardano-cli",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "service:cardano-cli",
-       "readiness": "upstream",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "upstream"
-    },
-    {
-     "surface": "consensus-participation",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "cncli",
-       "readiness": "no-evidence",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "no-evidence"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "dependency:cardano-ledger",
-       "readiness": "upstream",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:closed-era-list",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "released",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:node-socket",
-       "readiness": "upstream",
-       "lines": 8,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "upstream"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "dependency:cardano-ledger",
-       "readiness": "upstream",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:pool-registration",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "dependency:cardano-ledger",
-       "readiness": "upstream",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 13,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "dependency:cardano-ledger",
-       "readiness": "upstream",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:cardano-ledger",
-     "files": 2,
-     "lines": 0,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "tests/reference/leaderlog/cabal.project",
-       "line": 20,
-       "quote": "cardano-ledger-core == 1.21.0.0,"
-      },
-      {
-       "path": "tests/reference/leaderlog/leaderlog-oracle.cabal",
-       "line": 15,
-       "quote": "cardano-ledger-core == 1.21.0.0,"
-      }
-     ]
-    },
-    {
-     "rule": "dependency:pallas",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 15,
-       "quote": "pallas-network = { git = \"https://github.com/txpipe/pallas\", rev = \"d1dfe10e2bac83c7d3b5371a72814354a5acd1ba\" }"
-      }
-     ]
-    },
-    {
-     "rule": "dependency:pallas-codecs",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 16,
-       "quote": "pallas-traverse = { git = \"https://github.com/txpipe/pallas\", rev = \"d1dfe10e2bac83c7d3b5371a72814354a5acd1ba\" }"
-      }
-     ]
-    },
-    {
-     "rule": "marker:closed-era-list",
-     "files": 2,
-     "lines": 2,
-     "auxLines": 0,
-     "docLines": 2,
-     "examples": [
-      {
-       "path": "src/lib.rs",
-       "line": 177,
-       "quote": "help = \"Consensus algorithm - Alonzo and earlier uses tpraos, Babbage uses praos, Conway uses cpraos\""
-      },
-      {
-       "path": "src/lib.rs",
-       "line": 292,
-       "quote": "help = \"Consensus algorithm - Alonzo and earlier uses tpraos, Babbage uses praos, Conway uses cpraos\""
-      },
-      {
-       "path": "USAGE.md",
-       "line": 316,
-       "quote": "Consensus algorithm - Alonzo and earlier uses tpraos, Babbage uses praos, Conway uses cpraos [default:"
-      }
-     ]
-    },
-    {
-     "rule": "marker:pool-registration",
-     "files": 2,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "src/lib.rs",
-       "line": 318,
-       "quote": "help = \"pool's vrf hash in hex retrieved from 'cardano-cli query pool-params...'\""
-      },
-      {
-       "path": "USAGE.md",
-       "line": 616,
-       "quote": "pool's vrf hash in hex retrieved from 'cardano-cli query pool-params...'"
-      }
-     ]
-    },
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 4,
-     "lines": 13,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 21,
-       "quote": "minicbor = { version = \"0.26.5\", features = [\"std\", \"half\", \"derive\"] }"
-      },
-      {
-       "path": "Cargo.toml",
-       "line": 28,
-       "quote": "serde_cbor = \"0.11\""
-      },
-      {
-       "path": "src/nodeclient/leaderlog/deserialize.rs",
-       "line": 3,
-       "quote": "use serde_cbor::{de, Value};"
-      }
-     ]
-    },
-    {
-     "rule": "service:cardano-cli",
-     "files": 2,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "src/lib.rs",
-       "line": 318,
-       "quote": "help = \"pool's vrf hash in hex retrieved from 'cardano-cli query pool-params...'\""
-      },
-      {
-       "path": "USAGE.md",
-       "line": 616,
-       "quote": "pool's vrf hash in hex retrieved from 'cardano-cli query pool-params...'"
-      }
-     ]
-    },
-    {
-     "rule": "service:node-socket",
-     "files": 6,
-     "lines": 8,
-     "auxLines": 0,
-     "docLines": 7,
-     "examples": [
-      {
-       "path": "scripts/cncli-leaderlog-current.sh",
-       "line": 7,
-       "quote": ": \"${CARDANO_NODE_SOCKET_PATH:?Set your node socket path}\""
-      },
-      {
-       "path": "scripts/cncli-leaderlog-current.sh",
-       "line": 8,
-       "quote": "export CARDANO_NODE_SOCKET_PATH"
-      },
-      {
-       "path": "scripts/cncli-leaderlog-next.sh",
-       "line": 7,
-       "quote": ": \"${CARDANO_NODE_SOCKET_PATH:?Set your node socket path}\""
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-10-18T22:20:24Z"
-   }
-  },
-  {
    "id": "ouroboros-network-js",
    "repo": "StricaHQ/ouroboros-network-js",
    "revision": "f8b0870b2ce2b60db703c8b78f87b04b7b4d8c1b",
@@ -31927,656 +32577,6 @@
    "activity": {
     "archived": false,
     "pushedAt": "2026-09-22T10:43:44Z"
-   }
-  },
-  {
-   "id": "pallas",
-   "repo": "txpipe/pallas",
-   "revision": "e6c38ac567ee907db6a3cfdbbcaae1b47908d839",
-   "scan": {
-    "status": "scanned",
-    "files": 508,
-    "skipped": 37
-   },
-   "exposure": "implements",
-   "readiness": "in-progress",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "amaru",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 15,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 872,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:segregated-block-body",
-       "readiness": "unassessed",
-       "lines": 42,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 37,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "consensus-participation",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "amaru",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "amaru",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:closed-era-list",
-       "readiness": "unassessed",
-       "lines": 13,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-configuration",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:genesis-config",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "pallas",
-       "readiness": "released",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:node-to-client",
-       "readiness": "unassessed",
-       "lines": 103,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:node-socket",
-       "readiness": "upstream",
-       "lines": 2,
-       "scope": "auxiliary"
-      }
-     ],
-     "readiness": "released"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 46,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "plutus-script-context",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:script-context",
-       "readiness": "unassessed",
-       "lines": 48,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 189,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:pool-registration",
-       "readiness": "unassessed",
-       "lines": 41,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "amaru",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 15,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:legacy-stake-certificate",
-       "readiness": "unassessed",
-       "lines": 36,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 872,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:submit-api",
-       "readiness": "upstream",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 37,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 0,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:amaru",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "pallas-validate/Cargo.toml",
-       "line": 28,
-       "quote": "amaru-uplc = { version = \"0.1.0\", optional = true }"
-      }
-     ],
-     "pins": [
-      {
-       "path": "pallas-validate/Cargo.toml",
-       "line": 28,
-       "quote": "amaru-uplc = { version = \"0.1.0\", optional = true }"
-      }
-     ]
-    },
-    {
-     "rule": "dependency:utxorpc",
-     "files": 3,
-     "lines": 15,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 22,
-       "quote": "\"pallas-utxorpc\","
-      },
-      {
-       "path": "Cargo.toml",
-       "line": 63,
-       "quote": "pallas-utxorpc = { version = \"=1.4.0\", path = \"pallas-utxorpc\" }"
-      },
-      {
-       "path": "pallas-utxorpc/Cargo.toml",
-       "line": 2,
-       "quote": "name = \"pallas-utxorpc\""
-      }
-     ],
-     "pins": [
-      {
-       "path": "Cargo.toml",
-       "line": 63,
-       "quote": "pallas-utxorpc = { version = \"=1.4.0\", path = \"pallas-utxorpc\" }"
-      },
-      {
-       "path": "pallas-utxorpc/Cargo.toml",
-       "line": 16,
-       "quote": "utxorpc-spec = { version = \"0.19\", default-features = false, features = ["
-      }
-     ]
-    },
-    {
-     "rule": "marker:closed-era-list",
-     "files": 16,
-     "lines": 13,
-     "auxLines": 0,
-     "docLines": 4,
-     "examples": [
-      {
-       "path": "pallas-configs/src/lib.rs",
-       "line": 26,
-       "quote": "//! - [`byron`], [`shelley`], [`alonzo`], [`conway`] — one module per era,"
-      },
-      {
-       "path": "pallas-primitives/src/conway/defs.cddl",
-       "line": 289,
-       "quote": "; Allegra, Mary, Alonzo, Babbage, and Conway."
-      },
-      {
-       "path": "pallas-primitives/src/lib.rs",
-       "line": 33,
-       "quote": "//! - [`byron`], [`alonzo`], [`babbage`], [`conway`] — one module per era,"
-      }
-     ]
-    },
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 35,
-     "lines": 189,
-     "auxLines": 39,
-     "docLines": 11,
-     "examples": [
-      {
-       "path": "pallas-configs/src/alonzo.rs",
-       "line": 190,
-       "quote": "pub struct CostModel(Language, Vec<i64>);"
-      },
-      {
-       "path": "pallas-configs/src/alonzo.rs",
-       "line": 192,
-       "quote": "impl From<CostModel> for Vec<i64> {"
-      },
-      {
-       "path": "pallas-configs/src/alonzo.rs",
-       "line": 193,
-       "quote": "fn from(value: CostModel) -> Self {"
-      }
-     ]
-    },
-    {
-     "rule": "marker:genesis-config",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "pallas-configs/src/conway.rs",
-       "line": 96,
-       "quote": ".join(format!(\"{network}-conway-genesis.json\"));"
-      }
-     ]
-    },
-    {
-     "rule": "marker:legacy-stake-certificate",
-     "files": 11,
-     "lines": 36,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "pallas-hardano/src/display/haskell_display.rs",
-       "line": 2291,
-       "quote": "StakeRegistration(cred) => {"
-      },
-      {
-       "path": "pallas-hardano/src/display/haskell_display.rs",
-       "line": 2294,
-       "quote": "StakeDeregistration(cred) => {"
-      },
-      {
-       "path": "pallas-network/src/miniprotocols/localtxsubmission/codec.rs",
-       "line": 520,
-       "quote": "Ok(Certificate::StakeRegistration(a))"
-      }
-     ]
-    },
-    {
-     "rule": "marker:node-to-client",
-     "files": 29,
-     "lines": 103,
-     "auxLines": 1,
-     "docLines": 14,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 31,
-       "quote": "\"examples/n2c-miniprotocols\","
-      },
-      {
-       "path": "pallas-network/src/facades.rs",
-       "line": 13,
-       "quote": "use crate::miniprotocols::handshake::{Confirmation, VersionNumber, VersionTable, n2c, n2n};"
-      },
-      {
-       "path": "pallas-network/src/facades.rs",
-       "line": 392,
-       "quote": "/// Client of N2C Ouroboros"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 18,
-     "lines": 46,
-     "auxLines": 4,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "pallas-hardano/src/display/haskell_display.rs",
-       "line": 546,
-       "quote": "PlutusV3 => \"PlutusV3\".to_string(),"
-      },
-      {
-       "path": "pallas-hardano/src/display/haskell_display.rs",
-       "line": 1758,
-       "quote": "\"PlutusScript PlutusV3 {}\","
-      },
-      {
-       "path": "pallas-hardano/src/display/haskell_display.rs",
-       "line": 2655,
-       "quote": "display_cost_model(3, &self.plutus_v3),"
-      }
-     ]
-    },
-    {
-     "rule": "marker:pool-registration",
-     "files": 19,
-     "lines": 41,
-     "auxLines": 11,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "pallas-hardano/src/display/haskell_display.rs",
-       "line": 2302,
-       "quote": "PoolRegistration {"
-      },
-      {
-       "path": "pallas-hardano/src/display/haskell_display.rs",
-       "line": 2313,
-       "quote": "\"RegPool (PoolParams {{ppId = {}, ppVrf = {}, ppPledge = {}, ppCost = {}, ppMargin = {}, ppRewardAccount = {}, ppOwners = {}, ppRelays = {}, ppMetadata = {}}})\","
-      },
-      {
-       "path": "pallas-network/src/miniprotocols/localstate/queries_v16/mod.rs",
-       "line": 495,
-       "quote": "// Essentially the `PoolRegistration` component of `Certificate` at"
-      }
-     ]
-    },
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 93,
-     "lines": 872,
-     "auxLines": 112,
-     "docLines": 19,
-     "examples": [
-      {
-       "path": "pallas-addresses/src/byron.rs",
-       "line": 2,
-       "quote": "minicbor::{self, Decode, Encode, bytes::ByteVec},"
-      },
-      {
-       "path": "pallas-addresses/src/byron.rs",
-       "line": 21,
-       "quote": "impl<'b, C> minicbor::Decode<'b, C> for AddrDistr {"
-      },
-      {
-       "path": "pallas-addresses/src/byron.rs",
-       "line": 22,
-       "quote": "fn decode(d: &mut minicbor::Decoder<'b>, ctx: &mut C) -> Result<Self, minicbor::decode::Error> {"
-      }
-     ]
-    },
-    {
-     "rule": "marker:script-context",
-     "files": 6,
-     "lines": 48,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "pallas-validate/src/phase2/evaluator.rs",
-       "line": 37,
-       "quote": "script_context: &PlutusData,"
-      },
-      {
-       "path": "pallas-validate/src/phase2/evaluator.rs",
-       "line": 50,
-       "quote": "let script_context_term = plutus_data_to_term(&arena, script_context);"
-      },
-      {
-       "path": "pallas-validate/src/phase2/mod.rs",
-       "line": 4,
-       "quote": "pub mod script_context;"
-      }
-     ]
-    },
-    {
-     "rule": "marker:segregated-block-body",
-     "files": 13,
-     "lines": 42,
-     "auxLines": 1,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "pallas-primitives/src/alonzo/defs.cddl",
-       "line": 3,
-       "quote": ", transaction_bodies         : [* transaction_body]"
-      },
-      {
-       "path": "pallas-primitives/src/alonzo/defs.cddl",
-       "line": 4,
-       "quote": ", transaction_witness_sets   : [* transaction_witness_set]"
-      },
-      {
-       "path": "pallas-primitives/src/alonzo/defs.cddl",
-       "line": 6,
-       "quote": ", invalid_transactions       : [* transaction_index ]"
-      }
-     ]
-    },
-    {
-     "rule": "service:node-socket",
-     "files": 2,
-     "lines": 0,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "examples/crawler/src/main.rs",
-       "line": 100,
-       "quote": "#[arg(short, long, env(\"CARDANO_NODE_SOCKET_PATH\"))]"
-      },
-      {
-       "path": "examples/n2c-miniprotocols/src/main.rs",
-       "line": 263,
-       "quote": "const SOCKET_PATH: &str = \"/tmp/node.socket\";"
-      }
-     ]
-    },
-    {
-     "rule": "service:submit-api",
-     "files": 1,
-     "lines": 3,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "pallas-hardano/src/display/haskell_error.rs",
-       "line": 8,
-       "quote": "/// Mimicks the json data structure of the error response from the cardano-submit-api"
-      },
-      {
-       "path": "pallas-hardano/src/display/haskell_error.rs",
-       "line": 24,
-       "quote": "/// <https://github.com/IntersectMBO/cardano-node/blob/9dbf0b141e67ec2dfd677c77c63b1673cf9c5f3e/cardano-submit-api/src/Cardano/TxSubmit/Types.hs#L54>"
-      },
-      {
-       "path": "pallas-hardano/src/display/haskell_error.rs",
-       "line": 35,
-       "quote": "// https://github.com/IntersectMBO/cardano-node/blob/9dbf0b141e67ec2dfd677c77c63b1673cf9c5f3e/cardano-submit-api/src/Cardano/TxSubmit/Types.hs#L92"
-      }
-     ]
-    },
-    {
-     "rule": "service:utxorpc",
-     "files": 12,
-     "lines": 37,
-     "auxLines": 1,
-     "docLines": 21,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 22,
-       "quote": "\"pallas-utxorpc\","
-      },
-      {
-       "path": "Cargo.toml",
-       "line": 63,
-       "quote": "pallas-utxorpc = { version = \"=1.4.0\", path = \"pallas-utxorpc\" }"
-      },
-      {
-       "path": "pallas-utxorpc/Cargo.toml",
-       "line": 2,
-       "quote": "name = \"pallas-utxorpc\""
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-10-15T14:48:30Z"
    }
   },
   {
@@ -38056,6 +38056,512 @@
    "activity": {
     "archived": false,
     "pushedAt": "2024-11-24T12:48:20Z"
+   }
+  },
+  {
+   "id": "boros",
+   "repo": "txpipe/boros",
+   "revision": "fdec4da6c07a69252007a336f1a668f4f6d803bf",
+   "scan": {
+    "status": "scanned",
+    "files": 105,
+    "skipped": 9
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "cardano-cli",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:cli-era-command",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "service",
+       "via": "service:cardano-cli",
+       "readiness": "upstream",
+       "lines": 5,
+       "scope": "auxiliary"
+      }
+     ],
+     "readiness": "unassessed"
+    },
+    {
+     "surface": "consensus-participation",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:cli-era-command",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "auxiliary"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "released",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:node-socket",
+       "readiness": "upstream",
+       "lines": 2,
+       "scope": "auxiliary"
+      }
+     ],
+     "readiness": "released"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 3,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "plutus-script-context",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:script-context",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "unassessed"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 12,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:blaze",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "examples/js/package.json",
+       "line": 12,
+       "quote": "\"@blaze-cardano/core\": \"^0.6.1\","
+      },
+      {
+       "path": "examples/js/package.json",
+       "line": 13,
+       "quote": "\"@blaze-cardano/sdk\": \"^0.2.22\","
+      }
+     ]
+    },
+    {
+     "rule": "dependency:pallas",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 42,
+       "quote": ""
+      }
+     ]
+    },
+    {
+     "rule": "dependency:utxorpc",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "examples/client/Cargo.toml",
+       "line": 12,
+       "quote": "utxorpc = \"0.10.0\""
+      }
+     ]
+    },
+    {
+     "rule": "marker:cli-era-command",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "examples/tx-gen",
+       "line": 40,
+       "quote": "./cardano-cli latest transaction build --tx-in $UTXO --change-address $ADDRESS --testnet-magic $NETWORK_MAGIC --out-file tx.raw"
+      },
+      {
+       "path": "examples/tx-gen",
+       "line": 42,
+       "quote": "./cardano-cli latest transaction sign --tx-body-file tx.raw --signing-key-file payment.skey --out-file tx.signed"
+      }
+     ]
+    },
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 2,
+     "lines": 12,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/ledger/u5c/mod.rs",
+       "line": 14,
+       "quote": "cardano::{CostModel, Tx},"
+      },
+      {
+       "path": "src/ledger/u5c/mod.rs",
+       "line": 285,
+       "quote": "let cost_models = params.cost_models.unwrap();"
+      },
+      {
+       "path": "src/ledger/u5c/mod.rs",
+       "line": 312,
+       "quote": "cost_models"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 2,
+     "lines": 3,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/ledger/u5c/mod.rs",
+       "line": 323,
+       "quote": "plutus_v3: Some("
+      },
+      {
+       "path": "src/ledger/u5c/mod.rs",
+       "line": 325,
+       "quote": ".plutus_v3"
+      },
+      {
+       "path": "src/pipeline/ingest.rs",
+       "line": 428,
+       "quote": "plutus_v3: Some(vec!["
+      }
+     ]
+    },
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 2,
+     "lines": 3,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/network/mempool.rs",
+       "line": 17,
+       "quote": "Decode(#[from] pallas::codec::minicbor::decode::Error),"
+      },
+      {
+       "path": "src/network/mock_ouroboros_tx_submit_server.rs",
+       "line": 206,
+       "quote": "codec::minicbor,"
+      },
+      {
+       "path": "src/network/mock_ouroboros_tx_submit_server.rs",
+       "line": 408,
+       "quote": "let payload = minicbor::to_vec(tx).unwrap();"
+      }
+     ]
+    },
+    {
+     "rule": "marker:script-context",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/validation/mod.rs",
+       "line": 10,
+       "quote": "phase2::{self, script_context::SlotConfig, EvalReport},"
+      }
+     ]
+    },
+    {
+     "rule": "service:cardano-cli",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 5,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "examples/tx-gen",
+       "line": 19,
+       "quote": "./cardano-cli address key-gen --verification-key-file payment.vkey --signing-key-file payment.skey"
+      },
+      {
+       "path": "examples/tx-gen",
+       "line": 24,
+       "quote": "./cardano-cli address build --payment-verification-key-file payment.vkey --out-file payment.addr --testnet-magic $NETWORK_MAGIC"
+      },
+      {
+       "path": "examples/tx-gen",
+       "line": 31,
+       "quote": "UTXO=$(./cardano-cli query utxo --address $ADDRESS --testnet-magic $NETWORK_MAGIC --output-json | jq -r 'to_entries | .[0].key')"
+      }
+     ]
+    },
+    {
+     "rule": "service:node-socket",
+     "files": 2,
+     "lines": 0,
+     "auxLines": 2,
+     "docLines": 2,
+     "examples": [
+      {
+       "path": "examples/tx-gen",
+       "line": 12,
+       "quote": "if [ ! -e \"$CARDANO_NODE_SOCKET_PATH\" ]; then"
+      },
+      {
+       "path": "examples/tx-gen",
+       "line": 13,
+       "quote": "echo \"set the env CARDANO_NODE_SOCKET_PATH\""
+      },
+      {
+       "path": "examples/README.md",
+       "line": 31,
+       "quote": "Before executing [tx-gen](tx-gen), set the env `CARDANO_NODE_SOCKET_PATH`."
+      }
+     ]
+    },
+    {
+     "rule": "service:utxorpc",
+     "files": 10,
+     "lines": 2,
+     "auxLines": 4,
+     "docLines": 12,
+     "examples": [
+      {
+       "path": "src/ledger/u5c/mod.rs",
+       "line": 13,
+       "quote": "interop::utxorpc::spec::{"
+      },
+      {
+       "path": "src/server/utxorpc.rs",
+       "line": 5,
+       "quote": "interop::utxorpc::spec::submit::{WaitForTxResponse, *},"
+      },
+      {
+       "path": "examples/client/Cargo.toml",
+       "line": 12,
+       "quote": "utxorpc = \"0.10.0\""
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-10-06T15:23:44Z"
    }
   },
   {
@@ -44016,14 +44522,14 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -44035,7 +44541,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "consensus-participation",
@@ -44056,14 +44562,14 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -48287,6 +48793,230 @@
    }
   },
   {
+   "id": "cardaminal",
+   "repo": "IntersectMBO/cardaminal",
+   "revision": "c8d1380abee5c78fb8326b102d822716af3b5329",
+   "scan": {
+    "status": "scanned",
+    "files": 142,
+    "skipped": 2
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 3,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "consensus-participation",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "released",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "released"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:submit-api",
+       "readiness": "upstream",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:pallas",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 12,
+       "quote": "pallas = { git = \"https://github.com/txpipe/pallas.git\", features = [\"unstable\"] }"
+      }
+     ]
+    },
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 1,
+     "lines": 3,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/wallet/update.rs",
+       "line": 7,
+       "quote": "codec::minicbor,"
+      },
+      {
+       "path": "src/wallet/update.rs",
+       "line": 285,
+       "quote": "MultiEraUpdate::AlonzoCompatible(u) => minicbor::to_vec(u).unwrap(),"
+      },
+      {
+       "path": "src/wallet/update.rs",
+       "line": 286,
+       "quote": "MultiEraUpdate::Babbage(u) => minicbor::to_vec(u).unwrap(),"
+      }
+     ]
+    },
+    {
+     "rule": "service:submit-api",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/wallet/config/mod.rs",
+       "line": 36,
+       "quote": "\"https://submitapi-preprod-api-peaceful-relation-132bd4.us1.demeter.run/api/submit/tx\";"
+      }
+     ]
+    },
+    {
+     "rule": "service:utxorpc",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 0,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "adrs/004-chain-data.md",
+       "line": 5,
+       "quote": "For the local chains which will store all the blocks, we will use RollDB from Dolos/Pallas which will store full blocks, which uses rocksdb."
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": true,
+    "pushedAt": "2026-09-23T14:02:38Z"
+   }
+  },
+  {
    "id": "cardano-client-bindings",
    "repo": "bloxbean/mesmo",
    "revision": "54b8ca747cd66c4a51cf1130bb19b1a7e0b14bd1",
@@ -49133,6 +49863,338 @@
    "activity": {
     "archived": true,
     "pushedAt": "2026-03-02T10:44:44Z"
+   }
+  },
+  {
+   "id": "cshell",
+   "repo": "txpipe/cshell",
+   "revision": "93b36fe4835990760c45b0d059936faacc452871",
+   "scan": {
+    "status": "scanned",
+    "files": 83,
+    "skipped": 1
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 60,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "consensus-participation",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "released",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "released"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:pool-registration",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:legacy-stake-certificate",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 60,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:pallas",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 37,
+       "quote": "pallas = { version = \"1.0.0-alpha.2\", features = [\"hardano\"] }"
+      }
+     ],
+     "pins": [
+      {
+       "path": "Cargo.toml",
+       "line": 37,
+       "quote": "pallas = { version = \"1.0.0-alpha.2\", features = [\"hardano\"] }"
+      }
+     ]
+    },
+    {
+     "rule": "dependency:utxorpc",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 22,
+       "quote": "utxorpc = \"0.13.0\""
+      }
+     ],
+     "pins": [
+      {
+       "path": "Cargo.toml",
+       "line": 22,
+       "quote": "utxorpc = \"0.13.0\""
+      }
+     ]
+    },
+    {
+     "rule": "marker:legacy-stake-certificate",
+     "files": 1,
+     "lines": 2,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/explorer/widgets/tabs/transactions.rs",
+       "line": 713,
+       "quote": "Some(Certificate::StakeRegistration(v)) => {"
+      },
+      {
+       "path": "src/explorer/widgets/tabs/transactions.rs",
+       "line": 722,
+       "quote": "Some(Certificate::StakeDeregistration(v)) => {"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/explorer/widgets/tabs/transactions.rs",
+       "line": 1375,
+       "quote": "Some(script::Script::PlutusV3(bytes)) => ("
+      }
+     ]
+    },
+    {
+     "rule": "marker:pool-registration",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/explorer/widgets/tabs/transactions.rs",
+       "line": 760,
+       "quote": "Some(Certificate::PoolRegistration(v)) => {"
+      }
+     ]
+    },
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 1,
+     "lines": 2,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/wallet/types.rs",
+       "line": 11,
+       "quote": "codec::{minicbor, utils::NonEmptySet},"
+      },
+      {
+       "path": "src/wallet/types.rs",
+       "line": 153,
+       "quote": "let mut decoded: Tx = minicbor::decode(&tx)?;"
+      }
+     ]
+    },
+    {
+     "rule": "service:utxorpc",
+     "files": 18,
+     "lines": 60,
+     "auxLines": 2,
+     "docLines": 8,
+     "examples": [
+      {
+       "path": "Cargo.toml",
+       "line": 21,
+       "quote": "# utxorpc = { git = \"https://github.com/utxorpc/rust-sdk\" }"
+      },
+      {
+       "path": "Cargo.toml",
+       "line": 22,
+       "quote": "utxorpc = \"0.13.0\""
+      },
+      {
+       "path": "Cargo.toml",
+       "line": 23,
+       "quote": "# utxorpc = { path = \"../../utxorpc/rust-sdk\" }"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-08-07T10:52:04Z"
    }
   },
   {
@@ -50563,6 +51625,157 @@
    }
   },
   {
+   "id": "lace-anatomy",
+   "repo": "txpipe/laceanatomy",
+   "revision": "1e8b05e9e1c8ad3bada3d539c549554d370cdf69",
+   "scan": {
+    "status": "scanned",
+    "files": 57,
+    "skipped": 5
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "consensus-participation",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "released",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "released"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:pallas",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "napi-pallas/Cargo.toml",
+       "line": 15,
+       "quote": "pallas = { git = \"https://github.com/txpipe/pallas.git\", features = [\"applying\"] }"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2024-12-06T20:46:07Z"
+   }
+  },
+  {
    "id": "lambda-buffers",
    "repo": "mlabs-haskell/lambda-buffers",
    "revision": "1db995cd2646fdef9e0d2587907de52c335dd3c2",
@@ -51086,7 +52299,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -51113,7 +52326,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -51594,7 +52807,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -51606,7 +52819,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "consensus-participation",
@@ -51627,12 +52840,12 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "node-to-client-protocol",
@@ -51823,7 +53036,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -51857,7 +53070,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -52231,6 +53444,332 @@
    "activity": {
     "archived": false,
     "pushedAt": "2024-04-20T20:49:11Z"
+   }
+  },
+  {
+   "id": "tx3",
+   "repo": "tx3-lang/tx3",
+   "revision": "dabcab43c1dafb92a8cca6a12e5d7a561451ea80",
+   "scan": {
+    "status": "scanned",
+    "files": 320,
+    "skipped": 1
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 12,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "consensus-participation",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "released",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "released"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 6,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 9,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 12,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "utxorpc",
+       "readiness": "in-progress",
+       "lines": 2,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:pallas",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "crates/tx3-cardano/Cargo.toml",
+       "line": 16,
+       "quote": "pallas = { version = \"1.0.0\" }"
+      }
+     ],
+     "pins": [
+      {
+       "path": "crates/tx3-cardano/Cargo.toml",
+       "line": 16,
+       "quote": "pallas = { version = \"1.0.0\" }"
+      }
+     ]
+    },
+    {
+     "rule": "dependency:utxorpc",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "crates/tx3-cardano/Cargo.toml",
+       "line": 24,
+       "quote": "utxorpc = \"0.10.0\""
+      }
+     ],
+     "pins": [
+      {
+       "path": "crates/tx3-cardano/Cargo.toml",
+       "line": 24,
+       "quote": "utxorpc = \"0.10.0\""
+      }
+     ]
+    },
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 4,
+     "lines": 9,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "crates/tx3-cardano/src/compile/script_data.rs",
+       "line": 20,
+       "quote": "/// `LanguageViews` / cost-model key (PlutusV1=0, PlutusV2=1, PlutusV3=2)."
+      },
+      {
+       "path": "crates/tx3-cardano/src/compile/script_data.rs",
+       "line": 31,
+       "quote": "/// Collects the set of Plutus languages (as `LanguageViews` / cost-model keys)"
+      },
+      {
+       "path": "crates/tx3-cardano/src/compile/script_data.rs",
+       "line": 100,
+       "quote": "let cost_model = pparams.cost_models.get(version).ok_or_else(|| {"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 1,
+     "lines": 6,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "crates/tx3-cardano/src/compile/script_data.rs",
+       "line": 19,
+       "quote": "/// (native=0, PlutusV1=1, PlutusV2=2, PlutusV3=3) — to the corresponding"
+      },
+      {
+       "path": "crates/tx3-cardano/src/compile/script_data.rs",
+       "line": 20,
+       "quote": "/// `LanguageViews` / cost-model key (PlutusV1=0, PlutusV2=1, PlutusV3=2)."
+      },
+      {
+       "path": "crates/tx3-cardano/src/compile/script_data.rs",
+       "line": 88,
+       "quote": "// (PlutusV3) so the script data hash stays valid for the common V3-only"
+      }
+     ]
+    },
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 6,
+     "lines": 12,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "crates/tx3-cardano/src/coercion.rs",
+       "line": 5,
+       "quote": "minicbor,"
+      },
+      {
+       "path": "crates/tx3-cardano/src/coercion.rs",
+       "line": 119,
+       "quote": "let script_ref = minicbor::decode::<primitives::ScriptRef>(&bytes)"
+      },
+      {
+       "path": "crates/tx3-cardano/src/coercion.rs",
+       "line": 121,
+       "quote": "minicbor::decode::<CborWrap<primitives::ScriptRef>>(&bytes)"
+      }
+     ]
+    },
+    {
+     "rule": "service:utxorpc",
+     "files": 2,
+     "lines": 2,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "crates/tx3-cardano/Cargo.toml",
+       "line": 24,
+       "quote": "utxorpc = \"0.10.0\""
+      },
+      {
+       "path": "crates/tx3-cardano/src/compile/script_data.rs",
+       "line": 90,
+       "quote": "// disappears once providers populate `utxo.script` (see the Dolos/Hydra TRP"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-09-28T16:09:01Z"
    }
   },
   {
@@ -55658,7 +57197,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -55670,7 +57209,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -55678,7 +57217,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -56075,7 +57614,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -56087,7 +57626,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -56095,7 +57634,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -59476,7 +61015,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -59488,7 +61027,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -59496,7 +61035,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -63730,1545 +65269,6 @@
    }
   },
   {
-   "id": "boros",
-   "repo": "txpipe/boros",
-   "revision": "fdec4da6c07a69252007a336f1a668f4f6d803bf",
-   "scan": {
-    "status": "scanned",
-    "files": 105,
-    "skipped": 9
-   },
-   "exposure": "dependency",
-   "readiness": "in-progress",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "cardano-cli",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:cli-era-command",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "service",
-       "via": "service:cardano-cli",
-       "readiness": "upstream",
-       "lines": 5,
-       "scope": "auxiliary"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "consensus-participation",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "blaze",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:cli-era-command",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "auxiliary"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "released",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:node-socket",
-       "readiness": "upstream",
-       "lines": 2,
-       "scope": "auxiliary"
-      }
-     ],
-     "readiness": "released"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "blaze",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 3,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "plutus-script-context",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:script-context",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "blaze",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 12,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "blaze",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "blaze",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "blaze",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:blaze",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "examples/js/package.json",
-       "line": 12,
-       "quote": "\"@blaze-cardano/core\": \"^0.6.1\","
-      },
-      {
-       "path": "examples/js/package.json",
-       "line": 13,
-       "quote": "\"@blaze-cardano/sdk\": \"^0.2.22\","
-      }
-     ]
-    },
-    {
-     "rule": "dependency:pallas",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 42,
-       "quote": ""
-      }
-     ]
-    },
-    {
-     "rule": "dependency:utxorpc",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "examples/client/Cargo.toml",
-       "line": 12,
-       "quote": "utxorpc = \"0.10.0\""
-      }
-     ]
-    },
-    {
-     "rule": "marker:cli-era-command",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "examples/tx-gen",
-       "line": 40,
-       "quote": "./cardano-cli latest transaction build --tx-in $UTXO --change-address $ADDRESS --testnet-magic $NETWORK_MAGIC --out-file tx.raw"
-      },
-      {
-       "path": "examples/tx-gen",
-       "line": 42,
-       "quote": "./cardano-cli latest transaction sign --tx-body-file tx.raw --signing-key-file payment.skey --out-file tx.signed"
-      }
-     ]
-    },
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 2,
-     "lines": 12,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/ledger/u5c/mod.rs",
-       "line": 14,
-       "quote": "cardano::{CostModel, Tx},"
-      },
-      {
-       "path": "src/ledger/u5c/mod.rs",
-       "line": 285,
-       "quote": "let cost_models = params.cost_models.unwrap();"
-      },
-      {
-       "path": "src/ledger/u5c/mod.rs",
-       "line": 312,
-       "quote": "cost_models"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 2,
-     "lines": 3,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/ledger/u5c/mod.rs",
-       "line": 323,
-       "quote": "plutus_v3: Some("
-      },
-      {
-       "path": "src/ledger/u5c/mod.rs",
-       "line": 325,
-       "quote": ".plutus_v3"
-      },
-      {
-       "path": "src/pipeline/ingest.rs",
-       "line": 428,
-       "quote": "plutus_v3: Some(vec!["
-      }
-     ]
-    },
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 2,
-     "lines": 3,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/network/mempool.rs",
-       "line": 17,
-       "quote": "Decode(#[from] pallas::codec::minicbor::decode::Error),"
-      },
-      {
-       "path": "src/network/mock_ouroboros_tx_submit_server.rs",
-       "line": 206,
-       "quote": "codec::minicbor,"
-      },
-      {
-       "path": "src/network/mock_ouroboros_tx_submit_server.rs",
-       "line": 408,
-       "quote": "let payload = minicbor::to_vec(tx).unwrap();"
-      }
-     ]
-    },
-    {
-     "rule": "marker:script-context",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/validation/mod.rs",
-       "line": 10,
-       "quote": "phase2::{self, script_context::SlotConfig, EvalReport},"
-      }
-     ]
-    },
-    {
-     "rule": "service:cardano-cli",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 5,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "examples/tx-gen",
-       "line": 19,
-       "quote": "./cardano-cli address key-gen --verification-key-file payment.vkey --signing-key-file payment.skey"
-      },
-      {
-       "path": "examples/tx-gen",
-       "line": 24,
-       "quote": "./cardano-cli address build --payment-verification-key-file payment.vkey --out-file payment.addr --testnet-magic $NETWORK_MAGIC"
-      },
-      {
-       "path": "examples/tx-gen",
-       "line": 31,
-       "quote": "UTXO=$(./cardano-cli query utxo --address $ADDRESS --testnet-magic $NETWORK_MAGIC --output-json | jq -r 'to_entries | .[0].key')"
-      }
-     ]
-    },
-    {
-     "rule": "service:node-socket",
-     "files": 2,
-     "lines": 0,
-     "auxLines": 2,
-     "docLines": 2,
-     "examples": [
-      {
-       "path": "examples/tx-gen",
-       "line": 12,
-       "quote": "if [ ! -e \"$CARDANO_NODE_SOCKET_PATH\" ]; then"
-      },
-      {
-       "path": "examples/tx-gen",
-       "line": 13,
-       "quote": "echo \"set the env CARDANO_NODE_SOCKET_PATH\""
-      },
-      {
-       "path": "examples/README.md",
-       "line": 31,
-       "quote": "Before executing [tx-gen](tx-gen), set the env `CARDANO_NODE_SOCKET_PATH`."
-      }
-     ]
-    },
-    {
-     "rule": "service:utxorpc",
-     "files": 10,
-     "lines": 2,
-     "auxLines": 4,
-     "docLines": 12,
-     "examples": [
-      {
-       "path": "src/ledger/u5c/mod.rs",
-       "line": 13,
-       "quote": "interop::utxorpc::spec::{"
-      },
-      {
-       "path": "src/server/utxorpc.rs",
-       "line": 5,
-       "quote": "interop::utxorpc::spec::submit::{WaitForTxResponse, *},"
-      },
-      {
-       "path": "examples/client/Cargo.toml",
-       "line": 12,
-       "quote": "utxorpc = \"0.10.0\""
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-10-06T15:23:44Z"
-   }
-  },
-  {
-   "id": "cardaminal",
-   "repo": "IntersectMBO/cardaminal",
-   "revision": "c8d1380abee5c78fb8326b102d822716af3b5329",
-   "scan": {
-    "status": "scanned",
-    "files": 142,
-    "skipped": 2
-   },
-   "exposure": "dependency",
-   "readiness": "in-progress",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 3,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "consensus-participation",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "released",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "released"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:submit-api",
-       "readiness": "upstream",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:pallas",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 12,
-       "quote": "pallas = { git = \"https://github.com/txpipe/pallas.git\", features = [\"unstable\"] }"
-      }
-     ]
-    },
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 1,
-     "lines": 3,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/wallet/update.rs",
-       "line": 7,
-       "quote": "codec::minicbor,"
-      },
-      {
-       "path": "src/wallet/update.rs",
-       "line": 285,
-       "quote": "MultiEraUpdate::AlonzoCompatible(u) => minicbor::to_vec(u).unwrap(),"
-      },
-      {
-       "path": "src/wallet/update.rs",
-       "line": 286,
-       "quote": "MultiEraUpdate::Babbage(u) => minicbor::to_vec(u).unwrap(),"
-      }
-     ]
-    },
-    {
-     "rule": "service:submit-api",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/wallet/config/mod.rs",
-       "line": 36,
-       "quote": "\"https://submitapi-preprod-api-peaceful-relation-132bd4.us1.demeter.run/api/submit/tx\";"
-      }
-     ]
-    },
-    {
-     "rule": "service:utxorpc",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 0,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "adrs/004-chain-data.md",
-       "line": 5,
-       "quote": "For the local chains which will store all the blocks, we will use RollDB from Dolos/Pallas which will store full blocks, which uses rocksdb."
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": true,
-    "pushedAt": "2026-09-23T14:02:38Z"
-   }
-  },
-  {
-   "id": "cshell",
-   "repo": "txpipe/cshell",
-   "revision": "93b36fe4835990760c45b0d059936faacc452871",
-   "scan": {
-    "status": "scanned",
-    "files": 83,
-    "skipped": 1
-   },
-   "exposure": "dependency",
-   "readiness": "in-progress",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 60,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "consensus-participation",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "released",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "released"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:pool-registration",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:legacy-stake-certificate",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 60,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:pallas",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 37,
-       "quote": "pallas = { version = \"1.0.0-alpha.2\", features = [\"hardano\"] }"
-      }
-     ],
-     "pins": [
-      {
-       "path": "Cargo.toml",
-       "line": 37,
-       "quote": "pallas = { version = \"1.0.0-alpha.2\", features = [\"hardano\"] }"
-      }
-     ]
-    },
-    {
-     "rule": "dependency:utxorpc",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 22,
-       "quote": "utxorpc = \"0.13.0\""
-      }
-     ],
-     "pins": [
-      {
-       "path": "Cargo.toml",
-       "line": 22,
-       "quote": "utxorpc = \"0.13.0\""
-      }
-     ]
-    },
-    {
-     "rule": "marker:legacy-stake-certificate",
-     "files": 1,
-     "lines": 2,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/explorer/widgets/tabs/transactions.rs",
-       "line": 713,
-       "quote": "Some(Certificate::StakeRegistration(v)) => {"
-      },
-      {
-       "path": "src/explorer/widgets/tabs/transactions.rs",
-       "line": 722,
-       "quote": "Some(Certificate::StakeDeregistration(v)) => {"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/explorer/widgets/tabs/transactions.rs",
-       "line": 1375,
-       "quote": "Some(script::Script::PlutusV3(bytes)) => ("
-      }
-     ]
-    },
-    {
-     "rule": "marker:pool-registration",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/explorer/widgets/tabs/transactions.rs",
-       "line": 760,
-       "quote": "Some(Certificate::PoolRegistration(v)) => {"
-      }
-     ]
-    },
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 1,
-     "lines": 2,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/wallet/types.rs",
-       "line": 11,
-       "quote": "codec::{minicbor, utils::NonEmptySet},"
-      },
-      {
-       "path": "src/wallet/types.rs",
-       "line": 153,
-       "quote": "let mut decoded: Tx = minicbor::decode(&tx)?;"
-      }
-     ]
-    },
-    {
-     "rule": "service:utxorpc",
-     "files": 18,
-     "lines": 60,
-     "auxLines": 2,
-     "docLines": 8,
-     "examples": [
-      {
-       "path": "Cargo.toml",
-       "line": 21,
-       "quote": "# utxorpc = { git = \"https://github.com/utxorpc/rust-sdk\" }"
-      },
-      {
-       "path": "Cargo.toml",
-       "line": 22,
-       "quote": "utxorpc = \"0.13.0\""
-      },
-      {
-       "path": "Cargo.toml",
-       "line": 23,
-       "quote": "# utxorpc = { path = \"../../utxorpc/rust-sdk\" }"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-08-07T10:52:04Z"
-   }
-  },
-  {
-   "id": "lace-anatomy",
-   "repo": "txpipe/laceanatomy",
-   "revision": "1e8b05e9e1c8ad3bada3d539c549554d370cdf69",
-   "scan": {
-    "status": "scanned",
-    "files": 57,
-    "skipped": 5
-   },
-   "exposure": "dependency",
-   "readiness": "in-progress",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "consensus-participation",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "released",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "released"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:pallas",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "napi-pallas/Cargo.toml",
-       "line": 15,
-       "quote": "pallas = { git = \"https://github.com/txpipe/pallas.git\", features = [\"applying\"] }"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2024-12-06T20:46:07Z"
-   }
-  },
-  {
-   "id": "tx3",
-   "repo": "tx3-lang/tx3",
-   "revision": "dabcab43c1dafb92a8cca6a12e5d7a561451ea80",
-   "scan": {
-    "status": "scanned",
-    "files": 320,
-    "skipped": 1
-   },
-   "exposure": "dependency",
-   "readiness": "in-progress",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 12,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "consensus-participation",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "released",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "released"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 9,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "dependency",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 12,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "utxorpc",
-       "readiness": "in-progress",
-       "lines": 2,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "pallas",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:pallas",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "crates/tx3-cardano/Cargo.toml",
-       "line": 16,
-       "quote": "pallas = { version = \"1.0.0\" }"
-      }
-     ],
-     "pins": [
-      {
-       "path": "crates/tx3-cardano/Cargo.toml",
-       "line": 16,
-       "quote": "pallas = { version = \"1.0.0\" }"
-      }
-     ]
-    },
-    {
-     "rule": "dependency:utxorpc",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "crates/tx3-cardano/Cargo.toml",
-       "line": 24,
-       "quote": "utxorpc = \"0.10.0\""
-      }
-     ],
-     "pins": [
-      {
-       "path": "crates/tx3-cardano/Cargo.toml",
-       "line": 24,
-       "quote": "utxorpc = \"0.10.0\""
-      }
-     ]
-    },
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 4,
-     "lines": 9,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "crates/tx3-cardano/src/compile/script_data.rs",
-       "line": 20,
-       "quote": "/// `LanguageViews` / cost-model key (PlutusV1=0, PlutusV2=1, PlutusV3=2)."
-      },
-      {
-       "path": "crates/tx3-cardano/src/compile/script_data.rs",
-       "line": 31,
-       "quote": "/// Collects the set of Plutus languages (as `LanguageViews` / cost-model keys)"
-      },
-      {
-       "path": "crates/tx3-cardano/src/compile/script_data.rs",
-       "line": 100,
-       "quote": "let cost_model = pparams.cost_models.get(version).ok_or_else(|| {"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 1,
-     "lines": 6,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "crates/tx3-cardano/src/compile/script_data.rs",
-       "line": 19,
-       "quote": "/// (native=0, PlutusV1=1, PlutusV2=2, PlutusV3=3) — to the corresponding"
-      },
-      {
-       "path": "crates/tx3-cardano/src/compile/script_data.rs",
-       "line": 20,
-       "quote": "/// `LanguageViews` / cost-model key (PlutusV1=0, PlutusV2=1, PlutusV3=2)."
-      },
-      {
-       "path": "crates/tx3-cardano/src/compile/script_data.rs",
-       "line": 88,
-       "quote": "// (PlutusV3) so the script data hash stays valid for the common V3-only"
-      }
-     ]
-    },
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 6,
-     "lines": 12,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "crates/tx3-cardano/src/coercion.rs",
-       "line": 5,
-       "quote": "minicbor,"
-      },
-      {
-       "path": "crates/tx3-cardano/src/coercion.rs",
-       "line": 119,
-       "quote": "let script_ref = minicbor::decode::<primitives::ScriptRef>(&bytes)"
-      },
-      {
-       "path": "crates/tx3-cardano/src/coercion.rs",
-       "line": 121,
-       "quote": "minicbor::decode::<CborWrap<primitives::ScriptRef>>(&bytes)"
-      }
-     ]
-    },
-    {
-     "rule": "service:utxorpc",
-     "files": 2,
-     "lines": 2,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "crates/tx3-cardano/Cargo.toml",
-       "line": 24,
-       "quote": "utxorpc = \"0.10.0\""
-      },
-      {
-       "path": "crates/tx3-cardano/src/compile/script_data.rs",
-       "line": 90,
-       "quote": "// disappears once providers populate `utxo.script` (see the Dolos/Hydra TRP"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-09-28T16:09:01Z"
-   }
-  },
-  {
    "id": "yaci-bridge",
    "repo": "bloxbean/yaci-bridge",
    "revision": "aed55a0ad19002ebccb05997463306c26686d2d4",
@@ -68696,7 +68696,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "auxiliary"
       },
@@ -68778,7 +68778,7 @@
       {
        "channel": "dependency",
        "via": "pallas",
-       "readiness": "in-progress",
+       "readiness": "gap",
        "lines": 2,
        "scope": "auxiliary"
       },

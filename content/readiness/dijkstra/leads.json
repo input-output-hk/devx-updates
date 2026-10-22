@@ -6,7 +6,8 @@
   "confirmed: a shipped path uses the gapped capability, so the tool fails or misbehaves after the hardfork until the dependency moves; not-reached: shipped code uses the dependency only outside it; undetermined: reading cannot decide.",
   "Each decision quotes the lines it rests on; check-leads --verify-sources re-reads every quote at its pinned revision.",
   "Service links are decided per capability used: Ogmios chain-sync reaches block, transaction and era surfaces, submission reaches transaction and era, evaluation reaches Plutus and transaction, and the parameter query reaches protocol parameters; any read of Kupo or db-sync chain data reaches block, transaction and era (neither indexes Dijkstra blocks), db-sync parameter and pool surfaces only through epoch_param and pool tables; Blockfrost era identity only through /network/eras and parameters through the epoch parameter endpoints; Koios era identity through era fields (/tip, block and epoch info) and parameters through /epoch_params or /cli_protocol_params. Hosted Blockfrost and Koios consumers inherit the self-hosted verdicts.",
-  "gouroboros era identity and block encoding (R4 devnet) are reached when shipped code passes raw transaction bytes to DetermineTransactionType or decodes blocks or headers received from a node; building and serializing its own transactions with gouroboros types does not reach them."
+  "gouroboros era identity and block encoding (R4 devnet) are reached when shipped code passes raw transaction bytes to DetermineTransactionType or decodes blocks or headers received from a node; building and serializing its own transactions with gouroboros types does not reach them.",
+  "Pallas era identity and block encoding (R4 devnet, 2026-10-22) are reached when shipped code decodes blocks or headers from a chain or node with MultiEraBlock or MultiEraHeader, or passes externally supplied transaction bytes to MultiEraTx::decode, which does not detect Dijkstra's three-element form; decode_for_era with an era the caller names, and Pallas primitives, addresses, keys and hashing, do not reach them."
  ],
  "leads": [
   {
@@ -10392,6 +10393,579 @@
      "path": "apollo.go",
      "line": 1975,
      "quote": "a.tx = &conway.ConwayTransaction{"
+    }
+   ]
+  },
+  {
+   "tool": "amaru",
+   "revision": "81c9ac4ebd3550f84377868f31bd30381deca3c6",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "Amaru decodes the headers it fetches during bootstrap with its own Header type; pallas-network 0.34.0 only carries them.",
+   "evidence": [
+    {
+     "repo": "pragma-org/amaru",
+     "revision": "81c9ac4ebd3550f84377868f31bd30381deca3c6",
+     "path": "crates/amaru-bootstrap/src/bootstrap/mod.rs",
+     "line": 336,
+     "quote": "from_cbor(&content.cbor)"
+    },
+    {
+     "repo": "pragma-org/amaru",
+     "revision": "81c9ac4ebd3550f84377868f31bd30381deca3c6",
+     "path": "Cargo.toml",
+     "line": 73,
+     "quote": "pallas-network = \"0.34.0\""
+    }
+   ]
+  },
+  {
+   "tool": "mithril",
+   "revision": "da71559f40da5f360df293563fd2d9b33a3ea51c",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The Cardano chain reader decodes every block it pulls from the node with MultiEraBlock::decode from Pallas 1.4.0, which has no Dijkstra era.",
+   "evidence": [
+    {
+     "repo": "IntersectMBO/mithril",
+     "revision": "da71559f40da5f360df293563fd2d9b33a3ea51c",
+     "path": "internal/cardano-node/mithril-cardano-node-chain/src/chain_reader/pallas_chain_reader.rs",
+     "line": 145,
+     "quote": "let multi_era_block = MultiEraBlock::decode(&raw_block)"
+    },
+    {
+     "repo": "IntersectMBO/mithril",
+     "revision": "da71559f40da5f360df293563fd2d9b33a3ea51c",
+     "path": "internal/cardano-node/mithril-cardano-node-chain/Cargo.toml",
+     "line": 19,
+     "quote": "pallas-network = { version = \"1.4.0\" }"
+    }
+   ]
+  },
+  {
+   "tool": "cncli",
+   "revision": "54700531bbb473886f482ce8d8010d0ec89a7465",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "Chain sync decodes each header from the node with MultiEraHeader::decode, from a pinned Pallas revision without Dijkstra.",
+   "evidence": [
+    {
+     "repo": "cardano-community/cncli",
+     "revision": "54700531bbb473886f482ce8d8010d0ec89a7465",
+     "path": "src/nodeclient/sync/mod.rs",
+     "line": 221,
+     "quote": "MultiEraHeader::decode(content.variant, None, &content.cbor)"
+    },
+    {
+     "repo": "cardano-community/cncli",
+     "revision": "54700531bbb473886f482ce8d8010d0ec89a7465",
+     "path": "Cargo.toml",
+     "line": 16,
+     "quote": "pallas-traverse = { git = \"https://github.com/txpipe/pallas\", rev = \"d1dfe10e2bac83c7d3b5371a72814354a5acd1ba\" }"
+    }
+   ]
+  },
+  {
+   "tool": "dolos",
+   "revision": "378b8b0eda64d7ba3364216224155e461fe56cb0",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "Dolos decodes the blocks it archives and serves with MultiEraBlock::decode; it pins Pallas 1.3.0, whose traversal has no Dijkstra era even with unstable.",
+   "evidence": [
+    {
+     "repo": "txpipe/dolos",
+     "revision": "378b8b0eda64d7ba3364216224155e461fe56cb0",
+     "path": "crates/fjall/src/archive/mod.rs",
+     "line": 1064,
+     "quote": "MultiEraBlock::decode(&body).map_err(ArchiveError::BlockDecodingError)?;"
+    },
+    {
+     "repo": "txpipe/dolos",
+     "revision": "378b8b0eda64d7ba3364216224155e461fe56cb0",
+     "path": "Cargo.toml",
+     "line": 234,
+     "quote": "pallas = { version = \"1.3.0\", features = [\"hardano\", \"phase2\", \"unstable\"] }"
+    }
+   ]
+  },
+  {
+   "tool": "whisky",
+   "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "The evaluator decodes supplied transactions with decode_for_era(Era::Conway), naming the era itself; it decodes no blocks and never asks Pallas to detect an era.",
+   "evidence": [
+    {
+     "repo": "sidan-lab/whisky",
+     "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+     "path": "packages/whisky-csl/src/utils/evaluator.rs",
+     "line": 36,
+     "quote": "MultiEraTx::decode_for_era(Era::Conway, &tx_bytes)"
+    }
+   ]
+  },
+  {
+   "tool": "blaze",
+   "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "blaze-uplc decodes transactions for evaluation with decode_for_era(Era::Conway), naming the era itself; no block decoding or era detection goes through Pallas.",
+   "evidence": [
+    {
+     "repo": "butaneprotocol/blaze-cardano",
+     "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+     "path": "packages/blaze-uplc/wasm/src/lib.rs",
+     "line": 95,
+     "quote": "MultiEraTx::decode_for_era(Era::Conway, tx_bytes)"
+    }
+   ]
+  },
+  {
+   "tool": "cquisitor-lib",
+   "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "Phase-two validation decodes transactions with decode_for_era(Era::Conway), naming the era itself; no block decoding or era detection goes through Pallas.",
+   "evidence": [
+    {
+     "repo": "cardananium/cquisitor-lib",
+     "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+     "path": "src/validators/phase_2/validation.rs",
+     "line": 26,
+     "quote": "MultiEraTx::decode_for_era(Era::Conway, &tx_bytes)"
+    }
+   ]
+  },
+  {
+   "tool": "oura",
+   "revision": "8433b1049b250b1c1ccc174e5ee17d5963effe5c",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The node-to-node source decodes every header with MultiEraHeader::decode and the parse_cbor filter decodes blocks with MultiEraBlock::decode, through Pallas 1.1.",
+   "evidence": [
+    {
+     "repo": "txpipe/oura",
+     "revision": "8433b1049b250b1c1ccc174e5ee17d5963effe5c",
+     "path": "src/sources/n2n.rs",
+     "line": 44,
+     "quote": "MultiEraHeader::decode(header.variant, Some(subtag), &header.cbor)"
+    },
+    {
+     "repo": "txpipe/oura",
+     "revision": "8433b1049b250b1c1ccc174e5ee17d5963effe5c",
+     "path": "src/filters/parse_cbor.rs",
+     "line": 48,
+     "quote": "trv::MultiEraBlock::decode(&cbor)"
+    },
+    {
+     "repo": "txpipe/oura",
+     "revision": "8433b1049b250b1c1ccc174e5ee17d5963effe5c",
+     "path": "Cargo.toml",
+     "line": 48,
+     "quote": "pallas = { version = \"1.1\", features = [\"hardano\"] }"
+    }
+   ]
+  },
+  {
+   "tool": "scrolls",
+   "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "Both chain sources decode node blocks and headers through Pallas 0.30.1, which has no Dijkstra era.",
+   "evidence": [
+    {
+     "repo": "txpipe/scrolls",
+     "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+     "path": "src/sources/n2c.rs",
+     "line": 95,
+     "quote": "let block = MultiEraBlock::decode(cbor).or_panic()?;"
+    },
+    {
+     "repo": "txpipe/scrolls",
+     "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+     "path": "src/sources/n2n.rs",
+     "line": 41,
+     "quote": "MultiEraHeader::decode(header.variant, Some(subtag), &header.cbor)"
+    },
+    {
+     "repo": "txpipe/scrolls",
+     "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+     "path": "Cargo.toml",
+     "line": 15,
+     "quote": "pallas = \"0.30.1\""
+    }
+   ]
+  },
+  {
+   "tool": "aiken",
+   "revision": "2a0475328be2fc361251be864b825c936fefb63b",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "Transaction simulation decodes supplied bytes with decode_for_era over a fixed list (Conway, Babbage, Alonzo), so a Dijkstra transaction needs Aiken's own change to that list; Pallas era detection and block decoding are not used.",
+   "evidence": [
+    {
+     "repo": "aiken-lang/aiken",
+     "revision": "2a0475328be2fc361251be864b825c936fefb63b",
+     "path": "crates/uplc/src/tx.rs",
+     "line": 265,
+     "quote": "MultiEraTx::decode_for_era(Era::Conway, tx_bytes)"
+    },
+    {
+     "repo": "aiken-lang/aiken",
+     "revision": "2a0475328be2fc361251be864b825c936fefb63b",
+     "path": "crates/uplc/src/tx.rs",
+     "line": 266,
+     "quote": "MultiEraTx::decode_for_era(Era::Babbage, tx_bytes)"
+    }
+   ]
+  },
+  {
+   "tool": "boros",
+   "revision": "fdec4da6c07a69252007a336f1a668f4f6d803bf",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "Submitted transactions are era-detected with MultiEraTx::decode, which does not recognise Dijkstra's three-element form in any Pallas revision (devnet check pallas-transactions).",
+   "evidence": [
+    {
+     "repo": "txpipe/boros",
+     "revision": "fdec4da6c07a69252007a336f1a668f4f6d803bf",
+     "path": "src/server/submit.rs",
+     "line": 56,
+     "quote": "let metx = MultiEraTx::decode(&tx.raw)"
+    },
+    {
+     "repo": "txpipe/boros",
+     "revision": "fdec4da6c07a69252007a336f1a668f4f6d803bf",
+     "path": "src/network/mempool.rs",
+     "line": 99,
+     "quote": "let tx = MultiEraTx::decode(cbor)?;"
+    }
+   ]
+  },
+  {
+   "tool": "gastronomy",
+   "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "The UPLC debugger uses Pallas for primitives and phase-two helpers; it decodes no blocks and detects no eras.",
+   "evidence": [
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/src/lib.rs",
+     "line": 15,
+     "quote": "pub use pallas::ledger::primitives::ScriptHash;"
+    },
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/Cargo.toml",
+     "line": 20,
+     "quote": "pallas = { version = \"0.32.0\", features = [\"applying\"] }"
+    }
+   ]
+  },
+  {
+   "tool": "cardaminal",
+   "revision": "c8d1380abee5c78fb8326b102d822716af3b5329",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "Wallet sync decodes every block and header from upstream with MultiEraBlock::decode and MultiEraHeader::decode, from Pallas's default branch, which has no Dijkstra era.",
+   "evidence": [
+    {
+     "repo": "IntersectMBO/cardaminal",
+     "revision": "c8d1380abee5c78fb8326b102d822716af3b5329",
+     "path": "src/chain/upstream.rs",
+     "line": 106,
+     "quote": "let block = MultiEraBlock::decode(&cbor)"
+    },
+    {
+     "repo": "IntersectMBO/cardaminal",
+     "revision": "c8d1380abee5c78fb8326b102d822716af3b5329",
+     "path": "src/chain/upstream.rs",
+     "line": 141,
+     "quote": "MultiEraHeader::decode(header.variant, Some(subtag), &header.cbor)"
+    },
+    {
+     "repo": "IntersectMBO/cardaminal",
+     "revision": "c8d1380abee5c78fb8326b102d822716af3b5329",
+     "path": "Cargo.toml",
+     "line": 12,
+     "quote": "pallas = { git = \"https://github.com/txpipe/pallas.git\", features = [\"unstable\"] }"
+    }
+   ]
+  },
+  {
+   "tool": "cshell",
+   "revision": "93b36fe4835990760c45b0d059936faacc452871",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "The wallet uses Pallas for keys, addresses and hashing; chain data comes from its UTxO RPC provider.",
+   "evidence": [
+    {
+     "repo": "txpipe/cshell",
+     "revision": "93b36fe4835990760c45b0d059936faacc452871",
+     "path": "src/wallet/types.rs",
+     "line": 19,
+     "quote": "traverse::ComputeHash,"
+    },
+    {
+     "repo": "txpipe/cshell",
+     "revision": "93b36fe4835990760c45b0d059936faacc452871",
+     "path": "src/provider/types.rs",
+     "line": 5,
+     "quote": "use pallas::ledger::addresses::Address;"
+    }
+   ]
+  },
+  {
+   "tool": "lace-anatomy",
+   "revision": "1e8b05e9e1c8ad3bada3d539c549554d370cdf69",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The CBOR inspector decodes pasted blocks with MultiEraBlock::decode and pasted transactions with MultiEraTx::decode, from Pallas's default branch, which has no Dijkstra era.",
+   "evidence": [
+    {
+     "repo": "txpipe/laceanatomy",
+     "revision": "1e8b05e9e1c8ad3bada3d539c549554d370cdf69",
+     "path": "napi-pallas/src/block.rs",
+     "line": 14,
+     "quote": "let block = MultiEraBlock::decode(&cbor)?;"
+    },
+    {
+     "repo": "txpipe/laceanatomy",
+     "revision": "1e8b05e9e1c8ad3bada3d539c549554d370cdf69",
+     "path": "napi-pallas/src/tx.rs",
+     "line": 248,
+     "quote": "MultiEraTx::decode(&cbor)"
+    },
+    {
+     "repo": "txpipe/laceanatomy",
+     "revision": "1e8b05e9e1c8ad3bada3d539c549554d370cdf69",
+     "path": "napi-pallas/Cargo.toml",
+     "line": 15,
+     "quote": "pallas = { git = \"https://github.com/txpipe/pallas.git\", features = [\"applying\"] }"
+    }
+   ]
+  },
+  {
+   "tool": "lucid",
+   "revision": "ee095ed04951461d01c439b815920616a9e593a0",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "The Rust core decodes transactions as Conway MintedTx and uses Pallas traversal only for hashing; no block decoding or era detection.",
+   "evidence": [
+    {
+     "repo": "spacebudz/lucid",
+     "revision": "ee095ed04951461d01c439b815920616a9e593a0",
+     "path": "rs_lib/src/instruction_signer.rs",
+     "line": 78,
+     "quote": "MintedTx::decode_fragment"
+    },
+    {
+     "repo": "spacebudz/lucid",
+     "revision": "ee095ed04951461d01c439b815920616a9e593a0",
+     "path": "rs_lib/src/instruction_signer.rs",
+     "line": 36,
+     "quote": "use pallas_traverse::ComputeHash;"
+    }
+   ]
+  },
+  {
+   "tool": "mumak",
+   "revision": "4da43f3cb21d986280faf2ad373db954418dc888",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The Postgres extension's functions decode stored block CBOR with MultiEraBlock::decode from Pallas 0.31.0, so Dijkstra blocks return errors.",
+   "evidence": [
+    {
+     "repo": "txpipe/mumak",
+     "revision": "4da43f3cb21d986280faf2ad373db954418dc888",
+     "path": "extension/src/lib.rs",
+     "line": 26,
+     "quote": "let block = match MultiEraBlock::decode(block_cbor) {"
+    },
+    {
+     "repo": "txpipe/mumak",
+     "revision": "4da43f3cb21d986280faf2ad373db954418dc888",
+     "path": "extension/Cargo.toml",
+     "line": 21,
+     "quote": "pallas = \"0.31.0\""
+    }
+   ]
+  },
+  {
+   "tool": "naumachia",
+   "revision": "fbbd58feb08206fb06037342c06252a284a81967",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "Naumachia uses Pallas for addresses and Plutus primitives when building transactions; it decodes no blocks and detects no eras.",
+   "evidence": [
+    {
+     "repo": "free-honey/naumachia",
+     "revision": "fbbd58feb08206fb06037342c06252a284a81967",
+     "path": "src/lib.rs",
+     "line": 13,
+     "quote": "pallas_addresses"
+    },
+    {
+     "repo": "free-honey/naumachia",
+     "revision": "fbbd58feb08206fb06037342c06252a284a81967",
+     "path": "src/scripts/plutus_minting_policy.rs",
+     "line": 28,
+     "quote": "use pallas_primitives"
+    }
+   ]
+  },
+  {
+   "tool": "tx3",
+   "revision": "dabcab43c1dafb92a8cca6a12e5d7a561451ea80",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "The Cardano compiler builds transactions with Pallas types and hashes them; it decodes no blocks and detects no eras.",
+   "evidence": [
+    {
+     "repo": "tx3-lang/tx3",
+     "revision": "dabcab43c1dafb92a8cca6a12e5d7a561451ea80",
+     "path": "crates/tx3-cardano/src/lib.rs",
+     "line": 11,
+     "quote": "use pallas::ledger::traverse::ComputeHash;"
+    }
+   ]
+  },
+  {
+   "tool": "de-uplc",
+   "revision": "4c42de0ab08ab5858e24445aa52d6df66e2ad800",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "The debugger uses Pallas primitives, addresses and codec to build script contexts; it decodes no blocks and detects no eras.",
+   "evidence": [
+    {
+     "repo": "cardananium/de-uplc",
+     "revision": "4c42de0ab08ab5858e24445aa52d6df66e2ad800",
+     "path": "rust-src/src/utxo.rs",
+     "line": 3,
+     "quote": "use pallas_primitives"
+    }
+   ]
+  },
+  {
+   "tool": "de-uplc-web",
+   "revision": "57c58154b003b58780025a7b33ebf478930c5895",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "The web engine uses Pallas primitives, addresses and codec to build script contexts; it decodes no blocks and detects no eras.",
+   "evidence": [
+    {
+     "repo": "cardananium/de-uplc-web",
+     "revision": "57c58154b003b58780025a7b33ebf478930c5895",
+     "path": "packages/engine-wasm/crate/src/utxo.rs",
+     "line": 3,
+     "quote": "use pallas_primitives"
+    }
+   ]
+  },
+  {
+   "tool": "zhuli",
+   "revision": "fa25f977ef6a981e09918ea09d7e1d6650879463",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "The CLI uses Pallas addresses, codec and primitives to build transactions; it decodes no blocks and detects no eras.",
+   "evidence": [
+    {
+     "repo": "CardanoSolutions/zhuli",
+     "revision": "fa25f977ef6a981e09918ea09d7e1d6650879463",
+     "path": "cli/src/main.rs",
+     "line": 8,
+     "quote": "use pallas_primitives"
     }
    ]
   }

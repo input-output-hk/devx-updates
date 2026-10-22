@@ -12,7 +12,8 @@
    "One stake pool, three DReps, no constitutional committee, testnet magic 42, 200-slot epochs of 0.1 s, generated with cardano-testnet create-env.",
    "Node configuration adds ExperimentalHardForksEnabled and TestDijkstraHardForkAtEpoch 2 to the generated DijkstraGenesisFile and ExperimentalProtocolsEnabled.",
    "The test fork trigger moves the chain into Dijkstra at epoch 2 but leaves the protocol version at 10; two hard-fork initiation actions, ratified by the DReps and the pool, raised it to 11 and then 12 before any transaction or tool check ran.",
-   "Every check below ran against protocol version 12 except the Ogmios and Kupo runs and the handshake probe, which do not depend on it."
+   "Every check below ran against protocol version 12 except the Ogmios and Kupo runs and the handshake probe, which do not depend on it.",
+   "The pallas-chain-sync, pallas-transactions, cml-decoding and js-sdk-transactions checks ran on 2026-10-22 against a fresh devnet from the same recipe, after the other seven checks reproduced there unchanged (same results, error messages and decoder offsets; only slots and hashes differ)."
   ],
   "recipe": "scripts/readiness/devnet/README.md"
  },
@@ -143,6 +144,64 @@
     "cardano-node-api patched: utxos/search-by-asset returns the token minted in a Dijkstra transaction"
    ],
    "recipe": ["scripts/readiness/devnet/tools.sh", "scripts/readiness/devnet/patches/adder-v0.45.0-gouroboros-v0.213.9.diff", "scripts/readiness/devnet/patches/cardano-node-api-gouroboros-v0.213.9.diff"]
+  },
+  {
+   "id": "pallas-chain-sync",
+   "title": "Pallas cannot decode the node's Dijkstra blocks in any revision",
+   "summary": "Chain-sync from origin through pallas-network, decoding each block with MultiEraBlock::decode as Oura, Dolos and cncli do. All 21 Conway blocks decode in every revision; no Dijkstra block does. v1.4.0 and main do not know era tag 8. The dijkstra branch decodes Dijkstra only behind its unstable feature, and its HeaderBody requires the twelve fields of the target CDDL (protocol_version, then block_body_contains_leios_cert and eb_announcement), while the node emits ten. That twelve-field header has been in Pallas's Dijkstra primitives since they were introduced (#799, 2026-09-16), including v1.4.0. Pallas PRs #800 and #817 merged into the dijkstra branch, not main.",
+   "results": [
+    { "kind": "component", "id": "pallas", "version": "v1.4.0", "outcome": "fail" },
+    { "kind": "component", "id": "pallas", "version": "main e6c38ac5", "outcome": "fail" },
+    { "kind": "component", "id": "pallas", "version": "dijkstra e7ea1726", "outcome": "fail", "note": "Built with the unstable feature." }
+   ],
+   "observed": [
+    "v1.4.0 (aef0b5a0) and main (e6c38ac5): era tag 7: 21 blocks decoded; era tag 8: 0 decoded, every block failed: Unknown CBOR structure: 820882828a1519019a\u2026",
+    "dijkstra branch (e7ea1726, unstable): era tag 7: 21 blocks decoded; era tag 8: 0 decoded, every block failed: Invalid CBOR structure: missing value at index 10 (HeaderBody::block_body_contains_leios_cert) in map or array starting at position 4"
+   ],
+   "recipe": ["scripts/readiness/devnet/pallas-probe/main.rs", "scripts/readiness/devnet/build-pallas-probe.sh"]
+  },
+  {
+   "id": "pallas-transactions",
+   "title": "Pallas decodes mempool Dijkstra transactions only on its dijkstra branch, and only when told the era",
+   "summary": "The seven transactions captured from the mempool (three-element Dijkstra mempool form, including the four Conway-built ones the node translated) were decoded with MultiEraTx::decode, which detects the era, and on the dijkstra branch also with decode_for_era(Dijkstra). Era detection fails on all seven in every revision: by design it recognises Dijkstra only by the four-element block form. Naming the era on the dijkstra branch decodes all seven.",
+   "results": [
+    { "kind": "component", "id": "pallas", "version": "v1.4.0", "outcome": "fail" },
+    { "kind": "component", "id": "pallas", "version": "main e6c38ac5", "outcome": "fail" },
+    { "kind": "component", "id": "pallas", "version": "dijkstra e7ea1726", "outcome": "pass", "note": "Only through decode_for_era(Era::Dijkstra) with the unstable feature; MultiEraTx::decode still fails." }
+   ],
+   "observed": [
+    "v1.4.0 and main: split, conway-payment, conway-reg-with-deposit, conway-required-signer, conway-metadata, dijkstra-payment, dijkstra-reg-with-deposit: decode: Unknown CBOR structure",
+    "dijkstra branch: the same seven: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs"
+   ],
+   "recipe": ["scripts/readiness/devnet/pallas-probe/main.rs", "scripts/readiness/devnet/build-pallas-probe.sh", "scripts/readiness/devnet/transactions.sh"]
+  },
+  {
+   "id": "cml-decoding",
+   "title": "CML 6.2.0 decodes neither Dijkstra blocks nor Dijkstra transactions",
+   "summary": "Every block from a Pallas chain-sync and every captured transaction, decoded with CML's MultiEraBlock (HFC-wrapped), its Conway Block (unwrapped) and its Transaction. Conway blocks and the Conway-built four-element transactions decode; no Dijkstra block and no three-element transaction does. CML has no Dijkstra branch or pull request; develop is unchanged since 2026-07-30.",
+   "results": [
+    { "kind": "component", "id": "cardano-multiplatform-lib-cml", "version": "6.2.0", "outcome": "fail" }
+   ],
+   "observed": [
+    "era tag 7: 21 blocks; MultiEraBlock decoded 21, Conway Block decoded 21",
+    "era tag 8: 1017 blocks; MultiEraBlock decoded 0 (Deserialization: No variant matched), Conway Block decoded 0 (Definite length mismatch: found 2)",
+    "the seven mempool transactions and the three Dijkstra-built text envelopes (83a3/83a4): Definite length mismatch: found 3",
+    "the five Conway-built text envelopes (84a3/84a4): decoded"
+   ],
+   "recipe": ["scripts/readiness/devnet/cml-probe/main.rs", "scripts/readiness/devnet/build-cml-probe.sh", "scripts/readiness/devnet/pallas-probe/main.rs"]
+  },
+  {
+   "id": "js-sdk-transactions",
+   "title": "cardano-js-sdk 0.47.1 decodes and re-encodes plain Dijkstra transactions",
+   "summary": "Serialization.Transaction.fromCbor, toCore() and toCbor() on the seven mempool transactions and the eight text envelopes. All fifteen decode, re-encode byte for byte and give the transaction id computed independently from the mempool bytes. Only payments, a deposit registration, a required signer and metadata were exercised: guards, sub-transactions, direct deposits, balance intervals and PlutusV4 were not, and the SDK has no block codec.",
+   "results": [
+    { "kind": "component", "id": "cardano-js-sdk", "version": "@cardano-sdk/core 0.47.1", "outcome": "pass" }
+   ],
+   "observed": [
+    "split, conway-payment, conway-reg-with-deposit, conway-required-signer, conway-metadata, dijkstra-payment, dijkstra-reg-with-deposit (83a3/83a4): decoded, isValid true, round-trip exact; ids b143cc5a\u2026, aae9dee8\u2026, c543f1a4\u2026, bd88dba0\u2026, 5eea178a\u2026, 6f3e481c\u2026, b59aefa0\u2026 as txid.py computes them",
+    "the five Conway-built envelopes (84a3/84a4) and three Dijkstra-built envelopes: decoded, round-trip exact"
+   ],
+   "recipe": ["scripts/readiness/devnet/js-probe/probe.cjs", "scripts/readiness/devnet/transactions.sh"]
   }
  ]
 }

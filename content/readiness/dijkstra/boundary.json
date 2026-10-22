@@ -103,7 +103,7 @@
             "transaction-encoding"
           ],
           "status": "gap",
-          "summary": "The transaction body ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards, so CML cannot decode transactions that use them.",
+          "summary": "The transaction body ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards, so CML cannot decode transactions that use them. On the devnet it rejects every three-element Dijkstra transaction, even plain payments (cml-decoding).",
           "evidence": [
             {
               "kind": "source",
@@ -112,6 +112,11 @@
               "path": "specs/conway/transaction.cddl",
               "line": 30,
               "quote": "  ? 22 : positive_coin,                    ; @name donation"
+            },
+            {
+              "kind": "devnet",
+              "check": "cml-decoding",
+              "version": "6.2.0"
             }
           ]
         },
@@ -171,7 +176,7 @@
             "block-encoding"
           ],
           "status": "gap",
-          "summary": "The block keeps Conway's segregated body. Its header body still carries protocol_version, which the target CDDL replaces with header_version_info, but that ten-field header is what the 11.2 integration node emits (devnet check block-shape).",
+          "summary": "The block keeps Conway's segregated body. Its header body still carries protocol_version, which the target CDDL replaces with header_version_info, but that ten-field header is what the 11.2 integration node emits (devnet check block-shape). On the devnet, 6.2.0 decodes none of 1017 Dijkstra blocks, wrapped or unwrapped (devnet check cml-decoding).",
           "evidence": [
             {
               "kind": "source",
@@ -180,6 +185,11 @@
               "path": "specs/conway/block.cddl",
               "line": 28,
               "quote": "  protocol_version: [protocol_version],"
+            },
+            {
+              "kind": "devnet",
+              "check": "cml-decoding",
+              "version": "6.2.0"
             }
           ]
         },
@@ -197,6 +207,11 @@
               "path": "multi-era/rust/src/generated/mod.rs",
               "line": 47,
               "quote": "    Conway(Block),"
+            },
+            {
+              "kind": "devnet",
+              "check": "cml-decoding",
+              "version": "6.2.0"
             }
           ]
         },
@@ -280,14 +295,13 @@
         },
         {
           "surfaces": [
-            "era-identity",
             "transaction-encoding",
             "plutus-language",
             "protocol-parameters",
             "stake-pool-registration"
           ],
           "status": "in-progress",
-          "summary": "Dijkstra primitives are released since v1.3.0 but are generated from ledger commit 1587f21a, not the 11.2 component set: compared with the target CDDL they lack protocol-parameter keys 49-56 and witness-set key 8 (PlutusV4). They still use protocol_version in the header, which matches what the 11.2 integration node emits (devnet check block-shape).",
+          "summary": "Dijkstra primitives are released since v1.3.0 but are generated from ledger commit 1587f21a, not the 11.2 component set: compared with the target CDDL they lack protocol-parameter keys 49-56 and witness-set key 8 (PlutusV4). On the dijkstra branch, decode_for_era(Dijkstra) reads all seven transactions captured from the devnet mempool (devnet check pallas-transactions).",
           "evidence": [
             {
               "kind": "source",
@@ -303,17 +317,30 @@
               "title": "feat(primitives): add Dijkstra era ledger primitives",
               "state": "merged",
               "date": "2026-09-16"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-transactions",
+              "version": "dijkstra e7ea1726"
             }
           ]
         },
         {
           "surfaces": [
-            "block-encoding",
-            "transaction-rules"
+            "era-identity",
+            "block-encoding"
           ],
-          "status": "in-progress",
-          "summary": "Multi-era block traversal (used by Oura, Dolos and Mithril) decodes Dijkstra only on main after v1.4.0; sub-transaction handling is still in open pull requests.",
+          "status": "gap",
+          "summary": "Against the 11.2 integration node no revision decodes a Dijkstra block (devnet check pallas-chain-sync). v1.4.0 and main have no Dijkstra era in multi-era traversal (used by Oura, Dolos and Mithril): PRs #800 and #817 merged into the dijkstra branch, not main. That branch decodes Dijkstra behind its unstable feature, but its header body requires the twelve fields of the target CDDL, adding block_body_contains_leios_cert and eb_announcement after protocol_version, while the node emits ten; the twelve-field header has been in the Dijkstra primitives since #799, so v1.4.0 has it too. MultiEraTx::decode does not recognise the three-element mempool form in any revision (pallas-transactions). No branch or open pull request targets the ten-field header on 2026-10-22.",
           "evidence": [
+            {
+              "kind": "source",
+              "repo": "txpipe/pallas",
+              "revision": "e7ea1726ea17797f6028fd089e9de928bcee45b9",
+              "path": "pallas-primitives/src/dijkstra/model.rs",
+              "line": 233,
+              "quote": "pub block_body_contains_leios_cert: bool,"
+            },
             {
               "kind": "tracker",
               "url": "https://github.com/txpipe/pallas/pull/800",
@@ -321,6 +348,40 @@
               "state": "merged",
               "date": "2026-09-24"
             },
+            {
+              "kind": "devnet",
+              "check": "pallas-chain-sync",
+              "version": "v1.4.0"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-chain-sync",
+              "version": "main e6c38ac5"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-chain-sync",
+              "version": "dijkstra e7ea1726"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-transactions",
+              "version": "v1.4.0"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-transactions",
+              "version": "main e6c38ac5"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-rules"
+          ],
+          "status": "in-progress",
+          "summary": "Sub-transaction handling is on the dijkstra branch only, partly still in open pull requests; nothing is released.",
+          "evidence": [
             {
               "kind": "tracker",
               "url": "https://github.com/txpipe/pallas/pull/817",
@@ -548,7 +609,7 @@
             "stake-pool-registration"
           ],
           "status": "in-progress",
-          "summary": "@cardano-sdk/core 0.47.0 released Dijkstra serialization (guards, sub-transactions, direct deposits, balance intervals, PlutusV4) against an earlier definition; batch-aware inspection is still open.",
+          "summary": "@cardano-sdk/core 0.47.0 released Dijkstra serialization (guards, sub-transactions, direct deposits, balance intervals, PlutusV4) against an earlier definition; batch-aware inspection is still open. On the devnet, 0.47.1 decodes, re-encodes byte for byte and identifies plain Dijkstra payments and registrations; guards, sub-transactions and PlutusV4 were not exercised (devnet check js-sdk-transactions).",
           "evidence": [
             {
               "kind": "source",
@@ -571,6 +632,11 @@
               "title": "feat: Dijkstra batch groundwork - hydrated sub transactions and batch-aware inspection",
               "state": "open",
               "date": "2026-07-22"
+            },
+            {
+              "kind": "devnet",
+              "check": "js-sdk-transactions",
+              "version": "@cardano-sdk/core 0.47.1"
             }
           ]
         },

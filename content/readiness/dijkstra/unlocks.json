@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-20T19:03:45.382Z",
+ "generatedAt": "2026-10-22T11:16:13.031Z",
  "bumpReady": [
   {
    "tool": "marconi",
@@ -645,7 +645,8 @@
     {
      "tool": "scrolls",
      "stillBlockedBy": [
-      "scrolls (own gap)"
+      "scrolls (own gap)",
+      "pallas"
      ]
     },
     {
@@ -872,6 +873,88 @@
    "ownGap": [
     "era-identity",
     "protocol-parameters"
+   ]
+  },
+  {
+   "component": "pallas",
+   "unlocks": [
+    {
+     "tool": "boros",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "boros"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "cardaminal",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "cardaminal"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "cncli",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "cncli"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "lace-anatomy",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "lace-anatomy"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "mumak",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "mumak"
+     ],
+     "bumps": []
+    }
+   ],
+   "partial": [
+    {
+     "tool": "dolos",
+     "stillBlockedBy": [
+      "dolos (own gap)"
+     ]
+    },
+    {
+     "tool": "mithril",
+     "stillBlockedBy": [
+      "mithril (own gap)"
+     ]
+    },
+    {
+     "tool": "oura",
+     "stillBlockedBy": [
+      "oura (own gap)"
+     ]
+    },
+    {
+     "tool": "scrolls",
+     "stillBlockedBy": [
+      "scrolls (own gap)",
+      "ogmios"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "block-encoding"
    ]
   },
   {
@@ -1804,13 +1887,24 @@
    "unlocked": 56
   },
   {
+   "component": "pallas",
+   "added": [
+    "boros",
+    "cardaminal",
+    "cncli",
+    "lace-anatomy",
+    "mumak"
+   ],
+   "unlocked": 61
+  },
+  {
    "component": "gouroboros",
    "added": [
     "cardano-node-api",
     "dingo",
     "txtop"
    ],
-   "unlocked": 59
+   "unlocked": 64
   },
   {
    "component": "ledgerjs-hw-app-cardano",
@@ -1818,7 +1912,7 @@
     "bursa",
     "yoroi"
    ],
-   "unlocked": 61
+   "unlocked": 66
   },
   {
    "component": "cardano-js-sdk",
@@ -1826,7 +1920,7 @@
     "blaze",
     "lace"
    ],
-   "unlocked": 63
+   "unlocked": 68
   },
   {
    "component": "cardano-wallet",
@@ -1834,7 +1928,7 @@
     "cardano-wallet-js",
     "daedalus"
    ],
-   "unlocked": 65
+   "unlocked": 70
   },
   {
    "component": "bloxbean-cardano-client-library",
@@ -1842,7 +1936,7 @@
     "cardano-client-bindings",
     "yaci"
    ],
-   "unlocked": 67
+   "unlocked": 72
   },
   {
    "component": "scalus",
@@ -1850,21 +1944,21 @@
     "yaci-store",
     "yano"
    ],
-   "unlocked": 69
+   "unlocked": 74
   },
   {
    "component": "cquisitor-lib",
    "added": [
     "cquisitor"
    ],
-   "unlocked": 70
+   "unlocked": 75
   },
   {
    "component": "cardano-hw-interop-lib",
    "added": [
     "cardano-hw-cli"
    ],
-   "unlocked": 71
+   "unlocked": 76
   },
   {
    "component": "cardano-multiplatform-lib-cml",
@@ -1872,14 +1966,14 @@
     "cardano-ibc-incubator",
     "nami"
    ],
-   "unlocked": 73
+   "unlocked": 78
   },
   {
    "component": "ouroboros-miniprotocols-ts",
    "added": [
     "gerolamo"
    ],
-   "unlocked": 74
+   "unlocked": 79
   }
  ],
  "blockers": [
@@ -2012,7 +2106,9 @@
     }
    ],
    "undetermined": [],
-   "cleared": [],
+   "cleared": [
+    "pallas"
+   ],
    "unread": []
   },
   {
@@ -2183,7 +2279,8 @@
    ],
    "undetermined": [],
    "cleared": [
-    "blockfrost-backend-ryo"
+    "blockfrost-backend-ryo",
+    "pallas"
    ],
    "unread": []
   },
@@ -2365,6 +2462,23 @@
    "unread": []
   },
   {
+   "tool": "boros",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
    "tool": "buildooor",
    "boundary": true,
    "blockers": [
@@ -2450,6 +2564,23 @@
    "cleared": [
     "ogmios"
    ],
+   "unread": []
+  },
+  {
+   "tool": "cardaminal",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
    "unread": []
   },
   {
@@ -3431,6 +3562,23 @@
    "unread": []
   },
   {
+   "tool": "cncli",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
    "tool": "cometa-js",
    "boundary": true,
    "blockers": [
@@ -3533,7 +3681,8 @@
     "blockfrost-backend-ryo",
     "cardano-db-sync",
     "koios",
-    "ogmios"
+    "ogmios",
+    "pallas"
    ],
    "unread": []
   },
@@ -3572,6 +3721,16 @@
    "cleared": [
     "cardanosharp",
     "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cshell",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "pallas"
    ],
    "unread": []
   },
@@ -3675,7 +3834,8 @@
    ],
    "undetermined": [],
    "cleared": [
-    "koios"
+    "koios",
+    "pallas"
    ],
    "unread": []
   },
@@ -3693,7 +3853,8 @@
    ],
    "undetermined": [],
    "cleared": [
-    "koios"
+    "koios",
+    "pallas"
    ],
    "unread": []
   },
@@ -3760,6 +3921,14 @@
      "surfaces": [
       "block-encoding",
       "transaction-encoding"
+     ]
+    },
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
      ]
     }
    ],
@@ -4481,6 +4650,23 @@
    "unread": []
   },
   {
+   "tool": "lace-anatomy",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
    "tool": "lambda-buffers",
    "boundary": false,
    "blockers": [],
@@ -4535,7 +4721,9 @@
     }
    ],
    "undetermined": [],
-   "cleared": [],
+   "cleared": [
+    "pallas"
+   ],
    "unread": []
   },
   {
@@ -4868,6 +5056,14 @@
      "surfaces": [
       "block-encoding"
      ]
+    },
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
     }
    ],
    "undetermined": [],
@@ -4894,7 +5090,16 @@
   {
    "tool": "mumak",
    "boundary": false,
-   "blockers": [],
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
    "undetermined": [],
    "cleared": [
     "pallas"
@@ -4970,7 +5175,8 @@
    "cleared": [
     "aiken",
     "cardano-multiplatform-lib-cml",
-    "ogmios"
+    "ogmios",
+    "pallas"
    ],
    "unread": []
   },
@@ -5155,6 +5361,14 @@
       "block-encoding",
       "transaction-encoding"
      ]
+    },
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
     }
    ],
    "undetermined": [],
@@ -5172,6 +5386,23 @@
      "kind": "own-gap",
      "surfaces": [
       "node-to-client-protocol"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "pallas",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "block-encoding"
      ]
     }
    ],
@@ -5474,6 +5705,14 @@
       "era-identity",
       "transaction-encoding"
      ]
+    },
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
     }
    ],
    "undetermined": [],
@@ -5574,6 +5813,16 @@
    "undetermined": [],
    "cleared": [
     "cardano-db-sync"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "tx3",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "pallas"
    ],
    "unread": []
   },
@@ -5719,7 +5968,8 @@
    ],
    "undetermined": [],
    "cleared": [
-    "blockfrost-backend-ryo"
+    "blockfrost-backend-ryo",
+    "pallas"
    ],
    "unread": []
   },
@@ -5921,7 +6171,8 @@
    "undetermined": [],
    "cleared": [
     "aiken",
-    "blockfrost-backend-ryo"
+    "blockfrost-backend-ryo",
+    "pallas"
    ],
    "unread": []
   }

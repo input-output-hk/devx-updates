@@ -4,7 +4,9 @@ What `content/readiness/dijkstra/devnet.json` was produced with. Everything runs
 testnet; nothing is sent to any public network.
 
 Needs `curl`, `jq`, `gh`, `go`, `python3`, `xxd` and `script` (util-linux). About 2.5 GB of disk: the node
-tarball unpacks to ~1 GB, the Go module cache takes ~0.5 GB, Ogmios and Kupo ~0.2 GB each.
+tarball unpacks to ~1 GB, the Go module cache takes ~0.5 GB, Ogmios and Kupo ~0.2 GB each. Step 9 also needs
+`cargo` and `rustc` (on NixOS: `nix shell nixpkgs#cargo nixpkgs#rustc nixpkgs#gcc`) and `node`/`npm`, and about
+2 GB more for the Rust builds.
 
 `DEVNET_DIR` (default `/tmp/dijkstra-devnet`) must be a short path: the node socket lives under it and Unix
 socket paths are limited to 108 bytes.
@@ -30,3 +32,12 @@ socket paths are limited to 108 bytes.
 8. `./tools.sh txtop` and `./tools.sh cardano-node-api` build both tools at their scanned revisions, pinned and
    upgraded, and exercise them. The upgraded cardano-node-api only builds with the two files in `patches/`; those
    patches are this experiment's, not upstream changes.
+9. Codecs (2026-10-22). `build-pallas-probe.sh <revision> $DEVNET_DIR/pallas-probe-<name> [dijkstra]` for Pallas
+   v1.4.0 (`aef0b5a0`), main (`e6c38ac5`) and the dijkstra branch (`e7ea1726`, with `dijkstra`, which turns on
+   Pallas's unstable feature). `pallas-probe-<name> chain <socket>` decodes every block the way Oura and Dolos do;
+   `pallas-probe-<name> decode < labeled` decodes the mempool lines from step 5. `pallas-probe-main blocks <socket>
+   > $DEVNET_DIR/blocks.txt` dumps every raw block for the codecs without a node client:
+   `build-cml-probe.sh 6.2.0 $DEVNET_DIR/cml-probe-6.2.0`, then `cml-probe-6.2.0 blocks < blocks.txt` and
+   `... decode < labeled`. For cardano-js-sdk, `npm install --ignore-scripts @cardano-sdk/core@0.47.1` into its own
+   directory and run `node js-probe/probe.cjs <that directory> < labeled`. The text envelopes from step 5
+   (`jq -r .cborHex $DEVNET_DIR/work/tx/*.signed`, each line prefixed with a name) are decoded the same way.
