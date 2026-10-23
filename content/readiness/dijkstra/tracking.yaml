@@ -1,0 +1,67 @@
+# Dijkstra follow-up kept by hand: dismissed tools, and the issues and PRs that
+# bear on a tool's state. Shown on /map/dijkstra and on each tool's page.
+#
+# Key every entry by the tool's catalog id (the last part of its
+# /map/readiness/<id> URL). An unknown id fails the build.
+#
+#   dismissed:            optional. The tool shows as "Dismissed" instead of its
+#     reason: <text>      computed state (which is still shown, smaller).
+#     date: YYYY-MM-DD    Any reason: abandoned, too little use to matter, etc.
+#   links:                optional. Issues, PRs or any other https URL.
+#     - url: <url>
+#       note: <text>      optional, shown next to the link
+#
+# A bare string works for either: `dismissed: Archived in 2024` or
+# `- https://github.com/owner/repo/issues/1`.
+#
+# GitHub titles and open/merged/closed state are not written here. Refresh them
+# with `npm run readiness -- sync-tracking`, which writes tracking-state.json.
+#
+# Example:
+#   tools:
+#     nami:
+#       dismissed:
+#         reason: Wallet is archived; users were moved to Lace.
+#         date: 2026-10-22
+#     ogmios:
+#       links:
+#         - url: https://github.com/CardanoSolutions/ogmios/issues/123
+#           note: Dijkstra support
+
+tools:
+  nami:
+    dismissed:
+      reason: Abandoned; the repository is archived.
+      date: 2026-10-23
+  maestro:
+    dismissed:
+      reason: Breaks after Dijkstra and will never be updated; every tool that uses it has to move to another provider.
+      date: 2026-10-23
+  lucid:
+    dismissed:
+      reason: Abandoned; the repository is archived. Replaced by lucid-evolution.
+      date: 2026-10-23
+  cardano-rosetta-legacy:
+    dismissed:
+      reason: Abandoned; the repository is archived. Replaced by cardano-rosetta-java.
+      date: 2026-10-23
+  plutus-simple-model:
+    dismissed:
+      reason: Abandoned; the repository is archived.
+      date: 2026-10-23
+  cardano-launcher:
+    dismissed:
+      reason: Abandoned; the repository is archived.
+      date: 2026-10-23
+  hebi:
+    dismissed:
+      reason: Abandoned; the repository is archived.
+      date: 2026-10-23
+  cardano-node-api:
+    dismissed:
+      reason: The project is no longer needed now that we have wide adoption of the UTxO RPC interface.
+      date: 2026-10-23
+  cardaminal:
+    dismissed:
+      reason: Replaced by cshell.
+      date: 2026-10-23

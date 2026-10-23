@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { citationUrl, componentStatus, devnetResults, dijkstraSite, toolLeads, toolUpgrade, viaLabel, waitingLinks } from "@/lib/readiness/dijkstra-site";
+import { citationUrl, componentStatus, devnetResults, dijkstraSite, toolLeads, toolState, toolUpgrade, viaLabel, waitingLinks } from "@/lib/readiness/dijkstra-site";
+import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
+import TrackingLinks from "./TrackingLinks";
 
 const Chip = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-block rounded-md border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[11px] leading-tight text-muted">{children}</span>
@@ -18,11 +20,23 @@ export default function DijkstraExposure({ id }: { id: string }) {
   const upgrade = toolUpgrade(site, id);
   const waiting = waitingLinks(site, id);
   const devnet = devnetResults(site, id);
+  const state = tool && toolState(site, tool);
   return <section id="dijkstra" className="scroll-mt-24 space-y-4 rounded-xl border border-border bg-surface p-5">
     <div className="flex flex-wrap items-baseline justify-between gap-2">
       <h2 className="font-display text-xl font-semibold">Dijkstra hardfork</h2>
       <Link href="/map/dijkstra" className="text-sm">All tools →</Link>
     </div>
+    {state && <div>
+      <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <span className={`inline-flex items-center gap-1.5 font-medium ${HARDFORK_STATES[state.state].text}`}><span className={`size-2 rounded-full ${HARDFORK_STATES[state.state].dot}`} />{HARDFORK_STATES[state.state].label}</span>
+        <span className="text-sm text-muted">{state.reason}{state.dismissed?.date && ` (${state.dismissed.date})`}</span>
+      </p>
+      {state.computed && <p className="mt-1 text-xs text-muted">Otherwise: {HARDFORK_STATES[state.computed].label}</p>}
+    </div>}
+    {state && state.links.length > 0 && <div>
+      <h3 className="text-sm font-medium">Issues and PRs</h3>
+      <TrackingLinks links={state.links} />
+    </div>}
     {!tool ? <p className="text-sm text-muted">Not classified.</p> : <>
       <p className="text-sm text-muted">
         Exposure <strong className="text-foreground">{tool.exposure}</strong> · inherited readiness <strong className="text-foreground">{tool.readiness}</strong>

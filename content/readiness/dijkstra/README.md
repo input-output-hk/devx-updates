@@ -444,14 +444,32 @@ revision, whether the tool's own code handles the new era:
 node --import tsx scripts/readiness/cli.ts check-upgrades [--verify-sources]  # every bump-ready tool read, none stale
 ```
 
+## Dismissals and issue/PR links (`tracking.yaml`, `tracking-state.json`)
+
+`tracking.yaml` is edited by hand. Keyed by tool id, an entry can dismiss the
+tool (`dismissed: { reason, date }`) and list issues, PRs or any other https
+links (`links: [{ url, note }]`); the file's header has the exact format. A
+dismissed tool shows as *Dismissed* with its reason in place of its computed
+state, which stays visible as "Otherwise: …". Dismissing changes only how the
+tool is shown, not the unlock report or any other register. An unknown tool id
+or field fails the build.
+
+`tracking-state.json` is generated: `sync-tracking` reads the title and
+open/merged/closed state of every GitHub issue/PR link through `gh api`
+(read-only) and writes them there, so the YAML and its comments are never
+rewritten. A link that has not been synced yet shows without a state. A failed
+lookup keeps the previous entry and exits non-zero.
+
 ## On the site
 
-`/map/dijkstra` renders these registers at build time: what each fix unlocks,
+`/map/dijkstra` opens with the state of every tool touching a changed surface
+(Breaks after HF, In progress, Ready for HF, Not verified, Dismissed) and the
+tools ranked by how many catalog tools reach them, then renders: what each fix unlocks,
 the tools whose upstream fix is released (upgrade distance and own era
 handling), inherited gaps not read yet and links waiting on a component
 verdict (both grouped by component), every confirmed gap with its quoted lines,
 the devnet checks, and the cited changes with their devnet outcome. Each tool page under `/map/readiness/<id>` has a Dijkstra section with
-its exposure, devnet results, blockers, upgrade, what it waits on and lead decisions. A malformed register fails the build.
+its state, issue/PR links, exposure, devnet results, blockers, upgrade, what it waits on and lead decisions. A malformed register fails the build.
 
 ## Checking it
 
@@ -462,6 +480,7 @@ node --import tsx scripts/readiness/cli.ts check-boundary [--verify-sources] # b
 node --import tsx scripts/readiness/cli.ts classify-surfaces                  # rescan every catalog tool (resumable)
 node --import tsx scripts/readiness/cli.ts classify-surfaces --reclassify     # recompute after a register edit, no fetching
 node --import tsx scripts/readiness/cli.ts check-leads [--verify-sources]     # every shipped gap decided, none stale
+node --import tsx scripts/readiness/cli.ts sync-tracking                      # issue/PR titles and states into tracking-state.json
 ```
 
 Every citation records repository, 40-character revision, path, line and an

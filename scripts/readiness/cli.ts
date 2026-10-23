@@ -1,12 +1,12 @@
 import { compareSnapshots } from "../../lib/readiness/comparison";
 import { execFileSync } from "node:child_process";
-import { existsSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, join } from "node:path";
 import { parseArgs } from "node:util";
 import type { Graph } from "../../lib/map-types";
 import { finalize, inventory, object } from "../../lib/readiness/core";
 import { parseNativeInput, resolveNative } from "../../lib/readiness/adapters";
-import { discover } from "../../lib/readiness/discovery";
+import { discover, github } from "../../lib/readiness/discovery";
 import { githubSource } from "../../lib/readiness/source";
 import { collect, refreshNative } from "../../lib/readiness/collect";
 import { calculateImpact } from "../../lib/readiness/impact";
@@ -30,6 +30,7 @@ import { unlockReport, unlocksOf, toolBlockers } from "../../lib/readiness/unloc
 import { parseUpgradeRegister, upgradeCoverage, verifyUpgradeSources } from "../../lib/readiness/upgrades";
 import { targetVersions } from "../../lib/readiness/surfaces";
 import { devnetConsistency, parseDevnetRegister } from "../../lib/readiness/devnet";
+import { loadTracking, parseTrackingState, syncTracking } from "../../lib/readiness/tracking";
 
 const { positionals, values } = parseArgs({ allowPositionals: true, options: {
   directory: { type: "string", default: "data/readiness" },
@@ -98,6 +99,8 @@ check-leads     [--input content/readiness/dijkstra/leads.json] [--verify-source
 check-upgrades  [--verify-sources]
                 Own era handling of every bump-ready tool (content/readiness/dijkstra/upgrades.json)
 check-devnet    Devnet results (content/readiness/dijkstra/devnet.json): subjects, recipes, and the boundary evidence citing them
+sync-tracking   Read the title and open/merged/closed state of every GitHub link in
+                content/readiness/dijkstra/tracking.yaml via gh (read-only) into tracking-state.json
 unlocks         [--component scalus[,cardano-js-sdk]] [--output content/readiness/dijkstra/unlocks.json]
                 What a fix in one component unlocks, directly and through other components
                 Validate the hardfork change register; optionally re-read every cited quote via gh
@@ -213,6 +216,19 @@ Runnable collectors: ${COLLECT_ADAPTERS.join(", ")}.`);
     const results = devnet.checks.flatMap((c) => c.results);
     console.log(JSON.stringify({ checks: devnet.checks.length, results: results.length, failing: results.filter((r) => r.outcome === "fail").map((r) => `${r.kind} ${r.id}${r.version ? ` ${r.version}` : ""}`) }, null, 2));
     if (missing.length || inconsistent.length) throw new Error("The devnet register does not match the recipe or the boundary register");
+    return;
+  }
+  if (command === "sync-tracking") {
+    const { tools } = readJson("content/readiness/dijkstra/classification.json") as ClassificationRegister;
+    const register = loadTracking(readFileSync("content/readiness/dijkstra/tracking.yaml", "utf8"), new Set(tools.map((t) => t.id)));
+    const output = "content/readiness/dijkstra/tracking-state.json";
+    const previous = parseTrackingState(readJson(output));
+    const { state, failures } = await syncTracking(register, previous, github, new Date().toISOString().slice(0, 10));
+    writeFileSync(output, `${JSON.stringify(state, null, 1)}\n`);
+    for (const failure of failures) console.error(failure);
+    const byState = Object.values(state.links).reduce<Record<string, number>>((n, l) => ({ ...n, [l.state]: (n[l.state] ?? 0) + 1 }), {});
+    console.log(JSON.stringify({ tools: register.size, dismissed: [...register.values()].filter((t) => t.dismissed).length, links: Object.keys(state.links).length, byState, failed: failures.length }, null, 2));
+    if (failures.length) process.exitCode = 1;
     return;
   }
   if (command === "check-leads") {

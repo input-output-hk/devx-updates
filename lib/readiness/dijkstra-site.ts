@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseBoundaryRegister, worstStatus, type BoundaryRegister } from "./boundary";
 import { parseChangeRegister, type ChangeRegister, type Citation } from "./dijkstra";
@@ -5,8 +6,9 @@ import { devnetConsistency, parseDevnetRegister, resultsFor, type DevnetRegister
 import { parseLeadRegister, type Lead, type LeadRegister } from "./leads";
 import { readJson } from "./store";
 import type { ClassificationRegister } from "./surface-collect";
-import { READINESS, targetVersions, type Readiness, type ToolClassification } from "./surfaces";
+import { READINESS, targetVersions, UPSTREAM_TOOLS, type Readiness, type ToolClassification } from "./surfaces";
 import { unlockReport, type UnlockReport } from "./unlocks";
+import { linkLabel, loadTracking, parseTrackingState, type Dismissal, type LinkInfo, type TrackingRegister } from "./tracking";
 import { parseUpgradeRegister, type UpgradeRegister } from "./upgrades";
 
 /**
@@ -16,6 +18,8 @@ import { parseUpgradeRegister, type UpgradeRegister } from "./upgrades";
 export interface DijkstraSite {
   changes: ChangeRegister; boundary: BoundaryRegister; leads: LeadRegister; unlocks: UnlockReport; upgrades: UpgradeRegister; devnet: DevnetRegister;
   classification: { generatedAt: string; summary: Record<string, number>; tools: Map<string, ToolClassification> };
+  /** Hand-kept dismissals and issue/PR links (tracking.yaml), with GitHub state from tracking-state.json. */
+  tracking: TrackingRegister; linkState: Record<string, LinkInfo>;
 }
 
 let cached: DijkstraSite | undefined;
@@ -33,10 +37,12 @@ export function dijkstraSite(): DijkstraSite {
   const devnet = parseDevnetRegister(readJson(join(dir, "devnet.json")), {
     changes: new Set(changes.changes.map((c) => c.id)), components: new Set(boundary.components.map((c) => c.id)), tools: new Set(register.tools.map((t) => t.id)),
   });
+  const tracking = loadTracking(readFileSync(join(dir, "tracking.yaml"), "utf8"), new Set(register.tools.map((t) => t.id)));
+  const { links: linkState } = parseTrackingState(readJson(join(dir, "tracking-state.json")));
   const inconsistent = devnetConsistency(boundary, devnet);
   if (inconsistent.length) throw new Error(`Boundary and devnet registers disagree: ${inconsistent.join("; ")}`);
   cached = {
-    changes, boundary, leads, unlocks, upgrades, devnet,
+    changes, boundary, leads, unlocks, upgrades, devnet, tracking, linkState,
     classification: { generatedAt: register.generatedAt, summary: register.summary, tools: new Map(register.tools.map((t) => [t.id, t])) },
   };
   return cached;
@@ -94,3 +100,87 @@ export const toolUpgrade = (site: DijkstraSite, id: string) => site.upgrades.upg
 /** Devnet results about a tool, whether recorded against it as a tool or as a boundary component. */
 export const devnetResults = (site: DijkstraSite, id: string) =>
   (["tool", "component"] as SubjectKind[]).flatMap((kind) => resultsFor(site.devnet, kind, id));
+
+/**
+ * One verdict per tool for the overview list. `breaks`: a confirmed gap with nobody shipping the fix yet (own code,
+ * an upstream fix still missing, or a released fix the tool has not taken). `in-progress`: Dijkstra work exists toward
+ * the target but is not released (the 11.2 component set itself counts here until it is tagged). `ready`: the tool's
+ * own support is released or verified and nothing it uses is still open. Everything else is `unverified`: no
+ * confirmed gap, which is never a pass.
+ */
+export type HardforkState = "breaks" | "in-progress" | "ready" | "unverified" | "dismissed";
+/** A link as the page shows it: `label` is `owner/repo#n` for GitHub, `info` its synced title and state if any. */
+export interface ToolLink { url: string; label: string; note?: string; info?: LinkInfo }
+/**
+ * `dismissed` (tracking.yaml) overrides the computed state, which stays in `computed` so the page can still say what
+ * the tool would otherwise be.
+ */
+export interface ToolState {
+  tool: string; state: HardforkState; reason: string; dependents: string[];
+  computed?: Exclude<HardforkState, "dismissed">; dismissed?: Dismissal; links: ToolLink[];
+}
+
+export const toolLinks = (site: DijkstraSite, id: string): ToolLink[] =>
+  (site.tracking.get(id)?.links ?? []).map((l) => ({ ...l, label: linkLabel(l.url), ...(site.linkState[l.url] && { info: site.linkState[l.url] }) }));
+
+
+const list = (items: string[]) => [...new Set(items)].map(viaLabel).join(", ");
+
+function computedState(site: DijkstraSite, tool: ToolClassification): { tool: string; state: Exclude<HardforkState, "dismissed">; reason: string } {
+  const blockers = site.unlocks.blockers.find((b) => b.tool === tool.id)?.blockers ?? [];
+  const own = componentStatus(site, tool.id);
+  const failed = devnetResults(site, tool.id).some((r) => r.result.outcome === "fail");
+  const waiting = waitingLinks(site, tool.id);
+  // A gap through a deprecated provider (a `service:` rule, Maestro) will never be fixed: the tool has to move off it.
+  const upstreamFix = blockers.filter((b) => b.kind === "upstream-fix" && !b.via.startsWith("service:")).map((b) => b.via);
+  const retired = blockers.filter((b) => b.kind === "upstream-fix" && b.via.startsWith("service:")).map((b) => b.via.slice("service:".length));
+  const moveOff = retired.length ? `must move off ${[...new Set(retired)].join(", ")}` : "";
+  if (UPSTREAM_TOOLS.has(tool.id)) return { tool: tool.id, state: "in-progress", reason: "Part of the node 11.2 release, not tagged yet" };
+  if (own === "in-progress" || own === "tracked") {
+    const work = own === "tracked" ? "Dijkstra work tracked upstream" : "Dijkstra support underway, not released";
+    return { tool: tool.id, state: "in-progress", reason: [work, upstreamFix.length && `also waits on ${list(upstreamFix)}`, moveOff].filter(Boolean).join("; ") };
+  }
+  if (blockers.length) {
+    const ownGap = blockers.some((b) => b.kind === "own-gap");
+    const bumps = blockers.filter((b) => b.kind === "own-bump").map((b) => b.pin!.split("@")[0]);
+    const parts = [
+      ownGap && "Own code lacks Dijkstra support",
+      upstreamFix.length && `waits on ${list(upstreamFix)}`,
+      moveOff,
+      bumps.length && `must upgrade ${list(bumps)}`,
+    ].filter((p): p is string => Boolean(p));
+    const reason = parts.join("; ");
+    return { tool: tool.id, state: "breaks", reason: (reason[0].toUpperCase() + reason.slice(1)) + (failed ? "; failed on the devnet" : "") };
+  }
+  if ((own === "released" || own === "verified") && !waiting.length && !failed) return { tool: tool.id, state: "ready", reason: own === "verified" ? "Support verified" : "Support released" };
+  const unread = waiting.filter((w) => w.unread).map((w) => w.via), open = waiting.filter((w) => !w.unread).map((w) => w.via);
+  const reason = unread.length ? `Inherits a gap from ${list(unread)}, not read yet`
+    : open.length ? `Waits on a verdict for ${list(open)}`
+    : tool.readiness === "upstream" ? "Uses only the node 11.2 components"
+    : "No confirmed gap; not checked against Dijkstra";
+  return { tool: tool.id, state: "unverified", reason };
+}
+
+export function toolState(site: DijkstraSite, tool: ToolClassification): Omit<ToolState, "dependents"> {
+  const computed = computedState(site, tool);
+  const links = toolLinks(site, tool.id);
+  const dismissed = site.tracking.get(tool.id)?.dismissed;
+  return dismissed ? { tool: tool.id, state: "dismissed", reason: dismissed.reason, computed: computed.state, dismissed, links } : { ...computed, links };
+}
+
+/**
+ * Every tool whose shipped code touches a changed surface, with its state, most-depended-on first. `dependents` are
+ * catalog tools that reach the tool through a shipped dependency or service call; `weight` breaks ties (stars).
+ */
+export function toolStates(site: DijkstraSite, weight: (id: string) => number = () => 0): ToolState[] {
+  const tools = [...site.classification.tools.values()];
+  const dependents = new Map<string, Set<string>>();
+  for (const t of tools) for (const s of t.surfaces) for (const c of s.channels) {
+    if (c.scope !== "shipped" || (c.channel !== "dependency" && c.channel !== "service")) continue;
+    const via = c.via.split("@")[0].replace(/^service:/, "");
+    if (via !== t.id) (dependents.get(via) ?? dependents.set(via, new Set()).get(via)!).add(t.id);
+  }
+  return tools.filter((t) => t.surfaces.some((s) => s.channels.some((c) => c.scope === "shipped")))
+    .map((t) => ({ ...toolState(site, t), dependents: [...(dependents.get(t.id) ?? [])].sort() }))
+    .sort((a, b) => b.dependents.length - a.dependents.length || weight(b.tool) - weight(a.tool) || (a.tool < b.tool ? -1 : 1));
+}

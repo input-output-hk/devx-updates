@@ -26,7 +26,7 @@ export default async function ToolReadinessPage({ params }: { params: Promise<{ 
   void _tools;
   const { evidence } = graph;
   return <div className="map-view" style={{ overflow: "visible" }}><div className="mx-auto max-w-6xl space-y-7 px-4 py-7 sm:px-8">
-    <div className="flex flex-wrap items-center justify-between gap-3"><Link href="/map/readiness">← All tool coverage</Link><Nav /></div>
+    <div className="flex flex-wrap items-center justify-between gap-3"><Link href="/map/dijkstra">← Dijkstra readiness</Link><Nav /></div>
     <header><p className="mb-2 text-sm text-muted">{tool.maintainer} · {tool.ecosystems.join(" / ") || "Ecosystem unresolved"}</p><h1 className="break-words font-display text-3xl font-semibold">{tool.name}</h1><p className="mt-3 text-muted">Dijkstra readiness: <strong className="text-foreground">{dijkstraSite().classification.tools.get(id)?.readiness ?? "unassessed"}</strong> (see <a href="#dijkstra">below</a>). Dependency evidence does not establish compatibility.</p></header>
     <DijkstraExposure id={id} />
     <div className="flex flex-wrap gap-3">{tool.releaseUrl && <a className="rounded-lg border border-border bg-surface px-3 py-2 text-sm" href={tool.releaseUrl} target="_blank" rel="noreferrer">Inspect source release</a>}<Download filename={`${id}-dependencies.json`} data={{ snapshot: snapshot.semanticDigest, tool, ...graph }} label="Export tool evidence index and graph" /></div>

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import { citationUrl, componentStatus, dijkstraSite, toolUpgrade, viaLabel, waitingLinks, type Waiting } from "@/lib/readiness/dijkstra-site";
+import { citationUrl, componentStatus, dijkstraSite, toolStates, toolUpgrade, viaLabel, waitingLinks, type HardforkState, type Waiting } from "@/lib/readiness/dijkstra-site";
+import HardforkToolList, { type HardforkRow } from "@/components/readiness/HardforkToolList";
+import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
+import rawGraph from "@/data/cardano-graph.json";
+import type { Graph } from "@/lib/map-types";
 import type { Citation } from "@/lib/readiness/dijkstra";
 import { resultsFor, type Result } from "@/lib/readiness/devnet";
 
@@ -40,6 +44,8 @@ function WaitingList({ groups }: { groups: Waiting[] }) {
   ))}</div>;
 }
 
+const NODES = new Map((rawGraph as unknown as Graph).nodes.map((n) => [n.id, n]));
+
 const OUTCOME = { pass: "text-status-done", fail: "text-status-blocked" } as const;
 
 function Subject({ result }: { result: Result }) {
@@ -73,6 +79,11 @@ export default function DijkstraPage() {
   const changeOutcomes = changes.changes.map((c) => resultsFor(devnet, "change", c.id).map((r) => r.result.outcome));
   const contradicted = changeOutcomes.filter((o) => o.includes("fail")).length;
   const confirmedChanges = changeOutcomes.filter((o) => o.length && !o.includes("fail")).length;
+  const rows: HardforkRow[] = toolStates(site, (id) => NODES.get(id)?.starsNum ?? 0).map((t) => ({
+    tool: t.tool, name: NODES.get(t.tool)?.name ?? t.tool, category: NODES.get(t.tool)?.categoryLabel ?? "", state: t.state, reason: t.reason, dependents: t.dependents.length,
+    links: t.links, ...(t.computed && { computed: t.computed }),
+  }));
+  const states = (Object.keys(HARDFORK_STATES) as HardforkState[]).map((s) => [s, rows.filter((r) => r.state === s).length] as const);
   return <div className="map-view" style={{ overflow: "visible" }}>
     <div className="mx-auto max-w-7xl space-y-9 px-4 py-7 sm:px-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -89,6 +100,19 @@ export default function DijkstraPage() {
         still not a pass unless it passed there.
       </p>
 
+      <div className="rounded-xl border border-border bg-surface p-4 sm:p-5">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 className="text-sm font-medium">State of the {rows.length} tools that touch a changed surface</h2>
+          <a href="#tools" className="text-sm">Full list →</a>
+        </div>
+        <div className="mt-3 flex h-3 overflow-hidden rounded-full bg-surface-2" role="img" aria-label={states.map(([s, n]) => `${HARDFORK_STATES[s].label} ${n}`).join(", ")}>
+          {states.map(([s, n]) => n > 0 && <div key={s} className={HARDFORK_STATES[s].bar} style={{ width: `${(n / rows.length) * 100}%` }} />)}
+        </div>
+        <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm">{states.map(([s, n]) => (
+          <li key={s} className="inline-flex items-center gap-1.5"><span className={`size-2 rounded-full ${HARDFORK_STATES[s].dot}`} /><span className="font-medium tabular-nums">{n}</span> <span className="text-muted">{HARDFORK_STATES[s].label}</span></li>
+        ))}</ul>
+      </div>
+
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{([
         [confirmedTools.length, "Tools with a confirmed gap", `of ${touched} tools touching a changed surface; ${confirmed.reduce((n, l) => n + l.surfaces.length, 0)} confirmed tool/dependency/surface decisions`],
         [unlocks.bumpReady.length, "Upstream fix released", `The tool must upgrade; ${ownWork} also need their own era work`],
@@ -102,37 +126,17 @@ export default function DijkstraPage() {
         </div>
       ))}</div>
 
-      <section aria-labelledby="devnet" className="scroll-mt-24">
-        <h2 id="devnet" className="font-display text-2xl font-semibold">Devnet run</h2>
+      <section aria-labelledby="tools" className="scroll-mt-24">
+        <h2 id="tools" className="font-display text-2xl font-semibold">Tools by impact</h2>
         <p className="mt-2 max-w-3xl text-sm text-muted">
-          {devnet.run.date}: cardano-node <a href={`https://github.com/${devnet.run.node.repo}/tree/${devnet.run.node.revision}`} target="_blank" rel="noreferrer" className="font-mono">{devnet.run.node.revision.slice(0, 10)}</a>{" "}
-          (11.2 integration branch) on a local one-pool devnet, forked to Dijkstra and raised to protocol version 12
-          through governance. {results.filter((r) => r.outcome === "fail").length} of {results.length} results failed.
-          The recipe is in scripts/readiness/devnet.
+          Every tool whose shipped code touches a changed surface, ranked by how many catalog tools reach it through
+          shipped code or a service call (ties by GitHub stars). <em>Breaks after HF</em>: a confirmed gap that nobody
+          has shipped the fix for, in the tool or in what it uses. <em>In progress</em>: Dijkstra work exists but is not
+          released. <em>Ready for HF</em>: its own support is released and nothing it uses is open. <em>Not
+          verified</em>: no confirmed gap, which is not a pass. <em>Dismissed</em>: set aside by hand (abandoned, or too
+          little use for a break to matter), with the reason and the state it would otherwise have.
         </p>
-        <details className="mt-2 max-w-3xl text-sm">
-          <summary className="cursor-pointer text-muted">Setup</summary>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-muted">{devnet.run.setup.map((line) => <li key={line}>{line}</li>)}</ul>
-        </details>
-        <div className="mt-4 grid gap-4 lg:grid-cols-2">{devnet.checks.map((c) => (
-          <article key={c.id} id={`devnet-${c.id}`} className="min-w-0 scroll-mt-24 rounded-xl border border-border bg-surface p-5">
-            <h3 className="font-display text-lg font-semibold">{c.title}</h3>
-            <ul className="mt-3 space-y-1 text-sm">{c.results.map((r) => (
-              <li key={`${r.kind}:${r.id}:${r.version ?? ""}`} className="flex flex-wrap items-baseline gap-x-2">
-                <span className={`font-medium ${OUTCOME[r.outcome]}`}>{r.outcome}</span>
-                <Subject result={r} />
-                {r.version && <span className="text-xs text-muted">{r.version}</span>}
-                {r.note && <span className="text-xs text-muted">· {r.note}</span>}
-              </li>
-            ))}</ul>
-            <p className="mt-3 text-sm text-muted">{c.summary}</p>
-            <details className="mt-3 text-xs">
-              <summary className="cursor-pointer text-muted">Observed output</summary>
-              <ul className="mt-2 space-y-1">{c.observed.map((o) => <li key={o}><code className="block overflow-x-auto whitespace-pre text-muted">{o}</code></li>)}</ul>
-              <p className="mt-2 break-all text-muted">Recipe: {c.recipe.join(", ")}</p>
-            </details>
-          </article>
-        ))}</div>
+        <HardforkToolList rows={rows} />
       </section>
 
       <section aria-labelledby="unlocks" className="scroll-mt-24">
@@ -208,6 +212,39 @@ export default function DijkstraPage() {
             })}</tbody>
           </table>
         </div>
+      </section>
+
+      <section aria-labelledby="devnet" className="scroll-mt-24">
+        <h2 id="devnet" className="font-display text-2xl font-semibold">Devnet run</h2>
+        <p className="mt-2 max-w-3xl text-sm text-muted">
+          {devnet.run.date}: cardano-node <a href={`https://github.com/${devnet.run.node.repo}/tree/${devnet.run.node.revision}`} target="_blank" rel="noreferrer" className="font-mono">{devnet.run.node.revision.slice(0, 10)}</a>{" "}
+          (11.2 integration branch) on a local one-pool devnet, forked to Dijkstra and raised to protocol version 12
+          through governance. {results.filter((r) => r.outcome === "fail").length} of {results.length} results failed.
+          The recipe is in scripts/readiness/devnet.
+        </p>
+        <details className="mt-2 max-w-3xl text-sm">
+          <summary className="cursor-pointer text-muted">Setup</summary>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-muted">{devnet.run.setup.map((line) => <li key={line}>{line}</li>)}</ul>
+        </details>
+        <div className="mt-4 grid gap-4 lg:grid-cols-2">{devnet.checks.map((c) => (
+          <article key={c.id} id={`devnet-${c.id}`} className="min-w-0 scroll-mt-24 rounded-xl border border-border bg-surface p-5">
+            <h3 className="font-display text-lg font-semibold">{c.title}</h3>
+            <ul className="mt-3 space-y-1 text-sm">{c.results.map((r) => (
+              <li key={`${r.kind}:${r.id}:${r.version ?? ""}`} className="flex flex-wrap items-baseline gap-x-2">
+                <span className={`font-medium ${OUTCOME[r.outcome]}`}>{r.outcome}</span>
+                <Subject result={r} />
+                {r.version && <span className="text-xs text-muted">{r.version}</span>}
+                {r.note && <span className="text-xs text-muted">· {r.note}</span>}
+              </li>
+            ))}</ul>
+            <p className="mt-3 text-sm text-muted">{c.summary}</p>
+            <details className="mt-3 text-xs">
+              <summary className="cursor-pointer text-muted">Observed output</summary>
+              <ul className="mt-2 space-y-1">{c.observed.map((o) => <li key={o}><code className="block overflow-x-auto whitespace-pre text-muted">{o}</code></li>)}</ul>
+              <p className="mt-2 break-all text-muted">Recipe: {c.recipe.join(", ")}</p>
+            </details>
+          </article>
+        ))}</div>
       </section>
 
       <section aria-labelledby="unread" className="scroll-mt-24">

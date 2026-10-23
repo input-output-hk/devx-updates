@@ -59,6 +59,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      // The pre-paint theme script sets data-theme before hydration, on purpose.
+      suppressHydrationWarning
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
