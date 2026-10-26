@@ -39,7 +39,7 @@ The register formats and findings are in
 | Dependency graph | `data/readiness/` | 268 tools accounted for, 227 with discovered source, 45 with a native profile (55 profiles, 7 complete), 1,321 evidence objects, 0 capability findings |
 
 All registers pass `check-changes`, `check-boundary`, `check-leads` and
-`check-upgrades` with `--verify-sources`, and `check-devnet`. All 160 readiness
+`check-upgrades` with `--verify-sources`, and `check-devnet`. All 161 readiness
 tests pass, all 55 native profiles replay identically, and `validate` accepts
 the snapshot.
 
@@ -331,7 +331,9 @@ Decisions); new collection is admitted when the Dijkstra registers need it.
 - `/map`, `/map/table`, `/map/analysis`: the catalog, with maintenance status
   (Maintained, Maintenance-only, Deprecated, Abandoned, Archived,
   Experimental, Research).
-- `/map/dijkstra`: fix order and unlocks, bump-ready tools with their upgrade
+- `/map/dijkstra`: the critical path (the blocking components as a dependency
+  graph, columns by how many fixes must land first, longest chains in bold) and
+  the cumulative unlock curve, fix order and unlocks, bump-ready tools with their upgrade
   distance and own era handling, unread gaps and links waiting on a verdict,
   every confirmed gap with its quoted lines, the devnet checks, and the cited
   changes.

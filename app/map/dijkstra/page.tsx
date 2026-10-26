@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import { citationUrl, componentStatus, dijkstraSite, toolStates, toolUpgrade, viaLabel, waitingLinks, type HardforkState, type Waiting } from "@/lib/readiness/dijkstra-site";
+import { citationUrl, componentStatus, dijkstraSite, toolLinks, toolStates, toolUpgrade, viaLabel, waitingLinks, type HardforkState, type Waiting } from "@/lib/readiness/dijkstra-site";
 import HardforkToolList, { type HardforkRow } from "@/components/readiness/HardforkToolList";
+import FixPathGraph, { UnlockCurve, type FixWork } from "@/components/readiness/FixPathGraph";
+import { fixGraph } from "@/lib/readiness/fix-graph";
 import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
 import rawGraph from "@/data/cardano-graph.json";
 import type { Graph } from "@/lib/map-types";
@@ -99,6 +101,18 @@ export default function DijkstraPage() {
   const gapped = new Set(unlocks.blockers.filter((b) => b.blockers.length).map((b) => b.tool));
   const gapStates = (Object.keys(HARDFORK_STATES) as HardforkState[]).map((s) => [s, rows.filter((r) => r.state === s && gapped.has(r.tool)).length] as const).filter(([, n]) => n > 0);
   const listed = new Set(rows.map((r) => r.tool));
+  const graph = fixGraph(unlocks);
+  const fixIds = unlocks.fixOrder.map((f) => f.component);
+  const fixNames = Object.fromEntries(fixIds.map((id) => [id, id.startsWith(RETIRED) ? `Move off ${NODES.get(id.slice(RETIRED.length))?.name ?? id.slice(RETIRED.length)}` : NODES.get(id)?.name ?? id]));
+  const fixHref = Object.fromEntries(fixIds.map((id) => [id, `/map/readiness/${id.startsWith(RETIRED) ? id.slice(RETIRED.length) : id}`]));
+  // Tools with a confirmed gap that no fix unlocks: the fixes themselves, tools with their own code to change, and
+  // tools that only have to take a released fix.
+  const freed = new Set(unlocks.fixOrder.flatMap((f) => f.added));
+  const unfreed = unlocks.blockers.filter((b) => b.blockers.length && !freed.has(b.tool));
+  const fixSet = new Set(fixIds);
+  const ownCode = unfreed.filter((b) => !fixSet.has(b.tool) && b.blockers.some((x) => x.kind === "own-gap")).length;
+  const rest = { fixes: unfreed.filter((b) => fixSet.has(b.tool)).length, own: ownCode, upgrade: unfreed.filter((b) => !fixSet.has(b.tool)).length - ownCode };
+  const fixWork = Object.fromEntries(fixIds.map((id): [string, FixWork] => [id, id.startsWith(RETIRED) ? "retired" : toolLinks(site, id).length ? "tracked" : "none"]));
   const unlisted = [...classification.tools.values()].filter((t) => !listed.has(t.id));
   const noSource = unlisted.filter((t) => t.scan.status === "no-public-source").length;
   const testsOnly = unlisted.filter((t) => t.scan.status === "scanned" && t.surfaces.length > 0).length;
@@ -175,6 +189,25 @@ export default function DijkstraPage() {
           adds, at each step, the fix that unlocks the most tools on top of the earlier steps, counting a fix together
           with the components it waits on.
         </p>
+        <h3 className="mt-6 text-lg font-semibold">Critical path</h3>
+        <p className="mt-2 text-sm text-muted">
+          {unlocks.components.length} components have a confirmed gap, but only the {unlocks.fixOrder.length} drawn here unlock
+          another tool when fixed. For the other {unlocks.components.length - unlocks.fixOrder.length} (Mesh, Hydra, Oura and
+          others) no other catalog tool has a confirmed gap through them (the one exception, Carp through Oura, also needs
+          its own code changed), so fixing them repairs only themselves; they are in the tool list, blocked by these.
+        </p>
+        <p className="mt-2 text-sm text-muted">
+          The diagram is
+          about order, not size: columns count how many fixes must land before a component can start, and an arrow runs
+          from a fix to one that waits on it (links already implied through another fix are left out). The{" "}
+          {graph.independent.length} at the bottom right wait on nothing and nothing waits on them, so they can start now and
+          never delay another fix; they still unlock tools. The bold chains, {graph.nodes.filter((n) => n.critical).length} components,
+          are the critical path: however much else runs in parallel, the tools at their end wait on every fix along them.
+          Each box shows its step in the fix order below and the tools it adds at that step.
+        </p>
+        <FixPathGraph graph={graph} names={fixNames} work={fixWork} href={fixHref} />
+        <UnlockCurve steps={unlocks.fixOrder.map((f) => ({ component: f.component, added: f.added.length, unlocked: f.unlocked }))} names={fixNames} rest={rest} />
+        <h3 className="mt-6 text-lg font-semibold">Fix order</h3>
         <ol className="mt-4 space-y-2">{unlocks.fixOrder.map((f, i) => (
           <li key={f.component} className="rounded-xl border border-border bg-surface px-4 py-3">
             <details>
