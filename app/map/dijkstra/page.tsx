@@ -18,6 +18,8 @@ const STATE_MEANING: Record<HardforkState, string> = {
   unverified: "No confirmed gap, which is not a pass.",
   dismissed: "Set aside by hand (abandoned, or too little use for a break to matter), with the reason and the state it would otherwise have.",
 };
+/** How the gap card names each state in its breakdown. */
+const GAP_WORDS: Record<HardforkState, string> = { breaks: "break", "in-progress": "in progress", ready: "ready", unverified: "not verified", dismissed: "dismissed" };
 export const metadata: Metadata = {
   title: "Dijkstra hardfork readiness",
   description: "Which Cardano tools the Dijkstra hardfork breaks, through which dependency, and what each upstream fix unlocks.",
@@ -89,10 +91,17 @@ export default function DijkstraPage() {
   const contradicted = changeOutcomes.filter((o) => o.includes("fail")).length;
   const confirmedChanges = changeOutcomes.filter((o) => o.length && !o.includes("fail")).length;
   const rows: HardforkRow[] = toolStates(site, (id) => NODES.get(id)?.starsNum ?? 0).map((t) => ({
-    tool: t.tool, name: NODES.get(t.tool)?.name ?? t.tool, category: NODES.get(t.tool)?.categoryLabel ?? "", state: t.state, reason: t.reason, dependents: t.dependents.length, reachedBy: t.reachedBy.length,
+    tool: t.tool, name: NODES.get(t.tool)?.name ?? t.tool, category: NODES.get(t.tool)?.categoryLabel ?? "", state: t.state, reason: t.reason, blockedBy: t.blockedBy, tags: t.tags, dependents: t.dependents.length, reachedBy: t.reachedBy.length,
     links: t.links, ...(t.computed && { computed: t.computed }),
   }));
   const states = (Object.keys(HARDFORK_STATES) as HardforkState[]).map((s) => [s, rows.filter((r) => r.state === s).length] as const);
+  // A confirmed gap is a lead decision or, for a boundary component, a cited gap in its own code: both become blockers.
+  const gapped = new Set(unlocks.blockers.filter((b) => b.blockers.length).map((b) => b.tool));
+  const gapStates = (Object.keys(HARDFORK_STATES) as HardforkState[]).map((s) => [s, rows.filter((r) => r.state === s && gapped.has(r.tool)).length] as const).filter(([, n]) => n > 0);
+  const listed = new Set(rows.map((r) => r.tool));
+  const unlisted = [...classification.tools.values()].filter((t) => !listed.has(t.id));
+  const noSource = unlisted.filter((t) => t.scan.status === "no-public-source").length;
+  const testsOnly = unlisted.filter((t) => t.scan.status === "scanned" && t.surfaces.length > 0).length;
   return <div className="map-view" style={{ overflow: "visible" }}>
     <div className="mx-auto max-w-7xl space-y-9 px-4 py-7 sm:px-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -114,6 +123,10 @@ export default function DijkstraPage() {
           <h2 className="text-sm font-medium">State of the {rows.length} tools that touch a changed surface</h2>
           <a href="#tools" className="text-sm">Full list →</a>
         </div>
+        <p className="mt-1 text-xs text-muted">
+          Of {classification.tools.size} catalog tools, {unlisted.length} are not listed: {noSource} have no public source to
+          read, {unlisted.length - noSource - testsOnly} matched no changed surface, and {testsOnly} matched only in tests or examples.
+        </p>
         <div className="mt-3 flex h-3 overflow-hidden rounded-full bg-surface-2" role="img" aria-label={states.map(([s, n]) => `${HARDFORK_STATES[s].label} ${n}`).join(", ")}>
           {states.map(([s, n]) => n > 0 && <div key={s} className={HARDFORK_STATES[s].bar} style={{ width: `${(n / rows.length) * 100}%` }} />)}
         </div>
@@ -123,7 +136,7 @@ export default function DijkstraPage() {
       </div>
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{([
-        [confirmedTools.length, "Tools with a confirmed gap", `of ${touched} tools touching a changed surface; ${confirmed.reduce((n, l) => n + l.surfaces.length, 0)} confirmed tool/dependency/surface decisions`],
+        [gapped.size, "Tools with a confirmed gap", `${gapStates.map(([s, n]) => `${n} ${GAP_WORDS[s]}`).join(", ")}; of ${touched} tools touching a changed surface`],
         [unlocks.bumpReady.length, "Upstream fix released", `The tool must upgrade; ${ownWork} also need their own era work`],
         [unlocks.fixOrder.at(-1)?.unlocked ?? 0, "Unlocked by upstream fixes", `if all ${unlocks.fixOrder.length} blocking components ship the support`],
         [changes.changes.length, "Cited changes", `${changes.surfaces.length} surfaces; on the devnet ${confirmedChanges} confirmed, ${contradicted} contradicted`],

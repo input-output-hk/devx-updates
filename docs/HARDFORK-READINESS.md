@@ -31,7 +31,7 @@ The register formats and findings are in
 | Boundary | `boundary.json` | 61 components, 217 evidence items; worst status 49 gap, 2 no-evidence, 1 tracked, 7 in-progress, 2 released |
 | Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source |
 | Transitive links | `transitive.json` | 30 components reached only through lockfiles, in 29 tools |
-| Leads | `leads.json` | 639 entries, 1,610 decisions (557 confirmed, 1,017 not reached, 36 undetermined), none unreviewed; 130 of them on the own code of 48 tools; 118 tools with a confirmed gap |
+| Leads | `leads.json` | 639 entries, 1,610 decisions (557 confirmed, 1,017 not reached, 36 undetermined), none unreviewed; 130 of them on the own code of 48 tools; 118 tools with a confirmed gap here, 138 with the boundary components' own gaps |
 | Unlocks | `unlocks.json` | 21 fixes unlock 81 tools; bump-ready: Marlowe, Marconi |
 | Upgrades | `upgrades.json` | 11 readings (8 own-work, 1 prepared, 2 generic) |
 | Devnet | `devnet.json` | 14 checks, 42 results, 23 failing |

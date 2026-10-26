@@ -272,7 +272,9 @@ the lines it rests on:
 
 The register holds 639 entries and 1,610 decisions, none unreviewed or stale.
 **118 tools have a confirmed gap**. 113 inherit one, and six have one in
-their own code (gastronomy has both). The passes below added them in order;
+their own code (gastronomy has both). With the 20 boundary components whose
+own gap is cited in `boundary.json`, 138 tools have a confirmed gap: 113 break,
+6 are in progress (the fix is underway) and 19 are dismissed. The passes below added them in order;
 each pass's figures are as of that pass.
 
 Two kinds of decision were added on 2026-10-26:

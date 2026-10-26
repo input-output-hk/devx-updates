@@ -40,7 +40,11 @@ test("each tool touching a changed surface gets one hardfork state, most reached
   assert.equal(by.get("cardano-node")?.state, "in-progress", "the untagged 11.2 set is in progress");
   assert.equal(by.get("plutus-plutus-core")?.state, "ready", "released support with nothing open is ready");
   assert.match(by.get("whisky")!.reason, /must move off maestro/, "a deprecated provider is moved off, not waited on");
-  assert.doesNotMatch(by.get("whisky")!.reason, /waits on [^;]*maestro/);
+  assert.doesNotMatch(by.get("whisky")!.reason, /blocked by [^;]*maestro/);
+  const whisky = by.get("whisky")!;
+  assert.ok(whisky.tags.some((t) => t.label === "Move off maestro") && !whisky.blockedBy.some((b) => b.id.includes("maestro")), "a deprecated provider is a tag, not a blocker");
+  for (const s of states.filter((s) => s.state === "breaks")) assert.ok(s.blockedBy.length || s.tags.length, `${s.tool}: a break says why in chips`);
+  assert.ok(by.get("blockfrost")!.blockedBy.some((b) => b.id === "cardano-db-sync" && b.href === "/map/readiness/cardano-db-sync"), "blockers link to their page");
   for (const s of states.filter((s) => s.state === "unverified")) assert.ok(!site.unlocks.blockers.find((b) => b.tool === s.tool)?.blockers.length, `${s.tool} has no confirmed blocker`);
   const pick = (list: typeof states, ids: string[]) => list.map((s) => s.tool).filter((t) => ids.includes(t));
   assert.deepEqual(pick(states, ["amaru", "mithril", "pallas"]), ["pallas", "mithril", "amaru"], "equal reach falls back to direct dependents");

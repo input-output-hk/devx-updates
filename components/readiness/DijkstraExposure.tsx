@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { citationUrl, componentStatus, devnetResults, dijkstraSite, toolLeads, toolState, toolUpgrade, viaLabel, waitingLinks } from "@/lib/readiness/dijkstra-site";
 import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
+import StateFacts from "./StateFacts";
 import TrackingLinks from "./TrackingLinks";
 
 const Chip = ({ children }: { children: React.ReactNode }) => (
@@ -29,8 +30,9 @@ export default function DijkstraExposure({ id }: { id: string }) {
     {state && <div>
       <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <span className={`inline-flex items-center gap-1.5 font-medium ${HARDFORK_STATES[state.state].text}`}><span className={`size-2 rounded-full ${HARDFORK_STATES[state.state].dot}`} />{HARDFORK_STATES[state.state].label}</span>
-        <span className="text-sm text-muted">{state.reason}{state.dismissed?.date && ` (${state.dismissed.date})`}</span>
+        {state.state !== "breaks" && state.state !== "in-progress" && <span className="text-sm text-muted">{state.reason}{state.dismissed?.date && ` (${state.dismissed.date})`}</span>}
       </p>
+      {(state.blockedBy.length > 0 || state.tags.length > 0) && <div className="mt-2"><StateFacts blockedBy={state.blockedBy} tags={state.tags} /></div>}
       {state.computed && <p className="mt-1 text-xs text-muted">Otherwise: {HARDFORK_STATES[state.computed].label}</p>}
     </div>}
     {state && state.links.length > 0 && <div>

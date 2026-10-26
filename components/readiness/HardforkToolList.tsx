@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import type { HardforkState, ToolLink } from "@/lib/readiness/dijkstra-site";
+import type { Blocker, HardforkState, StateTag, ToolLink } from "@/lib/readiness/dijkstra-site";
 import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
+import StateFacts from "./StateFacts";
 import TrackingLinks from "./TrackingLinks";
 
 export interface HardforkRow {
-  tool: string; name: string; category: string; state: HardforkState; reason: string; dependents: number; reachedBy: number;
+  tool: string; name: string; category: string; state: HardforkState; reason: string; blockedBy: Blocker[]; tags: StateTag[]; dependents: number; reachedBy: number;
   computed?: HardforkState; links: ToolLink[];
 }
 
@@ -44,7 +45,9 @@ export default function HardforkToolList({ rows }: { rows: HardforkRow[] }) {
             <td className="px-4 py-3"><Link href={`/map/readiness/${r.tool}`} className="font-medium">{r.name}</Link><div className="text-xs text-muted">{r.category}</div></td>
             <td className="whitespace-nowrap px-4 py-3"><span className={`inline-flex items-center gap-1.5 font-medium ${s.text}`}><span className={`size-2 rounded-full ${s.dot}`} />{s.label}</span></td>
             <td className="min-w-64 px-4 py-3 text-muted">
-              {r.reason}
+              {/* Chips carry breaks and in-progress tools; other states keep their sentence. */}
+              {r.state !== "breaks" && r.state !== "in-progress" && <div>{r.reason}</div>}
+              <StateFacts blockedBy={r.blockedBy} tags={r.tags} />
               {r.computed && <div className="mt-0.5 text-xs">Otherwise: {HARDFORK_STATES[r.computed].label}</div>}
               {r.links.length > 0 && <TrackingLinks links={r.links} compact />}
             </td>

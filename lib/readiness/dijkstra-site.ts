@@ -117,6 +117,8 @@ export interface ToolLink { url: string; label: string; note?: string; info?: Li
  */
 export interface ToolState {
   tool: string; state: HardforkState; reason: string; dependents: string[]; reachedBy: string[];
+  /** Upstream components whose missing fix blocks the tool, and short facts for chips; both empty when dismissed. */
+  blockedBy: Blocker[]; tags: StateTag[];
   computed?: Exclude<HardforkState, "dismissed">; dismissed?: Dismissal; links: ToolLink[];
 }
 
@@ -132,47 +134,72 @@ const ownRead = (site: DijkstraSite, id: string) => {
   return own.length > 0 && own.every((l) => l.decision === "not-reached");
 };
 
-function computedState(site: DijkstraSite, tool: ToolClassification): { tool: string; state: Exclude<HardforkState, "dismissed">; reason: string } {
+/** A short fact about a tool's state, shown as a chip. `bad` is a break, `work` is support under way, `act` is the tool's own next move. */
+export interface StateTag { label: string; tone: "bad" | "work" | "act" }
+/** A component a tool is blocked by, with its page when it is a catalog tool. */
+export interface Blocker { id: string; label: string; href?: string }
+type Computed = { tool: string; state: Exclude<HardforkState, "dismissed">; reason: string; blockedBy: Blocker[]; tags: StateTag[] };
+
+const sentence = (parts: (string | false | 0 | undefined)[]) => {
+  const text = parts.filter(Boolean).join("; ");
+  return text[0].toUpperCase() + text.slice(1);
+};
+
+function computedState(site: DijkstraSite, tool: ToolClassification): Computed {
   const blockers = site.unlocks.blockers.find((b) => b.tool === tool.id)?.blockers ?? [];
   const own = componentStatus(site, tool.id);
   const failed = devnetResults(site, tool.id).some((r) => r.result.outcome === "fail");
   const waiting = waitingLinks(site, tool.id);
   // A gap through a deprecated provider (a `service:` rule, Maestro) will never be fixed: the tool has to move off it.
-  const upstreamFix = blockers.filter((b) => b.kind === "upstream-fix" && !b.via.startsWith("service:")).map((b) => b.via);
-  const retired = blockers.filter((b) => b.kind === "upstream-fix" && b.via.startsWith("service:")).map((b) => b.via.slice("service:".length));
-  const moveOff = retired.length ? `must move off ${[...new Set(retired)].join(", ")}` : "";
-  if (UPSTREAM_TOOLS.has(tool.id)) return { tool: tool.id, state: "in-progress", reason: "Part of the node 11.2 release, not tagged yet" };
+  const upstreamFix = [...new Set(blockers.filter((b) => b.kind === "upstream-fix" && !b.via.startsWith("service:")).map((b) => b.via))];
+  const retired = [...new Set(blockers.filter((b) => b.kind === "upstream-fix" && b.via.startsWith("service:")).map((b) => b.via.slice("service:".length)))];
+  const blockedBy = upstreamFix.map((via): Blocker => {
+    const target = dependencyTarget(via);
+    return { id: via, label: viaLabel(via), ...(site.classification.tools.has(target) && { href: `/map/readiness/${target}` }) };
+  });
+  const blocked = blockedBy.length > 0 && `blocked by ${list(upstreamFix)}`;
+  const moveOff = retired.length > 0 && `must move off ${retired.join(", ")}`;
+  const moveTags = retired.map((r): StateTag => ({ label: `Move off ${r}`, tone: "act" }));
+  const failedTag: StateTag[] = failed ? [{ label: "Failed on devnet", tone: "bad" }] : [];
+  const base = { tool: tool.id, blockedBy };
+  if (UPSTREAM_TOOLS.has(tool.id)) return { ...base, state: "in-progress", reason: "Part of the node 11.2 release, not tagged yet", tags: [{ label: "Node 11.2, not tagged", tone: "work" }] };
   if (own === "in-progress" || own === "tracked") {
     const work = own === "tracked" ? "Dijkstra work tracked upstream" : "Dijkstra support underway, not released";
-    return { tool: tool.id, state: "in-progress", reason: [work, upstreamFix.length && `also waits on ${list(upstreamFix)}`, moveOff].filter(Boolean).join("; ") };
+    return {
+      ...base, state: "in-progress", reason: sentence([blocked, work, moveOff]),
+      tags: [{ label: own === "tracked" ? "Work tracked" : "Support underway", tone: "work" }, ...moveTags, ...failedTag],
+    };
   }
   if (blockers.length) {
     const ownGap = blockers.some((b) => b.kind === "own-gap");
-    const bumps = blockers.filter((b) => b.kind === "own-bump").map((b) => b.pin!.split("@")[0]);
-    const parts = [
-      ownGap && "Own code lacks Dijkstra support",
-      upstreamFix.length && `waits on ${list(upstreamFix)}`,
-      moveOff,
-      bumps.length && `must upgrade ${list(bumps)}`,
-    ].filter((p): p is string => Boolean(p));
-    const reason = parts.join("; ");
-    return { tool: tool.id, state: "breaks", reason: (reason[0].toUpperCase() + reason.slice(1)) + (failed ? "; failed on the devnet" : "") };
+    const bumps = [...new Set(blockers.filter((b) => b.kind === "own-bump").map((b) => b.pin!.split("@")[0]))];
+    return {
+      ...base, state: "breaks",
+      reason: sentence([blocked, ownGap && "own code lacks Dijkstra support", moveOff, bumps.length && `must upgrade ${list(bumps)}`, failed && "failed on the devnet"]),
+      tags: [
+        ...(ownGap ? [{ label: "Own code gap", tone: "bad" } as StateTag] : []),
+        ...failedTag, ...moveTags,
+        ...bumps.map((b): StateTag => ({ label: `Upgrade ${viaLabel(b)}`, tone: "act" })),
+      ],
+    };
   }
-  if ((own === "released" || own === "verified") && !waiting.length && !failed) return { tool: tool.id, state: "ready", reason: own === "verified" ? "Support verified" : "Support released" };
+  if ((own === "released" || own === "verified") && !waiting.length && !failed) {
+    return { ...base, state: "ready", reason: own === "verified" ? "Support verified" : "Support released", tags: [] };
+  }
   const unread = waiting.filter((w) => w.unread).map((w) => w.via), open = waiting.filter((w) => !w.unread).map((w) => w.via);
   const reason = unread.length ? `Inherits a gap from ${list(unread)}, not read yet`
     : open.length ? `Waits on a verdict for ${list(open)}`
     : tool.readiness === "upstream" ? "Uses only the node 11.2 components"
     : ownRead(site, tool.id) ? "Own code and dependencies read, no confirmed gap; not run against Dijkstra"
     : "No confirmed gap; not checked against Dijkstra";
-  return { tool: tool.id, state: "unverified", reason };
+  return { ...base, state: "unverified", reason, tags: failedTag };
 }
 
 export function toolState(site: DijkstraSite, tool: ToolClassification): Omit<ToolState, "dependents" | "reachedBy"> {
   const computed = computedState(site, tool);
   const links = toolLinks(site, tool.id);
   const dismissed = site.tracking.get(tool.id)?.dismissed;
-  return dismissed ? { tool: tool.id, state: "dismissed", reason: dismissed.reason, computed: computed.state, dismissed, links } : { ...computed, links };
+  return dismissed ? { tool: tool.id, state: "dismissed", reason: dismissed.reason, blockedBy: [], tags: [], computed: computed.state, dismissed, links } : { ...computed, links };
 }
 
 /**
