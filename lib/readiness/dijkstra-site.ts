@@ -169,6 +169,18 @@ export function toolState(site: DijkstraSite, tool: ToolClassification): Omit<To
 }
 
 /**
+ * What the node release ships that tools reach under their own names: the local socket, the submit API and the
+ * Haskell libraries. None is a catalog tool, so a tool using any of them depends on cardano-node.
+ */
+const NODE_SIDE = new Set(["node-socket", "submit-api", "cardano-api", "cardano-ledger", "cardano-ledger-conway", "ouroboros-consensus", "ouroboros-network"]);
+
+/** The catalog tool a channel's `via` reaches: rule prefixes and version pins dropped, node-side names folded into cardano-node. */
+export function dependencyTarget(via: string): string {
+  const name = via.split("@")[0].replace(/^(?:service|dependency):/, "");
+  return NODE_SIDE.has(name) ? "cardano-node" : name;
+}
+
+/**
  * Every tool whose shipped code touches a changed surface, with its state, most-depended-on first. `dependents` are
  * catalog tools that reach the tool through a shipped dependency or service call; `weight` breaks ties (stars).
  */
@@ -177,7 +189,7 @@ export function toolStates(site: DijkstraSite, weight: (id: string) => number = 
   const dependents = new Map<string, Set<string>>();
   for (const t of tools) for (const s of t.surfaces) for (const c of s.channels) {
     if (c.scope !== "shipped" || (c.channel !== "dependency" && c.channel !== "service")) continue;
-    const via = c.via.split("@")[0].replace(/^service:/, "");
+    const via = dependencyTarget(c.via);
     if (via !== t.id) (dependents.get(via) ?? dependents.set(via, new Set()).get(via)!).add(t.id);
   }
   return tools.filter((t) => t.surfaces.some((s) => s.channels.some((c) => c.scope === "shipped")))

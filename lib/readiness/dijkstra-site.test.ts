@@ -1,6 +1,14 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { citationUrl, devnetResults, dijkstraSite, toolLeads, toolStates } from "./dijkstra-site";
+import { citationUrl, dependencyTarget, devnetResults, dijkstraSite, toolLeads, toolStates } from "./dijkstra-site";
+
+test("a channel's via names the catalog tool it reaches", () => {
+  assert.equal(dependencyTarget("service:blockfrost"), "blockfrost");
+  assert.equal(dependencyTarget("pallas@1.4.0"), "pallas");
+  for (const via of ["service:node-socket", "service:submit-api", "dependency:cardano-ledger", "dependency:ouroboros-consensus", "cardano-api@11.8.0.0"])
+    assert.equal(dependencyTarget(via), "cardano-node", via);
+  assert.equal(dependencyTarget("ouroboros-network-js"), "ouroboros-network-js", "a catalog tool with a node-like name stays itself");
+});
 
 test("the site view loads every committed Dijkstra register and links to pinned lines", () => {
   const site = dijkstraSite();
@@ -19,7 +27,8 @@ test("each tool touching a changed surface gets one hardfork state, most depende
   const site = dijkstraSite();
   const states = toolStates(site);
   const by = new Map(states.map((s) => [s.tool, s]));
-  assert.equal(states[0].tool, "blockfrost");
+  assert.equal(states[0].tool, "cardano-node", "tools on the node socket, submit API or node libraries depend on the node");
+  assert.ok(by.get("cardano-node")!.dependents.length > by.get("blockfrost")!.dependents.length);
   for (let i = 1; i < states.length; i++) assert.ok(states[i - 1].dependents.length >= states[i].dependents.length, "ranked by dependents");
   assert.equal(by.get("ogmios")?.state, "breaks", "a confirmed own gap breaks");
   assert.equal(by.get("cardano-node")?.state, "in-progress", "the untagged 11.2 set is in progress");
