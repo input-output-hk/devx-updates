@@ -7,10 +7,316 @@
    "state": "closed",
    "checked": "2026-10-26"
   },
+  "https://github.com/IntersectMBO/cardano-cli/pull/1431": {
+   "kind": "pull",
+   "title": "Enable the full Dijkstra command set",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/cardano-cli/pull/1439": {
+   "kind": "pull",
+   "title": "Update bounds for 11.2 integration",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/cardano-cli/pull/1452": {
+   "kind": "pull",
+   "title": "Complete Plutus V4 support and remove Conway hardcodes",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/cardano-cli/pull/1453": {
+   "kind": "pull",
+   "title": "Add transaction sub-transaction commands (Dijkstra)",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/cardano-cli/pull/1473": {
+   "kind": "pull",
+   "title": "Pin ledger PR 6189 to fix top-level guard data decoding",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/cardano-cli/pull/1477": {
+   "kind": "pull",
+   "title": "Expose top-level native and Plutus V4 transaction guards",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/cardano-cli/pull/1478": {
+   "kind": "pull",
+   "title": "Add query leios-committee and base query pool-state",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/cardano-cli/pull/1483": {
+   "kind": "pull",
+   "title": "Add CIP-159 account balance intervals to builders and debug views",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/cardano-cli/pull/1485": {
+   "kind": "pull",
+   "title": "Add Dijkstra sub-transaction witness and assemble commands",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/cardano-db-sync/issues/2115": {
+   "kind": "issue",
+   "title": "Integrate Dijkstra",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/mithril/issues/3585": {
+   "kind": "issue",
+   "title": "Upgrade to Cardano `11.2`",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/mithril/pull/3614": {
+   "kind": "pull",
+   "title": "feat: support for upcoming Cardano `11.2`",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/plutus/issues/6408": {
+   "kind": "issue",
+   "title": "Suggestion for ScriptContext changes in PlutusV4",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/plutus/issues/7342": {
+   "kind": "issue",
+   "title": "Define PlutusV4 script context",
+   "state": "closed",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/plutus/pull/7898": {
+   "kind": "pull",
+   "title": "Plutus V4 and dijkstraPV",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/plutus/pull/7964": {
+   "kind": "pull",
+   "title": "Add Plutus Core version 1.2.0",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/IntersectMBO/plutus/pull/8006": {
+   "kind": "pull",
+   "title": "Enable new builtins at Dijkstra",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/Python-Cardano/pycardano/pull/489": {
+   "kind": "pull",
+   "title": "Support v10.7.1 and dijkstra genesis",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/gouroboros/issues/2669": {
+   "kind": "issue",
+   "title": "dijkstra: track CIP-159 Phase 2 multi-asset account support",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/gouroboros/issues/2782": {
+   "kind": "issue",
+   "title": "ledger/dijkstra: block decoding allocates before entry validation",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/gouroboros/issues/2817": {
+   "kind": "issue",
+   "title": "ledger/dijkstra: pool VRF ownership is not carried across levels",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/gouroboros/issues/2818": {
+   "kind": "issue",
+   "title": "ledger/dijkstra: earlier deposits are absent from deregistration checks",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/gouroboros/pull/2603": {
+   "kind": "pull",
+   "title": "fix(dijkstra): require exactly 12 header body fields",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/gouroboros/pull/2670": {
+   "kind": "pull",
+   "title": "feat: add current Dijkstra protocol parameters",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/gouroboros/pull/2692": {
+   "kind": "pull",
+   "title": "feat(ledger): align Dijkstra with the Leios release candidate",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/gouroboros/pull/2775": {
+   "kind": "pull",
+   "title": "feat: register DijkstraNet",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/gouroboros/pull/2826": {
+   "kind": "pull",
+   "title": "fix(dijkstra): resolve reference scripts across transaction levels",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/plutigo/issues/274": {
+   "kind": "issue",
+   "title": "dijkstra: full Plutus V4 cost model implementation",
+   "state": "closed",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blinklabs-io/plutigo/issues/344": {
+   "kind": "issue",
+   "title": "script context: add PlutusV4 builder variant for Dijkstra structures",
+   "state": "closed",
+   "checked": "2026-10-26"
+  },
   "https://github.com/blockfrost/blockfrost-platform/pull/378": {
    "kind": "pull",
    "title": "Tx evaluation",
    "state": "closed",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/bloxbean/cardano-client-lib/issues/707": {
+   "kind": "issue",
+   "title": "Support Plutus V4 scripts (Dijkstra era / Leios)",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/bloxbean/yaci-store/issues/1273": {
+   "kind": "issue",
+   "title": "Plutus V4 reference scripts: hash and script not stored (Dijkstra / Leios Musashi)",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/bloxbean/yaci-store/pull/1274": {
+   "kind": "pull",
+   "title": "fix(script): store Plutus V4 reference scripts (Dijkstra / Leios)",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/bloxbean/yaci-store/pull/1282": {
+   "kind": "pull",
+   "title": "feat(leios): Musashi rc-2026w42 with Yaci 0.5 (Plutus V4 witness scripts, Dijkstra-first chain)",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/bloxbean/yaci-store/pull/1299": {
+   "kind": "pull",
+   "title": "feat(leios): Leios on next-leios (Musashi w42, Java 25, Spring Boot 3.5)",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/bloxbean/yaci/pull/167": {
+   "kind": "pull",
+   "title": "feat: Leios network mini-protocols (LeiosNotify/LeiosFetch) for Musashi — transport-only [ADR 0007]",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/bloxbean/yaci/pull/171": {
+   "kind": "pull",
+   "title": "Leios (Musashi w27): Dijkstra serialization & BlockChainDataListener integration (ADR 0010/0011 + implementation)",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/bloxbean/yaci/pull/222": {
+   "kind": "pull",
+   "title": "Leios: parse every Dijkstra structure of the deployed CDDL (backward compatible)",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/butaneprotocol/blaze-cardano/pull/370": {
+   "kind": "pull",
+   "title": "chore(core): upgrade Cardano SDK to 0.47.1",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/butaneprotocol/blaze-cardano/pull/379": {
+   "kind": "pull",
+   "title": "feat: build and sign CIP-0118 sub-transactions",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/cardano-foundation/cardano-wallet/issues/5209": {
+   "kind": "issue",
+   "title": "Dijkstra era support: eliminate 44 Dijkstra stubs across 15 files (census-gated)",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/cardano-foundation/cardano-wallet/issues/5395": {
+   "kind": "issue",
+   "title": "Epic: Dijkstra era support and the cardano-node 11.1.0 dependency advance",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/cardano-foundation/cardano-wallet/issues/5408": {
+   "kind": "issue",
+   "title": "Release blocker: wallet requires cardano-node >= 11.1.0 (explicit compatibility cut-off)",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/cardano-foundation/cardano-wallet/pull/5430": {
+   "kind": "pull",
+   "title": "Dijkstra: close the five per-era converter stubs",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/cardano-foundation/cardano-wallet/pull/5432": {
+   "kind": "pull",
+   "title": "Dijkstra: one native script conversion for both read sites",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/cardano-foundation/cardano-wallet/pull/5458": {
+   "kind": "pull",
+   "title": "Dijkstra: close the five delegation, voting and certificate stubs",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/cardano-foundation/cardano-wallet/pull/5463": {
+   "kind": "pull",
+   "title": "Advance the dependency pin set to cardano-node 11.1.3",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/input-output-hk/cardano-js-sdk/issues/1736": {
+   "kind": "issue",
+   "title": "SubTransactionBody duplicates TransactionBody serialization (consensus-sort drift risk)",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/input-output-hk/cardano-js-sdk/pull/1735": {
+   "kind": "pull",
+   "title": "feat: update serialization and core types to Dijkstra era [LW-15103]",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/input-output-hk/cardano-js-sdk/pull/1739": {
+   "kind": "pull",
+   "title": "feat: Dijkstra batch groundwork - hydrated sub transactions and batch-aware inspection",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/scalus3/scalus/pull/265": {
+   "kind": "pull",
+   "title": "feat(ledger): add Script.PlutusV4 case for Dijkstra-era ref-scripts",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/scalus3/scalus/pull/371": {
+   "kind": "pull",
+   "title": "fix: lower Data matches via chooseData, gate Case on Data to PV12",
+   "state": "merged",
    "checked": "2026-10-26"
   },
   "https://github.com/txpipe/pallas/pull/747": {
@@ -88,6 +394,18 @@
   "https://github.com/txpipe/pallas/pull/838": {
    "kind": "pull",
    "title": "fix(utxorpc): map PlutusV3 witness scripts",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/utxorpc/spec/issues/218": {
+   "kind": "issue",
+   "title": "Cardano Tx cannot carry network id, script data hash, auxiliary data hash, treasury value and donation",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/utxorpc/spec/pull/215": {
+   "kind": "pull",
+   "title": "feat(cardano): add Dijkstra sub transactions and ledger fields",
    "state": "open",
    "checked": "2026-10-26"
   }
