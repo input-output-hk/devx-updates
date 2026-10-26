@@ -20,6 +20,12 @@ const STATE_MEANING: Record<HardforkState, string> = {
   unverified: "No confirmed gap, which is not a pass.",
   dismissed: "Set aside by hand (abandoned, or too little use for a break to matter), with the reason and the state it would otherwise have.",
 };
+/** Survey usage (share of developers) above which a tool counts as one DApps build on. */
+const DAPP_USAGE = 10;
+const STATE_COLOR: Record<HardforkState, string> = {
+  breaks: "var(--status-blocked)", "in-progress": "var(--status-progress)", ready: "var(--status-done)", unverified: "var(--viz-1)", dismissed: "var(--muted)",
+};
+const SHORT_STATE: Record<HardforkState, string> = { breaks: "Breaks", "in-progress": "In progress", ready: "Ready", unverified: "Not verified", dismissed: "Dismissed" };
 /** How the gap card names each state in its breakdown. */
 const GAP_WORDS: Record<HardforkState, string> = { breaks: "break", "in-progress": "in progress", ready: "ready", unverified: "not verified", dismissed: "dismissed" };
 export const metadata: Metadata = {
@@ -101,7 +107,16 @@ export default function DijkstraPage() {
   const gapped = new Set(unlocks.blockers.filter((b) => b.blockers.length).map((b) => b.tool));
   const gapStates = (Object.keys(HARDFORK_STATES) as HardforkState[]).map((s) => [s, rows.filter((r) => r.state === s && gapped.has(r.tool)).length] as const).filter(([, n]) => n > 0);
   const listed = new Set(rows.map((r) => r.tool));
-  const graph = fixGraph(unlocks);
+  // Tools DApps build on: more than DAPP_USAGE% of surveyed developers use them, they have a confirmed gap and are not
+  // dismissed. Those that are not fixes themselves become targets at the end of the critical path.
+  const usage = (id: string) => { const u = NODES.get(id)?.communityUsage; return u != null && u > DAPP_USAGE ? u : undefined; };
+  const stateOf = new Map(rows.map((r) => [r.tool, r.state]));
+  const dappFacing = rows.filter((r) => usage(r.tool) !== undefined && gapped.has(r.tool) && r.state !== "dismissed").map((r) => r.tool);
+  const graph = fixGraph(unlocks, dappFacing);
+  const usedName = (id: string) => NODES.get(id)?.name ?? id;
+  const noSourceUsed = [...classification.tools.values()].filter((t) => usage(t.id) !== undefined && t.scan.status === "no-public-source").map((t) => usedName(t.id));
+  const unconfirmedUsed = rows.filter((r) => usage(r.tool) !== undefined && !gapped.has(r.tool)).map((r) => usedName(r.tool));
+  const targetIds = graph.nodes.filter((n) => n.kind === "target").map((n) => n.id);
   const fixIds = unlocks.fixOrder.map((f) => f.component);
   const fixNames = Object.fromEntries(fixIds.map((id) => [id, id.startsWith(RETIRED) ? `Move off ${NODES.get(id.slice(RETIRED.length))?.name ?? id.slice(RETIRED.length)}` : NODES.get(id)?.name ?? id]));
   const fixHref = Object.fromEntries(fixIds.map((id) => [id, `/map/readiness/${id.startsWith(RETIRED) ? id.slice(RETIRED.length) : id}`]));
@@ -116,7 +131,16 @@ export default function DijkstraPage() {
   const fixes: Record<string, FixInfo> = Object.fromEntries(unlocks.fixOrder.map((f) => [f.component, {
     name: fixNames[f.component], href: fixHref[f.component], work: fixWork[f.component],
     added: f.added.map((t) => ({ id: t, name: NODES.get(t)?.name ?? t })),
+    ...(usage(f.component) !== undefined && { usage: usage(f.component) }),
   }]));
+  const ownGap = (id: string) => unlocks.blockers.some((b) => b.tool === id && b.blockers.some((x) => x.kind === "own-gap"));
+  for (const id of targetIds) {
+    const state = stateOf.get(id)!;
+    fixes[id] = {
+      name: NODES.get(id)?.name ?? id, href: `/map/readiness/${id}`, work: "none", added: [], usage: usage(id),
+      target: { state: SHORT_STATE[state], own: ownGap(id), color: STATE_COLOR[state] },
+    };
+  }
   const unlisted = [...classification.tools.values()].filter((t) => !listed.has(t.id));
   const noSource = unlisted.filter((t) => t.scan.status === "no-public-source").length;
   const testsOnly = unlisted.filter((t) => t.scan.status === "scanned" && t.surfaces.length > 0).length;
@@ -182,6 +206,13 @@ export default function DijkstraPage() {
           have a confirmed gap, but only these {unlocks.fixOrder.length} unlock another tool: for the other{" "}
           {unlocks.components.length - unlocks.fixOrder.length} (Mesh, Hydra, Oura and others) no other catalog tool has a
           confirmed gap through them, so fixing them repairs only themselves.
+        </p>
+        <p className="mt-2 text-sm text-muted">
+          The last column holds the tools DApps build on: used by more than {DAPP_USAGE}% of developers in the State of the
+          Developer Ecosystem 2025 survey (109 answers), with a confirmed gap. Most of them unlock no other catalog tool,
+          but the DApps that use them are mostly outside the catalog, so the longest chains are measured to them. Fixes
+          that are also widely used carry the same blue usage badge. Used as widely but left out: {noSourceUsed.length > 0 && <>tools
+          without public source ({noSourceUsed.join(", ")}) and </>}tools with no confirmed gap ({unconfirmedUsed.join(", ")}).
         </p>
         <FixPathGraph graph={graph} fixes={fixes} />
         <UnlockCurve steps={unlocks.fixOrder.map((f) => ({ component: f.component, added: f.added.length, unlocked: f.unlocked }))} names={fixNames} rest={rest} />

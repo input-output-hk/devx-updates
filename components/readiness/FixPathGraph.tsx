@@ -7,20 +7,50 @@ import type { FixGraph, FixNode } from "@/lib/readiness/fix-graph";
 /** Whether a blocking component has Dijkstra work on record (an issue, PR or branch), or is a provider to move off. */
 export type FixWork = "tracked" | "none" | "retired";
 /** What the page knows about each fix: display name, its page, tracked work, and the tools it adds in the order. */
-export interface FixInfo { name: string; href: string; work: FixWork; added: { id: string; name: string }[] }
+export interface FixInfo {
+  name: string; href: string; work: FixWork; added: { id: string; name: string }[];
+  /** Share of developers using it (State of the Developer Ecosystem survey), when it counts as DApp-facing. */
+  usage?: number;
+  /** For a target (a tool DApps build on that is not a fix itself): its state, whether its own code must change too, and the state's colors. */
+  target?: { state: string; own: boolean; color: string };
+}
 
-const COL = 276, NODE_W = 212, NODE_H = 46, ROW = 60, HEAD = 28, PAD = 2;
+const COL = 240, NODE_W = 196, NODE_H = 46, ROW = 60, HEAD = 28, PAD = 2;
 const WORK: Record<FixWork, { stroke: string; label: string; dash?: string }> = {
   none: { stroke: "var(--status-blocked)", label: "No Dijkstra work tracked" },
   tracked: { stroke: "var(--status-progress)", label: "Dijkstra work tracked (issue, PR or branch)" },
   retired: { stroke: "var(--muted)", label: "Deprecated provider: tools move off it", dash: "4 3" },
 };
 const COLUMN_TITLE = (c: number) => (c === 0 ? "Can start now" : `After ${c} ${c === 1 ? "fix" : "fixes"} upstream`);
+export const TARGET_TITLE = "What DApps build on";
 
 const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1)}…` : s);
 const tools = (n: number) => `${n} ${n === 1 ? "tool" : "tools"}`;
 
+function Badge({ x, y, usage }: { x: number; y: number; usage: number }) {
+  const label = `${usage}%`, w = 10 + label.length * 6.6;
+  return <g aria-hidden>
+    <rect x={x - w} y={y} width={w} height={17} rx={8.5} fill="var(--viz-1)" />
+    <text x={x - w / 2} y={y + 12.5} fontSize={10.5} fontWeight={600} textAnchor="middle" fill="#fff">{label}</text>
+  </g>;
+}
+
+function TargetNode({ node, x, y, info, selected, onSelect }: { node: FixNode; x: number; y: number; info: FixInfo; selected: boolean; onSelect: () => void }) {
+  const t = info.target!;
+  return <g role="button" tabIndex={0} aria-pressed={selected} className="cursor-pointer outline-none [&:focus-visible>rect]:stroke-[3]"
+    onClick={onSelect} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(); } }}>
+    <title>{`${info.name}: used by ${info.usage}% of surveyed developers. ${t.state}${t.own ? "; its own code must change too" : ""}. Select for details.`}</title>
+    <rect x={x} y={y} width={NODE_W} height={NODE_H} rx={NODE_H / 2} fill={selected ? "var(--surface-2)" : "var(--surface)"}
+      stroke={t.color} strokeWidth={selected ? 3 : node.critical ? 2.5 : 1.5} />
+    <circle cx={x + 16} cy={y + 15} r={4} fill={t.color} />
+    <text x={x + 26} y={y + 19} fontSize={13} fontWeight={600} fill="var(--foreground)">{clip(info.name, 15)}</text>
+    <text x={x + 16} y={y + 36} fontSize={11.5} fill="var(--muted)">{t.state}{t.own ? " · own code too" : ""}</text>
+    {info.usage !== undefined && <Badge x={x + NODE_W - 8} y={y + 6} usage={info.usage} />}
+  </g>;
+}
+
 function Node({ node, x, y, info, selected, onSelect }: { node: FixNode; x: number; y: number; info: FixInfo; selected: boolean; onSelect: () => void }) {
+  if (node.kind === "target") return <TargetNode node={node} x={x} y={y} info={info} selected={selected} onSelect={onSelect} />;
   const w = WORK[info.work];
   return <g role="button" tabIndex={0} aria-pressed={selected} className="cursor-pointer outline-none [&:focus-visible>rect]:stroke-[3]"
     onClick={onSelect} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(); } }}>
@@ -28,11 +58,12 @@ function Node({ node, x, y, info, selected, onSelect }: { node: FixNode; x: numb
     <rect x={x} y={y} width={NODE_W} height={NODE_H} rx={8} fill={selected ? "var(--surface-2)" : "var(--surface)"} stroke={w.stroke}
       strokeWidth={selected ? 3 : node.critical ? 2.5 : 1.25} strokeDasharray={w.dash} />
     <text x={x + 10} y={y + 19} fontSize={13} fontWeight={600} fill="var(--foreground)">
-      <tspan fill="var(--muted)" fontWeight={500}>{node.step}.</tspan> {clip(info.name, 25)}
+      <tspan fill="var(--muted)" fontWeight={500}>{node.step}.</tspan> {clip(info.name, info.usage !== undefined ? 18 : 23)}
     </text>
     <text x={x + 10} y={y + 36} fontSize={11.5} fill="var(--muted)">
       {node.added > 0 ? `+${tools(node.added)} · ${node.unlocked} total` : `no tool on its own · ${node.unlocked} total`}
     </text>
+    {info.usage !== undefined && <Badge x={x + NODE_W - 8} y={y + 6} usage={info.usage} />}
   </g>;
 }
 
@@ -51,20 +82,23 @@ export default function FixPathGraph({ graph, fixes }: { graph: FixGraph; fixes:
   const at = new Map(graph.nodes.map((n) => [n.id, { x: PAD + n.column * COL, y: PAD + HEAD + n.row * ROW }]));
   // Independent fixes go in the free space under the later columns (or under everything when there is only one
   // column): they can start now like column one, but nothing else waits on them.
-  const firstCol = graph.columns > 1 ? 1 : 0, perRow = graph.columns - firstCol;
-  const freeRow = Math.max(0, ...graph.nodes.filter((n) => n.column >= firstCol).map((n) => n.row + 1));
+  const hasTargets = graph.nodes.some((n) => n.kind === "target");
+  const fixColumns = graph.columns - (hasTargets ? 1 : 0);
+  const firstCol = fixColumns > 1 ? 1 : 0, perRow = Math.max(1, fixColumns - firstCol);
+  const freeRow = Math.max(0, ...graph.nodes.filter((n) => n.kind === "fix" && n.column >= firstCol).map((n) => n.row + 1));
   const groupTop = PAD + HEAD + freeRow * ROW + 6;
   graph.independent.forEach((n, i) => at.set(n.id, { x: PAD + (firstCol + (i % perRow)) * COL, y: groupTop + 24 + Math.floor(i / perRow) * ROW }));
   const height = Math.max(...[...at.values()].map((p) => p.y + NODE_H)) + PAD;
-  const longest = graph.nodes.filter((n) => n.critical && n.column === graph.columns - 1).map((n) => fixes[n.id].name);
-  const all = [...graph.nodes, ...graph.independent].sort((a, b) => a.step - b.step);
-  const current = all.find((n) => n.id === selected);
+  const longest = graph.nodes.filter((n) => n.critical && !graph.edges.some((e) => e.to === n.id && graph.nodes.find((o) => o.id === e.from)?.critical)).map((n) => fixes[n.id].name);
+  const everything = [...graph.nodes, ...graph.independent];
+  const all = everything.filter((n) => n.kind === "fix").sort((a, b) => a.step - b.step);
+  const current = everything.find((n) => n.id === selected);
   const select = (id: string) => setSelected((s) => (s === id ? null : id));
   const node = (n: FixNode) => <Node key={n.id} node={n} {...at.get(n.id)!} info={fixes[n.id]} selected={selected === n.id} onSelect={() => select(n.id)} />;
   return <figure className="mt-4">
     <div className="overflow-x-auto rounded-xl border border-border bg-surface p-4">
       <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} className="max-w-none"
-        aria-label={`Dependency graph of ${all.length} fixes in ${graph.columns} columns; the longest chains end at ${longest.join(" and ")}`}>
+        aria-label={`Dependency graph of ${all.length} fixes${hasTargets ? ` and ${everything.length - all.length} tools DApps build on` : ""}; the longest chains end at ${longest.join(", ")}`}>
         <defs>
           {(["normal", "critical"] as const).map((k) => (
             <marker key={k} id={`fix-arrow-${k}`} viewBox="0 0 8 8" refX={7} refY={4} markerWidth={7} markerHeight={7} orient="auto-start-reverse">
@@ -73,7 +107,9 @@ export default function FixPathGraph({ graph, fixes }: { graph: FixGraph; fixes:
           ))}
         </defs>
         {Array.from({ length: graph.columns }, (_, c) => (
-          <text key={c} x={PAD + c * COL} y={PAD + 12} fontSize={11} fontWeight={600} letterSpacing="0.06em" fill="var(--muted)">{COLUMN_TITLE(c).toUpperCase()}</text>
+          <text key={c} x={PAD + c * COL} y={PAD + 12} fontSize={11} fontWeight={600} letterSpacing="0.06em" fill={hasTargets && c === graph.columns - 1 ? "var(--viz-1)" : "var(--muted)"}>
+            {(hasTargets && c === graph.columns - 1 ? TARGET_TITLE : COLUMN_TITLE(c)).toUpperCase()}
+          </text>
         ))}
         {/* Non-critical edges first so the critical ones draw on top; a selected fix's arrows come last and darkest. */}
         {[...graph.edges].sort((a, b) => {
@@ -116,6 +152,10 @@ export default function FixPathGraph({ graph, fixes }: { graph: FixGraph; fixes:
         <svg width="22" height="12" aria-hidden><line x1="1" y1="6" x2="21" y2="6" stroke="var(--foreground)" strokeWidth="2" /></svg>
         Longest chain: bold box and arrow
       </span>
+      {hasTargets && <span className="inline-flex items-center gap-1.5">
+        <svg width="26" height="14" aria-hidden><rect x="1" y="1" width="24" height="12" rx="6" fill="var(--viz-1)" /></svg>
+        Share of developers using it (State of the Developer Ecosystem 2025); pill boxes are tools DApps build on
+      </span>}
     </figcaption>
     <div aria-live="polite" className="mt-4 rounded-xl border border-border bg-surface p-4">
       {current ? <FixDetail node={current} fixes={fixes} graph={graph} onClose={() => setSelected(null)} />
@@ -138,7 +178,25 @@ export default function FixPathGraph({ graph, fixes }: { graph: FixGraph; fixes:
 
 function FixDetail({ node, fixes, graph, onClose }: { node: FixNode; fixes: Record<string, FixInfo>; graph: FixGraph; onClose: () => void }) {
   const info = fixes[node.id];
+  if (node.kind === "target") {
+    const t = info.target!;
+    return <div>
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="text-base font-semibold">{info.name}</h3>
+        <div className="flex gap-4 text-sm">
+          <Link href={info.href}>Tool page →</Link>
+          <button type="button" onClick={onClose} className="text-muted hover:text-foreground">Close</button>
+        </div>
+      </div>
+      <p className="mt-1 text-sm text-muted">
+        Used by {info.usage}% of surveyed developers. {t.state}. {node.critical ? "At the end of the critical path. " : ""}
+        {node.waitsOn.length ? `Waits on ${node.waitsOn.map((id) => fixes[id].name).join(", ")} (and what those wait on).` : "Waits on no fix in the order."}
+        {t.own ? " Its own code must change too, so the upstream fixes are needed but not enough." : " Nothing in its own code is confirmed to change: once these fixes land, it is unlocked."}
+      </p>
+    </div>;
+  }
   const waitedBy = graph.edges.filter((e) => e.to === node.id).map((e) => e.from);
+  const usage = info.usage !== undefined ? ` Used by ${info.usage}% of surveyed developers.` : "";
   const names = (ids: string[]) => ids.map((id) => fixes[id].name).join(", ");
   return <div>
     <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -150,7 +208,7 @@ function FixDetail({ node, fixes, graph, onClose }: { node: FixNode; fixes: Reco
       </div>
     </div>
     <p className="mt-1 text-sm text-muted">
-      {WORK[info.work].label}. {node.critical ? "On the critical path. " : ""}
+      {WORK[info.work].label}.{usage} {node.critical ? "On the critical path. " : ""}
       {node.waitsOn.length ? `Waits on ${names(node.waitsOn)}. ` : "Can start now. "}
       {waitedBy.length ? `${names(waitedBy)} ${waitedBy.length === 1 ? "waits" : "wait"} on it.` : "No other fix waits on it."}
     </p>

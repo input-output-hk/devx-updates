@@ -39,7 +39,7 @@ The register formats and findings are in
 | Dependency graph | `data/readiness/` | 268 tools accounted for, 227 with discovered source, 45 with a native profile (55 profiles, 7 complete), 1,321 evidence objects, 0 capability findings |
 
 All registers pass `check-changes`, `check-boundary`, `check-leads` and
-`check-upgrades` with `--verify-sources`, and `check-devnet`. All 161 readiness
+`check-upgrades` with `--verify-sources`, and `check-devnet`. All 162 readiness
 tests pass, all 55 native profiles replay identically, and `validate` accepts
 the snapshot.
 
@@ -333,7 +333,9 @@ Decisions); new collection is admitted when the Dijkstra registers need it.
   Experimental, Research).
 - `/map/dijkstra`: the overview (state of every tool touching a changed
   surface), then the critical path (the blocking components as a dependency
-  graph, longest chains in bold; selecting a fix shows the tools it unlocks, and
+  graph, ending in a column of the tools DApps build on: more than 10% usage in
+  the State of the Developer Ecosystem 2025 survey and a confirmed gap; longest
+  chains to them in bold; selecting a fix shows the tools it unlocks, and
   the fix order is a list toggle under it) with the cumulative unlock curve, then
   all tools with their state, then each fix on its own, bump-ready tools with
   their upgrade distance and own era handling, unread gaps and links waiting on a

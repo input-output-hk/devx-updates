@@ -489,8 +489,9 @@ lookup keeps the previous entry and exits non-zero.
 `/map/dijkstra` opens with the state of every tool touching a changed surface
 (Breaks after HF, In progress, Ready for HF, Not verified, Dismissed), then the
 critical path (`lib/readiness/fix-graph.ts`: each blocking component placed one column
-right of the furthest component it waits on, implied links dropped, the longest
-chains marked; selecting a fix shows the tools it adds, and the fix order is a
+right of the furthest component it waits on, implied links dropped, then a last
+column of the tools DApps build on (survey usage above 10% and a confirmed gap,
+not dismissed), with the longest chains to them marked; selecting a fix shows the tools it adds, and the fix order is a
 list toggle) with the tools unlocked after each fix, all tools ranked by how many
 catalog tools reach them, what each fix unlocks on its own,
 the tools whose upstream fix is released (upgrade distance and own era
