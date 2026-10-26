@@ -192,28 +192,40 @@ export default function DijkstraPage() {
 
       <section aria-labelledby="plan" className="scroll-mt-24">
         <h2 id="plan" className="font-display text-2xl font-semibold">Critical path</h2>
-        <p className="mt-2 text-sm text-muted">
-          The upstream fixes that unlock other tools, in the order they can land. A tool is unlocked once every upstream
-          blocker it has is fixed, and an unlocked component then counts as fixed for its own users. Columns count how many
-          fixes must land before a component can start; an arrow runs from a fix to one that waits on it (Blockfrost and
-          Koios read db-sync), with links already implied through another fix left out. The bold chains,{" "}
-          {graph.nodes.filter((n) => n.critical).length} components, are the critical path: however much else runs in
-          parallel, the tools at their end wait on every fix along them.
+        <p className="mt-2 text-muted">
+          What has to be fixed upstream, and in what order, before the tools DApps build on can support Dijkstra. The bold
+          boxes and arrows are the critical path: {graph.nodes.filter((n) => n.critical).length} components where each fix
+          has to land before the next can.
         </p>
-        <p className="mt-2 text-sm text-muted">
-          The number in each box is its step in the fix order, which adds at each step the fix that unlocks the most tools
-          on top of the earlier ones (a fix that waits on another is counted together with it). {unlocks.components.length} components
-          have a confirmed gap, but only these {unlocks.fixOrder.length} unlock another tool: for the other{" "}
-          {unlocks.components.length - unlocks.fixOrder.length} (Mesh, Hydra, Oura and others) no other catalog tool has a
-          confirmed gap through them, so fixing them repairs only themselves.
-        </p>
-        <p className="mt-2 text-sm text-muted">
-          The last column holds the tools DApps build on: used by more than {DAPP_USAGE}% of developers in the State of the
-          Developer Ecosystem 2025 survey (109 answers), with a confirmed gap. Most of them unlock no other catalog tool,
-          but the DApps that use them are mostly outside the catalog, so the longest chains are measured to them. Fixes
-          that are also widely used carry the same blue usage badge. Used as widely but left out: {noSourceUsed.length > 0 && <>tools
-          without public source ({noSourceUsed.join(", ")}) and </>}tools with no confirmed gap ({unconfirmedUsed.join(", ")}).
-        </p>
+        <ul className="mt-4 grid gap-3 text-sm sm:grid-cols-3">{([
+          ["Columns", "How many upstream fixes must land before a box can start. Everything in one column can run in parallel."],
+          ["Arrows", "From a fix to what waits on it. Links already implied through another fix are left out."],
+          ["Last column", `Tools used by more than ${DAPP_USAGE}% of developers, with a confirmed gap. The blue badge is that share.`],
+        ] as const).map(([title, text]) => (
+          <li key={title} className="rounded-xl border border-border bg-surface px-4 py-3">
+            <div className="font-medium">{title}</div>
+            <div className="mt-1 text-muted">{text}</div>
+          </li>
+        ))}</ul>
+        <details className="mt-3 text-sm">
+          <summary className="cursor-pointer text-muted hover:text-foreground">How the order and the last column are chosen</summary>
+          <ul className="mt-2 list-disc space-y-1.5 pl-5 text-muted">
+            <li>
+              The number in a box is its step in the fix order. Each step adds the fix that unlocks the most tools on top of
+              the earlier ones; a tool is unlocked once all its upstream blockers are fixed, and a fix that waits on another
+              is counted together with it.
+            </li>
+            <li>
+              {unlocks.components.length} components have a confirmed gap; only these {unlocks.fixOrder.length} unlock another
+              tool. The other {unlocks.components.length - unlocks.fixOrder.length} only repair themselves, and the widely used
+              ones among them are in the last column.
+            </li>
+            <li>
+              Usage comes from the State of the Developer Ecosystem 2025 survey (109 answers). Widely used but not shown:
+              {noSourceUsed.length > 0 && <> no public source to read ({noSourceUsed.join(", ")});</>} no confirmed gap ({unconfirmedUsed.join(", ")}).
+            </li>
+          </ul>
+        </details>
         <FixPathGraph graph={graph} fixes={fixes} />
         <UnlockCurve steps={unlocks.fixOrder.map((f) => ({ component: f.component, added: f.added.length, unlocked: f.unlocked }))} names={fixNames} rest={rest} />
       </section>
