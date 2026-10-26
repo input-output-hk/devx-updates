@@ -65,3 +65,107 @@ tools:
     dismissed:
       reason: Replaced by cshell.
       date: 2026-10-23
+  cardano-go:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  naumachia:
+    dismissed:
+      reason: Abandoned; no activity since 2024-04.
+      date: 2026-10-26
+  go-cardano-serialization:
+    dismissed:
+      reason: Abandoned; no activity since 2023-04.
+      date: 2026-10-26
+  koios-python:
+    dismissed:
+      reason: Abandoned; no activity since 2024-03.
+      date: 2026-10-26
+  koios-go-client:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  koios-cli:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  use-cardano:
+    dismissed:
+      reason: Abandoned; no activity since 2024-02.
+      date: 2026-10-26
+  dandelion-apis:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  blockfrost-cardano-cli:
+    dismissed:
+      reason: Abandoned; no activity since 2022-08.
+      date: 2026-10-26
+  cscli:
+    dismissed:
+      reason: Abandoned; no activity since 2022-10.
+      date: 2026-10-26
+  cardano-wallet-interface:
+    dismissed:
+      reason: Abandoned; no activity since 2022-07.
+      date: 2026-10-26
+  cardano-wallet-js:
+    dismissed:
+      reason: Abandoned; no activity since 2024-02.
+      date: 2026-10-26
+  cardano-cli-guru:
+    dismissed:
+      reason: Abandoned; no activity since 2024-02.
+      date: 2026-10-26
+  cardanocli-js:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  toolkit-for-cardano:
+    dismissed:
+      reason: Abandoned; no activity since 2021-10.
+      date: 2026-10-26
+  plutonomy:
+    dismissed:
+      reason: Abandoned; no activity since 2023-01.
+      date: 2026-10-26
+  hydra-pay:
+    dismissed:
+      reason: Abandoned; no activity since 2023-09.
+      date: 2026-10-26
+  bot-plutus-interface:
+    dismissed:
+      reason: Abandoned; no activity since 2023-05.
+      date: 2026-10-26
+  dab:
+    dismissed:
+      reason: Abandoned; no activity since 2022-06.
+      date: 2026-10-26
+  cardano-wallet-sdk-dart:
+    dismissed:
+      reason: Abandoned; no activity since 2023-01.
+      date: 2026-10-26
+  cardano-open-oracle-protocol:
+    dismissed:
+      reason: Abandoned; no activity since 2024-03.
+      date: 2026-10-26
+  plutus-cborhex-automation:
+    dismissed:
+      reason: Abandoned; no activity since 2022-12.
+      date: 2026-10-26
+  spectrum-dex-sdk:
+    dismissed:
+      reason: Abandoned; no activity since 2023-11.
+      date: 2026-10-26
+  shrinker:
+    dismissed:
+      reason: Abandoned; no activity since 2022-02.
+      date: 2026-10-26
+  aiken-linked-list:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  cardanosharp-koios:
+    dismissed:
+      reason: Abandoned; no activity since 2024-04.
+      date: 2026-10-26
