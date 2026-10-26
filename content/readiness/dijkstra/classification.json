@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-22T14:32:41.907Z",
+ "generatedAt": "2026-10-26T16:56:31.497Z",
  "rulesDigest": "259035e3c762db7e45c29d850d85a4af0a639858492d7c57f121999c9c9e6eaf",
  "changeTarget": {
   "name": "Dijkstra",
@@ -90,8 +90,8 @@
  "boundaryRetrieved": "2026-10-20",
  "summary": {
   "implements": 65,
-  "dependency": 86,
-  "service": 45,
+  "dependency": 92,
+  "service": 39,
   "unknown": 41,
   "auxiliary": 4,
   "marker": 9,
@@ -351,6 +351,13 @@
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -364,9 +371,16 @@
        "readiness": "unassessed",
        "lines": 82,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "unassessed"
+     "readiness": "gap"
     },
     {
      "surface": "protocol-parameters",
@@ -1034,6 +1048,20 @@
        "path": ".github/workflows/nightly-tool-integrations.yml",
        "line": 130,
        "quote": "https://github.com/txpipe/dolos/releases/latest/download/dolos-installer.sh | sh"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:aiken",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "crates/amaru/Cargo.lock",
+       "line": 1826,
+       "quote": "name = \"uplc\""
       }
      ]
     }
@@ -7460,6 +7488,13 @@
        "readiness": "gap",
        "lines": 82,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -7527,6 +7562,13 @@
        "via": "ogmios",
        "readiness": "gap",
        "lines": 82,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "gap",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -7623,6 +7665,13 @@
        "readiness": "gap",
        "lines": 82,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -7705,6 +7754,13 @@
        "readiness": "gap",
        "lines": 82,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -7738,6 +7794,13 @@
        "via": "marker:pool-registration",
        "readiness": "unassessed",
        "lines": 336,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -7815,6 +7878,13 @@
        "readiness": "gap",
        "lines": 82,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -7841,6 +7911,13 @@
        "via": "cardano-multiplatform-lib-cml",
        "readiness": "no-evidence",
        "lines": 31,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pallas",
+       "readiness": "in-progress",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -8340,6 +8417,20 @@
        "path": "docs/pages/documentation/core-concepts/provider/utxo-rpc.mdx",
        "line": 1,
        "quote": "## UTxORPC"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:pallas-codecs",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "packages/uplc/rust/Cargo.lock",
+       "line": 512,
+       "quote": "name = \"pallas-codec\""
       }
      ]
     }
@@ -16687,7 +16778,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -16868,6 +16959,13 @@
        "readiness": "unassessed",
        "lines": 19,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -16881,9 +16979,16 @@
        "readiness": "unassessed",
        "lines": 1,
        "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "unassessed"
+     "readiness": "gap"
     },
     {
      "surface": "protocol-parameters",
@@ -16898,7 +17003,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -16967,7 +17072,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -17007,7 +17112,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -17022,7 +17127,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -17521,6 +17626,20 @@
        "path": "packages/whisky-provider/src/maestro/fetcher.rs",
        "line": 7,
        "quote": "use super::MaestroProvider;"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:aiken",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "packages/Cargo.lock",
+       "line": 4147,
+       "quote": "name = \"uplc\""
       }
      ]
     }
@@ -21776,6 +21895,13 @@
        "readiness": "gap",
        "lines": 8,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "oura",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -21809,6 +21935,13 @@
        "readiness": "gap",
        "lines": 8,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "oura",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -21835,6 +21968,13 @@
        "via": "service:node-socket",
        "readiness": "upstream",
        "lines": 4,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "oura",
+       "readiness": "released",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -21929,6 +22069,13 @@
        "via": "cardano-db-sync",
        "readiness": "gap",
        "lines": 8,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "oura",
+       "readiness": "gap",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -22193,6 +22340,20 @@
        "path": "docs/docs/comparison.md",
        "line": 33,
        "quote": "One main difference is that Carp does not have access to Cardano ledger state that does not explicitly appear on-chain such as reward balances. This means that Ogmios can be a good companion to Carp"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:oura",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.lock",
+       "line": 2432,
+       "quote": "name = \"oura\""
       }
      ]
     }
@@ -22996,7 +23157,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -23157,6 +23318,13 @@
        "readiness": "gap",
        "lines": 6,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -23170,9 +23338,16 @@
        "readiness": "unassessed",
        "lines": 65,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "unassessed"
+     "readiness": "gap"
     },
     {
      "surface": "protocol-parameters",
@@ -23187,7 +23362,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -23249,7 +23424,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -23290,7 +23465,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
       },
@@ -23722,6 +23897,20 @@
        "path": "ts/chain/koiosClient.ts",
        "line": 62,
        "quote": "/** Shape of the `queryLedgerState/constitution` Ogmios result. */"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:aiken",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.lock",
+       "line": 2065,
+       "quote": "name = \"uplc\""
       }
      ]
     }
@@ -27579,6 +27768,317 @@
    }
   },
   {
+   "id": "blockfrost",
+   "repo": "blockfrost/blockfrost-backend-ryo",
+   "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+   "scan": {
+    "status": "scanned",
+    "files": 428,
+    "skipped": 18
+   },
+   "exposure": "implements",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 134,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 134,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "verified",
+       "lines": 134,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 35,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 134,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 134,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "implements",
+       "via": "blockfrost",
+       "readiness": "no-evidence",
+       "lines": 0,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:legacy-stake-certificate",
+       "readiness": "unassessed",
+       "lines": 54,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 134,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "no-evidence"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 12,
+     "lines": 35,
+     "auxLines": 19,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "src/routes/epochs/latest/parameters.ts",
+       "line": 9,
+       "quote": "import { costModelsMap } from '../../../utils/cost-models-map.js';"
+      },
+      {
+       "path": "src/routes/epochs/latest/parameters.ts",
+       "line": 31,
+       "quote": "if (rows[0].cost_models) {"
+      },
+      {
+       "path": "src/routes/epochs/latest/parameters.ts",
+       "line": 32,
+       "quote": "rows[0].cost_models_raw = rows[0].cost_models;"
+      }
+     ]
+    },
+    {
+     "rule": "marker:legacy-stake-certificate",
+     "files": 14,
+     "lines": 54,
+     "auxLines": 0,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "src/sql/accounts/accounts_stake_address.sql",
+       "line": 14,
+       "quote": "JOIN stake_registration sr ON (sr.addr_id = sa.id)"
+      },
+      {
+       "path": "src/sql/accounts/accounts_stake_address.sql",
+       "line": 27,
+       "quote": "FROM stake_registration"
+      },
+      {
+       "path": "src/sql/accounts/accounts_stake_address.sql",
+       "line": 35,
+       "quote": "FROM stake_deregistration"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 4,
+     "lines": 6,
+     "auxLines": 5,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "src/utils/cost-models-map.ts",
+       "line": 1061,
+       "quote": "if ('PlutusV3' in costModels && Object.keys(costModels.PlutusV3).length !== plutusV3Names.length)"
+      },
+      {
+       "path": "src/utils/cost-models-map.ts",
+       "line": 1064,
+       "quote": "Object.keys(costModels.PlutusV3).length,"
+      },
+      {
+       "path": "src/utils/cost-models-map.ts",
+       "line": 1087,
+       "quote": "if ('PlutusV3' in costModels && validation.isNumber(Object.keys(costModels.PlutusV3)[0])) {"
+      }
+     ]
+    },
+    {
+     "rule": "service:cardano-db-sync",
+     "files": 56,
+     "lines": 134,
+     "auxLines": 19,
+     "docLines": 35,
+     "examples": [
+      {
+       "path": ".vscode/settings.json",
+       "line": 9,
+       "quote": "\"dbsync\","
+      },
+      {
+       "path": "config/development-testnet.yaml",
+       "line": 5,
+       "quote": "dbSync:"
+      },
+      {
+       "path": "config/development.yaml",
+       "line": 5,
+       "quote": "dbSync:"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "yarn.lock",
+       "line": 153,
+       "quote": "\"@emurgo/cardano-serialization-lib-nodejs@npm:^15.0.3\":"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-10-19T03:45:29Z"
+   }
+  },
+  {
    "id": "cardano-graphql",
    "repo": "cardano-foundation/cardano-graphql",
    "revision": "fcfe3154115ef176788a60b2eae925ee42aabd7c",
@@ -29390,248 +29890,6 @@
    }
   },
   {
-   "id": "blockfrost",
-   "repo": "blockfrost/blockfrost-backend-ryo",
-   "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
-   "scan": {
-    "status": "scanned",
-    "files": 428,
-    "skipped": 18
-   },
-   "exposure": "implements",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 134,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 134,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "verified",
-       "lines": 134,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 35,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 134,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 134,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "implements",
-       "via": "blockfrost",
-       "readiness": "no-evidence",
-       "lines": 0,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:legacy-stake-certificate",
-       "readiness": "unassessed",
-       "lines": 54,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 134,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 12,
-     "lines": 35,
-     "auxLines": 19,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "src/routes/epochs/latest/parameters.ts",
-       "line": 9,
-       "quote": "import { costModelsMap } from '../../../utils/cost-models-map.js';"
-      },
-      {
-       "path": "src/routes/epochs/latest/parameters.ts",
-       "line": 31,
-       "quote": "if (rows[0].cost_models) {"
-      },
-      {
-       "path": "src/routes/epochs/latest/parameters.ts",
-       "line": 32,
-       "quote": "rows[0].cost_models_raw = rows[0].cost_models;"
-      }
-     ]
-    },
-    {
-     "rule": "marker:legacy-stake-certificate",
-     "files": 14,
-     "lines": 54,
-     "auxLines": 0,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "src/sql/accounts/accounts_stake_address.sql",
-       "line": 14,
-       "quote": "JOIN stake_registration sr ON (sr.addr_id = sa.id)"
-      },
-      {
-       "path": "src/sql/accounts/accounts_stake_address.sql",
-       "line": 27,
-       "quote": "FROM stake_registration"
-      },
-      {
-       "path": "src/sql/accounts/accounts_stake_address.sql",
-       "line": 35,
-       "quote": "FROM stake_deregistration"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 4,
-     "lines": 6,
-     "auxLines": 5,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "src/utils/cost-models-map.ts",
-       "line": 1061,
-       "quote": "if ('PlutusV3' in costModels && Object.keys(costModels.PlutusV3).length !== plutusV3Names.length)"
-      },
-      {
-       "path": "src/utils/cost-models-map.ts",
-       "line": 1064,
-       "quote": "Object.keys(costModels.PlutusV3).length,"
-      },
-      {
-       "path": "src/utils/cost-models-map.ts",
-       "line": 1087,
-       "quote": "if ('PlutusV3' in costModels && validation.isNumber(Object.keys(costModels.PlutusV3)[0])) {"
-      }
-     ]
-    },
-    {
-     "rule": "service:cardano-db-sync",
-     "files": 56,
-     "lines": 134,
-     "auxLines": 19,
-     "docLines": 35,
-     "examples": [
-      {
-       "path": ".vscode/settings.json",
-       "line": 9,
-       "quote": "\"dbsync\","
-      },
-      {
-       "path": "config/development-testnet.yaml",
-       "line": 5,
-       "quote": "dbSync:"
-      },
-      {
-       "path": "config/development.yaml",
-       "line": 5,
-       "quote": "dbSync:"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-10-19T03:45:29Z"
-   }
-  },
-  {
    "id": "buildooor",
    "repo": "HarmonicLabs/buildooor",
    "revision": "7551104ea29d5606c2dd00d17c7ff71a2fe28d29",
@@ -29908,7 +30166,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
       },
@@ -29989,7 +30247,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
       },
@@ -30023,7 +30281,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
       },
@@ -30050,7 +30308,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
       },
@@ -30612,7 +30870,7 @@
       {
        "channel": "implements",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 0,
        "scope": "shipped"
       },
@@ -30624,7 +30882,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -30665,7 +30923,7 @@
       {
        "channel": "implements",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 0,
        "scope": "shipped"
       },
@@ -30677,7 +30935,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "stake-pool-registration",
@@ -30685,7 +30943,7 @@
       {
        "channel": "implements",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 0,
        "scope": "shipped"
       },
@@ -30697,7 +30955,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -30705,7 +30963,7 @@
       {
        "channel": "implements",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 0,
        "scope": "shipped"
       },
@@ -30717,7 +30975,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-rules",
@@ -36244,7 +36502,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -36412,6 +36670,13 @@
        "readiness": "gap",
        "lines": 310,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-js-sdk",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -36535,6 +36800,13 @@
        "readiness": "gap",
        "lines": 310,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-js-sdk",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -36579,7 +36851,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -36638,6 +36910,13 @@
        "readiness": "gap",
        "lines": 310,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-js-sdk",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -36655,7 +36934,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -36693,6 +36972,13 @@
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-js-sdk",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -36710,7 +36996,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -36797,6 +37083,13 @@
        "readiness": "in-progress",
        "lines": 6,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-js-sdk",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -36837,6 +37130,13 @@
        "via": "meshjs-mesh-sdk",
        "readiness": "no-evidence",
        "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-js-sdk",
+       "readiness": "in-progress",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -37596,6 +37896,20 @@
        "quote": "printf 'require github.com/utxorpc/go-codegen v0.5.1\\n' >> \"${CHAIN_DIR}/go.mod\""
       }
      ]
+    },
+    {
+     "rule": "transitive:cardano-js-sdk",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "cardano/gateway/package-lock.json",
+       "line": 932,
+       "quote": "\"node_modules/@cardano-sdk/core/node_modules/@cardano-sdk/crypto\": {"
+      }
+     ]
     }
    ],
    "activity": {
@@ -37629,6 +37943,13 @@
        "channel": "marker",
        "via": "marker:raw-cbor-codec",
        "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
@@ -37684,6 +38005,13 @@
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -37737,9 +38065,16 @@
        "readiness": "released",
        "lines": 1,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "released"
+     "readiness": "gap"
     },
     {
      "surface": "plutus-script-context",
@@ -37770,9 +38105,16 @@
        "readiness": "unassessed",
        "lines": 3,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "upstream"
+     "readiness": "gap"
     },
     {
      "surface": "stake-pool-registration",
@@ -37783,9 +38125,16 @@
        "readiness": "unassessed",
        "lines": 1,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "unassessed"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -37810,6 +38159,13 @@
        "readiness": "unassessed",
        "lines": 1,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -37823,9 +38179,16 @@
        "readiness": "upstream",
        "lines": 4,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "upstream"
+     "readiness": "no-evidence"
     }
    ],
    "hits": [
@@ -38049,6 +38412,20 @@
        "path": "src/Plutip/Launch/Cluster.hs",
        "line": 389,
        "quote": "let mkEnv c = (\"CARDANO_NODE_SOCKET_PATH\", nodeSocketFile c) : env"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "plutip-rust/Cargo.lock",
+       "line": 164,
+       "quote": "name = \"cardano-serialization-lib\""
       }
      ]
     }
@@ -38606,6 +38983,13 @@
        "readiness": "in-progress",
        "lines": 10,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -38659,6 +39043,13 @@
        "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -38713,6 +39104,13 @@
        "readiness": "gap",
        "lines": 2,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -38760,6 +39158,13 @@
        "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -38786,6 +39191,13 @@
        "via": "marker:pool-registration",
        "readiness": "unassessed",
        "lines": 11,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -38849,6 +39261,20 @@
        "readiness": "in-progress",
        "lines": 10,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-hw-interop-lib",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -38873,6 +39299,13 @@
       {
        "channel": "dependency",
        "via": "ledgerjs-hw-app-cardano",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -39220,6 +39653,34 @@
        "path": "ui/go.mod",
        "line": 32,
        "quote": "github.com/utxorpc/go-sdk v0.1.0"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-hw-interop-lib",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "ui/web/package-lock.json",
+       "line": 3295,
+       "quote": "\"node_modules/cardano-hw-interop-lib\": {"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "ui/web/package-lock.json",
+       "line": 507,
+       "quote": "\"node_modules/@emurgo/cardano-serialization-lib-browser\": {"
       }
      ]
     }
@@ -39900,7 +40361,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -40089,7 +40550,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -40101,7 +40562,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "stake-pool-registration",
@@ -40109,7 +40570,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -40121,7 +40582,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -40143,7 +40604,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -41308,6 +41769,13 @@
        "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -41375,6 +41843,13 @@
        "via": "ogmios",
        "readiness": "gap",
        "lines": 284,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -41450,6 +41925,13 @@
        "readiness": "gap",
        "lines": 284,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -41511,6 +41993,13 @@
        "readiness": "gap",
        "lines": 284,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -41537,6 +42026,13 @@
        "via": "cardano-db-sync",
        "readiness": "gap",
        "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -41600,6 +42096,13 @@
        "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -41610,6 +42113,13 @@
       {
        "channel": "dependency",
        "via": "buildooor",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -41991,6 +42501,20 @@
        "path": "CHANGELOG.md",
        "line": 1323,
        "quote": "- **`blockfrostCustomBackend` config + `BLOCKFROST_CUSTOM_BACKEND` env var**: optional base URL that redirects ODATANO's Blockfrost backend at a Blockfrost-wire-compatible self-hosted node — Dolos Min"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "package-lock.json",
+       "line": 373,
+       "quote": "\"node_modules/@emurgo/cardano-serialization-lib-nodejs\": {"
       }
      ]
     }
@@ -43742,6 +44266,13 @@
        "readiness": "in-progress",
        "lines": 40,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "adder",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -43794,6 +44325,13 @@
        "via": "service:node-socket",
        "readiness": "upstream",
        "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "adder",
+       "readiness": "gap",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -43915,6 +44453,13 @@
        "via": "utxorpc",
        "readiness": "in-progress",
        "lines": 40,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "adder",
+       "readiness": "in-progress",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -44167,6 +44712,20 @@
        "path": "config.yaml.example",
        "line": 108,
        "quote": "Utxorpc:"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:adder",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "go.sum",
+       "line": 15,
+       "quote": "github.com/blinklabs-io/adder v0.44.0 h1:4k8kH6tSitai/GAhWv9FsnLTnNvdwYKttNSnyEyBdCU="
       }
      ]
     }
@@ -44619,9 +45178,16 @@
        "readiness": "unassessed",
        "lines": 2,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "plutus-script-context",
@@ -44632,9 +45198,16 @@
        "readiness": "unassessed",
        "lines": 3,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "unassessed"
+     "readiness": "gap"
     },
     {
      "surface": "protocol-parameters",
@@ -44912,6 +45485,20 @@
        "quote": "api: BlockfrostAPI::new(&config.key, Default::default()),"
       }
      ]
+    },
+    {
+     "rule": "transitive:aiken",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "Cargo.lock",
+       "line": 59,
+       "quote": "name = \"aiken-lang\""
+      }
+     ]
     }
    ],
    "activity": {
@@ -44937,7 +45524,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -45141,7 +45728,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -45196,7 +45783,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -45216,7 +45803,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -45758,7 +46345,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -45822,6 +46409,13 @@
        "readiness": "gap",
        "lines": 12,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "whisky",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -45883,6 +46477,13 @@
        "readiness": "gap",
        "lines": 12,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "whisky",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -45920,7 +46521,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -45944,6 +46545,13 @@
        "readiness": "gap",
        "lines": 12,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "whisky",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -45954,7 +46562,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -45964,9 +46572,16 @@
        "readiness": "unassessed",
        "lines": 3,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "whisky",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -45974,7 +46589,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -46012,6 +46627,13 @@
        "readiness": "gap",
        "lines": 12,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "whisky",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -46024,6 +46646,13 @@
        "via": "cardano-serialization-lib-csl",
        "readiness": "no-evidence",
        "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "whisky",
+       "readiness": "no-evidence",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -46358,6 +46987,20 @@
        "quote": "export * from './ogmios.provider'"
       }
      ]
+    },
+    {
+     "rule": "transitive:whisky",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pnpm-lock.yaml",
+       "line": 15231,
+       "quote": "whisky-evaluator@0.1.1:"
+      }
+     ]
     }
    ],
    "activity": {
@@ -46383,7 +47026,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -46461,6 +47104,13 @@
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -46529,6 +47179,13 @@
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -46559,7 +47216,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -46597,6 +47254,13 @@
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -46607,7 +47271,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -46616,6 +47280,13 @@
        "via": "meshjs-mesh-sdk",
        "readiness": "gap",
        "lines": 15,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -46627,7 +47298,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
       },
@@ -46658,6 +47329,13 @@
        "readiness": "gap",
        "lines": 3,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -46677,6 +47355,13 @@
        "via": "meshjs-mesh-sdk",
        "readiness": "no-evidence",
        "lines": 15,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "blaze",
+       "readiness": "in-progress",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -47067,6 +47752,20 @@
        "path": "src/services/shared/escrow-utxo.ts",
        "line": 72,
        "quote": "* Ogmios cannot resolve the input, so it cannot see that the input is"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:blaze",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pnpm-lock.yaml",
+       "line": 813,
+       "quote": "'@blaze-cardano/core@0.8.0':"
       }
      ]
     }
@@ -49442,7 +50141,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -49535,7 +50234,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -49562,7 +50261,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -49589,7 +50288,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -50232,6 +50931,13 @@
        "readiness": "in-progress",
        "lines": 55,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -50252,9 +50958,16 @@
        "readiness": "in-progress",
        "lines": 55,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "no-evidence"
     },
     {
      "surface": "node-configuration",
@@ -50298,9 +51011,16 @@
        "readiness": "in-progress",
        "lines": 1,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "protocol-parameters",
@@ -50308,6 +51028,13 @@
       {
        "channel": "dependency",
        "via": "cardano-js-sdk",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
        "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
@@ -50324,9 +51051,16 @@
        "readiness": "in-progress",
        "lines": 1,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -50358,6 +51092,13 @@
        "readiness": "in-progress",
        "lines": 55,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -50384,6 +51125,13 @@
        "via": "cardano-wallet",
        "readiness": "in-progress",
        "lines": 55,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -50545,6 +51293,20 @@
        "path": "perSystem/devshells/daedalus.nix",
        "line": 114,
        "quote": "${lib.optionalString (cluster == \"local\") \"export CARDANO_NODE_SOCKET_PATH=$(pwd)/state-cluster/bft1.socket\"}"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "yarn.lock",
+       "line": 1294,
+       "quote": "\"@emurgo/cardano-serialization-lib-browser@^13.2.0\":"
       }
      ]
     }
@@ -51064,6 +51826,13 @@
        "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -51097,6 +51866,13 @@
        "via": "koios",
        "readiness": "gap",
        "lines": 4,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -51158,6 +51934,13 @@
        "readiness": "unassessed",
        "lines": 11,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -51192,6 +51975,13 @@
        "readiness": "gap",
        "lines": 4,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -51212,9 +52002,16 @@
        "readiness": "unassessed",
        "lines": 25,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -51253,6 +52050,13 @@
        "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -51263,6 +52067,13 @@
       {
        "channel": "dependency",
        "via": "buildooor",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -51617,6 +52428,20 @@
        "quote": "| N2C / LocalStateQuery server | **Not implemented** (ouroboros lib has client-side LocalStateQuery; Gerolamo does not host Dolos-like local socket) |"
       }
      ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "bun.lock",
+       "line": 44,
+       "quote": "\"@emurgo/cardano-serialization-lib-nodejs\": [\"@emurgo/cardano-serialization-lib-nodejs@15.0.3\", \"\", {}, \"sha512-CZkAF7P3Ip3gUCAa6v93DLKp9hGqsfE6F/b3Qrqvym7rEJKi3j+dDk/OPxtmynWWGHhqXL85vzFOOwVduhLAjA=="
+      }
+     ]
     }
    ],
    "activity": {
@@ -51803,6 +52628,13 @@
        "readiness": "gap",
        "lines": 8,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -51836,6 +52668,13 @@
        "via": "ogmios",
        "readiness": "gap",
        "lines": 8,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -51905,6 +52744,13 @@
        "readiness": "gap",
        "lines": 8,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -51959,6 +52805,13 @@
        "readiness": "gap",
        "lines": 8,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -51978,6 +52831,13 @@
        "via": "cardano-transaction-lib-ctl",
        "readiness": "no-evidence",
        "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -52013,6 +52873,13 @@
        "readiness": "gap",
        "lines": 8,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -52032,6 +52899,13 @@
        "via": "cardano-transaction-lib-ctl",
        "readiness": "no-evidence",
        "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -52272,6 +53146,20 @@
        "path": "runtimes/purescript/lbr-plutus/spago-packages.nix",
        "line": 309,
        "quote": "name = \"cardano-ogmios-mempool\";"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "testsuites/lbt-plutus/lbt-plutus-rust/Cargo.lock",
+       "line": 87,
+       "quote": "name = \"cardano-serialization-lib\""
       }
      ]
     }
@@ -53980,6 +54868,275 @@
    }
   },
   {
+   "id": "blockfrost-cardano-cli",
+   "repo": "blockfrost/blockfrost-cardano-cli",
+   "revision": "2ed5515009ab2ef7df6204975308e10a9e12de3c",
+   "scan": {
+    "status": "scanned",
+    "files": 64,
+    "skipped": 944
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "cardano-cli",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "service:cardano-cli",
+       "readiness": "upstream",
+       "lines": 4,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "upstream"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 15,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 5,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 15,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:pool-registration",
+       "readiness": "unassessed",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "no-evidence",
+       "lines": 15,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "no-evidence"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 4,
+     "lines": 5,
+     "auxLines": 2,
+     "docLines": 3,
+     "examples": [
+      {
+       "path": "src/commands/query/protocol-parameters.ts",
+       "line": 26,
+       "quote": "//   \"maxTxExecutionUnits\": {"
+      },
+      {
+       "path": "src/commands/query/protocol-parameters.ts",
+       "line": 30,
+       "quote": "//   \"costModels\": {"
+      },
+      {
+       "path": "src/commands/query/protocol-parameters.ts",
+       "line": 242,
+       "quote": "maxTxExecutionUnits: {"
+      }
+     ]
+    },
+    {
+     "rule": "marker:pool-registration",
+     "files": 3,
+     "lines": 6,
+     "auxLines": 4,
+     "docLines": 4,
+     "examples": [
+      {
+       "path": "src/commands/query/pool-params.ts",
+       "line": 14,
+       "quote": "//   \"poolParams\": {"
+      },
+      {
+       "path": "src/commands/query/pool-params.ts",
+       "line": 72,
+       "quote": "// cardano-cli query pool-params --stake-pool-id 7a7da8ff324477745ba248ead217741cc69b0eee94ba2e536c368503 --testnet-magic 1097911063"
+      },
+      {
+       "path": "src/commands/query/pool-params.ts",
+       "line": 74,
+       "quote": "//     \"poolParams\": null,"
+      }
+     ]
+    },
+    {
+     "rule": "service:blockfrost",
+     "files": 15,
+     "lines": 15,
+     "auxLines": 72,
+     "docLines": 5,
+     "examples": [
+      {
+       "path": "Dockerfile",
+       "line": 5,
+       "quote": "RUN npm install -g @blockfrost/blockfrost-cardano-cli"
+      },
+      {
+       "path": "package.json",
+       "line": 2,
+       "quote": "\"name\": \"@blockfrost/blockfrost-cardano-cli\","
+      },
+      {
+       "path": "package.json",
+       "line": 5,
+       "quote": "\"author\": \"blockfrost.io\","
+      }
+     ]
+    },
+    {
+     "rule": "service:cardano-cli",
+     "files": 2,
+     "lines": 4,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/commands/query/pool-params.ts",
+       "line": 72,
+       "quote": "// cardano-cli query pool-params --stake-pool-id 7a7da8ff324477745ba248ead217741cc69b0eee94ba2e536c368503 --testnet-magic 1097911063"
+      },
+      {
+       "path": "src/hooks/cardano-cli.ts",
+       "line": 11,
+       "quote": "// first run cardano-cli --version just to figure out if it is available"
+      },
+      {
+       "path": "src/hooks/cardano-cli.ts",
+       "line": 14,
+       "quote": "cardanoCliVersionOutput = execSync('cardano-cli --version', {"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "yarn.lock",
+       "line": 722,
+       "quote": "\"@emurgo/cardano-serialization-lib-nodejs@npm:^10.2.0\":"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2022-08-31T19:55:09Z"
+   }
+  },
+  {
    "id": "blockfrost-js",
    "repo": "blockfrost/blockfrost-js",
    "revision": "cb8c6b6c5b92bb32825d5504fb4714d9d3da50ba",
@@ -53997,7 +55154,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54077,7 +55234,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54104,12 +55261,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -54117,7 +55274,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54246,7 +55403,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54354,7 +55511,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54381,7 +55538,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54393,7 +55550,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -54401,7 +55558,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54615,12 +55772,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "cardano-cli",
@@ -54674,7 +55831,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54686,7 +55843,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "stake-pool-registration",
@@ -54694,7 +55851,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54706,7 +55863,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -54721,7 +55878,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -54966,7 +56123,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55074,7 +56231,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55122,7 +56279,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55142,7 +56299,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55439,7 +56596,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55451,7 +56608,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -55505,7 +56662,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55517,7 +56674,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "stake-pool-registration",
@@ -55525,12 +56682,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -55538,7 +56695,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55550,7 +56707,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-rules",
@@ -55667,7 +56824,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55761,7 +56918,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55795,7 +56952,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -55822,7 +56979,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -56063,6 +57220,489 @@
    "activity": {
     "archived": false,
     "pushedAt": "2026-05-15T02:13:52Z"
+   }
+  },
+  {
+   "id": "catalyst-voices",
+   "repo": "cardano-foundation/catalyst-voices",
+   "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+   "scan": {
+    "status": "scanned",
+    "files": 3721,
+    "skipped": 1024
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 5,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 8,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 8,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pycardano",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "verified",
+       "lines": 8,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:node-socket",
+       "readiness": "upstream",
+       "lines": 1,
+       "scope": "auxiliary"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 4,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pycardano",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 8,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pycardano",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:pool-registration",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 8,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pycardano",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:legacy-stake-certificate",
+       "readiness": "unassessed",
+       "lines": 21,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 5,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "no-evidence",
+       "lines": 2,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "service",
+       "via": "cardano-db-sync",
+       "readiness": "gap",
+       "lines": 8,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "pycardano",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "auxiliary"
+      },
+      {
+       "channel": "dependency",
+       "via": "pycardano",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "no-evidence"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "utilities/wallet-tester/package.json",
+       "line": 18,
+       "quote": "\"@emurgo/cardano-serialization-lib-asmjs\": \"^11.5.0\","
+      }
+     ]
+    },
+    {
+     "rule": "marker:legacy-stake-certificate",
+     "files": 12,
+     "lines": 21,
+     "auxLines": 8,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
+       "line": 239,
+       "quote": "alonzo::Certificate::StakeRegistration(cred) => {"
+      },
+      {
+       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
+       "line": 243,
+       "quote": "alonzo::Certificate::StakeDeregistration(cred) => {"
+      },
+      {
+       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
+       "line": 266,
+       "quote": "conway::Certificate::StakeRegistration(cred) => {"
+      }
+     ]
+    },
+    {
+     "rule": "marker:node-to-client",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 0,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "docs/src/architecture/03_system_scope_and_context.md",
+       "line": 85,
+       "quote": "| RBAC and CIP-36 (legacy) | Client | Cardano | N2N/N2C transaction submission | CBOR transaction |"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 2,
+     "lines": 4,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "catalyst_voices/packages/libs/catalyst_cardano_serialization/lib/src/scripts.dart",
+       "line": 308,
+       "quote": "/// PlutusV3 script"
+      },
+      {
+       "path": "catalyst_voices/packages/libs/catalyst_cardano_serialization/lib/src/scripts.dart",
+       "line": 309,
+       "quote": "plutusV3(3);"
+      },
+      {
+       "path": "catalyst_voices/packages/libs/catalyst_cardano_serialization/lib/src/scripts.dart",
+       "line": 525,
+       "quote": "RefScriptType.plutusV3 => PlutusV3Script.fromCbor(value[1]),"
+      }
+     ]
+    },
+    {
+     "rule": "marker:pool-registration",
+     "files": 2,
+     "lines": 2,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
+       "line": 249,
+       "quote": "alonzo::Certificate::PoolRegistration { .. } => {},"
+      },
+      {
+       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
+       "line": 276,
+       "quote": "conway::Certificate::PoolRegistration { .. } => {},"
+      },
+      {
+       "path": "utilities/wallet-tester/src/types/cardano.ts",
+       "line": 45,
+       "quote": "PoolRegistration = \"pool_registration\","
+      }
+     ]
+    },
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 12,
+     "lines": 5,
+     "auxLines": 11,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": ".config/dictionaries/project.dic",
+       "line": 53,
+       "quote": "cborg"
+      },
+      {
+       "path": ".config/dictionaries/project.dic",
+       "line": 244,
+       "quote": "minicbor"
+      },
+      {
+       "path": "catalyst-gateway/bin/Cargo.toml",
+       "line": 100,
+       "quote": "minicbor = { version = \"0.25.1\", features = [\"alloc\"] }"
+      }
+     ]
+    },
+    {
+     "rule": "marker:segregated-block-body",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 0,
+     "docLines": 4,
+     "examples": [
+      {
+       "path": "docs/src/catalyst-standards/draft-cips/x509-rbac-signing-with-cip30/images/cardano-transaction.d2",
+       "line": 49,
+       "quote": "collator: \"collation logic: for i in 0..len(transaction_bodies)\" {"
+      },
+      {
+       "path": "docs/src/catalyst-standards/draft-cips/x509-rbac-signing-with-cip30/images/cardano-transaction.d2",
+       "line": 55,
+       "quote": "1: \"transaction_bodies[i]\" {"
+      },
+      {
+       "path": "docs/src/catalyst-standards/draft-cips/x509-rbac-signing-with-cip30/images/cardano-transaction.d2",
+       "line": 61,
+       "quote": "2: \"transaction_witness_sets[i]\" {"
+      }
+     ]
+    },
+    {
+     "rule": "service:blockfrost",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "catalyst-gateway/tests/api_tests/scripts/prepare_cardano_asset.py",
+       "line": 20,
+       "quote": "# blockfrost.io token value"
+      },
+      {
+       "path": "catalyst-gateway/tests/api_tests/scripts/prepare_cardano_asset.py",
+       "line": 26,
+       "quote": "BLOCKFROST_URL = f\"https://cardano-{CARDANO_NETWORK}.blockfrost.io/api/v0\""
+      }
+     ]
+    },
+    {
+     "rule": "service:cardano-db-sync",
+     "files": 4,
+     "lines": 8,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": ".config/dictionaries/project.dic",
+       "line": 98,
+       "quote": "dbsync"
+      },
+      {
+       "path": "catalyst-gateway/event-db/json_schemas/.cspell.json",
+       "line": 15,
+       "quote": "\"dbsync\""
+      },
+      {
+       "path": "catalyst-gateway/event-db/json_schemas/config/dbsync.json",
+       "line": 4,
+       "quote": "\"$id\": \"catalyst_schema://d899cd44-3513-487b-ab46-fdca662a724d/config/dbsync\","
+      }
+     ]
+    },
+    {
+     "rule": "service:node-socket",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "catalyst-gateway/tests/docker-compose-devnet.yml",
+       "line": 86,
+       "quote": "- CARDANO_NODE_SOCKET_PATH=/shared-data/artifacts/devnet/node-pool1/ipc/node.sock"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:pycardano",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "signed_docs/uv.lock",
+       "line": 609,
+       "quote": "name = \"pycardano\""
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-07-27T07:01:00Z"
    }
   },
   {
@@ -57254,9 +58894,16 @@
        "readiness": "unassessed",
        "lines": 27,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "plutus-script-context",
@@ -57267,9 +58914,16 @@
        "readiness": "unassessed",
        "lines": 67,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "unassessed"
+     "readiness": "gap"
     },
     {
      "surface": "protocol-parameters",
@@ -57589,6 +59243,20 @@
        "quote": "preview: 'https://preview.koios.rest',"
       }
      ]
+    },
+    {
+     "rule": "transitive:aiken",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "rust-src/Cargo.lock",
+       "line": 2219,
+       "quote": "name = \"uplc\""
+      }
+     ]
     }
    ],
    "activity": {
@@ -57671,9 +59339,16 @@
        "readiness": "unassessed",
        "lines": 33,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "plutus-script-context",
@@ -57684,9 +59359,16 @@
        "readiness": "unassessed",
        "lines": 104,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "unassessed"
+     "readiness": "gap"
     },
     {
      "surface": "protocol-parameters",
@@ -58006,6 +59688,20 @@
        "quote": "preview: 'https://preview.koios.rest',"
       }
      ]
+    },
+    {
+     "rule": "transitive:aiken",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "packages/decompiler-wasm/crate/Cargo.lock",
+       "line": 1376,
+       "quote": "name = \"uplc\""
+      }
+     ]
     }
    ],
    "activity": {
@@ -58234,6 +59930,13 @@
        "readiness": "gap",
        "lines": 5,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -58274,6 +59977,13 @@
        "via": "ogmios",
        "readiness": "gap",
        "lines": 5,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -58322,6 +60032,13 @@
        "readiness": "gap",
        "lines": 5,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -58363,6 +60080,13 @@
        "readiness": "gap",
        "lines": 5,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -58390,9 +60114,16 @@
        "readiness": "unassessed",
        "lines": 9,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
-     "readiness": "in-progress"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -58445,6 +60176,13 @@
        "readiness": "upstream",
        "lines": 1,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -58471,6 +60209,13 @@
        "via": "ledgerjs-hw-app-cardano",
        "readiness": "no-evidence",
        "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -58801,11 +60546,312 @@
        "quote": "LEARN_MORE_URL=https://github.com/IntersectMBO/cardano-node/tree/master/cardano-submit-api"
       }
      ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "package-lock.json",
+       "line": 7536,
+       "quote": "\"node_modules/@emurgo/cardano-serialization-lib-browser\": {"
+      }
+     ]
     }
    ],
    "activity": {
     "archived": false,
     "pushedAt": "2026-10-19T10:28:06Z"
+   }
+  },
+  {
+   "id": "minswap-sdk",
+   "repo": "minswap/sdk",
+   "revision": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+   "scan": {
+    "status": "scanned",
+    "files": 77,
+    "skipped": 5
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 24,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 30,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:maestro",
+       "readiness": "gap",
+       "lines": 23,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 24,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 24,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 24,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 30,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:maestro",
+       "readiness": "gap",
+       "lines": 23,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 24,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "no-evidence",
+       "lines": 30,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:maestro",
+       "readiness": "gap",
+       "lines": 23,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 24,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "no-evidence"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "service:blockfrost",
+     "files": 12,
+     "lines": 30,
+     "auxLines": 13,
+     "docLines": 26,
+     "examples": [
+      {
+       "path": "package.json",
+       "line": 48,
+       "quote": "\"@blockfrost/blockfrost-js\": \"^5.5.0\","
+      },
+      {
+       "path": "src/adapters/blockfrost.ts",
+       "line": 2,
+       "quote": "BlockFrostAPI,"
+      },
+      {
+       "path": "src/adapters/blockfrost.ts",
+       "line": 5,
+       "quote": "} from \"@blockfrost/blockfrost-js\";"
+      }
+     ]
+    },
+    {
+     "rule": "service:maestro",
+     "files": 5,
+     "lines": 23,
+     "auxLines": 6,
+     "docLines": 7,
+     "examples": [
+      {
+       "path": "package.json",
+       "line": 51,
+       "quote": "\"@maestro-org/typescript-sdk\": \"^1.6.3\","
+      },
+      {
+       "path": "src/adapters/maestro.ts",
+       "line": 3,
+       "quote": "MaestroClient,"
+      },
+      {
+       "path": "src/adapters/maestro.ts",
+       "line": 5,
+       "quote": "} from \"@maestro-org/typescript-sdk\";"
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 11,
+     "lines": 24,
+     "auxLines": 0,
+     "docLines": 4,
+     "examples": [
+      {
+       "path": ".env",
+       "line": 4,
+       "quote": "# \"mainnet\" | \"preview\" | \"preprod\" ref: https://ogmios.dev/getting-started/docker"
+      },
+      {
+       "path": "docker-compose.yaml",
+       "line": 8,
+       "quote": "OGMIOS_HOST: ogmios"
+      },
+      {
+       "path": "docker-compose.yaml",
+       "line": 36,
+       "quote": "ogmios:"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pnpm-lock.yaml",
+       "line": 404,
+       "quote": "'@emurgo/cardano-serialization-lib-nodejs@11.5.0':"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-03-22T03:43:25Z"
    }
   },
   {
@@ -59224,7 +61270,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -59236,7 +61282,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -59318,7 +61364,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -59345,12 +61391,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -59358,7 +61404,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -59377,7 +61423,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-rules",
@@ -60266,6 +62312,479 @@
    }
   },
   {
+   "id": "sutra",
+   "repo": "txbody-org/sutra-cardano",
+   "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
+   "scan": {
+    "status": "scanned",
+    "files": 151,
+    "skipped": 7
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "kupo",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "koios",
+       "readiness": "gap",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "kupo",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:maestro",
+       "readiness": "gap",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "kupo",
+       "readiness": "verified",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 6,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 17,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "plutus-script-context",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "aiken",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 42,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "koios",
+       "readiness": "gap",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:maestro",
+       "readiness": "gap",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:pool-registration",
+       "readiness": "unassessed",
+       "lines": 5,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "unassessed"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:legacy-stake-certificate",
+       "readiness": "unassessed",
+       "lines": 7,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "no-evidence",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "koios",
+       "readiness": "no-evidence",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "kupo",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "service:maestro",
+       "readiness": "gap",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 9,
+     "lines": 42,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "lib/sutra/cardano/gov.ex",
+       "line": 8,
+       "quote": "typedstruct(module: CostModels) do"
+      },
+      {
+       "path": "lib/sutra/cardano/gov.ex",
+       "line": 14,
+       "quote": "def encode_cost_models(%__MODULE__.CostModels{} = cost_models) do"
+      },
+      {
+       "path": "lib/sutra/cardano/gov.ex",
+       "line": 16,
+       "quote": "0 => cost_models.plutus_v1,"
+      }
+     ]
+    },
+    {
+     "rule": "marker:legacy-stake-certificate",
+     "files": 2,
+     "lines": 7,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "lib/sutra/cardano/transaction/certificate.ex",
+       "line": 14,
+       "quote": "alias Sutra.Cardano.Transaction.Certificate.StakeRegistration"
+      },
+      {
+       "path": "lib/sutra/cardano/transaction/certificate.ex",
+       "line": 21,
+       "quote": "typedstruct(module: StakeRegistration) do"
+      },
+      {
+       "path": "lib/sutra/cardano/transaction/certificate.ex",
+       "line": 26,
+       "quote": "typedstruct(module: StakeDeRegistration) do"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 16,
+     "lines": 17,
+     "auxLines": 9,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "lib/sutra/cardano/gov.ex",
+       "line": 11,
+       "quote": "field(:plutus_v3, [])"
+      },
+      {
+       "path": "lib/sutra/cardano/gov.ex",
+       "line": 18,
+       "quote": "2 => cost_models.plutus_v3"
+      },
+      {
+       "path": "lib/sutra/cardano/script.ex",
+       "line": 5,
+       "quote": "@type script_type() :: :plutus_v1 | :plutus_v2 | :plutus_v3"
+      }
+     ]
+    },
+    {
+     "rule": "marker:pool-registration",
+     "files": 2,
+     "lines": 5,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "lib/sutra/cardano/transaction/certificate.ex",
+       "line": 12,
+       "quote": "alias Sutra.Cardano.Transaction.Certificate.PoolRegistration"
+      },
+      {
+       "path": "lib/sutra/cardano/transaction/certificate.ex",
+       "line": 36,
+       "quote": "## (3, pool_params)"
+      },
+      {
+       "path": "lib/sutra/cardano/transaction/certificate.ex",
+       "line": 37,
+       "quote": "typedstruct(module: PoolRegistration) do"
+      }
+     ]
+    },
+    {
+     "rule": "service:blockfrost",
+     "files": 1,
+     "lines": 3,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "lib/sutra/provider/blockfrost/client.ex",
+       "line": 22,
+       "quote": ":mainnet -> \"https://cardano-mainnet.blockfrost.io/api/v0\""
+      },
+      {
+       "path": "lib/sutra/provider/blockfrost/client.ex",
+       "line": 23,
+       "quote": ":preprod -> \"https://cardano-preprod.blockfrost.io/api/v0\""
+      },
+      {
+       "path": "lib/sutra/provider/blockfrost/client.ex",
+       "line": 24,
+       "quote": ":preview -> \"https://cardano-preview.blockfrost.io/api/v0\""
+      }
+     ]
+    },
+    {
+     "rule": "service:koios",
+     "files": 2,
+     "lines": 2,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "lib/sutra/provider/koios/client.ex",
+       "line": 18,
+       "quote": "base_url = \"https://#{network_prefix}.koios.rest/api/v1/\""
+      },
+      {
+       "path": "lib/sutra/provider/koios/client.ex",
+       "line": 108,
+       "quote": "# Helper parsers (copied from original KoiosProvider)"
+      },
+      {
+       "path": "examples/setup_koios_provider.exs",
+       "line": 1,
+       "quote": "alias Sutra.Provider.KoiosProvider"
+      }
+     ]
+    },
+    {
+     "rule": "service:kupo",
+     "files": 6,
+     "lines": 6,
+     "auxLines": 13,
+     "docLines": 2,
+     "examples": [
+      {
+       "path": "lib/sutra.ex",
+       "line": 10,
+       "quote": "*   **Provider Agnostic**: Works seamlessly with different providers (Blockfrost, Kupo/Ogmios, Maestro)."
+      },
+      {
+       "path": "lib/sutra/provider/kupogmios/client.ex",
+       "line": 3,
+       "quote": "Client for Kupo and Ogmios API using Req."
+      },
+      {
+       "path": "lib/sutra/provider/kupogmios/client.ex",
+       "line": 28,
+       "quote": "kupo: Req.new(base_url: kupo_url),"
+      }
+     ]
+    },
+    {
+     "rule": "service:maestro",
+     "files": 1,
+     "lines": 3,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "lib/sutra/provider/maestro/client.ex",
+       "line": 21,
+       "quote": ":mainnet -> \"https://mainnet.gomaestro-api.org/v1\""
+      },
+      {
+       "path": "lib/sutra/provider/maestro/client.ex",
+       "line": 22,
+       "quote": ":preprod -> \"https://preprod.gomaestro-api.org/v1\""
+      },
+      {
+       "path": "lib/sutra/provider/maestro/client.ex",
+       "line": 23,
+       "quote": ":preview -> \"https://preview.gomaestro-api.org/v1\""
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 6,
+     "lines": 6,
+     "auxLines": 13,
+     "docLines": 2,
+     "examples": [
+      {
+       "path": "lib/sutra.ex",
+       "line": 10,
+       "quote": "*   **Provider Agnostic**: Works seamlessly with different providers (Blockfrost, Kupo/Ogmios, Maestro)."
+      },
+      {
+       "path": "lib/sutra/provider/kupogmios/client.ex",
+       "line": 3,
+       "quote": "Client for Kupo and Ogmios API using Req."
+      },
+      {
+       "path": "lib/sutra/provider/kupogmios/client.ex",
+       "line": 29,
+       "quote": "ogmios: Req.new(base_url: ogmios_url)"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:aiken",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "native/sutra_uplc/Cargo.lock",
+       "line": 960,
+       "quote": "name = \"uplc\""
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-07-22T08:59:32Z"
+   }
+  },
+  {
    "id": "yoroi",
    "repo": "Emurgo/yoroi",
    "revision": "5f6fb8348df1c486cd8075f80976dbbd75e27641",
@@ -60283,7 +62802,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -60295,7 +62814,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -60356,7 +62875,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -60383,7 +62902,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -60395,7 +62914,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -60403,7 +62922,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -61332,6 +63851,263 @@
    }
   },
   {
+   "id": "adalite",
+   "repo": "vacuumlabs/adalite",
+   "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
+   "scan": {
+    "status": "scanned",
+    "files": 355,
+    "skipped": 110
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:pool-registration",
+       "readiness": "unassessed",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "ledgerjs-hw-app-cardano",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:legacy-stake-certificate",
+       "readiness": "unassessed",
+       "lines": 4,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "ledgerjs-hw-app-cardano",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "no-evidence"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:ledgerjs-hw-app-cardano",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "app/package.json",
+       "line": 25,
+       "quote": "\"@cardano-foundation/ledgerjs-hw-app-cardano\": \"^8.0.0\","
+      }
+     ],
+     "pins": [
+      {
+       "path": "app/package.json",
+       "line": 25,
+       "quote": "\"@cardano-foundation/ledgerjs-hw-app-cardano\": \"^8.0.0\","
+      }
+     ]
+    },
+    {
+     "rule": "marker:legacy-stake-certificate",
+     "files": 2,
+     "lines": 4,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "app/frontend/wallet/shelley/shelley-bitbox02-crypto-provider.ts",
+       "line": 204,
+       "quote": "stakeRegistration: {"
+      },
+      {
+       "path": "app/frontend/wallet/shelley/shelley-bitbox02-crypto-provider.ts",
+       "line": 210,
+       "quote": "stakeDeregistration: {"
+      },
+      {
+       "path": "app/frontend/wallet/shelley/shelley-ledger-crypto-provider.ts",
+       "line": 271,
+       "quote": "type: LedgerTypes.CertificateType.STAKE_REGISTRATION,"
+      }
+     ]
+    },
+    {
+     "rule": "marker:pool-registration",
+     "files": 3,
+     "lines": 3,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "app/frontend/components/pages/advanced/poolOwner.tsx",
+       "line": 138,
+       "quote": "<div className=\"pool-registration-instructions\">"
+      },
+      {
+       "path": "app/frontend/types.ts",
+       "line": 203,
+       "quote": "POOL_REG_OWNER = 'poolRegistration',"
+      },
+      {
+       "path": "app/public/css/styles.css",
+       "line": 3519,
+       "quote": ".pool-registration-instructions .advanced-label {"
+      }
+     ]
+    },
+    {
+     "rule": "service:blockfrost",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "app/frontend/wallet/blockchain-explorer.ts",
+       "line": 209,
+       "quote": "// https://docs.blockfrost.io/#tag/Cardano-Transactions/paths/~1tx~1submit/post"
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "yarn.lock",
+       "line": 209,
+       "quote": "\"@emurgo/cardano-serialization-lib-browser@npm:^13.2.0\":"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-10-02T19:34:52Z"
+   }
+  },
+  {
    "id": "cardano-ctf",
    "repo": "Invariant-0/cardano-ctf",
    "revision": "43de1e4186674f10563f30b29cc2bc1f743cf30d",
@@ -61629,12 +64405,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -61668,12 +64444,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "stake-pool-registration",
@@ -61681,12 +64457,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -61694,12 +64470,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-rules",
@@ -61809,12 +64585,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -61862,7 +64638,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -61889,12 +64665,12 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -61902,7 +64678,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -61928,7 +64704,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-rules",
@@ -62411,7 +65187,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -62423,7 +65199,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "era-identity",
@@ -62464,7 +65240,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -62476,7 +65252,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "stake-pool-registration",
@@ -62484,7 +65260,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -62496,7 +65272,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-encoding",
@@ -62504,7 +65280,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "shipped"
       },
@@ -62516,7 +65292,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "no-evidence"
+     "readiness": "gap"
     },
     {
      "surface": "transaction-rules",
@@ -62681,6 +65457,419 @@
    }
   },
   {
+   "id": "marlowe-ts-sdk",
+   "repo": "marlowe-lang/marlowe-ts-sdk",
+   "revision": "1242de8946046ac6a735bf550512b72ff37b5265",
+   "scan": {
+    "status": "scanned",
+    "files": 312,
+    "skipped": 9
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "no-evidence",
+       "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "no-evidence"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "service:blockfrost",
+     "files": 3,
+     "lines": 3,
+     "auxLines": 0,
+     "docLines": 2,
+     "examples": [
+      {
+       "path": "package.json",
+       "line": 47,
+       "quote": "\"@blockfrost/blockfrost-js\": \"5.2.0\","
+      },
+      {
+       "path": "package.json",
+       "line": 48,
+       "quote": "\"@blockfrost/openapi\": \"0.1.54\","
+      },
+      {
+       "path": "packages/wallet/package.json",
+       "line": 55,
+       "quote": "\"@blockfrost/blockfrost-js\": \"^5.4.0\","
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "package-lock.json",
+       "line": 10007,
+       "quote": "\"packages/wallet/node_modules/@emurgo/cardano-serialization-lib-nodejs\": {"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2025-03-26T12:00:20Z"
+   }
+  },
+  {
+   "id": "masumi-registry-service",
+   "repo": "masumi-network/masumi-registry-service",
+   "revision": "3b0ab26f340174acbed0d4eb6afba1bb6697d524",
+   "scan": {
+    "status": "scanned",
+    "files": 197,
+    "skipped": 14
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "meshjs-mesh-sdk",
+       "readiness": "no-evidence",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 11,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "meshjs-mesh-sdk",
+       "readiness": "gap",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "meshjs-mesh-sdk",
+       "readiness": "gap",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 11,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "meshjs-mesh-sdk",
+       "readiness": "gap",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "meshjs-mesh-sdk",
+       "readiness": "gap",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "no-evidence",
+       "lines": 11,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "meshjs-mesh-sdk",
+       "readiness": "no-evidence",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "no-evidence"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "dependency:meshjs-mesh-sdk",
+     "files": 1,
+     "lines": 2,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "package.json",
+       "line": 37,
+       "quote": "\"@meshsdk/core\": \"1.9.0\","
+      },
+      {
+       "path": "package.json",
+       "line": 38,
+       "quote": "\"@meshsdk/core-cst\": \"1.9.0\","
+      }
+     ],
+     "pins": [
+      {
+       "path": "package.json",
+       "line": 37,
+       "quote": "\"@meshsdk/core\": \"1.9.0\","
+      },
+      {
+       "path": "package.json",
+       "line": 38,
+       "quote": "\"@meshsdk/core-cst\": \"1.9.0\","
+      }
+     ]
+    },
+    {
+     "rule": "service:blockfrost",
+     "files": 8,
+     "lines": 11,
+     "auxLines": 0,
+     "docLines": 5,
+     "examples": [
+      {
+       "path": ".env.example",
+       "line": 10,
+       "quote": "BLOCKFROST_API_KEY_MAINNET=\"your_blockfrost_api_key\" #your blockfrost api key, receive a free key at https://blockfrost.io/ for the network (e.g. mainnet)"
+      },
+      {
+       "path": ".env.example",
+       "line": 11,
+       "quote": "BLOCKFROST_API_KEY_PREPROD=\"your_blockfrost_api_key\" #your blockfrost api key, receive a free key at https://blockfrost.io/ for the network (e.g. preprod)"
+      },
+      {
+       "path": "package.json",
+       "line": 36,
+       "quote": "\"@blockfrost/blockfrost-js\": \"6.1.1\","
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "pnpm-lock.yaml",
+       "line": 535,
+       "quote": "'@emurgo/cardano-serialization-lib-nodejs@15.0.3':"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-10-17T23:01:03Z"
+   }
+  },
+  {
    "id": "nami",
    "repo": "input-output-hk/nami",
    "revision": "e52e0bdb02eb1ec224db26f48b0192685a30f99e",
@@ -62700,6 +65889,13 @@
        "via": "cardano-multiplatform-lib-cml",
        "readiness": "gap",
        "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -62735,6 +65931,13 @@
        "readiness": "gap",
        "lines": 5,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -62761,6 +65964,13 @@
        "via": "cardano-multiplatform-lib-cml",
        "readiness": "gap",
        "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -62796,6 +66006,13 @@
        "readiness": "gap",
        "lines": 5,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -62829,6 +66046,13 @@
        "via": "marker:pool-registration",
        "readiness": "unassessed",
        "lines": 3,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
        "scope": "shipped"
       }
      ],
@@ -62892,6 +66116,13 @@
        "readiness": "upstream",
        "lines": 1,
        "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
       }
      ],
      "readiness": "gap"
@@ -62923,6 +66154,13 @@
       {
        "channel": "dependency",
        "via": "ledgerjs-hw-app-cardano",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-serialization-lib-csl",
        "readiness": "no-evidence",
        "lines": 1,
        "scope": "shipped"
@@ -63132,11 +66370,233 @@
        "quote": "placeholder=\"http://localhost:8090/api/submit/tx\""
       }
      ]
+    },
+    {
+     "rule": "transitive:cardano-serialization-lib-csl",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "package-lock.json",
+       "line": 4525,
+       "quote": "\"node_modules/@emurgo/cardano-serialization-lib-browser\": {"
+      }
+     ]
     }
    ],
    "activity": {
     "archived": true,
     "pushedAt": "2025-02-06T10:39:52Z"
+   }
+  },
+  {
+   "id": "sorbet",
+   "repo": "SundaeSwap-finance/Sorbet",
+   "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+   "scan": {
+    "status": "scanned",
+    "files": 66,
+    "skipped": 8
+   },
+   "exposure": "dependency",
+   "readiness": "gap",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 4,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-multiplatform-lib-cml",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-multiplatform-lib-cml",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-multiplatform-lib-cml",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "gap",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-multiplatform-lib-cml",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-multiplatform-lib-cml",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 4,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "blockfrost",
+       "readiness": "no-evidence",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "dependency",
+       "via": "cardano-multiplatform-lib-cml",
+       "readiness": "gap",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "gap"
+    },
+    {
+     "surface": "transaction-rules",
+     "channels": [
+      {
+       "channel": "dependency",
+       "via": "cardano-multiplatform-lib-cml",
+       "readiness": "no-evidence",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "no-evidence"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 4,
+     "lines": 4,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "package.json",
+       "line": 25,
+       "quote": "\"cbor-web\": \"^8.1.0\","
+      },
+      {
+       "path": "src/utils/balance.ts",
+       "line": 1,
+       "quote": "import * as cbor from \"cbor-web\";"
+      },
+      {
+       "path": "src/utils/utxo.ts",
+       "line": 1,
+       "quote": "import * as cbor from \"cbor-web\";"
+      }
+     ]
+    },
+    {
+     "rule": "service:blockfrost",
+     "files": 4,
+     "lines": 6,
+     "auxLines": 0,
+     "docLines": 1,
+     "examples": [
+      {
+       "path": "src/background.ts",
+       "line": 204,
+       "quote": "? \"https://cardano-mainnet.blockfrost.io\""
+      },
+      {
+       "path": "src/background.ts",
+       "line": 205,
+       "quote": ": \"https://cardano-preview.blockfrost.io\";"
+      },
+      {
+       "path": "src/options.tsx",
+       "line": 94,
+       "quote": "href=\"https://blockfrost.io\""
+      }
+     ]
+    },
+    {
+     "rule": "transitive:cardano-multiplatform-lib-cml",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "bun.lock",
+       "line": 126,
+       "quote": "\"@dcspark/cardano-multiplatform-lib-browser\": [\"@dcspark/cardano-multiplatform-lib-browser@3.1.2\", \"\", {}, \"sha512-BDIF33nqEKAGn72+ESD1fLgnWCZJbPWnVKHr0cy7Al2zhvM30rGsajcJNHLPh2XXZQh1H35fBiHHR2uUyZRRp"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-06-06T10:42:42Z"
    }
   },
   {
@@ -63726,180 +67186,6 @@
    }
   },
   {
-   "id": "masumi-registry-service",
-   "repo": "masumi-network/masumi-registry-service",
-   "revision": "3b0ab26f340174acbed0d4eb6afba1bb6697d524",
-   "scan": {
-    "status": "scanned",
-    "files": 197,
-    "skipped": 14
-   },
-   "exposure": "dependency",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "meshjs-mesh-sdk",
-       "readiness": "no-evidence",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 11,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "meshjs-mesh-sdk",
-       "readiness": "gap",
-       "lines": 2,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "meshjs-mesh-sdk",
-       "readiness": "gap",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 11,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "meshjs-mesh-sdk",
-       "readiness": "gap",
-       "lines": 2,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "meshjs-mesh-sdk",
-       "readiness": "gap",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "no-evidence",
-       "lines": 11,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "meshjs-mesh-sdk",
-       "readiness": "no-evidence",
-       "lines": 2,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "no-evidence"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:meshjs-mesh-sdk",
-     "files": 1,
-     "lines": 2,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "package.json",
-       "line": 37,
-       "quote": "\"@meshsdk/core\": \"1.9.0\","
-      },
-      {
-       "path": "package.json",
-       "line": 38,
-       "quote": "\"@meshsdk/core-cst\": \"1.9.0\","
-      }
-     ],
-     "pins": [
-      {
-       "path": "package.json",
-       "line": 37,
-       "quote": "\"@meshsdk/core\": \"1.9.0\","
-      },
-      {
-       "path": "package.json",
-       "line": 38,
-       "quote": "\"@meshsdk/core-cst\": \"1.9.0\","
-      }
-     ]
-    },
-    {
-     "rule": "service:blockfrost",
-     "files": 8,
-     "lines": 11,
-     "auxLines": 0,
-     "docLines": 5,
-     "examples": [
-      {
-       "path": ".env.example",
-       "line": 10,
-       "quote": "BLOCKFROST_API_KEY_MAINNET=\"your_blockfrost_api_key\" #your blockfrost api key, receive a free key at https://blockfrost.io/ for the network (e.g. mainnet)"
-      },
-      {
-       "path": ".env.example",
-       "line": 11,
-       "quote": "BLOCKFROST_API_KEY_PREPROD=\"your_blockfrost_api_key\" #your blockfrost api key, receive a free key at https://blockfrost.io/ for the network (e.g. preprod)"
-      },
-      {
-       "path": "package.json",
-       "line": 36,
-       "quote": "\"@blockfrost/blockfrost-js\": \"6.1.1\","
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-10-17T23:01:03Z"
-   }
-  },
-  {
    "id": "offchain-metadata-tools",
    "repo": "input-output-hk/offchain-metadata-tools",
    "revision": "91eba72d6e5e3b17cd49f625c9546f2c82df5a65",
@@ -64157,188 +67443,6 @@
    "activity": {
     "archived": false,
     "pushedAt": "2026-08-15T04:46:59Z"
-   }
-  },
-  {
-   "id": "adalite",
-   "repo": "vacuumlabs/adalite",
-   "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
-   "scan": {
-    "status": "scanned",
-    "files": 355,
-    "skipped": 110
-   },
-   "exposure": "dependency",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:pool-registration",
-       "readiness": "unassessed",
-       "lines": 3,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "ledgerjs-hw-app-cardano",
-       "readiness": "gap",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:legacy-stake-certificate",
-       "readiness": "unassessed",
-       "lines": 4,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "no-evidence",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "ledgerjs-hw-app-cardano",
-       "readiness": "no-evidence",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "no-evidence"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:ledgerjs-hw-app-cardano",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "app/package.json",
-       "line": 25,
-       "quote": "\"@cardano-foundation/ledgerjs-hw-app-cardano\": \"^8.0.0\","
-      }
-     ],
-     "pins": [
-      {
-       "path": "app/package.json",
-       "line": 25,
-       "quote": "\"@cardano-foundation/ledgerjs-hw-app-cardano\": \"^8.0.0\","
-      }
-     ]
-    },
-    {
-     "rule": "marker:legacy-stake-certificate",
-     "files": 2,
-     "lines": 4,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "app/frontend/wallet/shelley/shelley-bitbox02-crypto-provider.ts",
-       "line": 204,
-       "quote": "stakeRegistration: {"
-      },
-      {
-       "path": "app/frontend/wallet/shelley/shelley-bitbox02-crypto-provider.ts",
-       "line": 210,
-       "quote": "stakeDeregistration: {"
-      },
-      {
-       "path": "app/frontend/wallet/shelley/shelley-ledger-crypto-provider.ts",
-       "line": 271,
-       "quote": "type: LedgerTypes.CertificateType.STAKE_REGISTRATION,"
-      }
-     ]
-    },
-    {
-     "rule": "marker:pool-registration",
-     "files": 3,
-     "lines": 3,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "app/frontend/components/pages/advanced/poolOwner.tsx",
-       "line": 138,
-       "quote": "<div className=\"pool-registration-instructions\">"
-      },
-      {
-       "path": "app/frontend/types.ts",
-       "line": 203,
-       "quote": "POOL_REG_OWNER = 'poolRegistration',"
-      },
-      {
-       "path": "app/public/css/styles.css",
-       "line": 3519,
-       "quote": ".pool-registration-instructions .advanced-label {"
-      }
-     ]
-    },
-    {
-     "rule": "service:blockfrost",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "app/frontend/wallet/blockchain-explorer.ts",
-       "line": 209,
-       "quote": "// https://docs.blockfrost.io/#tag/Cardano-Transactions/paths/~1tx~1submit/post"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-10-02T19:34:52Z"
    }
   },
   {
@@ -70932,433 +74036,6 @@
    }
   },
   {
-   "id": "catalyst-voices",
-   "repo": "cardano-foundation/catalyst-voices",
-   "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
-   "scan": {
-    "status": "scanned",
-    "files": 3721,
-    "skipped": 1024
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
-       "lines": 1,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 5,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 8,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
-       "lines": 1,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 8,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "verified",
-       "lines": 8,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:node-socket",
-       "readiness": "upstream",
-       "lines": 1,
-       "scope": "auxiliary"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "cardano-serialization-lib-csl",
-       "readiness": "gap",
-       "lines": 1,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 4,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
-       "lines": 1,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 8,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
-       "lines": 1,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:pool-registration",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 8,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
-       "lines": 1,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:legacy-stake-certificate",
-       "readiness": "unassessed",
-       "lines": 21,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 5,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "no-evidence",
-       "lines": 2,
-       "scope": "auxiliary"
-      },
-      {
-       "channel": "service",
-       "via": "cardano-db-sync",
-       "readiness": "gap",
-       "lines": 8,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-rules",
-     "channels": [
-      {
-       "channel": "dependency",
-       "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
-       "lines": 1,
-       "scope": "auxiliary"
-      }
-     ],
-     "readiness": "unassessed"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "dependency:cardano-serialization-lib-csl",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "utilities/wallet-tester/package.json",
-       "line": 18,
-       "quote": "\"@emurgo/cardano-serialization-lib-asmjs\": \"^11.5.0\","
-      }
-     ]
-    },
-    {
-     "rule": "marker:legacy-stake-certificate",
-     "files": 12,
-     "lines": 21,
-     "auxLines": 8,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
-       "line": 239,
-       "quote": "alonzo::Certificate::StakeRegistration(cred) => {"
-      },
-      {
-       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
-       "line": 243,
-       "quote": "alonzo::Certificate::StakeDeregistration(cred) => {"
-      },
-      {
-       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
-       "line": 266,
-       "quote": "conway::Certificate::StakeRegistration(cred) => {"
-      }
-     ]
-    },
-    {
-     "rule": "marker:node-to-client",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 0,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "docs/src/architecture/03_system_scope_and_context.md",
-       "line": 85,
-       "quote": "| RBAC and CIP-36 (legacy) | Client | Cardano | N2N/N2C transaction submission | CBOR transaction |"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 2,
-     "lines": 4,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "catalyst_voices/packages/libs/catalyst_cardano_serialization/lib/src/scripts.dart",
-       "line": 308,
-       "quote": "/// PlutusV3 script"
-      },
-      {
-       "path": "catalyst_voices/packages/libs/catalyst_cardano_serialization/lib/src/scripts.dart",
-       "line": 309,
-       "quote": "plutusV3(3);"
-      },
-      {
-       "path": "catalyst_voices/packages/libs/catalyst_cardano_serialization/lib/src/scripts.dart",
-       "line": 525,
-       "quote": "RefScriptType.plutusV3 => PlutusV3Script.fromCbor(value[1]),"
-      }
-     ]
-    },
-    {
-     "rule": "marker:pool-registration",
-     "files": 2,
-     "lines": 2,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
-       "line": 249,
-       "quote": "alonzo::Certificate::PoolRegistration { .. } => {},"
-      },
-      {
-       "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
-       "line": 276,
-       "quote": "conway::Certificate::PoolRegistration { .. } => {},"
-      },
-      {
-       "path": "utilities/wallet-tester/src/types/cardano.ts",
-       "line": 45,
-       "quote": "PoolRegistration = \"pool_registration\","
-      }
-     ]
-    },
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 12,
-     "lines": 5,
-     "auxLines": 11,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": ".config/dictionaries/project.dic",
-       "line": 53,
-       "quote": "cborg"
-      },
-      {
-       "path": ".config/dictionaries/project.dic",
-       "line": 244,
-       "quote": "minicbor"
-      },
-      {
-       "path": "catalyst-gateway/bin/Cargo.toml",
-       "line": 100,
-       "quote": "minicbor = { version = \"0.25.1\", features = [\"alloc\"] }"
-      }
-     ]
-    },
-    {
-     "rule": "marker:segregated-block-body",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 0,
-     "docLines": 4,
-     "examples": [
-      {
-       "path": "docs/src/catalyst-standards/draft-cips/x509-rbac-signing-with-cip30/images/cardano-transaction.d2",
-       "line": 49,
-       "quote": "collator: \"collation logic: for i in 0..len(transaction_bodies)\" {"
-      },
-      {
-       "path": "docs/src/catalyst-standards/draft-cips/x509-rbac-signing-with-cip30/images/cardano-transaction.d2",
-       "line": 55,
-       "quote": "1: \"transaction_bodies[i]\" {"
-      },
-      {
-       "path": "docs/src/catalyst-standards/draft-cips/x509-rbac-signing-with-cip30/images/cardano-transaction.d2",
-       "line": 61,
-       "quote": "2: \"transaction_witness_sets[i]\" {"
-      }
-     ]
-    },
-    {
-     "rule": "service:blockfrost",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "catalyst-gateway/tests/api_tests/scripts/prepare_cardano_asset.py",
-       "line": 20,
-       "quote": "# blockfrost.io token value"
-      },
-      {
-       "path": "catalyst-gateway/tests/api_tests/scripts/prepare_cardano_asset.py",
-       "line": 26,
-       "quote": "BLOCKFROST_URL = f\"https://cardano-{CARDANO_NETWORK}.blockfrost.io/api/v0\""
-      }
-     ]
-    },
-    {
-     "rule": "service:cardano-db-sync",
-     "files": 4,
-     "lines": 8,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": ".config/dictionaries/project.dic",
-       "line": 98,
-       "quote": "dbsync"
-      },
-      {
-       "path": "catalyst-gateway/event-db/json_schemas/.cspell.json",
-       "line": 15,
-       "quote": "\"dbsync\""
-      },
-      {
-       "path": "catalyst-gateway/event-db/json_schemas/config/dbsync.json",
-       "line": 4,
-       "quote": "\"$id\": \"catalyst_schema://d899cd44-3513-487b-ab46-fdca662a724d/config/dbsync\","
-      }
-     ]
-    },
-    {
-     "rule": "service:node-socket",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "catalyst-gateway/tests/docker-compose-devnet.yml",
-       "line": 86,
-       "quote": "- CARDANO_NODE_SOCKET_PATH=/shared-data/artifacts/devnet/node-pool1/ipc/node.sock"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-07-27T07:01:00Z"
-   }
-  },
-  {
    "id": "libcardano",
    "repo": "ViperScience/libcardano",
    "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
@@ -72927,445 +75604,6 @@
    "activity": {
     "archived": false,
     "pushedAt": "2026-06-05T13:03:47Z"
-   }
-  },
-  {
-   "id": "sutra",
-   "repo": "txbody-org/sutra-cardano",
-   "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
-   "scan": {
-    "status": "scanned",
-    "files": 151,
-    "skipped": 7
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "kupo",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "koios",
-       "readiness": "gap",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "kupo",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:maestro",
-       "readiness": "gap",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "kupo",
-       "readiness": "verified",
-       "lines": 6,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 17,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 42,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "koios",
-       "readiness": "gap",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:maestro",
-       "readiness": "gap",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:pool-registration",
-       "readiness": "unassessed",
-       "lines": 5,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:legacy-stake-certificate",
-       "readiness": "unassessed",
-       "lines": 7,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "no-evidence",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "koios",
-       "readiness": "no-evidence",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "kupo",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:maestro",
-       "readiness": "gap",
-       "lines": 3,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 9,
-     "lines": 42,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "lib/sutra/cardano/gov.ex",
-       "line": 8,
-       "quote": "typedstruct(module: CostModels) do"
-      },
-      {
-       "path": "lib/sutra/cardano/gov.ex",
-       "line": 14,
-       "quote": "def encode_cost_models(%__MODULE__.CostModels{} = cost_models) do"
-      },
-      {
-       "path": "lib/sutra/cardano/gov.ex",
-       "line": 16,
-       "quote": "0 => cost_models.plutus_v1,"
-      }
-     ]
-    },
-    {
-     "rule": "marker:legacy-stake-certificate",
-     "files": 2,
-     "lines": 7,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "lib/sutra/cardano/transaction/certificate.ex",
-       "line": 14,
-       "quote": "alias Sutra.Cardano.Transaction.Certificate.StakeRegistration"
-      },
-      {
-       "path": "lib/sutra/cardano/transaction/certificate.ex",
-       "line": 21,
-       "quote": "typedstruct(module: StakeRegistration) do"
-      },
-      {
-       "path": "lib/sutra/cardano/transaction/certificate.ex",
-       "line": 26,
-       "quote": "typedstruct(module: StakeDeRegistration) do"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 16,
-     "lines": 17,
-     "auxLines": 9,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "lib/sutra/cardano/gov.ex",
-       "line": 11,
-       "quote": "field(:plutus_v3, [])"
-      },
-      {
-       "path": "lib/sutra/cardano/gov.ex",
-       "line": 18,
-       "quote": "2 => cost_models.plutus_v3"
-      },
-      {
-       "path": "lib/sutra/cardano/script.ex",
-       "line": 5,
-       "quote": "@type script_type() :: :plutus_v1 | :plutus_v2 | :plutus_v3"
-      }
-     ]
-    },
-    {
-     "rule": "marker:pool-registration",
-     "files": 2,
-     "lines": 5,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "lib/sutra/cardano/transaction/certificate.ex",
-       "line": 12,
-       "quote": "alias Sutra.Cardano.Transaction.Certificate.PoolRegistration"
-      },
-      {
-       "path": "lib/sutra/cardano/transaction/certificate.ex",
-       "line": 36,
-       "quote": "## (3, pool_params)"
-      },
-      {
-       "path": "lib/sutra/cardano/transaction/certificate.ex",
-       "line": 37,
-       "quote": "typedstruct(module: PoolRegistration) do"
-      }
-     ]
-    },
-    {
-     "rule": "service:blockfrost",
-     "files": 1,
-     "lines": 3,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "lib/sutra/provider/blockfrost/client.ex",
-       "line": 22,
-       "quote": ":mainnet -> \"https://cardano-mainnet.blockfrost.io/api/v0\""
-      },
-      {
-       "path": "lib/sutra/provider/blockfrost/client.ex",
-       "line": 23,
-       "quote": ":preprod -> \"https://cardano-preprod.blockfrost.io/api/v0\""
-      },
-      {
-       "path": "lib/sutra/provider/blockfrost/client.ex",
-       "line": 24,
-       "quote": ":preview -> \"https://cardano-preview.blockfrost.io/api/v0\""
-      }
-     ]
-    },
-    {
-     "rule": "service:koios",
-     "files": 2,
-     "lines": 2,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "lib/sutra/provider/koios/client.ex",
-       "line": 18,
-       "quote": "base_url = \"https://#{network_prefix}.koios.rest/api/v1/\""
-      },
-      {
-       "path": "lib/sutra/provider/koios/client.ex",
-       "line": 108,
-       "quote": "# Helper parsers (copied from original KoiosProvider)"
-      },
-      {
-       "path": "examples/setup_koios_provider.exs",
-       "line": 1,
-       "quote": "alias Sutra.Provider.KoiosProvider"
-      }
-     ]
-    },
-    {
-     "rule": "service:kupo",
-     "files": 6,
-     "lines": 6,
-     "auxLines": 13,
-     "docLines": 2,
-     "examples": [
-      {
-       "path": "lib/sutra.ex",
-       "line": 10,
-       "quote": "*   **Provider Agnostic**: Works seamlessly with different providers (Blockfrost, Kupo/Ogmios, Maestro)."
-      },
-      {
-       "path": "lib/sutra/provider/kupogmios/client.ex",
-       "line": 3,
-       "quote": "Client for Kupo and Ogmios API using Req."
-      },
-      {
-       "path": "lib/sutra/provider/kupogmios/client.ex",
-       "line": 28,
-       "quote": "kupo: Req.new(base_url: kupo_url),"
-      }
-     ]
-    },
-    {
-     "rule": "service:maestro",
-     "files": 1,
-     "lines": 3,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "lib/sutra/provider/maestro/client.ex",
-       "line": 21,
-       "quote": ":mainnet -> \"https://mainnet.gomaestro-api.org/v1\""
-      },
-      {
-       "path": "lib/sutra/provider/maestro/client.ex",
-       "line": 22,
-       "quote": ":preprod -> \"https://preprod.gomaestro-api.org/v1\""
-      },
-      {
-       "path": "lib/sutra/provider/maestro/client.ex",
-       "line": 23,
-       "quote": ":preview -> \"https://preview.gomaestro-api.org/v1\""
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 6,
-     "lines": 6,
-     "auxLines": 13,
-     "docLines": 2,
-     "examples": [
-      {
-       "path": "lib/sutra.ex",
-       "line": 10,
-       "quote": "*   **Provider Agnostic**: Works seamlessly with different providers (Blockfrost, Kupo/Ogmios, Maestro)."
-      },
-      {
-       "path": "lib/sutra/provider/kupogmios/client.ex",
-       "line": 3,
-       "quote": "Client for Kupo and Ogmios API using Req."
-      },
-      {
-       "path": "lib/sutra/provider/kupogmios/client.ex",
-       "line": 29,
-       "quote": "ogmios: Req.new(base_url: ogmios_url)"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-07-22T08:59:32Z"
    }
   },
   {
@@ -75005,218 +77243,6 @@
    }
   },
   {
-   "id": "minswap-sdk",
-   "repo": "minswap/sdk",
-   "revision": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
-   "scan": {
-    "status": "scanned",
-    "files": 77,
-    "skipped": 5
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 24,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 30,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:maestro",
-       "readiness": "gap",
-       "lines": 23,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 24,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 24,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 24,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 30,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:maestro",
-       "readiness": "gap",
-       "lines": 23,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 24,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "no-evidence",
-       "lines": 30,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "service:maestro",
-       "readiness": "gap",
-       "lines": 23,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 24,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "service:blockfrost",
-     "files": 12,
-     "lines": 30,
-     "auxLines": 13,
-     "docLines": 26,
-     "examples": [
-      {
-       "path": "package.json",
-       "line": 48,
-       "quote": "\"@blockfrost/blockfrost-js\": \"^5.5.0\","
-      },
-      {
-       "path": "src/adapters/blockfrost.ts",
-       "line": 2,
-       "quote": "BlockFrostAPI,"
-      },
-      {
-       "path": "src/adapters/blockfrost.ts",
-       "line": 5,
-       "quote": "} from \"@blockfrost/blockfrost-js\";"
-      }
-     ]
-    },
-    {
-     "rule": "service:maestro",
-     "files": 5,
-     "lines": 23,
-     "auxLines": 6,
-     "docLines": 7,
-     "examples": [
-      {
-       "path": "package.json",
-       "line": 51,
-       "quote": "\"@maestro-org/typescript-sdk\": \"^1.6.3\","
-      },
-      {
-       "path": "src/adapters/maestro.ts",
-       "line": 3,
-       "quote": "MaestroClient,"
-      },
-      {
-       "path": "src/adapters/maestro.ts",
-       "line": 5,
-       "quote": "} from \"@maestro-org/typescript-sdk\";"
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 11,
-     "lines": 24,
-     "auxLines": 0,
-     "docLines": 4,
-     "examples": [
-      {
-       "path": ".env",
-       "line": 4,
-       "quote": "# \"mainnet\" | \"preview\" | \"preprod\" ref: https://ogmios.dev/getting-started/docker"
-      },
-      {
-       "path": "docker-compose.yaml",
-       "line": 8,
-       "quote": "OGMIOS_HOST: ogmios"
-      },
-      {
-       "path": "docker-compose.yaml",
-       "line": 36,
-       "quote": "ogmios:"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-03-22T03:43:25Z"
-   }
-  },
-  {
    "id": "ogmiosdotnet",
    "repo": "ItsDaveB/OgmiosDotnet",
    "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
@@ -76440,194 +78466,6 @@
    "activity": {
     "archived": false,
     "pushedAt": "2025-09-01T17:16:27Z"
-   }
-  },
-  {
-   "id": "blockfrost-cardano-cli",
-   "repo": "blockfrost/blockfrost-cardano-cli",
-   "revision": "2ed5515009ab2ef7df6204975308e10a9e12de3c",
-   "scan": {
-    "status": "scanned",
-    "files": 64,
-    "skipped": 944
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "cardano-cli",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "service:cardano-cli",
-       "readiness": "upstream",
-       "lines": 4,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "upstream"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 15,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 5,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 15,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:pool-registration",
-       "readiness": "unassessed",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "no-evidence",
-       "lines": 15,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "no-evidence"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 4,
-     "lines": 5,
-     "auxLines": 2,
-     "docLines": 3,
-     "examples": [
-      {
-       "path": "src/commands/query/protocol-parameters.ts",
-       "line": 26,
-       "quote": "//   \"maxTxExecutionUnits\": {"
-      },
-      {
-       "path": "src/commands/query/protocol-parameters.ts",
-       "line": 30,
-       "quote": "//   \"costModels\": {"
-      },
-      {
-       "path": "src/commands/query/protocol-parameters.ts",
-       "line": 242,
-       "quote": "maxTxExecutionUnits: {"
-      }
-     ]
-    },
-    {
-     "rule": "marker:pool-registration",
-     "files": 3,
-     "lines": 6,
-     "auxLines": 4,
-     "docLines": 4,
-     "examples": [
-      {
-       "path": "src/commands/query/pool-params.ts",
-       "line": 14,
-       "quote": "//   \"poolParams\": {"
-      },
-      {
-       "path": "src/commands/query/pool-params.ts",
-       "line": 72,
-       "quote": "// cardano-cli query pool-params --stake-pool-id 7a7da8ff324477745ba248ead217741cc69b0eee94ba2e536c368503 --testnet-magic 1097911063"
-      },
-      {
-       "path": "src/commands/query/pool-params.ts",
-       "line": 74,
-       "quote": "//     \"poolParams\": null,"
-      }
-     ]
-    },
-    {
-     "rule": "service:blockfrost",
-     "files": 15,
-     "lines": 15,
-     "auxLines": 72,
-     "docLines": 5,
-     "examples": [
-      {
-       "path": "Dockerfile",
-       "line": 5,
-       "quote": "RUN npm install -g @blockfrost/blockfrost-cardano-cli"
-      },
-      {
-       "path": "package.json",
-       "line": 2,
-       "quote": "\"name\": \"@blockfrost/blockfrost-cardano-cli\","
-      },
-      {
-       "path": "package.json",
-       "line": 5,
-       "quote": "\"author\": \"blockfrost.io\","
-      }
-     ]
-    },
-    {
-     "rule": "service:cardano-cli",
-     "files": 2,
-     "lines": 4,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/commands/query/pool-params.ts",
-       "line": 72,
-       "quote": "// cardano-cli query pool-params --stake-pool-id 7a7da8ff324477745ba248ead217741cc69b0eee94ba2e536c368503 --testnet-magic 1097911063"
-      },
-      {
-       "path": "src/hooks/cardano-cli.ts",
-       "line": 11,
-       "quote": "// first run cardano-cli --version just to figure out if it is available"
-      },
-      {
-       "path": "src/hooks/cardano-cli.ts",
-       "line": 14,
-       "quote": "cardanoCliVersionOutput = execSync('cardano-cli --version', {"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2022-08-31T19:55:09Z"
    }
   },
   {
@@ -78348,133 +80186,6 @@
    }
   },
   {
-   "id": "sorbet",
-   "repo": "SundaeSwap-finance/Sorbet",
-   "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
-   "scan": {
-    "status": "scanned",
-    "files": 66,
-    "skipped": 8
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 4,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 4,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "no-evidence",
-       "lines": 6,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "no-evidence"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 4,
-     "lines": 4,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "package.json",
-       "line": 25,
-       "quote": "\"cbor-web\": \"^8.1.0\","
-      },
-      {
-       "path": "src/utils/balance.ts",
-       "line": 1,
-       "quote": "import * as cbor from \"cbor-web\";"
-      },
-      {
-       "path": "src/utils/utxo.ts",
-       "line": 1,
-       "quote": "import * as cbor from \"cbor-web\";"
-      }
-     ]
-    },
-    {
-     "rule": "service:blockfrost",
-     "files": 4,
-     "lines": 6,
-     "auxLines": 0,
-     "docLines": 1,
-     "examples": [
-      {
-       "path": "src/background.ts",
-       "line": 204,
-       "quote": "? \"https://cardano-mainnet.blockfrost.io\""
-      },
-      {
-       "path": "src/background.ts",
-       "line": 205,
-       "quote": ": \"https://cardano-preview.blockfrost.io\";"
-      },
-      {
-       "path": "src/options.tsx",
-       "line": 94,
-       "quote": "href=\"https://blockfrost.io\""
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-06-06T10:42:42Z"
-   }
-  },
-  {
    "id": "dab",
    "repo": "cardano-foundation/dab",
    "revision": "926c590386c1d5be2d6de5d16d8e4f251207467e",
@@ -78569,89 +80280,6 @@
    "activity": {
     "archived": false,
     "pushedAt": "2022-06-07T08:59:23Z"
-   }
-  },
-  {
-   "id": "marlowe-ts-sdk",
-   "repo": "marlowe-lang/marlowe-ts-sdk",
-   "revision": "1242de8946046ac6a735bf550512b72ff37b5265",
-   "scan": {
-    "status": "scanned",
-    "files": 312,
-    "skipped": 9
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 3,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "gap",
-       "lines": 3,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "blockfrost",
-       "readiness": "no-evidence",
-       "lines": 3,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "no-evidence"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "service:blockfrost",
-     "files": 3,
-     "lines": 3,
-     "auxLines": 0,
-     "docLines": 2,
-     "examples": [
-      {
-       "path": "package.json",
-       "line": 47,
-       "quote": "\"@blockfrost/blockfrost-js\": \"5.2.0\","
-      },
-      {
-       "path": "package.json",
-       "line": 48,
-       "quote": "\"@blockfrost/openapi\": \"0.1.54\","
-      },
-      {
-       "path": "packages/wallet/package.json",
-       "line": 55,
-       "quote": "\"@blockfrost/blockfrost-js\": \"^5.4.0\","
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2025-03-26T12:00:20Z"
    }
   },
   {
@@ -79678,7 +81306,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
       }
@@ -79759,7 +81387,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
       },
@@ -79793,7 +81421,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
       },
@@ -79820,7 +81448,7 @@
       {
        "channel": "dependency",
        "via": "cardano-serialization-lib-csl",
-       "readiness": "no-evidence",
+       "readiness": "gap",
        "lines": 1,
        "scope": "auxiliary"
       },

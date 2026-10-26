@@ -56,7 +56,7 @@ test("a fix unlocks direct consumers, then consumers of what it unblocked, and l
     tool: "gouroboros", pins: ["ouroboros-consensus@3.0.1<5.1.0.1"], steps: [{ package: "ouroboros-consensus", from: "3.0.1", to: "5.1.0.1", breaking: true }],
     ownStatus: "in-progress", unread: [],
   }], "a boundary component's bump carries its own status");
-  assert.deepEqual(report.components.map((c) => [c.component, c.unlocks.length, c.ownGap]), [["scalus", 3, ["plutus-script-context"]], ["mesh", 1, []], ["sdk", 0, ["protocol-parameters"]]]);
+  assert.deepEqual(report.components.map((c) => [c.component, c.unlocks.length, c.ownGap]), [["scalus", 3, ["plutus-script-context"]], ["mesh", 0, []], ["sdk", 0, ["protocol-parameters"]]], "mesh alone unlocks nothing while it waits on scalus");
 });
 
 test("inherited gaps without a decision are listed as unread", () => {
@@ -71,4 +71,40 @@ test("the fix order adds, at each step, the component that unlocks the most on t
     { component: "scalus", added: ["dapp", "indexer", "mesh"], unlocked: 3 },
     { component: "sdk", added: ["wallet"], unlocked: 4 },
   ]);
+});
+
+test("a fixed component that waits on another unlocks nothing until that one is fixed too", () => {
+  const b = { ...boundary, components: [component("indexer-db", ["block-encoding"]), component("api", ["era-identity"]), component("node-client", ["block-encoding"])] } as unknown as BoundaryRegister;
+  const ts = [
+    tool("indexer-db", []), tool("api", [["block-encoding", "indexer-db"]]), tool("node-client", []),
+    tool("app1", [["era-identity", "api"]]), tool("app2", [["era-identity", "api"]]), tool("app3", [["era-identity", "api"]]),
+    tool("app4", [["block-encoding", "node-client"]]), tool("app5", [["block-encoding", "node-client"]]),
+  ];
+  const ls = { ...leads, leads: [
+    lead("api", "indexer-db", "block-encoding"), ...["app1", "app2", "app3"].map((t) => lead(t, "api", "era-identity")),
+    lead("app4", "node-client", "block-encoding"), lead("app5", "node-client", "block-encoding"),
+  ] } as unknown as LeadRegister;
+  const all = toolBlockers(ts, ls, b);
+  const api = unlocksOf("api", all);
+  assert.deepEqual(api.unlocks, [], "the api cannot serve the new era while its database cannot index it");
+  assert.deepEqual(api.partial.find((p) => p.tool === "api"), { tool: "api", stillBlockedBy: ["indexer-db"] });
+  assert.deepEqual(unlocksOf(["indexer-db", "api"], all).unlocks.map((u) => u.path.join(">")), ["indexer-db>api>app1", "indexer-db>api>app2", "indexer-db>api>app3"]);
+  assert.deepEqual(unlockReport(ts, ls, b).fixOrder, [
+    { component: "node-client", added: ["app4", "app5"], unlocked: 2 },
+    { component: "indexer-db", added: [], unlocked: 2 },
+    { component: "api", added: ["app1", "app2", "app3"], unlocked: 5 },
+  ], "the api is scored with the database it needs (3 tools for 2 fixes), which comes first in its bundle");
+});
+
+test("a confirmed own-code decision is an own gap; a decided open surface blocks nothing", () => {
+  const app = tool("app", []);
+  const open = tool("reader", []);
+  open.surfaces = [{ surface: "transaction-encoding", readiness: "no-evidence", channels: [{ channel: "dependency", via: "sdk", readiness: "no-evidence", lines: 1, scope: "shipped" }] }];
+  const ls = { ...leads, leads: [
+    { ...lead("app", "own", "transaction-encoding"), evidence: [] },
+    lead("reader", "sdk", "transaction-encoding"),
+  ] } as unknown as LeadRegister;
+  const byTool = new Map(toolBlockers([app, open], ls, boundary).map((t) => [t.tool, t.blockers.map((b) => `${b.kind}:${b.via}`)]));
+  assert.deepEqual(byTool.get("app"), ["own-gap:app"]);
+  assert.deepEqual(byTool.get("reader") ?? [], [], "reached, but the component has no verdict yet");
 });

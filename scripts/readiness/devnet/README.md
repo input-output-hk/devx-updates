@@ -48,3 +48,11 @@ socket paths are limited to 108 bytes.
     whole-second startTime; cardano-testnet writes neither, so the script gives db-sync its own node config and a
     Shelley genesis copy rounded to Byron's second. Koios was not run: it reads the same db-sync tables.
 
+11. CSL and PyCardano (2026-10-26). Without Rust: `probe-v0.213.9 blocks <socket> > $DEVNET_DIR/blocks.txt` dumps
+    every Dijkstra block through gouroboros (it stops after 3 idle seconds at the tip). For CSL,
+    `npm install --ignore-scripts @emurgo/cardano-serialization-lib-nodejs@<version>` into its own directory (17.0.0,
+    the newest release, and 15.0.3, which Blockfrost locks), then `node csl-probe/probe.cjs <that directory> txs <
+    labeled` and `... blocks < blocks.txt`. For PyCardano, create a virtual environment, `pip install pycardano
+    "cbor2<6"` (cbor2 6.x breaks the cbor2pure PyCardano imports), and run `<venv>/bin/python -I py-probe/probe.py <
+    labeled`. The labeled file adds one Dijkstra-built transaction with metadata (`cardano-cli dijkstra transaction
+    build ... --metadata-json-file`), which tells the codecs that read the third array element as `is_valid` apart.

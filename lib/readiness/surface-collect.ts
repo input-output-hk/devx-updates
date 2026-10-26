@@ -5,6 +5,7 @@ import { repositoryReference } from "./discovery";
 import { execute } from "./source";
 import type { BoundaryRegister } from "./boundary";
 import type { ChangeRegister } from "./dijkstra";
+import { TRANSITIVE_RULES, withTransitive, type TransitiveLink } from "./transitive";
 import { classifyTool, rankClassifications, RULES, scannable, scanSources, type RepositoryActivity, type Scan, type ToolClassification } from "./surfaces";
 
 /** Rule identity: cached scans are reused only while the rule set is unchanged. */
@@ -56,6 +57,11 @@ async function scanCheckout(directory: string, self: string): Promise<Scan> {
   return { ...scan, skipped: scan.skipped + skipped };
 }
 
+/** Scan rules plus the transitive ones; the latter stay out of RULES_DIGEST so cached scans remain valid. */
+const CLASSIFY_RULES = [...RULES, ...TRANSITIVE_RULES];
+/** Lockfile links recorded at the revision being classified (a link read at another revision is stale and dropped). */
+const linksFor = (links: TransitiveLink[] | undefined, id: string, revision: string) => (links ?? []).filter((l) => l.tool === id && l.revision === revision);
+
 export interface ClassificationRegister {
   schemaVersion: 1; generatedAt: string; rulesDigest: string; changeTarget: unknown; boundaryRetrieved: string;
   summary: Record<string, number>; tools: ToolClassification[];
@@ -68,7 +74,7 @@ export interface ClassificationRegister {
  */
 export async function reclassifyCatalog(
   previous: ClassificationRegister, boundary: BoundaryRegister, changes: ChangeRegister,
-  options: { stateDir: string; concurrency?: number; log?: (line: string) => void },
+  options: { stateDir: string; concurrency?: number; log?: (line: string) => void; transitive?: TransitiveLink[] },
 ): Promise<ClassificationRegister> {
   const cacheDir = resolve(options.stateDir, "surface-scans");
   mkdirSync(cacheDir, { recursive: true });
@@ -90,7 +96,8 @@ export async function reclassifyCatalog(
         writeFileSync(cache, JSON.stringify(scan));
         options.log?.(`${tool.id} ${tool.revision.slice(0, 10)} rescanned files=${scan.files} hits=${scan.hits.length}`);
       }
-      results.push({ ...classifyTool({ id: tool.id, repo: tool.repo, revision: tool.revision }, scan, boundary, changes), ...(tool.activity && { activity: tool.activity }) });
+      const merged = withTransitive(scan, linksFor(options.transitive, tool.id, tool.revision));
+      results.push({ ...classifyTool({ id: tool.id, repo: tool.repo, revision: tool.revision }, merged, boundary, changes, CLASSIFY_RULES), ...(tool.activity && { activity: tool.activity }) });
     }
   };
   await Promise.all(Array.from({ length: options.concurrency ?? 6 }, work));
@@ -108,7 +115,7 @@ function summarize(ranked: ToolClassification[], boundary: BoundaryRegister, cha
 
 export async function classifyCatalog(
   tools: { id: string; repo: string | null }[], boundary: BoundaryRegister, changes: ChangeRegister,
-  options: { stateDir: string; concurrency?: number; log?: (line: string) => void },
+  options: { stateDir: string; concurrency?: number; log?: (line: string) => void; transitive?: TransitiveLink[] },
 ): Promise<ClassificationRegister> {
   const cacheDir = resolve(options.stateDir, "surface-scans");
   mkdirSync(cacheDir, { recursive: true });
@@ -143,7 +150,8 @@ export async function classifyCatalog(
             scan = await scanCheckout(directory, tool.id);
             writeFileSync(cache, JSON.stringify(scan));
           }
-          results.push({ ...classifyTool({ id: tool.id, repo, revision }, scan, boundary, changes), ...(state && { activity: state }) });
+          const merged = withTransitive(scan, linksFor(options.transitive, tool.id, revision));
+          results.push({ ...classifyTool({ id: tool.id, repo, revision }, merged, boundary, changes, CLASSIFY_RULES), ...(state && { activity: state }) });
           options.log?.(`${tool.id} ${revision.slice(0, 10)} files=${scan.files} hits=${scan.hits.length}`);
         }
       } catch (error) {

@@ -14,7 +14,8 @@
    "The test fork trigger moves the chain into Dijkstra at epoch 2 but leaves the protocol version at 10; two hard-fork initiation actions, ratified by the DReps and the pool, raised it to 11 and then 12 before any transaction or tool check ran.",
    "Every check below ran against protocol version 12 except the Ogmios and Kupo runs and the handshake probe, which do not depend on it.",
    "The pallas-chain-sync, pallas-transactions, cml-decoding and js-sdk-transactions checks ran on 2026-10-22 against a fresh devnet from the same recipe, after the other seven checks reproduced there unchanged (same results, error messages and decoder offsets; only slots and hashes differ).",
-   "The db-sync-and-blockfrost check and db-sync's handshake result ran on 2026-10-22 on another fresh devnet. db-sync is given a copy of the Shelley genesis whose systemStart is rounded to Byron's whole-second startTime, which it requires and cardano-testnet does not write, so its slot times are off by under a second."
+   "The db-sync-and-blockfrost check and db-sync's handshake result ran on 2026-10-22 on another fresh devnet. db-sync is given a copy of the Shelley genesis whose systemStart is rounded to Byron's whole-second startTime, which it requires and cardano-testnet does not write, so its slot times are off by under a second.",
+   "The csl-decoding and pycardano-transactions checks ran on 2026-10-26 on a fresh devnet from the same recipe; the cross-era-submission cases reproduced unchanged (Conway payments, deposit registrations, required signers and metadata accepted, the deposit-less registration refused), and one more Dijkstra-built transaction carrying metadata was submitted and accepted."
   ],
   "recipe": "scripts/readiness/devnet/README.md"
  },
@@ -202,7 +203,8 @@
    ],
    "observed": [
     "split, conway-payment, conway-reg-with-deposit, conway-required-signer, conway-metadata, dijkstra-payment, dijkstra-reg-with-deposit (83a3/83a4): decoded, isValid true, round-trip exact; ids b143cc5a\u2026, aae9dee8\u2026, c543f1a4\u2026, bd88dba0\u2026, 5eea178a\u2026, 6f3e481c\u2026, b59aefa0\u2026 as txid.py computes them",
-    "the five Conway-built envelopes (84a3/84a4) and three Dijkstra-built envelopes: decoded, round-trip exact"
+    "the five Conway-built envelopes (84a3/84a4) and three Dijkstra-built envelopes: decoded, round-trip exact",
+    "2026-10-26: a Dijkstra-built transaction carrying metadata (83a4), which PyCardano cannot decode, decodes and round-trips exactly with @cardano-sdk/core 0.47.1"
    ],
    "recipe": ["scripts/readiness/devnet/js-probe/probe.cjs", "scripts/readiness/devnet/transactions.sh"]
   },
@@ -221,6 +223,36 @@
     "blockfrost /blocks/latest: {\"height\":18,\"slot\":355,\"epoch\":1}; /epochs/latest/parameters: {\"epoch\":1,\"protocol_major_ver\":10}; /network/eras: two eras, none for Dijkstra"
    ],
    "recipe": ["scripts/readiness/devnet/service-layer.sh"]
+  },
+  {
+   "id": "csl-decoding",
+   "title": "CSL 17.0.0 and 15.0.3 decode no Dijkstra block; plain Dijkstra transactions decode but re-encode in the legacy form",
+   "summary": "Every Dijkstra block from a gouroboros chain-sync (probe blocks) and every captured transaction, decoded with CSL's Block and FixedBlock, Transaction and FixedTransaction, in the newest release (17.0.0) and in the release Blockfrost locks (15.0.3). No Dijkstra block decodes. The three-element mempool transactions and Dijkstra-built envelopes decode, and FixedTransaction yields the node's transaction id, but Transaction re-encodes them as four-element arrays with is_valid, the legacy form the node still accepts and has announced as disallowed in the next era. No transaction with Dijkstra-only body keys (23-27) could be built with cardano-cli, so that decoder limit rests on source.",
+   "results": [
+    { "kind": "component", "id": "cardano-serialization-lib-csl", "version": "17.0.0", "outcome": "fail" },
+    { "kind": "component", "id": "cardano-serialization-lib-csl", "version": "15.0.3", "outcome": "fail" }
+   ],
+   "observed": [
+    "era tag 8: 119 blocks; Block decoded 0 and FixedBlock decoded 0 (Definite length mismatch: found 2), in both versions",
+    "the seven mempool transactions (83a3/83a4) and the four Dijkstra-built envelopes, metadata included: Transaction and FixedTransaction decoded, ids equal to the node's, Transaction re-encode differs (written as a four-element array)",
+    "the five Conway-built envelopes (84a3/84a4): decoded, re-encode exact"
+   ],
+   "recipe": ["scripts/readiness/devnet/csl-probe/probe.cjs", "scripts/readiness/devnet/probe/main.go"]
+  },
+  {
+   "id": "pycardano-transactions",
+   "title": "PyCardano 0.19.2 cannot decode a Dijkstra transaction that carries metadata",
+   "summary": "Every captured transaction decoded with Transaction.from_cbor, its id and a byte-exact re-encode. PyCardano reads the third element of a three-element transaction as the is_valid flag, so the Dijkstra form [body, witnesses, auxiliary_data] decodes only when the auxiliary data is null: payments and registrations decode and round-trip exactly, while the mempool form of a Conway metadata transaction and a Dijkstra-built metadata transaction the node accepted both fail. PyCardano has no block codec.",
+   "results": [
+    { "kind": "component", "id": "pycardano", "version": "v0.19.2", "outcome": "fail" }
+   ],
+   "observed": [
+    "mempool-conway-metadata and envelope-dijkstra-metadata (83a4): DeserializeException: Cannot deserialize object: CBORTag(259, {0: {674: ...}}) in any valid type from (<class 'bool'>, <class 'NoneType'>)",
+    "the other six mempool transactions and the Dijkstra-built payment and registration envelopes (83a3/83a4): decoded, ids equal to the node's, re-encode exact",
+    "the five Conway-built envelopes (84a3/84a4), metadata included: decoded, re-encode exact",
+    "installed with pip into a fresh virtual environment; cbor2 had to be held below 6, since cbor2 6.1.5 breaks the cbor2pure 5.8.0 that PyCardano imports"
+   ],
+   "recipe": ["scripts/readiness/devnet/py-probe/probe.py"]
   }
  ]
 }

@@ -456,3 +456,6 @@ export function rankClassifications(items: ToolClassification[]): ToolClassifica
     || READINESS_ORDER.indexOf(a.readiness) - READINESS_ORDER.indexOf(b.readiness)
     || b.surfaces.length - a.surfaces.length || (a.id < b.id ? -1 : 1));
 }
+
+/** Path filters for other readers of the same repositories (lockfiles in the transitive pass). */
+export const SKIP_PATH = SKIP, AUXILIARY_PATH = AUXILIARY;

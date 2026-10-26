@@ -115,6 +115,8 @@ per change, component or tool version, with the output it rests on:
 | `cml-decoding` | CML 6.2.0 decodes none of 1017 Dijkstra blocks and no three-element transaction |
 | `js-sdk-transactions` | `@cardano-sdk/core` 0.47.1 decodes all fifteen transactions, re-encodes them byte for byte and reproduces their ids (plain payments, a deposit registration, a required signer and metadata) |
 | `db-sync-and-blockfrost` | db-sync indexes every Conway block, then fails on the first Dijkstra block with `DeserialiseFailure 863` and keeps reconnecting; Blockfrost serves that frozen database as current (last Conway block, protocol version 10, no Dijkstra era) |
+| `csl-decoding` | CSL 17.0.0 and 15.0.3 decode none of 119 Dijkstra blocks; plain three-element transactions decode with the node's ids, but `Transaction` re-encodes them as four-element arrays (2026-10-26) |
+| `pycardano-transactions` | PyCardano 0.19.2 reads the third element as `is_valid`, so a Dijkstra transaction carrying metadata does not decode; the others round-trip exactly (2026-10-26) |
 
 Consequences in the registers: gouroboros and Pallas are gaps on era identity
 and block encoding. Node-to-client V23 support is `verified` for gouroboros,
@@ -138,7 +140,8 @@ npm run readiness -- check-devnet   # subjects known, recipes present, boundary 
 `boundary.json` records the 61 catalog components that implement a changed
 surface directly, observed at their default-branch heads on 2026-10-19 and
 2026-10-20 (Pallas, CML, cardano-js-sdk and db-sync updated from the devnet on
-2026-10-22), with 202 evidence items and
+2026-10-22; CSL's decoders re-read and CSL and PyCardano run on the devnet on
+2026-10-26), with 217 evidence items and
 a status for each surface group: `gap` (cited code cannot work against the
 target), `no-evidence` (nothing found; never a pass), `tracked`, `in-progress`,
 `released` and `verified` (R4). `in-progress` needs visible work toward the
@@ -261,16 +264,34 @@ actually reaches it, per tool, dependency and surface, each decision quoting
 the lines it rests on:
 
 - `confirmed`: a shipped path uses the gapped capability, so the tool fails or
-  misbehaves after the hardfork until the dependency moves (505 decisions).
+  misbehaves after the hardfork until the dependency moves (557 decisions).
 - `not-reached`: shipped code uses the dependency only outside the gap
-  (711 decisions).
+  (1,017 decisions).
 - `undetermined`: reading cannot decide; R4 execution or the maintainer must
-  (25 decisions).
+  (36 decisions).
 
-The register holds 527 entries and 1,241 decisions, none unreviewed or stale.
-**112 tools have a confirmed gap**: 76 outside the boundary and 36 boundary
-components that inherit one from another component. The passes below added
-them in order; each pass's figures are as of that pass.
+The register holds 639 entries and 1,610 decisions, none unreviewed or stale.
+**118 tools have a confirmed gap**. 113 inherit one, and six have one in
+their own code (gastronomy has both). The passes below added them in order;
+each pass's figures are as of that pass.
+
+Two kinds of decision were added on 2026-10-26:
+
+- **Own code** (`via: "own"`, 130 decisions on 48 tools): the shipped marker
+  lines of tools that are not boundary components. Confirmed for AdaLite,
+  libcardano and cardano-wallet-sdk-dart (deposit-less stake certificates),
+  stakepool-operator-scripts (era names in the min-UTxO calculation, unknown
+  parameters in vote tallies), gastronomy (Conway `MintedTx` on chain
+  transactions) and catalyst-voices (blocks through Pallas, PlutusV4
+  reference scripts).
+- **Open surfaces:** a component's `no-evidence`, `tracked` or `in-progress`
+  surfaces may be decided. `not-reached` reads were extended to those
+  surfaces where the same reading covers them, which cleared most "waits on a
+  verdict" states.
+
+Most of the other new decisions come from the lockfile links in
+`transitive.json` (30 links, 29 tools) and from CSL's new cited gaps (108
+consumer surfaces).
 
 ### Libraries and node-to-client (2026-10-20)
 
@@ -387,34 +408,35 @@ and hashing).
 one component unlocks. Each confirmed gap is one of three blockers:
 `upstream-fix` (the component behind it has no release with the support),
 `own-bump` (a release exists; the tool only raises its pin) or `own-gap` (a
-boundary component's own R2 gap). A tool is unlocked when all its upstream
+boundary component's own R2 gap, or a confirmed own-code decision). A tool is unlocked when all its upstream
 blockers come through fixed components and it has no gap of its own; an
 unlocked boundary component then counts as fixed for its own consumers, so
 chains such as Scalus → Mesh → dApps are followed. `downstream` lists tools
 with an unconfirmed shipped link to anything unlocked.
 
 Most SDKs wait on several services or libraries at once, so single fixes
-understate the effect. `fixOrder` adds, at each step, the component that
-unlocks the most tools on top of the earlier steps. Maestro's step is a
-migration, not a fix: its consumers move to another provider.
+understate the effect. A fixed component that itself waits on another one
+(Blockfrost and Koios read db-sync; Kupo can follow the chain through Ogmios)
+only becomes usable once that one is fixed too. `fixOrder` adds, at each step,
+the fix that unlocks the most tools on top of the earlier steps. A fix that
+cannot take effect yet is scored with the fixes it waits on, per component,
+and listed after them. Maestro's step is a migration, not a fix: its consumers
+move to another provider. Until 2026-10-26 the order treated a fix as usable
+on its own and put Blockfrost first, which it cannot be without db-sync.
 
 | Step | Fix | Tools unlocked (running total) |
 | --- | --- | --- |
-| 1 | Blockfrost | 13 |
-| 2 | Ogmios | 23 |
-| 3 | Koios | 32 |
-| 4 | Kupo | 39 |
-| 5 | db-sync | 46 |
-| 6 | Move off Maestro | 53 |
-| 7 | CSL | 58 |
-| 8 | Pallas | 63 |
-| 9 | gouroboros | 66 |
-| 10 | ledgerjs-hw-app-cardano | 68 |
-| 11 | cardano-js-sdk | 70 |
-| 12 | cardano-wallet | 72 |
-| 13 | cardano-client-lib | 74 |
-| 14 | Scalus | 76 |
-| 15–18 | cquisitor-lib, cardano-hw-interop-lib, CML, ouroboros-miniprotocols-ts | 81 |
+| 1 | db-sync | 3 |
+| 2 | Blockfrost | 16 |
+| 3 | Ogmios | 26 |
+| 4 | Koios | 36 |
+| 5 | Kupo | 44 |
+| 6 | Move off Maestro | 50 |
+| 7 | Pallas | 55 |
+| 8 | CSL | 59 |
+| 9 | Aiken (`uplc`) | 62 |
+| 10–15 | cardano-client-lib, Scalus, cardano-wallet, gouroboros, ledgerjs-hw-app-cardano, cardano-js-sdk | 74 |
+| 16–21 | cquisitor-lib, whisky, Adder, cardano-hw-interop-lib, CML, ouroboros-miniprotocols-ts | 81 |
 
 Tools that are boundary components with a gap of their own (Mesh, Lucid
 Evolution, Evolution SDK, yaci-store, Adder, Hydra and others) are never

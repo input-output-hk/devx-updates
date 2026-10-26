@@ -44,6 +44,6 @@ test("each tool touching a changed surface gets one hardfork state, most reached
   for (const s of states.filter((s) => s.state === "unverified")) assert.ok(!site.unlocks.blockers.find((b) => b.tool === s.tool)?.blockers.length, `${s.tool} has no confirmed blocker`);
   const pick = (list: typeof states, ids: string[]) => list.map((s) => s.tool).filter((t) => ids.includes(t));
   assert.deepEqual(pick(states, ["amaru", "mithril", "pallas"]), ["pallas", "mithril", "amaru"], "equal reach falls back to direct dependents");
-  assert.deepEqual(pick(states, ["blaze", "cardanosharp"]), ["blaze", "cardanosharp"], "equal counts fall back to the id");
-  assert.deepEqual(pick(toolStates(site, (id) => (id === "cardanosharp" ? 1 : 0)), ["blaze", "cardanosharp"]), ["cardanosharp", "blaze"], "the weight breaks ties");
+  assert.deepEqual(pick(states, ["blaze", "plutarch"]), ["blaze", "plutarch"], "equal counts fall back to the id");
+  assert.deepEqual(pick(toolStates(site, (id) => (id === "plutarch" ? 1 : 0)), ["blaze", "plutarch"]), ["plutarch", "blaze"], "the weight breaks ties");
 });

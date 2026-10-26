@@ -1,5 +1,5 @@
 import { worstStatus, type BoundaryRegister, type Status } from "./boundary";
-import { gapLeads, type LeadRegister } from "./leads";
+import { gapLeads, OWN, type LeadRegister } from "./leads";
 import type { ToolClassification } from "./surfaces";
 import { pinStep, type PinStep } from "./upgrades";
 
@@ -11,7 +11,8 @@ import { pinStep, type PinStep } from "./upgrades";
  * A confirmed gap is one of three blockers:
  * - `upstream-fix`: the component behind it has no release with the support; it must ship one.
  * - `own-bump`: a release with the support exists; the tool only has to raise its pin.
- * - `own-gap`: a boundary component's own code lacks the support (R2 `gap`); only its maintainers can clear it.
+ * - `own-gap`: the tool's own code lacks the support (an R2 `gap`, or a confirmed `own` lead for a tool outside R2);
+ *   only its maintainers can clear it.
  */
 export type BlockerKind = "upstream-fix" | "own-bump" | "own-gap";
 export interface Blocker { via: string; kind: BlockerKind; surfaces: string[]; pin?: string }
@@ -33,14 +34,21 @@ export function toolBlockers(tools: ToolClassification[], leads: LeadRegister, b
     if (own) {
       const surfaces = own.assessments.filter((a) => a.status === "gap").flatMap((a) => a.surfaces);
       if (surfaces.length) blockers.push({ via: tool.id, kind: "own-gap", surfaces });
+    } else {
+      // A tool outside R2 whose own code was read and found to break (lead `via: own`).
+      const surfaces = leads.leads.filter((l) => l.tool === tool.id && l.via === OWN && l.decision === "confirmed").flatMap((l) => l.surfaces);
+      if (surfaces.length) blockers.push({ via: tool.id, kind: "own-gap", surfaces });
     }
     const undetermined: ToolBlockers["undetermined"] = [];
     const cleared = new Set<string>();
     for (const lead of leads.leads.filter((l) => l.tool === tool.id)) {
+      if (lead.via === OWN && lead.decision !== "undetermined") continue;
       if (lead.decision === "not-reached") { cleared.add(lead.via); continue; }
       if (lead.decision === "undetermined") { undetermined.push({ via: lead.via, surfaces: lead.surfaces }); continue; }
       for (const surface of lead.surfaces) {
         const channel = tool.surfaces.find((s) => s.surface === surface)?.channels.find((c) => c.via.split("@")[0] === lead.via && c.readiness === "gap");
+        // A surface decided while its component has no verdict yet blocks nothing until that verdict is a gap.
+        if (!channel) continue;
         // A pinned gap (`via@version<first`) means a release with the support already exists.
         const pin = channel?.via.includes("@") ? channel.via : undefined;
         const kind: BlockerKind = pin ? "own-bump" : "upstream-fix";
@@ -75,28 +83,36 @@ const upstream = (t: ToolBlockers) => t.blockers.filter((b) => b.kind !== "own-b
 /**
  * Fix `component` and follow the consequences: a tool is unlocked when all its upstream-fix blockers come through
  * fixed components and it has no gap of its own; an unlocked boundary component is then treated as fixed for its own
- * consumers. Own-bump blockers stay listed as the pins each unlocked tool still has to raise.
+ * consumers. A fixed component that itself waits on another component (Blockfrost on db-sync) only becomes usable
+ * once that one is fixed too; until then it is listed as partial. Own-bump blockers stay listed as the pins each
+ * unlocked tool still has to raise.
  */
 export function unlocksOf(component: string | string[], all: ToolBlockers[], tools: ToolClassification[] = []): ComponentUnlocks {
   const fixes = typeof component === "string" ? [component] : component;
-  const fixed = new Map<string, string[]>(fixes.map((c) => [c, [c]]));
+  const repaired = new Set(fixes);
+  const known = new Set(all.map((t) => t.tool));
+  // A fix with no blockers of its own to wait on (a service rule, a component with only its own gap) is usable at once.
+  const fixed = new Map<string, string[]>(fixes.filter((c) => !known.has(c)).map((c) => [c, [c]]));
+  const needsOf = (t: ToolBlockers) => upstream(t).filter((b) => !(b.kind === "own-gap" && repaired.has(b.via)));
   const unlocks: Unlock[] = [];
   for (let changed = true; changed;) {
     changed = false;
     for (const t of all) {
       if (fixed.has(t.tool)) continue;
-      const needs = upstream(t);
-      if (!needs.length || needs.some((b) => b.kind === "own-gap" || !fixed.has(b.via))) continue;
-      const via = needs.map((b) => b.via).sort((a, b) => fixed.get(a)!.length - fixed.get(b)!.length).pop()!;
-      const path = [...fixed.get(via)!, t.tool];
+      const needs = needsOf(t);
+      if (needs.some((b) => b.kind === "own-gap" || !fixed.has(b.via))) continue;
+      if (!needs.length && !repaired.has(t.tool)) continue;
+      const via = needs.map((b) => b.via).sort((a, b) => fixed.get(a)!.length - fixed.get(b)!.length).pop();
+      const path = [...(via ? fixed.get(via)! : []), t.tool];
       fixed.set(t.tool, path);
-      unlocks.push({ tool: t.tool, depth: path.length - 1, path, bumps: t.blockers.filter((b) => b.kind === "own-bump").map((b) => b.pin!) });
+      // A fixed component is the fix itself, not something it unlocks; one with no gap of its own is unlocked like any tool.
+      if (!t.blockers.some((b) => b.kind === "own-gap" && repaired.has(b.via))) unlocks.push({ tool: t.tool, depth: path.length - 1, path, bumps: t.blockers.filter((b) => b.kind === "own-bump").map((b) => b.pin!) });
       changed = true;
     }
   }
   const partial = all
-    .filter((t) => !fixed.has(t.tool) && upstream(t).some((b) => fixed.has(b.via)))
-    .map((t) => ({ tool: t.tool, stillBlockedBy: [...new Set(upstream(t).filter((b) => !fixed.has(b.via) || b.kind === "own-gap").map((b) => (b.kind === "own-gap" ? `${b.via} (own gap)` : b.via)))] }));
+    .filter((t) => !fixed.has(t.tool) && (repaired.has(t.tool) || upstream(t).some((b) => fixed.has(b.via))))
+    .map((t) => ({ tool: t.tool, stillBlockedBy: [...new Set(needsOf(t).filter((b) => !fixed.has(b.via) || b.kind === "own-gap").map((b) => (b.kind === "own-gap" ? `${b.via} (own gap)` : b.via)))] }));
   const counted = new Set([...fixed.keys(), ...partial.map((p) => p.tool)]);
   const cleared = new Map(all.map((t) => [t.tool, new Set(t.cleared)]));
   const downstream = tools.filter((t) => !counted.has(t.id)).flatMap((t) => {
@@ -146,22 +162,47 @@ export function unlockReport(tools: ToolClassification[], leads: LeadRegister, b
   return { schemaVersion: 1, generatedAt: new Date().toISOString(), bumpReady, components, fixOrder: fixOrder(candidates, blockers), blockers };
 }
 
+/**
+ * Greedy: each step takes the fix that unlocks the most on top of the earlier steps. A fix that cannot take effect
+ * before other candidates are fixed (Blockfrost and Koios wait on db-sync) is scored together with those
+ * prerequisites, per component in the bundle, and the bundle is emitted prerequisites first, one step per component.
+ */
 function fixOrder(candidates: string[], blockers: ToolBlockers[]): UnlockReport["fixOrder"] {
   const order: UnlockReport["fixOrder"] = [];
   const chosen: string[] = [];
+  const pool = new Set(candidates);
+  const byTool = new Map(blockers.map((t) => [t.tool, t]));
+  // Candidates `id` waits on, in an order they can be fixed (each after the ones it waits on).
+  const prerequisites = (id: string): string[] => {
+    const out: string[] = [], seen = new Set<string>([id]);
+    const visit = (c: string) => {
+      for (const b of upstream(byTool.get(c) ?? { blockers: [] } as unknown as ToolBlockers)) {
+        if (b.kind !== "upstream-fix" || !pool.has(b.via) || seen.has(b.via)) continue;
+        seen.add(b.via);
+        visit(b.via);
+        out.push(b.via);
+      }
+    };
+    visit(id);
+    return out;
+  };
   let unlocked = new Set<string>();
-  for (let left = [...candidates]; left.length;) {
-    const scored = left.map((id) => {
-      const result = unlocksOf([...chosen, id], blockers);
-      return { id, tools: new Set(result.unlocks.map((u) => u.tool)), partial: result.partial.length };
-    }).sort((a, b) => b.tools.size - a.tools.size || a.partial - b.partial || (a.id < b.id ? -1 : 1));
+  while (pool.size) {
+    const scored = [...pool].map((id) => {
+      const bundle = [...prerequisites(id), id];
+      const result = unlocksOf([...chosen, ...bundle], blockers);
+      return { id, bundle, tools: new Set(result.unlocks.map((u) => u.tool)), partial: result.partial.length };
+    }).map((c) => ({ ...c, rate: (c.tools.size - unlocked.size) / c.bundle.length }))
+      .sort((a, b) => b.rate - a.rate || b.tools.size - a.tools.size || a.bundle.length - b.bundle.length || a.partial - b.partial || (a.id < b.id ? -1 : 1));
     const best = scored[0];
-    chosen.push(best.id);
-    left = left.filter((id) => id !== best.id);
-    order.push({ component: best.id, added: [...best.tools].filter((t) => !unlocked.has(t)).sort(), unlocked: best.tools.size });
-    unlocked = best.tools;
+    if (best.tools.size === unlocked.size) break; // nothing left unlocks anything more
+    for (const id of best.bundle) {
+      chosen.push(id);
+      pool.delete(id);
+      const tools = new Set(unlocksOf(chosen, blockers).unlocks.map((u) => u.tool));
+      order.push({ component: id, added: [...tools].filter((t) => !unlocked.has(t)).sort(), unlocked: tools.size });
+      unlocked = tools;
+    }
   }
-  // Fixes that unlock nothing more on top of all the others are not part of the order.
-  while (order.length && !order[order.length - 1].added.length) order.pop();
   return order;
 }

@@ -11,9 +11,18 @@ import type { ToolClassification } from "./surfaces";
 export const DECISIONS = ["confirmed", "not-reached", "undetermined"] as const;
 export type Decision = (typeof DECISIONS)[number];
 
+/**
+ * `via` of a decision about a tool's own code: whether the shipped lines behind its marker channels (raw CBOR codecs,
+ * era lists, certificate and parameter handling) break on Dijkstra. Boundary components are assessed in R2 instead.
+ */
+export const OWN = "own";
+
 export interface Lead {
   tool: string; revision: string;
-  /** Component or upstream package the gap is inherited from, as it prefixes the classification channel's `via`. */
+  /**
+   * Component or upstream package the gap is inherited from, as it prefixes the classification channel's `via`, or
+   * `own` for the tool's own code.
+   */
   via: string; surfaces: string[]; decision: Decision; summary: string; evidence: Citation[];
 }
 export interface LeadRegister { schemaVersion: 1; reviewed: string; method: string[]; leads: Lead[] }
@@ -66,21 +75,59 @@ export function gapLeads(tool: ToolClassification): Map<string, string[]> {
   return out;
 }
 
+/** Statuses that leave a consumer waiting on the component's verdict rather than on a read of its own code. */
+const OPEN = new Set(["no-evidence", "tracked", "in-progress"]);
+
+/**
+ * Shipped dependency or service channels whose component has no verdict yet (`no-evidence`, `tracked`,
+ * `in-progress`). Deciding them is optional: a `not-reached` read clears the wait whatever the component later
+ * turns out to be, while a reached surface stays waiting on the component.
+ */
+export function openLeads(tool: ToolClassification): Map<string, string[]> {
+  const out = new Map<string, string[]>();
+  for (const s of tool.surfaces) for (const c of s.channels) {
+    if (!OPEN.has(c.readiness) || c.scope !== "shipped" || c.channel === "marker" || c.channel === "implements") continue;
+    const via = c.via.split("@")[0];
+    if (via === tool.id) continue;
+    out.set(via, [...new Set([...(out.get(via) ?? []), s.surface])]);
+  }
+  return out;
+}
+
+/**
+ * Surfaces where a tool that is not a boundary component has shipped marker lines: its own code touches the changed
+ * data, and only reading those lines can say whether it breaks.
+ */
+export function ownLeads(tool: ToolClassification, boundary: ReadonlySet<string>): string[] {
+  if (boundary.has(tool.id)) return [];
+  return tool.surfaces.filter((s) => s.channels.some((c) => c.channel === "marker" && c.scope === "shipped")).map((s) => s.surface);
+}
+
 /** Counts are per tool, dependency and surface. */
 export interface LeadCoverage {
   reviewed: number; byDecision: Record<Decision, number>;
   unreviewed: { tool: string; via: string; surfaces: string[] }[]; stale: string[]; orphaned: string[];
+  /**
+   * Own-code surfaces without a decision, for tools with no confirmed gap: reading them is what can still move such a
+   * tool out of "not verified". Tools already confirmed broken are left out; their own code changes no verdict.
+   */
+  ownUnreviewed: { tool: string; surfaces: string[] }[];
   /** Tools with at least one confirmed gap. */
   confirmedTools: string[];
 }
 
-/** Which classification gaps have a decision, which decisions were read at an older revision, and which match no gap. */
-export function leadCoverage(register: LeadRegister, tools: ToolClassification[]): LeadCoverage {
+/**
+ * Which classification gaps have a decision, which decisions were read at an older revision, and which match no gap.
+ * Own-code decisions are matched against `ownLeads` when `boundary` (the R2 component ids) is given.
+ */
+export function leadCoverage(register: LeadRegister, tools: ToolClassification[], boundary?: ReadonlySet<string>): LeadCoverage {
   const decided = new Map<string, Lead>(register.leads.flatMap((l) => l.surfaces.map((s): [string, Lead] => [`${l.tool}\0${l.via}\0${s}`, l])));
-  const coverage: LeadCoverage = { reviewed: 0, byDecision: { confirmed: 0, "not-reached": 0, undetermined: 0 }, unreviewed: [], stale: [], orphaned: [], confirmedTools: [] };
-  const open = new Set(decided.keys());
+  const coverage: LeadCoverage = { reviewed: 0, byDecision: { confirmed: 0, "not-reached": 0, undetermined: 0 }, unreviewed: [], stale: [], orphaned: [], ownUnreviewed: [], confirmedTools: [] };
+  const open = new Set([...decided.keys()].filter((k) => boundary || k.split("\0")[1] !== OWN));
   const stale = new Set<string>(), confirmed = new Set<string>();
-  for (const tool of tools) for (const [via, surfaces] of gapLeads(tool)) {
+  const leadsOf = (tool: ToolClassification): [string, string[]][] => [...gapLeads(tool), ...(boundary ? [[OWN, ownLeads(tool, boundary)] as [string, string[]]] : [])];
+  const ownMissing = new Map<string, string[]>();
+  for (const tool of tools) for (const [via, surfaces] of leadsOf(tool)) {
     const missing: string[] = [];
     for (const surface of surfaces) {
       const key = `${tool.id}\0${via}\0${surface}`, lead = decided.get(key);
@@ -91,8 +138,20 @@ export function leadCoverage(register: LeadRegister, tools: ToolClassification[]
       if (lead.decision === "confirmed") confirmed.add(tool.id);
       if (lead.revision !== tool.revision) stale.add(`${tool.id}/${via}`);
     }
-    if (missing.length) coverage.unreviewed.push({ tool: tool.id, via, surfaces: missing });
+    if (!missing.length) continue;
+    if (via === OWN) ownMissing.set(tool.id, missing);
+    else coverage.unreviewed.push({ tool: tool.id, via, surfaces: missing });
   }
+  // Optional decisions on surfaces still waiting on a component's verdict are matched, not required.
+  for (const tool of tools) for (const [via, surfaces] of openLeads(tool)) for (const surface of surfaces) {
+    const key = `${tool.id}\0${via}\0${surface}`;
+    if (!open.delete(key)) continue;
+    const lead = decided.get(key)!;
+    coverage.reviewed++;
+    coverage.byDecision[lead.decision]++;
+    if (lead.revision !== tool.revision) stale.add(`${tool.id}/${via}`);
+  }
+  coverage.ownUnreviewed = [...ownMissing].filter(([tool]) => !confirmed.has(tool)).map(([tool, surfaces]) => ({ tool, surfaces }));
   coverage.orphaned = [...open].map((k) => k.split("\0").join("/"));
   coverage.stale = [...stale];
   coverage.confirmedTools = [...confirmed].sort();

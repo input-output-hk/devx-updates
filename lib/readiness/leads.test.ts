@@ -53,3 +53,20 @@ test("the committed lead register has no stale or orphaned decision for the comm
   // Gaps not yet read are allowed and shown as such; a decision must still match a gap at the scanned revision.
   assert.deepEqual([coverage.stale, coverage.orphaned], [[], []]);
 });
+
+test("own-code decisions cover a non-boundary tool's marker surfaces; open surfaces may be decided", () => {
+  // Typed as the helper's channel union member so it fits the fixture builder; the value is a marker.
+  const marker = { channel: "marker" as "dependency", via: "marker:raw-cbor-codec", readiness: "unassessed" as "gap", lines: 2, scope: "shipped" as const };
+  const tools = [
+    tool("wallet", [["transaction-encoding", [marker, channel("csl", "shipped", "no-evidence")]], ["block-encoding", [marker]]]),
+    tool("codec", [["transaction-encoding", [marker]]], "implements"),
+  ];
+  const own = lead({ tool: "wallet", via: "own", surfaces: ["transaction-encoding"], decision: "not-reached" });
+  const open = lead({ tool: "wallet", via: "csl", surfaces: ["transaction-encoding"], decision: "not-reached" });
+  const coverage = leadCoverage(parseLeadRegister(register([own, open]), changes), tools, new Set(["codec"]));
+  assert.deepEqual(coverage.ownUnreviewed, [{ tool: "wallet", surfaces: ["block-encoding"] }], "a boundary component's own code is R2's, not a lead");
+  assert.deepEqual(coverage.orphaned, [], "a decision on a surface waiting for its component's verdict is matched");
+  assert.deepEqual(coverage.unreviewed, [], "open surfaces are optional");
+  const stray = leadCoverage(parseLeadRegister(register([lead({ tool: "codec", via: "own", surfaces: ["transaction-encoding"] })]), changes), tools, new Set(["codec"]));
+  assert.deepEqual(stray.orphaned, ["codec/own/transaction-encoding"]);
+});

@@ -26,6 +26,7 @@ import { changesBySurface, parseChangeRegister, verifyCitations, type ChangeRegi
 import { parseBoundaryRegister, statusSummary, verifyBoundarySources, type BoundaryRegister } from "../../lib/readiness/boundary";
 import { classifyCatalog, reclassifyCatalog, type ClassificationRegister } from "../../lib/readiness/surface-collect";
 import { leadCoverage, parseLeadRegister, verifyLeadSources } from "../../lib/readiness/leads";
+import { collectTransitive, type TransitiveRegister } from "../../lib/readiness/transitive";
 import { unlockReport, unlocksOf, toolBlockers } from "../../lib/readiness/unlocks";
 import { parseUpgradeRegister, upgradeCoverage, verifyUpgradeSources } from "../../lib/readiness/upgrades";
 import { targetVersions } from "../../lib/readiness/surfaces";
@@ -95,6 +96,8 @@ diff            --before old-snapshot.json | --before-ref git-ref [--output chan
 check-changes   [--input content/readiness/dijkstra/changes.json] [--verify-sources]
 check-boundary  [--input content/readiness/dijkstra/boundary.json] [--verify-sources]
 classify-surfaces [--tools a,b] [--output content/readiness/dijkstra/classification.json] [--state .readiness] [--reclassify]
+transitive      [--tools a,b] [--output content/readiness/dijkstra/transitive.json]
+                Boundary components reached only through lockfiles; merged by classify-surfaces --reclassify
 check-leads     [--input content/readiness/dijkstra/leads.json] [--verify-sources]
 check-upgrades  [--verify-sources]
                 Own era handling of every bump-ready tool (content/readiness/dijkstra/upgrades.json)
@@ -162,9 +165,11 @@ Runnable collectors: ${COLLECT_ADAPTERS.join(", ")}.`);
     const changes = parseChangeRegister(readJson("content/readiness/dijkstra/changes.json"));
     const boundary = parseBoundaryRegister(readJson("content/readiness/dijkstra/boundary.json"), changes);
     const output = values.output ?? "content/readiness/dijkstra/classification.json";
+    const transitiveFile = "content/readiness/dijkstra/transitive.json";
+    const transitive = existsSync(transitiveFile) ? (readJson(transitiveFile) as TransitiveRegister).links : undefined;
     if (values.reclassify) {
       // Same revisions, current rules and registers: keeps lead decisions valid.
-      const register = await reclassifyCatalog(readJson(output) as ClassificationRegister, boundary, changes, { stateDir: values.state!, log: (line) => console.error(line) });
+      const register = await reclassifyCatalog(readJson(output) as ClassificationRegister, boundary, changes, { stateDir: values.state!, log: (line) => console.error(line), transitive });
       writeFileSync(output, `${JSON.stringify(register, null, 1)}\n`);
       console.log(JSON.stringify({ tools: register.tools.length, byExposure: register.summary, reclassified: true }));
       return;
@@ -172,9 +177,28 @@ Runnable collectors: ${COLLECT_ADAPTERS.join(", ")}.`);
     const wanted = values.tools?.split(",");
     const tools = store.load().tools.filter((t) => !wanted || wanted.includes(t.id));
     if (wanted && tools.length !== wanted.length) throw new Error("--tools names an unknown tool");
-    const register = await classifyCatalog(tools.map((t) => ({ id: t.id, repo: t.repo })), boundary, changes, { stateDir: values.state!, log: (line) => console.error(line) });
+    const register = await classifyCatalog(tools.map((t) => ({ id: t.id, repo: t.repo })), boundary, changes, { stateDir: values.state!, log: (line) => console.error(line), transitive });
     writeFileSync(output, `${JSON.stringify(register, null, 1)}\n`);
     console.log(JSON.stringify({ tools: register.tools.length, byExposure: register.summary }));
+    return;
+  }
+  if (command === "transitive") {
+    // Lockfiles at the classified revisions; run classify-surfaces --reclassify afterwards to merge the links.
+    const output = values.output ?? "content/readiness/dijkstra/transitive.json";
+    const classification = readJson("content/readiness/dijkstra/classification.json") as ClassificationRegister;
+    const links = await collectTransitive(classification, { tools: values.tools?.split(","), log: (line) => console.error(line) });
+    const previous = values.tools && existsSync(output) ? (readJson(output) as TransitiveRegister).links.filter((l) => !values.tools!.split(",").includes(l.tool)) : [];
+    const register: TransitiveRegister = {
+      schemaVersion: 1, generatedAt: new Date().toISOString(),
+      method: [
+        "Lockfiles committed at each tool's classified revision (package-lock, npm-shrinkwrap, pnpm-lock, yarn.lock, bun.lock, Cargo.lock, go.sum, poetry.lock, uv.lock, gradle.lockfile, packages.lock.json; test, example and vendored paths excluded) are read for packages of boundary components.",
+        "A component the tool already declares in a manifest is not repeated. npm lockfile entries marked dev are skipped; other formats do not mark development-only packages, so the lead decision settles whether shipped code reaches the component.",
+        "Each link is merged into classification.json as a shipped dependency hit of rule transitive:<component> and inherits the component's readiness like a direct dependency.",
+      ],
+      links: [...previous, ...links].sort((a, b) => (a.tool < b.tool ? -1 : a.tool > b.tool ? 1 : a.component < b.component ? -1 : 1)),
+    };
+    writeFileSync(output, `${JSON.stringify(register, null, 1)}\n`);
+    console.log(JSON.stringify({ links: register.links.length, tools: new Set(register.links.map((l) => l.tool)).size }));
     return;
   }
   if (command === "unlocks") {
@@ -238,7 +262,8 @@ Runnable collectors: ${COLLECT_ADAPTERS.join(", ")}.`);
     const failures = values["verify-sources"] ? await verifyLeadSources(register, (repo, revision, path) => githubSource(repo, revision, path)) : [];
     for (const failure of failures) console.error(failure);
     if (failures.length) throw new Error(`${failures.length} lead citations no longer match their pinned sources`);
-    const coverage = leadCoverage(register, classification.tools);
+    const boundary = parseBoundaryRegister(readJson("content/readiness/dijkstra/boundary.json"), changes);
+    const coverage = leadCoverage(register, classification.tools, new Set(boundary.components.map((c) => c.id)));
     console.log(JSON.stringify({ leads: register.leads.length, sourcesVerified: Boolean(values["verify-sources"]), ...coverage }, null, 2));
     if (coverage.orphaned.length) throw new Error(`Leads match no classified gap: ${coverage.orphaned.join(", ")}`);
     return;

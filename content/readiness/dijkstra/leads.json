@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "reviewed": "2026-10-22",
+ "reviewed": "2026-10-26",
  "method": [
   "Every shipped gap channel in classification.json was read at the classified revision in the tool's shipped code (tests, examples, benchmarks, demos and CI scripts excluded).",
   "confirmed: a shipped path uses the gapped capability, so the tool fails or misbehaves after the hardfork until the dependency moves; not-reached: shipped code uses the dependency only outside it; undetermined: reading cannot decide.",
@@ -8,7 +8,10 @@
   "Service links are decided per capability used: Ogmios chain-sync reaches block, transaction and era surfaces, submission reaches transaction and era, evaluation reaches Plutus and transaction, and the parameter query reaches protocol parameters; any read of Kupo or db-sync chain data reaches block, transaction and era (neither indexes Dijkstra blocks), db-sync parameter and pool surfaces only through epoch_param and pool tables; Blockfrost era identity only through /network/eras and parameters through the epoch parameter endpoints; Koios era identity through era fields (/tip, block and epoch info) and parameters through /epoch_params or /cli_protocol_params. Hosted Blockfrost and Koios consumers inherit the self-hosted verdicts.",
   "gouroboros era identity and block encoding (R4 devnet) are reached when shipped code passes raw transaction bytes to DetermineTransactionType or decodes blocks or headers received from a node; building and serializing its own transactions with gouroboros types does not reach them.",
   "Pallas era identity and block encoding (R4 devnet, 2026-10-22) are reached when shipped code decodes blocks or headers from a chain or node with MultiEraBlock or MultiEraHeader, or passes externally supplied transaction bytes to MultiEraTx::decode, which does not detect Dijkstra's three-element form; decode_for_era with an era the caller names, and Pallas primitives, addresses, keys and hashing, do not reach them.",
-  "Maestro is deprecated (2026-10-22) and will not gain Dijkstra support: any shipped call to it reaches all three provider surfaces (era identity, transactions, protocol parameters), so it is decided per tool rather than per capability; mentions in documentation, data or an unused client are not reached."
+  "Maestro is deprecated (2026-10-22) and will not gain Dijkstra support: any shipped call to it reaches all three provider surfaces (era identity, transactions, protocol parameters), so it is decided per tool rather than per capability; mentions in documentation, data or an unused client are not reached.",
+  "Own code (via \"own\", 2026-10-26): for tools that are not boundary components, the shipped lines behind marker channels (raw CBOR codecs, era names, certificates, cost models and parameters, script contexts, node-to-client and genesis handling) were read per surface. confirmed: the tool's own code decodes Dijkstra data it does not control (chain blocks, external transactions, reference scripts, parameter sets) with a closed Conway-or-earlier view, or emits encodings Dijkstra rejects (deposit-less stake certificates types 0 and 1). not-reached: the lines serve the tool's own V1-V3 scripts, unchanged encodings (addresses, values, datums, CIP-30 answers), emulators or local clusters, or are not code. A confirmed own decision is an own gap: only the tool's maintainers can clear it.",
+  "Transitive links (transitive.json, 2026-10-26): a component found only in a lockfile is decided like a direct dependency, through the package that pulls it in; evaluating scripts with Aiken's uplc crate reaches Aiken's PlutusV4 gap, as Scalus evaluation does.",
+  "Surfaces whose component has no verdict yet (no-evidence, tracked, in-progress) may also be decided: not-reached clears the consumer's wait whatever the component turns out to be; where the consumer does reach the capability it keeps waiting on the component (2026-10-26)."
  ],
  "leads": [
   {
@@ -642,7 +645,11 @@
    "revision": "cb8c6b6c5b92bb32825d5504fb4714d9d3da50ba",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "The SDK uses CSL only to derive addresses from account keys.",
@@ -661,7 +668,11 @@
    "revision": "e6a22b69b42eae7bfee9fd6779cf297ba50283f3",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "CSL is used for metadata, anchors and CIP-8 verification, not Plutus scripts or foreign transactions.",
@@ -687,7 +698,13 @@
    "revision": "3cc4a7448d57f87dc01227f56ecbe04ea4c72a94",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "block-encoding",
+    "era-identity",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "Uses CSL for keys, addresses and signatures over supplied bytes.",
@@ -706,7 +723,11 @@
    "revision": "9fe85c6552770915b767c966b3663234b22674e2",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "Only the bundled demo app imports CSL; the MCP server does not.",
@@ -725,7 +746,13 @@
    "revision": "3727b4fe92f17d5203e58b69860de74f9f633e38",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "block-encoding",
+    "era-identity",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "voting-tools-rs uses CSL's key and signature types only.",
@@ -744,7 +771,11 @@
    "revision": "b95783e64082185f8cbffcf070df2358bab4275b",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "The submitter builds its own PlutusV3 transaction; PlutusV4 is additive.",
@@ -763,7 +794,11 @@
    "revision": "10ac16590b45f3b9d5815641f5dd41e93bb890c1",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "Builds native-script and payment transactions; no Plutus script handling.",
@@ -957,7 +992,11 @@
    "revision": "826b5fc5cf6ee77d40936d403301b5a65ec85ab9",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "Declared by the integration app, whose sources do not import it.",
@@ -3431,7 +3470,8 @@
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
-    "protocol-parameters"
+    "protocol-parameters",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "Blockfrost appears only as an IPFS gateway URL inside one token's metadata.",
@@ -5155,7 +5195,8 @@
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
-    "protocol-parameters"
+    "protocol-parameters",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "The service appears only in a funding proposal document and in generated schema text; the repository ships scripts, not service calls.",
@@ -5175,7 +5216,8 @@
    "via": "koios",
    "surfaces": [
     "era-identity",
-    "protocol-parameters"
+    "protocol-parameters",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "The service appears only in a funding proposal document and in generated schema text; the repository ships scripts, not service calls.",
@@ -6024,7 +6066,7 @@
      "revision": "e5da9457ab2ad0656b6819cc1c844fee487d113d",
      "path": "packages/lib/cardano-provider-core/src/provider/blockfrost-tx-evaluation-provider.ts",
      "line": 17,
-     "quote": "// Blockfrost `POST /utils/txs/evaluate` \u2014 Ogmios' EvaluateTx"
+     "quote": "// Blockfrost `POST /utils/txs/evaluate` — Ogmios' EvaluateTx"
     }
    ]
   },
@@ -6045,7 +6087,7 @@
      "revision": "e5da9457ab2ad0656b6819cc1c844fee487d113d",
      "path": "packages/lib/cardano-provider-core/src/provider/blockfrost-tx-evaluation-provider.ts",
      "line": 17,
-     "quote": "// Blockfrost `POST /utils/txs/evaluate` \u2014 Ogmios' EvaluateTx"
+     "quote": "// Blockfrost `POST /utils/txs/evaluate` — Ogmios' EvaluateTx"
     }
    ]
   },
@@ -6316,7 +6358,8 @@
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
-    "protocol-parameters"
+    "protocol-parameters",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "blockfrost-js is declared but no shipped package imports it.",
@@ -6435,7 +6478,8 @@
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
-    "protocol-parameters"
+    "protocol-parameters",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "The registry reads assets and transaction UTxOs from Blockfrost; no parameters or eras.",
@@ -7082,7 +7126,8 @@
    "via": "koios",
    "surfaces": [
     "era-identity",
-    "protocol-parameters"
+    "protocol-parameters",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "The pebble-cli project initialiser only offers the provider by name; the toolchain itself calls no chain service.",
@@ -7558,7 +7603,8 @@
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
-    "protocol-parameters"
+    "protocol-parameters",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "The extension reads accounts, address UTxOs and assets from Blockfrost; no parameters or eras.",
@@ -8813,7 +8859,8 @@
    "revision": "83609543b82650635403716479ec2fdf018ef106",
    "via": "julc",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "plutus-script-context"
    ],
    "decision": "not-reached",
    "summary": "Uses JuLC to compile its own PlutusV3 validators; existing versions stay valid after the fork.",
@@ -8874,7 +8921,9 @@
     "plutus-language",
     "protocol-parameters",
     "stake-pool-registration",
-    "transaction-encoding"
+    "transaction-encoding",
+    "era-identity",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "Used for Plutus data types and its own script contexts (V1/V2), not to decode chain transactions.",
@@ -8893,7 +8942,9 @@
    "revision": "bb67fab42236b925a25f1a24f4ebbbdcbde39aa8",
    "via": "plu-ts",
    "surfaces": [
-    "plutus-script-context"
+    "plutus-script-context",
+    "plutus-language",
+    "transaction-encoding"
    ],
    "decision": "not-reached",
    "summary": "Used for Plutus data types and its own script contexts (V1/V2), not to decode chain transactions.",
@@ -8959,7 +9010,9 @@
     "plutus-language",
     "protocol-parameters",
     "stake-pool-registration",
-    "transaction-encoding"
+    "transaction-encoding",
+    "era-identity",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "PyCardano is only a declared dependency; no shipped module decodes chain data with it.",
@@ -8982,7 +9035,8 @@
     "plutus-language",
     "protocol-parameters",
     "stake-pool-registration",
-    "transaction-encoding"
+    "transaction-encoding",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "Only the PureScript runtime's package set pins cardano-data-lite (through CTL); LambdaBuffers generates types, not transactions.",
@@ -9001,7 +9055,12 @@
    "revision": "1db995cd2646fdef9e0d2587907de52c335dd3c2",
    "via": "cardano-transaction-lib-ctl",
    "surfaces": [
-    "plutus-language"
+    "plutus-language",
+    "era-identity",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "CTL is only in the PureScript runtime's package set.",
@@ -9617,7 +9676,9 @@
     "plutus-language",
     "protocol-parameters",
     "stake-pool-registration",
-    "transaction-encoding"
+    "transaction-encoding",
+    "era-identity",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "Builds and submits its own Conway-shaped transactions; nothing Dijkstra-only is decoded.",
@@ -9702,7 +9763,10 @@
    "surfaces": [
     "protocol-parameters",
     "stake-pool-registration",
-    "transaction-encoding"
+    "transaction-encoding",
+    "era-identity",
+    "plutus-language",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "Builds and submits its own Conway-shaped transactions; nothing Dijkstra-only is decoded.",
@@ -9823,7 +9887,11 @@
    "via": "cardanosharp",
    "surfaces": [
     "plutus-language",
-    "transaction-encoding"
+    "transaction-encoding",
+    "era-identity",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "Uses CardanoSharp for keys, addresses, coin selection and its own transactions; it decodes no chain transactions with it.",
@@ -10325,7 +10393,8 @@
     "plutus-language",
     "protocol-parameters",
     "stake-pool-registration",
-    "transaction-encoding"
+    "transaction-encoding",
+    "transaction-rules"
    ],
    "decision": "not-reached",
    "summary": "Uses cardano-client-lib for utilities, crypto or building its own transactions only.",
@@ -10754,10 +10823,16 @@
    "via": "pallas",
    "surfaces": [
     "block-encoding",
-    "era-identity"
+    "era-identity",
+    "consensus-participation",
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
    ],
    "decision": "not-reached",
-   "summary": "The wallet uses Pallas for keys, addresses and hashing; chain data comes from its UTxO RPC provider.",
+   "summary": "The wallet uses Pallas for keys, addresses and hashing; chain data comes from its UTxO RPC provider. Transactions it signs come from tx3 in Conway form, which stays valid after the fork.",
    "evidence": [
     {
      "repo": "txpipe/cshell",
@@ -10896,10 +10971,16 @@
    "via": "pallas",
    "surfaces": [
     "block-encoding",
-    "era-identity"
+    "era-identity",
+    "consensus-participation",
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
    ],
    "decision": "not-reached",
-   "summary": "The Cardano compiler builds transactions with Pallas types and hashes them; it decodes no blocks and detects no eras.",
+   "summary": "The Cardano compiler builds transactions with Pallas types and hashes them; it decodes no blocks and detects no eras. Its own Conway-form transactions stay valid after the fork.",
    "evidence": [
     {
      "repo": "tx3-lang/tx3",
@@ -11254,6 +11335,2733 @@
      "path": "Sources/CardanoKit/Provider/Maestro/MaestroDataProvider.swift",
      "line": 45,
      "quote": "path: \"/v1/protocol-parameters\","
+    }
+   ]
+  },
+  {
+   "tool": "plutip",
+   "revision": "a3d4f4548933f0d52e27456af510bcf0b516f3b5",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "node-configuration",
+    "node-to-client-protocol",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Launches a private cluster from its own pinned node and genesis files and drives it through that node's libraries; nothing it runs follows the public chain.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/plutip",
+     "revision": "a3d4f4548933f0d52e27456af510bcf0b516f3b5",
+     "path": "src/Plutip/Launch/Cluster.hs",
+     "line": 1617,
+     "quote": "withAddedKey \"ConwayGenesisFile\" conwayGenesis"
+    },
+    {
+     "repo": "mlabs-haskell/plutip",
+     "revision": "a3d4f4548933f0d52e27456af510bcf0b516f3b5",
+     "path": "plutip-core.cabal",
+     "line": 48,
+     "quote": "cborg"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-up",
+   "revision": "1149903ef0161c71be248852c861ae0c4211c5d5",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "fxamacker/cbor is an indirect Go module; cardano-up installs and runs services and decodes no chain data.",
+   "evidence": [
+    {
+     "repo": "blinklabs-io/cardano-up",
+     "revision": "1149903ef0161c71be248852c861ae0c4211c5d5",
+     "path": "go.mod",
+     "line": 48,
+     "quote": "github.com/fxamacker/cbor/v2"
+    }
+   ]
+  },
+  {
+   "tool": "gastronomy",
+   "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+   "via": "own",
+   "surfaces": [
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Debugging a transaction by id fetches its CBOR from Blockfrost and decodes it with Pallas's Conway MintedTx, which cannot read the Dijkstra three-element form or its new body keys.",
+   "evidence": [
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/src/uplc.rs",
+     "line": 114,
+     "quote": "let multi_era_tx = MintedTx::decode_fragment(&tx_bytes).unwrap();"
+    },
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/src/chain_query.rs",
+     "line": 137,
+     "quote": "let tx_bytes = hex::decode(value[\"cbor\"].as_str().unwrap())?;"
+    }
+   ]
+  },
+  {
+   "tool": "gastronomy",
+   "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+   "via": "own",
+   "surfaces": [
+    "plutus-language"
+   ],
+   "decision": "confirmed",
+   "summary": "Reference scripts of the inputs are rebuilt from Blockfrost's script type with arms for PlutusV1-V3 only; a PlutusV4 reference script has no case.",
+   "evidence": [
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/src/chain_query.rs",
+     "line": 214,
+     "quote": "let script = match script_version {"
+    },
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/src/chain_query.rs",
+     "line": 221,
+     "quote": "Type::PlutusV3 => {"
+    }
+   ]
+  },
+  {
+   "tool": "gastronomy",
+   "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "plutus-script-context",
+    "protocol-parameters"
+   ],
+   "decision": "not-reached",
+   "summary": "Script contexts come from Aiken's uplc crate (its own lead); cost models are uplc's defaults and no blocks are decoded.",
+   "evidence": [
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/src/uplc.rs",
+     "line": 25,
+     "quote": "tx::{script_context::PlutusScript, tx_to_programs},"
+    },
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/src/uplc.rs",
+     "line": 205,
+     "quote": "CostModel::default(),"
+    }
+   ]
+  },
+  {
+   "tool": "mockfrost",
+   "revision": "bb67fab42236b925a25f1a24f4ebbbdcbde39aa8",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "plutus-script-context",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CBOR and script-context lines are in the CI workflow and the contest benchmark contracts; the mock server's own code builds no script contexts and decodes no blocks.",
+   "evidence": [
+    {
+     "repo": "OpShin/mockfrost",
+     "revision": "bb67fab42236b925a25f1a24f4ebbbdcbde39aa8",
+     "path": ".github/workflows/python-app.yml",
+     "line": 37,
+     "quote": "cbor2"
+    },
+    {
+     "repo": "OpShin/mockfrost",
+     "revision": "bb67fab42236b925a25f1a24f4ebbbdcbde39aa8",
+     "path": "contest/contracts/gift/impl/opshin/gift.py",
+     "line": 4,
+     "quote": "ctx: ScriptContext"
+    }
+   ]
+  },
+  {
+   "tool": "cshell",
+   "revision": "93b36fe4835990760c45b0d059936faacc452871",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "plutus-language",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "The explorer renders UTxO RPC protobuf messages, not chain CBOR; the wallet decodes only transactions it built through tx3 to sign them, and Conway-form transactions stay valid after the fork.",
+   "evidence": [
+    {
+     "repo": "txpipe/cshell",
+     "revision": "93b36fe4835990760c45b0d059936faacc452871",
+     "path": "src/explorer/widgets/tabs/transactions.rs",
+     "line": 17,
+     "quote": "use utxorpc::spec::cardano::{"
+    },
+    {
+     "repo": "txpipe/cshell",
+     "revision": "93b36fe4835990760c45b0d059936faacc452871",
+     "path": "src/wallet/types.rs",
+     "line": 153,
+     "quote": "let mut decoded: Tx = minicbor::decode(&tx)?;"
+    }
+   ]
+  },
+  {
+   "tool": "lambda-buffers",
+   "revision": "1db995cd2646fdef9e0d2587907de52c335dd3c2",
+   "via": "own",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context"
+   ],
+   "decision": "not-reached",
+   "summary": "Generates Plutus V1-V3 type bindings for scripts users write; existing scripts keep working, and no chain data is decoded.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/lambda-buffers",
+     "revision": "1db995cd2646fdef9e0d2587907de52c335dd3c2",
+     "path": "runtimes/haskell/lbr-plutus/src/LambdaBuffers/Runtime/Plutus/Eq.hs",
+     "line": 5,
+     "quote": "import PlutusLedgerApi.V3 qualified as PlutusV3"
+    }
+   ]
+  },
+  {
+   "tool": "tx3",
+   "revision": "dabcab43c1dafb92a8cca6a12e5d7a561451ea80",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "plutus-language",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Compiles its own transactions; the language-view table stops at PlutusV3, which limits new scripts but leaves V1-V3 transactions valid, and decoded CBOR is limited to script references it is given.",
+   "evidence": [
+    {
+     "repo": "tx3-lang/tx3",
+     "revision": "dabcab43c1dafb92a8cca6a12e5d7a561451ea80",
+     "path": "crates/tx3-cardano/src/compile/script_data.rs",
+     "line": 20,
+     "quote": "PlutusV1=0, PlutusV2=1, PlutusV3=2"
+    },
+    {
+     "repo": "tx3-lang/tx3",
+     "revision": "dabcab43c1dafb92a8cca6a12e5d7a561451ea80",
+     "path": "crates/tx3-cardano/src/coercion.rs",
+     "line": 119,
+     "quote": "minicbor::decode::<primitives::ScriptRef>(&bytes)"
+    }
+   ]
+  },
+  {
+   "tool": "catalyst-core",
+   "revision": "3727b4fe92f17d5203e58b69860de74f9f633e38",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "node-to-client-protocol",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Pool-registration lines are the Jormungandr explorer schema, node-to-client lines are diagrams, and CBOR decoding in voting-tools-rs reads registration metadata, which Dijkstra does not change.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/catalyst-core",
+     "revision": "3727b4fe92f17d5203e58b69860de74f9f633e38",
+     "path": "src/catalyst-toolbox/catalyst-toolbox/resources/explorer/schema.graphql",
+     "line": 70,
+     "quote": "union Certificate = StakeDelegation"
+    },
+    {
+     "repo": "cardano-foundation/catalyst-core",
+     "revision": "3727b4fe92f17d5203e58b69860de74f9f633e38",
+     "path": "src/voting-tools-rs/src/data/mod.rs",
+     "line": 7,
+     "quote": "use ciborium::value::Value;"
+    }
+   ]
+  },
+  {
+   "tool": "clb",
+   "revision": "867ff70b4d3086f728733f25509692cda41ea0ef",
+   "via": "own",
+   "surfaces": [
+    "node-configuration",
+    "plutus-language",
+    "plutus-script-context",
+    "protocol-parameters"
+   ],
+   "decision": "not-reached",
+   "summary": "An in-memory ledger emulator fixed to its own Conway parameters; it follows no chain, so the fork does not change what it does.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/clb",
+     "revision": "867ff70b4d3086f728733f25509692cda41ea0ef",
+     "path": "clb/src/Clb/Params.hs",
+     "line": 127,
+     "quote": "defaultCostModels :: Alonzo.CostModels"
+    },
+    {
+     "repo": "mlabs-haskell/clb",
+     "revision": "867ff70b4d3086f728733f25509692cda41ea0ef",
+     "path": "clb/src/Clb/Params.hs",
+     "line": 145,
+     "quote": "Plutus.PlutusV3 -> error \"PlutusV3 is not yet supported.\""
+    }
+   ]
+  },
+  {
+   "tool": "hebi",
+   "revision": "c598196f2d20b5a053d1a0dedd7e551d74299cac",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "plutus-script-context",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CBOR wraps the compiled contract and the script-context lines are the V2 ledger types for scripts users write; no chain data is decoded.",
+   "evidence": [
+    {
+     "repo": "OpShin/hebi",
+     "revision": "c598196f2d20b5a053d1a0dedd7e551d74299cac",
+     "path": "hebi/builder.py",
+     "line": 59,
+     "quote": "cbor_wrapped = cbor2.dumps(contract)"
+    },
+    {
+     "repo": "OpShin/hebi",
+     "revision": "c598196f2d20b5a053d1a0dedd7e551d74299cac",
+     "path": "hebi/ledger/api_v2.py",
+     "line": 38,
+     "quote": "ScriptContext"
+    }
+   ]
+  },
+  {
+   "tool": "plutus-simple-model",
+   "revision": "8474a3e725061afc8f9401596abb2c097d710bc1",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "plutus-script-context",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "An emulator on cardano-ledger's Alonzo/Babbage types with its own parameters; it follows no chain.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/plutus-simple-model",
+     "revision": "8474a3e725061afc8f9401596abb2c097d710bc1",
+     "path": "cardano-simple/src/Cardano/Simple/Eval.hs",
+     "line": 130,
+     "quote": "HasField \"_costmdls\" (Ledger.PParams era) Alonzo.CostModels"
+    }
+   ]
+  },
+  {
+   "tool": "zeroj",
+   "revision": "83609543b82650635403716479ec2fdf018ef106",
+   "via": "own",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context"
+   ],
+   "decision": "not-reached",
+   "summary": "Validators are compiled for PlutusV3 with julc; script-context lines are the site's documentation scripts. Existing V3 scripts keep working.",
+   "evidence": [
+    {
+     "repo": "bloxbean/zeroj",
+     "revision": "83609543b82650635403716479ec2fdf018ef106",
+     "path": "zeroj-onchain-julc/src/main/java/org/zeroj/onchain/julc/groth16/codec/Groth16AuthenticatedStateTransitionScriptFactory.java",
+     "line": 39,
+     "quote": "COMPILER_PROFILE = \"julc-0.1.0-pre18/plutus-v3\""
+    }
+   ]
+  },
+  {
+   "tool": "cardanosharp-blazor",
+   "revision": "2538aacefbc9e5e7ca0d257cb3e012aa70ef8e66",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CBOR is used to read CIP-30 wallet answers (balances, UTxOs), whose encoding Dijkstra keeps.",
+   "evidence": [
+    {
+     "repo": "CardanoSharp/cardanosharp-blazor",
+     "revision": "2538aacefbc9e5e7ca0d257cb3e012aa70ef8e66",
+     "path": "CardanoSharp.Blazor/CardanoSharp.Blazor.Components/Services/WalletConnectorService.cs",
+     "line": 17,
+     "quote": "using PeterO.Cbor2;"
+    }
+   ]
+  },
+  {
+   "tool": "offchain-metadata-tools",
+   "revision": "91eba72d6e5e3b17cd49f625c9546f2c82df5a65",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "cborg is a library dependency of the token metadata creator, which signs off-chain metadata and decodes no chain data.",
+   "evidence": [
+    {
+     "repo": "input-output-hk/offchain-metadata-tools",
+     "revision": "91eba72d6e5e3b17cd49f625c9546f2c82df5a65",
+     "path": "token-metadata-creator/token-metadata-creator.cabal",
+     "line": 45,
+     "quote": "cborg"
+    }
+   ]
+  },
+  {
+   "tool": "adalite",
+   "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
+   "via": "own",
+   "surfaces": [
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Stake key registration and deregistration are encoded as certificate types 0 and 1. Dijkstra rejects deposit-less stake (de)registration certificates (types 0 and 1); on the devnet a Conway transaction carrying one is refused after the fork (cross-era-submission).",
+   "evidence": [
+    {
+     "repo": "vacuumlabs/adalite",
+     "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
+     "path": "app/frontend/types.ts",
+     "line": 50,
+     "quote": "STAKING_KEY_REGISTRATION = 0,"
+    },
+    {
+     "repo": "vacuumlabs/adalite",
+     "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
+     "path": "app/frontend/wallet/shelley/shelley-transaction.ts",
+     "line": 178,
+     "quote": "return [TxCertificateKey.STAKING_KEY_REGISTRATION, stakeCredential]"
+    },
+    {
+     "repo": "vacuumlabs/adalite",
+     "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
+     "path": "app/frontend/wallet/shelley/shelley-transaction.ts",
+     "line": 189,
+     "quote": "return [TxCertificateKey.STAKING_KEY_DEREGISTRATION, stakeCredential]"
+    }
+   ]
+  },
+  {
+   "tool": "adalite",
+   "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
+   "via": "own",
+   "surfaces": [
+    "stake-pool-registration"
+   ],
+   "decision": "not-reached",
+   "summary": "The pool-owner flow accepts only Shelley to Mary cli transaction files and reads pool parameters from them; nothing it accepts changes in Dijkstra.",
+   "evidence": [
+    {
+     "repo": "vacuumlabs/adalite",
+     "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
+     "path": "app/frontend/wallet/shelley/helpers/stakepoolRegistrationUtils.ts",
+     "line": 30,
+     "quote": "const preferredCliTxBodyType: CliTxBodyType = 'Unwitnessed Tx MaryEra'"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-open-oracle-protocol",
+   "revision": "5f8f97e1b8ba35f60e0dae44d0bd79560c96aacf",
+   "via": "own",
+   "surfaces": [
+    "protocol-parameters"
+   ],
+   "decision": "not-reached",
+   "summary": "protocol.json files configure the project's local test environments; nothing reads the chain's parameters.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/cardano-open-oracle-protocol",
+     "revision": "5f8f97e1b8ba35f60e0dae44d0bd79560c96aacf",
+     "path": "coop-extras/coop-env/protocol.json",
+     "line": 3,
+     "quote": "\"costModels\": {"
+    }
+   ]
+  },
+  {
+   "tool": "purus",
+   "revision": "f4d50126ecccb92cf4d939f0c0a18dc5294c4692",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "plutus-script-context",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "A compiler whose ledger primitives describe the script context scripts receive; existing scripts keep working, and cborg is a library dependency.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/purus",
+     "revision": "f4d50126ecccb92cf4d939f0c0a18dc5294c4692",
+     "path": "src/Language/Purus/Prim/Ledger.hs",
+     "line": 184,
+     "quote": "monoType \"ScriptContext\""
+    },
+    {
+     "repo": "mlabs-haskell/purus",
+     "revision": "f4d50126ecccb92cf4d939f0c0a18dc5294c4692",
+     "path": "purescript.cabal",
+     "line": 171,
+     "quote": "cborg"
+    }
+   ]
+  },
+  {
+   "tool": "aiken-stdlib",
+   "revision": "8e43f28e39f5394f9913109a75ad52054ff29c71",
+   "via": "own",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context",
+    "protocol-parameters"
+   ],
+   "decision": "not-reached",
+   "summary": "Library types for validators written in Aiken (V3 script context, parameter-update accessors); compiled scripts keep working, and PlutusV4 support is the compiler's (Aiken's own R2 gap).",
+   "evidence": [
+    {
+     "repo": "aiken-lang/stdlib",
+     "revision": "8e43f28e39f5394f9913109a75ad52054ff29c71",
+     "path": "lib/cardano/script_context.ak",
+     "line": 27,
+     "quote": "pub type ScriptContext {"
+    },
+    {
+     "repo": "aiken-lang/stdlib",
+     "revision": "8e43f28e39f5394f9913109a75ad52054ff29c71",
+     "path": "lib/cardano/governance/protocol_parameters.ak",
+     "line": 148,
+     "quote": "pub fn cost_models(self: ProtocolParametersUpdate) -> Option<Data> {"
+    }
+   ]
+  },
+  {
+   "tool": "aiken-linked-list",
+   "revision": "e6e3900b55060a1def649be98dc237190257eac9",
+   "via": "own",
+   "surfaces": [
+    "plutus-script-context"
+   ],
+   "decision": "not-reached",
+   "summary": "Validators reading their own V3 script context; deployed scripts keep working.",
+   "evidence": [
+    {
+     "repo": "Anastasia-Labs/aiken-linked-list",
+     "revision": "e6e3900b55060a1def649be98dc237190257eac9",
+     "path": "lib/linkedlist/utils.ak",
+     "line": 58,
+     "quote": "ctx: ScriptContext,"
+    }
+   ]
+  },
+  {
+   "tool": "yaci-bridge",
+   "revision": "aed55a0ad19002ebccb05997463306c26686d2d4",
+   "via": "own",
+   "surfaces": [
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "The lines are GraalVM reflection entries for yaci's model classes; certificate handling is yaci's (its own lead).",
+   "evidence": [
+    {
+     "repo": "bloxbean/yaci-bridge",
+     "revision": "aed55a0ad19002ebccb05997463306c26686d2d4",
+     "path": "core/src/main/resources/META-INF/native-image/com.bloxbean.cardano/yaci-bridge/reflect-config.json",
+     "line": 327,
+     "quote": "com.bloxbean.cardano.yaci.core.model.certs.StakeRegistration"
+    }
+   ]
+  },
+  {
+   "tool": "bot-plutus-interface",
+   "revision": "820570a31f14ad5ddb30355a03343cb9ae6742c7",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "plutus-script-context",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Cost models are configuration passed to cardano-cli and the TxInfo lines convert slots to POSIX time; no chain data is decoded.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/bot-plutus-interface",
+     "revision": "820570a31f14ad5ddb30355a03343cb9ae6742c7",
+     "path": "src/PlutusConfig/Cardano/Api.hs",
+     "line": 139,
+     "quote": "instance ToValue (Map AnyPlutusScriptVersion CostModel) where"
+    },
+    {
+     "repo": "mlabs-haskell/bot-plutus-interface",
+     "revision": "820570a31f14ad5ddb30355a03343cb9ae6742c7",
+     "path": "src/BotPlutusInterface/TimeSlot.hs",
+     "line": 29,
+     "quote": "import Cardano.Ledger.Alonzo.TxInfo (slotToPOSIXTime)"
+    }
+   ]
+  },
+  {
+   "tool": "hydra-pay",
+   "revision": "620e58e364ef347cb98ad281c1f530066c3af1d1",
+   "via": "own",
+   "surfaces": [
+    "node-configuration"
+   ],
+   "decision": "undetermined",
+   "summary": "Ships mainnet, preprod and preview node configurations without a DijkstraGenesisFile; the target node reads that file only behind ExperimentalHardForksEnabled, so whether a 11.2 node started from these files follows the fork depends on the tagged release.",
+   "evidence": [
+    {
+     "repo": "obsidiansystems/hydra-pay",
+     "revision": "620e58e364ef347cb98ad281c1f530066c3af1d1",
+     "path": "config/mainnet/config.json",
+     "line": 8,
+     "quote": "\"ConwayGenesisFile\": \"conway-genesis.json\","
+    }
+   ]
+  },
+  {
+   "tool": "hydra-pay",
+   "revision": "620e58e364ef347cb98ad281c1f530066c3af1d1",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "protocol-parameters",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "The Hydra head runs on its own protocol-parameters file, and the CBOR lines are Nix package overrides.",
+   "evidence": [
+    {
+     "repo": "obsidiansystems/hydra-pay",
+     "revision": "620e58e364ef347cb98ad281c1f530066c3af1d1",
+     "path": "config/backend/hydra/protocol-parameters.json",
+     "line": 3,
+     "quote": "\"costModels\": {"
+    },
+    {
+     "repo": "obsidiansystems/hydra-pay",
+     "revision": "620e58e364ef347cb98ad281c1f530066c3af1d1",
+     "path": "cardano-project/base.nix",
+     "line": 19,
+     "quote": "cborg = self.callHackage \"cborg\" \"0.2.4.0\" {};"
+    }
+   ]
+  },
+  {
+   "tool": "jambhala",
+   "revision": "1e2a19867266f81a36da9c0612a8cddd6fbb4c7a",
+   "via": "own",
+   "surfaces": [
+    "plutus-script-context"
+   ],
+   "decision": "not-reached",
+   "summary": "Re-exports the V2 ledger types for scripts users write; existing scripts keep working.",
+   "evidence": [
+    {
+     "repo": "ajnabi-workshop/jambhala",
+     "revision": "1e2a19867266f81a36da9c0612a8cddd6fbb4c7a",
+     "path": "src/Jambhala/Plutus.hs",
+     "line": 224,
+     "quote": "import Plutus.V2.Ledger.Api"
+    }
+   ]
+  },
+  {
+   "tool": "pluto",
+   "revision": "e0b3263702329be09a636a16b64251b15f5e1590",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "typed-protocols-cborg is a stack dependency; Pluto is an assembler and decodes no chain data.",
+   "evidence": [
+    {
+     "repo": "Plutonomicon/pluto",
+     "revision": "e0b3263702329be09a636a16b64251b15f5e1590",
+     "path": "stack.yaml",
+     "line": 116,
+     "quote": "typed-protocols-cborg"
+    }
+   ]
+  },
+  {
+   "tool": "plutus-cborhex-automation",
+   "revision": "c3bdf8f3d43105f2afd5becccba008192d9e7860",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "typed-protocols-cborg is a cabal dependency; the tool serializes its own scripts.",
+   "evidence": [
+    {
+     "repo": "sidan-lab/plutus-cborhex-automation",
+     "revision": "c3bdf8f3d43105f2afd5becccba008192d9e7860",
+     "path": "cabal.project",
+     "line": 338,
+     "quote": "typed-protocols-cborg"
+    }
+   ]
+  },
+  {
+   "tool": "shrinker",
+   "revision": "f23017cb938c83e979a89e9ec941252122fddddb",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "typed-protocols-cborg is a cabal dependency; Shrinker optimizes scripts and decodes no chain data.",
+   "evidence": [
+    {
+     "repo": "Plutonomicon/Shrinker",
+     "revision": "f23017cb938c83e979a89e9ec941252122fddddb",
+     "path": "cabal-haskell.nix.project",
+     "line": 95,
+     "quote": "typed-protocols-cborg"
+    }
+   ]
+  },
+  {
+   "tool": "spectrum-dex-sdk",
+   "revision": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "node-to-client-protocol",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "The node-to-client module only traces ouroboros-network's client, whose version support is the library's (an upstream dependency); cborg is a cabal dependency.",
+   "evidence": [
+    {
+     "repo": "spectrum-finance/cardano-dex-sdk-haskell",
+     "revision": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
+     "path": "ledger-sync/src/Cardano/Network/Protocol/NodeToClient/Trace.hs",
+     "line": 19,
+     "quote": "import Ouroboros.Network.NodeToClient"
+    },
+    {
+     "repo": "spectrum-finance/cardano-dex-sdk-haskell",
+     "revision": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
+     "path": "ledger-sync/ledger-sync.cabal",
+     "line": 126,
+     "quote": "cborg"
+    }
+   ]
+  },
+  {
+   "tool": "plinth-plutus-tx",
+   "revision": "8fd7b6f345d3265ea3a128b45576685c0538f083",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "plutus-language",
+    "plutus-script-context",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "This is the Plutus repository itself, which already defines PlutusV4 and gates it on the Dijkstra protocol version.",
+   "evidence": [
+    {
+     "repo": "IntersectMBO/plutus",
+     "revision": "8fd7b6f345d3265ea3a128b45576685c0538f083",
+     "path": "plutus-ledger-api/src/PlutusLedgerApi/Common/Versions.hs",
+     "line": 101,
+     "quote": "PlutusV4"
+    },
+    {
+     "repo": "IntersectMBO/plutus",
+     "revision": "8fd7b6f345d3265ea3a128b45576685c0538f083",
+     "path": "plutus-ledger-api/src/PlutusLedgerApi/Common/Versions.hs",
+     "line": 114,
+     "quote": "PlutusV4 -> dijkstraPV"
+    }
+   ]
+  },
+  {
+   "tool": "pebble",
+   "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+   "via": "own",
+   "surfaces": [
+    "plutus-script-context",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "A compiler whose prelude types describe the script context scripts receive (certificates included); existing scripts keep working, and cost models appear in the examples' devnet.",
+   "evidence": [
+    {
+     "repo": "HarmonicLabs/pebble",
+     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "path": "packages/pebble/src/compiler/tir/program/stdScope/prelude/preludeTypesSrc.ts",
+     "line": 252,
+     "quote": "StakeRegistration {"
+    },
+    {
+     "repo": "HarmonicLabs/pebble",
+     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "path": "packages/pebble/src/compiler/AstCompiler/AstCompiler.ts",
+     "line": 2628,
+     "quote": "new Identifier( \"ScriptContext\", contractDecl.name.range ),"
+    }
+   ]
+  },
+  {
+   "tool": "catalyst-voices",
+   "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+   "via": "own",
+   "surfaces": [
+    "block-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The gateway indexes every chain block as cardano-chain-follower's MultiEraBlock, which wraps Pallas's multi-era block (the crate re-exports pallas_traverse and pallas_primitives); no Pallas revision decodes Dijkstra blocks (devnet pallas-chain-sync). The repository commits no Cargo.lock, so the link is read from these imports.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/catalyst-voices",
+     "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+     "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
+     "line": 6,
+     "quote": "MultiEraBlock, Slot, StakeAddress, TxnIndex, VKeyHash,"
+    },
+    {
+     "repo": "cardano-foundation/catalyst-voices",
+     "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+     "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
+     "line": 8,
+     "quote": "pallas_traverse::{MultiEraCert, MultiEraTx},"
+    },
+    {
+     "repo": "cardano-foundation/catalyst-voices",
+     "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+     "path": "catalyst-gateway/bin/Cargo.toml",
+     "line": 18,
+     "quote": "cardano-chain-follower = { version = \"0.0.19\""
+    }
+   ]
+  },
+  {
+   "tool": "catalyst-voices",
+   "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+   "via": "own",
+   "surfaces": [
+    "plutus-language"
+   ],
+   "decision": "confirmed",
+   "summary": "The app's serialization library maps a reference script's tag through RefScriptType.values, which ends at PlutusV3 (3); a UTxO carrying a PlutusV4 reference script (tag 4) throws a range error when read.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/catalyst-voices",
+     "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+     "path": "catalyst_voices/packages/libs/catalyst_cardano_serialization/lib/src/scripts.dart",
+     "line": 520,
+     "quote": "final type = RefScriptType.values[(value[0] as CborSmallInt).toInt()];"
+    },
+    {
+     "repo": "cardano-foundation/catalyst-voices",
+     "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+     "path": "catalyst_voices/packages/libs/catalyst_cardano_serialization/lib/src/scripts.dart",
+     "line": 309,
+     "quote": "plutusV3(3);"
+    }
+   ]
+  },
+  {
+   "tool": "catalyst-voices",
+   "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+   "via": "own",
+   "surfaces": [
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Certificate indexing ignores pool registrations and matches the certificate types Pallas hands it; the CBOR lines are the gateway's minicbor dependency and spelling dictionaries.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/catalyst-voices",
+     "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+     "path": "catalyst-gateway/bin/src/db/index/block/certs.rs",
+     "line": 276,
+     "quote": "conway::Certificate::PoolRegistration { .. } => {},"
+    },
+    {
+     "repo": "cardano-foundation/catalyst-voices",
+     "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+     "path": "catalyst-gateway/bin/Cargo.toml",
+     "line": 100,
+     "quote": "minicbor = { version = \"0.25.1\", features = [\"alloc\"] }"
+    }
+   ]
+  },
+  {
+   "tool": "libcardano",
+   "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
+   "via": "own",
+   "surfaces": [
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The transaction builder's stake registration certificate is the deposit-less type 0. Dijkstra rejects deposit-less stake (de)registration certificates (types 0 and 1); on the devnet a Conway transaction carrying one is refused after the fork (cross-era-submission).",
+   "evidence": [
+    {
+     "repo": "ViperScience/libcardano",
+     "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
+     "path": "include/cardano/ledger.hpp",
+     "line": 767,
+     "quote": "static constexpr auto TypeTag() -> Uint { return 0; }"
+    },
+    {
+     "repo": "ViperScience/libcardano",
+     "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
+     "path": "src/babbage/transaction.cpp",
+     "line": 165,
+     "quote": "auto cert = babbage::StakeRegistration{};"
+    },
+    {
+     "repo": "ViperScience/libcardano",
+     "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
+     "path": "include/cardano/ledger.hpp",
+     "line": 1564,
+     "quote": "using StakeRegistration = shelley::StakeRegistration;"
+    }
+   ]
+  },
+  {
+   "tool": "libcardano",
+   "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration"
+   ],
+   "decision": "not-reached",
+   "summary": "The block type with segregated bodies is declared but never decoded (no block deserializer exists); cost models are genesis-file JSON, and pool registration certificates stay valid without the optional BLS key.",
+   "evidence": [
+    {
+     "repo": "ViperScience/libcardano",
+     "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
+     "path": "include/cardano/ledger.hpp",
+     "line": 1138,
+     "quote": "struct Block"
+    },
+    {
+     "repo": "ViperScience/libcardano",
+     "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
+     "path": "include/cardano/genesis.hpp",
+     "line": 271,
+     "quote": "struct CostModels"
+    },
+    {
+     "repo": "ViperScience/libcardano",
+     "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
+     "path": "src/shelley/transaction.cpp",
+     "line": 107,
+     "quote": "auto TransactionBuilder::addPoolRegistrationCertificate("
+    }
+   ]
+  },
+  {
+   "tool": "gamechanger-gcscript",
+   "revision": "f061a5a2cbad42e94a704375df805c9e558ba0a5",
+   "via": "own",
+   "surfaces": [
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Certificates appear in example scripts and the released API schema; the repository ships scripts for the wallet, not code that encodes certificates.",
+   "evidence": [
+    {
+     "repo": "GameChangerFinance/gamechanger.wallet",
+     "revision": "f061a5a2cbad42e94a704375df805c9e558ba0a5",
+     "path": "examples/Build Certificates.gcscript",
+     "line": 65,
+     "quote": "\"kind\": \"StakeRegistration\","
+    }
+   ]
+  },
+  {
+   "tool": "toolkit-for-cardano",
+   "revision": "ffe889ac08450c5d9f1272cbdc8ffcd990af671b",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Transactions are built by cardano-cli; the tool's own CBOR use takes element 0 of the transaction array to hash the body, which holds for the Dijkstra three-element form.",
+   "evidence": [
+    {
+     "repo": "SundaeSwap-finance/toolkit-for-cardano",
+     "revision": "ffe889ac08450c5d9f1272cbdc8ffcd990af671b",
+     "path": "internal/cardano/transaction.go",
+     "line": 336,
+     "quote": "var record []cbor.RawMessage"
+    },
+    {
+     "repo": "SundaeSwap-finance/toolkit-for-cardano",
+     "revision": "ffe889ac08450c5d9f1272cbdc8ffcd990af671b",
+     "path": "internal/cardano/transaction.go",
+     "line": 346,
+     "quote": "if _, err := h.Write(record[0]); err != nil {"
+    }
+   ]
+  },
+  {
+   "tool": "stakepool-operator-scripts",
+   "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+   "via": "own",
+   "surfaces": [
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The era read from the node (dijkstra after the fork) selects the min-UTxO calculation by name; only babbage and conway get the map-based output encoding, so a Dijkstra-era output is sized with the pre-Babbage array format and the computed minimum is wrong.",
+   "evidence": [
+    {
+     "repo": "gitmachtl/scripts",
+     "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+     "path": "cardano/mainnet/00_common.sh",
+     "line": 652,
+     "quote": "\"online\")\tlocal tmpEra=$(${cardanocli} latest query tip ${magicparam}"
+    },
+    {
+     "repo": "gitmachtl/scripts",
+     "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+     "path": "cardano/mainnet/00_common.sh",
+     "line": 663,
+     "quote": "nodeEraParam=\"--${tmpEra}-era\";"
+    },
+    {
+     "repo": "gitmachtl/scripts",
+     "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+     "path": "cardano/mainnet/00_common.sh",
+     "line": 1307,
+     "quote": "*\"babbage\"* | *\"conway\"* ) #Build the tx-out cbor in babbage-tx format with maps"
+    },
+    {
+     "repo": "gitmachtl/scripts",
+     "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+     "path": "cardano/mainnet/00_common.sh",
+     "line": 1316,
+     "quote": "* ) #Build the tx-out cbor in alonzo/shelley format with array"
+    }
+   ]
+  },
+  {
+   "tool": "stakepool-operator-scripts",
+   "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+   "via": "own",
+   "surfaces": [
+    "protocol-parameters"
+   ],
+   "decision": "confirmed",
+   "summary": "Vote tallies assign each changed parameter to a governance group by name; the 23 Dijkstra parameters match no group, so a proposal changing only those leaves the threshold at zero and the script exits with an error.",
+   "evidence": [
+    {
+     "repo": "gitmachtl/scripts",
+     "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+     "path": "cardano/mainnet/24a_genVote.sh",
+     "line": 810,
+     "quote": "*\"poolPledgeInfluence\"*|*\"poolRetireMaxEpoch\"*|*\"stakePoolTargetNum\"*|*\"costModels\"*|*\"collateralPercentage\"*)"
+    },
+    {
+     "repo": "gitmachtl/scripts",
+     "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+     "path": "cardano/mainnet/24a_genVote.sh",
+     "line": 824,
+     "quote": "if [[ \"${dRepPowerThreshold}\" == \"0\" || \"${dRepPowerThreshold}\" == \"\" ]]; then echo -e \"\\e[35mERROR - Something went wrong finding the dRepPowerThreshold."
+    }
+   ]
+  },
+  {
+   "tool": "stakepool-operator-scripts",
+   "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+   "via": "own",
+   "surfaces": [
+    "cardano-cli",
+    "stake-pool-registration"
+   ],
+   "decision": "not-reached",
+   "summary": "cardano-cli is called with the era the node reports (cardano-cli 11.3 has a dijkstra group), and pool certificates are built by cardano-cli.",
+   "evidence": [
+    {
+     "repo": "gitmachtl/scripts",
+     "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+     "path": "cardano/mainnet/00_common.sh",
+     "line": 664,
+     "quote": "cliEra=\"${tmpEra,,}\" #new era selection parameter for cardano cli 8.12.0+"
+    },
+    {
+     "repo": "gitmachtl/scripts",
+     "revision": "85e783f6886b449fbb0bb85f33f8d3a84bb6303d",
+     "path": "cardano/mainnet/00_common.sh",
+     "line": 2560,
+     "quote": "PoolRegistration|PoolReRegistration|PoolRetirement )"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-wallet-sdk-dart",
+   "revision": "102548217f34c466be0b017d0a5e36b2caff8c9b",
+   "via": "own",
+   "surfaces": [
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Stake registration certificates are encoded with the enum index, 0 for stakeRegistration and 1 for deregistration; Conway certificate types are not modelled. Dijkstra rejects deposit-less stake (de)registration certificates (types 0 and 1); on the devnet a Conway transaction carrying one is refused after the fork (cross-era-submission).",
+   "evidence": [
+    {
+     "repo": "reaster/cardano_wallet_sdk",
+     "revision": "102548217f34c466be0b017d0a5e36b2caff8c9b",
+     "path": "lib/src/transaction/model/bc_certificate.dart",
+     "line": 63,
+     "quote": "CborList([CborSmallInt(type.index), credential.cborValue]);"
+    },
+    {
+     "repo": "reaster/cardano_wallet_sdk",
+     "revision": "102548217f34c466be0b017d0a5e36b2caff8c9b",
+     "path": "lib/src/transaction/model/bc_certificate.dart",
+     "line": 27,
+     "quote": "case 0: //BcCertificateType.stakeRegistration"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-wallet-sdk-dart",
+   "revision": "102548217f34c466be0b017d0a5e36b2caff8c9b",
+   "via": "own",
+   "surfaces": [
+    "protocol-parameters",
+    "stake-pool-registration"
+   ],
+   "decision": "not-reached",
+   "summary": "Unknown cost-model languages from Blockfrost are logged and skipped, and pool certificates are not supported at all.",
+   "evidence": [
+    {
+     "repo": "reaster/cardano_wallet_sdk",
+     "revision": "102548217f34c466be0b017d0a5e36b2caff8c9b",
+     "path": "lib/src/blockchain/blockfrost/blockfrost_blockchain_adapter.dart",
+     "line": 357,
+     "quote": "logger.warning(\"unknown key parsing costModels: '$key'\");"
+    },
+    {
+     "repo": "reaster/cardano_wallet_sdk",
+     "revision": "102548217f34c466be0b017d0a5e36b2caff8c9b",
+     "path": "lib/src/transaction/model/bc_certificate.dart",
+     "line": 34,
+     "quote": "throw CborError(\"pool registration not supported yet\");"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-token-registry",
+   "revision": "a7f2aed87c594ccaa42776ce6cff1faaec7ca86d",
+   "via": "own",
+   "surfaces": [
+    "node-to-client-protocol"
+   ],
+   "decision": "not-reached",
+   "summary": "The matches are inside base64 logo images in token mapping files.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/cardano-token-registry",
+     "revision": "a7f2aed87c594ccaa42776ce6cff1faaec7ca86d",
+     "path": "mappings/3866314777c915a1d6a22ef1ae76ddd888db031343f8d7fcc60148dc5245575258.json",
+     "line": 46,
+     "quote": "\"value\": \"iVBORw0KGgo"
+    }
+   ]
+  },
+  {
+   "tool": "sorbet",
+   "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CBOR is used to encode UTxO values for CIP-30 answers, whose encoding Dijkstra keeps.",
+   "evidence": [
+    {
+     "repo": "SundaeSwap-finance/Sorbet",
+     "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+     "path": "src/utils/utxo.ts",
+     "line": 1,
+     "quote": "import * as cbor from \"cbor-web\";"
+    }
+   ]
+  },
+  {
+   "tool": "argus-cardano-sync",
+   "revision": "37a648d8d5f010526f4b4656d34559bf4c2e9eae",
+   "via": "own",
+   "surfaces": [
+    "node-to-client-protocol"
+   ],
+   "decision": "undetermined",
+   "summary": "The node-to-client provider delegates the handshake and chain-sync to Chrysalis, which is not a catalog component; whether it offers V23 and decodes Dijkstra blocks needs Chrysalis's source or a devnet run.",
+   "evidence": [
+    {
+     "repo": "SAIB-Inc/Argus",
+     "revision": "37a648d8d5f010526f4b4656d34559bf4c2e9eae",
+     "path": "src/Argus.Sync/Providers/N2CProvider.cs",
+     "line": 117,
+     "quote": "Tip tip = await client.LocalStateQuery!.GetTipAsync();"
+    }
+   ]
+  },
+  {
+   "tool": "cardanosharp-koios",
+   "revision": "d6a6b2f2730424b3402e14ccae3b49b8b252cff3",
+   "via": "own",
+   "surfaces": [
+    "protocol-parameters"
+   ],
+   "decision": "not-reached",
+   "summary": "Cost models are deserialized from Koios JSON into a class; unknown languages are ignored by the JSON reader.",
+   "evidence": [
+    {
+     "repo": "cardano-community/cardanosharp-koios",
+     "revision": "d6a6b2f2730424b3402e14ccae3b49b8b252cff3",
+     "path": "CardanoSharp.Koios.Client/Contracts/ProtocolParameters.cs",
+     "line": 139,
+     "quote": "public class CostModel"
+    }
+   ]
+  },
+  {
+   "tool": "cddl-codegen",
+   "revision": "24b866a4b063230edd4b047782fd8ab8d713ed18",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "A CDDL-to-code generator; the certificate lines are its supported-feature specification, and the CBOR crates serve the generated code.",
+   "evidence": [
+    {
+     "repo": "dcSpark/cddl-codegen",
+     "revision": "24b866a4b063230edd4b047782fd8ab8d713ed18",
+     "path": "supported.cddl",
+     "line": 97,
+     "quote": "stake_registration = [0, stake_credential]"
+    },
+    {
+     "repo": "dcSpark/cddl-codegen",
+     "revision": "24b866a4b063230edd4b047782fd8ab8d713ed18",
+     "path": "Cargo.toml",
+     "line": 104,
+     "quote": "ciborium = \"0.2\""
+    }
+   ]
+  },
+  {
+   "tool": "cardano-addresses",
+   "revision": "ef9368855c0ffe552530058c5df04db38529f475",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "cborg is pinned for the WASM build; address encoding is unchanged by Dijkstra.",
+   "evidence": [
+    {
+     "repo": "IntersectMBO/cardano-addresses",
+     "revision": "ef9368855c0ffe552530058c5df04db38529f475",
+     "path": "cabal-wasm.project",
+     "line": 34,
+     "quote": "subdir: cborg"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-connect-with-wallet",
+   "revision": "47ceba88338f19b576bf72251e8158a7883a5e45",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CBOR decodes CIP-30 balances, whose encoding Dijkstra keeps.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/cardano-connect-with-wallet",
+     "revision": "47ceba88338f19b576bf72251e8158a7883a5e45",
+     "path": "core/index.ts",
+     "line": 12,
+     "quote": "import { decode as decodeCbor } from 'cborg';"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-crypto-js",
+   "revision": "61adcedba42bb324456b96d60af3d4d46c2de328",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CBOR encodes Byron addresses, which Dijkstra does not change.",
+   "evidence": [
+    {
+     "repo": "vacuumlabs/cardano-crypto.js",
+     "revision": "61adcedba42bb324456b96d60af3d4d46c2de328",
+     "path": "features/address.js",
+     "line": 3,
+     "quote": "const cbor = require('borc')"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-dapp-wallet-connector",
+   "revision": "5d629436c7b7e7c2757355888a63cccd62fb1bca",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CBOR decodes CIP-30 balances, whose encoding Dijkstra keeps.",
+   "evidence": [
+    {
+     "repo": "projectNEWM/cardano-dapp-wallet-connector",
+     "revision": "5d629436c7b7e7c2757355888a63cccd62fb1bca",
+     "path": "src/utils/getWalletBalance/index.ts",
+     "line": 2,
+     "quote": "import { decode } from \"cbor-web\";"
+    }
+   ]
+  },
+  {
+   "tool": "datum-explorer",
+   "revision": "9e4b74840c91ba95dd4f1c80cb87a17c02562eba",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CBOR decodes Plutus datums supplied by the user, whose encoding Dijkstra keeps.",
+   "evidence": [
+    {
+     "repo": "WingRiders/datum-explorer",
+     "revision": "9e4b74840c91ba95dd4f1c80cb87a17c02562eba",
+     "path": "lib/src/decodeCbor.ts",
+     "line": 1,
+     "quote": "import {Decoder} from 'cbor-x'"
+    }
+   ]
+  },
+  {
+   "tool": "pg-cardano",
+   "revision": "5aac863c2fb182fc92f97e6326db3bcba7aded04",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Generic CBOR-to-JSON conversion with no knowledge of transaction or block structure.",
+   "evidence": [
+    {
+     "repo": "cardano-community/pg_cardano",
+     "revision": "5aac863c2fb182fc92f97e6326db3bcba7aded04",
+     "path": "src/helpers.rs",
+     "line": 94,
+     "quote": "if let Ok(parsed) = ciborium::de::from_reader::<CborValue, _>(&mut cursor) {"
+    }
+   ]
+  },
+  {
+   "tool": "weld",
+   "revision": "cababe5b7a72f7c8b39de945e8a371578d89b11a",
+   "via": "own",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CBOR decodes CIP-30 wallet answers, whose encoding Dijkstra keeps.",
+   "evidence": [
+    {
+     "repo": "Cardano-Forge/weld",
+     "revision": "cababe5b7a72f7c8b39de945e8a371578d89b11a",
+     "path": "core/src/lib/main/stores/wallet.ts",
+     "line": 51,
+     "quote": "https://github.com/paroga/cbor-js"
+    }
+   ]
+  },
+  {
+   "tool": "catalyst-toolbox",
+   "revision": "b9910d772186dddd3593dd8b315ed38e6d7f4d15",
+   "via": "own",
+   "surfaces": [
+    "stake-pool-registration"
+   ],
+   "decision": "not-reached",
+   "summary": "The pool-registration lines are the Jormungandr explorer GraphQL schema, not Cardano certificates.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/catalyst-toolbox",
+     "revision": "b9910d772186dddd3593dd8b315ed38e6d7f4d15",
+     "path": "catalyst-toolbox/resources/explorer/schema.graphql",
+     "line": 162,
+     "quote": "type PoolRegistration {"
+    }
+   ]
+  },
+  {
+   "tool": "amaru",
+   "revision": "81c9ac4ebd3550f84377868f31bd30381deca3c6",
+   "via": "aiken",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context"
+   ],
+   "decision": "not-reached",
+   "summary": "Aiken's uplc crate is only in the lockfile; phase-two evaluation and script decoding use Amaru's own amaru-uplc crate.",
+   "evidence": [
+    {
+     "repo": "pragma-org/amaru",
+     "revision": "81c9ac4ebd3550f84377868f31bd30381deca3c6",
+     "path": "crates/amaru-ledger/src/rules/transaction/phase_two/mod.rs",
+     "line": 31,
+     "quote": "use amaru_uplc::{"
+    },
+    {
+     "repo": "pragma-org/amaru",
+     "revision": "81c9ac4ebd3550f84377868f31bd30381deca3c6",
+     "path": "crates/amaru-ledger/src/rules/transaction/phase_one/outputs.rs",
+     "line": 20,
+     "quote": "use amaru_uplc::{arena::Arena, flat::decode_plutus_script};"
+    }
+   ]
+  },
+  {
+   "tool": "lucid-evolution",
+   "revision": "ae579343fe173d33902c76ef76ac80228312428f",
+   "via": "pallas",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "The uplc evaluator package decodes transactions through Aiken's eval_phase_two_raw, which names the Conway era; no blocks are decoded and no era is detected.",
+   "evidence": [
+    {
+     "repo": "Anastasia-Labs/lucid-evolution",
+     "revision": "ae579343fe173d33902c76ef76ac80228312428f",
+     "path": "packages/uplc/rust/src/lib.rs",
+     "line": 64,
+     "quote": "tx::eval_phase_two_raw_with_script_cache("
+    }
+   ]
+  },
+  {
+   "tool": "whisky",
+   "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+   "via": "aiken",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context"
+   ],
+   "decision": "confirmed",
+   "summary": "The evaluator runs transaction scripts with Aiken's uplc 1.1.10, which neither evaluates PlutusV4 nor builds its context.",
+   "evidence": [
+    {
+     "repo": "sidan-lab/whisky",
+     "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+     "path": "packages/Cargo.toml",
+     "line": 18,
+     "quote": "uplc = \"=1.1.10\""
+    },
+    {
+     "repo": "sidan-lab/whisky",
+     "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+     "path": "packages/whisky-csl/src/utils/evaluator.rs",
+     "line": 17,
+     "quote": "use uplc::{tx::error::Error as UplcError, tx::ResolvedInput, Hash, TransactionInput};"
+    },
+    {
+     "repo": "sidan-lab/whisky",
+     "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+     "path": "packages/whisky-csl/src/utils/evaluator.rs",
+     "line": 63,
+     "quote": "eval_phase_two("
+    }
+   ]
+  },
+  {
+   "tool": "carp",
+   "revision": "61fe5f2034512cb9ef592918e6cb4e833242b16a",
+   "via": "oura",
+   "surfaces": [
+    "block-encoding",
+    "era-identity",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The indexer's chain source is Oura (pinned by git revision), whose Pallas decoder ends at Conway; Carp indexes whatever blocks Oura hands it.",
+   "evidence": [
+    {
+     "repo": "dcSpark/carp",
+     "revision": "61fe5f2034512cb9ef592918e6cb4e833242b16a",
+     "path": "indexer/Cargo.toml",
+     "line": 32,
+     "quote": "oura = { git = \"https://github.com/txpipe/oura.git\""
+    },
+    {
+     "repo": "dcSpark/carp",
+     "revision": "61fe5f2034512cb9ef592918e6cb4e833242b16a",
+     "path": "indexer/src/sources/oura_source.rs",
+     "line": 10,
+     "quote": "use oura::pipelining::SourceProvider;"
+    }
+   ]
+  },
+  {
+   "tool": "cquisitor-lib",
+   "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+   "via": "aiken",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context"
+   ],
+   "decision": "confirmed",
+   "summary": "Transaction script execution uses Aiken's uplc v1.1.24, which neither evaluates PlutusV4 nor builds its context.",
+   "evidence": [
+    {
+     "repo": "cardananium/cquisitor-lib",
+     "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+     "path": "Cargo.toml",
+     "line": 43,
+     "quote": "uplc = { git = \"https://github.com/aiken-lang/aiken\", tag = \"v1.1.24\" }"
+    },
+    {
+     "repo": "cardananium/cquisitor-lib",
+     "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+     "path": "src/plutus/execute_tx_scripts.rs",
+     "line": 10,
+     "quote": "use uplc::tx::error::Error as EvalError;"
+    }
+   ]
+  },
+  {
+   "tool": "blockfrost",
+   "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @blockfrost/blockfrost-utils, which the backend uses for request validation, CIP-68 helpers and Fastify plumbing; none of it reads Plutus languages or cost models.",
+   "evidence": [
+    {
+     "repo": "blockfrost/blockfrost-backend-ryo",
+     "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+     "path": "yarn.lock",
+     "line": 69,
+     "quote": "\"@emurgo/cardano-serialization-lib-nodejs\": ^15.0.3"
+    },
+    {
+     "repo": "blockfrost/blockfrost-backend-ryo",
+     "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+     "path": "src/routes/addresses/address/utxos/asset.ts",
+     "line": 2,
+     "quote": "import { validateAsset } from '@blockfrost/blockfrost-utils/lib/validation.js';"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-ibc-incubator",
+   "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+   "via": "cardano-js-sdk",
+   "surfaces": [
+    "protocol-parameters"
+   ],
+   "decision": "not-reached",
+   "summary": "Only @cardano-sdk/crypto is reached outside lucid-evolution (key and hash primitives); parameter-update decoding is in @cardano-sdk/core.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/cardano-ibc-incubator",
+     "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+     "path": "cardano/gateway/package-lock.json",
+     "line": 932,
+     "quote": "\"node_modules/@cardano-sdk/core/node_modules/@cardano-sdk/crypto\": {"
+    }
+   ]
+  },
+  {
+   "tool": "plutip",
+   "revision": "a3d4f4548933f0d52e27456af510bcf0b516f3b5",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "era-identity",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through tx-bakery in the Rust client, which builds the client's own transactions; no PlutusV4 content is involved.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/plutip",
+     "revision": "a3d4f4548933f0d52e27456af510bcf0b516f3b5",
+     "path": "plutip-rust/Cargo.lock",
+     "line": 1769,
+     "quote": "name = \"tx-bakery\""
+    }
+   ]
+  },
+  {
+   "tool": "bursa",
+   "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language"
+   ],
+   "decision": "undetermined",
+   "summary": "CSL and the interop library come in through @keystonehq/hw-app-ada for Keystone QR signing; whether the web UI signs transactions it did not build (which could carry PlutusV4 or Dijkstra body keys) needs the signing flow run.",
+   "evidence": [
+    {
+     "repo": "blinklabs-io/bursa",
+     "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+     "path": "ui/web/package-lock.json",
+     "line": 1268,
+     "quote": "\"node_modules/@keystonehq/hw-app-ada\": {"
+    },
+    {
+     "repo": "blinklabs-io/bursa",
+     "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+     "path": "ui/web/src/hw/index.ts",
+     "line": 20,
+     "quote": "import { connectKeystone } from \"./keystone\";"
+    }
+   ]
+  },
+  {
+   "tool": "bursa",
+   "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+   "via": "cardano-hw-interop-lib",
+   "surfaces": [
+    "transaction-encoding"
+   ],
+   "decision": "undetermined",
+   "summary": "Reached only through @keystonehq/hw-app-ada for Keystone QR signing; whether the web UI signs transactions it did not build needs the signing flow run.",
+   "evidence": [
+    {
+     "repo": "blinklabs-io/bursa",
+     "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+     "path": "ui/web/package-lock.json",
+     "line": 1268,
+     "quote": "\"node_modules/@keystonehq/hw-app-ada\": {"
+    },
+    {
+     "repo": "blinklabs-io/bursa",
+     "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+     "path": "ui/web/src/hw/index.ts",
+     "line": 20,
+     "quote": "import { connectKeystone } from \"./keystone\";"
+    }
+   ]
+  },
+  {
+   "tool": "odatano",
+   "revision": "819009515bf62f4db368371ffda0918cb707540c",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @blockfrost/blockfrost-js, which uses it for address derivation helpers, not for Plutus languages or cost models.",
+   "evidence": [
+    {
+     "repo": "ODATANO/ODATANO",
+     "revision": "819009515bf62f4db368371ffda0918cb707540c",
+     "path": "package-lock.json",
+     "line": 109,
+     "quote": "\"node_modules/@blockfrost/blockfrost-js\": {"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-node-api",
+   "revision": "136815536d9d5e6de09c5b1d206714f7ec7118b8",
+   "via": "adder",
+   "surfaces": [
+    "node-to-client-protocol"
+   ],
+   "decision": "confirmed",
+   "summary": "Chain-sync and UTxO RPC watch endpoints consume Adder pipeline events, and Adder's node-to-client input comes from a gouroboros release that cannot negotiate V23.",
+   "evidence": [
+    {
+     "repo": "blinklabs-io/cardano-node-api",
+     "revision": "136815536d9d5e6de09c5b1d206714f7ec7118b8",
+     "path": "internal/node/chainsync.go",
+     "line": 21,
+     "quote": "\"github.com/blinklabs-io/adder/event\""
+    },
+    {
+     "repo": "blinklabs-io/cardano-node-api",
+     "revision": "136815536d9d5e6de09c5b1d206714f7ec7118b8",
+     "path": "internal/utxorpc/watch.go",
+     "line": 24,
+     "quote": "\"github.com/blinklabs-io/adder/event\""
+    }
+   ]
+  },
+  {
+   "tool": "gastronomy",
+   "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+   "via": "aiken",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context"
+   ],
+   "decision": "confirmed",
+   "summary": "Script contexts for the debugged transaction are built by Aiken's uplc crate (tx_to_programs), which has no PlutusV4 context.",
+   "evidence": [
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/Cargo.toml",
+     "line": 24,
+     "quote": "uplc = { git = \"https://github.com/SundaeSwap-finance/aiken.git\", rev = \"8416725\" }"
+    },
+    {
+     "repo": "SundaeSwap-finance/gastronomy",
+     "revision": "a4bc7d046cffcf555720d87599cc8081dbf2475b",
+     "path": "gastronomy/src/uplc.rs",
+     "line": 149,
+     "quote": "tx_to_programs(&tx, &resolved_inputs, &slot_config, script_overrides).unwrap()"
+    }
+   ]
+  },
+  {
+   "tool": "hydra-sdk",
+   "revision": "2829131cb08249ad468da6d96c131050286e1987",
+   "via": "whisky",
+   "surfaces": [
+    "transaction-encoding",
+    "plutus-language"
+   ],
+   "decision": "confirmed",
+   "summary": "The evaluator package hands arbitrary transaction hex to whisky-evaluator's js_evaluate_tx_scripts, which decodes Conway bodies only and does not evaluate PlutusV4.",
+   "evidence": [
+    {
+     "repo": "Vtechcom/hydra-sdk",
+     "revision": "2829131cb08249ad468da6d96c131050286e1987",
+     "path": "packages/evaluator/src/engine/whisky.ts",
+     "line": 36,
+     "quote": "const WHISKY_PACKAGE = 'whisky-evaluator'"
+    },
+    {
+     "repo": "Vtechcom/hydra-sdk",
+     "revision": "2829131cb08249ad468da6d96c131050286e1987",
+     "path": "packages/evaluator/src/engine/whisky.ts",
+     "line": 97,
+     "quote": "if (!mod || typeof mod.js_evaluate_tx_scripts !== 'function') {"
+    }
+   ]
+  },
+  {
+   "tool": "hydra-sdk",
+   "revision": "2829131cb08249ad468da6d96c131050286e1987",
+   "via": "whisky",
+   "surfaces": [
+    "era-identity",
+    "protocol-parameters"
+   ],
+   "decision": "not-reached",
+   "summary": "The evaluator names the era itself and takes cost models from its caller; era detection and parameter decoding are not used.",
+   "evidence": [
+    {
+     "repo": "Vtechcom/hydra-sdk",
+     "revision": "2829131cb08249ad468da6d96c131050286e1987",
+     "path": "packages/evaluator/src/engine/whisky.ts",
+     "line": 10,
+     "quote": "js_evaluate_tx_scripts("
+    }
+   ]
+  },
+  {
+   "tool": "daedalus",
+   "revision": "22440487d08fd1d2121394fa80c238852df5ea7d",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @fivebinaries/coin-selection, which builds payment transactions for coin selection; it never reads Plutus languages or cost models.",
+   "evidence": [
+    {
+     "repo": "input-output-hk/daedalus",
+     "revision": "22440487d08fd1d2121394fa80c238852df5ea7d",
+     "path": "yarn.lock",
+     "line": 1355,
+     "quote": "\"@fivebinaries/coin-selection"
+    }
+   ]
+  },
+  {
+   "tool": "gerolamo",
+   "revision": "0e6421e9069eaf4ab505ca90fff7c3fa7e1833ea",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @blockfrost/blockfrost-js, which uses it for address derivation helpers.",
+   "evidence": [
+    {
+     "repo": "HarmonicLabs/gerolamo",
+     "revision": "0e6421e9069eaf4ab505ca90fff7c3fa7e1833ea",
+     "path": "bun.lock",
+     "line": 40,
+     "quote": "\"@blockfrost/blockfrost-js\": [\"@blockfrost/blockfrost-js@"
+    }
+   ]
+  },
+  {
+   "tool": "lambda-buffers",
+   "revision": "1db995cd2646fdef9e0d2587907de52c335dd3c2",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "era-identity",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
+   ],
+   "decision": "not-reached",
+   "summary": "The lockfile belongs to the lbt-plutus Rust test suite; no shipped runtime uses CSL.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/lambda-buffers",
+     "revision": "1db995cd2646fdef9e0d2587907de52c335dd3c2",
+     "path": "testsuites/lbt-plutus/lbt-plutus-rust/Cargo.lock",
+     "line": 87,
+     "quote": "name = \"cardano-serialization-lib\""
+    }
+   ]
+  },
+  {
+   "tool": "blockfrost-cardano-cli",
+   "revision": "2ed5515009ab2ef7df6204975308e10a9e12de3c",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @blockfrost/blockfrost-js; the CLI's own code calls the Blockfrost API and formats responses.",
+   "evidence": [
+    {
+     "repo": "blockfrost/blockfrost-cardano-cli",
+     "revision": "2ed5515009ab2ef7df6204975308e10a9e12de3c",
+     "path": "yarn.lock",
+     "line": 704,
+     "quote": "\"@emurgo/cardano-serialization-lib-nodejs\": ^10.2.0"
+    },
+    {
+     "repo": "blockfrost/blockfrost-cardano-cli",
+     "revision": "2ed5515009ab2ef7df6204975308e10a9e12de3c",
+     "path": "src/services/blockfrost/index.ts",
+     "line": 1,
+     "quote": "import { BlockFrostAPI } from '@blockfrost/blockfrost-js';"
+    }
+   ]
+  },
+  {
+   "tool": "catalyst-voices",
+   "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+   "via": "pycardano",
+   "surfaces": [
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "pycardano comes in through catalyst-python in the signed-document admin scripts, which use it for keys; no transaction or parameter is decoded.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/catalyst-voices",
+     "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+     "path": "signed_docs/uv.lock",
+     "line": 92,
+     "quote": "name = \"pycardano\""
+    },
+    {
+     "repo": "cardano-foundation/catalyst-voices",
+     "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
+     "path": "signed_docs/setup_fund.py",
+     "line": 8,
+     "quote": "from catalyst_python.admin import AdminKey"
+    }
+   ]
+  },
+  {
+   "tool": "de-uplc",
+   "revision": "4c42de0ab08ab5858e24445aa52d6df66e2ad800",
+   "via": "aiken",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context"
+   ],
+   "decision": "confirmed",
+   "summary": "The debugger builds a transaction's script context with its Aiken uplc fork, which has no PlutusV4 context.",
+   "evidence": [
+    {
+     "repo": "cardananium/de-uplc",
+     "revision": "4c42de0ab08ab5858e24445aa52d6df66e2ad800",
+     "path": "rust-src/Cargo.toml",
+     "line": 10,
+     "quote": "uplc = { git = \"https://github.com/cardananium/aiken/\", branch = \"de-uplc\" }"
+    },
+    {
+     "repo": "cardananium/de-uplc",
+     "revision": "4c42de0ab08ab5858e24445aa52d6df66e2ad800",
+     "path": "rust-src/src/debugger_engine/debugger_engine.rs",
+     "line": 12,
+     "quote": "script_context::{"
+    }
+   ]
+  },
+  {
+   "tool": "de-uplc-web",
+   "revision": "57c58154b003b58780025a7b33ebf478930c5895",
+   "via": "aiken",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context"
+   ],
+   "decision": "confirmed",
+   "summary": "The web debugger's engine builds a transaction's script context with an Aiken uplc fork, which has no PlutusV4 context.",
+   "evidence": [
+    {
+     "repo": "cardananium/de-uplc-web",
+     "revision": "57c58154b003b58780025a7b33ebf478930c5895",
+     "path": "packages/engine-wasm/crate/Cargo.toml",
+     "line": 10,
+     "quote": "uplc = { git = \"https://github.com/cardananium/aiken\", rev = \"775e949829e27f8d619c14dbf49d0f41b5489a4e\" }"
+    },
+    {
+     "repo": "cardananium/de-uplc-web",
+     "revision": "57c58154b003b58780025a7b33ebf478930c5895",
+     "path": "packages/engine-wasm/crate/src/context.rs",
+     "line": 41,
+     "quote": "pub fn from_uplc_context(context: &uplc::machine::Context) -> Self {"
+    }
+   ]
+  },
+  {
+   "tool": "lace",
+   "revision": "e5da9457ab2ad0656b6819cc1c844fee487d113d",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @fivebinaries/coin-selection (via Trezor Connect), which builds payment transactions for coin selection; it never reads Plutus languages or cost models.",
+   "evidence": [
+    {
+     "repo": "input-output-hk/lace",
+     "revision": "e5da9457ab2ad0656b6819cc1c844fee487d113d",
+     "path": "package-lock.json",
+     "line": 9588,
+     "quote": "\"node_modules/@fivebinaries/coin-selection\": {"
+    }
+   ]
+  },
+  {
+   "tool": "minswap-sdk",
+   "revision": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @blockfrost/blockfrost-js, which uses it for address derivation helpers.",
+   "evidence": [
+    {
+     "repo": "minswap/sdk",
+     "revision": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+     "path": "pnpm-lock.yaml",
+     "line": 372,
+     "quote": "'@blockfrost/blockfrost-js@5.7.0':"
+    }
+   ]
+  },
+  {
+   "tool": "sutra",
+   "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
+   "via": "aiken",
+   "surfaces": [
+    "plutus-language",
+    "plutus-script-context"
+   ],
+   "decision": "confirmed",
+   "summary": "Script evaluation calls Aiken's uplc eval_phase_two_raw, which neither evaluates PlutusV4 nor builds its context.",
+   "evidence": [
+    {
+     "repo": "txbody-org/sutra-cardano",
+     "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
+     "path": "native/sutra_uplc/Cargo.toml",
+     "line": 14,
+     "quote": "uplc = \"1.1.19\""
+    },
+    {
+     "repo": "txbody-org/sutra-cardano",
+     "revision": "89d9a4cfd0f2f39e0f627a17818e0ac2a382d604",
+     "path": "native/sutra_uplc/src/lib.rs",
+     "line": 3,
+     "quote": "use uplc::tx::{apply_params_to_script, eval_phase_two_raw};"
+    }
+   ]
+  },
+  {
+   "tool": "adalite",
+   "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @fivebinaries/coin-selection, which builds payment transactions for coin selection; it never reads Plutus languages or cost models.",
+   "evidence": [
+    {
+     "repo": "vacuumlabs/adalite",
+     "revision": "e7522c2d84dd5f34f0381e613978577bf28666fd",
+     "path": "yarn.lock",
+     "line": 308,
+     "quote": "\"@fivebinaries/coin-selection@npm:3.0.0\":"
+    }
+   ]
+  },
+  {
+   "tool": "marlowe-ts-sdk",
+   "revision": "1242de8946046ac6a735bf550512b72ff37b5265",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "era-identity",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @blockfrost/blockfrost-js and blockfrost-utils, used for address derivation helpers.",
+   "evidence": [
+    {
+     "repo": "marlowe-lang/marlowe-ts-sdk",
+     "revision": "1242de8946046ac6a735bf550512b72ff37b5265",
+     "path": "package-lock.json",
+     "line": 862,
+     "quote": "\"node_modules/@blockfrost/blockfrost-js\": {"
+    }
+   ]
+  },
+  {
+   "tool": "masumi-registry-service",
+   "revision": "3b0ab26f340174acbed0d4eb6afba1bb6697d524",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "era-identity",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @blockfrost/blockfrost-js, which uses it for address derivation helpers.",
+   "evidence": [
+    {
+     "repo": "masumi-network/masumi-registry-service",
+     "revision": "3b0ab26f340174acbed0d4eb6afba1bb6697d524",
+     "path": "pnpm-lock.yaml",
+     "line": 327,
+     "quote": "'@blockfrost/blockfrost-js@6.1.1':"
+    }
+   ]
+  },
+  {
+   "tool": "nami",
+   "revision": "e52e0bdb02eb1ec224db26f48b0192685a30f99e",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "plutus-language",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL comes in through @fivebinaries/coin-selection, which builds payment transactions for coin selection; Nami's own transaction decoding is decided under cardano-js-sdk and the interop library.",
+   "evidence": [
+    {
+     "repo": "input-output-hk/nami",
+     "revision": "e52e0bdb02eb1ec224db26f48b0192685a30f99e",
+     "path": "package-lock.json",
+     "line": 5084,
+     "quote": "\"node_modules/@fivebinaries/coin-selection\": {"
+    }
+   ]
+  },
+  {
+   "tool": "sorbet",
+   "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+   "via": "cardano-multiplatform-lib-cml",
+   "surfaces": [
+    "block-encoding",
+    "era-identity",
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding",
+    "transaction-rules"
+   ],
+   "decision": "not-reached",
+   "summary": "CML is left over in bun.lock: package.json no longer declares it and the only source reference is commented out.",
+   "evidence": [
+    {
+     "repo": "SundaeSwap-finance/Sorbet",
+     "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+     "path": "bun.lock",
+     "line": 126,
+     "quote": "\"@dcspark/cardano-multiplatform-lib-browser\": [\"@dcspark/cardano-multiplatform-lib-browser"
+    },
+    {
+     "repo": "SundaeSwap-finance/Sorbet",
+     "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+     "path": "src/modules/ImpersonatedWallet.class.ts",
+     "line": 15,
+     "quote": "// import { Address } from \"@dcspark/cardano-multiplatform-lib-browser\";"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-up",
+   "revision": "1149903ef0161c71be248852c861ae0c4211c5d5",
+   "via": "utxorpc",
+   "surfaces": [
+    "block-encoding",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "utxorpc/go-codegen is an indirect Go module; cardano-up installs and starts services such as Dolos but reads no chain data through UTxO RPC.",
+   "evidence": [
+    {
+     "repo": "blinklabs-io/cardano-up",
+     "revision": "1149903ef0161c71be248852c861ae0c4211c5d5",
+     "path": "go.mod",
+     "line": 108,
+     "quote": "github.com/utxorpc/go-codegen v0.19.2 // indirect"
+    }
+   ]
+  },
+  {
+   "tool": "bursa",
+   "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "undetermined",
+   "summary": "Reached only through @keystonehq/hw-app-ada for Keystone QR signing; whether the web UI signs transactions it did not build needs the signing flow run.",
+   "evidence": [
+    {
+     "repo": "blinklabs-io/bursa",
+     "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+     "path": "ui/web/package-lock.json",
+     "line": 1268,
+     "quote": "\"node_modules/@keystonehq/hw-app-ada\": {"
+    },
+    {
+     "repo": "blinklabs-io/bursa",
+     "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+     "path": "ui/web/src/hw/index.ts",
+     "line": 20,
+     "quote": "import { connectKeystone } from \"./keystone\";"
+    }
+   ]
+  },
+  {
+   "tool": "bursa",
+   "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL decodes transactions here, not blocks.",
+   "evidence": [
+    {
+     "repo": "blinklabs-io/bursa",
+     "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+     "path": "ui/web/package-lock.json",
+     "line": 1268,
+     "quote": "\"node_modules/@keystonehq/hw-app-ada\": {"
+    },
+    {
+     "repo": "blinklabs-io/bursa",
+     "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+     "path": "ui/web/src/hw/index.ts",
+     "line": 20,
+     "quote": "import { connectKeystone } from \"./keystone\";"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-dev-wallet",
+   "revision": "e846a7c5d2747609d791d7d47d5423616718cb34",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The CIP-30 signTx handler decodes dApp-supplied transactions with CSL, whose body decoder rejects keys beyond 22, parameter updates beyond key 33 and pool certificates with a BLS key.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/cardano-dev-wallet",
+     "revision": "e846a7c5d2747609d791d7d47d5423616718cb34",
+     "path": "webext/src/lib/CIP30/WalletApi.ts",
+     "line": 342,
+     "quote": "argsDecoded: [CSL.Transaction.from_hex(tx), partialSign],"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-dev-wallet",
+   "revision": "e846a7c5d2747609d791d7d47d5423616718cb34",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL decodes transactions here, not blocks.",
+   "evidence": [
+    {
+     "repo": "mlabs-haskell/cardano-dev-wallet",
+     "revision": "e846a7c5d2747609d791d7d47d5423616718cb34",
+     "path": "webext/src/lib/CIP30/WalletApi.ts",
+     "line": 342,
+     "quote": "argsDecoded: [CSL.Transaction.from_hex(tx), partialSign],"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-hw-cli",
+   "revision": "7f77c67d8163465fe2662a3328cb7eac8feb6a89",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Transaction files supplied by the user are decoded with CSL, whose body decoder rejects keys beyond 22, parameter updates beyond key 33 and pool certificates with a BLS key (pool registration signing included).",
+   "evidence": [
+    {
+     "repo": "vacuumlabs/cardano-hw-cli",
+     "revision": "7f77c67d8163465fe2662a3328cb7eac8feb6a89",
+     "path": "src/crypto-providers/keystoneUtils.ts",
+     "line": 458,
+     "quote": "CardanoSerializationLib.TransactionWitnessSet.from_hex("
+    },
+    {
+     "repo": "vacuumlabs/cardano-hw-cli",
+     "revision": "7f77c67d8163465fe2662a3328cb7eac8feb6a89",
+     "path": "src/transaction/transactionValidation.ts",
+     "line": 189,
+     "quote": "const extractCostModels = ("
+    }
+   ]
+  },
+  {
+   "tool": "cardano-hw-cli",
+   "revision": "7f77c67d8163465fe2662a3328cb7eac8feb6a89",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL decodes transactions here, not blocks.",
+   "evidence": [
+    {
+     "repo": "vacuumlabs/cardano-hw-cli",
+     "revision": "7f77c67d8163465fe2662a3328cb7eac8feb6a89",
+     "path": "src/crypto-providers/keystoneUtils.ts",
+     "line": 458,
+     "quote": "CardanoSerializationLib.TransactionWitnessSet.from_hex("
+    },
+    {
+     "repo": "vacuumlabs/cardano-hw-cli",
+     "revision": "7f77c67d8163465fe2662a3328cb7eac8feb6a89",
+     "path": "src/transaction/transactionValidation.ts",
+     "line": 189,
+     "quote": "const extractCostModels = ("
+    }
+   ]
+  },
+  {
+   "tool": "cardano-ibc-incubator",
+   "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "undetermined",
+   "summary": "The bundled demo dApps decode transaction hex with CSL; whether they meet Dijkstra bodies is not decidable from source.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/cardano-ibc-incubator",
+     "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+     "path": "dapps/ibc-swap/client/containers/Swap/index.tsx",
+     "line": 21,
+     "quote": "import * as CSL from '@emurgo/cardano-serialization-lib-browser';"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-ibc-incubator",
+   "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL decodes transactions here, not blocks.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/cardano-ibc-incubator",
+     "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+     "path": "dapps/ibc-swap/client/containers/Swap/index.tsx",
+     "line": 21,
+     "quote": "import * as CSL from '@emurgo/cardano-serialization-lib-browser';"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-rosetta-legacy",
+   "revision": "95203b4e43a970c7b221b1676bc0bd2a50c9d6bc",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The construction API parses signed transactions with CSL, whose body decoder rejects keys beyond 22 and pool certificates with a BLS key; the repository is archived.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/cardano-rosetta",
+     "revision": "95203b4e43a970c7b221b1676bc0bd2a50c9d6bc",
+     "path": "cardano-rosetta-server/src/server/services/cardano-services.ts",
+     "line": 458,
+     "quote": "const parsed = scope.manage(CardanoWasm.Transaction.from_bytes(signedTransactionBytes));"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-rosetta-legacy",
+   "revision": "95203b4e43a970c7b221b1676bc0bd2a50c9d6bc",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding",
+    "protocol-parameters"
+   ],
+   "decision": "not-reached",
+   "summary": "Other CSL use builds the tool's own transactions or decodes no blocks.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/cardano-rosetta",
+     "revision": "95203b4e43a970c7b221b1676bc0bd2a50c9d6bc",
+     "path": "cardano-rosetta-server/src/server/services/cardano-services.ts",
+     "line": 458,
+     "quote": "const parsed = scope.manage(CardanoWasm.Transaction.from_bytes(signedTransactionBytes));"
+    }
+   ]
+  },
+  {
+   "tool": "cardano-wallet-interface",
+   "revision": "3b9451fcaf7fc79bc9e8b56f227b42657d69a21c",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "transaction-encoding"
+   ],
+   "decision": "undetermined",
+   "summary": "Decodes wallet-returned witness sets for transactions it builds itself; whether a wallet returns Dijkstra-form witness sets needs execution. Last pushed 2022-07.",
+   "evidence": [
+    {
+     "repo": "HarmonicPool/cardano-wallet-interface",
+     "revision": "3b9451fcaf7fc79bc9e8b56f227b42657d69a21c",
+     "path": "src/Wallet/index.js",
+     "line": 1174,
+     "quote": "TransactionWitnessSet.from_bytes("
+    }
+   ]
+  },
+  {
+   "tool": "cardano-wallet-interface",
+   "revision": "3b9451fcaf7fc79bc9e8b56f227b42657d69a21c",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration"
+   ],
+   "decision": "not-reached",
+   "summary": "Other CSL use builds the tool's own transactions or decodes no blocks.",
+   "evidence": [
+    {
+     "repo": "HarmonicPool/cardano-wallet-interface",
+     "revision": "3b9451fcaf7fc79bc9e8b56f227b42657d69a21c",
+     "path": "src/Wallet/index.js",
+     "line": 1174,
+     "quote": "TransactionWitnessSet.from_bytes("
+    }
+   ]
+  },
+  {
+   "tool": "cquisitor-lib",
+   "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "A transaction decoder and validator: arbitrary transactions go through CSL, whose body decoder rejects keys beyond 22, parameter updates beyond key 33 and pool certificates with a BLS key.",
+   "evidence": [
+    {
+     "repo": "cardananium/cquisitor-lib",
+     "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+     "path": "src/csl_decoders/specific_decoders.rs",
+     "line": 20,
+     "quote": "let fixed_tx = csl::FixedTransaction::from_hex(input)"
+    }
+   ]
+  },
+  {
+   "tool": "cquisitor-lib",
+   "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL decodes transactions here, not blocks.",
+   "evidence": [
+    {
+     "repo": "cardananium/cquisitor-lib",
+     "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+     "path": "src/csl_decoders/specific_decoders.rs",
+     "line": 20,
+     "quote": "let fixed_tx = csl::FixedTransaction::from_hex(input)"
+    }
+   ]
+  },
+  {
+   "tool": "csl-mobile-bridge",
+   "revision": "837c5df5def95ce50f91c1c617cbc63291f4d702",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The React Native binding re-exports CSL's block, transaction, certificate and parameter-update decoders, so every consumer inherits their Conway ceilings.",
+   "evidence": [
+    {
+     "repo": "Emurgo/csl-mobile-bridge",
+     "revision": "837c5df5def95ce50f91c1c617cbc63291f4d702",
+     "path": "rust/src/c_bridge/bridge.rs",
+     "line": 46,
+     "quote": "use cardano_serialization_lib::Costmdls;"
+    },
+    {
+     "repo": "Emurgo/csl-mobile-bridge",
+     "revision": "837c5df5def95ce50f91c1c617cbc63291f4d702",
+     "path": "rust/src/c_bridge/bridge.rs",
+     "line": 68,
+     "quote": "use cardano_serialization_lib::FixedTransaction;"
+    }
+   ]
+  },
+  {
+   "tool": "hydra-sdk",
+   "revision": "2829131cb08249ad468da6d96c131050286e1987",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "The offline evaluator decodes arbitrary transactions with CSL, whose body decoder rejects keys beyond 22, parameter updates beyond key 33 and pool certificates with a BLS key.",
+   "evidence": [
+    {
+     "repo": "Vtechcom/hydra-sdk",
+     "revision": "2829131cb08249ad468da6d96c131050286e1987",
+     "path": "packages/evaluator/src/context/resolver.ts",
+     "line": 125,
+     "quote": "tx = CardanoWASM.Transaction.from_hex(txHex)"
+    },
+    {
+     "repo": "Vtechcom/hydra-sdk",
+     "revision": "2829131cb08249ad468da6d96c131050286e1987",
+     "path": "packages/hydra-transaction/src/tx-builder/index.ts",
+     "line": 245,
+     "quote": "const plutusScript = CardanoWASM.PlutusScript.from_hex_with_version(scriptCbor, language)"
+    }
+   ]
+  },
+  {
+   "tool": "hydra-sdk",
+   "revision": "2829131cb08249ad468da6d96c131050286e1987",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL decodes transactions here, not blocks.",
+   "evidence": [
+    {
+     "repo": "Vtechcom/hydra-sdk",
+     "revision": "2829131cb08249ad468da6d96c131050286e1987",
+     "path": "packages/evaluator/src/context/resolver.ts",
+     "line": 125,
+     "quote": "tx = CardanoWASM.Transaction.from_hex(txHex)"
+    },
+    {
+     "repo": "Vtechcom/hydra-sdk",
+     "revision": "2829131cb08249ad468da6d96c131050286e1987",
+     "path": "packages/hydra-transaction/src/tx-builder/index.ts",
+     "line": 245,
+     "quote": "const plutusScript = CardanoWASM.PlutusScript.from_hex_with_version(scriptCbor, language)"
+    }
+   ]
+  },
+  {
+   "tool": "masumi",
+   "revision": "dd0a1e12e2e9fddba028512355d0eaf7cc85efac",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Hydra integration decodes head transactions produced by other parties with CSL, whose body decoder rejects keys beyond 22.",
+   "evidence": [
+    {
+     "repo": "masumi-network/masumi-payment-service",
+     "revision": "dd0a1e12e2e9fddba028512355d0eaf7cc85efac",
+     "path": "src/lib/hydra/hydra/node-fanout-references.ts",
+     "line": 41,
+     "quote": "const transaction = FixedTransaction.from_bytes(Buffer.from(confirmedProducer.cborHex, 'hex'));"
+    }
+   ]
+  },
+  {
+   "tool": "masumi",
+   "revision": "dd0a1e12e2e9fddba028512355d0eaf7cc85efac",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration"
+   ],
+   "decision": "not-reached",
+   "summary": "Other CSL use builds the tool's own transactions or decodes no blocks.",
+   "evidence": [
+    {
+     "repo": "masumi-network/masumi-payment-service",
+     "revision": "dd0a1e12e2e9fddba028512355d0eaf7cc85efac",
+     "path": "src/lib/hydra/hydra/node-fanout-references.ts",
+     "line": 41,
+     "quote": "const transaction = FixedTransaction.from_bytes(Buffer.from(confirmedProducer.cborHex, 'hex'));"
+    }
+   ]
+  },
+  {
+   "tool": "whisky",
+   "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Transaction utilities decode supplied transactions with CSL, whose body decoder rejects keys beyond 22, parameter updates beyond key 33 and pool certificates with a BLS key.",
+   "evidence": [
+    {
+     "repo": "sidan-lab/whisky",
+     "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+     "path": "packages/whisky-csl/src/utils/transaction.rs",
+     "line": 12,
+     "quote": "let csl_tx = csl::FixedTransaction::from_hex(tx_hex).map_err(WError::from_err("
+    }
+   ]
+  },
+  {
+   "tool": "whisky",
+   "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL decodes transactions here, not blocks.",
+   "evidence": [
+    {
+     "repo": "sidan-lab/whisky",
+     "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+     "path": "packages/whisky-csl/src/utils/transaction.rs",
+     "line": 12,
+     "quote": "let csl_tx = csl::FixedTransaction::from_hex(tx_hex).map_err(WError::from_err("
+    }
+   ]
+  },
+  {
+   "tool": "yoroi",
+   "revision": "5f6fb8348df1c486cd8075f80976dbbd75e27641",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ],
+   "decision": "confirmed",
+   "summary": "Transaction review decodes dApp-supplied transactions with CSL, whose body decoder rejects keys beyond 22, parameter updates beyond key 33 and pool certificates with a BLS key.",
+   "evidence": [
+    {
+     "repo": "Emurgo/yoroi",
+     "revision": "5f6fb8348df1c486cd8075f80976dbbd75e27641",
+     "path": "mobile/src/features/ReviewTx/common/hooks/useTxBody.tsx",
+     "line": 21,
+     "quote": "const tx = csl.Transaction.fromHex(cbor)"
+    }
+   ]
+  },
+  {
+   "tool": "yoroi",
+   "revision": "5f6fb8348df1c486cd8075f80976dbbd75e27641",
+   "via": "cardano-serialization-lib-csl",
+   "surfaces": [
+    "block-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "CSL decodes transactions here, not blocks.",
+   "evidence": [
+    {
+     "repo": "Emurgo/yoroi",
+     "revision": "5f6fb8348df1c486cd8075f80976dbbd75e27641",
+     "path": "mobile/src/features/ReviewTx/common/hooks/useTxBody.tsx",
+     "line": 21,
+     "quote": "const tx = csl.Transaction.fromHex(cbor)"
     }
    ]
   }

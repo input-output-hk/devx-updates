@@ -59,15 +59,113 @@
         },
         {
           "surfaces": [
-            "era-identity",
-            "transaction-encoding",
-            "transaction-rules",
-            "protocol-parameters",
-            "stake-pool-registration",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The transaction body decoder handles keys up to 22 and rejects any other key, so bodies with sub-transactions, guards or account keys (23-27) fail to decode. On the devnet plain Dijkstra transactions decode, but Transaction re-encodes them in the legacy four-element form.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/transaction_body.rs",
+              "line": 398,
+              "quote": "22 => {"
+            },
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/transaction_body.rs",
+              "line": 412,
+              "quote": "DeserializeFailure::UnknownKey(Key::Uint(unknown_key)).into()"
+            },
+            {
+              "kind": "devnet",
+              "check": "csl-decoding",
+              "version": "17.0.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
             "block-encoding"
           ],
+          "status": "gap",
+          "summary": "Blocks are decoded in the segregated form (header, transaction bodies, witness sets, auxiliary data, invalid transactions); Dijkstra's [header, block_body] does not match. On the devnet neither 17.0.0 nor 15.0.3 decodes any Dijkstra block.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/block/block.rs",
+              "line": 27,
+              "quote": "read_len.read_elems(4)?;"
+            },
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/block/block.rs",
+              "line": 30,
+              "quote": "let transaction_bodies ="
+            },
+            {
+              "kind": "devnet",
+              "check": "csl-decoding",
+              "version": "17.0.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "Protocol parameter updates decode keys up to 33 and reject any other key, so updates of the Dijkstra parameters (34-56) fail.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/protocol_param_update.rs",
+              "line": 810,
+              "quote": "33 => {"
+            },
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/protocol_param_update.rs",
+              "line": 824,
+              "quote": "DeserializeFailure::UnknownKey(Key::Uint(unknown_key)).into()"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "A pool registration certificate must have exactly ten elements; one carrying Dijkstra's optional BLS key is rejected.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/certificates/pool_registration.rs",
+              "line": 154,
+              "quote": "check_len(len, 10, \"(cert_index, pool_params (without array) )\")?;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules"
+          ],
           "status": "no-evidence",
-          "summary": "No Dijkstra reference at the observed revision (case-insensitive search of tracked files, lockfiles excluded) and no issue or pull request mentioning Dijkstra.",
+          "summary": "No Dijkstra reference at the observed revision (case-insensitive search of tracked files, lockfiles excluded) and no issue or pull request mentioning Dijkstra. CSL has no era tag of its own, and its builder does not model the Dijkstra rules.",
           "evidence": []
         }
       ]
@@ -932,7 +1030,7 @@
             "transaction-encoding"
           ],
           "status": "gap",
-          "summary": "The transaction body ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards.",
+          "summary": "The transaction body ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards. On the devnet v0.19.2 also fails on the three-element form whenever auxiliary data is present: it reads the third element as is_valid, so Dijkstra transactions with metadata do not decode.",
           "evidence": [
             {
               "kind": "source",
@@ -941,6 +1039,11 @@
               "path": "pycardano/transaction.py",
               "line": 668,
               "quote": "        default=None, metadata={\"key\": 22, \"optional\": True}"
+            },
+            {
+              "kind": "devnet",
+              "check": "pycardano-transactions",
+              "version": "v0.19.2"
             }
           ]
         },

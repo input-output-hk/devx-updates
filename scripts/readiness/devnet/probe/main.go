@@ -5,6 +5,7 @@
 //	probe decode < LINES       "name hex" per line: era detection and decode, plus a forced Dijkstra decode
 //	probe chain SOCKET         chain-sync from origin to the tip and tally decoding per era
 //	probe first-blocks SOCKET  print the first raw block of each era as "type hex"
+//	probe blocks SOCKET        print every raw Dijkstra block up to the tip as "type hex" (for codecs without a node client)
 package main
 
 import (
@@ -199,9 +200,45 @@ func firstBlocks(socket string) {
 	}
 }
 
+// dijkstraBlocks syncs from origin and prints every Dijkstra block; it stops once no block has arrived for 3 seconds,
+// which on the devnet means the tip was reached.
+func dijkstraBlocks(socket string) {
+	var mu sync.Mutex
+	last := time.Now()
+	cfg := chainsync.NewConfig(
+		chainsync.WithRollBackwardFunc(func(chainsync.CallbackContext, pcommon.Point, chainsync.Tip) error { return nil }),
+		chainsync.WithRollForwardRawFunc(func(_ chainsync.CallbackContext, blockType uint, raw []byte, _ chainsync.Tip) error {
+			mu.Lock()
+			defer mu.Unlock()
+			last = time.Now()
+			if blockType >= ledger.BlockTypeDijkstra {
+				fmt.Printf("%d %s\n", blockType, hex.EncodeToString(raw))
+			}
+			return nil
+		}),
+	)
+	conn, errs := dial(socket, ouroboros.WithChainSyncConfig(cfg))
+	if err := conn.ChainSync().Client.Sync([]pcommon.Point{pcommon.NewPointOrigin()}); err != nil {
+		fail("sync: %v", err)
+	}
+	for {
+		select {
+		case err := <-errs:
+			fail("connection error: %v", err)
+		case <-time.After(500 * time.Millisecond):
+			mu.Lock()
+			idle := time.Since(last)
+			mu.Unlock()
+			if idle > 3*time.Second {
+				return
+			}
+		}
+	}
+}
+
 func main() {
 	if len(os.Args) < 2 {
-		fail("usage: probe handshake|mempool|decode|chain|first-blocks ...")
+		fail("usage: probe handshake|mempool|decode|chain|first-blocks|blocks ...")
 	}
 	switch os.Args[1] {
 	case "handshake":
@@ -218,6 +255,8 @@ func main() {
 		chain(os.Args[2])
 	case "first-blocks":
 		firstBlocks(os.Args[2])
+	case "blocks":
+		dijkstraBlocks(os.Args[2])
 	default:
 		fail("unknown command %s", os.Args[1])
 	}

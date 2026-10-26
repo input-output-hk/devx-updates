@@ -157,8 +157,10 @@ export default function DijkstraPage() {
         <p className="mt-2 text-sm text-muted">
           A tool is unlocked once every upstream blocker it has is fixed; unlocked components then count as fixed for
           their own consumers. Most SDKs wait on several services at once (for example Kupo for UTxOs, Ogmios for
-          submission and Blockfrost for parameters), so single fixes understate the effect. The fix order adds, at each
-          step, the component that unlocks the most tools on top of the earlier steps.
+          submission and Blockfrost for parameters), so single fixes understate the effect. A fixed component that waits
+          on another one (Blockfrost and Koios read db-sync) unlocks nothing until that one is fixed too. The fix order
+          adds, at each step, the fix that unlocks the most tools on top of the earlier steps, counting a fix together
+          with the components it waits on.
         </p>
         <ol className="mt-4 space-y-2">{unlocks.fixOrder.map((f, i) => (
           <li key={f.component} className="rounded-xl border border-border bg-surface px-4 py-3">

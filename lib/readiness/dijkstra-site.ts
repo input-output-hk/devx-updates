@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { parseBoundaryRegister, worstStatus, type BoundaryRegister } from "./boundary";
 import { parseChangeRegister, type ChangeRegister, type Citation } from "./dijkstra";
 import { devnetConsistency, parseDevnetRegister, resultsFor, type DevnetRegister, type SubjectKind } from "./devnet";
-import { parseLeadRegister, type Lead, type LeadRegister } from "./leads";
+import { OWN, parseLeadRegister, type Lead, type LeadRegister } from "./leads";
 import { readJson } from "./store";
 import type { ClassificationRegister } from "./surface-collect";
 import { READINESS, targetVersions, UPSTREAM_TOOLS, type Readiness, type ToolClassification } from "./surfaces";
@@ -57,7 +57,7 @@ export function toolLeads(site: DijkstraSite, id: string): Lead[] {
 }
 
 /** A gap inherited through a service rule rather than a component comes from a deprecated provider (Maestro). */
-export const viaLabel = (via: string) => via.startsWith("service:") ? `${via.slice("service:".length)} (deprecated)` : via;
+export const viaLabel = (via: string) => via === OWN ? "own code" : via.startsWith("service:") ? `${via.slice("service:".length)} (deprecated)` : via;
 
 export function componentStatus(site: DijkstraSite, id: string) {
   const component = site.boundary.components.find((c) => c.id === id);
@@ -126,6 +126,12 @@ export const toolLinks = (site: DijkstraSite, id: string): ToolLink[] =>
 
 const list = (items: string[]) => [...new Set(items)].map(viaLabel).join(", ");
 
+/** Whether the tool's own code was read (an `own` lead) and found not to break on any surface it touches. */
+const ownRead = (site: DijkstraSite, id: string) => {
+  const own = site.leads.leads.filter((l) => l.tool === id && l.via === OWN);
+  return own.length > 0 && own.every((l) => l.decision === "not-reached");
+};
+
 function computedState(site: DijkstraSite, tool: ToolClassification): { tool: string; state: Exclude<HardforkState, "dismissed">; reason: string } {
   const blockers = site.unlocks.blockers.find((b) => b.tool === tool.id)?.blockers ?? [];
   const own = componentStatus(site, tool.id);
@@ -157,6 +163,7 @@ function computedState(site: DijkstraSite, tool: ToolClassification): { tool: st
   const reason = unread.length ? `Inherits a gap from ${list(unread)}, not read yet`
     : open.length ? `Waits on a verdict for ${list(open)}`
     : tool.readiness === "upstream" ? "Uses only the node 11.2 components"
+    : ownRead(site, tool.id) ? "Own code and dependencies read, no confirmed gap; not run against Dijkstra"
     : "No confirmed gap; not checked against Dijkstra";
   return { tool: tool.id, state: "unverified", reason };
 }

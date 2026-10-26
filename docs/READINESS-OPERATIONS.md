@@ -431,9 +431,26 @@ readiness. The run also records each repository's archive state and last push
 through `gh api`. Changing a rule or the scanner bumps `SCANNER_VERSION`, which
 invalidates the cache; delete `.readiness/surface-scans/` to force a rescan.
 
-After editing `boundary.json` or `changes.json`, recompute the classification
-from the recorded revisions and cached scans, without fetching, so that lead
-decisions read at those revisions stay valid:
+Manifests only show direct dependencies. Components reached through another
+package are read from the lockfiles committed at each classified revision and
+written to `content/readiness/dijkstra/transitive.json`:
+
+```sh
+npm run readiness -- transitive                      # every scanned tool (GitHub API tree plus raw lockfile reads)
+npm run readiness -- transitive --tools carp,lace    # a subset; other tools' links are kept
+```
+
+Each link names the nearest catalog component on the lockfile path, its
+locked package and line. A component reached only through another component
+the tool declares is not linked: that component's own classification and
+leads carry it. Nothing is cloned, and lockfiles in test, example or vendored
+paths are skipped. Lockfile rules live in `lib/readiness/transitive.ts`
+(`LOCK_RULES`) and are kept out of the scan rule digest. Links are merged by
+the next `classify-surfaces` run as `transitive:<component>` hits.
+
+After editing `boundary.json`, `changes.json` or `transitive.json`, recompute
+the classification from the recorded revisions and cached scans, without
+fetching, so that lead decisions read at those revisions stay valid:
 
 ```sh
 npm run readiness -- classify-surfaces --reclassify
@@ -446,9 +463,12 @@ npm run readiness -- check-leads                   # every shipped gap decided, 
 npm run readiness -- check-leads --verify-sources  # also re-read every quoted line at its revision
 ```
 
-`check-leads` lists gaps without a decision (`unreviewed`), decisions read at an
-older revision than the new scan (`stale`) and decisions that no longer match a
-gap (`orphaned`, which fails the command). Decide each new or stale lead by
+`check-leads` lists gaps without a decision (`unreviewed`), own-code surfaces
+without a decision (`ownUnreviewed`: marker surfaces of non-boundary tools with
+no confirmed gap, decided with `via: "own"`), decisions read at an older
+revision than the new scan (`stale`) and decisions that no longer match a gap,
+an own surface or a surface waiting on its component's verdict (`orphaned`,
+which fails the command). Decide each new or stale lead by
 reading the tool's shipped code at the classified revision and record the quoted
 lines in `content/readiness/dijkstra/leads.json`. Then regenerate the unlock
 report:

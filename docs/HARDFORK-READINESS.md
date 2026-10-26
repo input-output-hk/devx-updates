@@ -1,6 +1,6 @@
 # Dependency mapping and hardfork readiness
 
-State of the repository on 2026-10-22, branch `hardfork-readiness`.
+State of the repository on 2026-10-26, branch `hardfork-readiness`.
 
 This repository finds the catalog tools that stop working after the Dijkstra
 hard fork (protocol version 12, cardano-node 11.2), explains why from quoted
@@ -28,16 +28,18 @@ The register formats and findings are in
 | Area | File | State |
 | --- | --- | --- |
 | Changes | `content/readiness/dijkstra/changes.json` | 19 changes and 2 checked-unchanged areas over 13 surfaces; 73 change citations, all re-verified |
-| Boundary | `boundary.json` | 61 components, 202 evidence items; worst status 49 gap, 2 no-evidence, 1 tracked, 7 in-progress, 2 released |
+| Boundary | `boundary.json` | 61 components, 217 evidence items; worst status 49 gap, 2 no-evidence, 1 tracked, 7 in-progress, 2 released |
 | Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source |
-| Leads | `leads.json` | 527 entries, 1,241 decisions (505 confirmed, 711 not reached, 25 undetermined), none unreviewed; 112 tools with a confirmed gap |
-| Unlocks | `unlocks.json` | 18 fixes unlock 81 tools; bump-ready: Marlowe, Marconi |
+| Transitive links | `transitive.json` | 30 components reached only through lockfiles, in 29 tools |
+| Leads | `leads.json` | 639 entries, 1,610 decisions (557 confirmed, 1,017 not reached, 36 undetermined), none unreviewed; 130 of them on the own code of 48 tools; 118 tools with a confirmed gap |
+| Unlocks | `unlocks.json` | 21 fixes unlock 81 tools; bump-ready: Marlowe, Marconi |
 | Upgrades | `upgrades.json` | 11 readings (8 own-work, 1 prepared, 2 generic) |
-| Devnet | `devnet.json` | 12 checks, 39 results, 20 failing |
+| Devnet | `devnet.json` | 14 checks, 42 results, 23 failing |
+| Site | `/map/dijkstra` | 206 tools: 113 break, 12 in progress, 2 ready, 45 not verified, 34 dismissed |
 | Dependency graph | `data/readiness/` | 268 tools accounted for, 227 with discovered source, 45 with a native profile (55 profiles, 7 complete), 1,321 evidence objects, 0 capability findings |
 
 All registers pass `check-changes`, `check-boundary`, `check-leads` and
-`check-upgrades` with `--verify-sources`, and `check-devnet`. All 148 readiness
+`check-upgrades` with `--verify-sources`, and `check-devnet`. All 160 readiness
 tests pass, all 55 native profiles replay identically, and `validate` accepts
 the snapshot.
 
@@ -133,8 +135,31 @@ Each scan records path, line and quote, and whether the repository is
 archived. `--reclassify` recomputes at the recorded revisions so lead
 decisions stay valid.
 
-Exposure: 65 implements, 86 dependency, 45 service, 9 marker only, 4
+Exposure: 65 implements, 92 dependency, 39 service, 9 marker only, 4
 auxiliary only, 18 none found, 41 without public source.
+
+### Transitive dependencies
+
+Manifests only show direct declarations, so a tool reaching a component
+through a library outside the catalog looked unexposed. `transitive` reads
+the lockfiles committed at each classified revision: package-lock,
+npm-shrinkwrap, pnpm-lock, yarn.lock (Classic and Berry), bun.lock,
+Cargo.lock, go.sum, poetry.lock, uv.lock, gradle.lockfile and
+packages.lock.json. Test, example and vendored paths are skipped. It walks
+each component package's dependents up to the project and links the tool to
+the **nearest catalog component** on the path. A component reached only
+through another component the tool declares is left to that component's own
+classification and leads. For example, a Mesh consumer is not linked to
+cardano-js-sdk separately.
+
+`classify-surfaces --reclassify` merges each link as a shipped dependency
+hit of rule `transitive:<component>`, with the lockfile line as its example.
+These rules stay out of the scan rule digest, so cached scans remain valid.
+Lockfile rules also cover components that have no manifest rule (Oura, Adder,
+Aiken's `uplc` crate, Dolos, yaci-store, julc, OpShin, cquisitor). The 30
+links include Blockfrost, Lace, Daedalus and Minswap reaching CSL through
+blockfrost-js or coin-selection, carp reaching Oura, and whisky, cquisitor,
+sutra, gastronomy and both de-uplc tools evaluating with Aiken's `uplc`.
 
 ### Lead decisions
 
@@ -148,30 +173,71 @@ are in the register's `method`; services are decided per capability used
 `/network/eras` and the epoch parameter endpoints; and so on), except Maestro,
 where any shipped call is reached.
 
+A surface whose component has no verdict yet (`no-evidence`, `tracked`,
+`in-progress`) may also be decided. `not-reached` clears the consumer's
+wait whatever the component later turns out to be. A tool that does reach
+the capability keeps waiting on the component. This is what removed most
+"waits on a verdict" states: such decisions used to cover only the
+component's `gap` surfaces, so a tool read as using CSL only for keys still
+waited on CSL's other surfaces.
+
 Confirmed tools by service: Blockfrost 41, Ogmios 37, Koios 22, Kupo 21,
 db-sync 13, Maestro 10.
+
+### Own code
+
+Markers never set readiness, and a non-boundary tool's own code used to go
+unread. A codec, era list or certificate encoder in a tool that is not a
+boundary component therefore showed as "not checked". Lead decisions with
+`via: "own"` now cover every shipped marker surface of such tools (130
+decisions, 48 tools). They are:
+
+- **confirmed** when the tool decodes Dijkstra data it does not control
+  (chain blocks, external transactions, reference scripts, parameter sets)
+  with a closed Conway-or-earlier view, or emits encodings Dijkstra rejects;
+- **not reached** when the lines serve the tool's own V1-V3 scripts,
+  unchanged encodings (addresses, values, datums, CIP-30 answers), emulators
+  or local clusters, or are not code.
+
+A confirmed own decision is an own gap: only the tool's maintainers can
+clear it. `check-leads` lists own surfaces still undecided (`ownUnreviewed`)
+for tools without a confirmed gap. Confirmed so far:
+
+| Tool | Surface | What breaks |
+| --- | --- | --- |
+| AdaLite | transaction encoding | Stake (de)registration is built as certificate types 0/1, which Dijkstra refuses (devnet `cross-era-submission`) |
+| libcardano | transaction encoding | The builder's stake registration is the deposit-less type 0 |
+| cardano-wallet-sdk-dart | transaction encoding | Stake registration is encoded as type 0; Conway certificates are not modelled |
+| stakepool-operator-scripts | era identity, protocol parameters | `dijkstra` matches no era case in the min-UTxO calculation; votes on the new parameters exit with an error |
+| gastronomy | transaction encoding, Plutus language | Chain transactions are decoded with Pallas's Conway `MintedTx`; no PlutusV4 reference scripts |
+| catalyst-voices | block encoding, Plutus language | The gateway indexes blocks through Pallas (via cardano-chain-follower, no lockfile committed); a PlutusV4 reference script throws in the app |
 
 ### Unlocks and upgrades
 
 `unlocks` derives what a fix in one component unlocks, directly and through
 the components it unblocks. Each confirmed gap is an `upstream-fix`, an
 `own-bump` (a release exists; the tool only raises a pin) or an `own-gap`.
-`fixOrder` adds, at each step, the fix that unlocks the most tools on top of
-the earlier steps:
+A fixed component that itself waits on another one only becomes usable once
+that one is fixed too. Blockfrost and Koios read db-sync, so fixing them
+alone unlocks nothing (until 2026-10-26 the order wrongly counted them as
+usable on their own). `fixOrder` adds, at each step, the fix that unlocks the
+most tools on top of the earlier steps. A fix that cannot take effect yet is
+scored together with the fixes it waits on, per component, and that group is
+listed prerequisites first:
 
 | Step | Fix | Tools unlocked (running total) |
 | --- | --- | --- |
-| 1 | Blockfrost | 13 |
-| 2 | Ogmios | 23 |
-| 3 | Koios | 32 |
-| 4 | Kupo | 39 |
-| 5 | db-sync | 46 |
-| 6 | Move off Maestro | 53 |
-| 7 | CSL | 58 |
-| 8 | Pallas | 63 |
-| 9 | gouroboros | 66 |
-| 10–14 | ledgerjs-hw-app-cardano, cardano-js-sdk, cardano-wallet, cardano-client-lib, Scalus | 76 |
-| 15–18 | cquisitor-lib, cardano-hw-interop-lib, CML, ouroboros-miniprotocols-ts | 81 |
+| 1 | db-sync | 3 |
+| 2 | Blockfrost (waits on db-sync) | 16 |
+| 3 | Ogmios | 26 |
+| 4 | Koios (waits on db-sync) | 36 |
+| 5 | Kupo (waits on Ogmios) | 44 |
+| 6 | Move off Maestro | 50 |
+| 7 | Pallas | 55 |
+| 8 | CSL | 59 |
+| 9 | Aiken (its `uplc` evaluator) | 62 |
+| 10–15 | cardano-client-lib, Scalus, cardano-wallet, gouroboros, ledgerjs-hw-app-cardano, cardano-js-sdk | 74 |
+| 16–21 | cquisitor-lib, whisky, Adder, cardano-hw-interop-lib, CML, ouroboros-miniprotocols-ts | 81 |
 
 Marlowe and Marconi have a released upstream fix (cardano-api 11.8).
 `upgrades.json` records, from quoted shipped code, whether each bump-ready
@@ -199,9 +265,14 @@ Dijkstra and reaches protocol version 12, then runs the checks recorded in
 | `cml-decoding` | CML 6.2.0 decodes neither Dijkstra blocks nor transactions |
 | `js-sdk-transactions` | cardano-js-sdk 0.47.1 decodes and re-encodes plain Dijkstra transactions byte for byte |
 | `db-sync-and-blockfrost` | db-sync 13.7.2.1 stops at the first Dijkstra block; Blockfrost serves the pre-fork chain as current |
+| `csl-decoding` | CSL 17.0.0 and 15.0.3 decode none of 119 Dijkstra blocks; plain Dijkstra transactions decode but `Transaction` re-encodes them in the legacy four-element form |
+| `pycardano-transactions` | PyCardano 0.19.2 cannot decode a Dijkstra transaction carrying metadata (it reads the third element as `is_valid`); cardano-js-sdk 0.47.1 decodes the same transaction exactly |
 
 The recipe reproduced on a second machine with identical errors and decoder
-offsets. The Marlowe and Marconi bumps were dependency-solved in
+offsets, and again on 2026-10-26 for the CSL and PyCardano runs. CSL's
+transaction, block, parameter-update and pool-certificate decoders were
+re-read on 2026-10-26: what was `no-evidence` is now a cited `gap` on those
+four surfaces. Era identity and transaction rules stay `no-evidence`. The Marlowe and Marconi bumps were dependency-solved in
 `scripts/readiness/bump-solve/`: Marlowe resolves on cardano-api 11.8.0.0 only
 with four companion pins raised across majors; Marconi does not resolve.
 
@@ -280,6 +351,10 @@ The site is a static export; a malformed register fails the build.
 | 2026-10-20 | Hosted Blockfrost and Koios consumers inherit the self-hosted verdicts. |
 | 2026-10-22 | Blockfrost RYO is merged into the `blockfrost` catalog entry, with its source, collected graph, review gaps and readiness. |
 | 2026-10-22 | Maestro is deprecated; its consumers carry a gap until they change provider. |
+| 2026-10-26 | The fix order respects dependencies between components: a fix that waits on another counts only once both are in, and is scored with its prerequisites. |
+| 2026-10-26 | A non-boundary tool's own code is read like an inherited gap (`via: "own"`); a confirmed read is an own gap. |
+| 2026-10-26 | Lockfiles are a classification input; a lockfile link goes to the nearest catalog component, never around a component the tool declares. |
+| 2026-10-26 | Surfaces waiting on a component's verdict may be decided; `not-reached` clears the wait, a reached surface keeps waiting. |
 | standing | Maintainer outreach and issues are the project owner's. The tooling prepares evidence and never contacts maintainers. |
 
 ## Known limits
@@ -287,10 +362,24 @@ The site is a static export; a malformed register fails the build.
 - The registers are pinned to an untagged integration branch. When 11.2 is
   tagged, its revision must be compared with `changes.json`'s target.
 - R2 statuses were observed on 2026-10-19 and 2026-10-20 (Pallas, CML,
-  cardano-js-sdk and db-sync updated from the devnet on 2026-10-22). A head
-  observation says nothing about unpublished work.
+  cardano-js-sdk and db-sync updated from the devnet on 2026-10-22; CSL's
+  decoders re-read at the same observed revision and CSL and PyCardano run on
+  the devnet on 2026-10-26). A head observation says nothing about unpublished
+  work.
 - Classification is lexical. Lead decisions settle reachability by reading;
   only the devnet checks execute anything.
+- Transitive links need a committed lockfile. Haskell and PureScript projects
+  (cabal freeze files, spago) are not parsed, and repositories without a
+  lockfile (catalyst-voices' gateway) are read by hand. yarn, pnpm, bun and
+  Cargo lockfiles do not mark development-only packages, so lead decisions
+  settle those links.
+- Blockfrost's and Koios's transaction encoding is still `no-evidence`: they
+  serve db-sync's transactions. The devnet shows db-sync stopping at the fork,
+  but recording a gap there needs a read of each of their roughly 90
+  consumers.
+- cardano-cli cannot build transactions with Dijkstra-only body keys (23-27),
+  so the codec gaps on those keys rest on source; the devnet only exercises
+  plain Dijkstra transactions.
 - 41 tools have no public source and are unclassified.
 - R1 does not cover JSON representations in cardano-api/cli beyond the era
   commands.
@@ -319,21 +408,37 @@ The site is a static export; a malformed register fails the build.
 5. **Devnet coverage.** Koios on the devnet; Blockfrost and Koios again once
    db-sync decodes Dijkstra; compile Marlowe and Marconi on a larger machine;
    representative consumers per surface; re-run everything on the 11.2 tag.
+   Next codecs by tools blocked on reading alone: cardano-client-lib,
+   ledgerjs-hw-app-cardano (on Speculos), Scalus, Aiken's `uplc` and the
+   cardano-js-sdk parameter-update path. Settle the 36 undetermined decisions
+   by execution where possible (bursa's Keystone signing, argus-cardano-sync
+   through Chrysalis, hydra-pay's bundled configs).
+   Hand-built transactions with body keys 23-27 would exercise the codec gaps
+   that now rest on source.
 6. **Bump-ready with companion pins.** Decide whether a tool counts as
    bump-ready when raising one pin forces others across majors.
 7. **R1 completion.** JSON representations beyond the era commands.
-8. **Remediation tracking.** Record maintainer issues, released fixes,
-   consumer upgrades and downstream re-tests as distinct milestones, and use
-   reverse reach to list who must upgrade after each fix.
-9. **Dependency-graph coverage.** Executed Cabal collection, collectors for the
-   detected unsupported ecosystems, and returned manual reviews, admitted when
-   the Dijkstra registers need them.
-10. **Storage maintenance.** Prune superseded snapshot chunks while keeping
+8. **Pass-through services.** Record Blockfrost's and Koios's transaction
+   encoding as following db-sync and decide it per consumer (transaction
+   history and CBOR reads are reached; submission is not).
+9. **Manifest rules for Oura, Adder and Aiken's `uplc`.** They are matched
+   only in lockfiles today. Adding them to the scan rules changes the rule
+   digest and rescans every repository, about 230 shallow clones.
+10. **Remediation tracking.** Record maintainer issues, released fixes,
+    consumer upgrades and downstream re-tests as distinct milestones, and use
+    reverse reach to list who must upgrade after each fix.
+11. **Dependency-graph coverage.** Executed Cabal collection, collectors for the
+    detected unsupported ecosystems, and returned manual reviews, admitted when
+    the Dijkstra registers need them.
+12. **Storage maintenance.** Prune superseded snapshot chunks while keeping
     every retained manifest readable.
 
 ## Verification
 
 ```sh
+npm run readiness -- transitive                      # lockfile links (network); then:
+npm run readiness -- classify-surfaces --reclassify  # merges them, cached scans only
+npm run readiness -- unlocks
 npm run readiness -- check-changes --verify-sources
 npm run readiness -- check-boundary --verify-sources
 npm run readiness -- check-leads --verify-sources
