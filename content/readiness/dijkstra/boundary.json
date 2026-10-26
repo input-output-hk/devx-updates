@@ -437,11 +437,11 @@
       ],
       "observed": {
         "branch": "main",
-        "revision": "3e68f5722aa149d4ddbd6a53ee53a4cc119c4695",
-        "date": "2026-10-20",
+        "revision": "db9f26e1edf8bf85b475ec91628ad643165c2d8e",
+        "date": "2026-10-26",
         "release": {
-          "tag": "v0.213.9",
-          "date": "2026-10-20"
+          "tag": "v0.215.0",
+          "date": "2026-10-24"
         }
       },
       "dependsOn": [],
@@ -535,12 +535,12 @@
             "block-encoding"
           ],
           "status": "gap",
-          "summary": "Against the 11.2 integration node, v0.213.0 to v0.213.9 stop at the first Dijkstra block: the decoder requires the twelve-field header of the target CDDL, while the node emits the ten-field Praos header (devnet check block-shape). DetermineTransactionType places a transaction in Dijkstra only when its body has key 23, 25 or 26 or a credential guard, so it rejects ordinary Dijkstra transactions, and LocalTxMonitor's NextTx drops the era id that would let a caller decode them anyway (tx-era-detection). No branch or open pull request addresses either on 2026-10-20.",
+          "summary": "Against the 11.2 integration node, v0.213.0 to v0.213.9 stop at the first Dijkstra block: the decoder requires the twelve-field header of the target CDDL, while the node emits the ten-field Praos header (devnet check block-shape). v0.215.0 and main on 2026-10-26 still require twelve fields. DetermineTransactionType places a transaction in Dijkstra only when its body has key 23, 25 or 26 or a credential guard, so it rejects ordinary Dijkstra transactions, and LocalTxMonitor's NextTx drops the era id that would let a caller decode them anyway (tx-era-detection); both are unchanged on main. PR #2776 adds the era to HasTx only. No branch or open pull request addresses the header or NextTx on 2026-10-26.",
           "evidence": [
             {
               "kind": "source",
               "repo": "blinklabs-io/gouroboros",
-              "revision": "3e68f5722aa149d4ddbd6a53ee53a4cc119c4695",
+              "revision": "db9f26e1edf8bf85b475ec91628ad643165c2d8e",
               "path": "ledger/dijkstra/dijkstra.go",
               "line": 501,
               "quote": "if len(bodyElems) != dijkstraHeaderBodyFieldCount {"
@@ -548,7 +548,7 @@
             {
               "kind": "source",
               "repo": "blinklabs-io/gouroboros",
-              "revision": "3e68f5722aa149d4ddbd6a53ee53a4cc119c4695",
+              "revision": "db9f26e1edf8bf85b475ec91628ad643165c2d8e",
               "path": "ledger/tx.go",
               "line": 279,
               "quote": "for _, field := range []uint{23, 25, 26} {"
@@ -556,9 +556,9 @@
             {
               "kind": "source",
               "repo": "blinklabs-io/gouroboros",
-              "revision": "3e68f5722aa149d4ddbd6a53ee53a4cc119c4695",
+              "revision": "db9f26e1edf8bf85b475ec91628ad643165c2d8e",
               "path": "protocol/localtxmonitor/client.go",
-              "line": 289,
+              "line": 298,
               "quote": "deliverResult(c, c.nextTxResultChan, msgReplyNextTx.Transaction.Tx)"
             },
             {
@@ -570,6 +570,13 @@
               "kind": "devnet",
               "check": "tx-era-detection",
               "version": "v0.213.9"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/gouroboros/pull/2776",
+              "title": "fix(localtxmonitor): encode hard-fork transaction IDs",
+              "state": "merged",
+              "date": "2026-10-26"
             }
           ]
         }
@@ -2559,8 +2566,8 @@
       ],
       "observed": {
         "branch": "master",
-        "revision": "ca434ecdfbbf04ed94e424ddbdf0b32bcec403ec",
-        "date": "2026-10-06",
+        "revision": "0c0400fcbfa2ec9b71da114d9c0fa9238c96640d",
+        "date": "2026-10-26",
         "release": {
           "tag": "13.7.2.1",
           "date": "2026-06-17"
@@ -2603,12 +2610,12 @@
             "stake-pool-registration"
           ],
           "status": "gap",
-          "summary": "Main has Dijkstra code paths marked TODO(Dijkstra) on libraries from CHaP index 2026-05-03 (cardano-ledger-dijkstra 0.2.0.1); the integration issue is open and schema changes for new fields are not visible. No branch or open pull request targets the 11.2 component set. On the devnet, 13.7.2.1 cannot decode the first Dijkstra block and indexes nothing after the fork (devnet check db-sync-and-blockfrost).",
+          "summary": "Master on 2026-10-26 still has Dijkstra code paths marked TODO(Dijkstra) on libraries from CHaP index 2026-05-03 (cardano-ledger-dijkstra 0.2.0.1), and no release carries Dijkstra support. On the devnet, 13.7.2.1 cannot decode the first Dijkstra block and indexes nothing after the fork (devnet check db-sync-and-blockfrost).",
           "evidence": [
             {
               "kind": "source",
               "repo": "IntersectMBO/cardano-db-sync",
-              "revision": "ca434ecdfbbf04ed94e424ddbdf0b32bcec403ec",
+              "revision": "0c0400fcbfa2ec9b71da114d9c0fa9238c96640d",
               "path": "cardano-db-sync/src/Cardano/DbSync/Config/Cardano.hs",
               "line": 113,
               "quote": "emptyDijkstraGenesis -- TODO(Dijkstra)"
@@ -2616,10 +2623,44 @@
             {
               "kind": "source",
               "repo": "IntersectMBO/cardano-db-sync",
-              "revision": "ca434ecdfbbf04ed94e424ddbdf0b32bcec403ec",
+              "revision": "0c0400fcbfa2ec9b71da114d9c0fa9238c96640d",
               "path": "cabal.project",
               "line": 14,
               "quote": "  , cardano-haskell-packages 2026-05-03T22:28:43Z"
+            },
+            {
+              "kind": "devnet",
+              "check": "db-sync-and-blockfrost",
+              "version": "13.7.2.1"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding",
+            "transaction-encoding",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "in-progress",
+          "summary": "Branch kderme/node-11.2-deps (12 commits ahead of master on 2026-10-26, no pull request) pins cardano-node at the 11.2 integration revision 34ae34db with CHaP index 2026-10-09, the target component set; it implements the Dijkstra paths, reads the Dijkstra genesis and inserts Dijkstra certificates and script purposes. It adds no schema migration, so fields new in Dijkstra (sub-transactions, direct deposits, guards, pool BLS keys) are not stored yet. Not run on the devnet.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "84829dbfcda8df11484a6fb359469dc0c0dc4366",
+              "path": "cabal.project",
+              "line": 94,
+              "quote": "  tag: 34ae34db891105d2d17ad9b2704cb56423103da6"
+            },
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "84829dbfcda8df11484a6fb359469dc0c0dc4366",
+              "path": "cardano-db-sync/src/Cardano/DbSync/Config/Cardano.hs",
+              "line": 77,
+              "quote": "        <*> readDijkstraGenesisConfig enc"
             },
             {
               "kind": "tracker",
@@ -2627,11 +2668,6 @@
               "title": "Integrate Dijkstra",
               "state": "open",
               "date": "2026-04-30"
-            },
-            {
-              "kind": "devnet",
-              "check": "db-sync-and-blockfrost",
-              "version": "13.7.2.1"
             }
           ]
         }
@@ -3379,8 +3415,8 @@
       ],
       "observed": {
         "branch": "main",
-        "revision": "3e8769479c9ed81f148d3d6a8ed7bd4ca1479876",
-        "date": "2026-10-20",
+        "revision": "caa8432f8cf6653e3b9b4e00ef11169e22799e60",
+        "date": "2026-10-22",
         "release": {
           "tag": "unstable",
           "date": "2026-10-20"
@@ -3398,23 +3434,37 @@
             "block-encoding"
           ],
           "status": "gap",
-          "summary": "The chain reader decodes blocks with pallas-traverse 1.4.0; Pallas decodes Dijkstra blocks only on main after v1.4.0 (R2), and its Dijkstra definitions predate the target.",
+          "summary": "The chain reader decodes blocks with pallas-traverse 1.4.0, which has no Dijkstra era in multi-era traversal; Pallas reads Dijkstra only on its dijkstra branch, and no Pallas revision decodes a block from the 11.2 node (R2). PR #3614 (\"support for upcoming Cardano 11.2\") adds node 11.2 configurations and the devnet version only; the Pallas pins are unchanged on main.",
           "evidence": [
             {
               "kind": "source",
               "repo": "IntersectMBO/mithril",
-              "revision": "3e8769479c9ed81f148d3d6a8ed7bd4ca1479876",
+              "revision": "caa8432f8cf6653e3b9b4e00ef11169e22799e60",
               "path": "internal/cardano-node/mithril-cardano-node-chain/Cargo.toml",
-              "line": 20,
+              "line": 27,
               "quote": "pallas-primitives = { version = \"1.4.0\" }"
             },
             {
               "kind": "source",
               "repo": "IntersectMBO/mithril",
-              "revision": "3e8769479c9ed81f148d3d6a8ed7bd4ca1479876",
+              "revision": "caa8432f8cf6653e3b9b4e00ef11169e22799e60",
               "path": "internal/cardano-node/mithril-cardano-node-chain/src/chain_reader/pallas_chain_reader.rs",
-              "line": 145,
+              "line": 298,
               "quote": "                let multi_era_block = MultiEraBlock::decode(&raw_block)"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/IntersectMBO/mithril/pull/3614",
+              "title": "feat: support for upcoming Cardano `11.2`",
+              "state": "merged",
+              "date": "2026-10-15"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/IntersectMBO/mithril/issues/3585",
+              "title": "Upgrade to Cardano `11.2`",
+              "state": "open",
+              "date": "2026-10-12"
             }
           ]
         }
