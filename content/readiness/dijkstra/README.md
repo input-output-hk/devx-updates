@@ -487,11 +487,12 @@ lookup keeps the previous entry and exits non-zero.
 ## On the site
 
 `/map/dijkstra` opens with the state of every tool touching a changed surface
-(Breaks after HF, In progress, Ready for HF, Not verified, Dismissed) and the
-tools ranked by how many catalog tools reach them, then renders: the critical
-path (`lib/readiness/fix-graph.ts`: each blocking component placed one column
+(Breaks after HF, In progress, Ready for HF, Not verified, Dismissed), then the
+critical path (`lib/readiness/fix-graph.ts`: each blocking component placed one column
 right of the furthest component it waits on, implied links dropped, the longest
-chains marked) with the tools unlocked after each fix, what each fix unlocks,
+chains marked; selecting a fix shows the tools it adds, and the fix order is a
+list toggle) with the tools unlocked after each fix, all tools ranked by how many
+catalog tools reach them, what each fix unlocks on its own,
 the tools whose upstream fix is released (upgrade distance and own era
 handling), inherited gaps not read yet and links waiting on a component
 verdict (both grouped by component), every confirmed gap with its quoted lines,

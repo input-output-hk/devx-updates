@@ -3,7 +3,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import { citationUrl, componentStatus, dijkstraSite, toolLinks, toolStates, toolUpgrade, viaLabel, waitingLinks, type HardforkState, type Waiting } from "@/lib/readiness/dijkstra-site";
 import HardforkToolList, { type HardforkRow } from "@/components/readiness/HardforkToolList";
-import FixPathGraph, { UnlockCurve, type FixWork } from "@/components/readiness/FixPathGraph";
+import FixPathGraph, { UnlockCurve, type FixInfo, type FixWork } from "@/components/readiness/FixPathGraph";
 import { fixGraph } from "@/lib/readiness/fix-graph";
 import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
 import rawGraph from "@/data/cardano-graph.json";
@@ -113,6 +113,10 @@ export default function DijkstraPage() {
   const ownCode = unfreed.filter((b) => !fixSet.has(b.tool) && b.blockers.some((x) => x.kind === "own-gap")).length;
   const rest = { fixes: unfreed.filter((b) => fixSet.has(b.tool)).length, own: ownCode, upgrade: unfreed.filter((b) => !fixSet.has(b.tool)).length - ownCode };
   const fixWork = Object.fromEntries(fixIds.map((id): [string, FixWork] => [id, id.startsWith(RETIRED) ? "retired" : toolLinks(site, id).length ? "tracked" : "none"]));
+  const fixes: Record<string, FixInfo> = Object.fromEntries(unlocks.fixOrder.map((f) => [f.component, {
+    name: fixNames[f.component], href: fixHref[f.component], work: fixWork[f.component],
+    added: f.added.map((t) => ({ id: t, name: NODES.get(t)?.name ?? t })),
+  }]));
   const unlisted = [...classification.tools.values()].filter((t) => !listed.has(t.id));
   const noSource = unlisted.filter((t) => t.scan.status === "no-public-source").length;
   const testsOnly = unlisted.filter((t) => t.scan.status === "scanned" && t.surfaces.length > 0).length;
@@ -135,7 +139,7 @@ export default function DijkstraPage() {
       <div className="rounded-xl border border-border bg-surface p-4 sm:p-5">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="text-sm font-medium">State of the {rows.length} tools that touch a changed surface</h2>
-          <a href="#tools" className="text-sm">Full list →</a>
+          <span className="flex gap-4 text-sm"><a href="#plan">Critical path →</a><a href="#tools">All tools →</a></span>
         </div>
         <p className="mt-1 text-xs text-muted">
           Of {classification.tools.size} catalog tools, {unlisted.length} are not listed: {noSource} have no public source to
@@ -162,8 +166,29 @@ export default function DijkstraPage() {
         </div>
       ))}</div>
 
+      <section aria-labelledby="plan" className="scroll-mt-24">
+        <h2 id="plan" className="font-display text-2xl font-semibold">Critical path</h2>
+        <p className="mt-2 text-sm text-muted">
+          The upstream fixes that unlock other tools, in the order they can land. A tool is unlocked once every upstream
+          blocker it has is fixed, and an unlocked component then counts as fixed for its own users. Columns count how many
+          fixes must land before a component can start; an arrow runs from a fix to one that waits on it (Blockfrost and
+          Koios read db-sync), with links already implied through another fix left out. The bold chains,{" "}
+          {graph.nodes.filter((n) => n.critical).length} components, are the critical path: however much else runs in
+          parallel, the tools at their end wait on every fix along them.
+        </p>
+        <p className="mt-2 text-sm text-muted">
+          The number in each box is its step in the fix order, which adds at each step the fix that unlocks the most tools
+          on top of the earlier ones (a fix that waits on another is counted together with it). {unlocks.components.length} components
+          have a confirmed gap, but only these {unlocks.fixOrder.length} unlock another tool: for the other{" "}
+          {unlocks.components.length - unlocks.fixOrder.length} (Mesh, Hydra, Oura and others) no other catalog tool has a
+          confirmed gap through them, so fixing them repairs only themselves.
+        </p>
+        <FixPathGraph graph={graph} fixes={fixes} />
+        <UnlockCurve steps={unlocks.fixOrder.map((f) => ({ component: f.component, added: f.added.length, unlocked: f.unlocked }))} names={fixNames} rest={rest} />
+      </section>
+
       <section aria-labelledby="tools" className="scroll-mt-24">
-        <h2 id="tools" className="font-display text-2xl font-semibold">Tools by impact</h2>
+        <h2 id="tools" className="font-display text-2xl font-semibold">All tools</h2>
         <p className="mt-2 text-sm text-muted">
           Every tool whose shipped code touches a changed surface. Ranked by how many catalog tools reach it through
           shipped code or a service call, directly or through other tools; ties go to direct users, then GitHub stars.
@@ -180,48 +205,13 @@ export default function DijkstraPage() {
       </section>
 
       <section aria-labelledby="unlocks" className="scroll-mt-24">
-        <h2 id="unlocks" className="font-display text-2xl font-semibold">What a fix unlocks</h2>
+        <h2 id="unlocks" className="font-display text-2xl font-semibold">Each fix on its own</h2>
         <p className="mt-2 text-sm text-muted">
-          A tool is unlocked once every upstream blocker it has is fixed; unlocked components then count as fixed for
-          their own consumers. Most SDKs wait on several services at once (for example Kupo for UTxOs, Ogmios for
-          submission and Blockfrost for parameters), so single fixes understate the effect. A fixed component that waits
-          on another one (Blockfrost and Koios read db-sync) unlocks nothing until that one is fixed too. The fix order
-          adds, at each step, the fix that unlocks the most tools on top of the earlier steps, counting a fix together
-          with the components it waits on.
+          What fixing one component would unlock if nothing else changed, the tools that also need something else, and
+          tools linked to it without a confirmed gap.
         </p>
-        <h3 className="mt-6 text-lg font-semibold">Critical path</h3>
-        <p className="mt-2 text-sm text-muted">
-          {unlocks.components.length} components have a confirmed gap, but only the {unlocks.fixOrder.length} drawn here unlock
-          another tool when fixed. For the other {unlocks.components.length - unlocks.fixOrder.length} (Mesh, Hydra, Oura and
-          others) no other catalog tool has a confirmed gap through them (the one exception, Carp through Oura, also needs
-          its own code changed), so fixing them repairs only themselves; they are in the tool list, blocked by these.
-        </p>
-        <p className="mt-2 text-sm text-muted">
-          The diagram is
-          about order, not size: columns count how many fixes must land before a component can start, and an arrow runs
-          from a fix to one that waits on it (links already implied through another fix are left out). The{" "}
-          {graph.independent.length} at the bottom right wait on nothing and nothing waits on them, so they can start now and
-          never delay another fix; they still unlock tools. The bold chains, {graph.nodes.filter((n) => n.critical).length} components,
-          are the critical path: however much else runs in parallel, the tools at their end wait on every fix along them.
-          Each box shows its step in the fix order below and the tools it adds at that step.
-        </p>
-        <FixPathGraph graph={graph} names={fixNames} work={fixWork} href={fixHref} />
-        <UnlockCurve steps={unlocks.fixOrder.map((f) => ({ component: f.component, added: f.added.length, unlocked: f.unlocked }))} names={fixNames} rest={rest} />
-        <h3 className="mt-6 text-lg font-semibold">Fix order</h3>
-        <ol className="mt-4 space-y-2">{unlocks.fixOrder.map((f, i) => (
-          <li key={f.component} className="rounded-xl border border-border bg-surface px-4 py-3">
-            <details>
-              <summary className="cursor-pointer text-sm">
-                <span className="tabular-nums text-muted">{i + 1}.</span> <span className="font-medium">{f.component.startsWith(RETIRED) ? `move off ${f.component.slice(RETIRED.length)}` : f.component}</span>{" "}
-                <span className="text-muted">· +{f.added.length} → {f.unlocked} tools unlocked</span>
-              </summary>
-              <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm">{f.added.map((t) => <li key={t}><ToolLink id={t} /></li>)}</ul>
-            </details>
-          </li>
-        ))}</ol>
-        <h3 className="mt-6 text-lg font-semibold">Each fix on its own</h3>
         <div className="mt-4 grid gap-4 lg:grid-cols-2">{unlocks.components.map((c) => (
-          <article key={c.component} className="rounded-xl border border-border bg-surface p-5">
+          <article key={c.component} id={`fix-${c.component}`} className="scroll-mt-24 rounded-xl border border-border bg-surface p-5">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="font-display text-lg font-semibold"><FixLink id={c.component} /></h3>
               <span className="text-xs text-muted">R2 status: {componentStatus(site, c.component) ?? (c.component.startsWith(RETIRED) ? "deprecated provider" : "not a boundary component")}</span>

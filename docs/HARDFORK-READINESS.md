@@ -331,12 +331,14 @@ Decisions); new collection is admitted when the Dijkstra registers need it.
 - `/map`, `/map/table`, `/map/analysis`: the catalog, with maintenance status
   (Maintained, Maintenance-only, Deprecated, Abandoned, Archived,
   Experimental, Research).
-- `/map/dijkstra`: the critical path (the blocking components as a dependency
-  graph, columns by how many fixes must land first, longest chains in bold) and
-  the cumulative unlock curve, fix order and unlocks, bump-ready tools with their upgrade
-  distance and own era handling, unread gaps and links waiting on a verdict,
-  every confirmed gap with its quoted lines, the devnet checks, and the cited
-  changes.
+- `/map/dijkstra`: the overview (state of every tool touching a changed
+  surface), then the critical path (the blocking components as a dependency
+  graph, longest chains in bold; selecting a fix shows the tools it unlocks, and
+  the fix order is a list toggle under it) with the cumulative unlock curve, then
+  all tools with their state, then each fix on its own, bump-ready tools with
+  their upgrade distance and own era handling, unread gaps and links waiting on a
+  verdict, every confirmed gap with its quoted lines, the devnet checks, and the
+  cited changes.
 - `/map/readiness/` and `/map/readiness/<id>`: per-tool coverage, dependency
   graph, reach, evidence and a Dijkstra section (exposure, devnet results,
   blockers, upgrade, lead decisions).

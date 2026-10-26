@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import type { FixGraph, FixNode } from "@/lib/readiness/fix-graph";
 
 /** Whether a blocking component has Dijkstra work on record (an issue, PR or branch), or is a provider to move off. */
 export type FixWork = "tracked" | "none" | "retired";
+/** What the page knows about each fix: display name, its page, tracked work, and the tools it adds in the order. */
+export interface FixInfo { name: string; href: string; work: FixWork; added: { id: string; name: string }[] }
 
 const COL = 276, NODE_W = 212, NODE_H = 46, ROW = 60, HEAD = 28, PAD = 2;
 const WORK: Record<FixWork, { stroke: string; label: string; dash?: string }> = {
@@ -13,28 +18,35 @@ const WORK: Record<FixWork, { stroke: string; label: string; dash?: string }> = 
 const COLUMN_TITLE = (c: number) => (c === 0 ? "Can start now" : `After ${c} ${c === 1 ? "fix" : "fixes"} upstream`);
 
 const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1)}…` : s);
+const tools = (n: number) => `${n} ${n === 1 ? "tool" : "tools"}`;
 
-function Node({ node, x, y, name, work, href }: { node: FixNode; x: number; y: number; name: string; work: FixWork; href: string }) {
-  const w = WORK[work];
-  return <Link href={href} className="no-underline">
-    <title>{`${name}: step ${node.step} of the fix order, frees ${node.added} ${node.added === 1 ? "tool" : "tools"} (${node.unlocked} in total by then). ${w.label}.`}</title>
-    <rect x={x} y={y} width={NODE_W} height={NODE_H} rx={8} fill="var(--surface)" stroke={w.stroke} strokeWidth={node.critical ? 2.5 : 1.25} strokeDasharray={w.dash} />
+function Node({ node, x, y, info, selected, onSelect }: { node: FixNode; x: number; y: number; info: FixInfo; selected: boolean; onSelect: () => void }) {
+  const w = WORK[info.work];
+  return <g role="button" tabIndex={0} aria-pressed={selected} className="cursor-pointer outline-none [&:focus-visible>rect]:stroke-[3]"
+    onClick={onSelect} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(); } }}>
+    <title>{`${info.name}: step ${node.step}, frees ${tools(node.added)} (${node.unlocked} in total by then). ${w.label}. Select for details.`}</title>
+    <rect x={x} y={y} width={NODE_W} height={NODE_H} rx={8} fill={selected ? "var(--surface-2)" : "var(--surface)"} stroke={w.stroke}
+      strokeWidth={selected ? 3 : node.critical ? 2.5 : 1.25} strokeDasharray={w.dash} />
     <text x={x + 10} y={y + 19} fontSize={13} fontWeight={600} fill="var(--foreground)">
-      <tspan fill="var(--muted)" fontWeight={500}>{node.step}.</tspan> {clip(name, 25)}
+      <tspan fill="var(--muted)" fontWeight={500}>{node.step}.</tspan> {clip(info.name, 25)}
     </text>
     <text x={x + 10} y={y + 36} fontSize={11.5} fill="var(--muted)">
-      {node.added > 0 ? `+${node.added} ${node.added === 1 ? "tool" : "tools"} · ${node.unlocked} total` : `no tool on its own · ${node.unlocked} total`}
+      {node.added > 0 ? `+${tools(node.added)} · ${node.unlocked} total` : `no tool on its own · ${node.unlocked} total`}
     </text>
-  </Link>;
+  </g>;
 }
+
+const ToolLinks = ({ items }: { items: { id: string; name: string }[] }) => <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-sm">
+  {items.map((t) => <li key={t.id}><Link href={`/map/readiness/${t.id}`} className="font-medium">{t.name}</Link></li>)}
+</ul>;
 
 /**
  * The fix order as a dependency graph: columns are how many upstream fixes must land first, arrows run from a fix to
- * what it lets proceed, and the bold path is the longest chain. Server-rendered SVG; each box links to the component.
+ * what it lets proceed, and the bold chains are the longest. Selecting a box shows what that step unlocks; the whole
+ * order is also available as a list.
  */
-export default function FixPathGraph({ graph, names, work, href }: {
-  graph: FixGraph; names: Record<string, string>; work: Record<string, FixWork>; href: Record<string, string>;
-}) {
+export default function FixPathGraph({ graph, fixes }: { graph: FixGraph; fixes: Record<string, FixInfo> }) {
+  const [selected, setSelected] = useState<string | null>(null);
   const width = (graph.columns - 1) * COL + NODE_W + PAD * 2;
   const at = new Map(graph.nodes.map((n) => [n.id, { x: PAD + n.column * COL, y: PAD + HEAD + n.row * ROW }]));
   // Independent fixes go in the free space under the later columns (or under everything when there is only one
@@ -43,13 +55,16 @@ export default function FixPathGraph({ graph, names, work, href }: {
   const freeRow = Math.max(0, ...graph.nodes.filter((n) => n.column >= firstCol).map((n) => n.row + 1));
   const groupTop = PAD + HEAD + freeRow * ROW + 6;
   graph.independent.forEach((n, i) => at.set(n.id, { x: PAD + (firstCol + (i % perRow)) * COL, y: groupTop + 24 + Math.floor(i / perRow) * ROW }));
-  const bottom = Math.max(...[...at.values()].map((p) => p.y + NODE_H));
-  const height = bottom + PAD;
-  const longest = graph.nodes.filter((n) => n.critical && n.column === graph.columns - 1).map((n) => names[n.id]);
+  const height = Math.max(...[...at.values()].map((p) => p.y + NODE_H)) + PAD;
+  const longest = graph.nodes.filter((n) => n.critical && n.column === graph.columns - 1).map((n) => fixes[n.id].name);
+  const all = [...graph.nodes, ...graph.independent].sort((a, b) => a.step - b.step);
+  const current = all.find((n) => n.id === selected);
+  const select = (id: string) => setSelected((s) => (s === id ? null : id));
+  const node = (n: FixNode) => <Node key={n.id} node={n} {...at.get(n.id)!} info={fixes[n.id]} selected={selected === n.id} onSelect={() => select(n.id)} />;
   return <figure className="mt-4">
     <div className="overflow-x-auto rounded-xl border border-border bg-surface p-4">
-      <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" className="max-w-none"
-        aria-label={`Dependency graph of ${graph.nodes.length} linked fixes in ${graph.columns} columns; the longest chains end at ${longest.join(" and ")}`}>
+      <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} className="max-w-none"
+        aria-label={`Dependency graph of ${all.length} fixes in ${graph.columns} columns; the longest chains end at ${longest.join(" and ")}`}>
         <defs>
           {(["normal", "critical"] as const).map((k) => (
             <marker key={k} id={`fix-arrow-${k}`} viewBox="0 0 8 8" refX={7} refY={4} markerWidth={7} markerHeight={7} orient="auto-start-reverse">
@@ -60,8 +75,11 @@ export default function FixPathGraph({ graph, names, work, href }: {
         {Array.from({ length: graph.columns }, (_, c) => (
           <text key={c} x={PAD + c * COL} y={PAD + 12} fontSize={11} fontWeight={600} letterSpacing="0.06em" fill="var(--muted)">{COLUMN_TITLE(c).toUpperCase()}</text>
         ))}
-        {/* Non-critical edges first so the critical ones draw on top. */}
-        {[...graph.edges].sort((a, b) => Number(a.critical) - Number(b.critical)).map((e) => {
+        {/* Non-critical edges first so the critical ones draw on top; a selected fix's arrows come last and darkest. */}
+        {[...graph.edges].sort((a, b) => {
+          const rank = (e: typeof a) => (selected && (e.from === selected || e.to === selected) ? 2 : Number(e.critical));
+          return rank(a) - rank(b);
+        }).map((e) => {
           const from = at.get(e.to)!, to = at.get(e.from)!;
           const x1 = from.x + NODE_W, y1 = from.y + NODE_H / 2, x2 = to.x - 2, y2 = to.y + NODE_H / 2;
           // An arrow that skips a column runs along the free gap between two rows, so it never passes behind a box.
@@ -71,16 +89,19 @@ export default function FixPathGraph({ graph, names, work, href }: {
           const d = skips
             ? `M${x1} ${y1} ${curve(x1, y1, x1 + gap * 0.6, lane)} H${x2 - gap * 0.6} ${curve(x2 - gap * 0.6, lane, x2, y2)}`
             : `M${x1} ${y1} ${curve(x1, y1, x2, y2)}`;
+          const lit = selected !== null && (e.from === selected || e.to === selected);
+          const strong = lit || (e.critical && !selected);
           return <path key={`${e.from}>${e.to}`} d={d} fill="none"
-            stroke={e.critical ? "var(--foreground)" : "var(--muted)"} strokeOpacity={e.critical ? 0.85 : 0.45} strokeWidth={e.critical ? 2 : 1.25}
-            markerEnd={`url(#fix-arrow-${e.critical ? "critical" : "normal"})`} />;
+            stroke={strong || e.critical ? "var(--foreground)" : "var(--muted)"}
+            strokeOpacity={lit ? 1 : selected ? 0.25 : e.critical ? 0.85 : 0.45} strokeWidth={lit || e.critical ? 2 : 1.25}
+            markerEnd={`url(#fix-arrow-${strong || e.critical ? "critical" : "normal"})`} />;
         })}
-        {graph.nodes.map((n) => <Node key={n.id} node={n} {...at.get(n.id)!} name={names[n.id]} work={work[n.id]} href={href[n.id]} />)}
+        {graph.nodes.map(node)}
         {graph.independent.length > 0 && <>
           <text x={PAD + firstCol * COL} y={groupTop + 10} fontSize={11} fontWeight={600} letterSpacing="0.06em" fill="var(--muted)">
             ALSO CAN START NOW · NO OTHER FIX WAITS ON THESE
           </text>
-          {graph.independent.map((n) => <Node key={n.id} node={n} {...at.get(n.id)!} name={names[n.id]} work={work[n.id]} href={href[n.id]} />)}
+          {graph.independent.map(node)}
         </>}
       </svg>
     </div>
@@ -96,7 +117,48 @@ export default function FixPathGraph({ graph, names, work, href }: {
         Longest chain: bold box and arrow
       </span>
     </figcaption>
+    <div aria-live="polite" className="mt-4 rounded-xl border border-border bg-surface p-4">
+      {current ? <FixDetail node={current} fixes={fixes} graph={graph} onClose={() => setSelected(null)} />
+        : <p className="text-sm text-muted">Select a fix in the diagram to see the tools it unlocks, what it waits on and what waits on it.</p>}
+    </div>
+    <details className="mt-3 rounded-xl border border-border bg-surface px-4 py-3">
+      <summary className="cursor-pointer text-sm font-medium">Fix order as a list ({all.length} steps, with the tools each adds)</summary>
+      <ol className="mt-3 divide-y divide-border">{all.map((n) => (
+        <li key={n.id} className="py-2">
+          <button type="button" onClick={() => select(n.id)} className="text-left text-sm">
+            <span className="tabular-nums text-muted">{n.step}.</span> <span className="font-medium">{fixes[n.id].name}</span>{" "}
+            <span className="text-muted">· +{n.added} → {n.unlocked} tools unlocked</span>
+          </button>
+          {fixes[n.id].added.length > 0 && <ToolLinks items={fixes[n.id].added} />}
+        </li>
+      ))}</ol>
+    </details>
   </figure>;
+}
+
+function FixDetail({ node, fixes, graph, onClose }: { node: FixNode; fixes: Record<string, FixInfo>; graph: FixGraph; onClose: () => void }) {
+  const info = fixes[node.id];
+  const waitedBy = graph.edges.filter((e) => e.to === node.id).map((e) => e.from);
+  const names = (ids: string[]) => ids.map((id) => fixes[id].name).join(", ");
+  return <div>
+    <div className="flex flex-wrap items-baseline justify-between gap-2">
+      <h3 className="text-base font-semibold"><span className="text-muted">{node.step}.</span> {info.name}</h3>
+      <div className="flex gap-4 text-sm">
+        <Link href={info.href}>Component page →</Link>
+        <a href={`#fix-${node.id}`}>Unlock details</a>
+        <button type="button" onClick={onClose} className="text-muted hover:text-foreground">Close</button>
+      </div>
+    </div>
+    <p className="mt-1 text-sm text-muted">
+      {WORK[info.work].label}. {node.critical ? "On the critical path. " : ""}
+      {node.waitsOn.length ? `Waits on ${names(node.waitsOn)}. ` : "Can start now. "}
+      {waitedBy.length ? `${names(waitedBy)} ${waitedBy.length === 1 ? "waits" : "wait"} on it.` : "No other fix waits on it."}
+    </p>
+    <h4 className="mt-3 text-sm font-medium">
+      {node.added ? `Unlocks ${tools(node.added)} at step ${node.step} (${node.unlocked} in total by then)` : `Unlocks no tool by itself at step ${node.step}`}
+    </h4>
+    {info.added.length > 0 && <ToolLinks items={info.added} />}
+  </div>;
 }
 
 const CW = 1120, CH = 300, L = 36, R = 16, T = 14, B = 30;
