@@ -332,15 +332,16 @@ Decisions); new collection is admitted when the Dijkstra registers need it.
   (Maintained, Maintenance-only, Deprecated, Abandoned, Archived,
   Experimental, Research).
 - `/map/dijkstra`: the overview (state of every tool touching a changed
-  surface), then the critical path (the blocking components as a dependency
-  graph, ending in a column of the tools DApps build on: more than 10% usage in
-  the State of the Developer Ecosystem 2025 survey and a confirmed gap; longest
-  chains to them in bold; selecting a fix shows the tools it unlocks, and
-  the fix order is a list toggle under it) with the cumulative unlock curve, then
-  all tools with their state, then each fix on its own, bump-ready tools with
-  their upgrade distance and own era handling, unread gaps and links waiting on a
-  verdict, every confirmed gap with its quoted lines, the devnet checks, and the
-  cited changes.
+  surface), the critical path (the blocking components as a dependency graph,
+  ending in a column of the tools DApps build on: more than 10% usage in the
+  State of the Developer Ecosystem 2025 survey and a confirmed gap; longest
+  chains to them in bold; selecting a fix shows the tools it unlocks, and the
+  fix order is a list toggle under it) with the cumulative unlock curve, and all
+  tools with their state. Details are on three sub-pages:
+  `/map/dijkstra/devnet` (the devnet checks), `/map/dijkstra/changes` (the cited
+  changes and what was checked unchanged) and `/map/dijkstra/evidence`
+  (upgrades ready, the review queues, and every lead decision with its quotes
+  collapsed per tool). What a single fix unlocks is on the component's own page.
 - `/map/readiness/` and `/map/readiness/<id>`: per-tool coverage, dependency
   graph, reach, evidence and a Dijkstra section (exposure, devnet results,
   blockers, upgrade, lead decisions).

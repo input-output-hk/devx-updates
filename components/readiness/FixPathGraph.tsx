@@ -203,7 +203,7 @@ function FixDetail({ node, fixes, graph, onClose }: { node: FixNode; fixes: Reco
       <h3 className="text-base font-semibold"><span className="text-muted">{node.step}.</span> {info.name}</h3>
       <div className="flex gap-4 text-sm">
         <Link href={info.href}>Component page →</Link>
-        <a href={`#fix-${node.id}`}>Unlock details</a>
+        <Link href={`${info.href}#unlocks`}>Unlock details</Link>
         <button type="button" onClick={onClose} className="text-muted hover:text-foreground">Close</button>
       </div>
     </div>

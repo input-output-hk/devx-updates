@@ -488,17 +488,19 @@ lookup keeps the previous entry and exits non-zero.
 
 `/map/dijkstra` opens with the state of every tool touching a changed surface
 (Breaks after HF, In progress, Ready for HF, Not verified, Dismissed), then the
-critical path (`lib/readiness/fix-graph.ts`: each blocking component placed one column
-right of the furthest component it waits on, implied links dropped, then a last
-column of the tools DApps build on (survey usage above 10% and a confirmed gap,
-not dismissed), with the longest chains to them marked; selecting a fix shows the tools it adds, and the fix order is a
-list toggle) with the tools unlocked after each fix, all tools ranked by how many
-catalog tools reach them, what each fix unlocks on its own,
-the tools whose upstream fix is released (upgrade distance and own era
-handling), inherited gaps not read yet and links waiting on a component
-verdict (both grouped by component), every confirmed gap with its quoted lines,
-the devnet checks, and the cited changes with their devnet outcome. Each tool page under `/map/readiness/<id>` has a Dijkstra section with
-its state, issue/PR links, exposure, devnet results, blockers, upgrade, what it waits on and lead decisions. A malformed register fails the build.
+critical path (`lib/readiness/fix-graph.ts`: each blocking component placed one
+column right of the furthest component it waits on, implied links dropped, then a
+last column of the tools DApps build on (survey usage above 10% and a confirmed
+gap, not dismissed), with the longest chains to them marked; selecting a fix
+shows the tools it adds, and the fix order is a list toggle) with the tools
+unlocked after each fix, then all tools ranked by how many catalog tools reach
+them. Three sub-pages hold the details: `/map/dijkstra/devnet` (the devnet checks),
+`/map/dijkstra/changes` (the cited changes with their devnet outcome, and what was
+checked unchanged) and `/map/dijkstra/evidence` (tools whose upstream fix is
+released, with upgrade distance and own era handling; inherited gaps not read
+yet and links waiting on a component verdict, grouped by component; every lead
+decision with its quoted lines, collapsed per tool). Each tool page under `/map/readiness/<id>` has a Dijkstra section with
+its state, issue/PR links, exposure, devnet results, blockers, upgrade, what it waits on, what fixing it unlocks (its fix-order step and on its own) and lead decisions. A malformed register fails the build.
 
 ## Checking it
 

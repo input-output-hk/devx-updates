@@ -20,7 +20,7 @@ const LINKS: { href: string; label: string }[] = [
 // so the active state matches whether or not the slash is present.
 function isActive(pathname: string, href: string): boolean {
   const path = pathname.replace(/\/+$/, "") || "/";
-  return path === href || (href === "/map/dijkstra" && path.startsWith("/map/readiness/"));
+  return path === href || (href === "/map/dijkstra" && (path.startsWith("/map/dijkstra/") || path.startsWith("/map/readiness/")));
 }
 
 export default function Nav() {

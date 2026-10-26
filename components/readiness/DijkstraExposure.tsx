@@ -13,7 +13,11 @@ export default function DijkstraExposure({ id }: { id: string }) {
   const site = dijkstraSite();
   const tool = site.classification.tools.get(id);
   const leads = toolLeads(site, id);
-  const unlocks = site.unlocks.components.find((c) => c.component === id);
+  // A deprecated provider's entry is keyed by its service rule (service:maestro).
+  const unlocks = site.unlocks.components.find((c) => c.component === id || c.component === `service:${id}`);
+  const step = unlocks ? site.unlocks.fixOrder.findIndex((f) => f.component === unlocks.component) : -1;
+  // A component that waits on another lists itself as partly unlocked; its blockers already show above.
+  const partial = unlocks?.partial.filter((p) => p.tool !== id) ?? [];
   const blockers = site.unlocks.blockers.find((b) => b.tool === id);
   const status = componentStatus(site, id);
   const shipped = tool?.surfaces.filter((s) => s.channels.some((c) => c.scope === "shipped")) ?? [];
@@ -59,7 +63,7 @@ export default function DijkstraExposure({ id }: { id: string }) {
       <ul className="mt-1 space-y-1 text-sm">{devnet.map(({ check, result }) => (
         <li key={`${check.id}:${result.kind}:${result.version ?? ""}`}>
           <span className={`font-medium ${result.outcome === "pass" ? "text-status-done" : "text-status-blocked"}`}>{result.outcome}</span>{" "}
-          <Link href={`/map/dijkstra#devnet-${check.id}`}>{check.title}</Link>
+          <Link href={`/map/dijkstra/devnet#devnet-${check.id}`}>{check.title}</Link>
           {result.version && <span className="text-xs text-muted"> · {result.version}</span>}
           {result.note && <span className="text-xs text-muted"> · {result.note}</span>}
         </li>
@@ -100,9 +104,25 @@ export default function DijkstraExposure({ id }: { id: string }) {
         </li>
       ))}</ul>
     </div>}
-    {unlocks && unlocks.unlocks.length > 0 && <p className="text-sm">
-      Fixing this unlocks {unlocks.unlocks.map((u, i) => <span key={u.tool}>{i > 0 && ", "}<Link href={`/map/readiness/${u.tool}`}>{u.tool}</Link></span>)}.
-    </p>}
+    {unlocks && (step >= 0 || unlocks.unlocks.length > 0 || partial.length > 0 || unlocks.downstream.length > 0) && <div id="unlocks" className="scroll-mt-24">
+      <h3 className="text-sm font-medium">What fixing it unlocks</h3>
+      {step >= 0 && <p className="mt-1 text-sm">
+        Step {step + 1} of the <Link href="/map/dijkstra#plan">fix order</Link>: once the earlier steps land, it unlocks{" "}
+        {site.unlocks.fixOrder[step].added.length ? <>{site.unlocks.fixOrder[step].added.length} more {site.unlocks.fixOrder[step].added.length === 1 ? "tool" : "tools"}: {site.unlocks.fixOrder[step].added.map((t, i) => <span key={t}>{i > 0 && ", "}<Link href={`/map/readiness/${t}`}>{t}</Link></span>)}.</> : "no further tool."}
+      </p>}
+      <p className="mt-2 text-xs font-medium uppercase tracking-wide text-muted">If only this were fixed</p>
+      {unlocks.unlocks.length > 0 ? <ul className="mt-1 space-y-1 text-sm">{unlocks.unlocks.map((u) => (
+        <li key={u.tool}>
+          <Link href={`/map/readiness/${u.tool}`} className="font-medium">{u.tool}</Link>
+          {u.depth > 1 && <span className="text-xs text-muted"> via {u.path.slice(1, -1).join(" → ")}</span>}
+          {u.bumps.length > 0 && <span className="text-xs text-muted"> · then raise {u.bumps.join(", ")}</span>}
+        </li>
+      ))}</ul> : <p className="mt-1 text-sm text-muted">No tool on its own: every tool that needs it also waits on something else.</p>}
+      {partial.length > 0 && <p className="mt-2 text-sm text-muted">Also needed by {partial.map((p, i) => <span key={p.tool}>{i > 0 && ", "}<Link href={`/map/readiness/${p.tool}`}>{p.tool}</Link> (still waits on {p.stillBlockedBy.map(viaLabel).join(", ")})</span>)}</p>}
+      {unlocks.downstream.length > 0 && <details className="mt-2 text-sm"><summary className="cursor-pointer text-muted">{unlocks.downstream.length} downstream {unlocks.downstream.length === 1 ? "tool" : "tools"} with an unconfirmed link</summary>
+        <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">{unlocks.downstream.map((d) => <li key={d.tool}><Link href={`/map/readiness/${d.tool}`}>{d.tool}</Link> <span className="text-xs text-muted">via {viaLabel(d.via)}</span></li>)}</ul>
+      </details>}
+    </div>}
     {leads.length > 0 && <div>
       <h3 className="text-sm font-medium">Lead decisions</h3>
       <ul className="mt-2 space-y-3">{leads.map((l) => (
