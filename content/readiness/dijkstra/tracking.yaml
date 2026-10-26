@@ -169,3 +169,32 @@ tools:
     dismissed:
       reason: Abandoned; no activity since 2024-04.
       date: 2026-10-26
+  pallas:
+    links:
+      - url: https://github.com/txpipe/pallas/tree/dijkstra
+        note: Dijkstra branch, ahead of main with the traverse and Leios work
+      - url: https://github.com/txpipe/pallas/pull/799
+        note: Dijkstra ledger primitives
+      - url: https://github.com/txpipe/pallas/pull/800
+        note: Traverse the Dijkstra era
+      - url: https://github.com/txpipe/pallas/pull/801
+      - url: https://github.com/txpipe/pallas/pull/817
+      - url: https://github.com/txpipe/pallas/pull/821
+      - url: https://github.com/txpipe/pallas/pull/747
+        note: Node-to-client v17–v23
+      - url: https://github.com/txpipe/pallas/pull/830
+      - url: https://github.com/txpipe/pallas/pull/833
+      - url: https://github.com/txpipe/pallas/pull/836
+        note: Leios messages from current nodes (breaking)
+      - url: https://github.com/txpipe/pallas/pull/835
+      - url: https://github.com/txpipe/pallas/pull/838
+      - url: https://github.com/txpipe/pallas/pull/831
+      - url: https://github.com/txpipe/pallas/pull/823
+  ogmios:
+    links:
+      - url: https://github.com/CardanoSolutions/ogmios/pull/462
+        note: Closed draft mapping the migration; ~100 TODO(dijkstra) stubs
+  blockfrost:
+    links:
+      - url: https://github.com/blockfrost/blockfrost-platform/pull/378
+        note: Closed; TODO(dijkstra) in the tx evaluator, which rejects 3-element Dijkstra transactions

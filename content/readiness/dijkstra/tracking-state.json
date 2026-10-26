@@ -1,4 +1,95 @@
 {
  "schemaVersion": 1,
- "links": {}
+ "links": {
+  "https://github.com/CardanoSolutions/ogmios/pull/462": {
+   "kind": "pull",
+   "title": "WIP: Dijkstra integration — bump deps to cardano-node 11.0.1 (stubbed)",
+   "state": "closed",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/blockfrost/blockfrost-platform/pull/378": {
+   "kind": "pull",
+   "title": "Tx evaluation",
+   "state": "closed",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/747": {
+   "kind": "pull",
+   "title": "feat(network): prep for van Rossem hard fork (NodeToClient v17–v23)",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/799": {
+   "kind": "pull",
+   "title": "feat(primitives): add Dijkstra era ledger primitives",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/800": {
+   "kind": "pull",
+   "title": "feat(traverse): decode the Dijkstra era",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/801": {
+   "kind": "pull",
+   "title": "feat(traverse): read a Dijkstra value through the accessors",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/817": {
+   "kind": "pull",
+   "title": "fix(traverse): read a dijkstra sub transaction's validity from its parent",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/821": {
+   "kind": "pull",
+   "title": "feat(traverse): read Dijkstra certificates in MultiEraCert::kind",
+   "state": "merged",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/823": {
+   "kind": "pull",
+   "title": "refactor(primitives): make EndorserBlock a newtype",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/830": {
+   "kind": "pull",
+   "title": "fix(traverse): include Dijkstra sub transaction inputs in requires",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/831": {
+   "kind": "pull",
+   "title": "fix(codec): read indefinite length byte and text strings",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/833": {
+   "kind": "pull",
+   "title": "fix(utxorpc): map Dijkstra scripts and votes",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/835": {
+   "kind": "pull",
+   "title": "feat(utxorpc): map blocks onto the v1 schema as unstable",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/836": {
+   "kind": "pull",
+   "title": "fix(network2)!: decode the leios-notify and leios-fetch messages of current nodes",
+   "state": "open",
+   "checked": "2026-10-26"
+  },
+  "https://github.com/txpipe/pallas/pull/838": {
+   "kind": "pull",
+   "title": "fix(utxorpc): map PlutusV3 witness scripts",
+   "state": "open",
+   "checked": "2026-10-26"
+  }
+ }
 }
