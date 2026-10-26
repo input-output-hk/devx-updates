@@ -9,6 +9,15 @@ import type { Graph } from "@/lib/map-types";
 import type { Citation } from "@/lib/readiness/dijkstra";
 import { resultsFor, type Result } from "@/lib/readiness/devnet";
 
+
+/** What each state means, in the order the list's filters show them. */
+const STATE_MEANING: Record<HardforkState, string> = {
+  breaks: "A confirmed gap that nobody has shipped the fix for, in the tool or in what it uses.",
+  "in-progress": "Dijkstra work exists but is not released.",
+  ready: "Its own support is released and nothing it uses is open.",
+  unverified: "No confirmed gap, which is not a pass.",
+  dismissed: "Set aside by hand (abandoned, or too little use for a break to matter), with the reason and the state it would otherwise have.",
+};
 export const metadata: Metadata = {
   title: "Dijkstra hardfork readiness",
   description: "Which Cardano tools the Dijkstra hardfork breaks, through which dependency, and what each upstream fix unlocks.",
@@ -93,7 +102,7 @@ export default function DijkstraPage() {
         </div>
         <Nav />
       </div>
-      <p className="max-w-3xl text-muted">
+      <p className="text-muted">
         Which tools the Dijkstra hardfork breaks, through which dependency, and what each upstream fix unlocks. Every
         decision quotes the shipped code it rests on, read at a pinned revision. A devnet run of the 11.2 integration
         node checks the changes and a first set of components against a real chain; a tool without a confirmed gap is
@@ -128,20 +137,24 @@ export default function DijkstraPage() {
 
       <section aria-labelledby="tools" className="scroll-mt-24">
         <h2 id="tools" className="font-display text-2xl font-semibold">Tools by impact</h2>
-        <p className="mt-2 max-w-3xl text-sm text-muted">
-          Every tool whose shipped code touches a changed surface, ranked by how many catalog tools reach it through
-          shipped code or a service call, directly or through other tools (ties by direct users, then GitHub stars). <em>Breaks after HF</em>: a confirmed gap that nobody
-          has shipped the fix for, in the tool or in what it uses. <em>In progress</em>: Dijkstra work exists but is not
-          released. <em>Ready for HF</em>: its own support is released and nothing it uses is open. <em>Not
-          verified</em>: no confirmed gap, which is not a pass. <em>Dismissed</em>: set aside by hand (abandoned, or too
-          little use for a break to matter), with the reason and the state it would otherwise have.
+        <p className="mt-2 text-sm text-muted">
+          Every tool whose shipped code touches a changed surface. Ranked by how many catalog tools reach it through
+          shipped code or a service call, directly or through other tools; ties go to direct users, then GitHub stars.
         </p>
+        <dl className="mt-3 grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-[max-content_1fr]">
+          {(Object.keys(STATE_MEANING) as HardforkState[]).map((s) => <div key={s} className="contents">
+            <dt className={`inline-flex items-center gap-1.5 self-start font-medium ${HARDFORK_STATES[s].text}`}>
+              <span className={`size-2 rounded-full ${HARDFORK_STATES[s].dot}`} />{HARDFORK_STATES[s].label}
+            </dt>
+            <dd className="mb-1.5 text-muted sm:mb-0">{STATE_MEANING[s]}</dd>
+          </div>)}
+        </dl>
         <HardforkToolList rows={rows} />
       </section>
 
       <section aria-labelledby="unlocks" className="scroll-mt-24">
         <h2 id="unlocks" className="font-display text-2xl font-semibold">What a fix unlocks</h2>
-        <p className="mt-2 max-w-3xl text-sm text-muted">
+        <p className="mt-2 text-sm text-muted">
           A tool is unlocked once every upstream blocker it has is fixed; unlocked components then count as fixed for
           their own consumers. Most SDKs wait on several services at once (for example Kupo for UTxOs, Ogmios for
           submission and Blockfrost for parameters), so single fixes understate the effect. The fix order adds, at each
@@ -184,7 +197,7 @@ export default function DijkstraPage() {
 
       <section aria-labelledby="bump-ready" className="scroll-mt-24">
         <h2 id="bump-ready" className="font-display text-2xl font-semibold">Upstream fix released: the tool must upgrade</h2>
-        <p className="mt-2 max-w-3xl text-sm text-muted">
+        <p className="mt-2 text-sm text-muted">
           Every confirmed gap of these tools has a released fix upstream, so the next move is theirs. Raising the pin is
           the minimum: a step across a breaking release changes the library&apos;s API, and code that names eras needs a
           Dijkstra case of its own. Inherited gaps nobody has read yet may add blockers.
@@ -216,7 +229,7 @@ export default function DijkstraPage() {
 
       <section aria-labelledby="devnet" className="scroll-mt-24">
         <h2 id="devnet" className="font-display text-2xl font-semibold">Devnet run</h2>
-        <p className="mt-2 max-w-3xl text-sm text-muted">
+        <p className="mt-2 text-sm text-muted">
           {devnet.run.date}: cardano-node <a href={`https://github.com/${devnet.run.node.repo}/tree/${devnet.run.node.revision}`} target="_blank" rel="noreferrer" className="font-mono">{devnet.run.node.revision.slice(0, 10)}</a>{" "}
           (11.2 integration branch) on a local one-pool devnet, forked to Dijkstra and raised to protocol version 12
           through governance. {results.filter((r) => r.outcome === "fail").length} of {results.length} results failed.
@@ -249,7 +262,7 @@ export default function DijkstraPage() {
 
       <section aria-labelledby="unread" className="scroll-mt-24">
         <h2 id="unread" className="font-display text-2xl font-semibold">Inherited gaps not read yet</h2>
-        <p className="mt-2 max-w-3xl text-sm text-muted">
+        <p className="mt-2 text-sm text-muted">
           Tools that reach a component with a cited gap through shipped code or a service call, but whose use of the
           gapped capability nobody has read yet. Until a reading confirms or clears each one, the link is a likely
           blocker, not a confirmed one. Hosted Blockfrost consumers inherit the self-hosted backend&apos;s verdict.
@@ -259,7 +272,7 @@ export default function DijkstraPage() {
 
       <section aria-labelledby="no-verdict" className="scroll-mt-24">
         <h2 id="no-verdict" className="font-display text-2xl font-semibold">Waiting on a component verdict</h2>
-        <p className="mt-2 max-w-3xl text-sm text-muted">
+        <p className="mt-2 text-sm text-muted">
           These {count(open)} tools reach a component that has no verdict on the surface they use: nothing found
           (no-evidence, never a pass), an acknowledged issue, or work toward the target that is not released. Assessing
           the component settles every tool listed under it.
@@ -269,7 +282,7 @@ export default function DijkstraPage() {
 
       <section aria-labelledby="confirmed" className="scroll-mt-24">
         <h2 id="confirmed" className="font-display text-2xl font-semibold">Confirmed gaps and their evidence</h2>
-        <p className="mt-2 max-w-3xl text-sm text-muted">
+        <p className="mt-2 text-sm text-muted">
           A shipped path uses the gapped capability, so the tool fails or misbehaves after the hardfork until the
           dependency moves. Quotes link to the exact line at the revision that was read.
         </p>
@@ -300,7 +313,7 @@ export default function DijkstraPage() {
 
       <section aria-labelledby="changes" className="scroll-mt-24">
         <h2 id="changes" className="font-display text-2xl font-semibold">What Dijkstra changes</h2>
-        <p className="mt-2 max-w-3xl text-sm text-muted">
+        <p className="mt-2 text-sm text-muted">
           Read at the node 11.2 integration branch and the component versions it selects. Activation is either the
           node upgrade itself, the fork to protocol version 12, or a later intra-era step.
         </p>
