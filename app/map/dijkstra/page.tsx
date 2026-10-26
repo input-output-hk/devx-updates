@@ -80,7 +80,7 @@ export default function DijkstraPage() {
   const contradicted = changeOutcomes.filter((o) => o.includes("fail")).length;
   const confirmedChanges = changeOutcomes.filter((o) => o.length && !o.includes("fail")).length;
   const rows: HardforkRow[] = toolStates(site, (id) => NODES.get(id)?.starsNum ?? 0).map((t) => ({
-    tool: t.tool, name: NODES.get(t.tool)?.name ?? t.tool, category: NODES.get(t.tool)?.categoryLabel ?? "", state: t.state, reason: t.reason, dependents: t.dependents.length,
+    tool: t.tool, name: NODES.get(t.tool)?.name ?? t.tool, category: NODES.get(t.tool)?.categoryLabel ?? "", state: t.state, reason: t.reason, dependents: t.dependents.length, reachedBy: t.reachedBy.length,
     links: t.links, ...(t.computed && { computed: t.computed }),
   }));
   const states = (Object.keys(HARDFORK_STATES) as HardforkState[]).map((s) => [s, rows.filter((r) => r.state === s).length] as const);
@@ -130,7 +130,7 @@ export default function DijkstraPage() {
         <h2 id="tools" className="font-display text-2xl font-semibold">Tools by impact</h2>
         <p className="mt-2 max-w-3xl text-sm text-muted">
           Every tool whose shipped code touches a changed surface, ranked by how many catalog tools reach it through
-          shipped code or a service call (ties by GitHub stars). <em>Breaks after HF</em>: a confirmed gap that nobody
+          shipped code or a service call, directly or through other tools (ties by direct users, then GitHub stars). <em>Breaks after HF</em>: a confirmed gap that nobody
           has shipped the fix for, in the tool or in what it uses. <em>In progress</em>: Dijkstra work exists but is not
           released. <em>Ready for HF</em>: its own support is released and nothing it uses is open. <em>Not
           verified</em>: no confirmed gap, which is not a pass. <em>Dismissed</em>: set aside by hand (abandoned, or too

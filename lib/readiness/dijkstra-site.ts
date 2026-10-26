@@ -116,7 +116,7 @@ export interface ToolLink { url: string; label: string; note?: string; info?: Li
  * the tool would otherwise be.
  */
 export interface ToolState {
-  tool: string; state: HardforkState; reason: string; dependents: string[];
+  tool: string; state: HardforkState; reason: string; dependents: string[]; reachedBy: string[];
   computed?: Exclude<HardforkState, "dismissed">; dismissed?: Dismissal; links: ToolLink[];
 }
 
@@ -161,7 +161,7 @@ function computedState(site: DijkstraSite, tool: ToolClassification): { tool: st
   return { tool: tool.id, state: "unverified", reason };
 }
 
-export function toolState(site: DijkstraSite, tool: ToolClassification): Omit<ToolState, "dependents"> {
+export function toolState(site: DijkstraSite, tool: ToolClassification): Omit<ToolState, "dependents" | "reachedBy"> {
   const computed = computedState(site, tool);
   const links = toolLinks(site, tool.id);
   const dismissed = site.tracking.get(tool.id)?.dismissed;
@@ -181,8 +181,10 @@ export function dependencyTarget(via: string): string {
 }
 
 /**
- * Every tool whose shipped code touches a changed surface, with its state, most-depended-on first. `dependents` are
- * catalog tools that reach the tool through a shipped dependency or service call; `weight` breaks ties (stars).
+ * Every tool whose shipped code touches a changed surface, with its state, most-reached first. `dependents` are
+ * catalog tools that reach the tool directly through a shipped dependency or service call; `reachedBy` adds the tools
+ * that reach it through those, at any depth (what a gap in it can break). Ties fall to direct dependents, then
+ * `weight` (stars).
  */
 export function toolStates(site: DijkstraSite, weight: (id: string) => number = () => 0): ToolState[] {
   const tools = [...site.classification.tools.values()];
@@ -192,7 +194,17 @@ export function toolStates(site: DijkstraSite, weight: (id: string) => number = 
     const via = dependencyTarget(c.via);
     if (via !== t.id) (dependents.get(via) ?? dependents.set(via, new Set()).get(via)!).add(t.id);
   }
+  const reached = (id: string) => {
+    const seen = new Set<string>(), queue = [...(dependents.get(id) ?? [])];
+    for (let next; (next = queue.pop()) !== undefined;) {
+      if (next === id || seen.has(next)) continue;
+      seen.add(next);
+      queue.push(...(dependents.get(next) ?? []));
+    }
+    return [...seen].sort();
+  };
   return tools.filter((t) => t.surfaces.some((s) => s.channels.some((c) => c.scope === "shipped")))
-    .map((t) => ({ ...toolState(site, t), dependents: [...(dependents.get(t.id) ?? [])].sort() }))
-    .sort((a, b) => b.dependents.length - a.dependents.length || weight(b.tool) - weight(a.tool) || (a.tool < b.tool ? -1 : 1));
+    .map((t) => ({ ...toolState(site, t), dependents: [...(dependents.get(t.id) ?? [])].sort(), reachedBy: reached(t.id) }))
+    .sort((a, b) => b.reachedBy.length - a.reachedBy.length || b.dependents.length - a.dependents.length
+      || weight(b.tool) - weight(a.tool) || (a.tool < b.tool ? -1 : 1));
 }

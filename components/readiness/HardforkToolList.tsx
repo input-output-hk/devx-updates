@@ -7,14 +7,14 @@ import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
 import TrackingLinks from "./TrackingLinks";
 
 export interface HardforkRow {
-  tool: string; name: string; category: string; state: HardforkState; reason: string; dependents: number;
+  tool: string; name: string; category: string; state: HardforkState; reason: string; dependents: number; reachedBy: number;
   computed?: HardforkState; links: ToolLink[];
 }
 
 const FIRST = 25;
 const th = "px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-muted";
 
-/** Tools touching a changed surface, most depended-on first, filterable by hardfork state. */
+/** Tools touching a changed surface, most reached first, filterable by hardfork state. */
 export default function HardforkToolList({ rows }: { rows: HardforkRow[] }) {
   const [state, setState] = useState<HardforkState | "">("");
   const [all, setAll] = useState(false);
@@ -35,7 +35,7 @@ export default function HardforkToolList({ rows }: { rows: HardforkRow[] }) {
       <table className="w-full text-sm">
         <thead><tr>
           <th className={`${th} w-10`}>#</th><th className={th}>Tool</th><th className={th}>State</th><th className={th}>Why</th>
-          <th className={`${th} whitespace-nowrap text-right`} title="Catalog tools that reach it through shipped code or a service call">Used by</th>
+          <th className={`${th} whitespace-nowrap text-right`} title="Catalog tools that reach it through shipped code or a service call, directly or through other tools; below, how many do so directly">Used by</th>
         </tr></thead>
         <tbody>{shown.map((r) => {
           const s = HARDFORK_STATES[r.state];
@@ -48,7 +48,10 @@ export default function HardforkToolList({ rows }: { rows: HardforkRow[] }) {
               {r.computed && <div className="mt-0.5 text-xs">Otherwise: {HARDFORK_STATES[r.computed].label}</div>}
               {r.links.length > 0 && <TrackingLinks links={r.links} compact />}
             </td>
-            <td className="px-4 py-3 text-right tabular-nums">{r.dependents || <span className="text-muted">–</span>}</td>
+            <td className="px-4 py-3 text-right tabular-nums">
+              {r.reachedBy || <span className="text-muted">–</span>}
+              {r.reachedBy > 0 && <div className="whitespace-nowrap text-xs text-muted">{r.dependents} direct</div>}
+            </td>
           </tr>;
         })}</tbody>
       </table>
