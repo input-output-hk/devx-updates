@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "sundae-sdk",
+      "revision": "9f032253e0711e3a308068ed55cc85b5de71a348",
+      "adapter": "bun-lock",
+      "path": "bun.lock",
+      "roots": ["@sundaeswap/core", "@sundaeswap/gummiworm", "@sundaeswap/taste-test", "@sundaeswap/yield-farming"],
+      "platform": "all-lockfile-targets"
+    }
+  ]
+}

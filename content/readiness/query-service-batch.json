@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "adastat-api",
+      "revision": "2e5b5f96d2a4c0d037768107ca5dd93b7aac3436",
+      "adapter": "pnpm-lock",
+      "roots": [
+        "adastat-backend"
+      ],
+      "path": "backend/pnpm-lock.yaml",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "adastat-api",
+      "revision": "2e5b5f96d2a4c0d037768107ca5dd93b7aac3436",
+      "adapter": "pnpm-lock",
+      "roots": [
+        "adastat-frontend"
+      ],
+      "path": "frontend/pnpm-lock.yaml",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "cardano-graphql",
+      "revision": "fcfe3154115ef176788a60b2eae925ee42aabd7c",
+      "adapter": "yarn-lock",
+      "roots": [
+        "@cardano-graphql/server",
+        "@cardano-graphql/api-cardano-db-hasura"
+      ],
+      "platform": "all-lockfile-targets"
+    }
+  ]
+}

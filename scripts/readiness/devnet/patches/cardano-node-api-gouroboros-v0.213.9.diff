@@ -1,0 +1,53 @@
+diff --git a/internal/api/localstatequery.go b/internal/api/localstatequery.go
+index b442d5e..a500535 100644
+--- a/internal/api/localstatequery.go
++++ b/internal/api/localstatequery.go
+@@ -144,7 +144,7 @@ func handleLocalStateQuerySystemStart(c *gin.Context) {
+ 	// Create response
+ 	resp := responseLocalStateQuerySystemStart{
+ 		Year:        int(result.Year.Int64()),
+-		Day:         result.Day,
++		Day:         int(result.Day),
+ 		Picoseconds: result.Picoseconds.Uint64(),
+ 	}
+ 	c.JSON(200, resp)
+diff --git a/internal/utxorpc/submit.go b/internal/utxorpc/submit.go
+index e51679f..1cb6951 100644
+--- a/internal/utxorpc/submit.go
++++ b/internal/utxorpc/submit.go
+@@ -57,7 +57,7 @@ func systemStartToUnixMs(ss *localstatequery.SystemStartResult) int64 {
+ 	// Create time for January 1st of the year
+ 	t := time.Date(year, time.January, 1, 0, 0, 0, 0, time.UTC)
+ 	// Add days (dayOfYear is 1-indexed, so subtract 1)
+-	t = t.AddDate(0, 0, dayOfYear-1)
++	t = t.AddDate(0, 0, int(dayOfYear-1))
+ 	// Add picoseconds (convert to nanoseconds first: pico = 10^-12, nano = 10^-9)
+ 	nanoseconds := picoseconds / 1000
+ 	t = t.Add(time.Duration(nanoseconds))
+@@ -330,7 +330,7 @@ func buildTxInfoForVersion(
+ 			slotState,
+ 			tx,
+ 			resolvedInputs,
+-			script.StrictValidityUpperBoundForTransaction(tx),
++			script.StrictValidityUpperBoundForTransaction(tx), 12,
+ 		)
+ 		if err != nil {
+ 			return nil, err
+@@ -344,7 +344,7 @@ func buildTxInfoForVersion(
+ 			slotState,
+ 			tx,
+ 			resolvedInputs,
+-			script.StrictValidityUpperBoundForTransaction(tx),
++			script.StrictValidityUpperBoundForTransaction(tx), 12,
+ 		)
+ 		if err != nil {
+ 			return nil, err
+@@ -354,7 +354,7 @@ func buildTxInfoForVersion(
+ 		return script.NewTxInfoV3FromTransaction(
+ 			slotState,
+ 			tx,
+-			resolvedInputs,
++			resolvedInputs, 12,
+ 		)
+ 	default:
+ 		return nil, fmt.Errorf("unsupported Plutus script version %d", version)

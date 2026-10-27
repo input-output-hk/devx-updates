@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "cardano-hw-cli",
+      "revision": "8977cc05622b5d635d406065d7f55541f2bb4159",
+      "adapter": "yarn-lock",
+      "path": "yarn.lock",
+      "roots": [
+        "cardano-hw-cli"
+      ],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "cardano-dev-wallet",
+      "revision": "e846a7c5d2747609d791d7d47d5423616718cb34",
+      "adapter": "npm-lock",
+      "path": "webext/package-lock.json",
+      "roots": [
+        "cardano-wallet"
+      ],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "bursa",
+      "revision": "ee3ac506f88287c349d19171f2f391ac5bb835ed",
+      "adapter": "go-packages",
+      "path": "go.mod",
+      "roots": [
+        "github.com/blinklabs-io/bursa"
+      ],
+      "patterns": [
+        "./..."
+      ],
+      "tags": [],
+      "platform": "linux/amd64"
+    },
+    {
+      "toolId": "bursa",
+      "revision": "ee3ac506f88287c349d19171f2f391ac5bb835ed",
+      "adapter": "npm-lock",
+      "path": "ui/web/package-lock.json",
+      "roots": [
+        "bursa-wallet-ui"
+      ],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "bursa",
+      "revision": "ee3ac506f88287c349d19171f2f391ac5bb835ed",
+      "adapter": "npm-lock",
+      "path": "ui/extension/package-lock.json",
+      "roots": [
+        "bursa-connector"
+      ],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "bursa",
+      "revision": "ee3ac506f88287c349d19171f2f391ac5bb835ed",
+      "adapter": "go-packages",
+      "path": "ui/go.mod",
+      "roots": [
+        "github.com/blinklabs-io/bursa/ui"
+      ],
+      "patterns": [
+        "./..."
+      ],
+      "tags": [],
+      "platform": "linux/amd64"
+    }
+  ]
+}

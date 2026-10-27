@@ -1,0 +1,1134 @@
+{
+  "schemaVersion": 1,
+  "target": {
+    "name": "Dijkstra",
+    "majorProtocolVersion": 12,
+    "nodeRelease": "11.2 (untagged)",
+    "integrationBranch": {
+      "repo": "IntersectMBO/cardano-node",
+      "pullRequest": 6677,
+      "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+      "note": "PR 6736 (fmaste/prepare-11.2, c2468b05d8997d1b14024b3eaa10cb76e5fc86b7) stacks on this branch and changes only benchmarking/workbench files; CHaP pin and index-state are identical."
+    },
+    "componentSelection": {
+      "method": "Newest CHaP version at the branch's index-state, consistent with its declared bounds; not a solved build plan.",
+      "chapIndex": {
+        "repo": "IntersectMBO/cardano-haskell-packages",
+        "revision": "0f444414db3931fb70d8667f4791dec49e1e23bf",
+        "indexState": "2026-10-09T14:30:01Z"
+      },
+      "chapSources": {
+        "repo": "IntersectMBO/cardano-haskell-packages",
+        "revision": "8b4b3fc75c97e8f4c3b504d8582ec748809114e8"
+      },
+      "components": [
+        {
+          "package": "cardano-ledger-dijkstra",
+          "version": "0.4.0.0",
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a"
+        },
+        {
+          "package": "cardano-ledger-conway",
+          "version": "1.24.0.0",
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a"
+        },
+        {
+          "package": "ouroboros-consensus",
+          "version": "5.1.0.1",
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c"
+        },
+        {
+          "package": "ouroboros-network",
+          "version": "1.3.0.0",
+          "repo": "IntersectMBO/ouroboros-network",
+          "revision": "2fb69829a19b5c04e4fb212bdd78fb63f9d2d776"
+        },
+        {
+          "package": "plutus-ledger-api",
+          "version": "1.71.0.0",
+          "repo": "IntersectMBO/plutus",
+          "revision": "261766ad1d582bce8c86bad1af7a3b0e5355b21c"
+        },
+        {
+          "package": "cardano-api",
+          "version": "11.8.0.0",
+          "repo": "IntersectMBO/cardano-api",
+          "revision": "b0afab8b37a623c5c011344a7b47f0567cf6eb19"
+        },
+        {
+          "package": "cardano-cli",
+          "version": "11.3.0.0",
+          "repo": "IntersectMBO/cardano-cli",
+          "revision": "b8bbda762e596ee6c0ac0d65bc2ca01b1bdc7e10"
+        }
+      ]
+    },
+    "baseline": {
+      "nodeRelease": "11.1.3",
+      "revision": "938cba990357ae7c4b7f95c8f75dd9d31174bbeb",
+      "components": [
+        {
+          "package": "ouroboros-consensus",
+          "version": "4.2.1.0",
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "82ecba329d7d054340bf707d44fe6e9ac27cec40"
+        }
+      ]
+    },
+    "scopeSource": {
+      "repo": "IntersectMBO/cardano-node",
+      "issue": 6634,
+      "retrieved": "2026-10-19",
+      "note": "Hard Fork Working Group scope; a living issue, not an immutable record."
+    }
+  },
+  "scope": [
+    {
+      "id": "era",
+      "title": "New ledger era (general era transition)",
+      "activation": "pv12"
+    },
+    {
+      "id": "leios",
+      "title": "CIP-0164 Leios",
+      "activation": "pv12"
+    },
+    {
+      "id": "peras",
+      "title": "Peras (serialization and parameters at v12)",
+      "activation": "pv13-intra-era"
+    },
+    {
+      "id": "cip-0118",
+      "title": "CIP-0118 Nested transactions",
+      "activation": "pv12"
+    },
+    {
+      "id": "cip-0159",
+      "title": "CIP-0159 phase 1 Accounts enhancements",
+      "activation": "pv12"
+    },
+    {
+      "id": "cip-0112",
+      "title": "CIP-0112 Guard scripts",
+      "activation": "pv12"
+    },
+    {
+      "id": "cip-0181",
+      "title": "CIP-0181 Remove DRep delegation requirement for withdrawals",
+      "activation": "pv12"
+    },
+    {
+      "id": "fee-function",
+      "title": "Fee function update",
+      "activation": "pv13-intra-era"
+    },
+    {
+      "id": "plutus-v4",
+      "title": "Plutus V4 context",
+      "activation": "pv12"
+    },
+    {
+      "id": "refscript-params",
+      "title": "Reference script pricing and limits made updatable",
+      "activation": "pv12"
+    },
+    {
+      "id": "cip-0167",
+      "title": "CIP-0167 Remove isValid from transactions",
+      "activation": "pv12"
+    },
+    {
+      "id": "cip-0176",
+      "title": "CIP-0176 Non-segregated block body serialization",
+      "activation": "pv12"
+    },
+    {
+      "id": "cip-0023",
+      "title": "CIP-0023 Fair min fees (minPoolMargin)",
+      "activation": "pv13-intra-era"
+    },
+    {
+      "id": "cip-0050",
+      "title": "CIP-0050 Pledge leverage-based rewards",
+      "activation": "pv12"
+    },
+    {
+      "id": "node-release",
+      "title": "cardano-node 11.2 release changes outside the HFWG feature scope",
+      "activation": "node-11.2-upgrade"
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "era-identity",
+      "description": "Era list, era tags/indices and protocol-version ranges."
+    },
+    {
+      "id": "block-encoding",
+      "description": "Block and header CBOR as produced by the node and served over chain-sync."
+    },
+    {
+      "id": "transaction-encoding",
+      "description": "Transaction CBOR: body keys, witnesses, certificates, scripts and submission format."
+    },
+    {
+      "id": "transaction-rules",
+      "description": "Ledger validity rules a correctly encoded transaction must also satisfy."
+    },
+    {
+      "id": "plutus-language",
+      "description": "Plutus language versions, script tags, builtins and cost models."
+    },
+    {
+      "id": "plutus-script-context",
+      "description": "ScriptContext/TxInfo data presented to on-chain scripts."
+    },
+    {
+      "id": "protocol-parameters",
+      "description": "Protocol parameter set and its CBOR/JSON representations."
+    },
+    {
+      "id": "stake-pool-registration",
+      "description": "Pool registration certificates and pool parameters."
+    },
+    {
+      "id": "node-to-client-protocol",
+      "description": "Local node-to-client handshake and mini-protocol versions."
+    },
+    {
+      "id": "cardano-cli",
+      "description": "cardano-cli commands, arguments and output formats."
+    },
+    {
+      "id": "cardano-api-haskell",
+      "description": "The cardano-api Haskell library interface."
+    },
+    {
+      "id": "consensus-participation",
+      "description": "Block production and voting duties of node operators."
+    },
+    {
+      "id": "node-configuration",
+      "description": "Node configuration keys and genesis files that operators, devnet and testnet tooling generate or read."
+    }
+  ],
+  "changes": [
+    {
+      "id": "era-dijkstra",
+      "title": "New ledger era Dijkstra at major protocol version 12",
+      "scope": [
+        "era"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "era-identity"
+      ],
+      "compatibility": "decode-break",
+      "basis": "source-verified",
+      "summary": "Dijkstra follows Conway (protocol versions 9-11) as the eighth hard-fork-combinator era. Plutus gates PlutusV4 on the same version.",
+      "affects": "Anything with a closed list of eras or era tags: chain followers, block/tx decoders, era-indexed JSON, explorers, and Haskell code matching exhaustively on eras.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "libs/cardano-ledger-core/internal/Cardano/Ledger/Internal/Definition/Era.hs",
+          "line": 140,
+          "quote": "type ProtVerLow DijkstraEra = 12"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "libs/cardano-ledger-core/internal/Cardano/Ledger/Internal/Definition/Era.hs",
+          "line": 133,
+          "quote": "type ProtVerHigh ConwayEra = 11"
+        },
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Block.hs",
+          "line": 293,
+          "quote": "pattern TagDijkstra x = S (S (S (S (S (S (S (Z x)))))))"
+        },
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
+          "line": 180,
+          "quote": "BlockDijkstra blockDijkstra -> prependTag 8 $ encodeDisk ccfgDijkstra blockDijkstra"
+        },
+        {
+          "repo": "IntersectMBO/plutus",
+          "revision": "261766ad1d582bce8c86bad1af7a3b0e5355b21c",
+          "path": "plutus-ledger-api/src/PlutusLedgerApi/Common/ProtocolVersions.hs",
+          "line": 91,
+          "quote": "dijkstraPV = MajorProtocolVersion 12"
+        }
+      ]
+    },
+    {
+      "id": "n2c-only-v23",
+      "title": "Node-to-client handshake offers only NodeToClientV_23",
+      "scope": [
+        "node-release"
+      ],
+      "activation": "node-11.2-upgrade",
+      "surfaces": [
+        "node-to-client-protocol"
+      ],
+      "compatibility": "interface-change",
+      "basis": "source-verified",
+      "summary": "Consensus 5.1.x (selected by the 11.2 branch) offers only V23; consensus 4.2.1.0 (node 11.1.x) offered V16-V23. Dijkstra is enabled inside V23, with no new version.",
+      "affects": "Local clients that cannot negotiate V23 lose connectivity as soon as a node upgrades to 11.2, before the fork: chain-sync/query/submit clients and their libraries (Ogmios, Kupo, Pallas, Gouroboros, cardano-wallet, db-sync, miniprotocol libraries).",
+      "citations": [
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
+          "line": 346,
+          "quote": "[ (NodeToClientV_23, CardanoNodeToClientVersion19)"
+        },
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "82ecba329d7d054340bf707d44fe6e9ac27cec40",
+          "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
+          "line": 446,
+          "quote": "[ (NodeToClientV_16, CardanoNodeToClientVersion12)"
+        },
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
+          "line": 342,
+          "quote": "Note that 11.x introduced no new version"
+        }
+      ]
+    },
+    {
+      "id": "block-body-non-segregated",
+      "title": "Non-segregated block body with per-transaction is_valid (CIP-0176)",
+      "scope": [
+        "cip-0176",
+        "leios",
+        "peras"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "block-encoding"
+      ],
+      "compatibility": "decode-break",
+      "basis": "source-verified",
+      "summary": "block = [header, block_body]; each block transaction is [body, witnesses, auxiliary_data / nil, is_valid]; invalid_transactions is removed; block_body carries optional Leios and Peras certificates.",
+      "affects": "Every block decoder: chain followers, indexers, explorers, db-sync-like tools and any library exposing block parsing.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 3,
+          "quote": "block = [header, block_body]"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 9,
+          "quote": "[transaction_body, transaction_witness_set, auxiliary_data/ nil, bool]"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 112,
+          "quote": "leios_certificate : leios_certificate/ nil"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/conway/impl/cddl/data/conway.cddl",
+          "line": 13,
+          "quote": "invalid_transactions     : [* transaction_index]"
+        }
+      ]
+    },
+    {
+      "id": "header-version-info",
+      "title": "Block header replaces protocol_version and adds Leios fields",
+      "scope": [
+        "leios"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "block-encoding"
+      ],
+      "compatibility": "decode-break",
+      "basis": "source-verified",
+      "summary": "The target CDDL's header_body replaces protocol_version with header_version_info [highest_supported_major_version, self_reported_software_tag] and adds block_body_contains_leios_cert and eb_references_announcement, with vrf_cert's output exactly 64 bytes. The shared Praos header encoder at the same ledger revision still writes the ten-field header with protocol_version, and the 11.2 integration node emits that header in Dijkstra blocks (devnet check block-shape): decoders that follow the CDDL reject the node's blocks.",
+      "affects": "Header decoders in chain-sync clients, explorers that show the header protocol version, and pool/version telemetry tools.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 68,
+          "quote": ", header_version_info"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 69,
+          "quote": "block_body_contains_leios_cert : bool"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 83,
+          "quote": "vrf_cert = [bytes .size 64, bytes .size 80]"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/conway/impl/cddl/data/conway.cddl",
+          "line": 73,
+          "quote": ", protocol_version"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "libs/cardano-protocol/src/Cardano/Protocol/Praos/BlockHeader.hs",
+          "line": 106,
+          "quote": ", hbProtVer :: !ProtVer"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "libs/cardano-protocol/src/Cardano/Protocol/Praos/BlockHeader.hs",
+          "line": 192,
+          "quote": "encodeListLen 10"
+        }
+      ]
+    },
+    {
+      "id": "mempool-tx-is-valid",
+      "title": "Submitted transactions drop the is_valid flag (CIP-0167)",
+      "scope": [
+        "cip-0167"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "transaction-encoding"
+      ],
+      "compatibility": "additive",
+      "basis": "source-verified",
+      "summary": "mempool_transaction is [body, witnesses, auxiliary_data / nil]; the legacy four-element form is still accepted only with is_valid = true and is announced as disallowed in the next era.",
+      "affects": "Mempool/submission decoders must accept the three-element form; builders should stop emitting is_valid now.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 24,
+          "quote": "/ [transaction_body, transaction_witness_set, true, auxiliary_data/ nil]"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 18,
+          "quote": "; In the next era the `is_valid` flag will not be allowed in mempool"
+        }
+      ]
+    },
+    {
+      "id": "nested-transactions",
+      "title": "Nested transactions (CIP-0118)",
+      "scope": [
+        "cip-0118"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "transaction-encoding",
+        "transaction-rules"
+      ],
+      "compatibility": "decode-break",
+      "basis": "source-verified",
+      "summary": "Transaction body key 23 carries sub_transactions, each with its own body (no fee or collateral), witnesses and auxiliary data. Sub-transaction execution units count towards transaction and block limits and minimum script fees. PlutusV1-V3 scripts cannot run in a sub-transaction.",
+      "affects": "Decoders that reject unknown body keys; indexers/explorers/wallets computing a transaction's inputs, outputs, balance or history (sub-transaction effects are otherwise invisible); fee and ex-unit estimators.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 137,
+          "quote": "? 23 : sub_transactions"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 829,
+          "quote": "sub_transaction_body ="
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/CHANGELOG.md",
+          "line": 31,
+          "quote": "* Include subtransaction execution units in transaction and block limits and minimum script fees."
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/TxInfo.hs",
+          "line": 162,
+          "quote": "UnsupportedScriptInSubTx Language TxId"
+        }
+      ]
+    },
+    {
+      "id": "guards",
+      "title": "Guards replace required signers (CIP-0112)",
+      "scope": [
+        "cip-0112"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "transaction-encoding",
+        "plutus-script-context"
+      ],
+      "compatibility": "decode-break",
+      "basis": "source-verified",
+      "summary": "Body key 14 becomes guards: a set of key hashes or an ordered set of credentials, including script hashes. Key 24 adds required_top_level_guards; native scripts gain type 6 script_require_guard; redeemer tag 6 is guarding.",
+      "affects": "Decoders that read key 14 as key hashes only, closed native-script type enums (0-5) and closed redeemer-tag enums (0-5); tools that compute required signers.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 128,
+          "quote": "; guards (replaces required_signers)"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 644,
+          "quote": "guards = nonempty_set<addr_keyhash>/ nonempty_oset<credential>"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 436,
+          "quote": "script_require_guard = (6, credential)"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 898,
+          "quote": "/ 6 ; guarding"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/conway/impl/cddl/data/conway.cddl",
+          "line": 799,
+          "quote": "redeemer_tag = 0 .. 5"
+        }
+      ]
+    },
+    {
+      "id": "account-enhancements",
+      "title": "Direct deposits and account balance intervals (CIP-0159 phase 1)",
+      "scope": [
+        "cip-0159"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "transaction-encoding",
+        "transaction-rules"
+      ],
+      "compatibility": "additive",
+      "basis": "source-verified",
+      "summary": "Body keys 25 (direct_deposits), 26 (account_balance_intervals) and 27 (starting_account_balance_intervals, top level only), all keyed by reward account.",
+      "affects": "Strict body decoders; wallets/indexers tracking reward-account balances, which can now increase through direct deposits.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 139,
+          "quote": "? 25 : direct_deposits"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 853,
+          "quote": "direct_deposits = {+ reward_account => coin}"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 141,
+          "quote": "? 27 : starting_account_balance_intervals"
+        }
+      ]
+    },
+    {
+      "id": "removed-encodings",
+      "title": "Encodings valid in Conway that Dijkstra rejects",
+      "scope": [
+        "era"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "transaction-encoding"
+      ],
+      "compatibility": "encode-break",
+      "basis": "source-verified",
+      "summary": "Removed: deposit-less stake registration/unregistration certificates (types 0 and 1), the legacy array encoding of redeemers, and empty per-policy multiasset maps. Bootstrap witness chain_code must be exactly 32 bytes; witness-set lists become sets.",
+      "affects": "Transaction builders, wallets and CLI scripts that still emit certificate types 0/1 or array-encoded redeemers. Combined with cross-era re-decoding (see mempool-cross-era), such transactions fail after the fork even when built for Conway.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/conway/impl/cddl/data/conway.cddl",
+          "line": 434,
+          "quote": "account_registration_cert = (0, stake_credential)"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/conway/impl/cddl/data/conway.cddl",
+          "line": 441,
+          "quote": "account_unregistration_cert = (1, stake_credential)"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 39,
+          "quote": "[  delegation_to_stake_pool_cert"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/conway/impl/cddl/data/conway.cddl",
+          "line": 786,
+          "quote": "[ + redeemer"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 192,
+          "quote": "multiasset<a0> = {+ policy_id => {+ asset_name => a0}}"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 879,
+          "quote": ", chain_code : bytes .size 32"
+        }
+      ]
+    },
+    {
+      "id": "plutus-v4",
+      "title": "PlutusV4 language and script context",
+      "scope": [
+        "plutus-v4"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context",
+        "protocol-parameters"
+      ],
+      "compatibility": "additive",
+      "basis": "source-verified",
+      "summary": "Language 3 / script tag 4 / witness key 8 / auxiliary-data key 5 / cost-model key 3. The V4 TxInfo adds txInfoSubTxIx, direct deposits, account balance intervals, guards and required top-level guards, and drops txInfoFee. ScriptPurpose gains Guarding. Builtin batches 1-6 are available; batch 7 is not approved for any version.",
+      "affects": "Compilers and script frameworks (Plinth, Plutarch, Aiken, Scalus, plu-ts, OpShin, Helios, …), off-chain script evaluators used for ex-unit estimation, script envelope/language enums, cost-model handling, and libraries that construct script data hashes.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 871,
+          "quote": "? 8 : nonempty_set<plutus_v4_script>"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 32,
+          "quote": "language = 0 .. 3"
+        },
+        {
+          "repo": "IntersectMBO/plutus",
+          "revision": "261766ad1d582bce8c86bad1af7a3b0e5355b21c",
+          "path": "plutus-ledger-api/src/PlutusLedgerApi/Common/Versions.hs",
+          "line": 114,
+          "quote": "PlutusV4 -> dijkstraPV"
+        },
+        {
+          "repo": "IntersectMBO/plutus",
+          "revision": "261766ad1d582bce8c86bad1af7a3b0e5355b21c",
+          "path": "plutus-ledger-api/src/PlutusLedgerApi/V4/Contexts.hs",
+          "line": 351,
+          "quote": ", txInfoSubTxIx :: Haskell.Maybe Haskell.Integer"
+        },
+        {
+          "repo": "IntersectMBO/plutus",
+          "revision": "261766ad1d582bce8c86bad1af7a3b0e5355b21c",
+          "path": "plutus-ledger-api/src/PlutusLedgerApi/V4/Contexts.hs",
+          "line": 330,
+          "quote": "| Guarding V2.ScriptHash Haskell.Integer"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/CHANGELOG.md",
+          "line": 50,
+          "quote": "remove `txInfoFee` from PV4 `TxInfo`"
+        }
+      ]
+    },
+    {
+      "id": "plutus-legacy-mode",
+      "title": "PlutusV1-V3 restricted from new features",
+      "scope": [
+        "plutus-v4"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "transaction-rules"
+      ],
+      "compatibility": "rule-change",
+      "basis": "source-verified",
+      "summary": "Transactions running PlutusV1-V3 scripts cannot use direct deposits, account balance intervals, guard script hashes or required top-level guards, and fail when any output carries a pointer stake reference.",
+      "affects": "Builders mixing existing V1-V3 contracts with new features; dApps with V1-V3 validators interacting with pointer addresses.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/TxInfo.hs",
+          "line": 160,
+          "quote": "PointerPresentInOutput TxOutSource"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/TxInfo.hs",
+          "line": 164,
+          "quote": "DirectDepositsNotSupported DirectDeposits"
+        }
+      ]
+    },
+    {
+      "id": "protocol-parameters",
+      "title": "23 new protocol parameters (keys 34-56)",
+      "scope": [
+        "refscript-params",
+        "cip-0050",
+        "cip-0023",
+        "leios",
+        "peras",
+        "fee-function"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "protocol-parameters"
+      ],
+      "compatibility": "additive",
+      "basis": "source-verified",
+      "summary": "Reference-script limits and pricing (34-37), max pledge leverage (38), min pool margin (39), Leios (40-48), Peras (49-54) and reference-input fees per policy and per datum byte (55-56). Peras, min pool margin and the fee-function change activate only at intra-era v13.",
+      "affects": "Protocol-parameter decoders and JSON consumers (query clients, explorers, SDK fee calculators), governance tooling that proposes parameter changes, and the guardrails script.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 713,
+          "quote": "? 34 : uint .size 4                ; max refScript size per block"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 717,
+          "quote": "? 38 : max_pledge_leverage         ; max pledge leverage"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 734,
+          "quote": "? 55 : coin                        ; minfee per multi-asset policy id in reference inputs"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 735,
+          "quote": "? 56 : coin                        ; minfee per datum byte in reference inputs"
+        }
+      ]
+    },
+    {
+      "id": "pool-bls-key",
+      "title": "Pool registration gains an optional BLS key",
+      "scope": [
+        "leios"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "stake-pool-registration"
+      ],
+      "compatibility": "decode-break",
+      "basis": "source-verified",
+      "summary": "pool_params has an optional bls_key [96-byte public key, 48-byte proof of possession], verified on (re-)registration. The Leios committee is seated from the top pools carrying BLS keys.",
+      "affects": "Pool-certificate decoders (explorers, pool registries, db-sync-like indexers) and SPO tooling that builds registrations (cardano-cli scripts, guild operators, cncli).",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 470,
+          "quote": ", ? bls_key        : bls_key/ nil"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
+          "line": 483,
+          "quote": "bls_key = [bls_pubkey : bytes .size 96, bls_possession_proof : bytes .size 48]"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/CHANGELOG.md",
+          "line": 9,
+          "quote": "Verify BLS proof of possession when (re-)registering a pool with a BLS key set"
+        }
+      ]
+    },
+    {
+      "id": "withdrawal-drep-requirement",
+      "title": "Reward withdrawals no longer require DRep delegation (CIP-0181)",
+      "scope": [
+        "cip-0181"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "transaction-rules"
+      ],
+      "compatibility": "rule-change",
+      "basis": "source-verified",
+      "summary": "The ledger drops the DRep-delegation precondition for reward withdrawals.",
+      "affects": "Wallets and dApps that force or check DRep delegation before withdrawals; behaviour change, not a decoding break.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/CHANGELOG.md",
+          "line": 319,
+          "quote": "* Remove DRep requirement for reward withdrawals"
+        }
+      ]
+    },
+    {
+      "id": "mempool-cross-era",
+      "title": "Earlier-era transactions are re-decoded as Dijkstra after the fork",
+      "scope": [
+        "era"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "transaction-encoding"
+      ],
+      "compatibility": "encode-break",
+      "basis": "source-verified",
+      "summary": "When a submitted transaction's era differs from the ledger tip, consensus re-serializes it and decodes it in the tip era; it is rejected with an era mismatch if those bytes are not valid Dijkstra. On the devnet, Conway-built payments, deposit registrations, required_signers bodies and metadata transactions are accepted; a Conway deposit-less registration is rejected as an era mismatch (devnet check cross-era-submission).",
+      "affects": "Every builder that keeps producing Conway-era transactions after the fork, including scripts using `cardano-cli latest` (see cli-dijkstra).",
+      "citations": [
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "path": "ouroboros-consensus/src/ouroboros-consensus/Ouroboros/Consensus/HardFork/Combinator/InjectTxs.hs",
+          "line": 227,
+          "quote": "-- Tx failed to deserialise in the target era"
+        }
+      ]
+    },
+    {
+      "id": "cli-dijkstra",
+      "title": "cardano-api and cardano-cli add Dijkstra; `latest` still means Conway",
+      "scope": [
+        "node-release"
+      ],
+      "activation": "node-11.2-upgrade",
+      "surfaces": [
+        "cardano-cli",
+        "cardano-api-haskell"
+      ],
+      "compatibility": "interface-change",
+      "basis": "source-verified",
+      "summary": "cardano-api 11.8 adds ShelleyBasedEraDijkstra and an experimental DijkstraEra; cardano-cli 11.3 adds a `dijkstra` command group while `latest` still maps to Conway at the pinned commit.",
+      "affects": "Haskell consumers with exhaustive era matches; operator and dApp scripts that call cardano-cli. Scripts pinned to `latest` keep building Conway transactions after the fork unless `latest` moves before release.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-api",
+          "revision": "b0afab8b37a623c5c011344a7b47f0567cf6eb19",
+          "path": "cardano-api/src/Cardano/Api/Era/Internal/Eon/ShelleyBasedEra.hs",
+          "line": 132,
+          "quote": "ShelleyBasedEraDijkstra :: ShelleyBasedEra DijkstraEra"
+        },
+        {
+          "repo": "IntersectMBO/cardano-cli",
+          "revision": "b8bbda762e596ee6c0ac0d65bc2ca01b1bdc7e10",
+          "path": "cardano-cli/src/Cardano/CLI/EraBased/Option.hs",
+          "line": 57,
+          "quote": "Opt.progDesc \"Dijkstra era commands\""
+        },
+        {
+          "repo": "IntersectMBO/cardano-cli",
+          "revision": "b8bbda762e596ee6c0ac0d65bc2ca01b1bdc7e10",
+          "path": "cardano-cli/src/Cardano/CLI/EraBased/Option.hs",
+          "line": 61,
+          "quote": "Opt.progDesc \"Latest era commands (Conway)\""
+        }
+      ]
+    },
+    {
+      "id": "leios-peras-consensus",
+      "title": "Leios and Peras consensus artefacts",
+      "scope": [
+        "leios",
+        "peras"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "consensus-participation",
+        "block-encoding"
+      ],
+      "compatibility": "additive",
+      "basis": "source-verified",
+      "summary": "Leios endorser-block references, certificates and committee parameters ship at v12. Peras serialization and parameters ship at v12, but the ledger currently rejects any Peras certificate in a block, and the HFWG scope activates Peras at intra-era v13.",
+      "affects": "Block producers and node operators (BLS keys, committee participation); block decoders handled under block-body-non-segregated and header-version-info.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/CHANGELOG.md",
+          "line": 26,
+          "quote": "Make sure `validatePerasCert` always returns `False`, thus effectively disabling unimplemented"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/CHANGELOG.md",
+          "line": 71,
+          "quote": "seats the Leios voting committee (CIP-0164)"
+        }
+      ]
+    },
+    {
+      "id": "dijkstra-genesis-config",
+      "title": "Dijkstra genesis file and experimental hard-fork gating in node configuration",
+      "scope": [
+        "era",
+        "node-release"
+      ],
+      "activation": "node-11.2-upgrade",
+      "surfaces": [
+        "node-configuration",
+        "protocol-parameters"
+      ],
+      "compatibility": "interface-change",
+      "basis": "source-verified",
+      "summary": "Node 11.2 reads DijkstraGenesisFile (and optional DijkstraGenesisHash) and the TestDijkstraHardForkAt* keys only when ExperimentalHardForksEnabled is true; without a file it uses an empty genesis. The genesis holds the Dijkstra upgrade parameters (reference-script limits, pool leverage and margin, the PlutusV4 cost model as an array, Leios and Peras parameters, reference-input costs). The same flag switches the node's protocol version from 11 to 12, and cardano-testnet's default configuration leaves it off.",
+      "affects": "Configuration and genesis generators and devnet tools (cardano-testnet, Yaci DevKit, cardano-up, SPO guild tooling, Docker images), anything that hashes or validates the set of genesis files, and R4 devnet setup.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-node",
+          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "path": "cardano-node/src/Cardano/Node/Configuration/POM.hs",
+          "line": 648,
+          "quote": "npcDijkstraGenesisFile     <- v .:  \"DijkstraGenesisFile\""
+        },
+        {
+          "repo": "IntersectMBO/cardano-node",
+          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "path": "cardano-node/src/Cardano/Node/Configuration/POM.hs",
+          "line": 361,
+          "quote": "<*> (if npcExperimentalHardForksEnabled hfp then Just <$> parseDijkstraProtocol v else pure Nothing)"
+        },
+        {
+          "repo": "IntersectMBO/cardano-node",
+          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "path": "cardano-node/src/Cardano/Node/Configuration/POM.hs",
+          "line": 687,
+          "quote": "then (,) <$>  v .:? \"TestDijkstraHardForkAtEpoch\" <*> v .:? \"TestDijkstraHardForkAtVersion\""
+        },
+        {
+          "repo": "IntersectMBO/cardano-node",
+          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "path": "cardano-node/src/Cardano/Node/Protocol/Cardano.hs",
+          "line": 139,
+          "quote": "Nothing -> pure Dijkstra.emptyDijkstraGenesis"
+        },
+        {
+          "repo": "IntersectMBO/cardano-node",
+          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "path": "cardano-node/src/Cardano/Node/Protocol/Cardano.hs",
+          "line": 193,
+          "quote": "then ProtVer (natVersion @12) 0"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/Genesis.hs",
+          "line": 33,
+          "quote": "{ dgUpgradePParams :: UpgradeDijkstraPParams Identity DijkstraEra"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/PParams.hs",
+          "line": 450,
+          "quote": "udppPlutusV4CostModel <- parseCostModelAsArray False PlutusV4 =<< o .: \"plutusV4CostModel\""
+        },
+        {
+          "repo": "IntersectMBO/cardano-node",
+          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "path": "cardano-testnet/CHANGELOG.md",
+          "line": 51,
+          "quote": "- Disable `ExperimentalHardForksEnabled` in the default testnet config."
+        },
+        {
+          "repo": "IntersectMBO/cardano-node",
+          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "path": "cardano-testnet/src/Testnet/Defaults.hs",
+          "line": 318,
+          "quote": ", (\"TestDijkstraHardForkAtEpoch\", Aeson.Number 0)"
+        }
+      ]
+    },
+    {
+      "id": "query-pparams-encoding",
+      "title": "Protocol parameters returned by local state query grow from 31 to 54 positional fields",
+      "scope": [
+        "era",
+        "leios",
+        "peras",
+        "refscript-params"
+      ],
+      "activation": "pv12",
+      "surfaces": [
+        "protocol-parameters",
+        "node-to-client-protocol"
+      ],
+      "compatibility": "decode-break",
+      "basis": "source-verified",
+      "summary": "Protocol parameters are encoded as a CBOR array of the era's parameter list. Dijkstra keeps Conway's 31 entries in order and appends 23 (reference-script limits and cost, pool leverage and margin, Leios, Peras, reference-input costs), so GetCurrentPParams and GetFuturePParams answers become 54-element arrays once the era is Dijkstra.",
+      "affects": "Local-state-query clients that decode current or future protocol parameters with a fixed Conway length: query libraries, fee calculators, Ogmios/Kupo-style bridges, wallets reading parameters through the node.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "libs/cardano-ledger-core/src/Cardano/Ledger/Core/PParams.hs",
+          "line": 206,
+          "quote": "encodeListLen (fromIntegral (length (eraPParams @era)))"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/PParams.hs",
+          "line": 773,
+          "quote": "    , ppMaxRefScriptSizePerBlock"
+        },
+        {
+          "repo": "IntersectMBO/cardano-ledger",
+          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/PParams.hs",
+          "line": 795,
+          "quote": "    , ppRefInputsCostPerDatumByte"
+        },
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "path": "ouroboros-consensus-cardano/src/shelley/Ouroboros/Consensus/Shelley/Ledger/Query.hs",
+          "line": 131,
+          "quote": "  GetCurrentPParams ::"
+        }
+      ]
+    }
+  ],
+  "unchanged": [
+    {
+      "id": "node-to-node-versions",
+      "title": "Node-to-node versions and running mini-protocols",
+      "summary": "Node 11.2 offers node-to-node V14-V16 with V15 as the latest released version, exactly as node 11.1. Consensus carries Peras certificate and vote diffusion behind feature flags, and the node starts with an empty flag set, so relays and alternative node implementations see no node-to-node change at the 11.2 upgrade; Peras and Leios diffusion arrive with their intra-era activation.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
+          "line": 324,
+          "quote": "[ (NodeToNodeV_14, CardanoNodeToNodeVersion2)"
+        },
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
+          "line": 349,
+          "quote": "latestReleasedNodeVersion _prx = (Just NodeToNodeV_15, Just NodeToClientV_23)"
+        },
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "82ecba329d7d054340bf707d44fe6e9ac27cec40",
+          "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
+          "line": 439,
+          "quote": "[ (NodeToNodeV_14, CardanoNodeToNodeVersion2)"
+        },
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "82ecba329d7d054340bf707d44fe6e9ac27cec40",
+          "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
+          "line": 456,
+          "quote": "latestReleasedNodeVersion _prx = (Just NodeToNodeV_15, Just NodeToClientV_23)"
+        },
+        {
+          "repo": "IntersectMBO/cardano-node",
+          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "path": "cardano-node/src/Cardano/Node/Run.hs",
+          "line": 430,
+          "quote": ", rnFeatureFlags = mempty -- TODO(10.7) forward this to CLI options?"
+        }
+      ]
+    },
+    {
+      "id": "query-set",
+      "title": "Local state query set",
+      "summary": "Inside node-to-client V23 the Shelley-based query version is ShelleyNodeToClientVersion15 only, the same query set as the baseline: no query is added or removed. What changes is the era of the answers (see query-pparams-encoding).",
+      "citations": [
+        {
+          "repo": "IntersectMBO/ouroboros-consensus",
+          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "path": "ouroboros-consensus-cardano/src/shelley/Ouroboros/Consensus/Shelley/Ledger/NetworkProtocolVersion.hs",
+          "line": 36,
+          "quote": "[ (NodeToClientV_23, ShelleyNodeToClientVersion15)"
+        }
+      ]
+    }
+  ]
+}

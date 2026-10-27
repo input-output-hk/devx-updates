@@ -13,10 +13,11 @@ type SortDir = "asc" | "desc";
 const STATUS_ORDER: Record<Status, number> = {
   active: 0,
   maintenance: 1,
-  abandoned: 2,
-  archived: 3,
-  experimental: 4,
-  research: 5,
+  deprecated: 2,
+  abandoned: 3,
+  archived: 4,
+  experimental: 5,
+  research: 6,
 };
 
 export default function TablePage() {

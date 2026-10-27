@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "bloxbean-cardano-client-library",
+      "revision": "f1130177b02761ea15b93a92e385ae0739d27096",
+      "adapter": "gradle-resolution",
+      "path": "build.gradle",
+      "platform": "amd64-Linux",
+      "roots": ["com.bloxbean.cardano:cardano-client-lib", "com.bloxbean.cardano:governance", "com.bloxbean.cardano:blockfrost"],
+      "configurations": [
+        { "projectPath": ":", "configuration": "runtimeClasspath", "scope": "runtime" },
+        { "projectPath": ":governance", "configuration": "runtimeClasspath", "scope": "runtime" },
+        { "projectPath": ":backend-modules:blockfrost", "configuration": "runtimeClasspath", "scope": "runtime" }
+      ]
+    }
+  ]
+}

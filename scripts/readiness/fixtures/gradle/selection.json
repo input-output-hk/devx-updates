@@ -1,0 +1,17 @@
+[
+  {
+    "projectPath": ":",
+    "configuration": "runtimeClasspath",
+    "scope": "runtime"
+  },
+  {
+    "projectPath": ":",
+    "configuration": "annotationProcessor",
+    "scope": "build"
+  },
+  {
+    "projectPath": ":",
+    "configuration": "testRuntimeClasspath",
+    "scope": "development"
+  }
+]

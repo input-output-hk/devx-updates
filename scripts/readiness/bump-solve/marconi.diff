@@ -1,0 +1,771 @@
+cabal.project --- 1/3 --- Text
+13                                       13 
+14 -- See CONTRIBUTING.adoc for how to   14 -- See CONTRIBUTING.adoc for how to 
+.. update index-state                    .. update index-state
+15 index-state:                          15 index-state:
+16   , hackage.haskell.org 2024-01-22T2  16   , hackage.haskell.org 2026-10-07T0
+.. 3:05:20Z                              .. 0:00:00Z
+17   , cardano-haskell-packages 2023-12  17   , cardano-haskell-packages 2026-10
+.. -06T19:40:56Z                         .. -07T00:00:00Z
+18 packages: marconi-cardano-chain-inde  18 packages: marconi-cardano-chain-inde
+.. x                                     .. x
+19           marconi-core                19           marconi-core
+20           marconi-cardano-core        20           marconi-cardano-core
+
+cabal.project --- 2/3 --- Text
+30 write-ghc-environment-files: never    30 write-ghc-environment-files: never
+31                                       31 
+32 -- Always build tests and benchmarks  32 -- Always build tests and benchmarks
+.. .                                     .. .
+33 tests: true                           33 tests: false
+34 benchmarks: true                      34 benchmarks: false
+35                                       35 
+36 -- The only sensible test display op  36 -- The only sensible test display op
+.. tion, since it allows us to have col  .. tion, since it allows us to have col
+.. ourized                               .. ourized
+37 -- 'tasty' output.                    37 -- 'tasty' output.
+
+cabal.project --- 3/3 --- Text
+51 51   flags: -external-libsodium-vrf
+52 52 
+53 53 -- TODO: remove once this version is on CHaP
+54    source-repository-package
+55        type: git
+56        location: https://github.com/input-output-hk/quickcheck-contractmodel
+57        tag: 45f75c3ffa3b6ac08f7ba6b9678552bf58e2e005
+58        --sha256: sha256-APWe5EDBuWzPGtfgNLB9GfU2n4XTxh+a1OZR7sdIREA=
+59        subdir:
+60          quickcheck-contractmodel
+61          quickcheck-threatmodel
+62    
+63    -- TODO: remove once this version is on CHaP
+64    source-repository-package
+65        type: git
+66        location: https://github.com/input-output-hk/cardano-node-emulator
+67        tag: 3a43d5cfea9a5f01ec68e5d1aeea7429394d1191
+68        --sha256: sha256-3reCwN9mWAJZoep8qEzCcHw3JcgLyLd2XW3JUIIfnhQ=
+69        subdir:
+70          plutus-ledger
+71          plutus-script-utils
+72          cardano-node-emulator
+73          cardano-node-socket-emulator
+74          freer-extras
+
+marconi-cardano-chain-index/marconi-cardano-chain-index.cabal --- 1/3 --- Text
+108   -- Other IOG dependencies          108   -- Other IOG dependencies
+109   --------------------------         109   --------------------------
+110   build-depends:                     110   build-depends:
+111     , cardano-api             ^>=8.  111     , cardano-api             ^>=11
+... 20                                   ... .8
+112     , cardano-crypto-class           112     , cardano-crypto-class
+113     , cardano-ledger-shelley         113     , cardano-ledger-shelley
+114     , iohk-monitoring                114     , iohk-monitoring
+
+marconi-cardano-chain-index/marconi-cardano-chain-index.cabal --- 2/3 --- Text
+156 156   ------------------------
+157 157   build-depends:  base >=4.9 && <5
+158 158 
+159 ... test-suite marconi-cardano-chain-index-test
+160 ...   import:         lang
+161 ...   ghc-options:    -Wno-unused-packages
+162 ...   type:           exitcode-stdio-1.0
+163 ...   main-is:        Spec.hs
+164 ...   hs-source-dirs: test
+165 ...   other-modules:
+166 ...     Spec.Marconi.Cardano.ChainIndex.Api.Gen
+167 ...     Spec.Marconi.Cardano.ChainIndex.Api.Routes
+168 ...     Spec.Marconi.Cardano.ChainIndex.CLI
+169 ...     Spec.Marconi.Cardano.ChainIndex.CLIInputValidation
+170 ... 
+171 ...   --------------------
+172 ...   -- Local components
+173 ...   --------------------
+174 ...   build-depends:
+175 ...     , marconi-cardano-chain-index:{marconi-cardano-chain-index, marconi-cardano-chain-index-test-lib}
+176 ...     , marconi-cardano-core:{marconi-cardano-core, cardano-api-extended, marconi-cardano-core-test-lib}
+177 ...     , marconi-core:{marconi-core, marconi-core-test-lib}
+178 ... 
+179 ...   --------------------------
+180 ...   -- Other IOG dependencies
+181 ...   --------------------------
+182 ...   build-depends:
+183 ...     , cardano-api                  ^>=8.20
+184 ...     , cardano-api-gen              ^>=8.2
+185 ...     , cardano-binary
+186 ...     , cardano-crypto-class
+187 ...     , cardano-ledger-alonzo        >=1.3.1.1
+188 ...     , cardano-ledger-core
+189 ...     , cardano-ledger-shelley
+190 ...     , cardano-node-emulator
+191 ...     , hedgehog-extras
+192 ...     , iohk-monitoring
+193 ...     , ouroboros-consensus
+194 ...     , ouroboros-consensus-cardano
+195 ...     , ouroboros-network
+196 ...     , plutus-core
+197 ...     , plutus-ledger-api            ^>=1.9
+198 ...     , plutus-tx
+199 ...     , plutus-tx-plugin
+200 ...     , process
+201 ... 
+202 ...   ------------------------
+203 ...   -- Non-IOG dependencies
+204 ...   ------------------------
+205 ...   build-depends:
+206 ...     , aeson
+207 ...     , aeson-pretty
+208 ...     , async
+209 ...     , base                  >=4.9 && <5
+210 ...     , base16-bytestring
+211 ...     , bytestring
+212 ...     , cborg
+213 ...     , comonad
+214 ...     , containers
+215 ...     , contra-tracer
+216 ...     , directory
+217 ...     , filepath
+218 ...     , hedgehog
+219 ...     , lens
+220 ...     , mtl
+221 ...     , nonempty-containers
+222 ...     , optparse-applicative
+223 ...     , postgresql-simple
+224 ...     , prettyprinter
+225 ...     , serialise
+226 ...     , sqlite-simple
+227 ...     , stm
+228 ...     , streaming
+229 ...     , tasty
+230 ...     , tasty-golden
+231 ...     , tasty-hedgehog
+232 ...     , temporary
+233 ...     , text
+234 ...     , time
+235 ...     , transformers
+236 ... 
+237 159 executable marconi-chain-snapshot
+238 160   import:         lang
+
+marconi-cardano-chain-index/marconi-cardano-chain-index.cabal --- 3/3 --- Text
+249 171   -- Non-IOG dependencies
+250 172   ------------------------
+251 173   build-depends:  base >=4.9 && <5
+252     
+253     library marconi-cardano-chain-index-test-lib
+254       import:          lang
+255     
+256       -- Needed or else GHC will say that plutus-tx-plugin was not needed for compilation, even though
+257       -- we actually use it in the codebase. If we remove the dependency, we get linking errors in other
+258       -- components that depend on this library like `marconi-sidechain`.
+259       ghc-options:     -Wno-unused-packages
+260       visibility:      public
+261       hs-source-dirs:  test-lib
+262       exposed-modules:
+263         Test.Marconi.Cardano.ChainIndex.Api.HttpServer
+264         Test.Marconi.Cardano.ChainIndex.Api.JsonRpc
+265         Test.Marconi.Cardano.ChainIndex.CLI
+266         Test.Marconi.Cardano.ChainIndex.Indexers
+267     
+268       --------------------
+269       -- Local components
+270       --------------------
+271       build-depends:
+272         , marconi-cardano-chain-index
+273         , marconi-cardano-core:{marconi-cardano-core, cardano-api-extended, marconi-cardano-core-test-lib}
+274         , marconi-cardano-indexers:{marconi-cardano-indexers, marconi-cardano-indexers-test-lib}
+275         , marconi-core
+276         , marconi-core-json-rpc
+277     
+278       --------------------------
+279       -- Other IOG dependencies
+280       --------------------------
+281       build-depends:
+282         , cardano-api                   ^>=8.20
+283         , cardano-api-gen               ^>=8.2
+284         , cardano-crypto-class
+285         , cardano-ledger-core
+286         , cardano-node-emulator
+287         , cardano-node-socket-emulator
+288         , iohk-monitoring
+289         , ouroboros-network-protocols
+290         , plutus-core
+291         , plutus-ledger
+292         , plutus-ledger-api             ^>=1.9
+293         , plutus-tx
+294         , plutus-tx-plugin
+295     
+296       ------------------------
+297       -- Non-IOG dependencies
+298       ------------------------
+299       build-depends:
+300         , aeson
+301         , aeson-pretty
+302         , async
+303         , base                 >=4.9 && <5
+304         , bytestring
+305         , containers
+306         , contra-tracer
+307         , data-default
+308         , directory
+309         , filepath
+310         , hedgehog
+311         , hedgehog-extras
+312         , lens
+313         , mtl
+314         , nonempty-containers
+315         , process
+316         , streaming
+317         , temporary
+318         , text
+319         , time
+
+marconi-cardano-core/marconi-cardano-core.cabal --- 1/3 --- Text
+ 76   -- Other IOG dependencies           76   -- Other IOG dependencies
+ 77   --------------------------          77   --------------------------
+ 78   build-depends:                      78   build-depends:
+ 79     , cardano-api                     79     , cardano-api                  
+ .. ^>=8.20                               .. ^>=11.8
+ 80     , cardano-binary                  80     , cardano-binary
+ 81     , cardano-ledger-shelley          81     , cardano-ledger-shelley
+ 82     , iohk-monitoring                 82     , iohk-monitoring
+
+marconi-cardano-core/marconi-cardano-core.cabal --- 2/3 --- Text
+135     , base                           135     , base
+136     , base16-bytestring              136     , base16-bytestring
+137     , bytestring                     137     , bytestring
+138     , cardano-api                    138     , cardano-api                  
+...   ^>=8.20                            ...   ^>=11.8
+139     , cardano-crypto-class           139     , cardano-crypto-class
+140     , cardano-crypto-wrapper         140     , cardano-crypto-wrapper
+141     , cardano-ledger-byron           141     , cardano-ledger-byron
+
+marconi-cardano-core/marconi-cardano-core.cabal --- 3/3 --- Text
+146     , ouroboros-consensus-cardano    146     , ouroboros-consensus-cardano
+147     , ouroboros-consensus-diffusion  147     , ouroboros-consensus-diffusion
+148     , ouroboros-consensus-protocol   148     , ouroboros-consensus-protocol
+149     , ouroboros-network-protocols    149     , ouroboros-network:protocols
+150     , streaming                      150     , streaming
+151     , strict-sop-core                151     , strict-sop-core
+152     , text                           152     , text
+153     , time                           153     , time
+154     , transformers                   154     , transformers
+155     , typed-protocols                155     , typed-protocols
+156                                          
+157 library marconi-cardano-core-test-l      
+... ib                                   ... 
+158   import:          lang                  
+159                                          
+160   -- Needed or else GHC will say th      
+... at plutus-tx-plugin was not needed   ... 
+... for compilation, even though         ... 
+161   -- we actually use it in the code      
+... base. If we remove the dependency,   ... 
+... we get linking errors in other       ... 
+162   -- components that depend on this      
+...  library like `marconi-sidechain`.   ... 
+163   ghc-options:     -Wno-unused-pack      
+... ages                                 ... 
+164   visibility:      public                
+165   hs-source-dirs:  test-lib              
+166   exposed-modules:                       
+167     Test.Gen.Marconi.Cardano.Core.H      
+... elpers                               ... 
+168     Test.Gen.Marconi.Cardano.Core.M      
+... ockchain                             ... 
+169     Test.Gen.Marconi.Cardano.Core.T      
+... ypes                                 ... 
+170                                          
+171   --------------------                   
+172   -- Local components                    
+173   --------------------                   
+174   build-depends:                         
+175     marconi-cardano-core:{marconi-c      
+... ardano-core, cardano-api-extended}   ... 
+176                                          
+177   --------------------------             
+178   -- Other IOG dependencies              
+179   --------------------------             
+180   build-depends:                         
+181     , cardano-api                        
+...  ^>=8.20                             ... 
+182     , cardano-api-gen                    
+...  ^>=8.2                              ... 
+183     , cardano-binary                     
+184     , cardano-crypto-class               
+185     , cardano-ledger-core                
+186     , cardano-node-emulator              
+187     , cardano-node-socket-emulator       
+188     , iohk-monitoring                    
+189     , ouroboros-network-protocols        
+190     , plutus-core                        
+191     , plutus-ledger                      
+192     , plutus-ledger-api                  
+...  ^>=1.9                              ... 
+193     , plutus-tx                          
+194     , plutus-tx-plugin                   
+195                                          
+196   ------------------------               
+197   -- Non-IOG dependencies                
+198   ------------------------               
+199   build-depends:                         
+200     , async                              
+201     , base                 >=4.9 &&      
+...  <5                                  ... 
+202     , bytestring                         
+203     , containers                         
+204     , contra-tracer                      
+205     , data-default                       
+206     , directory                          
+207     , filepath                           
+208     , hedgehog                           
+209     , hedgehog-extras                    
+210     , lens                               
+211     , mtl                                
+212     , nonempty-containers                
+213     , streaming                          
+214     , temporary                          
+215     , text                               
+216     , time                               
+217                                          
+218 test-suite marconi-cardano-core-tes      
+... t                                    ... 
+219   import:         lang                   
+220   ghc-options:    -Wno-unused-packa      
+... ges                                  ... 
+221   type:           exitcode-stdio-1.      
+... 0                                    ... 
+222   main-is:        Spec.hs                
+223   hs-source-dirs: test                   
+224   other-modules:                         
+225     Spec.Marconi.Cardano.Core.Logge      
+... r                                    ... 
+226     Spec.Marconi.Cardano.Core.Orpha      
+... ns                                   ... 
+227                                          
+228   --------------------                   
+229   -- Local components                    
+230   --------------------                   
+231   build-depends:                         
+232     marconi-cardano-core:{marconi-c      
+... ardano-core, cardano-api-extended,   ... 
+... marconi-cardano-core-test-lib}       ... 
+233                                          
+234   --------------------------             
+235   -- Other IOG dependencies              
+236   --------------------------             
+237   build-depends:                         
+238     , cardano-api                        
+... ^>=8.20                              ... 
+239     , cardano-api-gen                    
+... ^>=8.2                               ... 
+240     , cardano-binary                     
+241     , cardano-crypto-class               
+242     , cardano-ledger-alonzo              
+... >=1.3.1.1                            ... 
+243     , cardano-ledger-core                
+244     , cardano-ledger-shelley             
+245     , cardano-node-emulator              
+246     , hedgehog-extras                    
+247     , iohk-monitoring                    
+248     , ouroboros-consensus                
+249     , ouroboros-consensus-cardano        
+250     , ouroboros-network                  
+251     , plutus-core                        
+252     , plutus-ledger-api                  
+... ^>=1.9                               ... 
+253     , plutus-tx                          
+254     , plutus-tx-plugin                   
+255     , process                            
+256                                          
+257   ------------------------               
+258   -- Non-IOG dependencies                
+259   ------------------------               
+260   build-depends:                         
+261     , aeson                              
+262     , aeson-pretty                       
+263     , async                              
+264     , base                  >=4.9 &      
+... & <5                                 ... 
+265     , base16-bytestring                  
+266     , bytestring                         
+267     , cborg                              
+268     , comonad                            
+269     , containers                         
+270     , contra-tracer                      
+271     , directory                          
+272     , filepath                           
+273     , hedgehog                           
+274     , lens                               
+275     , mtl                                
+276     , nonempty-containers                
+277     , optparse-applicative               
+278     , postgresql-simple                  
+279     , prettyprinter                      
+280     , serialise                          
+281     , sqlite-simple                      
+282     , stm                                
+283     , streaming                          
+284     , tasty                              
+285     , tasty-golden                       
+286     , tasty-hedgehog                     
+287     , temporary                          
+288     , text                               
+289     , time                               
+290     , transformers                       
+
+marconi-cardano-indexers/marconi-cardano-indexers.cabal --- 1/2 --- Text
+ 81   -- Other IOG dependencies           81   -- Other IOG dependencies
+ 82   --------------------------          82   --------------------------
+ 83   build-depends:                      83   build-depends:
+ 84     , cardano-api                     84     , cardano-api                  
+ ..  ^>=8.20                              ..  ^>=11.8
+ 85     , cardano-ledger-alonzo           85     , cardano-ledger-alonzo        
+ ..  >=1.3.1.1                            ..  >=1.3.1.1
+ 86     , cardano-ledger-api              86     , cardano-ledger-api
+ 87     , cardano-ledger-babbage          87     , cardano-ledger-babbage       
+ ..  >=1.4.0.1                            ..  >=1.4.0.1
+
+marconi-cardano-indexers/marconi-cardano-indexers.cabal --- 2/2 --- Text
+114 114     , time
+115 115     , vector-map
+116     
+117     test-suite marconi-cardano-indexers-test
+118       import:         lang
+119       ghc-options:    -Wno-unused-packages
+120       type:           exitcode-stdio-1.0
+121       main-is:        Spec.hs
+122       hs-source-dirs: test
+123       other-modules:
+124         Spec.Marconi.Cardano.DbSyncComparison
+125         Spec.Marconi.Cardano.Indexers
+126         Spec.Marconi.Cardano.Indexers.BlockInfo
+127         Spec.Marconi.Cardano.Indexers.ChainTip
+128         Spec.Marconi.Cardano.Indexers.Datum
+129         Spec.Marconi.Cardano.Indexers.MintTokenEvent
+130         Spec.Marconi.Cardano.Indexers.Spent
+131         Spec.Marconi.Cardano.Indexers.Utxo
+132         Spec.Marconi.Cardano.Indexers.UtxoQuery
+133         Spec.Marconi.Cardano.Snapshot
+134     
+135       --------------------
+136       -- Local components
+137       --------------------
+138       build-depends:
+139         , marconi-cardano-core:{marconi-cardano-core, cardano-api-extended, marconi-cardano-core-test-lib}
+140         , marconi-cardano-indexers:{marconi-cardano-indexers, marconi-cardano-indexers-test-lib}
+141         , marconi-core:{marconi-core, marconi-core-test-lib}
+142     
+143       --------------------------
+144       -- Other IOG dependencies
+145       --------------------------
+146       build-depends:
+147         , cardano-api                  ^>=8.20
+148         , cardano-api-gen              ^>=8.2
+149         , cardano-crypto-class
+150         , cardano-ledger-alonzo        >=1.3.1.1
+151         , cardano-ledger-core
+152         , cardano-ledger-shelley
+153         , cardano-node-emulator
+154         , hedgehog-extras
+155         , iohk-monitoring
+156         , ouroboros-consensus
+157         , ouroboros-consensus-cardano
+158         , ouroboros-network
+159         , plutus-core
+160         , plutus-ledger-api            ^>=1.9
+161         , plutus-tx
+162         , plutus-tx-plugin
+163         , process
+164     
+165       ------------------------
+166       -- Non-IOG dependencies
+167       ------------------------
+168       build-depends:
+169         , aeson
+170         , aeson-pretty
+171         , async
+172         , base                    >=4.9 && <5
+173         , base16-bytestring
+174         , bytestring
+175         , cborg
+176         , comonad
+177         , containers
+178         , contra-tracer
+179         , directory
+180         , filepath
+181         , hedgehog
+182         , lens
+183         , mtl
+184         , optparse-applicative
+185         , postgresql-simple
+186         , prettyprinter
+187         , sqlite-simple
+188         , streaming
+189         , tasty
+190         , tasty-expected-failure
+191         , tasty-golden
+192         , tasty-hedgehog
+193         , tasty-hunit
+194         , temporary
+195         , text
+196         , time
+197         , transformers
+198     
+199     library marconi-cardano-indexers-test-lib
+200       import:          lang
+201     
+202       -- Needed or else GHC will say that plutus-tx-plugin was not needed for compilation, even though
+203       -- we actually use it in the codebase. If we remove the dependency, we get linking errors in other
+204       -- components that depend on this library like `marconi-sidechain`.
+205       ghc-options:     -Wno-unused-packages
+206       visibility:      public
+207       hs-source-dirs:  test-lib
+208       exposed-modules:
+209         Test.Gen.Marconi.Cardano.Indexers.BlockInfo
+210         Test.Gen.Marconi.Cardano.Indexers.Datum
+211         Test.Gen.Marconi.Cardano.Indexers.MintTokenEvent
+212         Test.Gen.Marconi.Cardano.Indexers.Spent
+213         Test.Gen.Marconi.Cardano.Indexers.Utxo
+214         Test.Gen.Marconi.Cardano.Indexers.UtxoQuery
+215         Test.Helpers
+216         Test.Integration
+217         Test.Marconi.Cardano.Chain.Snapshot
+218         Test.Marconi.Cardano.DbSyncComparison.BlockInfoResult
+219         Test.Marconi.Cardano.DbSyncComparison.Common
+220         Test.Marconi.Cardano.DbSyncComparison.SpentInfoResult
+221     
+222       --------------------
+223       -- Local components
+224       --------------------
+225       build-depends:
+226         , marconi-cardano-core:{marconi-cardano-core, cardano-api-extended, marconi-cardano-core-test-lib}
+227         , marconi-cardano-indexers
+228         , marconi-core
+229     
+230       --------------------------
+231       -- Other IOG dependencies
+232       --------------------------
+233       build-depends:
+234         , cardano-api                   ^>=8.20
+235         , cardano-api-gen               ^>=8.2
+236         , cardano-crypto-class
+237         , cardano-ledger-core
+238         , cardano-node-emulator
+239         , cardano-node-socket-emulator
+240         , iohk-monitoring
+241         , ouroboros-network-protocols
+242         , plutus-core
+243         , plutus-ledger
+244         , plutus-ledger-api             ^>=1.9
+245         , plutus-tx
+246         , plutus-tx-plugin
+247     
+248       ------------------------
+249       -- Non-IOG dependencies
+250       ------------------------
+251       build-depends:
+252         , aeson
+253         , async
+254         , base             >=4.9 && <5
+255         , bytestring
+256         , containers
+257         , contra-tracer
+258         , data-default
+259         , directory
+260         , filepath
+261         , hedgehog
+262         , hedgehog-extras
+263         , lens
+264         , mtl
+265         , streaming
+266         , tasty
+267         , tasty-golden
+268         , temporary
+269         , text
+270         , time
+
+marconi-core/marconi-core.cabal --- Text
+117 117     , streaming
+118 118     , text
+119 119     , transformers
+120     
+121     library marconi-core-test-lib
+122       import:          lang
+123       visibility:      public
+124       hs-source-dirs:  test-lib
+125       exposed-modules: Test.Marconi.Core.ModelBased
+126     
+127       --------------------
+128       -- Local components
+129       --------------------
+130       build-depends:   marconi-core
+131     
+132       ------------------------
+133       -- Non-IOG dependencies
+134       ------------------------
+135       build-depends:
+136         , base        >=4.9 && <5
+137         , lens
+138         , mtl
+139         , QuickCheck
+140     
+141     test-suite marconi-core-test
+142       import:         lang
+143       type:           exitcode-stdio-1.0
+144       main-is:        Spec.hs
+145       other-modules:  Marconi.CoreSpec
+146       hs-source-dirs: test
+147       build-depends:
+148         , async
+149         , base                                                >=4.7    && <5
+150         , bytestring
+151         , comonad
+152         , containers
+153         , contra-tracer
+154         , filepath
+155         , lens
+156         , marconi-core:{marconi-core, marconi-core-test-lib}
+157         , mtl
+158         , network
+159         , QuickCheck
+160         , quickcheck-instances
+161         , sqlite-simple                                       >=0.4.18
+162         , stm
+163         , streaming
+164         , tasty
+165         , tasty-quickcheck
+166         , temporary
+167         , transformers
+168         , uuid
+
+marconi-sidechain/marconi-sidechain.cabal --- 1/2 --- Text
+ 87   -- Other IOG dependencies           87   -- Other IOG dependencies
+ 88   --------------------------          88   --------------------------
+ 89   build-depends:                      89   build-depends:
+ 90     , cardano-api           ^>=8.20   90     , cardano-api           ^>=11.8
+ 91     , cardano-crypto-class            91     , cardano-crypto-class
+ 92     , cardano-ledger-core             92     , cardano-ledger-core
+ 93     , iohk-monitoring                 93     , iohk-monitoring
+
+marconi-sidechain/marconi-sidechain.cabal --- 2/2 --- Text
+129 129   ------------------------
+130 130   build-depends:  base >=4.9 && <5
+131     
+132     test-suite marconi-sidechain-test
+133       import:             lang
+134       ghc-options:        -Wno-unused-packages
+135       type:               exitcode-stdio-1.0
+136       main-is:            Spec.hs
+137       hs-source-dirs:     test
+138       other-modules:
+139         Spec.Marconi.Sidechain.Api.JsonRpc.Endpoint.BurnTokenEvent
+140         Spec.Marconi.Sidechain.Api.JsonRpc.Endpoint.PastAddressUtxo
+141         Spec.Marconi.Sidechain.CLI
+142         Spec.Marconi.Sidechain.CLIInputValidation
+143         Spec.Marconi.Sidechain.Routes
+144         Spec.Marconi.Sidechain.Utils
+145     
+146       --------------------
+147       -- Required local executable
+148       build-tool-depends: marconi-sidechain:marconi-sidechain
+149     
+150       --------------------
+151       --------------------
+152       -- Local components
+153       --------------------
+154       build-depends:
+155         , marconi-cardano-chain-index:{marconi-cardano-chain-index, marconi-cardano-chain-index-test-lib}  >=1.2.0
+156         , marconi-cardano-core:{marconi-cardano-core, marconi-cardano-core-test-lib}                       >=1.2.0
+157         , marconi-cardano-indexers:{marconi-cardano-indexers, marconi-cardano-indexers-test-lib}           >=1.2.0
+158         , marconi-core                                                                                     >=1.2.0
+159         , marconi-core-json-rpc                                                                            >=1.2.0
+160         , marconi-sidechain
+161     
+162       --------------------------
+163       -- Other IOG dependencies
+164       --------------------------
+165       build-depends:
+166         , cardano-api             ^>=8.20
+167         , cardano-api-gen         ^>=8.2
+168         , cardano-crypto-class
+169         , cardano-ledger-shelley
+170         , filepath
+171         , hedgehog-extras
+172         , iohk-monitoring
+173         , plutus-tx-plugin
+174     
+175       ------------------------
+176       -- Non-IOG dependencies
+177       ------------------------
+178     
+179       build-depends:
+180         , aeson
+181         , aeson-pretty
+182         , base                    >=4.9 && <5
+183         , bytestring
+184         , containers
+185         , directory
+186         , exceptions
+187         , hedgehog
+188         , http-client
+189         , lens
+190         , mtl
+191         , nonempty-containers
+192         , optparse-applicative
+193         , process
+194         , resourcet
+195         , servant
+196         , servant-client
+197         , servant-server
+198         , stm
+199         , tasty
+200         , tasty-expected-failure
+201         , tasty-golden
+202         , tasty-hedgehog
+203         , tasty-hunit
+204         , temporary
+205         , text
+206         , warp
+
+marconi-starter/marconi-starter.cabal --- Text
+ 93 93   -- Non-IOG dependencies
+ 94 94   ------------------------
+ 95 95   build-depends:  base >=4.9 && <5
+ 96    
+ 97    test-suite marconi-starter-test
+ 98      import:             lang
+ 99      ghc-options:        -Wno-unused-packages
+100      type:               exitcode-stdio-1.0
+101      main-is:            Driver.hs
+102      hs-source-dirs:     test
+103      other-modules:      Spec.Marconi.Starter.AddressCount
+104      build-tool-depends: tasty-discover:tasty-discover
+105    
+106      --------------------
+107      -- Local components
+108      --------------------
+109      build-depends:
+110        , cardano-api
+111        , marconi-cardano-chain-index
+112        , marconi-cardano-core:marconi-cardano-core-test-lib
+113        , marconi-cardano-indexers
+114        , marconi-core
+115        , marconi-starter
+116    
+117      --------------------------
+118      -- Other IOG dependencies
+119      --------------------------
+120      ------------------------
+121      -- Non-IOG dependencies
+122      ------------------------
+123      build-depends:
+124        , base            >=4.9 && <5
+125        , containers
+126        , hedgehog
+127        , lens
+128        , mtl
+129        , tasty
+130        , tasty-discover
+131        , tasty-golden
+132        , tasty-hedgehog
+

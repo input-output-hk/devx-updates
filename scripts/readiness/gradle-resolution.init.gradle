@@ -1,0 +1,78 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import org.gradle.api.artifacts.component.ModuleComponentIdentifier
+import org.gradle.api.artifacts.component.ProjectComponentIdentifier
+import org.gradle.api.artifacts.result.ResolvedDependencyResult
+import org.gradle.api.artifacts.result.UnresolvedDependencyResult
+
+// Run only in a disposable worker: evaluating a Gradle build executes project code.
+// Explicit selection JSON: [{projectPath: ':', configuration: 'runtimeClasspath', scope: 'runtime'}].
+gradle.projectsEvaluated {
+    rootProject.tasks.register('readinessResolution') {
+        doLast {
+            if (gradle.gradleVersion != '7.5.1') throw new GradleException('Capture requires Gradle 7.5.1')
+            def expectedRoot = System.getProperty('readiness.root')
+            if (expectedRoot && rootProject.projectDir.canonicalFile != new File(expectedRoot).canonicalFile) throw new GradleException('Selected build directory is not the actual Gradle root')
+            def selections = new JsonSlurper().parse(new File(System.getProperty('readiness.selection')))
+            def attributes = { values ->
+                values.keySet().sort { it.name }.collectEntries { [(it.name): values.getAttribute(it).toString()] }
+            }
+            def variantData = { v -> [name: v.displayName, attributes: attributes(v.attributes), capabilities:
+                v.capabilities.collect { [group: it.group, name: it.name, version: it.version] }.sort { JsonOutput.toJson(it) }] }
+            def graphs = selections.collect { selection ->
+                def project = rootProject.project(selection.projectPath)
+                def configuration = project.configurations.getByName(selection.configuration)
+                if (!configuration.canBeResolved) throw new GradleException('Configuration is not resolvable')
+                def result = configuration.incoming.resolutionResult
+                def nodes = [:]
+                def componentData = { component ->
+                    def id = component.id
+                    if (id instanceof ProjectComponentIdentifier) {
+                        if (!id.build.currentBuild) throw new GradleException('Included builds require separate immutable source identity')
+                        def target = rootProject.project(id.projectPath)
+                        def relative = rootProject.projectDir.toPath().relativize(target.projectDir.toPath()).toString().replace('\\', '/')
+                        return [kind: 'project', projectPath: id.projectPath, path: relative ?: '.',
+                            group: target.group.toString(), name: target.name, version: target.version.toString()]
+                    }
+                    if (id instanceof ModuleComponentIdentifier) return [kind: 'module', group: id.group, name: id.module, version: id.version]
+                    throw new GradleException('Unsupported component identity: ' + id.class.name)
+                }
+                def visit
+                visit = { component, variant, boolean root ->
+                    def identity = componentData(component)
+                    def selectedVariant = root ? [name: configuration.name, attributes: attributes(configuration.attributes), capabilities: []] : variantData(variant)
+                    def key = JsonOutput.toJson([identity, selectedVariant])
+                    if (nodes.containsKey(key)) return key
+                    def node = [id: key, component: identity, variant: selectedVariant,
+                        selectionReasons: component.selectionReason.descriptions.collect { [cause: it.cause.toString(), description: it.description] }, dependencies: []]
+                    nodes[key] = node
+                    def dependencies = root ? component.dependencies : component.getDependenciesForVariant(variant)
+                    node.dependencies = dependencies.collect { dependency ->
+                        def edge = [requested: dependency.requested.displayName, constraint: dependency.constraint]
+                        if (dependency instanceof ResolvedDependencyResult) {
+                            edge.target = visit(dependency.selected, dependency.resolvedVariant, false)
+                        } else if (dependency instanceof UnresolvedDependencyResult) {
+                            edge.failure = dependency.failure.message
+                        } else throw new GradleException('Unsupported dependency result')
+                        edge
+                    }.sort { JsonOutput.toJson(it) }
+                    key
+                }
+                def root = visit(result.root, null, true)
+                [projectPath: selection.projectPath, configuration: configuration.name, scope: selection.scope,
+                    root: root, nodes: nodes.values().sort { it.id }]
+            }
+            def repositories = rootProject.allprojects.sort { it.path }.collect { project ->
+                [projectPath: project.path, repositories: project.repositories.collect { repository ->
+                    [name: repository.name, type: repository.class.interfaces*.name.sort(),
+                        url: repository.hasProperty('url') ? repository.url.toString() : null]
+                }]
+            }
+            def capture = [formatVersion: 1, gradleVersion: gradle.gradleVersion,
+                environment: [javaVersion: System.getProperty('java.version'), javaVendor: System.getProperty('java.vendor'),
+                    os: System.getProperty('os.name'), arch: System.getProperty('os.arch')],
+                repositories: repositories, graphs: graphs]
+            new File(System.getProperty('readiness.output')).text = JsonOutput.prettyPrint(JsonOutput.toJson(capture)) + '\n'
+        }
+    }
+}

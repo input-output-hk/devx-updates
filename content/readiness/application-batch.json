@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "odatano",
+      "revision": "72954d36d871595345338c76da9956a775521062",
+      "adapter": "npm-lock",
+      "roots": [
+        "@odatano/core"
+      ],
+      "path": "package-lock.json",
+      "platform": "all-lockfile-targets",
+      "rootPaths": [
+        "."
+      ]
+    },
+    {
+      "toolId": "cardano-mcp",
+      "revision": "9fe85c6552770915b767c966b3663234b22674e2",
+      "adapter": "yarn-lock",
+      "roots": [
+        "cardano-mcp"
+      ],
+      "path": "yarn.lock",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "blockfrost",
+      "revision": "6d0000098ac865ebad3910732427f55bbb65fe9d",
+      "adapter": "yarn-lock",
+      "roots": [
+        "blockfrost-backend-ryo"
+      ],
+      "path": "yarn.lock",
+      "platform": "all-lockfile-targets"
+    }
+  ]
+}

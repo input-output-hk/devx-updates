@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "reviewed": "2026-10-20",
+  "method": [
+    "Every bump-ready tool was read at its classified revision for era-specific code in shipped paths: fixed era types, exhaustive era cases, era tables and per-era parameter or schema handling.",
+    "own-work needs a quoted line that stops before Dijkstra; prepared and generic need the quoted lines that make the era handling Dijkstra-aware or era-generic; undetermined records what a run must settle.",
+    "Version distance is derived, not recorded: the unlock report compares each pin with the first fixed release on its line (PVP for the Haskell component set, semver otherwise).",
+    "R4: devnet results replace a reading where a run decided it (devnet.json).",
+    "Bump solves (2026-10-22): a cabal dry-run solve of the bumped project, recipe and diffs in scripts/readiness/bump-solve, informs the summary; it compiles nothing and does not change the derived bump-ready list."
+  ],
+  "upgrades": [
+    {
+      "tool": "atlas",
+      "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
+      "eraHandling": "own-work",
+      "summary": "Fixes its ledger era to Conway: node queries and transaction submission are built in ShelleyBasedEraConway, and provider era histories are parsed as exactly seven eras, so after the fork they target the wrong era or fail until each is generalised or moved to Dijkstra.",
+      "evidence": [
+        {
+          "repo": "geniusyield/atlas",
+          "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
+          "path": "src/GeniusYield/Types/Era.hs",
+          "line": 16,
+          "quote": "type ApiEra = Api.S.ConwayEra"
+        },
+        {
+          "repo": "geniusyield/atlas",
+          "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
+          "path": "src/GeniusYield/CardanoApi/Query.hs",
+          "line": 50,
+          "quote": "  e <- queryCardanoMode info $ Api.QueryInEra $ Api.QueryInShelleyBasedEra Api.ShelleyBasedEraConway q"
+        },
+        {
+          "repo": "geniusyield/atlas",
+          "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
+          "path": "src/GeniusYield/Providers/Node.hs",
+          "line": 51,
+          "quote": "  res <- Api.submitTxToNodeLocal info $ Api.TxInMode Api.ShelleyBasedEraConway (txToApi tx)"
+        },
+        {
+          "repo": "geniusyield/atlas",
+          "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
+          "path": "src/GeniusYield/Providers/Common.hs",
+          "line": 157,
+          "quote": "parseEraHist mkEra [byronEra, shelleyEra, allegraEra, maryEra, alonzoEra, babbageEra, conwayEra] ="
+        }
+      ]
+    },
+    {
+      "tool": "bursa",
+      "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+      "eraHandling": "prepared",
+      "summary": "Already names the Dijkstra transaction type and decides witness-set tagging with a forward-open comparison; transactions are decoded through gouroboros's era-generic entry points.",
+      "evidence": [
+        {
+          "repo": "blinklabs-io/bursa",
+          "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+          "path": "transaction.go",
+          "line": 128,
+          "quote": "\treturn txType >= ledger.TxTypeConway"
+        },
+        {
+          "repo": "blinklabs-io/bursa",
+          "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+          "path": "transaction.go",
+          "line": 346,
+          "quote": "\tcase ledger.TxTypeDijkstra:"
+        },
+        {
+          "repo": "blinklabs-io/bursa",
+          "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+          "path": "transaction.go",
+          "line": 207,
+          "quote": "\ttxType, err := ledger.DetermineTransactionType(txCbor)"
+        }
+      ]
+    },
+    {
+      "tool": "cardano-ibc-incubator",
+      "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+      "eraHandling": "own-work",
+      "summary": "The light client decodes every block header as a Babbage header and switches on Babbage and Conway blocks only; it needs a Dijkstra case besides the bump. Its Babbage header decoding matches the ten-field header the 11.2 integration node emits (devnet check block-shape), not the twelve-field one gouroboros v0.213.x requires.",
+      "evidence": [
+        {
+          "repo": "cardano-foundation/cardano-ibc-incubator",
+          "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+          "path": "cosmos/cardano-probabilistic-light-client-core/cardano_block.go",
+          "line": 162,
+          "quote": "func DecodeLedgerHeader(headerCbor []byte) (decoded *ledger.BabbageBlockHeader, err error) {"
+        },
+        {
+          "repo": "cardano-foundation/cardano-ibc-incubator",
+          "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+          "path": "cosmos/cardano-probabilistic-light-client-core/cardano_block.go",
+          "line": 202,
+          "quote": "\tcase *ledger.ConwayBlock:"
+        }
+      ]
+    },
+    {
+      "tool": "cardano-node-api",
+      "revision": "136815536d9d5e6de09c5b1d206714f7ec7118b8",
+      "eraHandling": "own-work",
+      "summary": "Raising gouroboros is not enough. No adder release builds against gouroboros v0.213.x (adder's main branch still pins v0.209.0), its own code needs the new TxInfo arguments, and it hands PlutusV4 scripts the PlutusV3 script context. With those build fixes made locally, the devnet shows its Babbage-typed UTxO decoding reads Dijkstra outputs; its submission and mempool listing still fail on gouroboros's era detection (devnet checks tool-upgrades, tx-era-detection).",
+      "evidence": [
+        {
+          "repo": "blinklabs-io/cardano-node-api",
+          "revision": "136815536d9d5e6de09c5b1d206714f7ec7118b8",
+          "path": "internal/utxorpc/submit.go",
+          "line": 353,
+          "quote": "case plutusScriptV3, plutusScriptV4:"
+        },
+        {
+          "repo": "blinklabs-io/cardano-node-api",
+          "revision": "136815536d9d5e6de09c5b1d206714f7ec7118b8",
+          "path": "internal/utxorpc/submit.go",
+          "line": 354,
+          "quote": "return script.NewTxInfoV3FromTransaction("
+        },
+        {
+          "repo": "blinklabs-io/cardano-node-api",
+          "revision": "136815536d9d5e6de09c5b1d206714f7ec7118b8",
+          "path": "internal/api/localstatequery.go",
+          "line": 524,
+          "quote": "\tutxos map[localstatequery.UtxoId]ledger.BabbageTransactionOutput,"
+        }
+      ]
+    },
+    {
+      "tool": "cf-ledger-sync",
+      "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+      "eraHandling": "own-work",
+      "summary": "Its era enumeration ends at Conway and genesis parameters are applied only at the transitions it knows, so Dijkstra blocks and the Dijkstra genesis parameters need new code and schema columns besides the yaci bump.",
+      "evidence": [
+        {
+          "repo": "cardano-foundation/cf-ledger-sync",
+          "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+          "path": "components/consumer-common/src/main/java/org/cardanofoundation/ledgersync/consumercommon/enumeration/EraType.java",
+          "line": 19,
+          "quote": "  CONWAY(7);"
+        },
+        {
+          "repo": "cardano-foundation/cf-ledger-sync",
+          "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+          "path": "application/src/main/java/org/cardanofoundation/ledgersync/service/impl/EpochParamServiceImpl.java",
+          "line": 146,
+          "quote": "        if (curEra == EraType.CONWAY && prevEra == EraType.BABBAGE) {"
+        },
+        {
+          "repo": "cardano-foundation/cf-ledger-sync",
+          "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+          "path": "application/src/main/resources/db/migration/ledgersync/V1_1_1__init-schema.sql",
+          "line": 168,
+          "quote": "    min_fee_ref_script_cost_per_byte numeric(20, 0)"
+        }
+      ]
+    },
+    {
+      "tool": "marconi",
+      "revision": "d39923eb7b81156f5783e6252469b321ad89a253",
+      "eraHandling": "own-work",
+      "summary": "Maps eras exhaustively up to Conway and fixes its UTxO output type to Conway, on cardano-api 8.20 and its removed CardanoMode API; the upgrade to cardano-api 11.8 is a port. A dependency solve (2026-10-22, scripts/readiness/bump-solve) does not resolve even for shipped code: its build files name ouroboros-network-protocols and the ouroboros-consensus protocol, diffusion and cardano packages, which consensus 5.1 carries as sub-libraries; its tests pin a cardano-node-emulator that no release supports on cardano-api 11.x; and the compiler moves from GHC 9.2.8 to 9.6.7.",
+      "evidence": [
+        {
+          "repo": "input-output-hk/marconi",
+          "revision": "d39923eb7b81156f5783e6252469b321ad89a253",
+          "path": "marconi-cardano-core/cardano-api-extended/src/Cardano/Api/Extended/Shelley.hs",
+          "line": 24,
+          "quote": "cardanoEraToShelleyBasedEra C.ConwayEra = Just C.ShelleyBasedEraConway"
+        },
+        {
+          "repo": "input-output-hk/marconi",
+          "revision": "d39923eb7b81156f5783e6252469b321ad89a253",
+          "path": "marconi-cardano-core/src/Marconi/Cardano/Core/Types.hs",
+          "line": 61,
+          "quote": "type TxOut = C.TxOut C.CtxTx C.ConwayEra"
+        },
+        {
+          "repo": "input-output-hk/marconi",
+          "revision": "d39923eb7b81156f5783e6252469b321ad89a253",
+          "path": "marconi-cardano-chain-index/src/Marconi/Cardano/ChainIndex/SecurityParam.hs",
+          "line": 51,
+          "quote": "      queryInMode :: C.QueryInMode C.CardanoMode C.AnyCardanoEra"
+        }
+      ]
+    },
+    {
+      "tool": "marlowe",
+      "revision": "826b5fc5cf6ee77d40936d403301b5a65ec85ab9",
+      "eraHandling": "own-work",
+      "summary": "The CLI offers only the Conway era and maps Plutus script versions per era up to PlutusV3 in Conway; Dijkstra and PlutusV4 need new cases. A dependency solve (2026-10-22, scripts/readiness/bump-solve) resolves cardano-api 11.8.0.0 on GHC 9.6.7 only with four companion pins raised across majors: cardano-crypto-class to ^>=2.6, plutus-core and plutus-ledger-api to ^>=1.71, and validation to ^>=1.2; nothing was compiled.",
+      "evidence": [
+        {
+          "repo": "marlowe-lang/marlowe-cardano",
+          "revision": "826b5fc5cf6ee77d40936d403301b5a65ec85ab9",
+          "path": "marlowe-cli/command/Language/Marlowe/CLI/Command.hs",
+          "line": 155,
+          "quote": "            (SomeEra BabbageEraOnwardsConway)"
+        },
+        {
+          "repo": "marlowe-lang/marlowe-cardano",
+          "revision": "826b5fc5cf6ee77d40936d403301b5a65ec85ab9",
+          "path": "marlowe-cli/src/Language/Marlowe/CLI/Cardano/Api/PlutusScript.hs",
+          "line": 58,
+          "quote": "      C.BabbageEraOnwardsConway -> Just C.PlutusScriptV3InConway"
+        }
+      ]
+    },
+    {
+      "tool": "midgard",
+      "revision": "41284d8974568f47ef35cb96e23acbf1b56894c2",
+      "eraHandling": "own-work",
+      "summary": "The off-chain code builds every transaction in C.ConwayEra, so the cardano-api 11.8 upgrade also has to move its builders to Dijkstra.",
+      "evidence": [
+        {
+          "repo": "Anastasia-Labs/midgard",
+          "revision": "41284d8974568f47ef35cb96e23acbf1b56894c2",
+          "path": "offchain/src/Midgard/Contracts/Init.hs",
+          "line": 37,
+          "quote": "  (MonadError String m, MonadBlockchain C.ConwayEra m) =>"
+        },
+        {
+          "repo": "Anastasia-Labs/midgard",
+          "revision": "41284d8974568f47ef35cb96e23acbf1b56894c2",
+          "path": "offchain/src/Midgard/Constants.hs",
+          "line": 30,
+          "quote": "refScriptStorage :: C.NetworkId -> C.AddressInEra C.ConwayEra"
+        }
+      ]
+    },
+    {
+      "tool": "sc-tools",
+      "revision": "4546122230491db4839a4a42fc2bc601f7900909",
+      "eraHandling": "own-work",
+      "summary": "Node queries run only when the node is in Conway and throw QueryEraNotSupported otherwise, and the ledger era is fixed to ConwayEra; both need Dijkstra.",
+      "evidence": [
+        {
+          "repo": "input-output-hk/sc-tools",
+          "revision": "4546122230491db4839a4a42fc2bc601f7900909",
+          "path": "src/base/lib/Convex/NodeQueries.hs",
+          "line": 262,
+          "quote": "    C.AnyCardanoEra C.ConwayEra -> runEraQuery connectInfo (qry C.Experimental.ConwayEra)"
+        },
+        {
+          "repo": "input-output-hk/sc-tools",
+          "revision": "4546122230491db4839a4a42fc2bc601f7900909",
+          "path": "src/base/lib/Convex/NodeQueries.hs",
+          "line": 263,
+          "quote": "    era -> throwIO (QueryEraNotSupported era)"
+        },
+        {
+          "repo": "input-output-hk/sc-tools",
+          "revision": "4546122230491db4839a4a42fc2bc601f7900909",
+          "path": "src/base/lib/Convex/Constants.hs",
+          "line": 20,
+          "quote": "type ERA = ConwayEra"
+        }
+      ]
+    },
+    {
+      "tool": "scrolls",
+      "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+      "eraHandling": "generic",
+      "summary": "Reads blocks through Pallas's multi-era traversal and only distinguishes Byron from later eras; the Pallas upgrade crosses breaking 0.x releases but needs no era case of its own.",
+      "evidence": [
+        {
+          "repo": "txpipe/scrolls",
+          "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+          "path": "src/crosscut/epochs.rs",
+          "line": 28,
+          "quote": "        pallas::ledger::traverse::Era::Byron => {"
+        },
+        {
+          "repo": "txpipe/scrolls",
+          "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+          "path": "src/crosscut/epochs.rs",
+          "line": 31,
+          "quote": "        _ => post_byron_epoch_for_slot(chain.shelley_known_slot, chain.shelley_epoch_length, slot),"
+        }
+      ]
+    },
+    {
+      "tool": "txtop",
+      "revision": "86a013e714aff6eb704326f7b646f9ab967e41db",
+      "eraHandling": "generic",
+      "summary": "Decodes mempool transactions through gouroboros's era-generic entry points and names no era itself. On the devnet the upgraded build connects and shows mempool sizes, but gouroboros's era detection rejects ordinary Dijkstra transactions, so its transaction list stays empty until gouroboros fixes that (devnet checks tool-upgrades, tx-era-detection).",
+      "evidence": [
+        {
+          "repo": "blinklabs-io/txtop",
+          "revision": "86a013e714aff6eb704326f7b646f9ab967e41db",
+          "path": "main.go",
+          "line": 1258,
+          "quote": "\ttxType, err := ledger.DetermineTransactionType(raw)"
+        },
+        {
+          "repo": "blinklabs-io/txtop",
+          "revision": "86a013e714aff6eb704326f7b646f9ab967e41db",
+          "path": "main.go",
+          "line": 1262,
+          "quote": "\tltx, err := ledger.NewTransactionFromCbor(txType, raw)"
+        }
+      ]
+    }
+  ]
+}

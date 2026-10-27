@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "nami",
+      "revision": "e52e0bdb02eb1ec224db26f48b0192685a30f99e",
+      "adapter": "npm-lock",
+      "roots": [
+        "nami-wallet"
+      ],
+      "rootPaths": [
+        "."
+      ],
+      "path": "package-lock.json",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "yoroi",
+      "revision": "d8e3d3f93fb772f0b6bd2296e45bfac7da4fb9d6",
+      "adapter": "npm-lock",
+      "roots": [
+        "yoroi-v2"
+      ],
+      "rootPaths": [
+        "."
+      ],
+      "path": "mobile/package-lock.json",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "veridian-wallet",
+      "revision": "e93a56f54451cc386ba54dd1e8e5564a884b3593",
+      "adapter": "npm-lock",
+      "roots": [
+        "veridian-wallet"
+      ],
+      "rootPaths": [
+        "."
+      ],
+      "path": "package-lock.json",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "marlowe-ts-sdk",
+      "revision": "93598c0f8e452d7679a44097c48e693d95bfd631",
+      "adapter": "npm-lock",
+      "roots": [
+        "@marlowe.io/runtime-lifecycle",
+        "@marlowe.io/wallet",
+        "@marlowe.io/language-core-v1"
+      ],
+      "rootPaths": [
+        "packages/runtime/lifecycle",
+        "packages/wallet",
+        "packages/language/core/v1"
+      ],
+      "path": "package-lock.json",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "cardano-connect-with-wallet",
+      "revision": "47ceba88338f19b576bf72251e8158a7883a5e45",
+      "adapter": "npm-lock",
+      "roots": [
+        "@cardano-foundation/cardano-connect-with-wallet-core",
+        "@cardano-foundation/cardano-connect-with-wallet"
+      ],
+      "rootPaths": [
+        "core",
+        "react"
+      ],
+      "path": "package-lock.json",
+      "platform": "all-lockfile-targets"
+    }
+  ]
+}

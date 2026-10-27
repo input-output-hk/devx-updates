@@ -1,0 +1,6281 @@
+{
+ "schemaVersion": 1,
+ "generatedAt": "2026-10-26T16:57:25.811Z",
+ "bumpReady": [
+  {
+   "tool": "marconi",
+   "pins": [
+    "cardano-api@8.20<11.8.0.0"
+   ],
+   "steps": [
+    {
+     "package": "cardano-api",
+     "from": "8.20",
+     "to": "11.8.0.0",
+     "breaking": true
+    }
+   ],
+   "unread": []
+  },
+  {
+   "tool": "marlowe",
+   "pins": [
+    "cardano-api@11.0<11.8.0.0"
+   ],
+   "steps": [
+    {
+     "package": "cardano-api",
+     "from": "11.0",
+     "to": "11.8.0.0",
+     "breaking": true
+    }
+   ],
+   "unread": []
+  }
+ ],
+ "components": [
+  {
+   "component": "ogmios",
+   "unlocks": [
+    {
+     "tool": "cab",
+     "depth": 1,
+     "path": [
+      "ogmios",
+      "cab"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "iris",
+     "depth": 1,
+     "path": [
+      "ogmios",
+      "iris"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "kogmios",
+     "depth": 1,
+     "path": [
+      "ogmios",
+      "kogmios"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "naumachia",
+     "depth": 1,
+     "path": [
+      "ogmios",
+      "naumachia"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "ogmiosdotnet",
+     "depth": 1,
+     "path": [
+      "ogmios",
+      "ogmiosdotnet"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "ogmiosdotnet-blockchainevents",
+     "depth": 1,
+     "path": [
+      "ogmios",
+      "ogmiosdotnet-blockchainevents"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "xogmios",
+     "depth": 1,
+     "path": [
+      "ogmios",
+      "xogmios"
+     ],
+     "bumps": []
+    }
+   ],
+   "partial": [
+    {
+     "tool": "apollo",
+     "stillBlockedBy": [
+      "kupo",
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "atlas",
+     "stillBlockedBy": [
+      "atlas (own gap)",
+      "kupo",
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "blaze",
+     "stillBlockedBy": [
+      "cardano-js-sdk",
+      "kupo",
+      "blockfrost",
+      "service:maestro"
+     ]
+    },
+    {
+     "tool": "blockfrost-js",
+     "stillBlockedBy": [
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "blockfrost-python",
+     "stillBlockedBy": [
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "bloxbean-cardano-client-library",
+     "stillBlockedBy": [
+      "bloxbean-cardano-client-library (own gap)",
+      "kupo",
+      "blockfrost",
+      "koios"
+     ]
+    },
+    {
+     "tool": "cardano-client-bindings",
+     "stillBlockedBy": [
+      "blockfrost",
+      "bloxbean-cardano-client-library"
+     ]
+    },
+    {
+     "tool": "cardano-dev-wallet",
+     "stillBlockedBy": [
+      "cardano-serialization-lib-csl",
+      "kupo"
+     ]
+    },
+    {
+     "tool": "cardano-ibc-incubator",
+     "stillBlockedBy": [
+      "gouroboros",
+      "kupo",
+      "blockfrost",
+      "cardano-multiplatform-lib-cml"
+     ]
+    },
+    {
+     "tool": "cardano-js-sdk",
+     "stillBlockedBy": [
+      "cardano-js-sdk (own gap)",
+      "cardano-db-sync",
+      "blockfrost",
+      "ledgerjs-hw-app-cardano"
+     ]
+    },
+    {
+     "tool": "cardano-transaction-lib-ctl",
+     "stillBlockedBy": [
+      "cardano-transaction-lib-ctl (own gap)",
+      "kupo",
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "cardano-web3-js",
+     "stillBlockedBy": [
+      "kupo",
+      "koios"
+     ]
+    },
+    {
+     "tool": "chrysalis",
+     "stillBlockedBy": [
+      "kupo",
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "dandelion-apis",
+     "stillBlockedBy": [
+      "cardano-db-sync",
+      "kupo"
+     ]
+    },
+    {
+     "tool": "epora-wallet",
+     "stillBlockedBy": [
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "evolution-sdk",
+     "stillBlockedBy": [
+      "evolution-sdk (own gap)",
+      "scalus",
+      "kupo",
+      "blockfrost",
+      "koios",
+      "service:maestro"
+     ]
+    },
+    {
+     "tool": "guild-operators-suite",
+     "stillBlockedBy": [
+      "koios",
+      "cardano-db-sync"
+     ]
+    },
+    {
+     "tool": "hydra-sdk",
+     "stillBlockedBy": [
+      "cardano-serialization-lib-csl",
+      "whisky"
+     ]
+    },
+    {
+     "tool": "kupo",
+     "stillBlockedBy": [
+      "kupo (own gap)"
+     ]
+    },
+    {
+     "tool": "lace",
+     "stillBlockedBy": [
+      "cardano-js-sdk",
+      "blockfrost",
+      "ledgerjs-hw-app-cardano"
+     ]
+    },
+    {
+     "tool": "lucid-evolution",
+     "stillBlockedBy": [
+      "lucid-evolution (own gap)",
+      "scalus",
+      "kupo",
+      "blockfrost",
+      "koios",
+      "cardano-multiplatform-lib-cml"
+     ]
+    },
+    {
+     "tool": "masumi",
+     "stillBlockedBy": [
+      "cardano-serialization-lib-csl",
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "midgard",
+     "stillBlockedBy": [
+      "kupo"
+     ]
+    },
+    {
+     "tool": "minswap-sdk",
+     "stillBlockedBy": [
+      "service:maestro"
+     ]
+    },
+    {
+     "tool": "odatano",
+     "stillBlockedBy": [
+      "blockfrost",
+      "koios"
+     ]
+    },
+    {
+     "tool": "pycardano",
+     "stillBlockedBy": [
+      "pycardano (own gap)",
+      "kupo",
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "scrolls",
+     "stillBlockedBy": [
+      "scrolls (own gap)",
+      "pallas"
+     ]
+    },
+    {
+     "tool": "sutra",
+     "stillBlockedBy": [
+      "kupo",
+      "blockfrost",
+      "koios",
+      "service:maestro",
+      "aiken"
+     ]
+    },
+    {
+     "tool": "yaci-devkit",
+     "stillBlockedBy": [
+      "kupo"
+     ]
+    },
+    {
+     "tool": "yaci-store",
+     "stillBlockedBy": [
+      "scalus",
+      "bloxbean-cardano-client-library"
+     ]
+    }
+   ],
+   "downstream": [
+    {
+     "tool": "koios-python",
+     "via": "ogmios"
+    }
+   ],
+   "ownGap": [
+    "era-identity",
+    "block-encoding",
+    "transaction-encoding",
+    "protocol-parameters",
+    "plutus-language"
+   ]
+  },
+  {
+   "component": "pallas",
+   "unlocks": [
+    {
+     "tool": "boros",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "boros"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "cardaminal",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "cardaminal"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "cncli",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "cncli"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "lace-anatomy",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "lace-anatomy"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "mumak",
+     "depth": 1,
+     "path": [
+      "pallas",
+      "mumak"
+     ],
+     "bumps": []
+    }
+   ],
+   "partial": [
+    {
+     "tool": "dolos",
+     "stillBlockedBy": [
+      "dolos (own gap)"
+     ]
+    },
+    {
+     "tool": "mithril",
+     "stillBlockedBy": [
+      "mithril (own gap)"
+     ]
+    },
+    {
+     "tool": "oura",
+     "stillBlockedBy": [
+      "oura (own gap)"
+     ]
+    },
+    {
+     "tool": "scrolls",
+     "stillBlockedBy": [
+      "scrolls (own gap)",
+      "ogmios"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "block-encoding"
+   ]
+  },
+  {
+   "component": "cardano-db-sync",
+   "unlocks": [
+    {
+     "tool": "adapools-xyz",
+     "depth": 1,
+     "path": [
+      "cardano-db-sync",
+      "adapools-xyz"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "adastat-api",
+     "depth": 1,
+     "path": [
+      "cardano-db-sync",
+      "adastat-api"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "metis",
+     "depth": 1,
+     "path": [
+      "cardano-db-sync",
+      "metis"
+     ],
+     "bumps": []
+    }
+   ],
+   "partial": [
+    {
+     "tool": "blockfrost",
+     "stillBlockedBy": [
+      "blockfrost (own gap)"
+     ]
+    },
+    {
+     "tool": "cardano-graphql",
+     "stillBlockedBy": [
+      "cardano-graphql (own gap)"
+     ]
+    },
+    {
+     "tool": "cardano-js-sdk",
+     "stillBlockedBy": [
+      "cardano-js-sdk (own gap)",
+      "ogmios",
+      "blockfrost",
+      "ledgerjs-hw-app-cardano"
+     ]
+    },
+    {
+     "tool": "cardano-rosetta-legacy",
+     "stillBlockedBy": [
+      "cardano-serialization-lib-csl"
+     ]
+    },
+    {
+     "tool": "cf-java-rewards-calculation",
+     "stillBlockedBy": [
+      "koios"
+     ]
+    },
+    {
+     "tool": "dandelion-apis",
+     "stillBlockedBy": [
+      "ogmios",
+      "kupo"
+     ]
+    },
+    {
+     "tool": "govtool",
+     "stillBlockedBy": [
+      "blockfrost",
+      "koios"
+     ]
+    },
+    {
+     "tool": "guild-operators-suite",
+     "stillBlockedBy": [
+      "koios",
+      "ogmios"
+     ]
+    },
+    {
+     "tool": "koios",
+     "stillBlockedBy": [
+      "koios (own gap)"
+     ]
+    },
+    {
+     "tool": "nmkr-studio-api",
+     "stillBlockedBy": [
+      "koios",
+      "service:maestro"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "block-encoding",
+    "transaction-encoding",
+    "protocol-parameters",
+    "stake-pool-registration"
+   ]
+  },
+  {
+   "component": "service:maestro",
+   "unlocks": [
+    {
+     "tool": "cardano-cli-guru",
+     "depth": 1,
+     "path": [
+      "service:maestro",
+      "cardano-cli-guru"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "cardanokit",
+     "depth": 1,
+     "path": [
+      "service:maestro",
+      "cardanokit"
+     ],
+     "bumps": []
+    }
+   ],
+   "partial": [
+    {
+     "tool": "blaze",
+     "stillBlockedBy": [
+      "cardano-js-sdk",
+      "kupo",
+      "ogmios",
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "evolution-sdk",
+     "stillBlockedBy": [
+      "evolution-sdk (own gap)",
+      "scalus",
+      "kupo",
+      "ogmios",
+      "blockfrost",
+      "koios"
+     ]
+    },
+    {
+     "tool": "lucid",
+     "stillBlockedBy": [
+      "kupo"
+     ]
+    },
+    {
+     "tool": "minswap-sdk",
+     "stillBlockedBy": [
+      "ogmios"
+     ]
+    },
+    {
+     "tool": "nmkr-studio-api",
+     "stillBlockedBy": [
+      "cardano-db-sync",
+      "koios"
+     ]
+    },
+    {
+     "tool": "rum",
+     "stillBlockedBy": [
+      "kupo"
+     ]
+    },
+    {
+     "tool": "sutra",
+     "stillBlockedBy": [
+      "kupo",
+      "ogmios",
+      "blockfrost",
+      "koios",
+      "aiken"
+     ]
+    },
+    {
+     "tool": "whisky",
+     "stillBlockedBy": [
+      "whisky (own gap)",
+      "cardano-serialization-lib-csl",
+      "blockfrost",
+      "cquisitor-lib",
+      "aiken"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": []
+  },
+  {
+   "component": "gouroboros",
+   "unlocks": [
+    {
+     "tool": "dingo",
+     "depth": 1,
+     "path": [
+      "gouroboros",
+      "dingo"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "txtop",
+     "depth": 1,
+     "path": [
+      "gouroboros",
+      "txtop"
+     ],
+     "bumps": [
+      "gouroboros@0.208.5<v0.213.0"
+     ]
+    }
+   ],
+   "partial": [
+    {
+     "tool": "adder",
+     "stillBlockedBy": [
+      "adder (own gap)",
+      "kupo"
+     ]
+    },
+    {
+     "tool": "bursa",
+     "stillBlockedBy": [
+      "ledgerjs-hw-app-cardano"
+     ]
+    },
+    {
+     "tool": "cardano-ibc-incubator",
+     "stillBlockedBy": [
+      "kupo",
+      "ogmios",
+      "blockfrost",
+      "cardano-multiplatform-lib-cml"
+     ]
+    },
+    {
+     "tool": "cardano-node-api",
+     "stillBlockedBy": [
+      "adder"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "block-encoding"
+   ]
+  },
+  {
+   "component": "cardano-wallet",
+   "unlocks": [
+    {
+     "tool": "cardano-wallet-js",
+     "depth": 1,
+     "path": [
+      "cardano-wallet",
+      "cardano-wallet-js"
+     ],
+     "bumps": []
+    },
+    {
+     "tool": "daedalus",
+     "depth": 1,
+     "path": [
+      "cardano-wallet",
+      "daedalus"
+     ],
+     "bumps": []
+    }
+   ],
+   "partial": [],
+   "downstream": [],
+   "ownGap": [
+    "node-to-client-protocol"
+   ]
+  },
+  {
+   "component": "cardano-serialization-lib-csl",
+   "unlocks": [
+    {
+     "tool": "csl-mobile-bridge",
+     "depth": 1,
+     "path": [
+      "cardano-serialization-lib-csl",
+      "csl-mobile-bridge"
+     ],
+     "bumps": []
+    }
+   ],
+   "partial": [
+    {
+     "tool": "cardano-dev-wallet",
+     "stillBlockedBy": [
+      "kupo",
+      "ogmios"
+     ]
+    },
+    {
+     "tool": "cardano-hw-cli",
+     "stillBlockedBy": [
+      "cardano-hw-interop-lib",
+      "ledgerjs-hw-app-cardano"
+     ]
+    },
+    {
+     "tool": "cardano-rosetta-legacy",
+     "stillBlockedBy": [
+      "cardano-db-sync"
+     ]
+    },
+    {
+     "tool": "cquisitor-lib",
+     "stillBlockedBy": [
+      "cquisitor-lib (own gap)",
+      "blockfrost",
+      "koios",
+      "aiken"
+     ]
+    },
+    {
+     "tool": "hydra-sdk",
+     "stillBlockedBy": [
+      "ogmios",
+      "whisky"
+     ]
+    },
+    {
+     "tool": "masumi",
+     "stillBlockedBy": [
+      "blockfrost",
+      "ogmios"
+     ]
+    },
+    {
+     "tool": "whisky",
+     "stillBlockedBy": [
+      "whisky (own gap)",
+      "blockfrost",
+      "cquisitor-lib",
+      "service:maestro",
+      "aiken"
+     ]
+    },
+    {
+     "tool": "yoroi",
+     "stillBlockedBy": [
+      "koios",
+      "ledgerjs-hw-app-cardano"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-language",
+    "transaction-encoding",
+    "block-encoding",
+    "protocol-parameters",
+    "stake-pool-registration"
+   ]
+  },
+  {
+   "component": "aiken",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cquisitor-lib",
+     "stillBlockedBy": [
+      "cquisitor-lib (own gap)",
+      "cardano-serialization-lib-csl",
+      "blockfrost",
+      "koios"
+     ]
+    },
+    {
+     "tool": "de-uplc",
+     "stillBlockedBy": [
+      "koios"
+     ]
+    },
+    {
+     "tool": "de-uplc-web",
+     "stillBlockedBy": [
+      "koios"
+     ]
+    },
+    {
+     "tool": "gastronomy",
+     "stillBlockedBy": [
+      "gastronomy (own gap)"
+     ]
+    },
+    {
+     "tool": "sutra",
+     "stillBlockedBy": [
+      "kupo",
+      "ogmios",
+      "blockfrost",
+      "koios",
+      "service:maestro"
+     ]
+    },
+    {
+     "tool": "whisky",
+     "stillBlockedBy": [
+      "whisky (own gap)",
+      "cardano-serialization-lib-csl",
+      "blockfrost",
+      "cquisitor-lib",
+      "service:maestro"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-language",
+    "plutus-script-context"
+   ]
+  },
+  {
+   "component": "ledgerjs-hw-app-cardano",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "bursa",
+     "stillBlockedBy": [
+      "gouroboros"
+     ]
+    },
+    {
+     "tool": "cardano-hw-cli",
+     "stillBlockedBy": [
+      "cardano-serialization-lib-csl",
+      "cardano-hw-interop-lib"
+     ]
+    },
+    {
+     "tool": "cardano-js-sdk",
+     "stillBlockedBy": [
+      "cardano-js-sdk (own gap)",
+      "cardano-db-sync",
+      "ogmios",
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "lace",
+     "stillBlockedBy": [
+      "cardano-js-sdk",
+      "blockfrost",
+      "ogmios"
+     ]
+    },
+    {
+     "tool": "nami",
+     "stillBlockedBy": [
+      "cardano-js-sdk",
+      "blockfrost",
+      "cardano-hw-interop-lib",
+      "cardano-multiplatform-lib-cml"
+     ]
+    },
+    {
+     "tool": "yoroi",
+     "stillBlockedBy": [
+      "cardano-serialization-lib-csl",
+      "koios"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "cardano-multiplatform-lib-cml",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cardano-ibc-incubator",
+     "stillBlockedBy": [
+      "gouroboros",
+      "kupo",
+      "ogmios",
+      "blockfrost"
+     ]
+    },
+    {
+     "tool": "carp",
+     "stillBlockedBy": [
+      "carp (own gap)",
+      "oura"
+     ]
+    },
+    {
+     "tool": "lucid-evolution",
+     "stillBlockedBy": [
+      "lucid-evolution (own gap)",
+      "scalus",
+      "kupo",
+      "ogmios",
+      "blockfrost",
+      "koios"
+     ]
+    },
+    {
+     "tool": "nami",
+     "stillBlockedBy": [
+      "cardano-js-sdk",
+      "blockfrost",
+      "ledgerjs-hw-app-cardano",
+      "cardano-hw-interop-lib"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "transaction-encoding",
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "block-encoding",
+    "era-identity"
+   ]
+  },
+  {
+   "component": "cardano-hw-interop-lib",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cardano-hw-cli",
+     "stillBlockedBy": [
+      "cardano-serialization-lib-csl",
+      "ledgerjs-hw-app-cardano"
+     ]
+    },
+    {
+     "tool": "nami",
+     "stillBlockedBy": [
+      "cardano-js-sdk",
+      "blockfrost",
+      "ledgerjs-hw-app-cardano",
+      "cardano-multiplatform-lib-cml"
+     ]
+    }
+   ],
+   "downstream": [
+    {
+     "tool": "bursa",
+     "via": "cardano-hw-interop-lib"
+    }
+   ],
+   "ownGap": [
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "adder",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "adder",
+     "stillBlockedBy": [
+      "gouroboros",
+      "kupo"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "node-to-client-protocol"
+   ]
+  },
+  {
+   "component": "atlas",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "atlas",
+     "stillBlockedBy": [
+      "kupo",
+      "ogmios",
+      "blockfrost"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "cardano-api-haskell",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "blockfrost",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "blockfrost",
+     "stillBlockedBy": [
+      "cardano-db-sync"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "protocol-parameters"
+   ]
+  },
+  {
+   "component": "bloxbean-cardano-client-library",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "bloxbean-cardano-client-library",
+     "stillBlockedBy": [
+      "kupo",
+      "ogmios",
+      "blockfrost",
+      "koios"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "transaction-encoding",
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "era-identity"
+   ]
+  },
+  {
+   "component": "cardano-graphql",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cardano-graphql",
+     "stillBlockedBy": [
+      "cardano-db-sync"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "cardano-js-sdk",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cardano-js-sdk",
+     "stillBlockedBy": [
+      "cardano-db-sync",
+      "ogmios",
+      "blockfrost",
+      "ledgerjs-hw-app-cardano"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "protocol-parameters"
+   ]
+  },
+  {
+   "component": "cardano-rosetta-java",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cardano-rosetta-java",
+     "stillBlockedBy": [
+      "bloxbean-cardano-client-library"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "cardano-transaction-lib-ctl",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cardano-transaction-lib-ctl",
+     "stillBlockedBy": [
+      "kupo",
+      "ogmios",
+      "blockfrost"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-language"
+   ]
+  },
+  {
+   "component": "carp",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "carp",
+     "stillBlockedBy": [
+      "cardano-multiplatform-lib-cml",
+      "oura"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "block-encoding",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "cf-ledger-sync",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cf-ledger-sync",
+     "stillBlockedBy": [
+      "bloxbean-cardano-client-library"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "block-encoding",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "cometa-js",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cometa-js",
+     "stillBlockedBy": [
+      "blockfrost"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "cquisitor-lib",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "cquisitor-lib",
+     "stillBlockedBy": [
+      "cardano-serialization-lib-csl",
+      "blockfrost",
+      "koios",
+      "aiken"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-language",
+    "transaction-encoding",
+    "era-identity"
+   ]
+  },
+  {
+   "component": "dolos",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "dolos",
+     "stillBlockedBy": [
+      "pallas"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "block-encoding",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "evolution-sdk",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "evolution-sdk",
+     "stillBlockedBy": [
+      "scalus",
+      "kupo",
+      "ogmios",
+      "blockfrost",
+      "koios",
+      "service:maestro"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "transaction-encoding",
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration"
+   ]
+  },
+  {
+   "component": "gastronomy",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "gastronomy",
+     "stillBlockedBy": [
+      "aiken"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": []
+  },
+  {
+   "component": "hydra",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "hydra",
+     "stillBlockedBy": [
+      "blockfrost"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "block-encoding",
+    "cardano-api-haskell"
+   ]
+  },
+  {
+   "component": "julc",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "julc",
+     "stillBlockedBy": [
+      "bloxbean-cardano-client-library"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-language"
+   ]
+  },
+  {
+   "component": "koios",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "koios",
+     "stillBlockedBy": [
+      "cardano-db-sync"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "protocol-parameters"
+   ]
+  },
+  {
+   "component": "kupo",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "kupo",
+     "stillBlockedBy": [
+      "ogmios"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "block-encoding",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "lucid-evolution",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "lucid-evolution",
+     "stillBlockedBy": [
+      "scalus",
+      "kupo",
+      "ogmios",
+      "blockfrost",
+      "koios",
+      "cardano-multiplatform-lib-cml"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "transaction-encoding",
+    "protocol-parameters",
+    "stake-pool-registration"
+   ]
+  },
+  {
+   "component": "meshjs-mesh-sdk",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "meshjs-mesh-sdk",
+     "stillBlockedBy": [
+      "scalus",
+      "cardano-js-sdk",
+      "whisky"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "mithril",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "mithril",
+     "stillBlockedBy": [
+      "pallas"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "block-encoding"
+   ]
+  },
+  {
+   "component": "oura",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "oura",
+     "stillBlockedBy": [
+      "pallas"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "block-encoding",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "ouroboros-miniprotocols-ts",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "gerolamo",
+     "stillBlockedBy": [
+      "koios"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "node-to-client-protocol"
+   ]
+  },
+  {
+   "component": "pycardano",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "pycardano",
+     "stillBlockedBy": [
+      "kupo",
+      "ogmios",
+      "blockfrost"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "transaction-encoding",
+    "plutus-language",
+    "protocol-parameters",
+    "stake-pool-registration"
+   ]
+  },
+  {
+   "component": "scalus",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "scalus",
+     "stillBlockedBy": [
+      "blockfrost",
+      "bloxbean-cardano-client-library"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-script-context",
+    "transaction-encoding"
+   ]
+  },
+  {
+   "component": "scrolls",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "scrolls",
+     "stillBlockedBy": [
+      "ogmios",
+      "pallas"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "block-encoding",
+    "transaction-encoding",
+    "node-to-client-protocol"
+   ]
+  },
+  {
+   "component": "whisky",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "whisky",
+     "stillBlockedBy": [
+      "cardano-serialization-lib-csl",
+      "blockfrost",
+      "cquisitor-lib",
+      "service:maestro",
+      "aiken"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-language",
+    "protocol-parameters",
+    "era-identity",
+    "transaction-encoding"
+   ]
+  }
+ ],
+ "fixOrder": [
+  {
+   "component": "cardano-db-sync",
+   "added": [
+    "adapools-xyz",
+    "adastat-api",
+    "metis"
+   ],
+   "unlocked": 3
+  },
+  {
+   "component": "blockfrost",
+   "added": [
+    "blockfrost-cardano-cli",
+    "blockfrost-go",
+    "cardano-ctf",
+    "cardano-go",
+    "cardano-wallet-interface",
+    "go-cardano-serialization",
+    "intelliada",
+    "plutus-halo2-verifier-gen",
+    "plutus-pioneer-program",
+    "sc-tools",
+    "sundae-sdk",
+    "use-cardano",
+    "zhuli"
+   ],
+   "unlocked": 16
+  },
+  {
+   "component": "ogmios",
+   "added": [
+    "blockfrost-js",
+    "blockfrost-python",
+    "cab",
+    "epora-wallet",
+    "iris",
+    "kogmios",
+    "naumachia",
+    "ogmiosdotnet",
+    "ogmiosdotnet-blockchainevents",
+    "xogmios"
+   ],
+   "unlocked": 26
+  },
+  {
+   "component": "koios",
+   "added": [
+    "cf-java-rewards-calculation",
+    "create-evolution-app",
+    "cscli",
+    "govtool",
+    "guild-operators-suite",
+    "koios-cli",
+    "koios-go-client",
+    "koios-java-client",
+    "koios-python",
+    "odatano"
+   ],
+   "unlocked": 36
+  },
+  {
+   "component": "kupo",
+   "added": [
+    "apollo",
+    "cardano-mcp",
+    "cardano-web3-js",
+    "chrysalis",
+    "dandelion-apis",
+    "dexter",
+    "midgard",
+    "yaci-devkit"
+   ],
+   "unlocked": 44
+  },
+  {
+   "component": "service:maestro",
+   "added": [
+    "cardano-cli-guru",
+    "cardanokit",
+    "lucid",
+    "minswap-sdk",
+    "nmkr-studio-api",
+    "rum"
+   ],
+   "unlocked": 50
+  },
+  {
+   "component": "pallas",
+   "added": [
+    "boros",
+    "cardaminal",
+    "cncli",
+    "lace-anatomy",
+    "mumak"
+   ],
+   "unlocked": 55
+  },
+  {
+   "component": "cardano-serialization-lib-csl",
+   "added": [
+    "cardano-dev-wallet",
+    "cardano-rosetta-legacy",
+    "csl-mobile-bridge",
+    "masumi"
+   ],
+   "unlocked": 59
+  },
+  {
+   "component": "aiken",
+   "added": [
+    "de-uplc",
+    "de-uplc-web",
+    "sutra"
+   ],
+   "unlocked": 62
+  },
+  {
+   "component": "bloxbean-cardano-client-library",
+   "added": [
+    "cardano-client-bindings",
+    "yaci"
+   ],
+   "unlocked": 64
+  },
+  {
+   "component": "scalus",
+   "added": [
+    "yaci-store",
+    "yano"
+   ],
+   "unlocked": 66
+  },
+  {
+   "component": "cardano-wallet",
+   "added": [
+    "cardano-wallet-js",
+    "daedalus"
+   ],
+   "unlocked": 68
+  },
+  {
+   "component": "gouroboros",
+   "added": [
+    "dingo",
+    "txtop"
+   ],
+   "unlocked": 70
+  },
+  {
+   "component": "ledgerjs-hw-app-cardano",
+   "added": [
+    "bursa",
+    "yoroi"
+   ],
+   "unlocked": 72
+  },
+  {
+   "component": "cardano-js-sdk",
+   "added": [
+    "blaze",
+    "lace"
+   ],
+   "unlocked": 74
+  },
+  {
+   "component": "cquisitor-lib",
+   "added": [
+    "cquisitor"
+   ],
+   "unlocked": 75
+  },
+  {
+   "component": "whisky",
+   "added": [
+    "hydra-sdk"
+   ],
+   "unlocked": 76
+  },
+  {
+   "component": "adder",
+   "added": [
+    "cardano-node-api"
+   ],
+   "unlocked": 77
+  },
+  {
+   "component": "cardano-hw-interop-lib",
+   "added": [
+    "cardano-hw-cli"
+   ],
+   "unlocked": 78
+  },
+  {
+   "component": "cardano-multiplatform-lib-cml",
+   "added": [
+    "cardano-ibc-incubator",
+    "nami"
+   ],
+   "unlocked": 80
+  },
+  {
+   "component": "ouroboros-miniprotocols-ts",
+   "added": [
+    "gerolamo"
+   ],
+   "unlocked": 81
+  }
+ ],
+ "blockers": [
+  {
+   "tool": "adalite",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "adalite",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "ledgerjs-hw-app-cardano"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "adapools-xyz",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-db-sync",
+    "meshjs-mesh-sdk"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "adastat-api",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "adder",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "adder",
+     "kind": "own-gap",
+     "surfaces": [
+      "node-to-client-protocol"
+     ]
+    },
+    {
+     "via": "gouroboros",
+     "kind": "own-bump",
+     "surfaces": [
+      "node-to-client-protocol",
+      "transaction-encoding",
+      "plutus-language",
+      "stake-pool-registration"
+     ],
+     "pin": "gouroboros@0.209.0<v0.213.0"
+    },
+    {
+     "via": "gouroboros",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [
+    {
+     "via": "gouroboros",
+     "surfaces": [
+      "consensus-participation",
+      "protocol-parameters",
+      "transaction-rules"
+     ]
+    }
+   ],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "aicone",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "aiken"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "aiken",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "aiken",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "aiken-linked-list",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "aiken"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "aiken-stdlib",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "aiken"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "amaru",
+   "boundary": true,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "koios",
+    "mithril",
+    "ogmios",
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "apollo",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "gouroboros",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "argus-cardano-sync",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [
+    {
+     "via": "own",
+     "surfaces": [
+      "node-to-client-protocol"
+     ]
+    }
+   ],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "atlas",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "atlas",
+     "kind": "own-gap",
+     "surfaces": [
+      "cardano-api-haskell",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-api",
+     "kind": "own-bump",
+     "surfaces": [
+      "cardano-api-haskell",
+      "era-identity",
+      "transaction-encoding"
+     ],
+     "pin": "cardano-api@10.13.1<11.8.0.0"
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "transaction-encoding",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "blaze",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-js-sdk",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "blockfrost",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "blockfrost-cardano-cli",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "blockfrost-go",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "blockfrost-js",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "blockfrost-python",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "bloxbean-cardano-client-library",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "bloxbean-cardano-client-library",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "blockfrost",
+    "julc",
+    "koios",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "boros",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "buildooor",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "buildooor",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "bursa",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "gouroboros",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity"
+     ]
+    },
+    {
+     "via": "gouroboros",
+     "kind": "own-bump",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language",
+      "stake-pool-registration"
+     ],
+     "pin": "gouroboros@0.212.5<v0.213.0"
+    },
+    {
+     "via": "ledgerjs-hw-app-cardano",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [
+    {
+     "via": "gouroboros",
+     "surfaces": [
+      "consensus-participation",
+      "transaction-rules"
+     ]
+    },
+    {
+     "via": "cardano-serialization-lib-csl",
+     "surfaces": [
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "cardano-hw-interop-lib",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-serialization-lib-csl",
+     "surfaces": [
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "cleared": [
+    "cardano-serialization-lib-csl",
+    "gouroboros",
+    "plutigo"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cab",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [
+    {
+     "via": "ogmios",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language",
+      "era-identity"
+     ]
+    }
+   ],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardaminal",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cardano-c",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-c",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cardano-cli-guru",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-client-bindings",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "bloxbean-cardano-client-library",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "bloxbean-cardano-client-library",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-ctf",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "blockfrost",
+    "lucid-evolution"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-data-lite",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-data-lite",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cardano-db-sync",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-db-sync",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "block-encoding",
+      "transaction-encoding",
+      "protocol-parameters",
+      "stake-pool-registration"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cardano-dev-wallet",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-go",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-graphql",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-graphql",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cardano-hw-cli",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-hw-interop-lib",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ledgerjs-hw-app-cardano",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-hw-interop-lib",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-hw-interop-lib",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-ibc-incubator",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "gouroboros",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "gouroboros",
+     "kind": "own-bump",
+     "surfaces": [
+      "transaction-encoding",
+      "stake-pool-registration"
+     ],
+     "pin": "gouroboros@0.205.4<v0.213.0"
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "cardano-multiplatform-lib-cml",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [
+    {
+     "via": "gouroboros",
+     "surfaces": [
+      "consensus-participation",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-rules"
+     ]
+    },
+    {
+     "via": "cardano-serialization-lib-csl",
+     "surfaces": [
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "cardano-serialization-lib-csl",
+     "surfaces": [
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "cleared": [
+    "aiken",
+    "blockfrost",
+    "cardano-db-sync",
+    "cardano-js-sdk",
+    "cardano-multiplatform-lib-cml",
+    "cardano-serialization-lib-csl",
+    "gouroboros",
+    "koios",
+    "lucid-evolution",
+    "meshjs-mesh-sdk",
+    "plutigo"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-js-sdk",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-js-sdk",
+     "kind": "own-gap",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ledgerjs-hw-app-cardano",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-multiplatform-lib-cml"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-mcp",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "koios",
+    "meshjs-mesh-sdk",
+    "service:maestro"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-multiplatform-lib-cml",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-multiplatform-lib-cml",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cardano-node-api",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "gouroboros",
+     "kind": "own-bump",
+     "surfaces": [
+      "node-to-client-protocol",
+      "transaction-encoding",
+      "plutus-language",
+      "stake-pool-registration",
+      "protocol-parameters"
+     ],
+     "pin": "gouroboros@0.202.7<v0.213.0"
+    },
+    {
+     "via": "gouroboros",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "adder",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "node-to-client-protocol"
+     ]
+    }
+   ],
+   "undetermined": [
+    {
+     "via": "gouroboros",
+     "surfaces": [
+      "consensus-participation",
+      "transaction-rules"
+     ]
+    }
+   ],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cardano-open-oracle-protocol",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "plutarch"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-rosetta-java",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-rosetta-java",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "bloxbean-cardano-client-library",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "bloxbean-cardano-client-library"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-rosetta-legacy",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-serialization-lib-csl",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding",
+      "block-encoding",
+      "protocol-parameters",
+      "stake-pool-registration"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cardano-signer",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-token-registry",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-transaction-lib-ctl",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-transaction-lib-ctl",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters",
+      "transaction-encoding",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [
+    {
+     "via": "ogmios",
+     "surfaces": [
+      "block-encoding",
+      "plutus-language"
+     ]
+    }
+   ],
+   "cleared": [
+    "cardano-data-lite",
+    "cardano-db-sync"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-up",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "gouroboros",
+    "utxorpc"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-wallet",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardano-wallet",
+     "kind": "own-gap",
+     "surfaces": [
+      "node-to-client-protocol"
+     ]
+    },
+    {
+     "via": "ouroboros-consensus",
+     "kind": "own-bump",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ],
+     "pin": "ouroboros-consensus@4.2.1.0<5.1.0.1"
+    },
+    {
+     "via": "cardano-api",
+     "kind": "own-bump",
+     "surfaces": [
+      "cardano-api-haskell",
+      "era-identity",
+      "transaction-encoding"
+     ],
+     "pin": "cardano-api@11.6.0.0<11.8.0.0"
+    },
+    {
+     "via": "cardano-ledger-conway",
+     "kind": "own-bump",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding",
+      "transaction-rules"
+     ],
+     "pin": "cardano-ledger-conway@1.23.0.0<1.24.0.0"
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios",
+    "ouroboros-consensus",
+    "plutus-plutus-core"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-wallet-interface",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [
+    {
+     "via": "cardano-serialization-lib-csl",
+     "surfaces": [
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "cardano-serialization-lib-csl",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-wallet-js",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-wallet",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "node-to-client-protocol"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-wallet-sdk-dart",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-wallet-sdk-dart",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardano-web3-js",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters",
+      "transaction-encoding",
+      "era-identity",
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "koios",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardanokit",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cardanosharp",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cardanosharp",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cardanosharp-blazor",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "cardanosharp"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "carp",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "carp",
+     "kind": "own-gap",
+     "surfaces": [
+      "block-encoding",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-multiplatform-lib-cml",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "oura",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-db-sync",
+    "cardano-multiplatform-lib-cml"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "catalyst-core",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "cardano-db-sync",
+    "cardano-serialization-lib-csl"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "catalyst-voices",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "catalyst-voices",
+     "kind": "own-gap",
+     "surfaces": [
+      "block-encoding",
+      "plutus-language"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-db-sync",
+    "pycardano"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cf-java-rewards-calculation",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "bloxbean-cardano-client-library",
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cf-ledger-sync",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cf-ledger-sync",
+     "kind": "own-gap",
+     "surfaces": [
+      "block-encoding",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "yaci",
+     "kind": "own-bump",
+     "surfaces": [
+      "node-to-client-protocol"
+     ],
+     "pin": "yaci@0.3.4.1<v0.3.10|v0.4.2"
+    },
+    {
+     "via": "bloxbean-cardano-client-library",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "bloxbean-cardano-client-library",
+    "cardano-db-sync",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "chrysalis",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "era-identity",
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "clb",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "cardano-api"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cncli",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "cometa-js",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cometa-js",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cquisitor",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "cquisitor-lib",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cquisitor-lib",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "cquisitor-lib",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "aiken",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-db-sync",
+    "cardano-serialization-lib-csl",
+    "koios",
+    "ogmios",
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "create-evolution-app",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "koios",
+    "lucid-evolution"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cscli",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardanosharp",
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "cshell",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "csl-mobile-bridge",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "block-encoding",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "dab",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "daedalus",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-wallet",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "node-to-client-protocol"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-js-sdk",
+    "cardano-serialization-lib-csl",
+    "ledgerjs-hw-app-cardano",
+    "mithril"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "dandelion-apis",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "de-uplc",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "aiken",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "koios",
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "de-uplc-web",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "aiken",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "koios",
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "devx",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "cardano-db-sync"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "dexter",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "dingo",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "gouroboros",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "block-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-db-sync",
+    "koios",
+    "kupo",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "dolos",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "dolos",
+     "kind": "own-gap",
+     "surfaces": [
+      "block-encoding",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-db-sync",
+    "kupo",
+    "mithril",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "elm-cardano",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "elm-cardano",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "koios",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "epora-wallet",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "blockfrost",
+    "koios",
+    "meshjs-mesh-sdk",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "evolution-sdk",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "evolution-sdk",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration"
+     ]
+    },
+    {
+     "via": "scalus",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-script-context",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters",
+      "transaction-encoding",
+      "era-identity",
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "koios",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "gamechanger-gcscript",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-db-sync",
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "gastronomy",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "gastronomy",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "aiken",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "geniusyield-sdk",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "lucid-evolution"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "gerolamo",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ouroboros-miniprotocols-ts",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "node-to-client-protocol"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "buildooor",
+    "cardano-serialization-lib-csl",
+    "koios",
+    "mithril"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "gin",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "pycardano"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "go-cardano-serialization",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "gouroboros",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "gouroboros",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "block-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "govtool",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl",
+    "koios",
+    "kupo",
+    "ogmios",
+    "service:maestro"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "guild-operators-suite",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "koios",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "hebi",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "pycardano"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "helios",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "helios",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "hydra",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "hydra",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "block-encoding",
+      "cardano-api-haskell"
+     ]
+    },
+    {
+     "via": "cardano-api",
+     "kind": "own-bump",
+     "surfaces": [
+      "cardano-api-haskell",
+      "era-identity",
+      "transaction-encoding"
+     ],
+     "pin": "cardano-api@11.7<11.8.0.0"
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "plutus-plutus-core"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "hydra-pay",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [
+    {
+     "via": "own",
+     "surfaces": [
+      "node-configuration"
+     ]
+    }
+   ],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "hydra-sdk",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "whisky",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "ogmios",
+    "whisky"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "intelliada",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "bloxbean-cardano-client-library"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "iris",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "transaction-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "julc",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "julc",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "bloxbean-cardano-client-library",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "bloxbean-cardano-client-library"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "kogmios",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "koios",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "koios-cli",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "koios-go-client",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "koios-java-client",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "koios-python",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [
+    {
+     "via": "ogmios",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "kuber",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "kuber",
+     "kind": "own-gap",
+     "surfaces": [
+      "cardano-api-haskell",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ouroboros-consensus",
+     "kind": "own-bump",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ],
+     "pin": "ouroboros-consensus@3.0.1.0<5.1.0.1"
+    },
+    {
+     "via": "cardano-api",
+     "kind": "own-bump",
+     "surfaces": [
+      "cardano-api-haskell",
+      "era-identity",
+      "transaction-encoding"
+     ],
+     "pin": "cardano-api@11.0.0.0<11.8.0.0"
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-db-sync",
+    "ouroboros-consensus"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "kupo",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "kupo",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "block-encoding",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ouroboros-consensus",
+     "kind": "own-bump",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ],
+     "pin": "ouroboros-consensus@3.0.1<5.1.0.1"
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios",
+    "ouroboros-consensus"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "lace",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-js-sdk",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ledgerjs-hw-app-cardano",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "lace-anatomy",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "lambda-buffers",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "cardano-data-lite",
+    "cardano-serialization-lib-csl",
+    "cardano-transaction-lib-ctl",
+    "kupo",
+    "ogmios",
+    "plutarch"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "ledgerjs-hw-app-cardano",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "ledgerjs-hw-app-cardano",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "libcardano",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "libcardano",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "lucid",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "lucid-evolution",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "lucid-evolution",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding",
+      "protocol-parameters",
+      "stake-pool-registration"
+     ]
+    },
+    {
+     "via": "scalus",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-script-context",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters",
+      "transaction-encoding",
+      "era-identity",
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "cardano-multiplatform-lib-cml",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-multiplatform-lib-cml",
+    "koios",
+    "ogmios",
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "marconi",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-api",
+     "kind": "own-bump",
+     "surfaces": [
+      "cardano-api-haskell",
+      "era-identity",
+      "transaction-encoding"
+     ],
+     "pin": "cardano-api@8.20<11.8.0.0"
+    }
+   ],
+   "undetermined": [
+    {
+     "via": "plutus-plutus-core",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "marlowe",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-api",
+     "kind": "own-bump",
+     "surfaces": [
+      "cardano-api-haskell",
+      "era-identity",
+      "transaction-encoding"
+     ],
+     "pin": "cardano-api@11.0<11.8.0.0"
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl",
+    "kupo",
+    "plutus-plutus-core"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "marlowe-ts-sdk",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "masumi",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "koios",
+    "meshjs-mesh-sdk",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "masumi-registry-service",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "meshjs-mesh-sdk"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "merkle-patricia-forestry",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "aiken"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "meshjs-mesh-sdk",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "meshjs-mesh-sdk",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "scalus",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-script-context",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-js-sdk",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "whisky",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "blockfrost",
+    "ogmios",
+    "whisky"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "metis",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "kupo"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "midgard",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-api",
+     "kind": "own-bump",
+     "surfaces": [
+      "cardano-api-haskell",
+      "era-identity",
+      "transaction-encoding"
+     ],
+     "pin": "cardano-api@10.21.0.0<11.8.0.0"
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters",
+      "transaction-encoding",
+      "era-identity",
+      "plutus-language"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "ogmios",
+    "plutarch"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "minswap-sdk",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "mithril",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "mithril",
+     "kind": "own-gap",
+     "surfaces": [
+      "block-encoding"
+     ]
+    },
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-db-sync"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "mockfrost",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "kupo",
+    "ogmios",
+    "opshin",
+    "plu-ts",
+    "pycardano"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "mumak",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "nami",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-js-sdk",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ledgerjs-hw-app-cardano",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-hw-interop-lib",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-multiplatform-lib-cml",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "naumachia",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "cardano-multiplatform-lib-cml",
+    "ogmios",
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "nmkr-studio-api",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-db-sync",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardanosharp",
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "odatano",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "buildooor",
+    "cardano-db-sync",
+    "cardano-serialization-lib-csl",
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "offchain-metadata-tools",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "cardano-api"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "ogmios",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "block-encoding",
+      "transaction-encoding",
+      "protocol-parameters",
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "ouroboros-consensus",
+     "kind": "own-bump",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ],
+     "pin": "ouroboros-consensus@3.0.1<5.1.0.1"
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ouroboros-consensus"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "ogmiosdotnet",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "ogmiosdotnet-blockchainevents",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "opshin",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "opshin",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "pycardano"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "oura",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "oura",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "block-encoding",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "mithril"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "ouroboros-miniprotocols-ts",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "ouroboros-miniprotocols-ts",
+     "kind": "own-gap",
+     "surfaces": [
+      "node-to-client-protocol"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "pallas",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "pallas",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "block-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "pebble",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "koios",
+    "kupo",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "plu-ts",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "plu-ts",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "koios",
+    "kupo",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "plutarch",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "plutarch",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "plutus-plutus-core"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "plutip",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "cardano-api",
+    "cardano-serialization-lib-csl",
+    "ouroboros-network"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "plutus-halo2-verifier-gen",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "plutus-plutus-core"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "plutus-pioneer-program",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-db-sync"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "plutus-simple-model",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "plutarch"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "purus",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "plutus-plutus-core"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "pycardano",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "pycardano",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters",
+      "transaction-encoding",
+      "era-identity",
+      "plutus-language"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "pyth-lazer-cardano",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "aiken"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "rum",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "sc-tools",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-api",
+     "kind": "own-bump",
+     "surfaces": [
+      "cardano-api-haskell",
+      "era-identity",
+      "transaction-encoding"
+     ],
+     "pin": "cardano-api@11.0.0.0<11.8.0.0"
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "plutus-plutus-core"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "scalus",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "scalus",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-script-context",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "bloxbean-cardano-client-library",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "bloxbean-cardano-client-library",
+    "koios",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "scrolls",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "scrolls",
+     "kind": "own-gap",
+     "surfaces": [
+      "block-encoding",
+      "transaction-encoding",
+      "node-to-client-protocol"
+     ]
+    },
+    {
+     "via": "pallas",
+     "kind": "own-bump",
+     "surfaces": [
+      "node-to-client-protocol"
+     ],
+     "pin": "pallas@0.30.1<v0.35.1|v1.0.0"
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "pallas",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "sorbet",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-multiplatform-lib-cml"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "stakepool-operator-scripts",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "stakepool-operator-scripts",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "sundae-sdk",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "kupo",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "sutra",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters",
+      "transaction-encoding",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "aiken",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "koios",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "toolkit-for-cardano",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "cardano-db-sync"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "tx3",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "txtop",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "gouroboros",
+     "kind": "own-bump",
+     "surfaces": [
+      "node-to-client-protocol",
+      "transaction-encoding",
+      "plutus-language",
+      "stake-pool-registration"
+     ],
+     "pin": "gouroboros@0.208.5<v0.213.0"
+    },
+    {
+     "via": "gouroboros",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "gouroboros",
+    "plutigo"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "typhonjs",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "typhonjs",
+     "kind": "own-gap",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language",
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "uplc-turbo",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "uplc-turbo",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "use-cardano",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "veridian-wallet",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "vodka",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "aiken"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "whisky",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "whisky",
+     "kind": "own-gap",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "cquisitor-lib",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "plutus-language",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "service:maestro",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "aiken",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "plutus-script-context"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "cardano-serialization-lib-csl",
+    "pallas"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "xogmios",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
+   "unread": []
+  },
+  {
+   "tool": "yaci",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "bloxbean-cardano-client-library",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "bloxbean-cardano-client-library"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "yaci-devkit",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "plutus-language",
+      "protocol-parameters",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "kupo",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity",
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "bloxbean-cardano-client-library"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "yaci-store",
+   "boundary": true,
+   "blockers": [
+    {
+     "via": "scalus",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-script-context",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "ogmios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "era-identity"
+     ]
+    },
+    {
+     "via": "bloxbean-cardano-client-library",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "blockfrost",
+    "bloxbean-cardano-client-library",
+    "cardano-db-sync",
+    "koios",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "yano",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "scalus",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-script-context",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "bloxbean-cardano-client-library",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding",
+      "plutus-language"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "blockfrost",
+    "bloxbean-cardano-client-library",
+    "cardano-db-sync",
+    "julc",
+    "koios",
+    "ogmios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "yoroi",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "cardano-serialization-lib-csl",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "transaction-encoding"
+     ]
+    },
+    {
+     "via": "koios",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    },
+    {
+     "via": "ledgerjs-hw-app-cardano",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "transaction-encoding"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "cardano-serialization-lib-csl",
+    "koios"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "zeroj",
+   "boundary": false,
+   "blockers": [],
+   "undetermined": [],
+   "cleared": [
+    "bloxbean-cardano-client-library",
+    "julc"
+   ],
+   "unread": []
+  },
+  {
+   "tool": "zhuli",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "blockfrost",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "protocol-parameters"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [
+    "aiken",
+    "blockfrost",
+    "pallas"
+   ],
+   "unread": []
+  }
+ ]
+}

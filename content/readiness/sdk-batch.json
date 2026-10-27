@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "cardano-js-sdk",
+      "revision": "48019e49c826ea77d81be0e2d2907f94406f5e04",
+      "adapter": "yarn-lock",
+      "roots": [
+        "@cardano-sdk/wallet",
+        "@cardano-sdk/tx-construction",
+        "@cardano-sdk/dapp-connector",
+        "@cardano-sdk/governance"
+      ],
+      "path": "yarn.lock",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "blockfrost-js",
+      "revision": "cb8c6b6c5b92bb32825d5504fb4714d9d3da50ba",
+      "adapter": "yarn-lock",
+      "roots": [
+        "@blockfrost/blockfrost-js"
+      ],
+      "path": "yarn.lock",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "geniusyield-sdk",
+      "revision": "66a6ebcedd64979d02d1bb01c520185af1489f0d",
+      "adapter": "pnpm-lock",
+      "roots": [
+        "@geniusyield/sdk"
+      ],
+      "path": "pnpm-lock.yaml",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "epora-wallet",
+      "revision": "8e6fd820d21e901f019af71eec8150400b1e9669",
+      "adapter": "pnpm-lock",
+      "roots": [
+        "permission-wallet-dapp"
+      ],
+      "path": "code/dApp/pnpm-lock.yaml",
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "cardano-dapp-wallet-connector",
+      "revision": "5d629436c7b7e7c2757355888a63cccd62fb1bca",
+      "adapter": "npm-lock",
+      "roots": [
+        "@newm.io/cardano-dapp-wallet-connector"
+      ],
+      "path": "package-lock.json",
+      "platform": "all-lockfile-targets",
+      "rootPaths": [
+        "."
+      ]
+    }
+  ]
+}

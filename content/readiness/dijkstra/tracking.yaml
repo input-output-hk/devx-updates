@@ -1,0 +1,323 @@
+# Dijkstra follow-up kept by hand: dismissed tools, and the issues and PRs that
+# bear on a tool's state. Shown on /map/dijkstra and on each tool's page.
+#
+# Key every entry by the tool's catalog id (the last part of its
+# /map/readiness/<id> URL). An unknown id fails the build.
+#
+#   dismissed:            optional. The tool shows as "Dismissed" instead of its
+#     reason: <text>      computed state (which is still shown, smaller).
+#     date: YYYY-MM-DD    Any reason: abandoned, too little use to matter, etc.
+#   links:                optional. Issues, PRs or any other https URL.
+#     - url: <url>
+#       note: <text>      optional, shown next to the link
+#
+# A bare string works for either: `dismissed: Archived in 2024` or
+# `- https://github.com/owner/repo/issues/1`.
+#
+# GitHub titles and open/merged/closed state are not written here. Refresh them
+# with `npm run readiness -- sync-tracking`, which writes tracking-state.json.
+#
+# Example:
+#   tools:
+#     nami:
+#       dismissed:
+#         reason: Wallet is archived; users were moved to Lace.
+#         date: 2026-10-22
+#     ogmios:
+#       links:
+#         - url: https://github.com/CardanoSolutions/ogmios/issues/123
+#           note: Dijkstra support
+
+tools:
+  nami:
+    dismissed:
+      reason: Abandoned; the repository is archived.
+      date: 2026-10-23
+  maestro:
+    dismissed:
+      reason: Breaks after Dijkstra and will never be updated; every tool that uses it has to move to another provider.
+      date: 2026-10-23
+  lucid:
+    dismissed:
+      reason: Abandoned; the repository is archived. Replaced by lucid-evolution.
+      date: 2026-10-23
+  cardano-rosetta-legacy:
+    dismissed:
+      reason: Abandoned; the repository is archived. Replaced by cardano-rosetta-java.
+      date: 2026-10-23
+  plutus-simple-model:
+    dismissed:
+      reason: Abandoned; the repository is archived.
+      date: 2026-10-23
+  cardano-launcher:
+    dismissed:
+      reason: Abandoned; the repository is archived.
+      date: 2026-10-23
+  hebi:
+    dismissed:
+      reason: Abandoned; the repository is archived.
+      date: 2026-10-23
+  cardano-node-api:
+    dismissed:
+      reason: The project is no longer needed now that we have wide adoption of the UTxO RPC interface.
+      date: 2026-10-23
+  cardaminal:
+    dismissed:
+      reason: Replaced by cshell.
+      date: 2026-10-23
+  cardano-go:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  naumachia:
+    dismissed:
+      reason: Abandoned; no activity since 2024-04.
+      date: 2026-10-26
+  go-cardano-serialization:
+    dismissed:
+      reason: Abandoned; no activity since 2023-04.
+      date: 2026-10-26
+  koios-python:
+    dismissed:
+      reason: Abandoned; no activity since 2024-03.
+      date: 2026-10-26
+  koios-go-client:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  koios-cli:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  use-cardano:
+    dismissed:
+      reason: Abandoned; no activity since 2024-02.
+      date: 2026-10-26
+  dandelion-apis:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  blockfrost-cardano-cli:
+    dismissed:
+      reason: Abandoned; no activity since 2022-08.
+      date: 2026-10-26
+  cscli:
+    dismissed:
+      reason: Abandoned; no activity since 2022-10.
+      date: 2026-10-26
+  cardano-wallet-interface:
+    dismissed:
+      reason: Abandoned; no activity since 2022-07.
+      date: 2026-10-26
+  cardano-wallet-js:
+    dismissed:
+      reason: Abandoned; no activity since 2024-02.
+      date: 2026-10-26
+  cardano-cli-guru:
+    dismissed:
+      reason: Abandoned; no activity since 2024-02.
+      date: 2026-10-26
+  cardanocli-js:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  toolkit-for-cardano:
+    dismissed:
+      reason: Abandoned; no activity since 2021-10.
+      date: 2026-10-26
+  plutonomy:
+    dismissed:
+      reason: Abandoned; no activity since 2023-01.
+      date: 2026-10-26
+  hydra-pay:
+    dismissed:
+      reason: Abandoned; no activity since 2023-09.
+      date: 2026-10-26
+  bot-plutus-interface:
+    dismissed:
+      reason: Abandoned; no activity since 2023-05.
+      date: 2026-10-26
+  dab:
+    dismissed:
+      reason: Abandoned; no activity since 2022-06.
+      date: 2026-10-26
+  cardano-wallet-sdk-dart:
+    dismissed:
+      reason: Abandoned; no activity since 2023-01.
+      date: 2026-10-26
+  cardano-open-oracle-protocol:
+    dismissed:
+      reason: Abandoned; no activity since 2024-03.
+      date: 2026-10-26
+  plutus-cborhex-automation:
+    dismissed:
+      reason: Abandoned; no activity since 2022-12.
+      date: 2026-10-26
+  spectrum-dex-sdk:
+    dismissed:
+      reason: Abandoned; no activity since 2023-11.
+      date: 2026-10-26
+  shrinker:
+    dismissed:
+      reason: Abandoned; no activity since 2022-02.
+      date: 2026-10-26
+  aiken-linked-list:
+    dismissed:
+      reason: Abandoned; no activity since 2024-05.
+      date: 2026-10-26
+  cardanosharp-koios:
+    dismissed:
+      reason: Abandoned; no activity since 2024-04.
+      date: 2026-10-26
+  pallas:
+    links:
+      - url: https://github.com/txpipe/pallas/tree/dijkstra
+        note: Dijkstra branch, ahead of main with the traverse and Leios work
+      - url: https://github.com/txpipe/pallas/pull/799
+        note: Dijkstra ledger primitives
+      - url: https://github.com/txpipe/pallas/pull/800
+        note: Traverse the Dijkstra era
+      - url: https://github.com/txpipe/pallas/pull/801
+      - url: https://github.com/txpipe/pallas/pull/817
+      - url: https://github.com/txpipe/pallas/pull/821
+      - url: https://github.com/txpipe/pallas/pull/747
+        note: Node-to-client v17–v23
+      - url: https://github.com/txpipe/pallas/pull/830
+      - url: https://github.com/txpipe/pallas/pull/833
+      - url: https://github.com/txpipe/pallas/pull/836
+        note: Leios messages from current nodes (breaking)
+      - url: https://github.com/txpipe/pallas/pull/835
+      - url: https://github.com/txpipe/pallas/pull/838
+      - url: https://github.com/txpipe/pallas/pull/831
+      - url: https://github.com/txpipe/pallas/pull/823
+  ogmios:
+    links:
+      - url: https://github.com/CardanoSolutions/ogmios/pull/462
+        note: Closed draft mapping the migration; ~100 TODO(dijkstra) stubs
+  blockfrost:
+    links:
+      - url: https://github.com/blockfrost/blockfrost-platform/pull/378
+        note: Closed; TODO(dijkstra) in the tx evaluator, which rejects 3-element Dijkstra transactions
+  cardano-cli:
+    links:
+      - url: https://github.com/IntersectMBO/cardano-cli/pull/1439
+        note: Bounds for the 11.2 integration
+      - url: https://github.com/IntersectMBO/cardano-cli/pull/1431
+        note: Full Dijkstra command set
+      - url: https://github.com/IntersectMBO/cardano-cli/pull/1452
+        note: Plutus V4 support
+      - url: https://github.com/IntersectMBO/cardano-cli/pull/1453
+        note: Sub-transaction commands
+      - url: https://github.com/IntersectMBO/cardano-cli/pull/1485
+      - url: https://github.com/IntersectMBO/cardano-cli/pull/1477
+      - url: https://github.com/IntersectMBO/cardano-cli/pull/1473
+      - url: https://github.com/IntersectMBO/cardano-cli/pull/1483
+      - url: https://github.com/IntersectMBO/cardano-cli/pull/1478
+  cardano-db-sync:
+    links:
+      - url: https://github.com/IntersectMBO/cardano-db-sync/issues/2115
+        note: Dijkstra integration; no comments yet
+      - url: https://github.com/IntersectMBO/cardano-db-sync/tree/kderme/node-11.2-deps
+        note: Node 11.2 dependency branch, 12 commits ahead of master on 2026-10-26
+  plutus-plutus-core:
+    links:
+      - url: https://github.com/IntersectMBO/plutus/issues/7342
+        note: Plutus V4 script context
+      - url: https://github.com/IntersectMBO/plutus/pull/7898
+        note: Plutus V4 and dijkstraPV
+      - url: https://github.com/IntersectMBO/plutus/pull/7964
+        note: Plutus Core 1.2.0
+      - url: https://github.com/IntersectMBO/plutus/pull/8006
+        note: New builtins enabled at Dijkstra
+      - url: https://github.com/IntersectMBO/plutus/issues/6408
+        note: Open ScriptContext suggestions for V4
+  utxorpc:
+    links:
+      - url: https://github.com/utxorpc/spec/pull/215
+        note: Dijkstra sub-transactions and ledger fields
+      - url: https://github.com/utxorpc/spec/issues/218
+  bloxbean-cardano-client-library:
+    links:
+      - url: https://github.com/bloxbean/cardano-client-lib/issues/707
+        note: Plutus V4 scripts; the only Dijkstra work found
+  plutigo:
+    links:
+      - url: https://github.com/blinklabs-io/plutigo/issues/274
+        note: Plutus V4 cost model
+      - url: https://github.com/blinklabs-io/plutigo/issues/344
+        note: Plutus V4 script context
+  gouroboros:
+    links:
+      - url: https://github.com/blinklabs-io/gouroboros/pull/2692
+        note: Align Dijkstra with the Leios release candidate
+      - url: https://github.com/blinklabs-io/gouroboros/pull/2603
+        note: Requires the twelve-field header, which the 11.2 node does not emit
+      - url: https://github.com/blinklabs-io/gouroboros/pull/2670
+        note: Current Dijkstra protocol parameters
+      - url: https://github.com/blinklabs-io/gouroboros/pull/2775
+        note: DijkstraNet
+      - url: https://github.com/blinklabs-io/gouroboros/pull/2826
+      - url: https://github.com/blinklabs-io/gouroboros/issues/2669
+        note: CIP-159 phase 2
+      - url: https://github.com/blinklabs-io/gouroboros/issues/2782
+      - url: https://github.com/blinklabs-io/gouroboros/issues/2817
+      - url: https://github.com/blinklabs-io/gouroboros/issues/2818
+  yaci:
+    links:
+      - url: https://github.com/bloxbean/yaci/pull/222
+        note: Parse every Dijkstra structure of the deployed CDDL
+      - url: https://github.com/bloxbean/yaci/pull/171
+      - url: https://github.com/bloxbean/yaci/pull/167
+        note: Leios mini-protocols
+      - url: https://github.com/bloxbean/yaci/tree/next-leios
+  cardano-js-sdk:
+    links:
+      - url: https://github.com/input-output-hk/cardano-js-sdk/pull/1735
+        note: Serialization and core types for Dijkstra
+      - url: https://github.com/input-output-hk/cardano-js-sdk/pull/1739
+        note: Sub-transaction groundwork
+      - url: https://github.com/input-output-hk/cardano-js-sdk/issues/1736
+  mithril:
+    links:
+      - url: https://github.com/IntersectMBO/mithril/issues/3585
+        note: Upgrade to Cardano 11.2
+      - url: https://github.com/IntersectMBO/mithril/pull/3614
+        note: Support for upcoming Cardano 11.2
+  scalus:
+    links:
+      - url: https://github.com/scalus3/scalus/pull/265
+        note: PlutusV4 reference scripts
+      - url: https://github.com/scalus3/scalus/pull/371
+        note: Data case gated to PV12
+  pycardano:
+    links:
+      - url: https://github.com/Python-Cardano/pycardano/pull/489
+        note: Dijkstra genesis only
+  blaze:
+    links:
+      - url: https://github.com/butaneprotocol/blaze-cardano/pull/370
+        note: Cardano SDK 0.47.1 with Dijkstra types
+      - url: https://github.com/butaneprotocol/blaze-cardano/pull/379
+        note: CIP-118 sub-transactions
+  cardano-wallet:
+    links:
+      - url: https://github.com/cardano-foundation/cardano-wallet/issues/5395
+        note: Epic, Dijkstra era support
+      - url: https://github.com/cardano-foundation/cardano-wallet/issues/5209
+        note: Remaining Dijkstra stubs
+      - url: https://github.com/cardano-foundation/cardano-wallet/pull/5458
+        note: Delegation, voting and certificate stubs
+      - url: https://github.com/cardano-foundation/cardano-wallet/pull/5430
+      - url: https://github.com/cardano-foundation/cardano-wallet/pull/5432
+      - url: https://github.com/cardano-foundation/cardano-wallet/pull/5463
+        note: Pins advanced to node 11.1.3
+      - url: https://github.com/cardano-foundation/cardano-wallet/issues/5408
+  yaci-store:
+    links:
+      - url: https://github.com/bloxbean/yaci-store/pull/1274
+        note: Store Plutus V4 reference scripts
+      - url: https://github.com/bloxbean/yaci-store/issues/1273
+      - url: https://github.com/bloxbean/yaci-store/pull/1282
+        note: Leios Musashi rc-2026w42
+      - url: https://github.com/bloxbean/yaci-store/pull/1299
+      - url: https://github.com/bloxbean/yaci-store/tree/next-leios

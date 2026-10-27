@@ -1,0 +1,14 @@
+plugins { id 'java-library' }
+allprojects { group = 'fixture'; version = '1'; repositories { mavenCentral() } }
+subprojects { if (name != 'platform') { apply plugin: 'java-library' } }
+project(':shared') { apply plugin: 'java-test-fixtures'; dependencies { testFixturesApi project(':fixture-only') } }
+project(':left') { dependencies { api project(':shared'); api 'org.slf4j:slf4j-api:1.7.32' } }
+project(':right') { dependencies { api project(':shared'); api 'org.slf4j:slf4j-api:1.7.36' } }
+project(':platform') { apply plugin: 'java-platform'; dependencies { constraints { api 'org.slf4j:slf4j-api:1.7.36' } } }
+dependencies {
+ api project(':left')
+ api project(':right')
+ api platform(project(':platform'))
+ annotationProcessor project(':generator')
+ testImplementation testFixtures(project(':shared'))
+}

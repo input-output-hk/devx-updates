@@ -15,8 +15,9 @@ const STATUS_HEALTH: Record<Status, number> = {
     maintenance: 1,
     experimental: 2,
     research: 3,
-    abandoned: 4,
-    archived: 5,
+    deprecated: 4,
+    abandoned: 5,
+    archived: 6,
 };
 
 // The best-off status among a cell's tools, or null if any is actively

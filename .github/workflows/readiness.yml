@@ -1,0 +1,67 @@
+name: readiness-discovery
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 6 * * 2"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: readiness-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.8'
+          cache: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.22'
+      - name: Prepare isolated Poetry lock reader
+        run: |
+          uv venv .readiness/toolchains/poetry --python 3.13
+          uv pip install --python .readiness/toolchains/poetry/bin/python poetry==2.1.1
+      - run: npm run test:readiness
+      - name: Save comparison baseline
+        run: npm run readiness -- export-snapshot --output /tmp/readiness-before.json
+      - name: Refresh public source discovery
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          npm run readiness -- inventory
+          npm run readiness -- discover --refresh
+      - name: Refresh registered native profiles
+        id: native
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: npm run readiness -- refresh-native
+      - name: Validate and compare collected evidence
+        run: |
+          npm run readiness -- report
+          npm run readiness -- diff --before /tmp/readiness-before.json --output data/readiness/changes.json.gz
+          npm run readiness -- validate
+          npm run readiness -- replay
+      - name: Retain results for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: readiness-discovery-${{ github.run_id }}
+          path: data/readiness/
+          retention-days: 90
+      - name: Surface native resolution failures
+        if: steps.native.outcome == 'failure'
+        run: exit 1

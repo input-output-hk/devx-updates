@@ -1,0 +1,847 @@
+{
+    "formatVersion": 1,
+    "gradleVersion": "7.5.1",
+    "environment": {
+        "javaVersion": "17.0.5",
+        "javaVendor": "Eclipse Adoptium",
+        "os": "Linux",
+        "arch": "amd64"
+    },
+    "repositories": [
+        {
+            "projectPath": ":",
+            "repositories": [
+                {
+                    "name": "MavenRepo",
+                    "type": [
+                        "groovy.lang.GroovyObject",
+                        "org.gradle.api.internal.DynamicObjectAware",
+                        "org.gradle.api.internal.GeneratedSubclass",
+                        "org.gradle.api.internal.HasConvention",
+                        "org.gradle.api.internal.IConventionAware",
+                        "org.gradle.api.plugins.ExtensionAware",
+                        "org.gradle.internal.state.ModelObject",
+                        "org.gradle.internal.state.OwnerAware"
+                    ],
+                    "url": "https://repo.maven.apache.org/maven2/"
+                }
+            ]
+        },
+        {
+            "projectPath": ":fixture-only",
+            "repositories": [
+                {
+                    "name": "MavenRepo",
+                    "type": [
+                        "groovy.lang.GroovyObject",
+                        "org.gradle.api.internal.DynamicObjectAware",
+                        "org.gradle.api.internal.GeneratedSubclass",
+                        "org.gradle.api.internal.HasConvention",
+                        "org.gradle.api.internal.IConventionAware",
+                        "org.gradle.api.plugins.ExtensionAware",
+                        "org.gradle.internal.state.ModelObject",
+                        "org.gradle.internal.state.OwnerAware"
+                    ],
+                    "url": "https://repo.maven.apache.org/maven2/"
+                }
+            ]
+        },
+        {
+            "projectPath": ":generator",
+            "repositories": [
+                {
+                    "name": "MavenRepo",
+                    "type": [
+                        "groovy.lang.GroovyObject",
+                        "org.gradle.api.internal.DynamicObjectAware",
+                        "org.gradle.api.internal.GeneratedSubclass",
+                        "org.gradle.api.internal.HasConvention",
+                        "org.gradle.api.internal.IConventionAware",
+                        "org.gradle.api.plugins.ExtensionAware",
+                        "org.gradle.internal.state.ModelObject",
+                        "org.gradle.internal.state.OwnerAware"
+                    ],
+                    "url": "https://repo.maven.apache.org/maven2/"
+                }
+            ]
+        },
+        {
+            "projectPath": ":left",
+            "repositories": [
+                {
+                    "name": "MavenRepo",
+                    "type": [
+                        "groovy.lang.GroovyObject",
+                        "org.gradle.api.internal.DynamicObjectAware",
+                        "org.gradle.api.internal.GeneratedSubclass",
+                        "org.gradle.api.internal.HasConvention",
+                        "org.gradle.api.internal.IConventionAware",
+                        "org.gradle.api.plugins.ExtensionAware",
+                        "org.gradle.internal.state.ModelObject",
+                        "org.gradle.internal.state.OwnerAware"
+                    ],
+                    "url": "https://repo.maven.apache.org/maven2/"
+                }
+            ]
+        },
+        {
+            "projectPath": ":platform",
+            "repositories": [
+                {
+                    "name": "MavenRepo",
+                    "type": [
+                        "groovy.lang.GroovyObject",
+                        "org.gradle.api.internal.DynamicObjectAware",
+                        "org.gradle.api.internal.GeneratedSubclass",
+                        "org.gradle.api.internal.HasConvention",
+                        "org.gradle.api.internal.IConventionAware",
+                        "org.gradle.api.plugins.ExtensionAware",
+                        "org.gradle.internal.state.ModelObject",
+                        "org.gradle.internal.state.OwnerAware"
+                    ],
+                    "url": "https://repo.maven.apache.org/maven2/"
+                }
+            ]
+        },
+        {
+            "projectPath": ":right",
+            "repositories": [
+                {
+                    "name": "MavenRepo",
+                    "type": [
+                        "groovy.lang.GroovyObject",
+                        "org.gradle.api.internal.DynamicObjectAware",
+                        "org.gradle.api.internal.GeneratedSubclass",
+                        "org.gradle.api.internal.HasConvention",
+                        "org.gradle.api.internal.IConventionAware",
+                        "org.gradle.api.plugins.ExtensionAware",
+                        "org.gradle.internal.state.ModelObject",
+                        "org.gradle.internal.state.OwnerAware"
+                    ],
+                    "url": "https://repo.maven.apache.org/maven2/"
+                }
+            ]
+        },
+        {
+            "projectPath": ":shared",
+            "repositories": [
+                {
+                    "name": "MavenRepo",
+                    "type": [
+                        "groovy.lang.GroovyObject",
+                        "org.gradle.api.internal.DynamicObjectAware",
+                        "org.gradle.api.internal.GeneratedSubclass",
+                        "org.gradle.api.internal.HasConvention",
+                        "org.gradle.api.internal.IConventionAware",
+                        "org.gradle.api.plugins.ExtensionAware",
+                        "org.gradle.internal.state.ModelObject",
+                        "org.gradle.internal.state.OwnerAware"
+                    ],
+                    "url": "https://repo.maven.apache.org/maven2/"
+                }
+            ]
+        }
+    ],
+    "graphs": [
+        {
+            "projectPath": ":",
+            "configuration": "runtimeClasspath",
+            "scope": "runtime",
+            "root": "[{\"kind\":\"project\",\"projectPath\":\":\",\"path\":\".\",\"group\":\"fixture\",\"name\":\"fixture\",\"version\":\"1\"},{\"name\":\"runtimeClasspath\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.environment\":\"standard-jvm\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[]}]",
+            "nodes": [
+                {
+                    "id": "[{\"kind\":\"module\",\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"},{\"name\":\"runtime\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.status\":\"release\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"}]}]",
+                    "component": {
+                        "kind": "module",
+                        "group": "org.slf4j",
+                        "name": "slf4j-api",
+                        "version": "1.7.36"
+                    },
+                    "variant": {
+                        "name": "runtime",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.status": "release",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "org.slf4j",
+                                "name": "slf4j-api",
+                                "version": "1.7.36"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "CONSTRAINT",
+                            "description": "constraint"
+                        },
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        },
+                        {
+                            "cause": "CONFLICT_RESOLUTION",
+                            "description": "between versions 1.7.36 and 1.7.32"
+                        }
+                    ],
+                    "dependencies": [
+                        
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":\",\"path\":\".\",\"group\":\"fixture\",\"name\":\"fixture\",\"version\":\"1\"},{\"name\":\"runtimeClasspath\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.environment\":\"standard-jvm\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":",
+                        "path": ".",
+                        "group": "fixture",
+                        "name": "fixture",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeClasspath",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.environment": "standard-jvm",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "ROOT",
+                            "description": "root"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "project :left",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":left\",\"path\":\"left\",\"group\":\"fixture\",\"name\":\"left\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"left\",\"version\":\"1\"}]}]"
+                        },
+                        {
+                            "requested": "project :platform",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":platform\",\"path\":\"platform\",\"group\":\"fixture\",\"name\":\"platform\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"platform\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"platform\",\"version\":\"1\"}]}]"
+                        },
+                        {
+                            "requested": "project :right",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":right\",\"path\":\"right\",\"group\":\"fixture\",\"name\":\"right\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"right\",\"version\":\"1\"}]}]"
+                        }
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":left\",\"path\":\"left\",\"group\":\"fixture\",\"name\":\"left\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"left\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":left",
+                        "path": "left",
+                        "group": "fixture",
+                        "name": "left",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "left",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "org.slf4j:slf4j-api:1.7.32",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"module\",\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"},{\"name\":\"runtime\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.status\":\"release\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"}]}]"
+                        },
+                        {
+                            "requested": "project :shared",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":shared\",\"path\":\"shared\",\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"}]}]"
+                        }
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":platform\",\"path\":\"platform\",\"group\":\"fixture\",\"name\":\"platform\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"platform\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"platform\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":platform",
+                        "path": "platform",
+                        "group": "fixture",
+                        "name": "platform",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "platform",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "platform",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "org.slf4j:slf4j-api:1.7.36",
+                            "constraint": true,
+                            "target": "[{\"kind\":\"module\",\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"},{\"name\":\"runtime\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.status\":\"release\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"}]}]"
+                        }
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":right\",\"path\":\"right\",\"group\":\"fixture\",\"name\":\"right\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"right\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":right",
+                        "path": "right",
+                        "group": "fixture",
+                        "name": "right",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "right",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "org.slf4j:slf4j-api:1.7.36",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"module\",\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"},{\"name\":\"runtime\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.status\":\"release\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"}]}]"
+                        },
+                        {
+                            "requested": "project :shared",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":shared\",\"path\":\"shared\",\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"}]}]"
+                        }
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":shared\",\"path\":\"shared\",\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":shared",
+                        "path": "shared",
+                        "group": "fixture",
+                        "name": "shared",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "shared",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "projectPath": ":",
+            "configuration": "annotationProcessor",
+            "scope": "build",
+            "root": "[{\"kind\":\"project\",\"projectPath\":\":\",\"path\":\".\",\"group\":\"fixture\",\"name\":\"fixture\",\"version\":\"1\"},{\"name\":\"annotationProcessor\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.environment\":\"standard-jvm\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[]}]",
+            "nodes": [
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":\",\"path\":\".\",\"group\":\"fixture\",\"name\":\"fixture\",\"version\":\"1\"},{\"name\":\"annotationProcessor\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.environment\":\"standard-jvm\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":",
+                        "path": ".",
+                        "group": "fixture",
+                        "name": "fixture",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "annotationProcessor",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.environment": "standard-jvm",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "ROOT",
+                            "description": "root"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "project :generator",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":generator\",\"path\":\"generator\",\"group\":\"fixture\",\"name\":\"generator\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"generator\",\"version\":\"1\"}]}]"
+                        }
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":generator\",\"path\":\"generator\",\"group\":\"fixture\",\"name\":\"generator\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"generator\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":generator",
+                        "path": "generator",
+                        "group": "fixture",
+                        "name": "generator",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "generator",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "projectPath": ":",
+            "configuration": "testRuntimeClasspath",
+            "scope": "development",
+            "root": "[{\"kind\":\"project\",\"projectPath\":\":\",\"path\":\".\",\"group\":\"fixture\",\"name\":\"fixture\",\"version\":\"1\"},{\"name\":\"testRuntimeClasspath\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.environment\":\"standard-jvm\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[]}]",
+            "nodes": [
+                {
+                    "id": "[{\"kind\":\"module\",\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"},{\"name\":\"runtime\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.status\":\"release\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"}]}]",
+                    "component": {
+                        "kind": "module",
+                        "group": "org.slf4j",
+                        "name": "slf4j-api",
+                        "version": "1.7.36"
+                    },
+                    "variant": {
+                        "name": "runtime",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.status": "release",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "org.slf4j",
+                                "name": "slf4j-api",
+                                "version": "1.7.36"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "CONSTRAINT",
+                            "description": "constraint"
+                        },
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        },
+                        {
+                            "cause": "CONFLICT_RESOLUTION",
+                            "description": "between versions 1.7.36 and 1.7.32"
+                        }
+                    ],
+                    "dependencies": [
+                        
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":\",\"path\":\".\",\"group\":\"fixture\",\"name\":\"fixture\",\"version\":\"1\"},{\"name\":\"testRuntimeClasspath\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.environment\":\"standard-jvm\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":",
+                        "path": ".",
+                        "group": "fixture",
+                        "name": "fixture",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "testRuntimeClasspath",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.environment": "standard-jvm",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "ROOT",
+                            "description": "root"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "project :left",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":left\",\"path\":\"left\",\"group\":\"fixture\",\"name\":\"left\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"left\",\"version\":\"1\"}]}]"
+                        },
+                        {
+                            "requested": "project :platform",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":platform\",\"path\":\"platform\",\"group\":\"fixture\",\"name\":\"platform\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"platform\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"platform\",\"version\":\"1\"}]}]"
+                        },
+                        {
+                            "requested": "project :right",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":right\",\"path\":\"right\",\"group\":\"fixture\",\"name\":\"right\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"right\",\"version\":\"1\"}]}]"
+                        },
+                        {
+                            "requested": "project :shared",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":shared\",\"path\":\"shared\",\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"},{\"name\":\"testFixturesRuntimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"shared-test-fixtures\",\"version\":\"1\"}]}]"
+                        }
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":fixture-only\",\"path\":\"fixture-only\",\"group\":\"fixture\",\"name\":\"fixture-only\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"fixture-only\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":fixture-only",
+                        "path": "fixture-only",
+                        "group": "fixture",
+                        "name": "fixture-only",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "fixture-only",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":left\",\"path\":\"left\",\"group\":\"fixture\",\"name\":\"left\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"left\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":left",
+                        "path": "left",
+                        "group": "fixture",
+                        "name": "left",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "left",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "org.slf4j:slf4j-api:1.7.32",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"module\",\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"},{\"name\":\"runtime\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.status\":\"release\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"}]}]"
+                        },
+                        {
+                            "requested": "project :shared",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":shared\",\"path\":\"shared\",\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"}]}]"
+                        }
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":platform\",\"path\":\"platform\",\"group\":\"fixture\",\"name\":\"platform\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"platform\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"platform\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":platform",
+                        "path": "platform",
+                        "group": "fixture",
+                        "name": "platform",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "platform",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "platform",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "org.slf4j:slf4j-api:1.7.36",
+                            "constraint": true,
+                            "target": "[{\"kind\":\"module\",\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"},{\"name\":\"runtime\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.status\":\"release\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"}]}]"
+                        }
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":right\",\"path\":\"right\",\"group\":\"fixture\",\"name\":\"right\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"right\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":right",
+                        "path": "right",
+                        "group": "fixture",
+                        "name": "right",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "right",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "org.slf4j:slf4j-api:1.7.36",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"module\",\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"},{\"name\":\"runtime\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.status\":\"release\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"org.slf4j\",\"name\":\"slf4j-api\",\"version\":\"1.7.36\"}]}]"
+                        },
+                        {
+                            "requested": "project :shared",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":shared\",\"path\":\"shared\",\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"}]}]"
+                        }
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":shared\",\"path\":\"shared\",\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":shared",
+                        "path": "shared",
+                        "group": "fixture",
+                        "name": "shared",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "runtimeElements",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "shared",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        
+                    ]
+                },
+                {
+                    "id": "[{\"kind\":\"project\",\"projectPath\":\":shared\",\"path\":\"shared\",\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"},{\"name\":\"testFixturesRuntimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"shared-test-fixtures\",\"version\":\"1\"}]}]",
+                    "component": {
+                        "kind": "project",
+                        "projectPath": ":shared",
+                        "path": "shared",
+                        "group": "fixture",
+                        "name": "shared",
+                        "version": "1"
+                    },
+                    "variant": {
+                        "name": "testFixturesRuntimeElements",
+                        "attributes": {
+                            "org.gradle.category": "library",
+                            "org.gradle.dependency.bundling": "external",
+                            "org.gradle.jvm.version": "17",
+                            "org.gradle.libraryelements": "jar",
+                            "org.gradle.usage": "java-runtime"
+                        },
+                        "capabilities": [
+                            {
+                                "group": "fixture",
+                                "name": "shared-test-fixtures",
+                                "version": "1"
+                            }
+                        ]
+                    },
+                    "selectionReasons": [
+                        {
+                            "cause": "REQUESTED",
+                            "description": "requested"
+                        }
+                    ],
+                    "dependencies": [
+                        {
+                            "requested": "project :fixture-only",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":fixture-only\",\"path\":\"fixture-only\",\"group\":\"fixture\",\"name\":\"fixture-only\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"fixture-only\",\"version\":\"1\"}]}]"
+                        },
+                        {
+                            "requested": "project :shared",
+                            "constraint": false,
+                            "target": "[{\"kind\":\"project\",\"projectPath\":\":shared\",\"path\":\"shared\",\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"},{\"name\":\"runtimeElements\",\"attributes\":{\"org.gradle.category\":\"library\",\"org.gradle.dependency.bundling\":\"external\",\"org.gradle.jvm.version\":\"17\",\"org.gradle.libraryelements\":\"jar\",\"org.gradle.usage\":\"java-runtime\"},\"capabilities\":[{\"group\":\"fixture\",\"name\":\"shared\",\"version\":\"1\"}]}]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
