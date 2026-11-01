@@ -1,0 +1,17 @@
+conway-legacy-reg              head 84a4: type 6: decoded
+conway-metadata                head 84a4: type 6: decoded
+conway-payment                 head 84a3: type 6: decoded
+conway-reg-with-deposit        head 84a4: type 6: decoded
+conway-required-signer         head 84a4: type 6: decoded
+dijkstra-metadata              head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+dijkstra-payment               head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+dijkstra-reg-with-deposit      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+split                          head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+mempool-0                      head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+mempool-1                      head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+mempool-2                      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+mempool-3                      head 83a4: type 7: decoded
+mempool-4                      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+mempool-5                      head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+mempool-6                      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok
+mempool-7                      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok

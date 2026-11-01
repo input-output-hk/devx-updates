@@ -1,0 +1,3 @@
+era tag 7: 19 blocks decoded, 0 transactions, 0 failed
+era tag 8: 0 blocks decoded, 0 transactions, 440 failed
+  first failure: block 856 bytes: Invalid CBOR structure: missing value at index 10 (HeaderBody::block_body_contains_leios_cert) in map or array starting at position 4

@@ -1,0 +1,248 @@
+[
+  {
+    "url": "https://github.com/Biglup/cardano-c/issues/133",
+    "title": "Upgrade the library to the Dijkstra era",
+    "state": "open",
+    "date": "2026-07-07"
+  },
+  {
+    "url": "https://github.com/Biglup/cardano-c/pull/135",
+    "title": "feat: Dijkstra era serialization layer",
+    "state": "merged",
+    "date": "2026-07-18"
+  },
+  {
+    "url": "https://github.com/CardanoSolutions/kupo/pull/204",
+    "title": "Add cardano-node 11.0.1 support",
+    "state": "merged",
+    "date": "2026-07-18"
+  },
+  {
+    "url": "https://github.com/IntersectMBO/cardano-db-sync/issues/2115",
+    "title": "Integrate Dijkstra",
+    "state": "open",
+    "date": "2026-04-30"
+  },
+  {
+    "url": "https://github.com/IntersectMBO/mithril/issues/3585",
+    "title": "Upgrade to Cardano `11.2`",
+    "state": "open",
+    "date": "2026-10-02"
+  },
+  {
+    "url": "https://github.com/IntersectMBO/mithril/pull/3614",
+    "title": "feat: support for upcoming Cardano `11.2`",
+    "state": "merged",
+    "date": "2026-10-15"
+  },
+  {
+    "url": "https://github.com/IntersectMBO/plutus/issues/7342",
+    "title": "Define PlutusV4 script context",
+    "state": "closed",
+    "date": "2026-10-22"
+  },
+  {
+    "url": "https://github.com/IntersectMBO/plutus/pull/7898",
+    "title": "Plutus V4 and dijkstraPV",
+    "state": "merged",
+    "date": "2026-08-19"
+  },
+  {
+    "url": "https://github.com/Salvionied/apollo/issues/366",
+    "title": "Add Dijkstra transaction support (excluding nested transactions)",
+    "state": "open",
+    "date": "2026-09-25"
+  },
+  {
+    "url": "https://github.com/Salvionied/apollo/issues/367",
+    "title": "Add CIP-118 nested-transaction support",
+    "state": "open",
+    "date": "2026-09-25"
+  },
+  {
+    "url": "https://github.com/blinklabs-io/adder/pull/888",
+    "title": "chore(deps): bump github.com/blinklabs-io/gouroboros from 0.209.1 to 0.213.7",
+    "state": "closed",
+    "date": "2026-10-22"
+  },
+  {
+    "url": "https://github.com/blinklabs-io/dingo/issues/1945",
+    "title": "dijkstra: end-to-end integration testing on Dijkstra testnet",
+    "state": "open",
+    "date": "2026-04-17"
+  },
+  {
+    "url": "https://github.com/blinklabs-io/dingo/issues/2850",
+    "title": "dijkstra: hard-fork readiness tracking (PV12)",
+    "state": "open",
+    "date": "2026-07-15"
+  },
+  {
+    "url": "https://github.com/blinklabs-io/dingo/pull/4878",
+    "title": "feat(ledger): evaluate Dijkstra Plutus V4 and serve its parameters",
+    "state": "merged",
+    "date": "2026-10-13"
+  },
+  {
+    "url": "https://github.com/blinklabs-io/gouroboros/pull/2670",
+    "title": "feat: add current Dijkstra protocol parameters",
+    "state": "merged",
+    "date": "2026-10-08"
+  },
+  {
+    "url": "https://github.com/blinklabs-io/gouroboros/pull/2692",
+    "title": "feat(ledger): align Dijkstra with the Leios release candidate",
+    "state": "merged",
+    "date": "2026-10-14"
+  },
+  {
+    "url": "https://github.com/blinklabs-io/gouroboros/pull/2776",
+    "title": "fix(localtxmonitor): encode hard-fork transaction IDs",
+    "state": "merged",
+    "date": "2026-10-26"
+  },
+  {
+    "url": "https://github.com/blinklabs-io/plutigo/issues/274",
+    "title": "dijkstra: full Plutus V4 cost model implementation",
+    "state": "closed",
+    "date": "2026-09-28"
+  },
+  {
+    "url": "https://github.com/blinklabs-io/plutigo/issues/344",
+    "title": "script context: add PlutusV4 builder variant for Dijkstra structures",
+    "state": "closed",
+    "date": "2026-09-28"
+  },
+  {
+    "url": "https://github.com/bloxbean/cardano-client-lib/issues/707",
+    "title": "Support Plutus V4 scripts (Dijkstra era / Leios)",
+    "state": "open",
+    "date": "2026-10-19"
+  },
+  {
+    "url": "https://github.com/bloxbean/yaci-store/issues/1273",
+    "title": "Plutus V4 reference scripts: hash and script not stored (Dijkstra / Leios Musashi)",
+    "state": "open",
+    "date": "2026-10-19"
+  },
+  {
+    "url": "https://github.com/bloxbean/yaci-store/pull/1274",
+    "title": "fix(script): store Plutus V4 reference scripts (Dijkstra / Leios)",
+    "state": "open",
+    "date": "2026-10-19"
+  },
+  {
+    "url": "https://github.com/bloxbean/yaci/pull/167",
+    "title": "feat: Leios network mini-protocols (LeiosNotify/LeiosFetch) for Musashi \u2014 transport-only [ADR 0007]",
+    "state": "open",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "https://github.com/bloxbean/yaci/pull/171",
+    "title": "Leios (Musashi w27): Dijkstra serialization & BlockChainDataListener integration (ADR 0010/0011 + implementation)",
+    "state": "merged",
+    "date": "2026-10-21"
+  },
+  {
+    "url": "https://github.com/bloxbean/yaci/pull/222",
+    "title": "Leios: parse every Dijkstra structure of the deployed CDDL (backward compatible)",
+    "state": "merged",
+    "date": "2026-10-21"
+  },
+  {
+    "url": "https://github.com/butaneprotocol/blaze-cardano/pull/370",
+    "title": "chore(core): upgrade Cardano SDK to 0.47.1",
+    "state": "merged",
+    "date": "2026-10-12"
+  },
+  {
+    "url": "https://github.com/cardano-foundation/cardano-wallet/issues/5209",
+    "title": "Dijkstra era support: eliminate 44 Dijkstra stubs across 15 files (census-gated)",
+    "state": "open",
+    "date": "2026-02-24"
+  },
+  {
+    "url": "https://github.com/cardano-foundation/cardano-wallet/pull/5458",
+    "title": "Dijkstra: close the five delegation, voting and certificate stubs",
+    "state": "open",
+    "date": "2026-09-21"
+  },
+  {
+    "url": "https://github.com/cardano-scaling/hydra/issues/2645",
+    "title": "Non-Conway blocks are silently treated as empty",
+    "state": "open",
+    "date": "2026-06-05"
+  },
+  {
+    "url": "https://github.com/input-output-hk/cardano-js-sdk/pull/1735",
+    "title": "feat: update serialization and core types to Dijkstra era [LW-15103]",
+    "state": "merged",
+    "date": "2026-07-08"
+  },
+  {
+    "url": "https://github.com/input-output-hk/cardano-js-sdk/pull/1739",
+    "title": "feat: Dijkstra batch groundwork - hydrated sub transactions and batch-aware inspection",
+    "state": "open",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "https://github.com/pragma-org/amaru/pull/1229",
+    "title": "fix: decode bytes with indefinite length only in protocol version 12",
+    "state": "merged",
+    "date": "2026-08-18"
+  },
+  {
+    "url": "https://github.com/pragma-org/amaru/pull/1485",
+    "title": "feat: add multi-era blocks support",
+    "state": "closed",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://github.com/scalus3/scalus/pull/265",
+    "title": "feat(ledger): add Script.PlutusV4 case for Dijkstra-era ref-scripts",
+    "state": "merged",
+    "date": "2026-05-06"
+  },
+  {
+    "url": "https://github.com/txpipe/pallas/pull/799",
+    "title": "feat(primitives): add Dijkstra era ledger primitives",
+    "state": "merged",
+    "date": "2026-09-16"
+  },
+  {
+    "url": "https://github.com/txpipe/pallas/pull/800",
+    "title": "feat(traverse): decode the Dijkstra era",
+    "state": "merged",
+    "date": "2026-09-24"
+  },
+  {
+    "url": "https://github.com/txpipe/pallas/pull/816",
+    "title": "feat: read leios endorser blocks",
+    "state": "merged",
+    "date": "2026-10-15"
+  },
+  {
+    "url": "https://github.com/txpipe/pallas/pull/817",
+    "title": "fix(traverse): read a dijkstra sub transaction's validity from its parent",
+    "state": "merged",
+    "date": "2026-10-15"
+  },
+  {
+    "url": "https://github.com/txpipe/pallas/pull/830",
+    "title": "fix(traverse): include Dijkstra sub transaction inputs in requires",
+    "state": "open",
+    "date": "2026-10-16"
+  },
+  {
+    "url": "https://github.com/utxorpc/spec/issues/218",
+    "title": "Cardano Tx cannot carry network id, script data hash, auxiliary data hash, treasury value and donation",
+    "state": "open",
+    "date": "2026-10-14"
+  },
+  {
+    "url": "https://github.com/utxorpc/spec/pull/215",
+    "title": "feat(cardano): add Dijkstra sub transactions and ledger fields",
+    "state": "open",
+    "date": "2026-10-05"
+  }
+]

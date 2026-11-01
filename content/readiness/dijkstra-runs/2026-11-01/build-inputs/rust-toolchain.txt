@@ -1,0 +1,4 @@
+rustc 1.99.0 (b940084d7 2026-09-28) (built from a source tarball)
+cargo 1.99.0 (5f94df478 2026-08-27)
+/nix/store/6l9kbzxwq9ij2lcmwl2qb1jdpqisjr8l-rustc-wrapper-1.99.0/bin/rustc
+/nix/store/1jwkiz96iwqdhm4bh2hvgd86ysb0b67q-cargo-1.99.0/bin/cargo

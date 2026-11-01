@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewed": "2026-10-20",
+  "reviewed": "2026-11-01",
   "method": [
     "Every bump-ready tool was read at its classified revision for era-specific code in shipped paths: fixed era types, exhaustive era cases, era tables and per-era parameter or schema handling.",
     "own-work needs a quoted line that stops before Dijkstra; prepared and generic need the quoted lines that make the era handling Dijkstra-aware or era-generic; undetermined records what a run must settle.",
@@ -47,49 +47,49 @@
     },
     {
       "tool": "bursa",
-      "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+      "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
       "eraHandling": "prepared",
       "summary": "Already names the Dijkstra transaction type and decides witness-set tagging with a forward-open comparison; transactions are decoded through gouroboros's era-generic entry points.",
       "evidence": [
         {
           "repo": "blinklabs-io/bursa",
-          "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+          "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
           "path": "transaction.go",
-          "line": 128,
+          "line": 131,
           "quote": "\treturn txType >= ledger.TxTypeConway"
         },
         {
           "repo": "blinklabs-io/bursa",
-          "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+          "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
           "path": "transaction.go",
-          "line": 346,
+          "line": 630,
           "quote": "\tcase ledger.TxTypeDijkstra:"
         },
         {
           "repo": "blinklabs-io/bursa",
-          "revision": "129d9340ff83afbe151f00e9eaaf7714a0961866",
+          "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
           "path": "transaction.go",
-          "line": 207,
+          "line": 155,
           "quote": "\ttxType, err := ledger.DetermineTransactionType(txCbor)"
         }
       ]
     },
     {
       "tool": "cardano-ibc-incubator",
-      "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+      "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
       "eraHandling": "own-work",
-      "summary": "The light client decodes every block header as a Babbage header and switches on Babbage and Conway blocks only; it needs a Dijkstra case besides the bump. Its Babbage header decoding matches the ten-field header the 11.2 integration node emits (devnet check block-shape), not the twelve-field one gouroboros v0.213.x requires.",
+      "summary": "The light client decodes every block header as a Babbage header and switches on Babbage and Conway blocks only; it needs a Dijkstra case besides the bump. Its Babbage header decoding matches the ten-field header the tagged 11.2.0 node emits (devnet check block-shape), not the twelve-field one gouroboros v0.213.x requires.",
       "evidence": [
         {
           "repo": "cardano-foundation/cardano-ibc-incubator",
-          "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+          "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
           "path": "cosmos/cardano-probabilistic-light-client-core/cardano_block.go",
           "line": 162,
           "quote": "func DecodeLedgerHeader(headerCbor []byte) (decoded *ledger.BabbageBlockHeader, err error) {"
         },
         {
           "repo": "cardano-foundation/cardano-ibc-incubator",
-          "revision": "5377651afad44901eee18044c6edce58a0e880fa",
+          "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
           "path": "cosmos/cardano-probabilistic-light-client-core/cardano_block.go",
           "line": 202,
           "quote": "\tcase *ledger.ConwayBlock:"
@@ -258,20 +258,20 @@
     },
     {
       "tool": "scrolls",
-      "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+      "revision": "899be8bf96d3f30df00259f158b2bf81e3cb4c2f",
       "eraHandling": "generic",
       "summary": "Reads blocks through Pallas's multi-era traversal and only distinguishes Byron from later eras; the Pallas upgrade crosses breaking 0.x releases but needs no era case of its own.",
       "evidence": [
         {
           "repo": "txpipe/scrolls",
-          "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+          "revision": "899be8bf96d3f30df00259f158b2bf81e3cb4c2f",
           "path": "src/crosscut/epochs.rs",
           "line": 28,
           "quote": "        pallas::ledger::traverse::Era::Byron => {"
         },
         {
           "repo": "txpipe/scrolls",
-          "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+          "revision": "899be8bf96d3f30df00259f158b2bf81e3cb4c2f",
           "path": "src/crosscut/epochs.rs",
           "line": 31,
           "quote": "        _ => post_byron_epoch_for_slot(chain.shelley_known_slot, chain.shelley_epoch_length, slot),"
@@ -280,20 +280,20 @@
     },
     {
       "tool": "txtop",
-      "revision": "86a013e714aff6eb704326f7b646f9ab967e41db",
+      "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
       "eraHandling": "generic",
       "summary": "Decodes mempool transactions through gouroboros's era-generic entry points and names no era itself. On the devnet the upgraded build connects and shows mempool sizes, but gouroboros's era detection rejects ordinary Dijkstra transactions, so its transaction list stays empty until gouroboros fixes that (devnet checks tool-upgrades, tx-era-detection).",
       "evidence": [
         {
           "repo": "blinklabs-io/txtop",
-          "revision": "86a013e714aff6eb704326f7b646f9ab967e41db",
+          "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
           "path": "main.go",
           "line": 1258,
           "quote": "\ttxType, err := ledger.DetermineTransactionType(raw)"
         },
         {
           "repo": "blinklabs-io/txtop",
-          "revision": "86a013e714aff6eb704326f7b646f9ab967e41db",
+          "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
           "path": "main.go",
           "line": 1262,
           "quote": "\tltx, err := ledger.NewTransactionFromCbor(txType, raw)"

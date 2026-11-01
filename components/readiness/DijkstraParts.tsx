@@ -59,6 +59,7 @@ const PAGES = [
   { href: `${DIJKSTRA}/devnet`, label: "Devnet run" },
   { href: `${DIJKSTRA}/changes`, label: "What changes" },
   { href: `${DIJKSTRA}/evidence`, label: "Evidence" },
+  { href: `${DIJKSTRA}/history`, label: "History" },
 ];
 
 /** Page frame for the Dijkstra pages: eyebrow, title, site nav, and links between the overview and its details. */

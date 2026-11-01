@@ -6,7 +6,7 @@ import { resultsFor } from "@/lib/readiness/devnet";
 
 export const metadata: Metadata = {
   title: "What Dijkstra changes",
-  description: "The protocol and node changes Dijkstra brings, cited at the node 11.2 integration branch, with their devnet outcome.",
+  description: "The protocol and node changes Dijkstra brings, cited at the node 11.2.0 tag, with their devnet outcome.",
 };
 
 export default function ChangesPage() {
@@ -14,7 +14,7 @@ export default function ChangesPage() {
   return <DijkstraFrame title="What Dijkstra changes" current={`${DIJKSTRA}/changes`}>
     <section>
       <p className="text-muted">
-        Read at the node 11.2 integration branch and the component versions it selects. Activation is either the node
+        Read at the node 11.2.0 tag and the component versions published with the release. Activation is either the node
         upgrade itself, the fork to protocol version 12, or a later intra-era step.
       </p>
       <div className="mt-4 grid gap-3 md:grid-cols-2">{changes.changes.map((c) => (

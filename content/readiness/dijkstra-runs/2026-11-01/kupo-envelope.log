@@ -1,0 +1,14 @@
+Failed to configure network parameters: missing or invalid 'ByronGenesisFile' and/or 'ShelleyGenesisFile' from Cardano's configuration
+{"severity":"Info","timestamp":"2026-11-01T12:35:05.467281812Z","thread":"7","message":{"Configuration":{"tag":"ConfigurationMaxConcurrency","maxConcurrentReaders":20,"maxConcurrentWriters":4}},"version":"v2.12.0+491918"}
+{"severity":"Info","timestamp":"2026-11-01T12:35:05.467657633Z","thread":"7","message":{"Database":{"tag":"DatabaseCurrentVersion","currentVersion":0}},"version":"v2.12.0+491918"}
+{"severity":"Notice","timestamp":"2026-11-01T12:35:05.467695079Z","thread":"7","message":{"Database":{"tag":"DatabaseRunningMigration","from":0,"to":10}},"version":"v2.12.0+491918"}
+{"severity":"Notice","timestamp":"2026-11-01T12:35:05.47767324Z","thread":"7","message":{"Database":{"tag":"DatabaseCreateIndex","newIndex":"inputsByAddress"}},"version":"v2.12.0+491918"}
+{"severity":"Notice","timestamp":"2026-11-01T12:35:05.477982222Z","thread":"7","message":{"Database":{"tag":"DatabaseCreateIndex","newIndex":"inputsByDatumHash"}},"version":"v2.12.0+491918"}
+{"severity":"Notice","timestamp":"2026-11-01T12:35:05.478259569Z","thread":"7","message":{"Database":{"tag":"DatabaseCreateIndex","newIndex":"inputsByPaymentCredential"}},"version":"v2.12.0+491918"}
+{"severity":"Notice","timestamp":"2026-11-01T12:35:05.478530555Z","thread":"7","message":{"Database":{"tag":"DatabaseCreateIndex","newIndex":"inputsByCreatedAt"}},"version":"v2.12.0+491918"}
+{"severity":"Notice","timestamp":"2026-11-01T12:35:05.478794594Z","thread":"7","message":{"Database":{"tag":"DatabaseCreateIndex","newIndex":"inputsBySpentAt"}},"version":"v2.12.0+491918"}
+{"severity":"Notice","timestamp":"2026-11-01T12:35:05.479046129Z","thread":"7","message":{"Database":{"tag":"DatabaseCreateIndex","newIndex":"policiesByPolicyId"}},"version":"v2.12.0+491918"}
+{"severity":"Info","timestamp":"2026-11-01T12:35:05.479756254Z","thread":"7","message":{"Configuration":{"tag":"ConfigurationPatterns","patterns":["*"]}},"version":"v2.12.0+491918"}
+Failed to configure network parameters: missing or invalid 'ByronGenesisFile' and/or 'ShelleyGenesisFile' from Cardano's configuration
+{"severity":"Info","timestamp":"2026-11-01T12:35:05.481562806Z","thread":"7","message":{"Configuration":{"tag":"ConfigurationCardanoNode","nodeSocket":"/tmp/dijkstra-11.2.0/env/socket/node1/sock","nodeConfig":"/tmp/dijkstra-11.2.0/env/configuration.yaml"}},"version":"v2.12.0+491918"}
+{"severity":"Error","timestamp":"2026-11-01T12:35:05.481981147Z","thread":"7","message":{"Kupo":{"tag":"KupoUnexpectedError","exception":"FailedToRetrieveNetworkParameters"}},"version":"v2.12.0+491918"}

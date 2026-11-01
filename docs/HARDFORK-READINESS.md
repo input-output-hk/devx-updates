@@ -1,6 +1,6 @@
 # Dependency mapping and hardfork readiness
 
-State of the repository on 2026-10-26, branch `hardfork-readiness`.
+State of the repository on 2026-11-01, branch `hardfork-readiness`.
 
 This repository finds the catalog tools that stop working after the Dijkstra
 hard fork (protocol version 12, cardano-node 11.2), explains why from quoted
@@ -27,35 +27,39 @@ The register formats and findings are in
 
 | Area | File | State |
 | --- | --- | --- |
-| Changes | `content/readiness/dijkstra/changes.json` | 19 changes and 2 checked-unchanged areas over 13 surfaces; 73 change citations, all re-verified |
-| Boundary | `boundary.json` | 61 components, 217 evidence items; worst status 49 gap, 2 no-evidence, 1 tracked, 7 in-progress, 2 released |
-| Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source |
-| Transitive links | `transitive.json` | 30 components reached only through lockfiles, in 29 tools |
-| Leads | `leads.json` | 639 entries, 1,610 decisions (557 confirmed, 1,017 not reached, 36 undetermined), none unreviewed; 130 of them on the own code of 48 tools; 118 tools with a confirmed gap here, 138 with the boundary components' own gaps |
-| Unlocks | `unlocks.json` | 21 fixes unlock 81 tools; bump-ready: Marlowe, Marconi |
-| Upgrades | `upgrades.json` | 11 readings (8 own-work, 1 prepared, 2 generic) |
-| Devnet | `devnet.json` | 14 checks, 42 results, 23 failing |
-| Site | `/map/dijkstra` | 206 tools: 113 break, 12 in progress, 2 ready, 45 not verified, 34 dismissed |
-| Dependency graph | `data/readiness/` | 268 tools accounted for, 227 with discovered source, 45 with a native profile (55 profiles, 7 complete), 1,321 evidence objects, 0 capability findings |
+| Changes | `changes.json` | 20 changes and 2 unchanged areas; 74 change citations |
+| Boundary | `boundary.json` | 61 components, 213 evidence items; 46 gap, 2 no-evidence, 9 in-progress, 4 released |
+| Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source; 72 revisions changed |
+| Transitive links | `transitive.json` | 29 lockfile-only component links in 28 tools |
+| Leads | `leads.json` | 637 entries, 1,598 surface decisions (542 confirmed, 1,013 not reached, 43 undetermined); all covered decisions are at current classified revisions. |
+| Unlocks | `unlocks.json` | 19 fixes unlock 82 tools; Marlowe and Marconi remain bump-ready by pin comparison |
+| Upgrades | `upgrades.json` | 11 readings: 8 own-work, 1 prepared, 2 generic |
+| Devnet | `devnet.json` | 15 checks, 48 results, 27 failing |
+| Site | `/map/dijkstra` | 206 tools: 110 break, 9 in progress, 4 ready, 49 not verified, 34 dismissed |
+| History | `/map/dijkstra/history` | Seven tool-state changes; 39 same-version runtime results matched, zero changed outcomes |
+| Dependency graph | `data/readiness/` | Existing 55 native profiles retained and replayed; broad native collection remains paused |
 
-All registers pass `check-changes`, `check-boundary`, `check-leads` and
-`check-upgrades` with `--verify-sources`, and `check-devnet`. All 162 readiness
-tests pass, all 55 native profiles replay identically, and `validate` accepts
-the snapshot.
+The prior complete assessment is checksummed under `content/readiness/dijkstra-history/2026-10-26-integration/`.
+New raw evidence is under `content/readiness/dijkstra-runs/2026-11-01/`. New versions and checks appear separately
+in the runtime comparison; lower counts or changed classification alone do not establish a fix.
 
 ## Target
 
-Dijkstra is the owner-selected target. cardano-node 11.2 has no tag, so the
-registers are pinned to the open integration branch: PR
-[#6677](https://github.com/IntersectMBO/cardano-node/pull/6677) at
-`34ae34db891105d2d17ad9b2704cb56423103da6` (PR #6736 stacks on it with
-identical pins). Component versions are the newest CHaP versions at the
-branch's index-state (`2026-10-09T14:30:01Z`): cardano-ledger-dijkstra
-0.4.0.0, ouroboros-consensus 5.1.0.1, ouroboros-network 1.3.0.0,
-plutus-ledger-api 1.71.0.0, cardano-api 11.8.0.0 and cardano-cli 11.3.0.0.
-These satisfy the branch's bounds; no build plan was solved for them. Feature
-scope follows the Hard Fork Working Group's
-[Dijkstra scope](https://github.com/IntersectMBO/cardano-node/issues/6634).
+The current target is the official [cardano-node 11.2.0 tag](https://github.com/IntersectMBO/cardano-node/releases/tag/11.2.0),
+revision `dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899`, published 2026-10-28 and marked **prerelease** by GitHub.
+Versions and source revisions come from its release dependency table, retained with the run evidence.
+The previous integration-node assessment is preserved byte for byte in
+`content/readiness/dijkstra-history/2026-10-26-integration/`, with SHA256 checksums.
+
+| Component | Version | Source commit |
+| --- | --- | --- |
+| cardano-ledger-dijkstra | 0.4.0.0 | `54e24ba4` |
+| cardano-ledger-conway | 1.24.0.0 | `54e24ba4` |
+| ouroboros-consensus | 5.2.0.0 | `952b7020` |
+| ouroboros-network | 2.0.0.0 | `4646039f` |
+| plutus-ledger-api | 1.71.0.0 | `261766ad` |
+| cardano-api | 11.11.0.0 | `76fa5f2d` |
+| cardano-cli | 11.6.0.0 | `90cc2b9a` |
 
 ## How the readiness assessment works
 
@@ -227,54 +231,64 @@ listed prerequisites first:
 
 | Step | Fix | Tools unlocked (running total) |
 | --- | --- | --- |
-| 1 | db-sync | 3 |
-| 2 | Blockfrost (waits on db-sync) | 16 |
-| 3 | Ogmios | 26 |
-| 4 | Koios (waits on db-sync) | 36 |
-| 5 | Kupo (waits on Ogmios) | 44 |
-| 6 | Move off Maestro | 50 |
-| 7 | Pallas | 55 |
-| 8 | CSL | 59 |
-| 9 | Aiken (its `uplc` evaluator) | 62 |
-| 10–15 | cardano-client-lib, Scalus, cardano-wallet, gouroboros, ledgerjs-hw-app-cardano, cardano-js-sdk | 74 |
-| 16–21 | cquisitor-lib, whisky, Adder, cardano-hw-interop-lib, CML, ouroboros-miniprotocols-ts | 81 |
+| 1 | cardano-db-sync | 3 |
+| 2 | blockfrost | 16 |
+| 3 | ogmios | 26 |
+| 4 | koios | 37 |
+| 5 | kupo | 45 |
+| 6 | Move off Maestro | 51 |
+| 7 | pallas | 56 |
+| 8 | cardano-serialization-lib-csl | 60 |
+| 9 | gouroboros | 64 |
+| 10 | aiken | 67 |
+| 11 | ledgerjs-hw-app-cardano | 69 |
+| 12 | cardano-js-sdk | 71 |
+| 13 | bloxbean-cardano-client-library | 73 |
+| 14 | scalus | 75 |
+| 15 | cardano-wallet | 77 |
+| 16 | cquisitor-lib | 78 |
+| 17 | whisky | 79 |
+| 18 | cardano-hw-interop-lib | 80 |
+| 19 | cardano-multiplatform-lib-cml | 82 |
 
-Marlowe and Marconi have a released upstream fix (cardano-api 11.8).
+Marlowe and Marconi have a released upstream fix by the pin comparison; the current target API is 11.11.0.0. This is not a new dependency solve.
 `upgrades.json` records, from quoted shipped code, whether each bump-ready
 tool's own code handles the new era, and the unlock report records how far
 each pin moves (most cross a breaking release).
 
 ### Devnet verification (R4)
 
-`scripts/readiness/devnet/` reproduces a local one-pool devnet on the
-integration node (IOG Hydra build 15172667 for `34ae34db`) that forks to
-Dijkstra and reaches protocol version 12, then runs the checks recorded in
-`devnet.json`:
+Node 11.2.0 runs a one-pool devnet that enters Dijkstra at epoch 2. Two governance hard forks raise the
+protocol version from 10 to 12 before the transaction matrix. The 2026-11-01 run uses CLI 11.6.0.0.
+Full logs, 17 transaction encodings, 168 Dijkstra blocks, a Conway positive control and resolved build inputs
+are retained under `content/readiness/dijkstra-runs/2026-11-01/`; the recipe is in `scripts/readiness/devnet/`.
+Results are specific to the named version and capability. Historical patched tool controls are labelled explicitly.
 
 | Check | Result |
 | --- | --- |
-| `fork-to-pv12` | The node forks to Dijkstra at protocol version 12 with 54 parameters |
-| `n2c-handshake` | Only V23 is accepted; gouroboros 0.208.5 is refused; v0.213.x, Ogmios v7.0.0, Kupo v2.12 and db-sync 13.7.2.1 connect |
-| `cross-era-submission` | Which Conway-built transactions survive the fork; the mempool returns the three-element Dijkstra form |
-| `block-shape` | Non-segregated body; the header is still the ten-field Praos header, contradicting the CDDL's |
-| `service-decoding` | Ogmios v7.0.0 and Kupo v2.12 exit at the first Dijkstra block |
-| `tx-era-detection` | gouroboros cannot place ordinary Dijkstra transactions |
-| `tool-upgrades` | txtop and cardano-node-api before and after the gouroboros upgrade |
-| `pallas-chain-sync` | No Pallas revision decodes the node's Dijkstra blocks |
-| `pallas-transactions` | Only Pallas's `dijkstra` branch decodes mempool transactions, and only when told the era |
-| `cml-decoding` | CML 6.2.0 decodes neither Dijkstra blocks nor transactions |
-| `js-sdk-transactions` | cardano-js-sdk 0.47.1 decodes and re-encodes plain Dijkstra transactions byte for byte |
-| `db-sync-and-blockfrost` | db-sync 13.7.2.1 stops at the first Dijkstra block; Blockfrost serves the pre-fork chain as current |
-| `csl-decoding` | CSL 17.0.0 and 15.0.3 decode none of 119 Dijkstra blocks; plain Dijkstra transactions decode but `Transaction` re-encodes them in the legacy four-element form |
-| `pycardano-transactions` | PyCardano 0.19.2 cannot decode a Dijkstra transaction carrying metadata (it reads the third element as `is_valid`); cardano-js-sdk 0.47.1 decodes the same transaction exactly |
+| `fork-to-pv12` | Dijkstra PV12; 54 protocol parameters. |
+| `n2c-handshake` | Only V23 accepted; gouroboros 0.208.5 refused; v0.213.0, v0.213.9, v0.216.3 and adapted services connect. |
+| `cross-era-submission` | Conway payment, deposit registration, key-hash signer and metadata accepted; deposit-less registration rejected. Dijkstra payment, deposit registration and metadata accepted. |
+| `block-shape` | Ten-field header and non-segregated body; all three tested recent gouroboros versions fail at the first Dijkstra block. |
+| `service-decoding` | Ogmios 7.0.0 and Kupo 2.12 still exit on Dijkstra block decoding after configuration adaptation. |
+| `tx-era-detection` | gouroboros still cannot infer the era of ordinary Dijkstra transactions; patched cardano-node-api submission and mempool listing fail. |
+| `tool-upgrades` | Historical txtop and patched cardano-node-api controls connect after the dependency change; that is not full compatibility. |
+| `pallas-chain-sync` | v1.4.0, main b4a519fa and dijkstra e7ea1726 decode Conway, but no Dijkstra block. |
+| `pallas-transactions` | Only the dijkstra branch with explicit era and unstable decodes the three-element Dijkstra form. |
+| `cml-decoding` | CML 6.2.0 decodes the Conway control; none of 168 Dijkstra blocks or three-element transactions. |
+| `js-sdk-transactions` | @cardano-sdk/core 0.47.1 round-trips all 17 encodings exactly; advanced body keys are not covered. |
+| `db-sync-and-blockfrost` | db-sync 13.7.2.1 stalls at block 18; Blockfrost RYO 6.8.2 serves pre-fork data as latest. |
+| `csl-decoding` | CSL 17.0.0 and 15.0.3 decode no Dijkstra blocks; transaction re-encoding adds the legacy fourth element. |
+| `pycardano-transactions` | PyCardano 0.19.2 fails on three Dijkstra metadata encodings; the other 14 round-trip exactly. |
+| `node-config-envelope` | New node configuration envelope is rejected by Ogmios and Kupo; flattening settings allows their protocol checks. |
 
-The recipe reproduced on a second machine with identical errors and decoder
-offsets, and again on 2026-10-26 for the CSL and PyCardano runs. CSL's
-transaction, block, parameter-update and pool-certificate decoders were
-re-read on 2026-10-26: what was `no-evidence` is now a cited `gap` on those
-four surfaces. Era identity and transaction rules stay `no-evidence`. The Marlowe and Marconi bumps were dependency-solved in
-`scripts/readiness/bump-solve/`: Marlowe resolves on cardano-api 11.8.0.0 only
-with four companion pins raised across majors; Marconi does not resolve.
+Koios and advanced Dijkstra bodies (nested transactions, direct deposits, balance intervals, PlutusV4) were not run.
+Source progress remains separate: cardano-c 2.0.0-rc.6 and Plutarch 1.15.0 contain new support; Cometa 2.0.0-rc.4
+contains partial support. db-sync has merged work on master, but its released version still blocks consumers.
+A newly published release is not an end-to-end devnet pass.
+
+Historical Marlowe/Marconi dependency solves under `scripts/readiness/bump-solve/` targeted cardano-api 11.8.0.0.
+They were not rerun as part of this source-and-devnet refresh and do not prove resolution against 11.11.0.0.
 
 ## How the dependency graph works
 
@@ -352,7 +366,8 @@ The site is a static export; a malformed register fails the build.
 
 | Date | Decision |
 | --- | --- |
-| 2026-10-18 | Dijkstra is the target, bound to the 11.2 integration branch until 11.2 is tagged. |
+| 2026-10-18 | Dijkstra is the target, initially bound to the 11.2 integration branch. |
+| 2026-11-01 | Refresh against tagged node 11.2.0; preserve the prior complete assessment with checksums and expose a version-aware history comparison (ADR-1/2). |
 | 2026-10-19 | Change-first assessment: readiness is driven by changed surfaces (R1–R4), not by dependency-graph completeness. Broad transitive collection is paused; existing profiles, queues and packets stay replayable. |
 | 2026-10-20 | `in-progress` needs visible work toward the target; a release on superseded definitions is a `gap`. Pins are judged against `firstReleases`. |
 | 2026-10-20 | Hosted Blockfrost and Koios consumers inherit the self-hosted verdicts. |
@@ -366,13 +381,8 @@ The site is a static export; a malformed register fails the build.
 
 ## Known limits
 
-- The registers are pinned to an untagged integration branch. When 11.2 is
-  tagged, its revision must be compared with `changes.json`'s target.
-- R2 statuses were observed on 2026-10-19 and 2026-10-20 (Pallas, CML,
-  cardano-js-sdk and db-sync updated from the devnet on 2026-10-22; CSL's
-  decoders re-read at the same observed revision and CSL and PyCardano run on
-  the devnet on 2026-10-26). A head observation says nothing about unpublished
-  work.
+- The target is the tagged 11.2.0 prerelease. Component revisions and releases were re-observed on 2026-11-01; unpublished work is unknown.
+- Newly recorded library releases are supported by source evidence, not by a full runtime matrix. Prerelease support must not be assumed present in an older stable consumer pin.
 - Classification is lexical. Lead decisions settle reachability by reading;
   only the devnet checks execute anything.
 - Transitive links need a committed lockfile. Haskell and PureScript projects

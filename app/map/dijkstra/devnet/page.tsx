@@ -4,7 +4,7 @@ import { dijkstraSite } from "@/lib/readiness/dijkstra-site";
 
 export const metadata: Metadata = {
   title: "Dijkstra devnet run",
-  description: "The node 11.2 integration branch on a local devnet forked to Dijkstra: which changes and components held up.",
+  description: "Tagged node 11.2.0 on a local devnet forked to Dijkstra: which changes and components held up.",
 };
 
 export default function DevnetPage() {
@@ -14,7 +14,7 @@ export default function DevnetPage() {
     <section>
       <p className="text-muted">
         {devnet.run.date}: cardano-node <a href={`https://github.com/${devnet.run.node.repo}/tree/${devnet.run.node.revision}`} target="_blank" rel="noreferrer" className="font-mono">{devnet.run.node.revision.slice(0, 10)}</a>{" "}
-        (11.2 integration branch) on a local one-pool devnet, forked to Dijkstra and raised to protocol version 12
+        (tagged 11.2.0 prerelease) on a local one-pool devnet, forked to Dijkstra and raised to protocol version 12
         through governance. {results.filter((r) => r.outcome === "fail").length} of {results.length} results failed.
         The recipe is in scripts/readiness/devnet.
       </p>

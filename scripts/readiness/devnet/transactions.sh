@@ -4,13 +4,16 @@
 # watched during the run and its raw transactions are written to $DEVNET_DIR/work/tx/mempool.hex.
 set -uo pipefail
 . "$(dirname "$0")/env.sh"
+[ "$(cli query protocol-parameters "${M[@]}" | jq -r .protocolVersion.major)" = 12 ] || {
+  echo "Dijkstra transaction checks require protocol version 12" >&2; exit 1;
+}
 W=$DEVNET_DIR/work/tx; rm -rf "$W"; mkdir -p "$W"
 FEE=200000; AMT=50000000
 DEP=$(cli query protocol-parameters "${M[@]}" | jq .stakeAddressDeposit)
 [ -n "${MEMPOOL_PROBE:-}" ] && { "$MEMPOOL_PROBE" mempool "$SOCKET" 60 > "$W/mempool.hex" & }
 
 IN=$(cli query utxo --address "$ADDR" "${M[@]}" --output-json | jq -r 'to_entries | max_by(.value.value.lovelace) | .key')
-outs=(); for _ in $(seq 0 7); do outs+=(--tx-out "$ADDR+$AMT"); done
+outs=(); for _ in $(seq 0 8); do outs+=(--tx-out "$ADDR+$AMT"); done
 cli transaction build "${M[@]}" --tx-in "$IN" "${outs[@]}" --change-address "$ADDR" --out-file "$W/split.tx" >/dev/null
 cli transaction sign --tx-body-file "$W/split.tx" --signing-key-file "$SKEY" "${M[@]}" --out-file "$W/split.signed"
 cli transaction submit "${M[@]}" --tx-file "$W/split.signed" >/dev/null
@@ -48,4 +51,5 @@ run conway-metadata conway 4 0 --metadata-json-file <(echo '{"674":{"msg":["devn
 run dijkstra-payment dijkstra 5 0
 run dijkstra-legacy-reg dijkstra 6 "$DEP" --certificate-file "$W/kd0.cert"
 run dijkstra-reg-with-deposit dijkstra 7 "$DEP" --certificate-file "$W/kd7.cert"
+run dijkstra-metadata dijkstra 8 0 --metadata-json-file <(echo '{"674":{"msg":["devnet"]}}')
 wait

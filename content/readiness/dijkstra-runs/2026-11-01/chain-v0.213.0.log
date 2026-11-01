@@ -1,0 +1,3 @@
+tip slot 12377
+connection error: protocol error: decode Dijkstra block error: decode Dijkstra block header: unexpected Dijkstra block header body: expected exactly 12 fields, got 10
+    19  Conway: block decoded

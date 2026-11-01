@@ -2,6 +2,27 @@
 
 The collection pipeline writes local snapshots. The website reads committed data. All tools remain hardfork-unassessed until target-specific tests are implemented.
 
+## Refresh Dijkstra without losing history
+
+Following ADR-1/2, both current and archived assessments are committed file data and the history view is statically built.
+Assessment decisions remain separate from collected evidence (ADR-3).
+
+1. Before changing any register, run `npm run readiness -- archive-dijkstra --output content/readiness/dijkstra-history/<date>-<target>`.
+   Existing destinations are refused. Keep the archive intact: the site verifies each file against its SHA256 manifest.
+2. Pin the official node release revision, asset checksum and published component set in `changes.json` and the devnet recipe.
+3. Re-observe boundary heads/releases/trackers, run `classify-surfaces`, then `transitive`, then `classify-surfaces --reclassify`.
+4. Re-read changed or missing lead/upgrade evidence. A moved line or merged PR does not automatically prove a gap fixed.
+5. Run the local devnet recipe on the exact target, recording versions, fixtures, logs and resolved build inputs in a new run directory.
+6. Update `devnet.json`, boundary evidence and source decisions from the observations. `check-devnet` and the site reject a run from a different target revision.
+7. Run `sync-tracking`, `classify-surfaces --reclassify`, `unlocks`, the four `check-* --verify-sources` commands (changes, boundary, leads, upgrades), and `check-devnet` sequentially.
+8. Verify zero stale, orphaned or unreviewed lead decisions, validate/replay retained native evidence, then run the tests and static build. Review `/map/dijkstra/history` for actual changes.
+
+Fixed-input parsing, checksums, lexical scanning, report derivation and offline codec replay are deterministic.
+Live GitHub observations, human reachability decisions, unlocked dependency resolution and testnet timing are not.
+Compare semantic results for the same check and tested version; different block counts, hashes and slots are not progress.
+A new tested version appears separately, and a result not rerun stays absent rather than inheriting an old pass.
+The November refresh leaves the existing native dependency graph intact; broad native collection remains paused.
+
 ## Quick start
 
 ```sh
