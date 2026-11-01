@@ -120,7 +120,7 @@ test("classification inherits R2 readiness through coupling, not through markers
     { path: "cabal.project", content: "constraints:\n  , cardano-api ==11.0.0.0\n  , cardano-ledger-conway >=1.19\n" },
   ]), boundary, changes);
   const api = haskell.surfaces.find((s) => s.surface === "cardano-api-haskell")!;
-  assert.deepEqual([api.channels[0].via, api.readiness], ["cardano-api@11.0.0.0<11.8.0.0", "gap"], "pins are read from every versioned manifest line, not only the examples");
+  assert.deepEqual([api.channels[0].via, api.readiness], ["cardano-api@11.0.0.0<11.11.0.0", "gap"], "pins are read from every versioned manifest line, not only the examples");
   assert.equal(haskell.surfaces.find((s) => s.surface === "node-to-client-protocol")!.readiness, "upstream", "unversioned upstream names stay upstream");
   const benchOnly = classifyTool({ id: "bench", repo: "o/b", revision: "9".repeat(40) }, scanSources([{ path: "benchmarks/go.mod", content: "require github.com/blinklabs-io/gouroboros v0.159.2\n" }]), boundary, changes);
   assert.deepEqual([benchOnly.exposure, benchOnly.readiness], ["auxiliary", "unassessed"], "auxiliary coupling never sets readiness");

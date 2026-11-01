@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-26-integration",
+  "repositoryRevision": "faafcce458db0d4afcb3e88c134a2cf560040135",
+  "nodeRevision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+  "files": {
+    "README.md": "56e40507c7ebf97159aff31988b614bc2deac3f21b7fc1443b8e1a065509bd9d",
+    "boundary.json": "103da43739daf6887ba9bc2cf309d52aaa05ab4e1d44f7d1eb58faae77f54f87",
+    "changes.json": "376169284f5506e5dcc1aae55345d85c9f84618064b5da8ed14a689677cd2f55",
+    "classification.json": "f64243fad16402f418fb57573d4087bc092406e6ad86087d43fdbaffa175142c",
+    "devnet.json": "993e559eb99451617c33e4f1b1390c7f9b0c13eff50eb354915c2585a55e9581",
+    "leads.json": "4fcb4c245c2f17c2e141d17b8de8f020a6e20b29d3e6d2034a4856b9ccbfdee0",
+    "tracking-state.json": "8d0c48321d977fd5717943c6134b64f5a150a35592279423e66ab7440e8b6380",
+    "tracking.yaml": "cbb702cc624bb8794d13543bd834f333749e2654107f38f3941ffea6e3cb2466",
+    "transitive.json": "20be4c550d86941d792caeb2ba8773e2dbeb607aaa77a74c0422ef9efbac3e50",
+    "unlocks.json": "028469e477520ffb256b23d75e3a02fa9dcf34034f23788efd4c47fe8e30c410",
+    "upgrades.json": "1130c208d1ec8c32facd4d80b5c9eb68660ed2355f721b3099f8b4d8102e499a"
+  }
+}

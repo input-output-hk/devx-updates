@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { parseBoundaryRegister } from "./boundary";
 import { parseChangeRegister } from "./dijkstra";
-import { devnetConsistency, parseDevnetRegister, resultsFor } from "./devnet";
+import { devnetConsistency, devnetTargetConsistency, parseDevnetRegister, resultsFor } from "./devnet";
 import type { ClassificationRegister } from "./surface-collect";
 
 const read = (name: string) => JSON.parse(readFileSync(`content/readiness/dijkstra/${name}`, "utf8"));
@@ -76,8 +76,17 @@ test("the committed devnet register matches the committed registers and recipe",
     changes: new Set(changes.changes.map((c) => c.id)), components: new Set(boundary.components.map((c) => c.id)), tools: new Set(tools.map((t) => t.id)),
   });
   assert.deepEqual(devnetConsistency(boundary, devnet), []);
+  assert.deepEqual(devnetTargetConsistency(changes, devnet), []);
   for (const path of [devnet.run.recipe, ...devnet.checks.flatMap((c) => c.recipe)]) assert.ok(existsSync(path), `${path} exists`);
   assert.deepEqual(resultsFor(devnet, "change", "header-version-info").map((r) => r.result.outcome), ["fail"], "the node emits the ten-field header");
   const verified = boundary.components.filter((c) => c.assessments.some((a) => a.status === "verified")).map((c) => c.id).sort();
   assert.deepEqual(verified, ["cardano-db-sync", "gouroboros", "kupo", "ogmios"]);
+});
+
+test("changing the node target cannot relabel old runtime evidence as a new run", () => {
+  const devnet = parseDevnetRegister(base(), known);
+  const target = (revision: string, key = "release") => ({ ...changes, target: { [key]: { revision } } });
+  assert.deepEqual(devnetTargetConsistency(target("c".repeat(40)), devnet), []);
+  assert.match(devnetTargetConsistency(target("d".repeat(40)), devnet).join(), /differs from target/);
+  assert.match(devnetTargetConsistency(target("d".repeat(40), "integrationBranch"), devnet).join(), /differs from target/);
 });

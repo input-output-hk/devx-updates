@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseBoundaryRegister, worstStatus, type BoundaryRegister } from "./boundary";
 import { parseChangeRegister, type ChangeRegister, type Citation } from "./dijkstra";
-import { devnetConsistency, parseDevnetRegister, resultsFor, type DevnetRegister, type SubjectKind } from "./devnet";
+import { devnetConsistency, devnetTargetConsistency, parseDevnetRegister, resultsFor, type DevnetRegister, type SubjectKind } from "./devnet";
 import { OWN, parseLeadRegister, type Lead, type LeadRegister } from "./leads";
 import { readJson } from "./store";
 import type { ClassificationRegister } from "./surface-collect";
@@ -26,7 +26,12 @@ let cached: DijkstraSite | undefined;
 
 export function dijkstraSite(): DijkstraSite {
   if (cached) return cached;
-  const dir = join(process.cwd(), "content/readiness/dijkstra");
+  cached = loadDijkstraSite(join(process.cwd(), "content/readiness/dijkstra"));
+  return cached;
+}
+
+/** The same projection is used for current and archived registers (ADR-1/2). */
+export function loadDijkstraSite(dir: string): DijkstraSite {
   const changes = parseChangeRegister(readJson(join(dir, "changes.json")));
   const boundary = parseBoundaryRegister(readJson(join(dir, "boundary.json")), changes);
   const leads = parseLeadRegister(readJson(join(dir, "leads.json")), changes);
@@ -39,13 +44,12 @@ export function dijkstraSite(): DijkstraSite {
   });
   const tracking = loadTracking(readFileSync(join(dir, "tracking.yaml"), "utf8"), new Set(register.tools.map((t) => t.id)));
   const { links: linkState } = parseTrackingState(readJson(join(dir, "tracking-state.json")));
-  const inconsistent = devnetConsistency(boundary, devnet);
+  const inconsistent = [...devnetConsistency(boundary, devnet), ...devnetTargetConsistency(changes, devnet)];
   if (inconsistent.length) throw new Error(`Boundary and devnet registers disagree: ${inconsistent.join("; ")}`);
-  cached = {
+  return {
     changes, boundary, leads, unlocks, upgrades, devnet, tracking, linkState,
     classification: { generatedAt: register.generatedAt, summary: register.summary, tools: new Map(register.tools.map((t) => [t.id, t])) },
   };
-  return cached;
 }
 
 export const citationUrl = (c: Citation) => `https://github.com/${c.repo}/blob/${c.revision}/${c.path}#L${c.line}`;
@@ -162,7 +166,13 @@ function computedState(site: DijkstraSite, tool: ToolClassification): Computed {
   const moveTags = retired.map((r): StateTag => ({ label: `Move off ${r}`, tone: "act" }));
   const failedTag: StateTag[] = failed ? [{ label: "Failed on devnet", tone: "bad" }] : [];
   const base = { tool: tool.id, blockedBy };
-  if (UPSTREAM_TOOLS.has(tool.id)) return { ...base, state: "in-progress", reason: "Part of the node 11.2 release, not tagged yet", tags: [{ label: "Node 11.2, not tagged", tone: "work" }] };
+  if (UPSTREAM_TOOLS.has(tool.id)) {
+    const released = site.changes.target.release !== undefined;
+    const label = released ? `Node ${String(site.changes.target.nodeRelease)} prerelease` : "Node 11.2, not tagged";
+    return { ...base, state: released ? "unverified" : "in-progress", reason: released
+      ? `Part of the tagged node ${String(site.changes.target.nodeRelease)} component set; the devnet checks cover specific capabilities`
+      : "Part of the node 11.2 release, not tagged yet", tags: [{ label, tone: "work" }] };
+  }
   if (own === "in-progress" || own === "tracked") {
     const work = own === "tracked" ? "Dijkstra work tracked upstream" : "Dijkstra support underway, not released";
     return {

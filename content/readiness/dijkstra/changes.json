@@ -3,24 +3,9 @@
   "target": {
     "name": "Dijkstra",
     "majorProtocolVersion": 12,
-    "nodeRelease": "11.2 (untagged)",
-    "integrationBranch": {
-      "repo": "IntersectMBO/cardano-node",
-      "pullRequest": 6677,
-      "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
-      "note": "PR 6736 (fmaste/prepare-11.2, c2468b05d8997d1b14024b3eaa10cb76e5fc86b7) stacks on this branch and changes only benchmarking/workbench files; CHaP pin and index-state are identical."
-    },
+    "nodeRelease": "11.2.0",
     "componentSelection": {
-      "method": "Newest CHaP version at the branch's index-state, consistent with its declared bounds; not a solved build plan.",
-      "chapIndex": {
-        "repo": "IntersectMBO/cardano-haskell-packages",
-        "revision": "0f444414db3931fb70d8667f4791dec49e1e23bf",
-        "indexState": "2026-10-09T14:30:01Z"
-      },
-      "chapSources": {
-        "repo": "IntersectMBO/cardano-haskell-packages",
-        "revision": "8b4b3fc75c97e8f4c3b504d8582ec748809114e8"
-      },
+      "method": "Versions and immutable source revisions published in the official node 11.2.0 release dependency table; retained in the 2026-11-01 release evidence.",
       "components": [
         {
           "package": "cardano-ledger-dijkstra",
@@ -36,15 +21,15 @@
         },
         {
           "package": "ouroboros-consensus",
-          "version": "5.1.0.1",
+          "version": "5.2.0.0",
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c"
+          "revision": "952b7020172dd7ab135b66e736da070309b47909"
         },
         {
           "package": "ouroboros-network",
-          "version": "1.3.0.0",
+          "version": "2.0.0.0",
           "repo": "IntersectMBO/ouroboros-network",
-          "revision": "2fb69829a19b5c04e4fb212bdd78fb63f9d2d776"
+          "revision": "4646039f05eb809bd5252af17121644ec1dc0c2c"
         },
         {
           "package": "plutus-ledger-api",
@@ -54,15 +39,15 @@
         },
         {
           "package": "cardano-api",
-          "version": "11.8.0.0",
+          "version": "11.11.0.0",
           "repo": "IntersectMBO/cardano-api",
-          "revision": "b0afab8b37a623c5c011344a7b47f0567cf6eb19"
+          "revision": "76fa5f2d5064d74b25b0ff85318762fb96c97f62"
         },
         {
           "package": "cardano-cli",
-          "version": "11.3.0.0",
+          "version": "11.6.0.0",
           "repo": "IntersectMBO/cardano-cli",
-          "revision": "b8bbda762e596ee6c0ac0d65bc2ca01b1bdc7e10"
+          "revision": "90cc2b9ae147abacf8169c848ec10dc4296796f6"
         }
       ]
     },
@@ -83,6 +68,15 @@
       "issue": 6634,
       "retrieved": "2026-10-19",
       "note": "Hard Fork Working Group scope; a living issue, not an immutable record."
+    },
+    "release": {
+      "repo": "IntersectMBO/cardano-node",
+      "tag": "11.2.0",
+      "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+      "publishedAt": "2026-10-28T12:53:25Z",
+      "prerelease": true,
+      "url": "https://github.com/IntersectMBO/cardano-node/releases/tag/11.2.0",
+      "assetSha256": "8b287e300ffb2063522fc33d50da6ecee8fa10fc7445c906fae0ca9783db8e03"
     }
   },
   "scope": [
@@ -248,14 +242,14 @@
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "revision": "952b7020172dd7ab135b66e736da070309b47909",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Block.hs",
           "line": 293,
           "quote": "pattern TagDijkstra x = S (S (S (S (S (S (S (Z x)))))))"
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "revision": "952b7020172dd7ab135b66e736da070309b47909",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 180,
           "quote": "BlockDijkstra blockDijkstra -> prependTag 8 $ encodeDisk ccfgDijkstra blockDijkstra"
@@ -286,7 +280,7 @@
       "citations": [
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "revision": "952b7020172dd7ab135b66e736da070309b47909",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 346,
           "quote": "[ (NodeToClientV_23, CardanoNodeToClientVersion19)"
@@ -300,7 +294,7 @@
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "revision": "952b7020172dd7ab135b66e736da070309b47909",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 342,
           "quote": "Note that 11.x introduced no new version"
@@ -366,7 +360,7 @@
       ],
       "compatibility": "decode-break",
       "basis": "source-verified",
-      "summary": "The target CDDL's header_body replaces protocol_version with header_version_info [highest_supported_major_version, self_reported_software_tag] and adds block_body_contains_leios_cert and eb_references_announcement, with vrf_cert's output exactly 64 bytes. The shared Praos header encoder at the same ledger revision still writes the ten-field header with protocol_version, and the 11.2 integration node emits that header in Dijkstra blocks (devnet check block-shape): decoders that follow the CDDL reject the node's blocks.",
+      "summary": "The target CDDL's header_body replaces protocol_version with header_version_info [highest_supported_major_version, self_reported_software_tag] and adds block_body_contains_leios_cert and eb_references_announcement, with vrf_cert's output exactly 64 bytes. The shared Praos header encoder at the same ledger revision still writes the ten-field header with protocol_version, and the tagged node 11.2.0 emits that header in Dijkstra blocks (devnet check block-shape): decoders that follow the CDDL reject the node's blocks.",
       "affects": "Header decoders in chain-sync clients, explorers that show the header protocol version, and pool/version telemetry tools.",
       "citations": [
         {
@@ -656,7 +650,7 @@
       "compatibility": "additive",
       "basis": "source-verified",
       "summary": "Language 3 / script tag 4 / witness key 8 / auxiliary-data key 5 / cost-model key 3. The V4 TxInfo adds txInfoSubTxIx, direct deposits, account balance intervals, guards and required top-level guards, and drops txInfoFee. ScriptPurpose gains Guarding. Builtin batches 1-6 are available; batch 7 is not approved for any version.",
-      "affects": "Compilers and script frameworks (Plinth, Plutarch, Aiken, Scalus, plu-ts, OpShin, Helios, …), off-chain script evaluators used for ex-unit estimation, script envelope/language enums, cost-model handling, and libraries that construct script data hashes.",
+      "affects": "Compilers and script frameworks (Plinth, Plutarch, Aiken, Scalus, plu-ts, OpShin, Helios, \u2026), off-chain script evaluators used for ex-unit estimation, script envelope/language enums, cost-model handling, and libraries that construct script data hashes.",
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
@@ -862,7 +856,7 @@
       "citations": [
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "revision": "952b7020172dd7ab135b66e736da070309b47909",
           "path": "ouroboros-consensus/src/ouroboros-consensus/Ouroboros/Consensus/HardFork/Combinator/InjectTxs.hs",
           "line": 227,
           "quote": "-- Tx failed to deserialise in the target era"
@@ -887,24 +881,24 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-api",
-          "revision": "b0afab8b37a623c5c011344a7b47f0567cf6eb19",
+          "revision": "76fa5f2d5064d74b25b0ff85318762fb96c97f62",
           "path": "cardano-api/src/Cardano/Api/Era/Internal/Eon/ShelleyBasedEra.hs",
           "line": 132,
           "quote": "ShelleyBasedEraDijkstra :: ShelleyBasedEra DijkstraEra"
         },
         {
           "repo": "IntersectMBO/cardano-cli",
-          "revision": "b8bbda762e596ee6c0ac0d65bc2ca01b1bdc7e10",
+          "revision": "90cc2b9ae147abacf8169c848ec10dc4296796f6",
           "path": "cardano-cli/src/Cardano/CLI/EraBased/Option.hs",
-          "line": 57,
+          "line": 64,
           "quote": "Opt.progDesc \"Dijkstra era commands\""
         },
         {
           "repo": "IntersectMBO/cardano-cli",
-          "revision": "b8bbda762e596ee6c0ac0d65bc2ca01b1bdc7e10",
+          "revision": "90cc2b9ae147abacf8169c848ec10dc4296796f6",
           "path": "cardano-cli/src/Cardano/CLI/EraBased/Option.hs",
-          "line": 61,
-          "quote": "Opt.progDesc \"Latest era commands (Conway)\""
+          "line": 35,
+          "quote": "type MainnetEra = ConwayEra"
         }
       ]
     },
@@ -960,35 +954,35 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
           "path": "cardano-node/src/Cardano/Node/Configuration/POM.hs",
           "line": 648,
           "quote": "npcDijkstraGenesisFile     <- v .:  \"DijkstraGenesisFile\""
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
           "path": "cardano-node/src/Cardano/Node/Configuration/POM.hs",
           "line": 361,
           "quote": "<*> (if npcExperimentalHardForksEnabled hfp then Just <$> parseDijkstraProtocol v else pure Nothing)"
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
           "path": "cardano-node/src/Cardano/Node/Configuration/POM.hs",
           "line": 687,
           "quote": "then (,) <$>  v .:? \"TestDijkstraHardForkAtEpoch\" <*> v .:? \"TestDijkstraHardForkAtVersion\""
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
           "path": "cardano-node/src/Cardano/Node/Protocol/Cardano.hs",
           "line": 139,
           "quote": "Nothing -> pure Dijkstra.emptyDijkstraGenesis"
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
           "path": "cardano-node/src/Cardano/Node/Protocol/Cardano.hs",
           "line": 193,
           "quote": "then ProtVer (natVersion @12) 0"
@@ -1009,14 +1003,14 @@
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
           "path": "cardano-testnet/CHANGELOG.md",
-          "line": 51,
+          "line": 73,
           "quote": "- Disable `ExperimentalHardForksEnabled` in the default testnet config."
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
           "path": "cardano-testnet/src/Testnet/Defaults.hs",
           "line": 318,
           "quote": ", (\"TestDijkstraHardForkAtEpoch\", Aeson.Number 0)"
@@ -1065,10 +1059,34 @@
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "revision": "952b7020172dd7ab135b66e736da070309b47909",
           "path": "ouroboros-consensus-cardano/src/shelley/Ouroboros/Consensus/Shelley/Ledger/Query.hs",
           "line": 131,
           "quote": "  GetCurrentPParams ::"
+        }
+      ]
+    },
+    {
+      "id": "node-config-envelope",
+      "title": "Published node configurations use a versioned envelope",
+      "scope": [
+        "node-release"
+      ],
+      "activation": "node-11.2-upgrade",
+      "surfaces": [
+        "node-configuration"
+      ],
+      "compatibility": "interface-change",
+      "basis": "source-verified",
+      "summary": "Node 11.2.0 publishes configuration sections inside a versioned Configuration envelope. Consumers that directly read legacy top-level genesis paths need an equivalent flat configuration or envelope support. Released Ogmios and Kupo fail at configuration loading when given the new envelope; their decoder tests use a separate flattened configuration.",
+      "affects": "Services and deployment tools that read the node configuration directly.",
+      "citations": [
+        {
+          "repo": "IntersectMBO/cardano-node",
+          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "path": "configuration/cardano/mainnet-config.json",
+          "line": 3,
+          "quote": "\"Configuration\": {"
         }
       ]
     }
@@ -1081,14 +1099,14 @@
       "citations": [
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "revision": "952b7020172dd7ab135b66e736da070309b47909",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 324,
           "quote": "[ (NodeToNodeV_14, CardanoNodeToNodeVersion2)"
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "revision": "952b7020172dd7ab135b66e736da070309b47909",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 349,
           "quote": "latestReleasedNodeVersion _prx = (Just NodeToNodeV_15, Just NodeToClientV_23)"
@@ -1109,9 +1127,9 @@
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "34ae34db891105d2d17ad9b2704cb56423103da6",
+          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
           "path": "cardano-node/src/Cardano/Node/Run.hs",
-          "line": 430,
+          "line": 431,
           "quote": ", rnFeatureFlags = mempty -- TODO(10.7) forward this to CLI options?"
         }
       ]
@@ -1123,7 +1141,7 @@
       "citations": [
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "4ab9e25069c24be341fb96887a416443f822d01c",
+          "revision": "952b7020172dd7ab135b66e736da070309b47909",
           "path": "ouroboros-consensus-cardano/src/shelley/Ouroboros/Consensus/Shelley/Ledger/NetworkProtocolVersion.hs",
           "line": 36,
           "quote": "[ (NodeToClientV_23, ShelleyNodeToClientVersion15)"

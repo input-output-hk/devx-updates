@@ -25,12 +25,13 @@ import { scanIntegrations } from "../../lib/readiness/integration-scan";
 import { changesBySurface, parseChangeRegister, verifyCitations, type ChangeRegister } from "../../lib/readiness/dijkstra";
 import { parseBoundaryRegister, statusSummary, verifyBoundarySources, type BoundaryRegister } from "../../lib/readiness/boundary";
 import { classifyCatalog, reclassifyCatalog, type ClassificationRegister } from "../../lib/readiness/surface-collect";
+import { archiveDijkstra } from "../../lib/readiness/dijkstra-history";
 import { leadCoverage, parseLeadRegister, verifyLeadSources } from "../../lib/readiness/leads";
 import { collectTransitive, type TransitiveRegister } from "../../lib/readiness/transitive";
 import { unlockReport, unlocksOf, toolBlockers } from "../../lib/readiness/unlocks";
 import { parseUpgradeRegister, upgradeCoverage, verifyUpgradeSources } from "../../lib/readiness/upgrades";
 import { targetVersions } from "../../lib/readiness/surfaces";
-import { devnetConsistency, parseDevnetRegister } from "../../lib/readiness/devnet";
+import { devnetConsistency, devnetTargetConsistency, parseDevnetRegister } from "../../lib/readiness/devnet";
 import { loadTracking, parseTrackingState, syncTracking } from "../../lib/readiness/tracking";
 
 const { positionals, values } = parseArgs({ allowPositionals: true, options: {
@@ -102,6 +103,8 @@ check-leads     [--input content/readiness/dijkstra/leads.json] [--verify-source
 check-upgrades  [--verify-sources]
                 Own era handling of every bump-ready tool (content/readiness/dijkstra/upgrades.json)
 check-devnet    Devnet results (content/readiness/dijkstra/devnet.json): subjects, recipes, and the boundary evidence citing them
+archive-dijkstra --output content/readiness/dijkstra-history/<assessment-id>
+                Preserve the current registers with checksums; refuses to overwrite an archive
 sync-tracking   Read the title and open/merged/closed state of every GitHub link in
                 content/readiness/dijkstra/tracking.yaml via gh (read-only) into tracking-state.json
 unlocks         [--component scalus[,cardano-js-sdk]] [--output content/readiness/dijkstra/unlocks.json]
@@ -111,6 +114,11 @@ unlocks         [--component scalus[,cardano-js-sdk]] [--output content/readines
 Common options: --directory data/readiness --state .readiness --catalog data/cardano-graph.json
 Native adapters: ${NATIVE_ADAPTERS.join(", ")}.
 Runnable collectors: ${COLLECT_ADAPTERS.join(", ")}.`);
+    return;
+  }
+  if (command === "archive-dijkstra") {
+    const revision = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+    console.log(JSON.stringify(archiveDijkstra("content/readiness/dijkstra", required("output"), revision), null, 2));
     return;
   }
   if (command === "inventory") {
@@ -154,7 +162,7 @@ Runnable collectors: ${COLLECT_ADAPTERS.join(", ")}.`);
     for (const failure of failures) console.error(failure);
     if (failures.length) throw new Error(`${failures.length} citations no longer match their pinned sources`);
     const devnet = loadDevnet(changes, register);
-    const inconsistent = devnetConsistency(register, devnet);
+    const inconsistent = [...devnetConsistency(register, devnet), ...devnetTargetConsistency(changes, devnet)];
     for (const problem of inconsistent) console.error(problem);
     if (inconsistent.length) throw new Error(`${inconsistent.length} assessments disagree with the devnet register`);
     const evidence = register.components.reduce((sum, c) => sum + c.assessments.reduce((n, a) => n + a.evidence.length, 0), 0);
@@ -235,7 +243,7 @@ Runnable collectors: ${COLLECT_ADAPTERS.join(", ")}.`);
     const boundary = parseBoundaryRegister(readJson("content/readiness/dijkstra/boundary.json"), changes);
     const devnet = loadDevnet(changes, boundary);
     const missing = [devnet.run.recipe, ...devnet.checks.flatMap((c) => c.recipe)].filter((path) => !existsSync(path));
-    const inconsistent = devnetConsistency(boundary, devnet);
+    const inconsistent = [...devnetConsistency(boundary, devnet), ...devnetTargetConsistency(changes, devnet)];
     for (const problem of [...missing.map((path) => `missing recipe ${path}`), ...inconsistent]) console.error(problem);
     const results = devnet.checks.flatMap((c) => c.results);
     console.log(JSON.stringify({ checks: devnet.checks.length, results: results.length, failing: results.filter((r) => r.outcome === "fail").map((r) => `${r.kind} ${r.id}${r.version ? ` ${r.version}` : ""}`) }, null, 2));

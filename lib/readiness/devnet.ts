@@ -1,6 +1,7 @@
 import { list, object, text } from "./core";
 import { oneOf, uniqueIds } from "./dijkstra";
 import type { BoundaryRegister } from "./boundary";
+import type { ChangeRegister } from "./dijkstra";
 
 /**
  * Devnet register (plan revision R4): what a local Dijkstra network showed. A check is one exercise against the node;
@@ -80,6 +81,14 @@ export function parseDevnetRegister(raw: unknown, known: KnownSubjects): DevnetR
 /** Results about one subject, with the check they come from, in register order. */
 export function resultsFor(register: DevnetRegister, kind: SubjectKind, id: string): { check: DevnetCheck; result: Result }[] {
   return register.checks.flatMap((check) => check.results.filter((r) => r.kind === kind && r.id === id).map((result) => ({ check, result })));
+}
+
+/** A new target must never silently reuse runtime evidence from another node revision. */
+export function devnetTargetConsistency(changes: ChangeRegister, devnet: DevnetRegister): string[] {
+  const target = changes.target.release ?? changes.target.integrationBranch;
+  const revision = target && typeof target === "object" && "revision" in target ? target.revision : undefined;
+  return typeof revision === "string" && revision !== devnet.run.node.revision
+    ? [`Devnet node ${devnet.run.node.revision} differs from target node ${revision}`] : [];
 }
 
 /**

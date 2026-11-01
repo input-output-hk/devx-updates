@@ -1,0 +1,62 @@
+{
+  "changes": 20,
+  "citations": 74,
+  "sourcesVerified": true,
+  "bySurface": {
+    "era-identity": [
+      "era-dijkstra"
+    ],
+    "block-encoding": [
+      "block-body-non-segregated",
+      "header-version-info",
+      "leios-peras-consensus"
+    ],
+    "transaction-encoding": [
+      "mempool-tx-is-valid",
+      "nested-transactions",
+      "guards",
+      "account-enhancements",
+      "removed-encodings",
+      "mempool-cross-era"
+    ],
+    "transaction-rules": [
+      "nested-transactions",
+      "account-enhancements",
+      "plutus-legacy-mode",
+      "withdrawal-drep-requirement"
+    ],
+    "plutus-language": [
+      "plutus-v4"
+    ],
+    "plutus-script-context": [
+      "guards",
+      "plutus-v4"
+    ],
+    "protocol-parameters": [
+      "plutus-v4",
+      "protocol-parameters",
+      "dijkstra-genesis-config",
+      "query-pparams-encoding"
+    ],
+    "stake-pool-registration": [
+      "pool-bls-key"
+    ],
+    "node-to-client-protocol": [
+      "n2c-only-v23",
+      "query-pparams-encoding"
+    ],
+    "cardano-cli": [
+      "cli-dijkstra"
+    ],
+    "cardano-api-haskell": [
+      "cli-dijkstra"
+    ],
+    "consensus-participation": [
+      "leios-peras-consensus"
+    ],
+    "node-configuration": [
+      "dijkstra-genesis-config",
+      "node-config-envelope"
+    ]
+  }
+}

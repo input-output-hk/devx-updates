@@ -103,8 +103,8 @@ export default function DijkstraPage() {
   return <DijkstraFrame title="Dijkstra hardfork readiness" current={DIJKSTRA}>
       <p className="text-muted">
         Which tools the Dijkstra hardfork breaks, through which dependency, and what each upstream fix unlocks. Every
-        decision quotes the shipped code it rests on, read at a pinned revision. A devnet run of the 11.2 integration
-        node checks the changes and a first set of components against a real chain; a tool without a confirmed gap is
+        decision quotes the shipped code it rests on, read at a pinned revision. A devnet run of tagged node 11.2.0
+        checks the changes and a first set of components against a real chain; a tool without a confirmed gap is
         still not a pass unless it passed there.
       </p>
 
@@ -198,7 +198,7 @@ export default function DijkstraPage() {
       <section aria-labelledby="deeper" className="scroll-mt-24">
         <h2 id="deeper" className="font-display text-2xl font-semibold">Go deeper</h2>
         <div className="mt-4 grid gap-3 md:grid-cols-3">{([
-          ["devnet", "Devnet run", `${devnet.checks.length} checks on the 11.2 integration node; ${results.filter((r) => r.outcome === "fail").length} of ${results.length} results failed, ${confirmedChanges} changes confirmed, ${contradicted} contradicted.`],
+          ["devnet", "Devnet run", `${devnet.checks.length} checks on the tagged node 11.2.0; ${results.filter((r) => r.outcome === "fail").length} of ${results.length} results failed, ${confirmedChanges} changes confirmed, ${contradicted} contradicted.`],
           ["changes", "What Dijkstra changes", `${changes.changes.length} cited changes on ${changes.surfaces.length} surfaces, and ${changes.unchanged.length} areas checked and unchanged.`],
           ["evidence", "Evidence", `${decisions(confirmed)} confirmed decisions on ${confirmedTools.length} tools with their quotes, ${decisions(others)} not reached or undetermined, ${unlocks.bumpReady.length} upgrades ready, and ${count(unread) + count(open)} tools with a link still waiting on a component verdict.`],
         ] as const).map(([path, title, text]) => (

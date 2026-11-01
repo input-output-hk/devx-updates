@@ -1,0 +1,4803 @@
+{
+  "schemaVersion": 1,
+  "retrieved": "2026-10-20",
+  "method": [
+    "Components are catalog tools that implement a surface from changes.json directly: ledger codecs, node-to-client clients, chain indexers and query services, nodes, script toolchains, transaction builders, hardware signing and devnet tooling.",
+    "Each repository was cloned at its default-branch head (observed.revision) and searched case-insensitively for Dijkstra; GitHub issues and pull requests mentioning Dijkstra were retrieved the same day.",
+    "Node-to-client readiness is whether the client offers V23 (wire value 32791), the only version ouroboros-consensus 5.1.0.1 accepts.",
+    "Codec readiness is compared with the target ledger CDDL (cardano-ledger 54e24ba4) after removing comments and whitespace; Haskell consumers are compared through the cardano-ledger-dijkstra version their CHaP index-state or constraints select.",
+    "Status is per surface group; a component is only as ready as its worst assessment. no-evidence is never a pass.",
+    "firstReleases names, per release line, the earliest tag whose source contains every cited source quote (for gouroboros ledger types: the earliest tag whose vendored Dijkstra CDDL is identical to the one compared with the target; for plutus-ledger-api: the target component-set version). Consumer pins are judged only against firstReleases.",
+    "in-progress needs visible work toward the target definitions (a branch, an open pull request, or unreleased code on the default branch). A release built only against superseded Dijkstra definitions, with no such work, is a gap.",
+    "R4: a devnet result can back an assessment as evidence of kind devnet, naming the check in devnet.json and the version exercised. verified needs a passing result; a failing result cannot back released or verified. Where the target CDDL and the node disagree, the node at the integration revision decides: its Dijkstra header is the ten-field Praos header (devnet check block-shape).",
+    "Blockfrost is one component (owner decision, 2026-10-22): its source is the run-your-own backend, which the hosted API runs, so hosted and self-hosted consumers share its statuses. Maestro is deprecated and is not a component; the classification treats a shipped call to it as a gap."
+  ],
+  "components": [
+    {
+      "id": "cardano-serialization-lib-csl",
+      "repo": "Emurgo/cardano-serialization-lib",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration",
+        "block-encoding"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+        "date": "2026-08-07",
+        "release": {
+          "tag": "17.0.0",
+          "date": "2026-08-07"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "The language enum stops at PlutusV3, so cost models and witnesses for PlutusV4 (language 3) cannot be represented or decoded.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/protocol_types/plutus/language.rs",
+              "line": 28,
+              "quote": "2 => Some(LanguageKind::PlutusV3),"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The transaction body decoder handles keys up to 22 and rejects any other key, so bodies with sub-transactions, guards or account keys (23-27) fail to decode. On the devnet plain Dijkstra transactions decode, but Transaction re-encodes them in the legacy four-element form.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/transaction_body.rs",
+              "line": 398,
+              "quote": "22 => {"
+            },
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/transaction_body.rs",
+              "line": 412,
+              "quote": "DeserializeFailure::UnknownKey(Key::Uint(unknown_key)).into()"
+            },
+            {
+              "kind": "devnet",
+              "check": "csl-decoding",
+              "version": "17.0.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "block-encoding"
+          ],
+          "status": "gap",
+          "summary": "Blocks are decoded in the segregated form (header, transaction bodies, witness sets, auxiliary data, invalid transactions); Dijkstra's [header, block_body] does not match. On the devnet neither 17.0.0 nor 15.0.3 decodes any Dijkstra block.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/block/block.rs",
+              "line": 27,
+              "quote": "read_len.read_elems(4)?;"
+            },
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/block/block.rs",
+              "line": 30,
+              "quote": "let transaction_bodies ="
+            },
+            {
+              "kind": "devnet",
+              "check": "csl-decoding",
+              "version": "17.0.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "Protocol parameter updates decode keys up to 33 and reject any other key, so updates of the Dijkstra parameters (34-56) fail.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/protocol_param_update.rs",
+              "line": 810,
+              "quote": "33 => {"
+            },
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/protocol_param_update.rs",
+              "line": 824,
+              "quote": "DeserializeFailure::UnknownKey(Key::Uint(unknown_key)).into()"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "A pool registration certificate must have exactly ten elements; one carrying Dijkstra's optional BLS key is rejected.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Emurgo/cardano-serialization-lib",
+              "revision": "6b4253814f1831fee06cda2718fd47174960ace1",
+              "path": "rust/src/serialization/certificates/pool_registration.rs",
+              "line": 154,
+              "quote": "check_len(len, 10, \"(cert_index, pool_params (without array) )\")?;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "No Dijkstra reference at the observed revision (case-insensitive search of tracked files, lockfiles excluded) and no issue or pull request mentioning Dijkstra. CSL has no era tag of its own, and its builder does not model the Dijkstra rules.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "cardano-multiplatform-lib-cml",
+      "repo": "dcSpark/cardano-multiplatform-lib",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration",
+        "block-encoding"
+      ],
+      "observed": {
+        "branch": "develop",
+        "revision": "69b8664c84931cd6632e0d951c2795019597527f",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "6.2.0",
+          "date": "2025-04-07"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The transaction body ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards, so CML cannot decode transactions that use them. On the devnet it rejects every three-element Dijkstra transaction, even plain payments (cml-decoding).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "dcSpark/cardano-multiplatform-lib",
+              "revision": "69b8664c84931cd6632e0d951c2795019597527f",
+              "path": "specs/conway/transaction.cddl",
+              "line": 30,
+              "quote": "  ? 22 : positive_coin,                    ; @name donation"
+            },
+            {
+              "kind": "devnet",
+              "check": "cml-decoding",
+              "version": "6.2.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "Languages stop at PlutusV3 (language 2); PlutusV4 is language 3 with script tag 4 and witness key 8.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "dcSpark/cardano-multiplatform-lib",
+              "revision": "69b8664c84931cd6632e0d951c2795019597527f",
+              "path": "specs/conway/plutus.cddl",
+              "line": 83,
+              "quote": "         / 2 ; @name plutus_v3"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "Protocol parameter updates stop at key 33; Dijkstra adds keys 34-56.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "dcSpark/cardano-multiplatform-lib",
+              "revision": "69b8664c84931cd6632e0d951c2795019597527f",
+              "path": "specs/conway/lib.cddl",
+              "line": 60,
+              "quote": "  ? 33: rational,                ; @name min_fee_ref_script_cost_per_byte"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "pool_params ends at pool_metadata, without Dijkstra's optional BLS key.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "dcSpark/cardano-multiplatform-lib",
+              "revision": "69b8664c84931cd6632e0d951c2795019597527f",
+              "path": "specs/conway/certs.cddl",
+              "line": 112,
+              "quote": "              , pool_metadata:  pool_metadata / null"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "block-encoding"
+          ],
+          "status": "gap",
+          "summary": "The block keeps Conway's segregated body. Its header body still carries protocol_version, which the target CDDL replaces with header_version_info, but that ten-field header is what the 11.2 integration node emits (devnet check block-shape). On the devnet, 6.2.0 decodes none of 1017 Dijkstra blocks, wrapped or unwrapped (devnet check cml-decoding).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "dcSpark/cardano-multiplatform-lib",
+              "revision": "69b8664c84931cd6632e0d951c2795019597527f",
+              "path": "specs/conway/block.cddl",
+              "line": 28,
+              "quote": "  protocol_version: [protocol_version],"
+            },
+            {
+              "kind": "devnet",
+              "check": "cml-decoding",
+              "version": "6.2.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity"
+          ],
+          "status": "gap",
+          "summary": "The multi-era block enum ends at Conway.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "dcSpark/cardano-multiplatform-lib",
+              "revision": "69b8664c84931cd6632e0d951c2795019597527f",
+              "path": "multi-era/rust/src/generated/mod.rs",
+              "line": 47,
+              "quote": "    Conway(Block),"
+            },
+            {
+              "kind": "devnet",
+              "check": "cml-decoding",
+              "version": "6.2.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "pallas",
+      "repo": "txpipe/pallas",
+      "roles": [
+        "ledger-codec",
+        "network-client"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration",
+        "block-encoding",
+        "node-to-client-protocol",
+        "consensus-participation"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "e6c38ac567ee907db6a3cfdbbcaae1b47908d839",
+        "date": "2026-10-15",
+        "release": {
+          "tag": "v1.4.0",
+          "date": "2026-09-17"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "released",
+          "summary": "Offers node-to-client V23 (32791), the only version 11.2 accepts.",
+          "releasedIn": {
+            "tag": "v0.35.1",
+            "date": "2026-05-05"
+          },
+          "firstReleases": [
+            {
+              "tag": "v0.35.1",
+              "date": "2026-05-05"
+            },
+            {
+              "tag": "v1.0.0",
+              "date": "2026-05-11"
+            }
+          ],
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "txpipe/pallas",
+              "revision": "b961fad580ff0122969f5cf454f0b01808b852d0",
+              "path": "pallas-network/src/miniprotocols/handshake/n2c.rs",
+              "line": 32,
+              "quote": "const PROTOCOL_V23: u64 = 32791;"
+            },
+            {
+              "kind": "source",
+              "repo": "txpipe/pallas",
+              "revision": "e6c38ac567ee907db6a3cfdbbcaae1b47908d839",
+              "path": "pallas-network/src/miniprotocols/handshake/n2c.rs",
+              "line": 33,
+              "quote": "const PROTOCOL_V23: u64 = 32791;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding",
+            "plutus-language",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "in-progress",
+          "summary": "Dijkstra primitives are released since v1.3.0 but are generated from ledger commit 1587f21a, not the 11.2 component set: compared with the target CDDL they lack protocol-parameter keys 49-56 and witness-set key 8 (PlutusV4). On the dijkstra branch, decode_for_era(Dijkstra) reads all seven transactions captured from the devnet mempool (devnet check pallas-transactions).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "txpipe/pallas",
+              "revision": "aef0b5a060a0a020da6641576f588c890cd15f63",
+              "path": "pallas-primitives/src/dijkstra/defs.cddl",
+              "line": 1,
+              "quote": "; Copied from cardano-ledger commit 1587f21a7d1306dc590c2749a5c66232ef66aad0,"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/txpipe/pallas/pull/799",
+              "title": "feat(primitives): add Dijkstra era ledger primitives",
+              "state": "merged",
+              "date": "2026-09-16"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-transactions",
+              "version": "dijkstra e7ea1726"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding"
+          ],
+          "status": "gap",
+          "summary": "Against the 11.2 integration node no revision decodes a Dijkstra block (devnet check pallas-chain-sync). v1.4.0 and main have no Dijkstra era in multi-era traversal (used by Oura, Dolos and Mithril): PRs #800 and #817 merged into the dijkstra branch, not main. That branch decodes Dijkstra behind its unstable feature, but its header body requires the twelve fields of the target CDDL, adding block_body_contains_leios_cert and eb_announcement after protocol_version, while the node emits ten; the twelve-field header has been in the Dijkstra primitives since #799, so v1.4.0 has it too. MultiEraTx::decode does not recognise the three-element mempool form in any revision (pallas-transactions). No branch or open pull request targets the ten-field header on 2026-10-22.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "txpipe/pallas",
+              "revision": "e7ea1726ea17797f6028fd089e9de928bcee45b9",
+              "path": "pallas-primitives/src/dijkstra/model.rs",
+              "line": 233,
+              "quote": "pub block_body_contains_leios_cert: bool,"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/txpipe/pallas/pull/800",
+              "title": "feat(traverse): decode the Dijkstra era",
+              "state": "merged",
+              "date": "2026-09-24"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-chain-sync",
+              "version": "v1.4.0"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-chain-sync",
+              "version": "main e6c38ac5"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-chain-sync",
+              "version": "dijkstra e7ea1726"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-transactions",
+              "version": "v1.4.0"
+            },
+            {
+              "kind": "devnet",
+              "check": "pallas-transactions",
+              "version": "main e6c38ac5"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-rules"
+          ],
+          "status": "in-progress",
+          "summary": "Sub-transaction handling is on the dijkstra branch only, partly still in open pull requests; nothing is released.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/txpipe/pallas/pull/817",
+              "title": "fix(traverse): read a dijkstra sub transaction's validity from its parent",
+              "state": "merged",
+              "date": "2026-10-15"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/txpipe/pallas/pull/830",
+              "title": "fix(traverse): include Dijkstra sub transaction inputs in requires",
+              "state": "open",
+              "date": "2026-10-16"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "consensus-participation"
+          ],
+          "status": "in-progress",
+          "summary": "Leios endorser-block reading is merged on main and unreleased.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/txpipe/pallas/pull/816",
+              "title": "feat: read leios endorser blocks",
+              "state": "merged",
+              "date": "2026-10-15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gouroboros",
+      "repo": "blinklabs-io/gouroboros",
+      "roles": [
+        "ledger-codec",
+        "network-client"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration",
+        "block-encoding",
+        "node-to-client-protocol",
+        "consensus-participation"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "db9f26e1edf8bf85b475ec91628ad643165c2d8e",
+        "date": "2026-10-26",
+        "release": {
+          "tag": "v0.215.0",
+          "date": "2026-10-24"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "verified",
+          "summary": "Node-to-client V23 was added in v0.213.0; v0.209.0 to v0.212.6 stop at V21 or V22, so consumers pinned below v0.213.0 cannot handshake with 11.2.",
+          "releasedIn": {
+            "tag": "v0.213.0",
+            "date": "2026-10-14"
+          },
+          "firstReleases": [
+            {
+              "tag": "v0.213.0",
+              "date": "2026-10-14"
+            }
+          ],
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blinklabs-io/gouroboros",
+              "revision": "330f59be61fc4c404beb4ee495ff17e3eb249379",
+              "path": "protocol/versions.go",
+              "line": 226,
+              "quote": "(23 + ProtocolVersionNtCOffset): {"
+            },
+            {
+              "kind": "devnet",
+              "check": "n2c-handshake",
+              "version": "v0.213.0"
+            },
+            {
+              "kind": "devnet",
+              "check": "n2c-handshake",
+              "version": "v0.213.9"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding",
+            "transaction-rules",
+            "plutus-language",
+            "protocol-parameters",
+            "stake-pool-registration",
+            "consensus-participation"
+          ],
+          "status": "released",
+          "summary": "Dijkstra ledger types, rules and the Leios release-candidate shapes are released; the vendored test CDDL in v0.213.7 is identical to the target ledger CDDL (comments and whitespace ignored).",
+          "releasedIn": {
+            "tag": "v0.213.7",
+            "date": "2026-10-18"
+          },
+          "firstReleases": [
+            {
+              "tag": "v0.213.0",
+              "date": "2026-10-14"
+            }
+          ],
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blinklabs-io/gouroboros",
+              "revision": "82cd4cebc6ad8232d8f129315082df09f468f1d1",
+              "path": "ledger/common/common.go",
+              "line": 1574,
+              "quote": "// Dijkstra block component counts. A Dijkstra block is always"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/gouroboros/pull/2692",
+              "title": "feat(ledger): align Dijkstra with the Leios release candidate",
+              "state": "merged",
+              "date": "2026-10-14"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/gouroboros/pull/2670",
+              "title": "feat: add current Dijkstra protocol parameters",
+              "state": "merged",
+              "date": "2026-10-08"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding"
+          ],
+          "status": "gap",
+          "summary": "Against the 11.2 integration node, v0.213.0 to v0.213.9 stop at the first Dijkstra block: the decoder requires the twelve-field header of the target CDDL, while the node emits the ten-field Praos header (devnet check block-shape). v0.215.0 and main on 2026-10-26 still require twelve fields. DetermineTransactionType places a transaction in Dijkstra only when its body has key 23, 25 or 26 or a credential guard, so it rejects ordinary Dijkstra transactions, and LocalTxMonitor's NextTx drops the era id that would let a caller decode them anyway (tx-era-detection); both are unchanged on main. PR #2776 adds the era to HasTx only. No branch or open pull request addresses the header or NextTx on 2026-10-26.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blinklabs-io/gouroboros",
+              "revision": "db9f26e1edf8bf85b475ec91628ad643165c2d8e",
+              "path": "ledger/dijkstra/dijkstra.go",
+              "line": 501,
+              "quote": "if len(bodyElems) != dijkstraHeaderBodyFieldCount {"
+            },
+            {
+              "kind": "source",
+              "repo": "blinklabs-io/gouroboros",
+              "revision": "db9f26e1edf8bf85b475ec91628ad643165c2d8e",
+              "path": "ledger/tx.go",
+              "line": 279,
+              "quote": "for _, field := range []uint{23, 25, 26} {"
+            },
+            {
+              "kind": "source",
+              "repo": "blinklabs-io/gouroboros",
+              "revision": "db9f26e1edf8bf85b475ec91628ad643165c2d8e",
+              "path": "protocol/localtxmonitor/client.go",
+              "line": 298,
+              "quote": "deliverResult(c, c.nextTxResultChan, msgReplyNextTx.Transaction.Tx)"
+            },
+            {
+              "kind": "devnet",
+              "check": "block-shape",
+              "version": "v0.213.9"
+            },
+            {
+              "kind": "devnet",
+              "check": "tx-era-detection",
+              "version": "v0.213.9"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/gouroboros/pull/2776",
+              "title": "fix(localtxmonitor): encode hard-fork transaction IDs",
+              "state": "merged",
+              "date": "2026-10-26"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cardano-js-sdk",
+      "repo": "input-output-hk/cardano-js-sdk",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "48019e49c826ea77d81be0e2d2907f94406f5e04",
+        "date": "2026-09-25",
+        "release": {
+          "tag": "@cardano-sdk/hardware-ledger@0.17.0",
+          "date": "2026-09-25"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-encoding",
+            "transaction-rules",
+            "plutus-language",
+            "stake-pool-registration"
+          ],
+          "status": "in-progress",
+          "summary": "@cardano-sdk/core 0.47.0 released Dijkstra serialization (guards, sub-transactions, direct deposits, balance intervals, PlutusV4) against an earlier definition; batch-aware inspection is still open. On the devnet, 0.47.1 decodes, re-encodes byte for byte and identifies plain Dijkstra payments and registrations; guards, sub-transactions and PlutusV4 were not exercised (devnet check js-sdk-transactions).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "input-output-hk/cardano-js-sdk",
+              "revision": "48019e49c826ea77d81be0e2d2907f94406f5e04",
+              "path": "packages/core/CHANGELOG.md",
+              "line": 24,
+              "quote": "* feat(core): add SubTransaction serialization for nested transactions"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/input-output-hk/cardano-js-sdk/pull/1735",
+              "title": "feat: update serialization and core types to Dijkstra era [LW-15103]",
+              "state": "merged",
+              "date": "2026-07-08"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/input-output-hk/cardano-js-sdk/pull/1739",
+              "title": "feat: Dijkstra batch groundwork - hydrated sub transactions and batch-aware inspection",
+              "state": "open",
+              "date": "2026-07-22"
+            },
+            {
+              "kind": "devnet",
+              "check": "js-sdk-transactions",
+              "version": "@cardano-sdk/core 0.47.1"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "Protocol-parameter updates stop at key 37; the target adds keys 38-56.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "input-output-hk/cardano-js-sdk",
+              "revision": "48019e49c826ea77d81be0e2d2907f94406f5e04",
+              "path": "packages/core/src/Serialization/Update/ProtocolParamUpdate.ts",
+              "line": 123,
+              "quote": "//   , ? 37: positive_interval      ; refScript cost multiplier"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloxbean-cardano-client-library",
+      "repo": "bloxbean/cardano-client-lib",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "644e717b3a9c45d00752f7a2a75c9dff946ad3ec",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v0.7.3",
+          "date": "2026-10-02"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "tracked",
+          "summary": "PlutusV4 support is an open issue.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/cardano-client-lib/issues/707",
+              "title": "Support Plutus V4 scripts (Dijkstra era / Leios)",
+              "state": "open",
+              "date": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The transaction body serializer ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "644e717b3a9c45d00752f7a2a75c9dff946ad3ec",
+              "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/spec/TransactionBody.java",
+              "line": 231,
+              "quote": "            bodyMap.put(new UnsignedInteger(22), new UnsignedInteger(donation));"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "The language enum stops at PlutusV3; PlutusV4 is language 3.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "644e717b3a9c45d00752f7a2a75c9dff946ad3ec",
+              "path": "plutus/src/main/java/com/bloxbean/cardano/client/plutus/spec/Language.java",
+              "line": 4,
+              "quote": "    PLUTUS_V1(0), PLUTUS_V2(1), PLUTUS_V3(2);"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "ProtocolParamUpdate maps keys only up to 24, so even Conway's keys 25-33 and all of Dijkstra's 34-56 are missing from parameter-change proposals.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "644e717b3a9c45d00752f7a2a75c9dff946ad3ec",
+              "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/spec/ProtocolParamUpdate.java",
+              "line": 63,
+              "quote": "    private Integer maxCollateralInputs; //24"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "PoolRegistration ends at pool metadata, without Dijkstra's optional BLS key.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "644e717b3a9c45d00752f7a2a75c9dff946ad3ec",
+              "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/spec/cert/PoolRegistration.java",
+              "line": 83,
+              "quote": "    private String poolMetadataHash;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity"
+          ],
+          "status": "gap",
+          "summary": "The Era enum ends at Conway.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "644e717b3a9c45d00752f7a2a75c9dff946ad3ec",
+              "path": "common-spec/src/main/java/com/bloxbean/cardano/client/spec/Era.java",
+              "line": 18,
+              "quote": "    Conway(7);"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "yaci",
+      "repo": "bloxbean/yaci",
+      "roles": [
+        "ledger-codec",
+        "network-client"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration",
+        "block-encoding",
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "2762a3925559b32be30a7b1e18a342366a62fd70",
+        "date": "2026-10-12",
+        "release": {
+          "tag": "v0.4.7",
+          "date": "2026-10-11"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "released",
+          "summary": "Offers node-to-client V23 (32791).",
+          "releasedIn": {
+            "tag": "v0.4.7",
+            "date": "2026-10-11"
+          },
+          "firstReleases": [
+            {
+              "tag": "v0.3.10",
+              "date": "2026-05-07"
+            },
+            {
+              "tag": "v0.4.2",
+              "date": "2026-05-07"
+            }
+          ],
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "bloxbean/yaci",
+              "revision": "c3035c7522c41f1419608b900b206d5a16dcd7bd",
+              "path": "core/src/main/java/com/bloxbean/cardano/yaci/core/protocol/handshake/util/N2CVersionTableConstant.java",
+              "line": 34,
+              "quote": "public final static long PROTOCOL_V23 = 32791;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-encoding",
+            "transaction-rules",
+            "plutus-language",
+            "protocol-parameters",
+            "stake-pool-registration",
+            "block-encoding"
+          ],
+          "status": "in-progress",
+          "summary": "Dijkstra structure parsing and Leios mini-protocols are in open pull requests.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/yaci/pull/222",
+              "title": "Leios: parse every Dijkstra structure of the deployed CDDL (backward compatible)",
+              "state": "open",
+              "date": "2026-10-19"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/yaci/pull/171",
+              "title": "Leios (Musashi w27): Dijkstra serialization & BlockChainDataListener integration (ADR 0010/0011 + implementation)",
+              "state": "open",
+              "date": "2026-07-06"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/yaci/pull/167",
+              "title": "feat: Leios network mini-protocols (LeiosNotify/LeiosFetch) for Musashi — transport-only [ADR 0007]",
+              "state": "open",
+              "date": "2026-07-01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pycardano",
+      "repo": "Python-Cardano/pycardano",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "877be3ad9a2221fce7eac777c9927430cbc3b868",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v0.19.2",
+          "date": "2026-03-01"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The transaction body ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards. On the devnet v0.19.2 also fails on the three-element form whenever auxiliary data is present: it reads the third element as is_valid, so Dijkstra transactions with metadata do not decode.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Python-Cardano/pycardano",
+              "revision": "877be3ad9a2221fce7eac777c9927430cbc3b868",
+              "path": "pycardano/transaction.py",
+              "line": 668,
+              "quote": "        default=None, metadata={\"key\": 22, \"optional\": True}"
+            },
+            {
+              "kind": "devnet",
+              "check": "pycardano-transactions",
+              "version": "v0.19.2"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "The witness set ends at key 7 (PlutusV3 scripts); PlutusV4 scripts use witness key 8.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Python-Cardano/pycardano",
+              "revision": "877be3ad9a2221fce7eac777c9927430cbc3b868",
+              "path": "pycardano/witness.py",
+              "line": 138,
+              "quote": "            \"key\": 7,"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "Protocol parameter updates end at key 33; Dijkstra adds keys 34-56.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Python-Cardano/pycardano",
+              "revision": "877be3ad9a2221fce7eac777c9927430cbc3b868",
+              "path": "pycardano/governance.py",
+              "line": 391,
+              "quote": "        default=None, metadata={\"key\": 33, \"optional\": True}"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "PoolParams ends at pool_metadata, without Dijkstra's optional BLS key.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Python-Cardano/pycardano",
+              "revision": "877be3ad9a2221fce7eac777c9927430cbc3b868",
+              "path": "pycardano/pool_params.py",
+              "line": 249,
+              "quote": "    pool_metadata: Optional[PoolMetadata] = None"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "cardano-c",
+      "repo": "Biglup/cardano-c",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "fd26e969e80f0df6306ac3b76e790fcf8cbe2ef1",
+        "date": "2026-09-28",
+        "release": {
+          "tag": "v1.2.1",
+          "date": "2026-01-23"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-encoding",
+            "transaction-rules",
+            "stake-pool-registration"
+          ],
+          "status": "in-progress",
+          "summary": "The Dijkstra serialization layer is merged on main, unreleased (last release v1.2.1, 2026-01-23); the upgrade issue is open.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Biglup/cardano-c",
+              "revision": "fd26e969e80f0df6306ac3b76e790fcf8cbe2ef1",
+              "path": "CHANGELOG.md",
+              "line": 4,
+              "quote": "- Added the Dijkstra era (protocol version 12) serialization layer"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/Biglup/cardano-c/pull/135",
+              "title": "feat: Dijkstra era serialization layer",
+              "state": "merged",
+              "date": "2026-07-18"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/Biglup/cardano-c/issues/133",
+              "title": "Upgrade the library to the Dijkstra era",
+              "state": "open",
+              "date": "2026-07-07"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language",
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "Main handles protocol parameters up to key 48 (target: 56) and states that no witness-set entry exists for PlutusV4 (target: witness key 8).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Biglup/cardano-c",
+              "revision": "fd26e969e80f0df6306ac3b76e790fcf8cbe2ef1",
+              "path": "CHANGELOG.md",
+              "line": 6,
+              "quote": "- Added the Dijkstra protocol parameters 38 to 48 to `cardano_protocol_parameters_t`"
+            },
+            {
+              "kind": "source",
+              "repo": "Biglup/cardano-c",
+              "revision": "fd26e969e80f0df6306ac3b76e790fcf8cbe2ef1",
+              "path": "CHANGELOG.md",
+              "line": 4,
+              "quote": "no witness set entry exists in this era"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cometa-js",
+      "repo": "Biglup/cometa.js",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "9f88d966b872f7ebed3e93a26aa1598cca90fda4",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v1.2.0",
+          "date": "2025-12-22"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "cardano-c",
+          "version": "v1.2.x"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "The language map stops at PlutusV3; the bundled libcardano-c build predates cardano-c's unreleased Dijkstra layer.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Biglup/cometa.js",
+              "revision": "9f88d966b872f7ebed3e93a26aa1598cca90fda4",
+              "path": "src/marshaling/costModel.ts",
+              "line": 33,
+              "quote": "  PlutusV3: 2 // CARDANO_PLUTUS_LANGUAGE_VERSION_V3"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "ProtocolParameters, and therefore updates, end at refScriptCostPerByte (key 33).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Biglup/cometa.js",
+              "revision": "9f88d966b872f7ebed3e93a26aa1598cca90fda4",
+              "path": "src/common/ProtocolParameters.ts",
+              "line": 66,
+              "quote": "  refScriptCostPerByte: UnitInterval;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "PoolParameters has no BLS key.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Biglup/cometa.js",
+              "revision": "9f88d966b872f7ebed3e93a26aa1598cca90fda4",
+              "path": "src/common/PoolParameters.ts",
+              "line": 70,
+              "quote": "  vrf: string;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Serialization runs in the bundled libcardano-c WebAssembly build; cardano-c's Dijkstra serialization is merged on main but unreleased (R2), and cometa.js last released in December 2025.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Biglup/cometa.js",
+              "revision": "9f88d966b872f7ebed3e93a26aa1598cca90fda4",
+              "path": "scripts/compress-wasm.mjs",
+              "line": 25,
+              "quote": "const filePath = './libcardano-c/cardano_c_compressed.js';"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "buildooor",
+      "repo": "HarmonicLabs/buildooor",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "7551104ea29d5606c2dd00d17c7ff71a2fe28d29",
+        "date": "2026-10-20",
+        "release": null
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "The builder collects witnesses and builds script contexts for PlutusV1-V3 only.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "HarmonicLabs/buildooor",
+              "revision": "7551104ea29d5606c2dd00d17c7ff71a2fe28d29",
+              "path": "src/TxBuilder/TxBuilder.ts",
+              "line": 1097,
+              "quote": "            else if( t === \"PlutusScriptV3\" )   pushUniqueScript( plutusV3ScriptsWitnesses, script as any );"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Transactions are encoded by @harmoniclabs/cardano-ledger-ts ^0.5.6, whose Dijkstra body (released 2026-07-17) has keys 14, 23, 25 and 26 but not 24 (required top-level guards) or 27 (starting balance intervals): an earlier definition.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "HarmonicLabs/buildooor",
+              "revision": "7551104ea29d5606c2dd00d17c7ff71a2fe28d29",
+              "path": "package.json",
+              "line": 52,
+              "quote": "        \"@harmoniclabs/cardano-ledger-ts\": \"^0.5.6\","
+            },
+            {
+              "kind": "source",
+              "repo": "HarmonicLabs/cardano-ledger-ts",
+              "revision": "dd5063a9753edc863eb59354bca666da8382bf37",
+              "path": "src/eras/dijkstra/tx/DijkstraTxBody.ts",
+              "line": 54,
+              "quote": "    accountBalanceIntervals?: IDijkstraAccountBalanceIntervalsEntry[]; // key 26"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "ouroboros-miniprotocols-ts",
+      "repo": "HarmonicLabs/ouroboros-miniprotocols-ts",
+      "roles": [
+        "network-client"
+      ],
+      "surfaces": [
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "9c26c7c24bdffb9af29d91cc59b2c5a65f98567d",
+        "date": "2025-09-17",
+        "release": null
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "gap",
+          "summary": "The default node-to-client proposal is V16-V19; an 11.2 node accepts only V23, so callers using the defaults cannot connect.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "HarmonicLabs/ouroboros-miniprotocols-ts",
+              "revision": "9c26c7c24bdffb9af29d91cc59b2c5a65f98567d",
+              "path": "src/protocols/handshake/HandshakeClient.ts",
+              "line": 409,
+              "quote": "16, 17, 18, 19"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ouroboros-network-js",
+      "repo": "StricaHQ/ouroboros-network-js",
+      "roles": [
+        "network-client"
+      ],
+      "surfaces": [
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "f8b0870b2ce2b60db703c8b78f87b04b7b4d8c1b",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v2.0.0",
+          "date": "2026-09-22"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "no-evidence",
+          "summary": "The client proposes exactly one caller-chosen version (the README example uses 32784, V16); whether its codecs hold at V23 (32791) is not decidable from the source.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "plu-ts",
+      "repo": "HarmonicLabs/pebble",
+      "roles": [
+        "script-compiler",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context",
+        "transaction-encoding"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+        "date": "2026-10-20",
+        "release": null
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-script-context"
+          ],
+          "status": "gap",
+          "summary": "The prelude's Tx still carries the fee that V4's TxInfo drops, and none of V4's new fields.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "HarmonicLabs/pebble",
+              "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+              "path": "packages/pebble/src/compiler/tir/program/stdScope/prelude/preludeTypesSrc.ts",
+              "line": 301,
+              "quote": "    fee: int,"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language",
+            "transaction-encoding"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "cardano-data-lite",
+      "repo": "mlabs-haskell/cardano-data-lite",
+      "roles": [
+        "ledger-codec"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "b099b3d11b009b971f918217bc15a769555be8fb",
+        "date": "2026-10-20",
+        "release": null
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Generated from Conway CDDL: the body ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "mlabs-haskell/cardano-data-lite",
+              "revision": "b099b3d11b009b971f918217bc15a769555be8fb",
+              "path": "conway-cddl/conway.cddl",
+              "line": 73,
+              "quote": "  , ? 22 : positive_coin                   ; New; donation"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "The witness set ends at key 7 (PlutusV3 scripts); PlutusV4 uses witness key 8.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "mlabs-haskell/cardano-data-lite",
+              "revision": "b099b3d11b009b971f918217bc15a769555be8fb",
+              "path": "conway-cddl/conway.cddl",
+              "line": 443,
+              "quote": "  , ? 7: nonempty_set<plutus_v3_script>"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "Protocol parameter updates end at key 33; Dijkstra adds keys 34-56.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "mlabs-haskell/cardano-data-lite",
+              "revision": "b099b3d11b009b971f918217bc15a769555be8fb",
+              "path": "conway-cddl/conway.cddl",
+              "line": 411,
+              "quote": "  , ? 33: nonnegative_interval   ; MinFee RefScriptCostPerByte"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "pool_params ends at pool_metadata, without Dijkstra's optional BLS key.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "mlabs-haskell/cardano-data-lite",
+              "revision": "b099b3d11b009b971f918217bc15a769555be8fb",
+              "path": "conway-cddl/conway.cddl",
+              "line": 350,
+              "quote": "              , pool_metadata:  pool_metadata / null"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity"
+          ],
+          "status": "gap",
+          "summary": "BlockEra ends at Conway, followed by Unknown.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "mlabs-haskell/cardano-data-lite",
+              "revision": "b099b3d11b009b971f918217bc15a769555be8fb",
+              "path": "csl-types/cardano_serialization_lib.d.ts",
+              "line": 247,
+              "quote": "  Conway = 6,"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "evolution-sdk",
+      "repo": "IntersectMBO/evolution-sdk",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "55322695020b4aca2cf49731b595a975b587344c",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "@evolution-sdk/scalus-uplc@2.0.21",
+          "date": "2026-10-19"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The transaction body schema ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/evolution-sdk",
+              "revision": "55322695020b4aca2cf49731b595a975b587344c",
+              "path": "packages/evolution/src/TransactionBody.ts",
+              "line": 99,
+              "quote": "  donation: Schema.optional(PositiveCoin.PositiveCoinSchema) // 22"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "Language is PlutusV1, PlutusV2 or PlutusV3.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/evolution-sdk",
+              "revision": "55322695020b4aca2cf49731b595a975b587344c",
+              "path": "packages/evolution/src/Language.ts",
+              "line": 10,
+              "quote": "export const Language = Schema.Literal(\"PlutusV1\", \"PlutusV2\", \"PlutusV3\")"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "Protocol parameter updates end at key 33.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/evolution-sdk",
+              "revision": "55322695020b4aca2cf49731b595a975b587344c",
+              "path": "packages/evolution/src/ProtocolParamUpdate.ts",
+              "line": 173,
+              "quote": "  minfeeRefScriptCoinsPerByte: Schema.optional(NonnegativeInterval.NonnegativeInterval) // 33"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "Pool parameters end at pool_metadata, without Dijkstra's optional BLS key.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/evolution-sdk",
+              "revision": "55322695020b4aca2cf49731b595a975b587344c",
+              "path": "packages/evolution/src/Certificate.ts",
+              "line": 860,
+              "quote": "    Schema.NullOr(Schema.encodedSchema(PoolMetadata.FromCDDL)) // pool_metadata"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "cardanosharp",
+      "repo": "CardanoSharp/cardanosharp-wallet",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "cf8f5f5f007e39e741089f6c02c65da1c9fa97af",
+        "date": "2026-10-20",
+        "release": null
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "The Language enum stops at PlutusV2; the repository was last changed in April 2024, before Conway.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "CardanoSharp/cardanosharp-wallet",
+              "revision": "cf8f5f5f007e39e741089f6c02c65da1c9fa97af",
+              "path": "CardanoSharp.Wallet/Enums/Language.cs",
+              "line": 6,
+              "quote": "        PlutusV2"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Body decoding stops at Babbage's key 18; neither Conway's keys 19-22 nor Dijkstra's 23-27 are handled.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "CardanoSharp/cardanosharp-wallet",
+              "revision": "cf8f5f5f007e39e741089f6c02c65da1c9fa97af",
+              "path": "CardanoSharp.Wallet/Extensions/Models/Transactions/TransactionBodyExtensions.cs",
+              "line": 324,
+              "quote": "            if (transactionBodyCbor.ContainsKey(18))"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "typhonjs",
+      "repo": "StricaHQ/typhonjs",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "7190c3c67e9dc7be284842e89f06ed848b748ed2",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v4.0.0",
+          "date": "2026-09-30"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The body encoder ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "StricaHQ/typhonjs",
+              "revision": "7190c3c67e9dc7be284842e89f06ed848b748ed2",
+              "path": "src/transaction/Transaction.ts",
+              "line": 462,
+              "quote": "      encodedBody.set(TransactionBodyItemType.DONATION_AMOUNT, this.donationAmount);"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "Plutus script types stop at PlutusScriptV3.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "StricaHQ/typhonjs",
+              "revision": "7190c3c67e9dc7be284842e89f06ed848b748ed2",
+              "path": "src/types.ts",
+              "line": 27,
+              "quote": "  PlutusScriptV3 = \"PlutusScriptV3\","
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "The parameter-update encoder ends at key 33; Dijkstra adds keys 34-56.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "StricaHQ/typhonjs",
+              "revision": "7190c3c67e9dc7be284842e89f06ed848b748ed2",
+              "path": "src/utils/encoder.ts",
+              "line": 1097,
+              "quote": "  set(33, rational(ppu.refScriptCostByte, \"refScriptCostByte\"));"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules",
+            "stake-pool-registration"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "apollo",
+      "repo": "Salvionied/apollo",
+      "roles": [
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "ce93350dd2ca6bd8fa6278dad1559edf492340d5",
+        "date": "2026-10-19",
+        "release": {
+          "tag": "v2.1.4",
+          "date": "2026-10-19"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "gouroboros",
+          "version": "v0.213.7"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-encoding",
+            "transaction-rules",
+            "plutus-language",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "tracked",
+          "summary": "Builds Conway transactions only and rejects PlutusV4; Dijkstra and nested-transaction support are open issues.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Salvionied/apollo",
+              "revision": "ce93350dd2ca6bd8fa6278dad1559edf492340d5",
+              "path": "apollo.go",
+              "line": 49,
+              "quote": "var ErrPlutusV4RequiresDijkstra = errors.New("
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/Salvionied/apollo/issues/366",
+              "title": "Add Dijkstra transaction support (excluding nested transactions)",
+              "state": "open",
+              "date": "2026-09-25"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/Salvionied/apollo/issues/367",
+              "title": "Add CIP-118 nested-transaction support",
+              "state": "open",
+              "date": "2026-09-25"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "whisky",
+      "repo": "sidan-lab/whisky",
+      "roles": [
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v1.0.28-beta.1",
+          "date": "2026-03-16"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "pallas",
+          "version": "0.31.0"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "LanguageVersion stops at V3, and builder and parser map only PlutusV1-V3 through CSL, which has no PlutusV4 (R2).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "sidan-lab/whisky",
+              "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+              "path": "packages/whisky-common/src/models/tx_builder_types/script.rs",
+              "line": 51,
+              "quote": "pub enum LanguageVersion {"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "The Protocol model ends at min_fee_ref_script_cost_per_byte (key 33).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "sidan-lab/whisky",
+              "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+              "path": "packages/whisky-common/src/models/protocol.rs",
+              "line": 26,
+              "quote": "    pub min_fee_ref_script_cost_per_byte: u64,"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The evaluator decodes every transaction as Conway with Pallas and rejects other eras; serialization is CSL's, which stops at body key 22.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "sidan-lab/whisky",
+              "revision": "18b019150e33879d3b2d66e29f0bd92397089bb5",
+              "path": "packages/whisky-csl/src/utils/evaluator.rs",
+              "line": 36,
+              "quote": "    let mtx = MultiEraTx::decode_for_era(Era::Conway, &tx_bytes);"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-rules",
+            "stake-pool-registration"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "elm-cardano",
+      "repo": "elm-cardano/elm-cardano",
+      "roles": [
+        "ledger-codec",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "530385f4db18b60b3914b73824ce56f28d8cff58",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v0.8.0",
+          "date": "2025-05-22"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The body encoder ends at key 22 (treasury donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "elm-cardano/elm-cardano",
+              "revision": "530385f4db18b60b3914b73824ce56f28d8cff58",
+              "path": "src/Cardano/Transaction.elm",
+              "line": 698,
+              "quote": "            >> E.optionalField 22 EE.natural .treasuryDonation"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "The witness set ends at key 7 (PlutusV3) and auxiliary data at key 4; PlutusV4 uses witness key 8 and auxiliary-data key 5.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "elm-cardano/elm-cardano",
+              "revision": "530385f4db18b60b3914b73824ce56f28d8cff58",
+              "path": "src/Cardano/Transaction.elm",
+              "line": 168,
+              "quote": "    , plutusV3Script : Maybe (List (Bytes ScriptCbor)) -- 7"
+            },
+            {
+              "kind": "source",
+              "repo": "elm-cardano/elm-cardano",
+              "revision": "530385f4db18b60b3914b73824ce56f28d8cff58",
+              "path": "src/Cardano/AuxiliaryData.elm",
+              "line": 80,
+              "quote": "                    >> E.optionalField 4 (E.list Bytes.toCbor) (nonEmptyList << .plutusV3Scripts)"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "Protocol parameter updates end at key 33.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "elm-cardano/elm-cardano",
+              "revision": "530385f4db18b60b3914b73824ce56f28d8cff58",
+              "path": "src/Cardano/Gov.elm",
+              "line": 745,
+              "quote": "    , minFeeRefScriptCostPerByte : Maybe Int -- 33"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "Pool parameters end at poolMetadata, without Dijkstra's optional BLS key.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "elm-cardano/elm-cardano",
+              "revision": "530385f4db18b60b3914b73824ce56f28d8cff58",
+              "path": "src/Cardano/Pool.elm",
+              "line": 74,
+              "quote": "    , poolMetadata : Maybe Metadata"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "cquisitor-lib",
+      "repo": "cardananium/cquisitor-lib",
+      "roles": [
+        "ledger-codec",
+        "script-evaluator"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration",
+        "block-encoding"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+        "date": "2026-10-20",
+        "release": null
+      },
+      "dependsOn": [
+        {
+          "component": "pallas",
+          "version": "fork 38a46793"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "Script versions stop at V3, and the CSL preflight reads PlutusV1-V3 cost models only.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardananium/cquisitor-lib",
+              "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+              "path": "src/hash_extractor.rs",
+              "line": 16,
+              "quote": "pub enum PlutusVersion {"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding",
+            "era-identity"
+          ],
+          "status": "gap",
+          "summary": "Transactions are decoded with CSL, whose body stops at key 22 (R2 and its own lead).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardananium/cquisitor-lib",
+              "revision": "d2c95bbb59938dcccbadc03710230e2ca73fb9ce",
+              "path": "src/csl_decoders/specific_decoders.rs",
+              "line": 20,
+              "quote": "    let fixed_tx = csl::FixedTransaction::from_hex(input)"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-rules",
+            "protocol-parameters",
+            "stake-pool-registration",
+            "block-encoding"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "ledgerjs-hw-app-cardano",
+      "repo": "cardano-foundation/ledgerjs-hw-app-cardano",
+      "roles": [
+        "hardware-signing"
+      ],
+      "surfaces": [
+        "transaction-encoding",
+        "transaction-rules"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "9ce065887bfca145f7a2f46df2ea41b1b47b9640",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v8.1.0",
+          "date": "2026-10-05"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The transaction model ends at the treasury donation (key 22): sub-transactions, guards, direct deposits and balance intervals cannot be expressed for signing. Transactions using only Conway-era fields remain signable.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/ledgerjs-hw-app-cardano",
+              "revision": "9ce065887bfca145f7a2f46df2ea41b1b47b9640",
+              "path": "src/types/public.ts",
+              "line": 1890,
+              "quote": "  donation?: bigint_like | null"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "cardano-hw-interop-lib",
+      "repo": "vacuumlabs/cardano-hw-interop-lib",
+      "roles": [
+        "hardware-signing"
+      ],
+      "surfaces": [
+        "transaction-encoding"
+      ],
+      "observed": {
+        "branch": "develop",
+        "revision": "ce8ccc5433302429222921d3fe4ff3f229653e80",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v3.1.0",
+          "date": "2026-05-15"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Body keys end at DONATION = 22 and the parser rejects bodies with any other key, so a Dijkstra transaction using keys 23-27 fails to parse.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "vacuumlabs/cardano-hw-interop-lib",
+              "revision": "ce8ccc5433302429222921d3fe4ff3f229653e80",
+              "path": "src/utils.ts",
+              "line": 102,
+              "quote": "  DONATION = 22,"
+            },
+            {
+              "kind": "source",
+              "repo": "vacuumlabs/cardano-hw-interop-lib",
+              "revision": "ce8ccc5433302429222921d3fe4ff3f229653e80",
+              "path": "src/txParsers.ts",
+              "line": 1152,
+              "quote": "    ParseErrorReason.INVALID_TX_BODY_UNKNOWN_ITEMS,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amaru",
+      "repo": "pragma-org/amaru",
+      "roles": [
+        "node"
+      ],
+      "surfaces": [
+        "era-identity",
+        "block-encoding",
+        "transaction-encoding",
+        "consensus-participation"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "7d4333cc77c8e331235a5b21522377f44de51151",
+        "date": "2026-10-19",
+        "release": {
+          "tag": "v10.11.20260925",
+          "date": "2026-09-25"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "pallas",
+          "version": "0.34.0"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity"
+          ],
+          "status": "in-progress",
+          "summary": "The era list includes Dijkstra.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "pragma-org/amaru",
+              "revision": "7d4333cc77c8e331235a5b21522377f44de51151",
+              "path": "crates/amaru-kernel/src/cardano/era_name.rs",
+              "line": 35,
+              "quote": "Dijkstra = 8,"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "block-encoding",
+            "transaction-encoding",
+            "consensus-participation"
+          ],
+          "status": "in-progress",
+          "summary": "Multi-era block support is an open pull request; protocol-version-12 decoding rules are partially merged.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/pragma-org/amaru/pull/1485",
+              "title": "feat: add multi-era blocks support",
+              "state": "open",
+              "date": "2026-10-08"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/pragma-org/amaru/pull/1229",
+              "title": "fix: decode bytes with indefinite length only in protocol version 12",
+              "state": "merged",
+              "date": "2026-08-18"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dingo",
+      "repo": "blinklabs-io/dingo",
+      "roles": [
+        "node"
+      ],
+      "surfaces": [
+        "era-identity",
+        "block-encoding",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "consensus-participation"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "086e638856cd9cede873922c15d54bf40912366f",
+        "date": "2026-10-19",
+        "release": {
+          "tag": "v0.86.0",
+          "date": "2026-10-19"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "gouroboros",
+          "version": "v0.213.5"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding",
+            "transaction-encoding",
+            "transaction-rules",
+            "plutus-language",
+            "protocol-parameters",
+            "consensus-participation"
+          ],
+          "status": "in-progress",
+          "summary": "Dijkstra ledger, PlutusV4 evaluation and Leios run behind an experimental opt-in; the readiness and end-to-end testing issues are open.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blinklabs-io/dingo",
+              "revision": "086e638856cd9cede873922c15d54bf40912366f",
+              "path": "config.go",
+              "line": 535,
+              "quote": "func (c *Config) experimentalDijkstraEnabled() bool {"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/dingo/issues/2850",
+              "title": "dijkstra: hard-fork readiness tracking (PV12)",
+              "state": "open",
+              "date": "2026-07-15"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/dingo/issues/1945",
+              "title": "dijkstra: end-to-end integration testing on Dijkstra testnet",
+              "state": "open",
+              "date": "2026-04-17"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/dingo/pull/4878",
+              "title": "feat(ledger): evaluate Dijkstra Plutus V4 and serve its parameters",
+              "state": "merged",
+              "date": "2026-10-13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ogmios",
+      "repo": "CardanoSolutions/ogmios",
+      "roles": [
+        "network-client",
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "era-identity",
+        "block-encoding",
+        "transaction-encoding",
+        "protocol-parameters",
+        "plutus-language",
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "435189aea2d9a047dc395a6f1cdef737d52f1cbe",
+        "date": "2026-06-20",
+        "release": {
+          "tag": "v7.0.0",
+          "date": "2026-06-20"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "verified",
+          "summary": "Takes its version table from ouroboros-consensus; v7.0.0 builds on cardano-node 11.0.1 (ouroboros-consensus 3.0.1), which includes V23.",
+          "releasedIn": {
+            "tag": "v7.0.0",
+            "date": "2026-06-20"
+          },
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "CardanoSolutions/ogmios",
+              "revision": "b3a830a1bf2fbfd0ce1fd0fb238aee2d73d7cdbe",
+              "path": "server/modules/ouroboros-network-ogmios/src/Cardano/Network/Protocol/NodeToClient.hs",
+              "line": 475,
+              "quote": "supportedVersions = supportedNodeToClientVersions (Proxy @Block)"
+            },
+            {
+              "kind": "source",
+              "repo": "CardanoSolutions/ogmios",
+              "revision": "b3a830a1bf2fbfd0ce1fd0fb238aee2d73d7cdbe",
+              "path": "server/cabal.project",
+              "line": 17,
+              "quote": "  , any.cardano-node == 11.0.1"
+            },
+            {
+              "kind": "devnet",
+              "check": "n2c-handshake",
+              "version": "v7.0.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding",
+            "transaction-encoding",
+            "protocol-parameters",
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "v7.0.0 ships preliminary Dijkstra and PlutusV4 support built against cardano-node 11.0.1 (CHaP index 2026-05-08, cardano-ledger-dijkstra 0.2.0.1), whose CDDL differs from the target in 454 normalized lines, including the block body and header. The default branch is still the v7.0.0 release commit (2026-06-20) and no branch or open pull request targets the 11.2 component set. On the devnet v7.0.0 exits at the first Dijkstra block.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "CardanoSolutions/ogmios",
+              "revision": "435189aea2d9a047dc395a6f1cdef737d52f1cbe",
+              "path": "CHANGELOG.md",
+              "line": 14,
+              "quote": "- Preliminary support for the Dijkstra era and PlutusV4."
+            },
+            {
+              "kind": "source",
+              "repo": "CardanoSolutions/ogmios",
+              "revision": "435189aea2d9a047dc395a6f1cdef737d52f1cbe",
+              "path": "server/cabal.project",
+              "line": 14,
+              "quote": "  , cardano-haskell-packages 2026-05-08T13:26:45Z"
+            },
+            {
+              "kind": "devnet",
+              "check": "service-decoding",
+              "version": "v7.0.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kupo",
+      "repo": "CardanoSolutions/kupo",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "era-identity",
+        "block-encoding",
+        "transaction-encoding",
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "1c7346789188d7a1a05343e7888ad8f08854cbca",
+        "date": "2026-09-01",
+        "release": {
+          "tag": "v2.12",
+          "date": "2026-07-18"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "verified",
+          "summary": "Takes its version table from ouroboros-consensus; v2.12 builds on cardano-node 11.0.1, which includes V23.",
+          "releasedIn": {
+            "tag": "v2.12",
+            "date": "2026-07-18"
+          },
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "CardanoSolutions/kupo",
+              "revision": "491918a50b45ed2b3de682ee79e03c6dc09779a3",
+              "path": "src/Kupo/Control/MonadOuroboros.hs",
+              "line": 169,
+              "quote": "supportedNodeToClientVersions (Proxy @(BlockT IO))"
+            },
+            {
+              "kind": "devnet",
+              "check": "n2c-handshake",
+              "version": "v2.12"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Handles Dijkstra blocks through cardano-node 11.0.1 libraries (cardano-ledger-dijkstra 0.2.0.1), which predate the 11.2 block format; on the devnet v2.12 stops at the first Dijkstra block. The default branch has only test changes since v2.12 and no branch or open pull request targets the 11.2 component set.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "CardanoSolutions/kupo",
+              "revision": "1c7346789188d7a1a05343e7888ad8f08854cbca",
+              "path": "cabal.project",
+              "line": 49,
+              "quote": "  , any.cardano-node == 11.0.1"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/CardanoSolutions/kupo/pull/204",
+              "title": "Add cardano-node 11.0.1 support",
+              "state": "merged",
+              "date": "2026-07-18"
+            },
+            {
+              "kind": "devnet",
+              "check": "service-decoding",
+              "version": "v2.12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cardano-db-sync",
+      "repo": "IntersectMBO/cardano-db-sync",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "era-identity",
+        "block-encoding",
+        "transaction-encoding",
+        "protocol-parameters",
+        "stake-pool-registration",
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "0c0400fcbfa2ec9b71da114d9c0fa9238c96640d",
+        "date": "2026-10-26",
+        "release": {
+          "tag": "13.7.2.1",
+          "date": "2026-06-17"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "verified",
+          "summary": "Takes its version table from ouroboros-consensus; the release builds on cardano-node 11.0.1 (ouroboros-consensus 3.0.1), which includes V23. On the devnet, 13.7.2.1 handshakes with the V23-only node and indexes every Conway block (devnet check n2c-handshake).",
+          "releasedIn": {
+            "tag": "13.7.2.1",
+            "date": "2026-06-17"
+          },
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "db8cdf668cda632e9a09c30e1159fcb9fb34e952",
+              "path": "cardano-db-sync/src/Cardano/DbSync/Sync.hs",
+              "line": 75,
+              "quote": "import Ouroboros.Consensus.Node.NetworkProtocolVersion (BlockNodeToClientVersion, supportedNodeToClientVersions)"
+            },
+            {
+              "kind": "devnet",
+              "check": "n2c-handshake",
+              "version": "13.7.2.1"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding",
+            "transaction-encoding",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "Master on 2026-10-26 still has Dijkstra code paths marked TODO(Dijkstra) on libraries from CHaP index 2026-05-03 (cardano-ledger-dijkstra 0.2.0.1), and no release carries Dijkstra support. On the devnet, 13.7.2.1 cannot decode the first Dijkstra block and indexes nothing after the fork (devnet check db-sync-and-blockfrost).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "0c0400fcbfa2ec9b71da114d9c0fa9238c96640d",
+              "path": "cardano-db-sync/src/Cardano/DbSync/Config/Cardano.hs",
+              "line": 113,
+              "quote": "emptyDijkstraGenesis -- TODO(Dijkstra)"
+            },
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "0c0400fcbfa2ec9b71da114d9c0fa9238c96640d",
+              "path": "cabal.project",
+              "line": 14,
+              "quote": "  , cardano-haskell-packages 2026-05-03T22:28:43Z"
+            },
+            {
+              "kind": "devnet",
+              "check": "db-sync-and-blockfrost",
+              "version": "13.7.2.1"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding",
+            "transaction-encoding",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "in-progress",
+          "summary": "Branch kderme/node-11.2-deps (12 commits ahead of master on 2026-10-26, no pull request) pins cardano-node at the 11.2 integration revision 34ae34db with CHaP index 2026-10-09, the target component set; it implements the Dijkstra paths, reads the Dijkstra genesis and inserts Dijkstra certificates and script purposes. It adds no schema migration, so fields new in Dijkstra (sub-transactions, direct deposits, guards, pool BLS keys) are not stored yet. Not run on the devnet.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "84829dbfcda8df11484a6fb359469dc0c0dc4366",
+              "path": "cabal.project",
+              "line": 94,
+              "quote": "  tag: 34ae34db891105d2d17ad9b2704cb56423103da6"
+            },
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "84829dbfcda8df11484a6fb359469dc0c0dc4366",
+              "path": "cardano-db-sync/src/Cardano/DbSync/Config/Cardano.hs",
+              "line": 77,
+              "quote": "        <*> readDijkstraGenesisConfig enc"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/IntersectMBO/cardano-db-sync/issues/2115",
+              "title": "Integrate Dijkstra",
+              "state": "open",
+              "date": "2026-04-30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cardano-wallet",
+      "repo": "cardano-foundation/cardano-wallet",
+      "roles": [
+        "chain-indexer",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "block-encoding",
+        "transaction-encoding",
+        "transaction-rules",
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "2fc5c383c94bb907deaa0cd27b1b407f86224b6c",
+        "date": "2026-10-07",
+        "release": {
+          "tag": "v2026-10-07",
+          "date": "2026-10-08"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "gap",
+          "summary": "Proposes only node-to-client V16-V22 although its pinned consensus supports V23; an 11.2 node accepts only V23, so the wallet cannot connect once its node is upgraded.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/cardano-wallet",
+              "revision": "2fc5c383c94bb907deaa0cd27b1b407f86224b6c",
+              "path": "lib/primitive/lib/Cardano/Wallet/Primitive/Ledger/Shelley.hs",
+              "line": 402,
+              "quote": "[NodeToClientV_16 .. NodeToClientV_22]"
+            },
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/cardano-wallet",
+              "revision": "2fc5c383c94bb907deaa0cd27b1b407f86224b6c",
+              "path": "lib/network-layer/src/Cardano/Wallet/Network/Implementation.hs",
+              "line": 1239,
+              "quote": "| version <- nodeToClientVersions"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding",
+            "transaction-encoding",
+            "transaction-rules"
+          ],
+          "status": "in-progress",
+          "summary": "Dijkstra support is being closed stub by stub on cardano-ledger-dijkstra 0.3.0.0 (node 11.1.x), whose block body still differs from the target; the API still errors on the Dijkstra era.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/cardano-wallet",
+              "revision": "2fc5c383c94bb907deaa0cd27b1b407f86224b6c",
+              "path": "cabal.project",
+              "line": 205,
+              "quote": "  , cardano-ledger-dijkstra ==0.3.0.0"
+            },
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/cardano-wallet",
+              "revision": "2fc5c383c94bb907deaa0cd27b1b407f86224b6c",
+              "path": "lib/api/src/Cardano/Wallet/Api/Types/Era.hs",
+              "line": 114,
+              "quote": "Read.Dijkstra -> error \"fromReadEra: DijkstraEra not yet supported\""
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/cardano-foundation/cardano-wallet/issues/5209",
+              "title": "Dijkstra era support: eliminate 44 Dijkstra stubs across 15 files (census-gated)",
+              "state": "open",
+              "date": "2026-02-24"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/cardano-foundation/cardano-wallet/pull/5458",
+              "title": "Dijkstra: close the five delegation, voting and certificate stubs",
+              "state": "open",
+              "date": "2026-09-21"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oura",
+      "repo": "txpipe/oura",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "era-identity",
+        "block-encoding",
+        "transaction-encoding",
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "8433b1049b250b1c1ccc174e5ee17d5963effe5c",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v2.2.0",
+          "date": "2026-06-15"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "pallas",
+          "version": "1.1"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "released",
+          "summary": "Uses Pallas 1.1, which offers V23.",
+          "releasedIn": {
+            "tag": "v2.2.0",
+            "date": "2026-06-15"
+          },
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "txpipe/oura",
+              "revision": "6c326ddf3e010ee955cb45358dea7522dc75e331",
+              "path": "Cargo.toml",
+              "line": 48,
+              "quote": "pallas = { version = \"1.1\""
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Blocks are traversed with Pallas 1.1 (1.1.0 locked); Pallas decodes Dijkstra blocks only on main after v1.4.0 (R2), and its Dijkstra definitions predate the target. The default branch was last changed in June 2026.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "txpipe/oura",
+              "revision": "8433b1049b250b1c1ccc174e5ee17d5963effe5c",
+              "path": "Cargo.toml",
+              "line": 48,
+              "quote": "pallas = { version = \"1.1\", features = [\"hardano\"] }"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dolos",
+      "repo": "txpipe/dolos",
+      "roles": [
+        "chain-indexer",
+        "node"
+      ],
+      "surfaces": [
+        "era-identity",
+        "block-encoding",
+        "transaction-encoding",
+        "transaction-rules",
+        "protocol-parameters"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "378b8b0eda64d7ba3364216224155e461fe56cb0",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v1.6.1",
+          "date": "2026-09-17"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "pallas",
+          "version": "1.3.0"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "block-encoding",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Dolos builds on Pallas 1.3.0; Pallas decodes Dijkstra blocks only on main after v1.4.0 (R2), and its Dijkstra definitions predate the target.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "txpipe/dolos",
+              "revision": "378b8b0eda64d7ba3364216224155e461fe56cb0",
+              "path": "Cargo.toml",
+              "line": 234,
+              "quote": "pallas = { version = \"1.3.0\", features = [\"hardano\", \"phase2\", \"unstable\"] }"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules",
+            "protocol-parameters"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "carp",
+      "repo": "dcSpark/carp",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "block-encoding",
+        "transaction-encoding"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "61fe5f2034512cb9ef592918e6cb4e833242b16a",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "3.3.0",
+          "date": "2024-09-14"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "block-encoding",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Blocks are decoded with cml-multi-era 6.0.0, whose eras end at Conway; the repository was last changed in September 2024.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "dcSpark/carp",
+              "revision": "61fe5f2034512cb9ef592918e6cb4e833242b16a",
+              "path": "Cargo.toml",
+              "line": 18,
+              "quote": "cml-multi-era = { version = \"6.0.0\" }"
+            },
+            {
+              "kind": "source",
+              "repo": "dcSpark/carp",
+              "revision": "61fe5f2034512cb9ef592918e6cb4e833242b16a",
+              "path": "indexer/src/sinks/cardano.rs",
+              "line": 266,
+              "quote": "        MultiEraBlock::Conway(_) => EraValue::Conway,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scrolls",
+      "repo": "txpipe/scrolls",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "block-encoding",
+        "transaction-encoding",
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v0.6.0-alpha.0",
+          "date": "2023-12-15"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "pallas",
+          "version": "0.30.1"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "block-encoding",
+            "transaction-encoding",
+            "node-to-client-protocol"
+          ],
+          "status": "gap",
+          "summary": "Pinned to Pallas 0.30.1, which has neither Dijkstra types nor node-to-client V23; last changed January 2025.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "txpipe/scrolls",
+              "revision": "ba25d652ec162617c3363b20c5eff5910a874a73",
+              "path": "Cargo.toml",
+              "line": 15,
+              "quote": "pallas = \"0.30.1\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yaci-store",
+      "repo": "bloxbean/yaci-store",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "block-encoding",
+        "transaction-encoding",
+        "plutus-language"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "5842de3c7755c2aba2c54a4f629fd691324e0f2b",
+        "date": "2026-10-19",
+        "release": {
+          "tag": "v2.0.7",
+          "date": "2026-10-11"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "yaci",
+          "version": "unreleased Dijkstra parsing"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "block-encoding",
+            "transaction-encoding",
+            "plutus-language"
+          ],
+          "status": "in-progress",
+          "summary": "PlutusV4 reference-script storage is an open pull request; block decoding depends on unreleased Yaci work.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/yaci-store/pull/1274",
+              "title": "fix(script): store Plutus V4 reference scripts (Dijkstra / Leios)",
+              "state": "open",
+              "date": "2026-10-19"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/yaci-store/issues/1273",
+              "title": "Plutus V4 reference scripts: hash and script not stored (Dijkstra / Leios Musashi)",
+              "state": "open",
+              "date": "2026-10-19"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cf-ledger-sync",
+      "repo": "cardano-foundation/cf-ledger-sync",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "block-encoding",
+        "transaction-encoding"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "0.1.2",
+          "date": "2025-01-13"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "block-encoding",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Blocks come from yaci 0.3.4.1, which has no Dijkstra parsing (yaci's is in open pull requests), and the era enumeration ends at Conway; last changed January 2025.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/cf-ledger-sync",
+              "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+              "path": "gradle/libs.versions.toml",
+              "line": 2,
+              "quote": "yaci = \"com.bloxbean.cardano:yaci:0.3.4.1\""
+            },
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/cf-ledger-sync",
+              "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+              "path": "components/common/src/main/java/org/cardanofoundation/ledgersync/common/common/Era.java",
+              "line": 19,
+              "quote": "  CONWAY(7);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cardano-graphql",
+      "repo": "cardano-foundation/cardano-graphql",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "fcfe3154115ef176788a60b2eae925ee42aabd7c",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "9.1.0",
+          "date": "2026-10-02"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "cardano-db-sync",
+          "version": "service"
+        },
+        {
+          "component": "ogmios",
+          "version": "service"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The shipped stack pins db-sync 13.7.2.1 and node 11.1.3; that db-sync release cannot index Dijkstra blocks (R2), and GraphQL serves only what it indexes.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/cardano-graphql",
+              "revision": "fcfe3154115ef176788a60b2eae925ee42aabd7c",
+              "path": ".env.docker-compose",
+              "line": 34,
+              "quote": "CARDANO_DB_SYNC_VERSION=13.7.2.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "koios",
+      "repo": "cardano-community/koios-artifacts",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "protocol-parameters"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "2e2eb57933e1e2528de5ca36ee961759841cf389",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v1.4.2",
+          "date": "2026-07-14"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "cardano-db-sync",
+          "version": "service"
+        },
+        {
+          "component": "ogmios",
+          "version": "service"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity"
+          ],
+          "status": "gap",
+          "summary": "Era names come from a static era_map that ends at protocol 11 and, by its own comment, must be updated before a fork; epochs at protocol 12 get no era and are missing from era_summaries.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-community/koios-artifacts",
+              "revision": "2e2eb57933e1e2528de5ca36ee961759841cf389",
+              "path": "files/grest/rpc/db-scripts/basics.sql",
+              "line": 87,
+              "quote": "-- Since this is a static source that should be updated pre-fork on testnets, and there isnt a programmatic source,"
+            },
+            {
+              "kind": "source",
+              "repo": "cardano-community/koios-artifacts",
+              "revision": "2e2eb57933e1e2528de5ca36ee961759841cf389",
+              "path": "files/grest/rpc/db-scripts/basics.sql",
+              "line": 112,
+              "quote": "('Voltaire', 'Conway', 11, 0, 'Praos', 'Ouroboros Genesis/Praos', 'Van Rossem HF');"
+            },
+            {
+              "kind": "source",
+              "repo": "cardano-community/koios-artifacts",
+              "revision": "2e2eb57933e1e2528de5ca36ee961759841cf389",
+              "path": "files/grest/rpc/01_blockchain/era_summaries.sql",
+              "line": 25,
+              "quote": "  FROM grest.era_map AS em"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "epoch_params returns a fixed Conway column list from db-sync's epoch_param, so Dijkstra parameters are not served.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-community/koios-artifacts",
+              "revision": "2e2eb57933e1e2528de5ca36ee961759841cf389",
+              "path": "files/grest/rpc/epoch/epoch_params.sql",
+              "line": 57,
+              "quote": "  min_fee_ref_script_cost_per_byte double precision"
+            },
+            {
+              "kind": "source",
+              "repo": "cardano-community/koios-artifacts",
+              "revision": "2e2eb57933e1e2528de5ca36ee961759841cf389",
+              "path": "files/grest/rpc/epoch/epoch_params.sql",
+              "line": 118,
+              "quote": "      ep.min_fee_ref_script_cost_per_byte"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "no-evidence",
+          "summary": "Transaction CBOR comes from db-sync, and submission and evaluation are proxied to an Ogmios v6 instance; this surface follows those services.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-community/koios-artifacts",
+              "revision": "2e2eb57933e1e2528de5ca36ee961759841cf389",
+              "path": "specs/template.yaml",
+              "line": 67,
+              "quote": "    description: |"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blockfrost",
+      "repo": "blockfrost/blockfrost-backend-ryo",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "protocol-parameters"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v6.8.1",
+          "date": "2026-10-16"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "cardano-db-sync",
+          "version": "service"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity"
+          ],
+          "status": "gap",
+          "summary": "/network/eras looks every protocol major from db-sync's epoch_param up in a table that ends at 11, so the endpoint throws once an epoch with protocol version 12 is recorded.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-backend-ryo",
+              "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+              "path": "src/constants/genesis.ts",
+              "line": 51,
+              "quote": "    name: 'Conway (intra era hardfork #2)',"
+            },
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-backend-ryo",
+              "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+              "path": "src/routes/network/eras.ts",
+              "line": 83,
+              "quote": "          if (PROTOCOL_VERSIONS[epochProto.protocol_major].is_era_hardfork) {"
+            },
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-backend-ryo",
+              "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+              "path": "src/sql/network/network_protocols.sql",
+              "line": 3,
+              "quote": "FROM epoch_param"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "The epoch parameter endpoints select a fixed Conway column list from db-sync's epoch_param, so Dijkstra parameters are not served; db-sync has no columns for them either.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-backend-ryo",
+              "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+              "path": "src/sql/epochs/epochs_latest_parameters.sql",
+              "line": 66,
+              "quote": "  min_fee_ref_script_cost_per_byte AS \"min_fee_ref_script_cost_per_byte\""
+            },
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-backend-ryo",
+              "revision": "940589e1c2c290db26f1fc57c173d23827b0661b",
+              "path": "src/sql/epochs/epochs_number_parameters.sql",
+              "line": 66,
+              "quote": "  min_fee_ref_script_cost_per_byte AS \"min_fee_ref_script_cost_per_byte\""
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "no-evidence",
+          "summary": "Serves transaction CBOR from db-sync and forwards submissions to the submit API without decoding them itself; this surface follows those services.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "cardano-rosetta-java",
+      "repo": "cardano-foundation/cardano-rosetta-java",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "517f0fadf73ea2d8757ae5cff6f712df332c6f17",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "2.3.3",
+          "date": "2026-10-12"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "yaci-store",
+          "version": "service"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Indexing runs on yaci 0.4.7, whose Dijkstra parsing is still in open pull requests, and account queries are issued in the Conway era.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/cardano-rosetta-java",
+              "revision": "517f0fadf73ea2d8757ae5cff6f712df332c6f17",
+              "path": "pom.xml",
+              "line": 44,
+              "quote": "        <version.yaci>0.4.7</version.yaci>"
+            },
+            {
+              "kind": "source",
+              "repo": "cardano-foundation/cardano-rosetta-java",
+              "revision": "517f0fadf73ea2d8757ae5cff6f712df332c6f17",
+              "path": "yaci-indexer/src/main/java/org/cardanofoundation/rosetta/yaciindexer/service/AccountServiceImpl.java",
+              "line": 59,
+              "quote": "                    localStateQueryClient.executeQuery(new DelegationsAndRewardAccountsQuery(Era.Conway, Set.of(address)));"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mithril",
+      "repo": "IntersectMBO/mithril",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "block-encoding"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "caa8432f8cf6653e3b9b4e00ef11169e22799e60",
+        "date": "2026-10-22",
+        "release": {
+          "tag": "unstable",
+          "date": "2026-10-20"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "pallas",
+          "version": "1.4.0"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "block-encoding"
+          ],
+          "status": "gap",
+          "summary": "The chain reader decodes blocks with pallas-traverse 1.4.0, which has no Dijkstra era in multi-era traversal; Pallas reads Dijkstra only on its dijkstra branch, and no Pallas revision decodes a block from the 11.2 node (R2). PR #3614 (\"support for upcoming Cardano 11.2\") adds node 11.2 configurations and the devnet version only; the Pallas pins are unchanged on main.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/mithril",
+              "revision": "caa8432f8cf6653e3b9b4e00ef11169e22799e60",
+              "path": "internal/cardano-node/mithril-cardano-node-chain/Cargo.toml",
+              "line": 27,
+              "quote": "pallas-primitives = { version = \"1.4.0\" }"
+            },
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/mithril",
+              "revision": "caa8432f8cf6653e3b9b4e00ef11169e22799e60",
+              "path": "internal/cardano-node/mithril-cardano-node-chain/src/chain_reader/pallas_chain_reader.rs",
+              "line": 298,
+              "quote": "                let multi_era_block = MultiEraBlock::decode(&raw_block)"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/IntersectMBO/mithril/pull/3614",
+              "title": "feat: support for upcoming Cardano `11.2`",
+              "state": "merged",
+              "date": "2026-10-15"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/IntersectMBO/mithril/issues/3585",
+              "title": "Upgrade to Cardano `11.2`",
+              "state": "open",
+              "date": "2026-10-12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cncli",
+      "repo": "cardano-community/cncli",
+      "roles": [
+        "network-client"
+      ],
+      "surfaces": [
+        "block-encoding",
+        "consensus-participation"
+      ],
+      "observed": {
+        "branch": "develop",
+        "revision": "54700531bbb473886f482ce8d8010d0ec89a7465",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v6.8.3",
+          "date": "2026-10-18"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "pallas",
+          "version": "git d1dfe10e"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "block-encoding"
+          ],
+          "status": "in-progress",
+          "summary": "Pins Pallas main at a 2026-10-13 commit, after v1.4.0, so it follows Pallas's unreleased Dijkstra block traversal.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-community/cncli",
+              "revision": "54700531bbb473886f482ce8d8010d0ec89a7465",
+              "path": "Cargo.toml",
+              "line": 16,
+              "quote": "pallas-traverse = { git = \"https://github.com/txpipe/pallas\", rev = \"d1dfe10e2bac83c7d3b5371a72814354a5acd1ba\" }"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "consensus-participation"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "adder",
+      "repo": "blinklabs-io/adder",
+      "roles": [
+        "chain-indexer",
+        "network-client"
+      ],
+      "surfaces": [
+        "block-encoding",
+        "transaction-encoding",
+        "node-to-client-protocol"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "3b61c0bcf5c6c40376f3dee6cdc73dda9a1562cb",
+        "date": "2026-10-19",
+        "release": {
+          "tag": "v0.45.0",
+          "date": "2026-09-24"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "gouroboros",
+          "version": "v0.209.0"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "gap",
+          "summary": "Pins gouroboros v0.209.0, which offers node-to-client versions only up to V21; an update to v0.213.x is an open dependency pull request.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blinklabs-io/adder",
+              "revision": "3b61c0bcf5c6c40376f3dee6cdc73dda9a1562cb",
+              "path": "go.mod",
+              "line": 10,
+              "quote": "github.com/blinklabs-io/gouroboros v0.209.0"
+            },
+            {
+              "kind": "source",
+              "repo": "blinklabs-io/gouroboros",
+              "revision": "7c406f4f5606894e2b57ece9718867020f05f8dc",
+              "path": "protocol/versions.go",
+              "line": 198,
+              "quote": "(21 + ProtocolVersionNtCOffset): {"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/adder/pull/888",
+              "title": "chore(deps): bump github.com/blinklabs-io/gouroboros from 0.209.0 to 0.213.3",
+              "state": "open",
+              "date": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "block-encoding",
+            "transaction-encoding"
+          ],
+          "status": "in-progress",
+          "summary": "gouroboros v0.209.0 decodes an earlier Dijkstra definition (30 normalized CDDL lines differ from the target).",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/adder/pull/888",
+              "title": "chore(deps): bump github.com/blinklabs-io/gouroboros from 0.209.0 to 0.213.3",
+              "state": "open",
+              "date": "2026-10-19"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "utxorpc",
+      "repo": "utxorpc/spec",
+      "roles": [
+        "chain-indexer"
+      ],
+      "surfaces": [
+        "transaction-encoding",
+        "block-encoding"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "8ff8bf3bebe1e77c2defc413f07407293bbcf48d",
+        "date": "2026-10-14",
+        "release": null
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "transaction-encoding",
+            "block-encoding"
+          ],
+          "status": "in-progress",
+          "summary": "Dijkstra sub-transactions and ledger fields are an open pull request to the specification.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/utxorpc/spec/pull/215",
+              "title": "feat(cardano): add Dijkstra sub transactions and ledger fields",
+              "state": "open",
+              "date": "2026-10-05"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/utxorpc/spec/issues/218",
+              "title": "Cardano Tx cannot carry network id, script data hash, auxiliary data hash, treasury value and donation",
+              "state": "open",
+              "date": "2026-10-14"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hydra",
+      "repo": "cardano-scaling/hydra",
+      "roles": [
+        "layer-two",
+        "network-client"
+      ],
+      "surfaces": [
+        "era-identity",
+        "block-encoding",
+        "cardano-api-haskell"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "1b10c014295bf3e360431b4e0a24629388e50aa2",
+        "date": "2026-10-19",
+        "release": {
+          "tag": "2.4.1",
+          "date": "2026-09-02"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding",
+            "cardano-api-haskell"
+          ],
+          "status": "gap",
+          "summary": "The chain follower throws EraNotSupportedYet on a Dijkstra block and the client errors on the Dijkstra era, so a head stops following the layer-one chain at the fork.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "cardano-scaling/hydra",
+              "revision": "1b10c014295bf3e360431b4e0a24629388e50aa2",
+              "path": "hydra-node/src/Hydra/Chain/Direct.hs",
+              "line": 339,
+              "quote": "BlockInMode era@DijkstraEra _ -> throwIO $ EraNotSupportedYet{otherEraName = show era}"
+            },
+            {
+              "kind": "source",
+              "repo": "cardano-scaling/hydra",
+              "revision": "1b10c014295bf3e360431b4e0a24629388e50aa2",
+              "path": "hydra-node/src/Hydra/Chain/CardanoClient.hs",
+              "line": 154,
+              "quote": "error \"Dijkstra era not supported\""
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/cardano-scaling/hydra/issues/2645",
+              "title": "Non-Conway blocks are silently treated as empty",
+              "state": "open",
+              "date": "2026-06-05"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aiken",
+      "repo": "aiken-lang/aiken",
+      "roles": [
+        "script-compiler",
+        "script-evaluator"
+      ],
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "2a0475328be2fc361251be864b825c936fefb63b",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v1.1.24",
+          "date": "2026-09-26"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "pallas",
+          "version": "0.35.0"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "PlutusVersion stops at V3 (the default); PlutusV4 is language 3.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "aiken-lang/aiken",
+              "revision": "2a0475328be2fc361251be864b825c936fefb63b",
+              "path": "crates/aiken-lang/src/plutus_version.rs",
+              "line": 6,
+              "quote": "pub enum PlutusVersion {"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-script-context"
+          ],
+          "status": "gap",
+          "summary": "Validator handlers are spend, mint, withdraw, publish, vote and propose; there is no handler for V4's Guarding purpose.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "aiken-lang/aiken",
+              "revision": "2a0475328be2fc361251be864b825c936fefb63b",
+              "path": "crates/aiken-lang/src/ast.rs",
+              "line": 40,
+              "quote": "pub const HANDLER_PROPOSE: &str = \"propose\";"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plutus-plutus-core",
+      "repo": "IntersectMBO/plutus",
+      "roles": [
+        "script-compiler",
+        "script-evaluator"
+      ],
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "8fd7b6f345d3265ea3a128b45576685c0538f083",
+        "date": "2026-10-17",
+        "release": {
+          "tag": "1.72.0.0",
+          "date": "2026-10-17"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language",
+            "plutus-script-context"
+          ],
+          "status": "released",
+          "summary": "PlutusV4, its script context and the Dijkstra protocol version are released in plutus-ledger-api (target 1.71.0.0); the V4 context definition issue remains open.",
+          "releasedIn": {
+            "tag": "1.71.0.0",
+            "date": "2026-09-30"
+          },
+          "firstReleases": [
+            {
+              "tag": "1.71.0.0",
+              "date": "2026-09-30"
+            }
+          ],
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/plutus",
+              "revision": "8fd7b6f345d3265ea3a128b45576685c0538f083",
+              "path": "plutus-ledger-api/src/PlutusLedgerApi/Common/ProtocolVersions.hs",
+              "line": 91,
+              "quote": "dijkstraPV = MajorProtocolVersion 12"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/IntersectMBO/plutus/pull/7898",
+              "title": "Plutus V4 and dijkstraPV",
+              "state": "merged",
+              "date": "2026-08-19"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/IntersectMBO/plutus/issues/7342",
+              "title": "Define PlutusV4 script context",
+              "state": "open",
+              "date": "2025-09-18"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "opshin",
+      "repo": "OpShin/opshin",
+      "roles": [
+        "script-compiler"
+      ],
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context"
+      ],
+      "observed": {
+        "branch": "dev",
+        "revision": "756a6a102b0bd5778029455719cd6f856ac5d34e",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "0.28.0",
+          "date": "2026-09-01"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "Contracts compile to PlutusV3 with the V3 cost model.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "OpShin/opshin",
+              "revision": "756a6a102b0bd5778029455719cd6f856ac5d34e",
+              "path": "opshin/__main__.py",
+              "line": 551,
+              "quote": "            cek_machine_cost_model=cost_model.default_cek_machine_cost_model_plutus_v3(),"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-script-context"
+          ],
+          "status": "gap",
+          "summary": "The only ledger API is api_v3, whose TxInfo still has the fee field that V4 drops and none of V4's guards, sub-transaction index, direct deposits or balance intervals.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "OpShin/opshin",
+              "revision": "756a6a102b0bd5778029455719cd6f856ac5d34e",
+              "path": "opshin/ledger/api_v3.py",
+              "line": 740,
+              "quote": "class TxInfo(PlutusData):"
+            },
+            {
+              "kind": "source",
+              "repo": "OpShin/opshin",
+              "revision": "756a6a102b0bd5778029455719cd6f856ac5d34e",
+              "path": "opshin/ledger/api_v3.py",
+              "line": 755,
+              "quote": "    fee: Lovelace"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "helios",
+      "repo": "HeliosLang/compiler",
+      "roles": [
+        "script-compiler",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "7364d795562b96d14b1e177b28c103eb240d0f54",
+        "date": "2026-10-20",
+        "release": null
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language",
+            "plutus-script-context"
+          ],
+          "status": "gap",
+          "summary": "The compiler reads the transaction as a PlutusV2 TxInfo: the fee is a value map at field 3 and certificates are dcerts, with no votes or proposals; neither V3 nor V4 contexts are modelled.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "HeliosLang/compiler",
+              "revision": "7364d795562b96d14b1e177b28c103eb240d0f54",
+              "path": "src/codegen/makeRawFuncs.js",
+              "line": 8090,
+              "quote": "            \"__helios__tx__fee\","
+            },
+            {
+              "kind": "source",
+              "repo": "HeliosLang/compiler",
+              "revision": "7364d795562b96d14b1e177b28c103eb240d0f54",
+              "path": "src/codegen/makeRawFuncs.js",
+              "line": 8092,
+              "quote": "\t\t__core__unMapData(__helios__common__enum_field_3(self))"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plutarch",
+      "repo": "Plutonomicon/plutarch-plutus",
+      "roles": [
+        "script-compiler"
+      ],
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "87e11994c45b6af4768e5b6146d9c94879e279b5",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v1.10.1",
+          "date": "2025-02-19"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language",
+            "plutus-script-context"
+          ],
+          "status": "gap",
+          "summary": "plutarch-ledger-api provides V1-V3 modules only, on plutus-core 1.65; there is no V4 context.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Plutonomicon/plutarch-plutus",
+              "revision": "87e11994c45b6af4768e5b6146d9c94879e279b5",
+              "path": "plutarch-ledger-api/plutarch-ledger-api.cabal",
+              "line": 55,
+              "quote": "    Plutarch.LedgerApi.V3.Contexts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scalus",
+      "repo": "scalus3/scalus",
+      "roles": [
+        "script-compiler",
+        "script-evaluator",
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context",
+        "transaction-encoding"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "aef09fffdd22cc31dc68dcaee6f69ea626c1f9d4",
+        "date": "2026-10-19",
+        "release": {
+          "tag": "v1.2.0",
+          "date": "2026-09-17"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "in-progress",
+          "summary": "Knows the Dijkstra protocol version and the PlutusV4 script type.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "scalus3/scalus",
+              "revision": "aef09fffdd22cc31dc68dcaee6f69ea626c1f9d4",
+              "path": "scalus-core/shared/src/main/scala/scalus/cardano/ledger/ProtocolVersion.scala",
+              "line": 81,
+              "quote": "val dijkstraPV = MajorProtocolVersion(12)"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/scalus3/scalus/pull/265",
+              "title": "feat(ledger): add Script.PlutusV4 case for Dijkstra-era ref-scripts",
+              "state": "merged",
+              "date": "2026-05-06"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-script-context",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "PlutusV4 evaluation and context building are explicitly not implemented.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "scalus3/scalus",
+              "revision": "aef09fffdd22cc31dc68dcaee6f69ea626c1f9d4",
+              "path": "scalus-cardano-ledger/shared/src/main/scala/scalus/cardano/ledger/PlutusScriptEvaluator.scala",
+              "line": 162,
+              "quote": "\"Plutus V4 (Dijkstra) script evaluation is not yet implemented\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uplc-turbo",
+      "repo": "txpipe/uplc-turbo",
+      "roles": [
+        "script-evaluator"
+      ],
+      "surfaces": [
+        "plutus-language"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "da3e8c818f6ccc13cdf05821be1bbbc4fc3688ad",
+        "date": "2026-10-20",
+        "release": null
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "Program versions and builtin cost models stop at PlutusV3; there is no V4 version or cost model.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "txpipe/uplc-turbo",
+              "revision": "da3e8c818f6ccc13cdf05821be1bbbc4fc3688ad",
+              "path": "crates/uplc/src/program.rs",
+              "line": 75,
+              "quote": "    pub fn plutus_v3(arena: &'a Bump) -> &'a mut Self {"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plutigo",
+      "repo": "blinklabs-io/plutigo",
+      "roles": [
+        "script-evaluator"
+      ],
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "bd1be03a5caa9c485365f8c0243e6c391301e329",
+        "date": "2026-10-19",
+        "release": {
+          "tag": "v0.9.10",
+          "date": "2026-10-19"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language",
+            "plutus-script-context"
+          ],
+          "status": "released",
+          "summary": "PlutusV4 builtins, cost model and script-context variants keyed to protocol version 12 are released.",
+          "releasedIn": {
+            "tag": "v0.9.10",
+            "date": "2026-10-19"
+          },
+          "firstReleases": [
+            {
+              "tag": "v0.8.0",
+              "date": "2026-09-30"
+            }
+          ],
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blinklabs-io/plutigo",
+              "revision": "bd1be03a5caa9c485365f8c0243e6c391301e329",
+              "path": "builtin/availability.go",
+              "line": 184,
+              "quote": "dijkstraProtoVersion  uint = 12"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/plutigo/issues/344",
+              "title": "script context: add PlutusV4 builder variant for Dijkstra structures",
+              "state": "closed",
+              "date": "2026-09-28"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/plutigo/issues/274",
+              "title": "dijkstra: full Plutus V4 cost model implementation",
+              "state": "closed",
+              "date": "2026-09-28"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "julc",
+      "repo": "bloxbean/julc",
+      "roles": [
+        "script-compiler"
+      ],
+      "surfaces": [
+        "plutus-language",
+        "plutus-script-context"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "3f4a191900f07e9fb310cef5394bb7c344479532",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v0.1.0-pre18",
+          "date": "2026-09-29"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "The sole compiler target is PlutusV3 at protocol version 11.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "bloxbean/julc",
+              "revision": "3f4a191900f07e9fb310cef5394bb7c344479532",
+              "path": "julc-compiler/src/main/java/org/julclang/compiler/CompilerTarget.java",
+              "line": 19,
+              "quote": "    /** The sole compiler target supported by this release. */"
+            },
+            {
+              "kind": "source",
+              "repo": "bloxbean/julc",
+              "revision": "3f4a191900f07e9fb310cef5394bb7c344479532",
+              "path": "julc-compiler/src/main/java/org/julclang/compiler/CompilerTarget.java",
+              "line": 21,
+              "quote": "            LedgerEvaluationTarget.pv11(PlutusLanguage.PLUTUS_V3),"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-script-context"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "meshjs-mesh-sdk",
+      "repo": "MeshJS/mesh",
+      "roles": [
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "0e5138cca0de0defcf73106cf035a30233cd5159",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "1.9.0",
+          "date": "2026-06-01"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "Language versions stop at V3.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "MeshJS/mesh",
+              "revision": "0e5138cca0de0defcf73106cf035a30233cd5159",
+              "path": "packages/mesh-common/src/constants/index.ts",
+              "line": 18,
+              "quote": "  V3: \"V3\","
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "The Protocol model ends at minFeeRefScriptCostPerByte (key 33).",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "MeshJS/mesh",
+              "revision": "0e5138cca0de0defcf73106cf035a30233cd5159",
+              "path": "packages/mesh-common/src/types/protocol.ts",
+              "line": 24,
+              "quote": "  minFeeRefScriptCostPerByte: number;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "Pool parameters end at metadata, without a BLS key.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "MeshJS/mesh",
+              "revision": "0e5138cca0de0defcf73106cf035a30233cd5159",
+              "path": "packages/mesh-common/src/types/pool-params.ts",
+              "line": 12,
+              "quote": "  metadata?: PoolMetadata;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Serialization goes through CSL (via Whisky) and cardano-js-sdk, both gaps in R2; the transaction prototype ends at the donation field.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "MeshJS/mesh",
+              "revision": "0e5138cca0de0defcf73106cf035a30233cd5159",
+              "path": "packages/mesh-common/src/types/tx-prototype/types.ts",
+              "line": 222,
+              "quote": "  donation?: string | null;"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "lucid-evolution",
+      "repo": "Anastasia-Labs/lucid-evolution",
+      "roles": [
+        "transaction-builder",
+        "script-evaluator"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "ae579343fe173d33902c76ef76ac80228312428f",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "@lucid-evolution/lucid@0.8.4",
+          "date": "2026-10-19"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "cardano-multiplatform-lib-cml",
+          "version": "6.x"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "in-progress",
+          "summary": "The bundled evaluator accepts protocol versions up to 12.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Anastasia-Labs/lucid-evolution",
+              "revision": "ae579343fe173d33902c76ef76ac80228312428f",
+              "path": "packages/uplc/rust/src/lib.rs",
+              "line": 142,
+              "quote": "///   from 5 (Alonzo) to 12 (Dijkstra)."
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Transactions are built with the vendored CML, whose body ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Anastasia-Labs/lucid-evolution",
+              "revision": "ae579343fe173d33902c76ef76ac80228312428f",
+              "path": "packages/cml/rust/chain/rust/src/transaction/mod.rs",
+              "line": 353,
+              "quote": "    pub donation: Option<PositiveCoin>,"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "gap",
+          "summary": "The vendored CML's parameter updates end at key 33.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Anastasia-Labs/lucid-evolution",
+              "revision": "ae579343fe173d33902c76ef76ac80228312428f",
+              "path": "packages/cml/rust/chain/rust/src/lib.rs",
+              "line": 203,
+              "quote": "    pub min_fee_ref_script_cost_per_byte: Option<Rational>,"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "The vendored CML's pool parameters end at pool_metadata.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Anastasia-Labs/lucid-evolution",
+              "revision": "ae579343fe173d33902c76ef76ac80228312428f",
+              "path": "packages/cml/rust/chain/rust/src/certs/mod.rs",
+              "line": 565,
+              "quote": "    pub pool_metadata: Option<PoolMetadata>,"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-rules"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "blaze",
+      "repo": "butaneprotocol/blaze-cardano",
+      "roles": [
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+        "date": "2026-10-14",
+        "release": {
+          "tag": "@blaze-cardano/blueprint@0.9.1",
+          "date": "2026-10-14"
+        }
+      },
+      "dependsOn": [
+        {
+          "component": "cardano-js-sdk",
+          "version": "0.47.1"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-encoding",
+            "transaction-rules",
+            "plutus-language",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "in-progress",
+          "summary": "Main registers stake credentials with the Conway certificate (type 7) because Dijkstra rejects type 0, and upgrades to @cardano-sdk/core 0.47.1 for Dijkstra types; it does not build sub-transactions and selects cost models for V1-V3 only.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "butaneprotocol/blaze-cardano",
+              "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+              "path": "packages/blaze-tx/src/TxBuilder.ts",
+              "line": 70,
+              "quote": "// Required on Dijkstra-era ledger where the legacy Shelley-cert-0 form is no"
+            },
+            {
+              "kind": "source",
+              "repo": "butaneprotocol/blaze-cardano",
+              "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+              "path": "packages/blaze-core/CHANGELOG.md",
+              "line": 13,
+              "quote": "Upgrade `@cardano-sdk/core` to `^0.47.1`"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/butaneprotocol/blaze-cardano/pull/370",
+              "title": "chore(core): upgrade Cardano SDK to 0.47.1",
+              "state": "merged",
+              "date": "2026-10-12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atlas",
+      "repo": "geniusyield/atlas",
+      "roles": [
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "cardano-api-haskell",
+        "transaction-encoding"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
+        "date": "2026-10-20",
+        "release": {
+          "tag": "v0.14.1",
+          "date": "2025-05-21"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "cardano-api-haskell",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "The ledger era is fixed to Conway on cardano-api 10.13.1: queries and submission are built in ShelleyBasedEraConway, and provider era histories are parsed as exactly seven eras.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "geniusyield/atlas",
+              "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
+              "path": "src/GeniusYield/Types/Era.hs",
+              "line": 16,
+              "quote": "type ApiEra = Api.S.ConwayEra"
+            },
+            {
+              "kind": "source",
+              "repo": "geniusyield/atlas",
+              "revision": "c3adfb416242ea25a244bfaa1614213eecdc55d9",
+              "path": "src/GeniusYield/Providers/Common.hs",
+              "line": 157,
+              "quote": "parseEraHist mkEra [byronEra, shelleyEra, allegraEra, maryEra, alonzoEra, babbageEra, conwayEra] ="
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cardano-transaction-lib-ctl",
+      "repo": "Plutonomicon/cardano-transaction-lib",
+      "roles": [
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "era-identity",
+        "transaction-encoding",
+        "transaction-rules",
+        "plutus-language",
+        "protocol-parameters",
+        "stake-pool-registration"
+      ],
+      "observed": {
+        "branch": "develop",
+        "revision": "2ae739437420be191bca87fbe836eb999782b1ef",
+        "date": "2026-10-20",
+        "release": null
+      },
+      "dependsOn": [
+        {
+          "component": "ogmios",
+          "version": "service"
+        },
+        {
+          "component": "kupo",
+          "version": "service"
+        }
+      ],
+      "assessments": [
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "gap",
+          "summary": "Script envelopes are read for PlutusScriptV1-V3 only; ledger types come from the external purescript-cardano-types package.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "Plutonomicon/cardano-transaction-lib",
+              "revision": "2ae739437420be191bca87fbe836eb999782b1ef",
+              "path": "src/Internal/Cardano/TextEnvelope.purs",
+              "line": 100,
+              "quote": "      Just $ PlutusScript.plutusV3Script envelopeBytes"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "transaction-encoding",
+            "transaction-rules",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "no-evidence",
+          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "kuber",
+      "repo": "dQuadrant/kuber",
+      "roles": [
+        "transaction-builder"
+      ],
+      "surfaces": [
+        "cardano-api-haskell",
+        "transaction-encoding"
+      ],
+      "observed": {
+        "branch": "master",
+        "revision": "2c559089e394ea7bc8a9bbde968bcdfb2ef7fac5",
+        "date": "2026-05-22",
+        "release": {
+          "tag": "v4.2.0",
+          "date": "2026-05-22"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "cardano-api-haskell",
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Compiles the Dijkstra era constructors of cardano-api 11.0.0.0; the target is cardano-api 11.8.0.0. The default branch is still the v4.2.0 release commit (2026-05-22) and no branch or open pull request targets cardano-api 11.8.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "dQuadrant/kuber",
+              "revision": "2c559089e394ea7bc8a9bbde968bcdfb2ef7fac5",
+              "path": "src/Cardano/Kuber/Core/TxFramework.hs",
+              "line": 119,
+              "quote": "toMaryEraOnwards' BabbageEraOnwardsDijkstra = MaryEraOnwardsDijkstra"
+            },
+            {
+              "kind": "source",
+              "repo": "dQuadrant/kuber",
+              "revision": "2c559089e394ea7bc8a9bbde968bcdfb2ef7fac5",
+              "path": "cabal.project",
+              "line": 17,
+              "quote": "  , any.cardano-api == 11.0.0.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yaci-devkit",
+      "repo": "bloxbean/yaci-devkit",
+      "roles": [
+        "devnet"
+      ],
+      "surfaces": [
+        "era-identity",
+        "protocol-parameters"
+      ],
+      "observed": {
+        "branch": "main",
+        "revision": "e67d385799b40aab0992d0b3616dfd8c14ed5ff8",
+        "date": "2026-10-15",
+        "release": {
+          "tag": "v0.12.0",
+          "date": "2026-10-14"
+        }
+      },
+      "dependsOn": [],
+      "assessments": [
+        {
+          "surfaces": [
+            "era-identity",
+            "protocol-parameters"
+          ],
+          "status": "in-progress",
+          "summary": "Generates a Dijkstra genesis file for local clusters.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "bloxbean/yaci-devkit",
+              "revision": "e67d385799b40aab0992d0b3616dfd8c14ed5ff8",
+              "path": "applications/cli/src/main/java/com/bloxbean/cardano/yacicli/localcluster/ClusterService.java",
+              "line": 375,
+              "quote": "Path srcDijkstraGenesisFile = clusterFolder.resolve(\"genesis-templates\").resolve(\"dijkstra-genesis.json\");"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -11,7 +11,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Where to read before writing code
 
 **Next.js 16 (bundled docs — `node_modules/next/dist/docs/`).** This repo pins
-Next.js **16.3.4**. Read the guide for what you're touching before writing it:
+Next.js **16.4.3**. Read the guide for what you're touching before writing it:
 
 - Static export: `01-app/02-guides/static-exports.md` — the whole site is
   `output: 'export'`; know the unsupported features (no `searchParams` in pages,

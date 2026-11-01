@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "targetRevision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+  "previousAssessment": "content/readiness/dijkstra-history/2026-10-26-integration",
+  "recipeSha256": {
+    "scripts/readiness/devnet/README.md": "4187455c8e9aa4d3ec4a2653632c78cc2f335a88665c41f4d06aaaaa6d6f5b32",
+    "scripts/readiness/devnet/build-cml-probe.sh": "c88ba4731f8ab27d56bcf0ff2b97947a37a5a6b02aced3a11c7e30bfd441549b",
+    "scripts/readiness/devnet/build-pallas-probe.sh": "1f8e285f389c4e7b23f5b2d00adc1f409b2e1dbe33a83dda7eb6ad81223d15ed",
+    "scripts/readiness/devnet/build-probe.sh": "3abebf2e74444487c02fa86c4bf6db3e4fca0b67ae46ff39e49afeaa054313b2",
+    "scripts/readiness/devnet/cbor_dump.py": "ca1a2aec09eb1432b9311fdd62b658b0d2480ca93648a2a73f12fc97a4de99c8",
+    "scripts/readiness/devnet/cml-probe/main.rs": "ed8f954cb27cf1241afe02dc332267f4611c6751dd6837c25ddf74e94b5ed98d",
+    "scripts/readiness/devnet/csl-probe/probe.cjs": "d8a640703a2f6b3fe0ceb0c243b4bbdcd157976a85d0b183645e69a3c7115063",
+    "scripts/readiness/devnet/env.sh": "da1334afdfc4bc53ea124c02bf240d28b6320ddc43abe5a85f9133e4d96fb354",
+    "scripts/readiness/devnet/handshake.py": "2b64a54b57871f0859d302a42a06d6c073bcb1a119bd14dd1dd37d0318658e52",
+    "scripts/readiness/devnet/hardfork.sh": "87bf0bd1146de136d8dad9a66b04a65907cf5f1790d9f3e0e53d961be43be8ff",
+    "scripts/readiness/devnet/js-probe/probe.cjs": "98333176c8d66388752adbbcfa5e2f75c35a9d322ce8b1a53040d3047b0b699e",
+    "scripts/readiness/devnet/pallas-probe/main.rs": "a4c389775cd4a49eeac0ceac3bf80e2747ad631329165d107aadc338c6e62eb9",
+    "scripts/readiness/devnet/patches/adder-v0.45.0-gouroboros-v0.213.9.diff": "5e6e362ab6b74b4dcc85d9aba42c54718aeaa3faf4c6fc9e2d03a89bbc069064",
+    "scripts/readiness/devnet/patches/cardano-node-api-gouroboros-v0.213.9.diff": "2f40a85d6281071411bdaf49bc29ae9deed8038e39ef618bf168a97512225707",
+    "scripts/readiness/devnet/probe/main.go": "9d2a11b59f43c7cb5b02cedae7945ecf33eb6965efa8b8978d9a44cb798b47cb",
+    "scripts/readiness/devnet/py-probe/probe.py": "e0e99e63de32a07e4537923ee5f5154941feb53c7ed74d2325264f888336e20c",
+    "scripts/readiness/devnet/service-layer.sh": "782fc462b381838a7c9300282a1f6f945eabb52216b3ca1f8253088e5c3c2f40",
+    "scripts/readiness/devnet/services.sh": "3927408ed597a4cb8fb1a1eed204499a25906944bc13e5ad7c7c67f6bed03578",
+    "scripts/readiness/devnet/start.sh": "8357d15f4ab2a7920958f75ea16e1f572dc84ba3ed3dc684036cf5abfa7d8d9f",
+    "scripts/readiness/devnet/tools.sh": "f88ca5a1829ef36f4a49cd9bcb35eb5196cea5d2c787c2b490fdfd3d55439499",
+    "scripts/readiness/devnet/transactions.sh": "ec83cb038b879f14f86e6b8e29d8c3c0e1530494ebf757c7f858b106eb4ccd91",
+    "scripts/readiness/devnet/txid.py": "f6184c4507a40e3de121ae87b733d9fd84b60e559a8a468fd765805ffabcd63e"
+  },
+  "fixtureFormats": {
+    "blocks.txt.gz": "era-tag followed by unwrapped block hex (168 Dijkstra blocks)",
+    "blocks-hfc.txt.gz": "era-tag followed by HFC-wrapped hex (1 Conway control + the same 168 Dijkstra blocks)",
+    "transactions-labeled.txt": "label followed by signed-envelope or mempool transaction hex (17 encodings)"
+  },
+  "limits": [
+    "Live chain timing, generated keys, hashes and slots vary.",
+    "Dependency resolution was captured after the build; fresh builds must reuse the retained lockfiles to replay it.",
+    "Source observations and human reachability decisions are not runtime proof.",
+    "Only the explicitly named tool versions and test cases were executed."
+  ]
+}

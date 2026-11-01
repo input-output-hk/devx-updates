@@ -37,7 +37,7 @@ test("each tool touching a changed surface gets one hardfork state, most reached
   const node = by.get("cardano-node")!;
   assert.ok(node.reachedBy.includes("meshjs-mesh-sdk") && !node.dependents.includes("meshjs-mesh-sdk"), "reached through the tools it uses");
   assert.equal(by.get("ogmios")?.state, "breaks", "a confirmed own gap breaks");
-  assert.equal(by.get("cardano-node")?.state, "in-progress", "the untagged 11.2 set is in progress");
+  assert.equal(by.get("cardano-node")?.state, "unverified", "a tag and capability tests do not verify every changed surface");
   assert.equal(by.get("plutus-plutus-core")?.state, "ready", "released support with nothing open is ready");
   assert.match(by.get("whisky")!.reason, /must move off maestro/, "a deprecated provider is moved off, not waited on");
   assert.doesNotMatch(by.get("whisky")!.reason, /blocked by [^;]*maestro/);

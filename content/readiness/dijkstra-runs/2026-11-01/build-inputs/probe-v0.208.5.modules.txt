@@ -1,0 +1,33 @@
+/tmp/dijkstra-11.2.0/probe-v0.208.5: go1.26.9
+	path	probe
+	mod	probe	(devel)	
+	dep	filippo.io/edwards25519	v1.2.0	h1:crnVqOiS4jqYleHd9vaKZ+HKtHfllngJIiOpNpoJsjo=
+	dep	github.com/bits-and-blooms/bitset	v1.24.6	h1:qcrftZUVBIwfs+m+nhoCBAPT+ZPZZjti8SbHbDQQkZ4=
+	dep	github.com/blinklabs-io/gouroboros	v0.208.5	h1:imDoaKdnb6cP30I0YRKaYi8UM7P2yLBqwkHgeWiYhWM=
+	dep	github.com/blinklabs-io/plutigo	v0.7.2	h1:t66Z8ud5KVYz6qu2WSa/Ri4OhMWjH/oe19jX5gveWjQ=
+	dep	github.com/btcsuite/btcd/btcec/v2	v2.5.0	h1:KioMXOWa76b86sTZZOmbzv/ldaQCmB8KFAyn5PbB8E8=
+	dep	github.com/btcsuite/btcd/btcutil	v1.2.0	h1:p3+S2g3Q+7G5NOh4Ji+2UrBOrg5Z0Q4ykzShWG1Dhgs=
+	dep	github.com/btcsuite/btcd/chaincfg/chainhash	v1.2.0	h1:yMIg99+4aBvqfl/HzJRKfxTX9rGfikoI9uvFzterhc8=
+	dep	github.com/btcsuite/btcd/chainhash/v2	v2.0.0	h1:PMLlSloHJuEeB80XG9EjpXWNEKAZAMLl6YHZ6YsEuoA=
+	dep	github.com/consensys/gnark-crypto	v0.21.0	h1:FDHibVIk4T5LkOKAkiN38g8gEvOxNcM10mLHOqvFTD0=
+	dep	github.com/decred/dcrd/crypto/blake256	v1.1.0	h1:zPMNGQCm0g4QTY27fOCorQW7EryeQ/U0x++OzVrdms8=
+	dep	github.com/decred/dcrd/dcrec/secp256k1/v4	v4.4.0	h1:NMZiJj8QnKe1LgsbDayM4UoHwbvwDRwnI3hwNaAHRnc=
+	dep	github.com/fxamacker/cbor/v2	v2.9.4	h1:xwjVlxEMR3S605oUlgBjKLTTeGFciYPGYCtF/35LKGo=
+	dep	github.com/jinzhu/copier	v0.4.0	h1:w3ciUoD19shMCRargcpm0cm91ytaBhDvuRpz1ODO/U8=
+	dep	github.com/klauspost/cpuid/v2	v2.2.3	h1:sxCkb+qR91z4vsqw4vGGZlDgPz3G7gjaLyK3V8y70BU=
+	dep	github.com/minio/sha256-simd	v1.0.1	h1:6kaan5IFmwTNynnKKpDHe6FWHohJOHhCPchzK49dzMM=
+	dep	github.com/utxorpc/go-codegen	v0.19.2	h1:IG8OhSc0GILy6emTeUM1/+t/PXbzJTmpJuRAhoWEkbM=
+	dep	github.com/x448/float16	v0.8.4	h1:qLwI1I70+NjRFUR3zs1JPUCgaCXSh3SW62uAKT1mSBM=
+	dep	golang.org/x/crypto	v0.57.0	h1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=
+	dep	golang.org/x/sys	v0.48.0	h1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=
+	dep	google.golang.org/protobuf	v1.36.12	h1:pJOKDDOyeXErUroCihFAd5LQuwXBSpVnKGrj5o/fwxc=
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	CGO_ENABLED=1
+	build	CGO_CFLAGS=
+	build	CGO_CPPFLAGS=
+	build	CGO_CXXFLAGS=
+	build	CGO_LDFLAGS=
+	build	GOARCH=amd64
+	build	GOOS=linux
+	build	GOAMD64=v1

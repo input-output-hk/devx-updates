@@ -1,0 +1,33 @@
+{
+  "checks": 15,
+  "results": 48,
+  "failing": [
+    "component gouroboros 0.208.5",
+    "change header-version-info",
+    "component gouroboros v0.213.0",
+    "component gouroboros v0.213.9",
+    "component gouroboros v0.216.3",
+    "component ogmios v7.0.0",
+    "component kupo v2.12",
+    "component gouroboros v0.213.0",
+    "component gouroboros v0.213.9",
+    "tool txtop 86a013e with gouroboros v0.213.0",
+    "tool cardano-node-api 1368155 with gouroboros v0.213.9 and patches",
+    "component gouroboros v0.216.3",
+    "tool txtop 86a013e pinned (gouroboros 0.208.5)",
+    "tool cardano-node-api 1368155 pinned (gouroboros 0.202.7)",
+    "component pallas v1.4.0",
+    "component pallas main b4a519fa",
+    "component pallas dijkstra e7ea1726",
+    "component pallas v1.4.0",
+    "component pallas main b4a519fa",
+    "component cardano-multiplatform-lib-cml 6.2.0",
+    "component cardano-db-sync 13.7.2.1",
+    "component blockfrost v6.8.2",
+    "component cardano-serialization-lib-csl 17.0.0",
+    "component cardano-serialization-lib-csl 15.0.3",
+    "component pycardano v0.19.2",
+    "component ogmios v7.0.0",
+    "component kupo v2.12"
+  ]
+}
