@@ -1,0 +1,12 @@
+{
+  "upgrades": 11,
+  "sourcesVerified": true,
+  "byHandling": {
+    "own-work": 8,
+    "prepared": 1,
+    "generic": 2
+  },
+  "missing": [],
+  "stale": [],
+  "orphaned": []
+}

@@ -10171,7 +10171,7 @@
     "block-encoding"
    ],
    "decision": "confirmed",
-   "summary": "Chain-sync decodes block headers with gouroboros, which requires the twelve-field Dijkstra header that the 11.2 integration node does not emit.",
+   "summary": "Chain-sync decodes block headers with gouroboros, which requires the twelve-field Dijkstra header that the tagged node 11.2.0 does not emit.",
    "evidence": [
     {
      "repo": "blinklabs-io/dingo",

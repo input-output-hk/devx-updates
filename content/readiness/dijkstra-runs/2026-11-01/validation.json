@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "sourceChecks": {
+    "changes": true,
+    "boundary": true,
+    "leads": true,
+    "upgrades": true,
+    "note": "All pinned quotes verified. Subsequent review corrections changed prose, dependency-version metadata and added runtime evidence; quoted source assertions are unchanged."
+  },
+  "leadCoverage": {
+    "records": 637,
+    "surfaceDecisions": 1598,
+    "stale": 0,
+    "orphaned": 0,
+    "unreviewed": 0,
+    "undetermined": 43
+  },
+  "tests": {
+    "passed": 165,
+    "failed": 0,
+    "skipped": 1,
+    "skip": "Optional native Poetry test: configured interpreter unavailable"
+  },
+  "typecheck": "pass",
+  "lint": "pass",
+  "staticBuild": {
+    "result": "pass",
+    "basePath": "/devx-updates",
+    "pages": 353
+  },
+  "nativeGraph": {
+    "validatedTools": 268,
+    "profilesReplayedIdentically": 55,
+    "evidenceObjects": 1321
+  },
+  "devnet": {
+    "checks": 15,
+    "results": 48,
+    "pass": 21,
+    "fail": 27,
+    "note": "These are observed compatibility outcomes, not validation failures."
+  },
+  "review": {
+    "standards": "Archive file-list coverage finding fixed and regression tested; no outstanding findings.",
+    "spec": "Cometa dependency note and remaining-work text corrected; no outstanding findings."
+  },
+  "cleanup": "Local testnet, db-sync process and test service containers stopped."
+}

@@ -53,6 +53,51 @@
   ],
   "components": [
     {
+      "component": "adder",
+      "surfaces": [
+        {
+          "surface": "node-to-client-protocol",
+          "before": "gap",
+          "after": "in-progress"
+        }
+      ]
+    },
+    {
+      "component": "apollo",
+      "surfaces": [
+        {
+          "surface": "era-identity",
+          "before": "tracked",
+          "after": "in-progress"
+        },
+        {
+          "surface": "transaction-encoding",
+          "before": "tracked",
+          "after": "in-progress"
+        },
+        {
+          "surface": "transaction-rules",
+          "before": "tracked",
+          "after": "in-progress"
+        },
+        {
+          "surface": "plutus-language",
+          "before": "tracked",
+          "after": "in-progress"
+        },
+        {
+          "surface": "protocol-parameters",
+          "before": "tracked",
+          "after": "in-progress"
+        },
+        {
+          "surface": "stake-pool-registration",
+          "before": "tracked",
+          "after": "in-progress"
+        }
+      ]
+    },
+    {
       "component": "cardano-c",
       "surfaces": [
         {
@@ -114,51 +159,6 @@
           "surface": "protocol-parameters",
           "before": "gap",
           "after": "released"
-        }
-      ]
-    },
-    {
-      "component": "apollo",
-      "surfaces": [
-        {
-          "surface": "era-identity",
-          "before": "tracked",
-          "after": "in-progress"
-        },
-        {
-          "surface": "transaction-encoding",
-          "before": "tracked",
-          "after": "in-progress"
-        },
-        {
-          "surface": "transaction-rules",
-          "before": "tracked",
-          "after": "in-progress"
-        },
-        {
-          "surface": "plutus-language",
-          "before": "tracked",
-          "after": "in-progress"
-        },
-        {
-          "surface": "protocol-parameters",
-          "before": "tracked",
-          "after": "in-progress"
-        },
-        {
-          "surface": "stake-pool-registration",
-          "before": "tracked",
-          "after": "in-progress"
-        }
-      ]
-    },
-    {
-      "component": "adder",
-      "surfaces": [
-        {
-          "surface": "node-to-client-protocol",
-          "before": "gap",
-          "after": "in-progress"
         }
       ]
     },

@@ -1,0 +1,11 @@
+✔ archives retain original bytes, refuse replacement and detect tampering (633.811518ms)
+✔ the retained baseline validates, and a new tested version is not counted as a changed outcome (699.770764ms)
+✔ component and surface removals remain visible in the comparison (647.533554ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1997.378471

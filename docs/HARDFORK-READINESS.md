@@ -424,10 +424,10 @@ The site is a static export; a malformed register fails the build.
    source; assess them from documented APIs or owner-supplied evidence.
 5. **Devnet coverage.** Koios on the devnet; Blockfrost and Koios again once
    db-sync decodes Dijkstra; compile Marlowe and Marconi on a larger machine;
-   representative consumers per surface; re-run everything on the 11.2 tag.
+   representative consumers per surface; extend the completed 11.2.0 matrix to advanced Dijkstra transactions.
    Next codecs by tools blocked on reading alone: cardano-client-lib,
    ledgerjs-hw-app-cardano (on Speculos), Scalus, Aiken's `uplc` and the
-   cardano-js-sdk parameter-update path. Settle the 36 undetermined decisions
+   cardano-js-sdk parameter-update path. Settle the 43 undetermined decisions
    by execution where possible (bursa's Keystone signing, argus-cardano-sync
    through Chrysalis, hydra-pay's bundled configs).
    Hand-built transactions with body keys 23-27 would exercise the codec gaps

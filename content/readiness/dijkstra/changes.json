@@ -360,7 +360,7 @@
       ],
       "compatibility": "decode-break",
       "basis": "source-verified",
-      "summary": "The target CDDL's header_body replaces protocol_version with header_version_info [highest_supported_major_version, self_reported_software_tag] and adds block_body_contains_leios_cert and eb_references_announcement, with vrf_cert's output exactly 64 bytes. The shared Praos header encoder at the same ledger revision still writes the ten-field header with protocol_version, and the 11.2 integration node emits that header in Dijkstra blocks (devnet check block-shape): decoders that follow the CDDL reject the node's blocks.",
+      "summary": "The target CDDL's header_body replaces protocol_version with header_version_info [highest_supported_major_version, self_reported_software_tag] and adds block_body_contains_leios_cert and eb_references_announcement, with vrf_cert's output exactly 64 bytes. The shared Praos header encoder at the same ledger revision still writes the ten-field header with protocol_version, and the tagged node 11.2.0 emits that header in Dijkstra blocks (devnet check block-shape): decoders that follow the CDDL reject the node's blocks.",
       "affects": "Header decoders in chain-sync clients, explorers that show the header protocol version, and pool/version telemetry tools.",
       "citations": [
         {

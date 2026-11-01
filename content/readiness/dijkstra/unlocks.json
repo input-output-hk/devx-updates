@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-01T13:06:25.160Z",
+ "generatedAt": "2026-11-01T13:14:07.180Z",
  "bumpReady": [
   {
    "tool": "marconi",
@@ -526,16 +526,7 @@
      ]
     }
    ],
-   "downstream": [
-    {
-     "tool": "apollo",
-     "via": "cardano-db-sync"
-    },
-    {
-     "tool": "gerolamo",
-     "via": "cardano-db-sync"
-    }
-   ],
+   "downstream": [],
    "ownGap": [
     "era-identity",
     "block-encoding",
@@ -1890,22 +1881,12 @@
    "undetermined": [],
    "cleared": [
     "blockfrost",
+    "cardano-db-sync",
     "gouroboros",
     "koios",
     "ogmios"
    ],
-   "unread": [
-    {
-     "via": "cardano-db-sync",
-     "surfaces": [
-      "block-encoding",
-      "era-identity",
-      "protocol-parameters",
-      "stake-pool-registration",
-      "transaction-encoding"
-     ]
-    }
-   ]
+   "unread": []
   },
   {
    "tool": "argus-cardano-sync",
@@ -3988,6 +3969,7 @@
    "cleared": [
     "blockfrost",
     "buildooor",
+    "cardano-db-sync",
     "cardano-serialization-lib-csl",
     "koios",
     "mithril",
@@ -3995,18 +3977,7 @@
     "ouroboros-miniprotocols-ts",
     "pallas"
    ],
-   "unread": [
-    {
-     "via": "cardano-db-sync",
-     "surfaces": [
-      "block-encoding",
-      "era-identity",
-      "protocol-parameters",
-      "stake-pool-registration",
-      "transaction-encoding"
-     ]
-    }
-   ]
+   "unread": []
   },
   {
    "tool": "gin",

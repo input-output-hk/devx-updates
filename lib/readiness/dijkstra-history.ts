@@ -25,6 +25,8 @@ export function archiveDijkstra(source: string, destination: string, repositoryR
 export function readDijkstraArchive(directory: string) {
   const manifest = JSON.parse(readFileSync(join(directory, "manifest.json"), "utf8")) as Manifest;
   if (manifest.schemaVersion !== 1 || !manifest.files || !Object.keys(manifest.files).length) throw new Error("Invalid assessment manifest");
+  const actual = readdirSync(directory, { withFileTypes: true }).filter((f) => f.isFile() && f.name !== "manifest.json").map((f) => f.name).sort();
+  if (JSON.stringify(actual) !== JSON.stringify(Object.keys(manifest.files).sort())) throw new Error("Assessment manifest must cover every archived file");
   for (const [file, expected] of Object.entries(manifest.files)) {
     if (basename(file) !== file || file === "." || file === ".." || hash(join(directory, file)) !== expected)
       throw new Error(`Assessment archive checksum mismatch: ${file}`);
@@ -44,13 +46,15 @@ export function compareDijkstra(before: DijkstraSite, after: DijkstraSite) {
     return [{ tool, before: a?.state ?? null, after: b?.state ?? null, reason: b?.reason ?? "No longer classified on a shipped changed surface" }];
   });
   const oldComponents = new Map(before.boundary.components.map((c) => [c.id, c]));
-  const components = after.boundary.components.flatMap((c) => {
-    const old = oldComponents.get(c.id);
-    const surfaces = c.surfaces.flatMap((surface) => {
-      const a = old?.surfaces.includes(surface) ? worstStatus(old, surface) : null, b = worstStatus(c, surface);
+  const newComponents = new Map(after.boundary.components.map((c) => [c.id, c]));
+  const components = [...new Set([...oldComponents.keys(), ...newComponents.keys()])].sort().flatMap((component) => {
+    const old = oldComponents.get(component), current = newComponents.get(component);
+    const surfaces = [...new Set([...(old?.surfaces ?? []), ...(current?.surfaces ?? [])])].flatMap((surface) => {
+      const a = old?.surfaces.includes(surface) ? worstStatus(old, surface) : null;
+      const b = current?.surfaces.includes(surface) ? worstStatus(current, surface) : null;
       return a === b ? [] : [{ surface, before: a, after: b }];
     });
-    return surfaces.length ? [{ component: c.id, surfaces }] : [];
+    return surfaces.length ? [{ component, surfaces }] : [];
   });
   const results = (site: DijkstraSite) => new Map(site.devnet.checks.flatMap((c) => c.results.map((r) => [`${c.id}/${r.kind}/${r.id}/${r.version ?? ""}`, r.outcome] as const)));
   const oldResults = results(before), newResults = results(after);
