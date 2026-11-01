@@ -466,7 +466,7 @@ lookup keeps the previous entry and exits non-zero.
 ## On the site
 
 `/map/dijkstra` opens with the state of every tool touching a changed surface
-(Breaks after HF, In progress, Ready for HF, Not verified, Dismissed), then the
+(Breaks after HF, In progress, Ready for HF, Target component, Not verified, Dismissed), then the
 critical path (`lib/readiness/fix-graph.ts`: each blocking component placed one
 column right of the furthest component it waits on, implied links dropped, then a
 last column of the tools DApps build on (survey usage above 10% and a confirmed
@@ -480,6 +480,15 @@ released, with upgrade distance and own era handling; inherited gaps not read
 yet and links waiting on a component verdict, grouped by component; every lead
 decision with its quoted lines, collapsed per tool). Each tool page under `/map/readiness/<id>` has a Dijkstra section with
 its state, issue/PR links, exposure, devnet results, blockers, upgrade, what it waits on, what fixing it unlocks (its fix-order step and on its own) and lead decisions. A malformed register fails the build.
+
+The four components of the tagged reference node release (cardano-node,
+cardano-cli, cardano-submit-api and cardano-testnet) show **Target component ·
+11.2.0**, with a prerelease badge taken from the release metadata. This denotes
+membership in the reference release, independently of capability test outcomes
+and production hardfork readiness. The version is the node release, not the
+individual executable version. Tool pages retain recorded devnet results and
+explicitly identify missing component-specific results, linking to the target
+checks. Archived untagged assessments retain **In progress**.
 
 ## Checking it
 

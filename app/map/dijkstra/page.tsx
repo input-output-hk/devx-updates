@@ -16,17 +16,18 @@ const STATE_MEANING: Record<HardforkState, string> = {
   breaks: "A confirmed gap that nobody has shipped the fix for, in the tool or in what it uses.",
   "in-progress": "Dijkstra work exists but is not released.",
   ready: "Its own support is released and nothing it uses is open.",
+  "target-component": "Part of the tagged reference node release. Capability checks are reported separately; this is not a production hardfork sign-off.",
   unverified: "No confirmed gap, which is not a pass.",
   dismissed: "Set aside by hand (abandoned, or too little use for a break to matter), with the reason and the state it would otherwise have.",
 };
 /** Survey usage (share of developers) above which a tool counts as one DApps build on. */
 const DAPP_USAGE = 10;
 const STATE_COLOR: Record<HardforkState, string> = {
-  breaks: "var(--status-blocked)", "in-progress": "var(--status-progress)", ready: "var(--status-done)", unverified: "var(--viz-1)", dismissed: "var(--muted)",
+  breaks: "var(--status-blocked)", "in-progress": "var(--status-progress)", ready: "var(--status-done)", "target-component": "var(--viz-3)", unverified: "var(--viz-1)", dismissed: "var(--muted)",
 };
-const SHORT_STATE: Record<HardforkState, string> = { breaks: "Breaks", "in-progress": "In progress", ready: "Ready", unverified: "Not verified", dismissed: "Dismissed" };
+const SHORT_STATE: Record<HardforkState, string> = { breaks: "Breaks", "in-progress": "In progress", ready: "Ready", "target-component": "Target component", unverified: "Not verified", dismissed: "Dismissed" };
 /** How the gap card names each state in its breakdown. */
-const GAP_WORDS: Record<HardforkState, string> = { breaks: "break", "in-progress": "in progress", ready: "ready", unverified: "not verified", dismissed: "dismissed" };
+const GAP_WORDS: Record<HardforkState, string> = { breaks: "break", "in-progress": "in progress", ready: "ready", "target-component": "target component", unverified: "not verified", dismissed: "dismissed" };
 export const metadata: Metadata = {
   title: "Dijkstra hardfork readiness",
   description: "Which Cardano tools the Dijkstra hardfork breaks, through which dependency, and what each upstream fix unlocks.",
@@ -192,7 +193,7 @@ export default function DijkstraPage() {
             <dd className="mb-1.5 text-muted sm:mb-0">{STATE_MEANING[s]}</dd>
           </div>)}
         </dl>
-        <HardforkToolList rows={rows} />
+        <HardforkToolList rows={rows} nodeRelease={String(changes.target.nodeRelease)} />
       </section>
 
       <section aria-labelledby="deeper" className="scroll-mt-24">

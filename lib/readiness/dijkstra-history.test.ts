@@ -49,3 +49,14 @@ test("component and surface removals remain visible in the comparison", () => {
   assert.ok(changes.find((c) => c.component === "cardano-c")!.surfaces.every((s) => s.after === null));
   assert.deepEqual(changes.find((c) => c.component === "pallas")!.surfaces, [{ surface: "block-encoding", before: "gap", after: null }]);
 });
+
+test("tagged target components retain the earlier integration assessment in history", () => {
+  const { site: before } = readDijkstraArchive(source);
+  const current = loadDijkstraSite("content/readiness/dijkstra");
+  const comparison = compareDijkstra(before, current);
+  const targets = comparison.tools.filter((t) => t.after === "target-component");
+  assert.deepEqual(targets.map((t) => t.tool), ["cardano-cli", "cardano-node", "cardano-submit-api", "cardano-testnet"]);
+  assert.ok(targets.every((t) => t.before === "in-progress"), "the archived untagged target keeps its original state");
+  assert.ok(comparison.runtime.filter((r) => r.before && r.after).every((r) => r.before === r.after),
+    "a new membership label does not turn unchanged runtime outcomes into fixes");
+});

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { citationUrl, componentStatus, devnetResults, dijkstraSite, toolLeads, toolState, toolUpgrade, viaLabel, waitingLinks } from "@/lib/readiness/dijkstra-site";
-import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
+import { HARDFORK_STATES, hardforkStateLabel } from "@/lib/readiness/hardfork-states";
 import StateFacts from "./StateFacts";
 import TrackingLinks from "./TrackingLinks";
 
@@ -33,11 +33,11 @@ export default function DijkstraExposure({ id }: { id: string }) {
     </div>
     {state && <div>
       <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
-        <span className={`inline-flex items-center gap-1.5 font-medium ${HARDFORK_STATES[state.state].text}`}><span className={`size-2 rounded-full ${HARDFORK_STATES[state.state].dot}`} />{HARDFORK_STATES[state.state].label}</span>
+        <span className={`inline-flex items-center gap-1.5 font-medium ${HARDFORK_STATES[state.state].text}`}><span className={`size-2 rounded-full ${HARDFORK_STATES[state.state].dot}`} />{hardforkStateLabel(state.state, String(site.changes.target.nodeRelease))}</span>
         {state.state !== "breaks" && state.state !== "in-progress" && <span className="text-sm text-muted">{state.reason}{state.dismissed?.date && ` (${state.dismissed.date})`}</span>}
       </p>
       {(state.blockedBy.length > 0 || state.tags.length > 0) && <div className="mt-2"><StateFacts blockedBy={state.blockedBy} tags={state.tags} /></div>}
-      {state.computed && <p className="mt-1 text-xs text-muted">Otherwise: {HARDFORK_STATES[state.computed].label}</p>}
+      {state.computed && <p className="mt-1 text-xs text-muted">Otherwise: {hardforkStateLabel(state.computed, String(site.changes.target.nodeRelease))}</p>}
     </div>}
     {state && state.links.length > 0 && <div>
       <h3 className="text-sm font-medium">Issues and PRs</h3>
@@ -58,8 +58,9 @@ export default function DijkstraExposure({ id }: { id: string }) {
       </details>}
       {tool.scan.status !== "scanned" && <p className="text-sm text-muted">{tool.scan.note}</p>}
     </>}
-    {devnet.length > 0 && <div>
+    {(devnet.length > 0 || state?.state === "target-component" || state?.computed === "target-component") && <div>
       <h3 className="text-sm font-medium">On the devnet</h3>
+      {devnet.length === 0 && <p className="mt-1 text-sm text-muted">No component-specific results recorded. The <Link href="/map/dijkstra/devnet">target devnet checks</Link> show the capabilities exercised; inclusion in the release does not establish a pass for every capability.</p>}
       <ul className="mt-1 space-y-1 text-sm">{devnet.map(({ check, result }) => (
         <li key={`${check.id}:${result.kind}:${result.version ?? ""}`}>
           <span className={`font-medium ${result.outcome === "pass" ? "text-status-done" : "text-status-blocked"}`}>{result.outcome}</span>{" "}

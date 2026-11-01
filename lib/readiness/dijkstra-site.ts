@@ -109,10 +109,11 @@ export const devnetResults = (site: DijkstraSite, id: string) =>
  * One verdict per tool for the overview list. `breaks`: a confirmed gap with nobody shipping the fix yet (own code,
  * an upstream fix still missing, or a released fix the tool has not taken). `in-progress`: Dijkstra work exists toward
  * the target but is not released (the 11.2 component set itself counts here until it is tagged). `ready`: the tool's
- * own support is released or verified and nothing it uses is still open. Everything else is `unverified`: no
- * confirmed gap, which is never a pass.
+ * own support is released or verified and nothing it uses is still open. `target-component`: part of the tagged
+ * reference release; capability test results remain separate. Everything else is `unverified`: no confirmed gap,
+ * which is never a pass.
  */
-export type HardforkState = "breaks" | "in-progress" | "ready" | "unverified" | "dismissed";
+export type HardforkState = "breaks" | "in-progress" | "ready" | "target-component" | "unverified" | "dismissed";
 /** A link as the page shows it: `label` is `owner/repo#n` for GitHub, `info` its synced title and state if any. */
 export interface ToolLink { url: string; label: string; note?: string; info?: LinkInfo }
 /**
@@ -167,11 +168,17 @@ function computedState(site: DijkstraSite, tool: ToolClassification): Computed {
   const failedTag: StateTag[] = failed ? [{ label: "Failed on devnet", tone: "bad" }] : [];
   const base = { tool: tool.id, blockedBy };
   if (UPSTREAM_TOOLS.has(tool.id)) {
-    const released = site.changes.target.release !== undefined;
-    const label = released ? `Node ${String(site.changes.target.nodeRelease)} prerelease` : "Node 11.2, not tagged";
-    return { ...base, state: released ? "unverified" : "in-progress", reason: released
-      ? `Part of the tagged node ${String(site.changes.target.nodeRelease)} component set; the devnet checks cover specific capabilities`
-      : "Part of the node 11.2 release, not tagged yet", tags: [{ label, tone: "work" }] };
+    const release = site.changes.target.release;
+    if (release === undefined) return {
+      ...base, state: "in-progress", reason: "Part of the node 11.2 release, not tagged yet",
+      tags: [{ label: "Node 11.2, not tagged", tone: "work" }, ...failedTag],
+    };
+    const prerelease = typeof release === "object" && release !== null && "prerelease" in release && release.prerelease === true;
+    return {
+      ...base, state: "target-component",
+      reason: `Reference component shipped with node ${String(site.changes.target.nodeRelease)}; capability checks are reported separately`,
+      tags: [...(prerelease ? [{ label: "Prerelease", tone: "work" } as StateTag] : []), ...failedTag],
+    };
   }
   if (own === "in-progress" || own === "tracked") {
     const work = own === "tracked" ? "Dijkstra work tracked upstream" : "Dijkstra support underway, not released";

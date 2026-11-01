@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { citationUrl, dependencyTarget, devnetResults, dijkstraSite, toolLeads, toolStates } from "./dijkstra-site";
+import { citationUrl, dependencyTarget, devnetResults, dijkstraSite, toolLeads, toolState, toolStates } from "./dijkstra-site";
+import { hardforkStateLabel } from "./hardfork-states";
 
 test("a channel's via names the catalog tool it reaches", () => {
   assert.equal(dependencyTarget("service:blockfrost"), "blockfrost");
@@ -37,7 +38,8 @@ test("each tool touching a changed surface gets one hardfork state, most reached
   const node = by.get("cardano-node")!;
   assert.ok(node.reachedBy.includes("meshjs-mesh-sdk") && !node.dependents.includes("meshjs-mesh-sdk"), "reached through the tools it uses");
   assert.equal(by.get("ogmios")?.state, "breaks", "a confirmed own gap breaks");
-  assert.equal(by.get("cardano-node")?.state, "unverified", "a tag and capability tests do not verify every changed surface");
+  assert.deepEqual(states.filter((s) => s.state === "target-component").map((s) => s.tool).sort(),
+    ["cardano-cli", "cardano-node", "cardano-submit-api", "cardano-testnet"], "only the four reference components receive the target label");
   assert.equal(by.get("plutus-plutus-core")?.state, "ready", "released support with nothing open is ready");
   assert.match(by.get("whisky")!.reason, /must move off maestro/, "a deprecated provider is moved off, not waited on");
   assert.doesNotMatch(by.get("whisky")!.reason, /blocked by [^;]*maestro/);
@@ -50,4 +52,26 @@ test("each tool touching a changed surface gets one hardfork state, most reached
   assert.deepEqual(pick(states, ["amaru", "mithril", "pallas"]), ["pallas", "mithril", "amaru"], "equal reach falls back to direct dependents");
   assert.deepEqual(pick(states, ["blaze", "plutarch"]), ["blaze", "plutarch"], "equal counts fall back to the id");
   assert.deepEqual(pick(toolStates(site, (id) => (id === "plutarch" ? 1 : 0)), ["blaze", "plutarch"]), ["plutarch", "blaze"], "the weight breaks ties");
+});
+
+test("target membership does not assert a capability pass or hide a failure", () => {
+  const site = structuredClone(dijkstraSite());
+  const node = site.classification.tools.get("cardano-node")!;
+  site.devnet.checks = [];
+  assert.equal(toolState(site, node).state, "target-component", "membership does not require or imply a test pass");
+  assert.deepEqual(devnetResults(site, node.id), [], "membership does not fabricate results");
+  site.devnet.checks.push({
+    id: "node-capability", title: "Node capability", summary: "A failing capability remains visible", observed: [], recipe: [],
+    results: [{ kind: "tool", id: node.id, version: "11.2.0", outcome: "fail" }],
+  });
+  const failed = toolState(site, node);
+  assert.equal(failed.state, "target-component");
+  assert.ok(failed.tags.some((t) => t.label === "Failed on devnet"));
+  assert.equal(devnetResults(site, node.id)[0].result.outcome, "fail");
+  assert.ok(failed.tags.some((t) => t.label === "Prerelease"));
+  site.changes.target.release = { prerelease: false };
+  assert.ok(!toolState(site, node).tags.some((t) => t.label === "Prerelease"), "prerelease is read from release metadata");
+  assert.equal(hardforkStateLabel("target-component", "11.2.0"), "Target component · 11.2.0");
+  assert.equal(hardforkStateLabel("target-component", "11.3.0"), "Target component · 11.3.0", "the release label is not hardcoded");
+  assert.equal(hardforkStateLabel("ready", "11.2.0"), "Ready for HF");
 });

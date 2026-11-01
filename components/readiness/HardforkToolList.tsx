@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { Blocker, HardforkState, StateTag, ToolLink } from "@/lib/readiness/dijkstra-site";
-import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
+import { HARDFORK_STATES, hardforkStateLabel } from "@/lib/readiness/hardfork-states";
 import StateFacts from "./StateFacts";
 import TrackingLinks from "./TrackingLinks";
 
@@ -16,7 +16,7 @@ const FIRST = 25;
 const th = "px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-muted";
 
 /** Tools touching a changed surface, most reached first, filterable by hardfork state. */
-export default function HardforkToolList({ rows }: { rows: HardforkRow[] }) {
+export default function HardforkToolList({ rows, nodeRelease }: { rows: HardforkRow[]; nodeRelease: string }) {
   const [state, setState] = useState<HardforkState | "">("");
   const [all, setAll] = useState(false);
   const filtered = rows.filter((r) => !state || r.state === state);
@@ -43,12 +43,12 @@ export default function HardforkToolList({ rows }: { rows: HardforkRow[] }) {
           return <tr key={r.tool} className="border-t border-border align-top">
             <td className="px-4 py-3 tabular-nums text-muted">{rows.indexOf(r) + 1}</td>
             <td className="px-4 py-3"><Link href={`/map/readiness/${r.tool}`} className="font-medium">{r.name}</Link><div className="text-xs text-muted">{r.category}</div></td>
-            <td className="whitespace-nowrap px-4 py-3"><span className={`inline-flex items-center gap-1.5 font-medium ${s.text}`}><span className={`size-2 rounded-full ${s.dot}`} />{s.label}</span></td>
+            <td className="whitespace-nowrap px-4 py-3"><span className={`inline-flex items-center gap-1.5 font-medium ${s.text}`}><span className={`size-2 rounded-full ${s.dot}`} />{hardforkStateLabel(r.state, nodeRelease)}</span></td>
             <td className="min-w-64 px-4 py-3 text-muted">
               {/* Chips carry breaks and in-progress tools; other states keep their sentence. */}
               {r.state !== "breaks" && r.state !== "in-progress" && <div>{r.reason}</div>}
               <StateFacts blockedBy={r.blockedBy} tags={r.tags} />
-              {r.computed && <div className="mt-0.5 text-xs">Otherwise: {HARDFORK_STATES[r.computed].label}</div>}
+              {r.computed && <div className="mt-0.5 text-xs">Otherwise: {hardforkStateLabel(r.computed, nodeRelease)}</div>}
               {r.links.length > 0 && <TrackingLinks links={r.links} compact />}
             </td>
             <td className="px-4 py-3 text-right tabular-nums">

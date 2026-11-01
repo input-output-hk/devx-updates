@@ -35,7 +35,7 @@ The register formats and findings are in
 | Unlocks | `unlocks.json` | 19 fixes unlock 82 tools; Marlowe and Marconi remain bump-ready by pin comparison |
 | Upgrades | `upgrades.json` | 11 readings: 8 own-work, 1 prepared, 2 generic |
 | Devnet | `devnet.json` | 15 checks, 48 results, 27 failing |
-| Site | `/map/dijkstra` | 206 tools: 110 break, 9 in progress, 4 ready, 49 not verified, 34 dismissed |
+| Site | `/map/dijkstra` | 206 tools: 110 break, 9 in progress, 4 ready, 4 target components, 45 not verified, 34 dismissed |
 | History | `/map/dijkstra/history` | Seven tool-state changes; 39 same-version runtime results matched, zero changed outcomes |
 | Dependency graph | `data/readiness/` | Existing 55 native profiles retained and replayed; broad native collection remains paused |
 
@@ -50,6 +50,15 @@ revision `dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899`, published 2026-10-28 and ma
 Versions and source revisions come from its release dependency table, retained with the run evidence.
 The previous integration-node assessment is preserved byte for byte in
 `content/readiness/dijkstra-history/2026-10-26-integration/`, with SHA256 checksums.
+
+The site identifies cardano-node, cardano-cli, cardano-submit-api and cardano-testnet
+as **Target component · 11.2.0**: they belong to the reference node release.
+The version in this label is the node release, not each executable's version.
+This is separate from **Ready for HF** and from capability test outcomes.
+Component-specific devnet results remain visible; where none are recorded, the
+tool page says so and links to the target devnet checks. This presentation is
+derived from committed evidence at build time (ADR-1/2); archived untagged
+assessments keep **In progress** and their original results.
 
 | Component | Version | Source commit |
 | --- | --- | --- |
