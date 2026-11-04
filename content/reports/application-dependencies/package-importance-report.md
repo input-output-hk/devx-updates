@@ -1,11 +1,11 @@
 # Preliminary tooling inventory and package importance
 
-Computed as of **2026-10-26** from the included [map snapshot](cardano-graph.json).
+Computed as of **2026-10-26** from the pinned [map snapshot](https://github.com/deltadefi-protocol/devx-updates/blob/e55a31ad58eb6b20455364abc1118bf4e779eb05/content/reports/application-dependencies/cardano-graph.json).
 [Evaluation methodology](https://github.com/deltadefi-protocol/devx-updates/blob/94e7860559fc2aeb55d921191b039f00cc3b14a5/content/reports/tooling-evidence/methodology.md) · [Scores](scores.csv)
 
 302 inventory entries across 13 categories: **73 ranked** and
 **229 unranked score ranges**. **25 review candidates**;
-**0 status holds**. Counts describe the included map snapshot.
+**0 status holds**. Counts describe the pinned map snapshot.
 
 ## Scoring summary
 

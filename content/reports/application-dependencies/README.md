@@ -1,7 +1,8 @@
 # Application dependencies and tooling evidence
 
-This directory contains an evidence snapshot. It does not replace the site’s
-`data/cardano-graph.json` or update the map viewer.
+This directory contains evidence reports. The assessed map is linked at a pinned
+commit; live map changes are maintained separately in `data/cardano-graph.json`
+and do not update the map viewer in this contribution.
 
 This collection extends the D1 map with sourced application relationships and
 provides a volume-prioritised project review, qualitative analysis, preliminary
@@ -18,7 +19,7 @@ tooling scores and documented evidence gaps.
 | [Package importance](package-importance-report.md) | 73 ranked entries, 229 incomplete-input ranges and 25 review candidates |
 | [Repository evidence gaps](inconsistency-register.md) | 34 missing repository URLs and one dated 404 |
 
-The extended [map](cardano-graph.json), dated 26 October 2026, has 302 entries
+The extended [map](https://github.com/deltadefi-protocol/devx-updates/blob/e55a31ad58eb6b20455364abc1118bf4e779eb05/content/reports/application-dependencies/cardano-graph.json), dated 26 October 2026, has 302 entries
 and 304 links. It preserves the 269 baseline entries and 248 baseline links,
 adds 33 identities and 56 links, and corrects 26 repository fields.
 
@@ -34,7 +35,7 @@ for scoring rules.
 
 ## Supporting data
 
-- [Extended map](cardano-graph.json): the graph assessed in these reports.
+- [Extended map](https://github.com/deltadefi-protocol/devx-updates/blob/e55a31ad58eb6b20455364abc1118bf4e779eb05/content/reports/application-dependencies/cardano-graph.json): the graph assessed in these reports.
 - [Scores CSV](scores.csv): input values, contribution points, ranges and candidate states.
 - [Frozen activity data](volume-source/tx-stats.json) and [provenance](volume-source/README.md).
 - [Baseline reference](baseline.md): immutable upstream source and exact input hash.
