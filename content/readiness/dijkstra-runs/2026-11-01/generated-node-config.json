@@ -1,0 +1,111 @@
+{
+    "$schema": "https://raw.githubusercontent.com/IntersectMBO/cardano-config/v2/schemas/config.schema.json",
+    "Configuration": {
+        "HermodTracing": {
+            "TraceOptionMetricsPrefix": "cardano.node.metrics.",
+            "TraceOptions": {
+                "": {
+                    "backends": [
+                        "Stdout MachineFormat",
+                        "EKGBackend"
+                    ],
+                    "detail": "DNormal",
+                    "severity": "Notice"
+                },
+                "BlockFetch.Client.CompletedBlockFetch": {
+                    "maxFrequency": 2
+                },
+                "BlockFetch.Decision": {
+                    "severity": "Silence"
+                },
+                "ChainDB": {
+                    "severity": "Info"
+                },
+                "ChainDB.AddBlockEvent.AddBlockValidation": {
+                    "severity": "Silence"
+                },
+                "ChainDB.AddBlockEvent.AddBlockValidation.ValidCandidate": {
+                    "maxFrequency": 2
+                },
+                "ChainDB.AddBlockEvent.AddedBlockToQueue": {
+                    "maxFrequency": 2
+                },
+                "ChainDB.AddBlockEvent.AddedBlockToVolatileDB": {
+                    "maxFrequency": 2
+                },
+                "ChainDB.CopyToImmutableDBEvent.CopiedBlockToImmutableDB": {
+                    "maxFrequency": 2
+                },
+                "ChainSync.Client": {
+                    "severity": "Warning"
+                },
+                "Forge.Loop": {
+                    "severity": "Info"
+                },
+                "Forge.StateInfo": {
+                    "severity": "Info"
+                },
+                "LedgerMetrics": {
+                    "severity": "Silence"
+                },
+                "Mempool": {
+                    "severity": "Info"
+                },
+                "Net.ConnectionManager.Remote": {
+                    "severity": "Info"
+                },
+                "Net.InboundGovernor": {
+                    "severity": "Warning"
+                },
+                "Net.InboundGovernor.Remote": {
+                    "severity": "Info"
+                },
+                "Net.Mux.Remote": {
+                    "severity": "Info"
+                },
+                "Net.PeerSelection": {
+                    "severity": "Silence"
+                },
+                "Resources": {
+                    "severity": "Silence"
+                },
+                "Startup.DiffusionInit": {
+                    "severity": "Info"
+                }
+            }
+        },
+        "LocalConnections": {
+            "SocketPath": "db/node.socket"
+        },
+        "Network": {
+            "ExperimentalProtocolsEnabled": true,
+            "MaxConcurrencyBulkSync": 1,
+            "MaxConcurrencyDeadline": 2,
+            "PeerSharing": false
+        },
+        "Protocol": {
+            "AlonzoGenesisFile": "alonzo-genesis.json",
+            "AlonzoGenesisHash": "d9cb5f26ffb1f9d9cd16bb2921bb959ac405ded4dd338f11b21032378531a5bc",
+            "ByronGenesisFile": "byron-genesis.json",
+            "ByronGenesisHash": "02b24e6cd097632a8687ad585204c41b450491140a8faa49367d6d46831ca2a6",
+            "ConwayGenesisFile": "conway-genesis.json",
+            "ConwayGenesisHash": "4265c62e395e7717c327ccf5bf2fa292644590cb81969904897d77a1b2667027",
+            "RequiresNetworkMagic": "RequiresMagic",
+            "ShelleyGenesisFile": "shelley-genesis.json",
+            "ShelleyGenesisHash": "a3bff6bf25121801cce7a9ae1d69e0de93e5ede02920acad3e80fd96c98acac3"
+        },
+        "Testing": {
+            "DijkstraGenesisFile": "dijkstra-genesis.json",
+            "DijkstraGenesisHash": "3537930d1515a8a0a648dae633e485812eff10a7cf9a6a2c3391952789e13b3a",
+            "ExperimentalHardForksEnabled": true,
+            "TestAllegraHardForkAtEpoch": 0,
+            "TestAlonzoHardForkAtEpoch": 0,
+            "TestBabbageHardForkAtEpoch": 0,
+            "TestConwayHardForkAtEpoch": 0,
+            "TestDijkstraHardForkAtEpoch": 2,
+            "TestMaryHardForkAtEpoch": 0,
+            "TestShelleyHardForkAtEpoch": 0
+        }
+    },
+    "Version": 2
+}

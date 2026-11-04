@@ -1,0 +1,42 @@
+--- a/event/governance.go
++++ b/event/governance.go
+@@ -427,10 +427,10 @@
+ 			voteDel = append(voteDel, data)
+ 
+ 		case *lcommon.VoteRegistrationDelegationCertificate:
+-			voteDel = append(voteDel, extractVoteDelegation("VoteRegistrationDelegation", c.StakeCredential, c.Drep, c.Amount))
++			voteDel = append(voteDel, extractVoteDelegation("VoteRegistrationDelegation", c.StakeCredential, c.Drep, int64(c.Amount)))
+ 
+ 		case *lcommon.StakeVoteRegistrationDelegationCertificate:
+-			data := extractVoteDelegation("StakeVoteRegistrationDelegation", c.StakeCredential, c.Drep, c.Amount)
++			data := extractVoteDelegation("StakeVoteRegistrationDelegation", c.StakeCredential, c.Drep, int64(c.Amount))
+ 			data.PoolKeyHash = hex.EncodeToString(c.PoolKeyHash.Bytes())
+ 			voteDel = append(voteDel, data)
+ 
+@@ -491,7 +491,7 @@
+ 			CertificateType: DRepCertificateTypeRegistration,
+ 			DRepHash:        hex.EncodeToString(c.DrepCredential.Hash().Bytes()),
+ 			DRepId:          c.DrepCredential.Hash().Bech32(drepBech32Prefix(c.DrepCredential)),
+-			Deposit:         c.Amount,
++			Deposit:         int64(c.Amount),
+ 		}
+ 		// Certificate anchors are pointer types (*GovAnchor), so we check for nil
+ 		if c.Anchor != nil {
+@@ -507,7 +507,7 @@
+ 			CertificateType: DRepCertificateTypeDeregistration,
+ 			DRepHash:        hex.EncodeToString(c.DrepCredential.Hash().Bytes()),
+ 			DRepId:          c.DrepCredential.Hash().Bech32(drepBech32Prefix(c.DrepCredential)),
+-			Deposit:         c.Amount,
++			Deposit:         int64(c.Amount),
+ 		}, true
+ 
+ 	case *lcommon.UpdateDrepCertificate:
+@@ -697,7 +697,7 @@
+ 	for cred, epoch := range a.CredEpochs {
+ 		data.MembersToAdd = append(data.MembersToAdd, CommitteeMember{
+ 			Credential: hex.EncodeToString(cred.Hash().Bytes()),
+-			Epoch:      epoch,
++			Epoch:      uint(epoch),
+ 		})
+ 	}
+ 

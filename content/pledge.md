@@ -123,4 +123,5 @@ Let's build the developer experience Cardano deserves, together.
 | [Chris Gianelloni](https://github.com/wolf31o2) | CEO & Co-Founder - [Blink Labs](https://blinklabs.io) |
 | [Sebastian Nagel](https://github.com/ch1bo) | Technical Architect - [Input Output Global](https://iog.io) |
 | [Andreas Osberghaus](https://github.com/mrosberghaus) | Software Engineer - [utxo AG](https://utxo.ag/en) |
+| [Clark Alesna](https://github.com/Mercurial) | CEO - [SAIB Inc](https://saib.dev) |
 | [](https://github.com/) | []() |

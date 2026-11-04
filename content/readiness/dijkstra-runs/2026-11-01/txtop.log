@@ -1,0 +1,31 @@
+go: downloading github.com/blinklabs-io/gouroboros v0.208.5
+go: downloading github.com/blinklabs-io/cardano-models v0.7.2
+go: downloading github.com/gdamore/tcell/v2 v2.13.10
+go: downloading github.com/kelseyhightower/envconfig v1.4.0
+go: downloading github.com/rivo/tview v0.42.0
+go: downloading github.com/rivo/uniseg v0.4.7
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading github.com/go-playground/validator/v10 v10.30.3
+go: downloading github.com/gdamore/encoding v1.0.1
+go: downloading github.com/lucasb-eyer/go-colorful v1.3.0
+go: downloading golang.org/x/sys v0.48.0
+go: downloading golang.org/x/term v0.46.0
+go: downloading golang.org/x/text v0.42.0
+go: downloading golang.org/x/crypto v0.57.0
+go: downloading github.com/blinklabs-io/plutigo v0.7.2
+go: downloading github.com/gabriel-vasile/mimetype v1.4.13
+go: downloading github.com/go-playground/universal-translator v0.18.1
+go: downloading github.com/leodido/go-urn v1.4.0
+go: downloading github.com/consensys/gnark-crypto v0.21.0
+go: downloading github.com/go-playground/locales v0.14.1
+go: downloading github.com/bits-and-blooms/bitset v1.24.6
+go: downloading github.com/blinklabs-io/gouroboros v0.213.0
+go: downloading github.com/blinklabs-io/plutigo v0.9.1
+go: downloading github.com/blinklabs-io/ouroboros-mock v0.20.5
+go: upgraded go 1.26.5 => 1.26.8
+go: upgraded github.com/bits-and-blooms/bitset v1.24.6 => v1.25.0
+go: upgraded github.com/blinklabs-io/gouroboros v0.208.5 => v0.213.0
+go: upgraded github.com/blinklabs-io/plutigo v0.7.2 => v0.9.1
+go: upgraded github.com/consensys/gnark-crypto v0.21.0 => v0.22.0
+txtop-pinned: failed to connect to node: failed to connect after 4 attempts
+txtop-up: Mempool capacity (bytes): 25294848

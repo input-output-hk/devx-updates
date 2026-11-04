@@ -1,0 +1,20 @@
+{
+  "node/bin/cardano-node": "74a045366ae2aa0a7bb7b8295375ffeb2f7a8ee28871cbeb879abc3e984de72f",
+  "node/bin/cardano-cli": "f0731775b519e5cda440289a5141f2a018e9b2b44b3ed6a5321b12d33323de6e",
+  "node/bin/cardano-testnet": "d815e2965f1dba5d79d5a0339741814d3db237786e0b4b7f2721a72e5209dff6",
+  "services/ogmios/bin/ogmios": "73881dc5f9a6ad2831381c449c87b8620fb39f81f4c085e3a32965b925d9af57",
+  "services/kupo/bin/kupo": "ef01aa9c5bfab541a94dff08a9980ba8e9b7eab4bf2bc8a24fe3292ac4edab3c",
+  "services/db-sync/bin/cardano-db-sync": "8a5a164ee15da335e2d7a762f8e19b8a3c0dbbce2e72d5729cb6c3d45eccd338",
+  "probe-v0.213.0": "ca5892183cef8e4e96242fcdbbf74f394c051e72e368b1eda86bac62f00eafe6",
+  "probe-v0.213.9": "441afd6250b2cea1ffb735765e950813b9b260681c02ec63a224afd82be07fd2",
+  "probe-v0.216.3": "1f5c773146508bf0f284c30bc0555b634af33529ddb295ab3d6847aa743a50da",
+  "probe-v0.208.5": "d1b554ecc2aeda3b2bb02997c43210a8505d587bffe16cab8e7f25292b81398b",
+  "pallas-probe-dijkstra": "c2c0032b7a5d902bb743c562e2be029b9b7b0e5392109057c34d653621a73725",
+  "pallas-probe-v1.4.0": "09e9eb929314924f2a77b290867444df884dbd72d7e9ce5c856069cefd03ca37",
+  "pallas-probe-main": "dc21ab503c7751dc915bfb33d55e40bb8a5e7f27442d3fca4b9459fcbc28e427",
+  "cml-probe-6.2.0": "b99ccf2f3b5ec14f8c7b6bcc17427f4f47275d2ace87c20783b5f23af71c557e",
+  "txtop-pinned": "31222cd1da31f2d922d2bfa46c9a0ea73aeaf5213b5ebc02fd88addbf0f19e09",
+  "txtop-up": "eac83f3d3f310ce1d90f04fb207f15e8135bff9c733762510f1f7fed4cf93fc6",
+  "cna-pinned": "c50013b5f2e1b37e089fc0e1afaf4dc1d438ce116d2632b260203b2ddd97e337",
+  "cna-up": "05086a743e286ff52cde3d412423183bf4ba4a84cd734fe9f18a2be034ee423b"
+}

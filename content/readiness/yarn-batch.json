@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "adalite",
+      "revision": "86dd006310600fad5e145fae2af2f9bea0b79572",
+      "adapter": "yarn-lock",
+      "roots": ["adalite-app", "adalite-server"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "daedalus",
+      "revision": "22440487d08fd1d2121394fa80c238852df5ea7d",
+      "adapter": "yarn-lock",
+      "roots": ["daedalus"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "typhonjs",
+      "revision": "7190c3c67e9dc7be284842e89f06ed848b748ed2",
+      "adapter": "yarn-lock",
+      "roots": ["@stricahq/typhonjs"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "cometa-js",
+      "revision": "15f0862128fd49fa3eecd4f4e2a118e60c865cde",
+      "adapter": "yarn-lock",
+      "roots": ["@biglup/cometa"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "cardano-web3-js",
+      "revision": "21aa0802533f9052b6d4bcbdc934acbbd482a006",
+      "adapter": "yarn-lock",
+      "roots": ["cardano-web3-js"],
+      "platform": "all-lockfile-targets"
+    }
+  ]
+}

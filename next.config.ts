@@ -8,6 +8,9 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const nextConfig: NextConfig = {
   // Fully static export -> ./out, hostable on GitHub Pages (see docs/ARCHITECTURE.md ADR-1).
   output: "export",
+  // Each static worker loads the retained readiness graph. Bound duplication on
+  // memory-limited build hosts while exporting every route (ADR-1/ADR-2).
+  experimental: { cpus: 1 },
   // Routes resolve as dir/index.html, which Pages serves without rewrites.
   trailingSlash: true,
   basePath,

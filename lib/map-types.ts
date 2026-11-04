@@ -1,4 +1,4 @@
-export type Status = "active" | "maintenance" | "abandoned" | "archived" | "experimental" | "research";
+export type Status = "active" | "maintenance" | "deprecated" | "abandoned" | "archived" | "experimental" | "research";
 export type LinkType = "compiles" | "depends" | "backend" | "successor" | "connects";
 
 export interface ToolNode {
@@ -102,6 +102,7 @@ export interface Graph {
 export const STATUS_COLORS: Record<Status, string> = {
   active: "#2f9e5f",
   maintenance: "#c98a00",
+  deprecated: "#b4632a",
   abandoned: "#9c5a4d",
   archived: "#d0503b",
   experimental: "#8257c9",

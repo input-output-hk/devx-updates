@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "lace",
+      "revision": "e431933f34ec417996d9c28b7389e24c87868b1e",
+      "adapter": "npm-lock",
+      "roots": ["lace-mobile"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "govtool",
+      "revision": "993d25ab42b6565a95aaa82ef297ac5053b3fb3e",
+      "adapter": "npm-lock",
+      "path": "govtool/frontend/package-lock.json",
+      "roots": ["@govtool/frontend"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "evolution-sdk",
+      "revision": "c4139df12e099dbd4742d3e2c10dc52f50a4bd41",
+      "adapter": "pnpm-lock",
+      "roots": ["@evolution-sdk/evolution"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "hydra-sdk",
+      "revision": "d10c4596fae296a93ad0fdf215d52f9f01d63361",
+      "adapter": "pnpm-lock",
+      "roots": ["@hydra-sdk/core", "@hydra-sdk/transaction", "@hydra-sdk/bridge"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "dexter",
+      "revision": "44a57eb0f6f80650f1ed34a7765c787afa27f1ab",
+      "adapter": "npm-lock",
+      "roots": ["@indigo-labs/dexter"],
+      "platform": "all-lockfile-targets"
+    }
+  ]
+}

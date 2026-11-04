@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "blaze",
+      "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+      "adapter": "bun-lock",
+      "path": "bun.lock",
+      "roots": ["@blaze-cardano/sdk", "@blaze-cardano/tx", "@blaze-cardano/wallet", "@blaze-cardano/query"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "pycardano",
+      "revision": "0445f3079cb8b356f48c13e040d00e25326ce59e",
+      "adapter": "poetry-lock",
+      "path": "poetry.lock",
+      "roots": ["pycardano"],
+      "platform": "all-lockfile-targets"
+    }
+  ]
+}

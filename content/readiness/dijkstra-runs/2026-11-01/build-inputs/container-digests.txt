@@ -1,0 +1,2 @@
+["blockfrost/backend-ryo@sha256:bb76e13e357ebb93a28bd6d2f56f0ca9b763f1e5f2e3f87eed6174fe7d79161a"]
+["postgres@sha256:5db6dac2ef5dcff512f4f00a009c3c332b9f2f28f24277175bf3e4a3d02ef83a"]

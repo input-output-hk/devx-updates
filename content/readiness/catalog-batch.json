@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "requests": [
+    {
+      "toolId": "cardano-peer-connect",
+      "revision": "6fce1afe581da1009a81fe119ec83357150abab9",
+      "adapter": "npm-lock",
+      "roots": ["@fabianbormann/cardano-peer-connect"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "helios",
+      "revision": "7364d795562b96d14b1e177b28c103eb240d0f54",
+      "adapter": "pnpm-lock",
+      "roots": ["@helios-lang/compiler"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "minswap-sdk",
+      "revision": "19b4b0cd1b512e94c026d5f7be4fd3d2ae7bf528",
+      "adapter": "pnpm-lock",
+      "roots": ["@minswap/sdk"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "weld",
+      "revision": "ce6cf90d721358254e8b70c1e484a5f342be4e74",
+      "adapter": "npm-lock",
+      "roots": ["@ada-anvil/weld"],
+      "platform": "all-lockfile-targets"
+    },
+    {
+      "toolId": "dingo",
+      "revision": "e0630ddf8a72dc0280ed8845fb1d899fae2d1051",
+      "adapter": "go-packages",
+      "roots": ["github.com/blinklabs-io/dingo"],
+      "platform": "linux/amd64",
+      "patterns": ["./..."],
+      "tags": []
+    }
+  ]
+}

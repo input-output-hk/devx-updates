@@ -3,7 +3,7 @@
     "title": "Cardano Developer Tooling Map",
     "generated": "2026-07-20",
     "source": "developers.cardano.org/tools + GitHub + project docs",
-    "toolCount": 269,
+    "toolCount": 268,
     "note": "Status and stars are a research-time snapshot and drift over time.",
     "enrichedFields": [
       "license",
@@ -23,7 +23,7 @@
       "teamX"
     ],
     "communitySource": "State of the Developer Ecosystem 2025 (Cardano Foundation), n=109",
-    "edgeCount": 248,
+    "edgeCount": 247,
     "contactsNote": "teamGithub / teamX are the GitHub org and verified X/Twitter handle for each node's team. The top-level `teams` map holds, per team, its githubOrg, x, and top human maintainers (login + x) to @-mention (GitHub @org does not notify).",
     "contactsGenerated": "2026-08-18"
   },
@@ -92,6 +92,7 @@
   "statuses": {
     "active": "Maintained",
     "maintenance": "Maintenance-only",
+    "deprecated": "Deprecated",
     "abandoned": "Abandoned",
     "archived": "Archived",
     "experimental": "Experimental",
@@ -3158,26 +3159,28 @@
       "category": "api",
       "categoryLabel": "APIs & Providers",
       "languages": [
-        "REST API"
+        "REST API",
+        "TypeScript"
       ],
-      "languageRaw": "REST API",
-      "team": "Blockfrost (blockfrost.io)",
+      "languageRaw": "REST API, TypeScript",
+      "team": "Blockfrost",
       "status": "active",
       "statusLabel": "Maintained",
-      "stars": null,
-      "repo": "github.com/blockfrost",
-      "repoUrl": "https://github.com/blockfrost",
-      "description": "The most widely used hosted REST API for reading the chain and submitting transactions, with an IPFS gateway and a run-your-own backend option.",
+      "stars": "85",
+      "repo": "blockfrost/blockfrost-backend-ryo",
+      "repoUrl": "https://github.com/blockfrost/blockfrost-backend-ryo",
+      "description": "The most widely used REST API for reading the chain and submitting transactions, run as a hosted service or self-hosted from the open-source run-your-own (RYO) backend, with an IPFS gateway.",
       "features": [
         "REST for mainnet/testnets",
         "IPFS",
         "webhooks",
         "SDKs in 15+ languages",
-        "free tier"
+        "free tier",
+        "self-hostable RYO backend"
       ],
-      "featuresText": "REST for mainnet/testnets, IPFS, webhooks, SDKs in 15+ languages, free tier",
-      "dependencies": "cardano-node + db-sync (hosted)",
-      "usedBy": "Wallets, dApps, exchanges across the ecosystem",
+      "featuresText": "REST for mainnet/testnets, IPFS, webhooks, SDKs in 15+ languages, free tier, self-hostable RYO backend",
+      "dependencies": "cardano-db-sync, PostgreSQL (hosted or self-run)",
+      "usedBy": "Wallets, dApps, exchanges across the ecosystem; teams self-hosting Blockfrost",
       "license": "Apache-2.0",
       "packageRegistry": "Service",
       "packageName": "blockfrost-backend-ryo",
@@ -3204,7 +3207,8 @@
         "Hosted data API"
       ],
       "devLangs": [
-        "REST API"
+        "REST API",
+        "TypeScript"
       ],
       "website": null,
       "llmsTxt": false,
@@ -3215,12 +3219,12 @@
       "notes": null,
       "communityUsage": 72,
       "communityRank": 3,
-      "lastCommit": null,
-      "statusReason": "repo unreachable — kept prior status",
-      "starsNum": 0,
+      "lastCommit": "2026-07-16",
+      "statusReason": "active — pushed 0mo ago",
+      "starsNum": 85,
       "degree": 10,
-      "teamGithub": null,
-      "teamX": null
+      "teamGithub": "blockfrost",
+      "teamX": "blockfrost_io"
     },
     {
       "id": "koios",
@@ -3300,8 +3304,8 @@
       ],
       "languageRaw": "REST API",
       "team": "Maestro Labs",
-      "status": "active",
-      "statusLabel": "Maintained",
+      "status": "deprecated",
+      "statusLabel": "Deprecated",
       "stars": null,
       "repo": "github.com/maestro-org",
       "repoUrl": "https://github.com/maestro-org",
@@ -3354,7 +3358,7 @@
       "communityUsage": 21,
       "communityRank": 14,
       "lastCommit": null,
-      "statusReason": "repo unreachable — kept prior status",
+      "statusReason": "deprecated — marked 2026-10-22",
       "starsNum": 0,
       "degree": 3,
       "teamGithub": null,
@@ -3879,7 +3883,7 @@
       "lastCommit": "2026-07-17",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 317,
-      "degree": 10,
+      "degree": 9,
       "teamGithub": "IntersectMBO",
       "teamX": "IntersectMBO"
     },
@@ -17007,69 +17011,6 @@
       "teamX": "aiken_eng"
     },
     {
-      "id": "blockfrost-backend-ryo",
-      "name": "Blockfrost Backend (RYO)",
-      "category": "api",
-      "categoryLabel": "APIs & Providers",
-      "languages": [
-        "TypeScript"
-      ],
-      "languageRaw": "TypeScript",
-      "team": "Blockfrost",
-      "status": "active",
-      "statusLabel": "Maintained",
-      "stars": "85",
-      "repo": "blockfrost/blockfrost-backend-ryo",
-      "repoUrl": "https://github.com/blockfrost/blockfrost-backend-ryo",
-      "description": "Self-hostable (\"run-your-own\") Blockfrost API backend, exposing the same REST interface on your own infrastructure.",
-      "features": [
-        "Self-hosted Blockfrost API",
-        "Same REST interface"
-      ],
-      "featuresText": "Self-hosted Blockfrost API, Same REST interface",
-      "dependencies": "cardano-db-sync, PostgreSQL",
-      "usedBy": "Teams self-hosting Blockfrost",
-      "license": "Apache-2.0",
-      "packageRegistry": "Service",
-      "packageName": null,
-      "latestVersion": null,
-      "latestReleaseDate": null,
-      "cipSupport": [],
-      "networkSupport": [],
-      "plutusVersions": [],
-      "maintainerType": "company",
-      "fundingSource": null,
-      "docsUrl": null,
-      "productionReadiness": "production",
-      "onOfficialPortal": false,
-      "role": "data-provider",
-      "roleLabel": "Hosted data API",
-      "roles": [
-        "data-provider"
-      ],
-      "rolesLabels": [
-        "Hosted data API"
-      ],
-      "devLangs": [
-        "TypeScript"
-      ],
-      "website": null,
-      "llmsTxt": false,
-      "llmsTxtUrl": null,
-      "agentReadiness": "low",
-      "reviewed": false,
-      "reviewedAt": null,
-      "notes": null,
-      "communityUsage": 45,
-      "communityRank": 4,
-      "lastCommit": "2026-07-16",
-      "statusReason": "active — pushed 0mo ago",
-      "starsNum": 85,
-      "degree": 1,
-      "teamGithub": "blockfrost",
-      "teamX": "blockfrost_io"
-    },
-    {
       "id": "masumi",
       "name": "Masumi",
       "category": "infra",
@@ -18912,11 +18853,6 @@
       "type": "backend"
     },
     {
-      "source": "blockfrost-backend-ryo",
-      "target": "cardano-db-sync",
-      "type": "depends"
-    },
-    {
       "source": "csl-mobile-bridge",
       "target": "cardano-serialization-lib-csl",
       "type": "depends"
@@ -20052,11 +19988,6 @@
       "maintainers": []
     },
     "Blockchain Applied": {
-      "githubOrg": null,
-      "x": null,
-      "maintainers": []
-    },
-    "Blockfrost (blockfrost.io)": {
       "githubOrg": null,
       "x": null,
       "maintainers": []

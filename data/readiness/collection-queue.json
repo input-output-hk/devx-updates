@@ -1,0 +1,835 @@
+{
+  "schemaVersion": 1,
+  "jobs": [
+    {
+      "id": "collection:0ed26943e1017363e86fb506854c60ac5c347f81cb46e664e436ceb679f8bf1a",
+      "request": {
+        "toolId": "cardano-peer-connect",
+        "revision": "6fce1afe581da1009a81fe119ec83357150abab9",
+        "adapter": "npm-lock",
+        "roots": [
+          "@fabianbormann/cardano-peer-connect"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T13:16:30.206Z",
+      "profileId": "profile:cardano-peer-connect:2f48f4a1a232665df8246f2d",
+      "succeededAt": "2026-10-18T13:16:32.349Z"
+    },
+    {
+      "id": "collection:82d83de0fe122ae9ba5726c0121c03a8781b213c8f0faeba8efbe16bee77a2e9",
+      "request": {
+        "toolId": "helios",
+        "revision": "7364d795562b96d14b1e177b28c103eb240d0f54",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "@helios-lang/compiler"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T13:16:32.349Z",
+      "profileId": "profile:helios:7ac457e6c9833f81ababb556",
+      "succeededAt": "2026-10-18T13:16:34.130Z"
+    },
+    {
+      "id": "collection:b408cbee247a4aafc04d1202da4d7eb251d0c3f6747195a14327575301c6ce07",
+      "request": {
+        "toolId": "minswap-sdk",
+        "revision": "19b4b0cd1b512e94c026d5f7be4fd3d2ae7bf528",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "@minswap/sdk"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T13:17:05.612Z",
+      "profileId": "profile:minswap-sdk:5e3dc8b96df955e26d906fff",
+      "succeededAt": "2026-10-18T13:17:07.874Z"
+    },
+    {
+      "id": "collection:3c999511b368e202985b6eebe97e93077276223cc579936e092ba99490abebbb",
+      "request": {
+        "toolId": "weld",
+        "revision": "ce6cf90d721358254e8b70c1e484a5f342be4e74",
+        "adapter": "npm-lock",
+        "roots": [
+          "@ada-anvil/weld"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T13:17:07.874Z",
+      "profileId": "profile:weld:32b11b5bffdf83144bf95795",
+      "succeededAt": "2026-10-18T13:17:09.802Z"
+    },
+    {
+      "id": "collection:77b3b838ba450810c35bf3bd769043b03463a64754265e450d076498876c82c3",
+      "request": {
+        "toolId": "dingo",
+        "revision": "e0630ddf8a72dc0280ed8845fb1d899fae2d1051",
+        "adapter": "go-packages",
+        "roots": [
+          "github.com/blinklabs-io/dingo"
+        ],
+        "platform": "linux/amd64",
+        "patterns": [
+          "./..."
+        ],
+        "tags": []
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T13:17:31.793Z",
+      "profileId": "profile:dingo:6f5b0ee506b45eb96bbe156f",
+      "succeededAt": "2026-10-18T13:18:04.985Z"
+    },
+    {
+      "id": "collection:7f7ec5040308b2046ddb14cb8667dee725e539c2a69ba7e6b804189296f909ad",
+      "request": {
+        "toolId": "lace",
+        "revision": "e431933f34ec417996d9c28b7389e24c87868b1e",
+        "adapter": "npm-lock",
+        "roots": [
+          "lace-mobile"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T14:14:43.635Z",
+      "profileId": "profile:lace:df2b413cb6eca9dc9fbd42bf",
+      "succeededAt": "2026-10-18T14:14:50.596Z"
+    },
+    {
+      "id": "collection:eed7579f43ad915eb97deb14fc8df47ad3525da9a6ef4d3b5efa929c10c18e4c",
+      "request": {
+        "toolId": "govtool",
+        "revision": "993d25ab42b6565a95aaa82ef297ac5053b3fb3e",
+        "adapter": "npm-lock",
+        "roots": [
+          "@govtool/frontend"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "govtool/frontend/package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T14:14:50.597Z",
+      "profileId": "profile:govtool:61a7467db993f628223475ee",
+      "succeededAt": "2026-10-18T14:14:55.681Z"
+    },
+    {
+      "id": "collection:01c9a1e5393865ffd9b3d9278e4c2630c466ee734c3bac7c262e84c0cc99a56e",
+      "request": {
+        "toolId": "evolution-sdk",
+        "revision": "c4139df12e099dbd4742d3e2c10dc52f50a4bd41",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "@evolution-sdk/evolution"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T14:15:26.495Z",
+      "profileId": "profile:evolution-sdk:299df18680147d54d422875c",
+      "succeededAt": "2026-10-18T14:15:32.406Z"
+    },
+    {
+      "id": "collection:3345635e4292f327604840a9a52794222921532e88fd43ed369b9e958532a1f4",
+      "request": {
+        "toolId": "hydra-sdk",
+        "revision": "d10c4596fae296a93ad0fdf215d52f9f01d63361",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "@hydra-sdk/core",
+          "@hydra-sdk/transaction",
+          "@hydra-sdk/bridge"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T14:15:32.406Z",
+      "profileId": "profile:hydra-sdk:8290f8466ff3f54c585e42e3",
+      "succeededAt": "2026-10-18T14:15:40.049Z"
+    },
+    {
+      "id": "collection:226d0b05c7ccf29152cf48a583bb0cf4fb5ad5861b8f63f5f5fb5fa8c0065288",
+      "request": {
+        "toolId": "dexter",
+        "revision": "44a57eb0f6f80650f1ed34a7765c787afa27f1ab",
+        "adapter": "npm-lock",
+        "roots": [
+          "@indigo-labs/dexter"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T14:16:12.229Z",
+      "profileId": "profile:dexter:f3cebd33fc6ab1d00989de83",
+      "succeededAt": "2026-10-18T14:16:17.178Z"
+    },
+    {
+      "id": "collection:52a7f4949614968697fd03e972fdf098b595f80b6927b979250cb91ad97d72ce",
+      "request": {
+        "toolId": "adalite",
+        "revision": "86dd006310600fad5e145fae2af2f9bea0b79572",
+        "adapter": "yarn-lock",
+        "roots": [
+          "adalite-app",
+          "adalite-server"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "failed",
+      "attempts": 2,
+      "attemptedAt": "2026-10-18T15:01:50.708Z",
+      "error": "Error: Yarn version disagrees with resolution: js-tokens@npm:4.0.0"
+    },
+    {
+      "id": "collection:23f7099e7b9586969fa05be1a1878990afa690b4e0217b6ecc7047df4c94d6db",
+      "request": {
+        "toolId": "daedalus",
+        "revision": "22440487d08fd1d2121394fa80c238852df5ea7d",
+        "adapter": "yarn-lock",
+        "roots": [
+          "daedalus"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T15:04:14.293Z",
+      "profileId": "profile:daedalus:5c78926765a31fcbb8b185d0",
+      "succeededAt": "2026-10-18T15:04:26.796Z"
+    },
+    {
+      "id": "collection:a9f0eaf09e865281e1f106f336436e4f76199ade829ed745be07af74ae0e22a2",
+      "request": {
+        "toolId": "typhonjs",
+        "revision": "7190c3c67e9dc7be284842e89f06ed848b748ed2",
+        "adapter": "yarn-lock",
+        "roots": [
+          "@stricahq/typhonjs"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 2,
+      "attemptedAt": "2026-10-18T15:01:46.561Z",
+      "profileId": "profile:typhonjs:5958bba13a88b8790661b312",
+      "succeededAt": "2026-10-18T15:01:50.708Z"
+    },
+    {
+      "id": "collection:c0ebd5376f9510c389a8723b2bff639c59aab799aa7d3e17a49a44db6bacd76a",
+      "request": {
+        "toolId": "cometa-js",
+        "revision": "15f0862128fd49fa3eecd4f4e2a118e60c865cde",
+        "adapter": "yarn-lock",
+        "roots": [
+          "@biglup/cometa"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T15:04:26.797Z",
+      "profileId": "profile:cometa-js:966dc9baa6f8b89c653713f9",
+      "succeededAt": "2026-10-18T15:04:33.461Z"
+    },
+    {
+      "id": "collection:455621ab71c730a78ac9a77480c8d6cdbfe9cf4c84d78d87c2984e2023fb7e38",
+      "request": {
+        "toolId": "cardano-web3-js",
+        "revision": "21aa0802533f9052b6d4bcbdc934acbbd482a006",
+        "adapter": "yarn-lock",
+        "roots": [
+          "cardano-web3-js"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T15:04:33.461Z",
+      "profileId": "profile:cardano-web3-js:67b96263c3a27a4941fdaa0f",
+      "succeededAt": "2026-10-18T15:04:39.429Z"
+    },
+    {
+      "id": "collection:8cd7297b8ed145acdb725ed9fb32590cb3619daa3be372255fd2b909879b3ab8",
+      "request": {
+        "toolId": "nami",
+        "revision": "e52e0bdb02eb1ec224db26f48b0192685a30f99e",
+        "adapter": "npm-lock",
+        "roots": [
+          "nami-wallet"
+        ],
+        "platform": "all-lockfile-targets",
+        "rootPaths": [
+          "."
+        ],
+        "path": "package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T16:01:11.560Z",
+      "profileId": "profile:nami:255bf3da496ccc0487bcc36d",
+      "succeededAt": "2026-10-18T16:01:19.337Z"
+    },
+    {
+      "id": "collection:ec2f770095026512fa3e87712c5b18491dc01e1145e9552d7daeff60dcb33999",
+      "request": {
+        "toolId": "yoroi",
+        "revision": "d8e3d3f93fb772f0b6bd2296e45bfac7da4fb9d6",
+        "adapter": "npm-lock",
+        "roots": [
+          "yoroi-v2"
+        ],
+        "platform": "all-lockfile-targets",
+        "rootPaths": [
+          "."
+        ],
+        "path": "mobile/package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T16:01:19.338Z",
+      "profileId": "profile:yoroi:67d8aeed89b15a8b48d24369",
+      "succeededAt": "2026-10-18T16:01:25.860Z"
+    },
+    {
+      "id": "collection:a3be4f1d2cd88fd1d451074c5c5808a592da473f9915412bc86cc6d9294bc818",
+      "request": {
+        "toolId": "veridian-wallet",
+        "revision": "e93a56f54451cc386ba54dd1e8e5564a884b3593",
+        "adapter": "npm-lock",
+        "roots": [
+          "veridian-wallet"
+        ],
+        "platform": "all-lockfile-targets",
+        "rootPaths": [
+          "."
+        ],
+        "path": "package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T16:01:43.980Z",
+      "profileId": "profile:veridian-wallet:4e485ae12935aa07b3805731",
+      "succeededAt": "2026-10-18T16:01:53.195Z"
+    },
+    {
+      "id": "collection:3b5cd693d965d932bbc8d7007c00ac3323f143986e1e7f4173db2ff36219c7e0",
+      "request": {
+        "toolId": "marlowe-ts-sdk",
+        "revision": "93598c0f8e452d7679a44097c48e693d95bfd631",
+        "adapter": "npm-lock",
+        "roots": [
+          "@marlowe.io/runtime-lifecycle",
+          "@marlowe.io/wallet",
+          "@marlowe.io/language-core-v1"
+        ],
+        "platform": "all-lockfile-targets",
+        "rootPaths": [
+          "packages/runtime/lifecycle",
+          "packages/wallet",
+          "packages/language/core/v1"
+        ],
+        "path": "package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T16:02:45.163Z",
+      "profileId": "profile:marlowe-ts-sdk:e486633257978f85f92e3729",
+      "succeededAt": "2026-10-18T16:02:52.941Z"
+    },
+    {
+      "id": "collection:0f42d1351e5c1bac22111e86152e6cff01832d11856097f7cdadb33d30ce8652",
+      "request": {
+        "toolId": "cardano-connect-with-wallet",
+        "revision": "47ceba88338f19b576bf72251e8158a7883a5e45",
+        "adapter": "npm-lock",
+        "roots": [
+          "@cardano-foundation/cardano-connect-with-wallet-core",
+          "@cardano-foundation/cardano-connect-with-wallet"
+        ],
+        "platform": "all-lockfile-targets",
+        "rootPaths": [
+          "core",
+          "react"
+        ],
+        "path": "package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T16:02:52.941Z",
+      "profileId": "profile:cardano-connect-with-wallet:72dfbb836a37f476f0dc7a30",
+      "succeededAt": "2026-10-18T16:03:00.182Z"
+    },
+    {
+      "id": "collection:4589fb570d7de6ed8e49bbf7aa0a835982263470662ffac859dc104b38a1c890",
+      "request": {
+        "toolId": "cardano-js-sdk",
+        "revision": "48019e49c826ea77d81be0e2d2907f94406f5e04",
+        "adapter": "yarn-lock",
+        "roots": [
+          "@cardano-sdk/wallet",
+          "@cardano-sdk/tx-construction",
+          "@cardano-sdk/dapp-connector",
+          "@cardano-sdk/governance"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "yarn.lock"
+      },
+      "status": "succeeded",
+      "attempts": 2,
+      "attemptedAt": "2026-10-18T16:32:21.386Z",
+      "profileId": "profile:cardano-js-sdk:ec36b69b5ecae45f8e237af9",
+      "succeededAt": "2026-10-18T16:32:34.571Z"
+    },
+    {
+      "id": "collection:648c90b89006d6457e8d37170eef7b90cb0a63450adb5af3babed791c4181958",
+      "request": {
+        "toolId": "blockfrost-js",
+        "revision": "cb8c6b6c5b92bb32825d5504fb4714d9d3da50ba",
+        "adapter": "yarn-lock",
+        "roots": [
+          "@blockfrost/blockfrost-js"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "yarn.lock"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T16:32:51.219Z",
+      "profileId": "profile:blockfrost-js:fd053be60979025fd54aac21",
+      "succeededAt": "2026-10-18T16:32:59.908Z"
+    },
+    {
+      "id": "collection:1a13e98bf7bc2151cdcfd70e908e21dd87de0cf3f018cb258cc3a9ab763f2bef",
+      "request": {
+        "toolId": "geniusyield-sdk",
+        "revision": "66a6ebcedd64979d02d1bb01c520185af1489f0d",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "@geniusyield/sdk"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "pnpm-lock.yaml"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T16:32:59.909Z",
+      "profileId": "profile:geniusyield-sdk:e6a95c7082608707db87e25b",
+      "succeededAt": "2026-10-18T16:33:07.573Z"
+    },
+    {
+      "id": "collection:9a6c15b93e169628b2a7d7b1e130926771e7cfb80aede5caa037adfa15a19c69",
+      "request": {
+        "toolId": "epora-wallet",
+        "revision": "8e6fd820d21e901f019af71eec8150400b1e9669",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "permission-wallet-dapp"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "code/dApp/pnpm-lock.yaml"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T16:37:38.615Z",
+      "profileId": "profile:epora-wallet:4f24d3734967c2ad6b5cecd5",
+      "succeededAt": "2026-10-18T16:37:49.803Z"
+    },
+    {
+      "id": "collection:3bfefed147ae5c9fd6af7f0aa2e732842cf1e60db1afbcb58786f6293c86ab76",
+      "request": {
+        "toolId": "cardano-dapp-wallet-connector",
+        "revision": "5d629436c7b7e7c2757355888a63cccd62fb1bca",
+        "adapter": "npm-lock",
+        "roots": [
+          "@newm.io/cardano-dapp-wallet-connector"
+        ],
+        "platform": "all-lockfile-targets",
+        "rootPaths": [
+          "."
+        ],
+        "path": "package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T16:37:49.803Z",
+      "profileId": "profile:cardano-dapp-wallet-connector:4388ebe22bd6824801066605",
+      "succeededAt": "2026-10-18T16:37:57.927Z"
+    },
+    {
+      "id": "collection:035765f9e19ccc8f9db4f1d90aceb71c04b97118950e632ca3863e5ec5ee18b6",
+      "request": {
+        "toolId": "blaze",
+        "revision": "0499975bfa4fdb324f2185657a7f17e4cea35aa1",
+        "adapter": "bun-lock",
+        "roots": [
+          "@blaze-cardano/sdk",
+          "@blaze-cardano/tx",
+          "@blaze-cardano/wallet",
+          "@blaze-cardano/query"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "bun.lock"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T17:16:05.048Z",
+      "profileId": "profile:blaze:c617d45246dce15c6cd35d01",
+      "succeededAt": "2026-10-18T17:16:13.622Z"
+    },
+    {
+      "id": "collection:dda15f60338576485173cdaa5d8a6d40183403863054e25b91fca1ff2df00116",
+      "request": {
+        "toolId": "pycardano",
+        "revision": "0445f3079cb8b356f48c13e040d00e25326ce59e",
+        "adapter": "poetry-lock",
+        "roots": [
+          "pycardano"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "poetry.lock"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T17:16:13.623Z",
+      "profileId": "profile:pycardano:bb6954c174a05503413c3078",
+      "succeededAt": "2026-10-18T17:16:20.955Z"
+    },
+    {
+      "id": "collection:2b4ea758dd4754d817a8966d0d3a7f95c095983a28835b7a3e111dd5d6585ac8",
+      "request": {
+        "toolId": "sundae-sdk",
+        "revision": "9f032253e0711e3a308068ed55cc85b5de71a348",
+        "adapter": "bun-lock",
+        "roots": [
+          "@sundaeswap/core",
+          "@sundaeswap/gummiworm",
+          "@sundaeswap/taste-test",
+          "@sundaeswap/yield-farming"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "bun.lock"
+      },
+      "status": "failed",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T17:42:09.391Z",
+      "error": "Error: Stale Bun workspace packages/core: dependencies differs from manifest"
+    },
+    {
+      "id": "collection:948d78a6b9f1094116a9efc2e3ad4309566de9455340157ebd9b5f494aa89d3a",
+      "request": {
+        "toolId": "masumi",
+        "revision": "8db9e6122bfd4303bb6e2b5740392f84a4b41ab8",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "masumi-payment-service",
+          "admin-frontend"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "pnpm-lock.yaml"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T18:10:59.853Z",
+      "profileId": "profile:masumi:83e7be70bb0367a0e8f57796",
+      "succeededAt": "2026-10-18T18:11:12.519Z"
+    },
+    {
+      "id": "collection:7589e0ed1703c9f27be07b88eabc3bcfcd1778ca3bcc59d4e9f69fd1f2cef880",
+      "request": {
+        "toolId": "sokosumi",
+        "revision": "0f908764db652adfb76348222235a809ed8797bb",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "web",
+          "@sokosumi/core"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "pnpm-lock.yaml"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T18:11:12.519Z",
+      "profileId": "profile:sokosumi:378b837174d64744243e8d78",
+      "succeededAt": "2026-10-18T18:11:23.593Z"
+    },
+    {
+      "id": "collection:a219d01a4d7683d2c432cb659024268ab690be501181df9bef608173488fcf7d",
+      "request": {
+        "toolId": "odatano",
+        "revision": "72954d36d871595345338c76da9956a775521062",
+        "adapter": "npm-lock",
+        "roots": [
+          "@odatano/core"
+        ],
+        "platform": "all-lockfile-targets",
+        "rootPaths": [
+          "."
+        ],
+        "path": "package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T20:23:41.628Z",
+      "profileId": "profile:odatano:2b2446d59a423953a0b79f66",
+      "succeededAt": "2026-10-18T20:23:57.377Z"
+    },
+    {
+      "id": "collection:c2f618cfd7aa020ec142c27727feb35e1a70e5ce7d996b7723ffe3c23dc883f2",
+      "request": {
+        "toolId": "cardano-mcp",
+        "revision": "9fe85c6552770915b767c966b3663234b22674e2",
+        "adapter": "yarn-lock",
+        "roots": [
+          "cardano-mcp"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "yarn.lock"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T20:23:57.377Z",
+      "profileId": "profile:cardano-mcp:b3ef6761920b79e0c6b2673a",
+      "succeededAt": "2026-10-18T20:24:15.919Z"
+    },
+    {
+      "id": "collection:7b4c6550a76b1f0b3491a3735f3395a3d974f9bff645dda7ecf168075277b0ea",
+      "request": {
+        "toolId": "bloxbean-cardano-client-library",
+        "revision": "f1130177b02761ea15b93a92e385ae0739d27096",
+        "adapter": "gradle-resolution",
+        "roots": [
+          "com.bloxbean.cardano:cardano-client-lib",
+          "com.bloxbean.cardano:governance",
+          "com.bloxbean.cardano:blockfrost"
+        ],
+        "platform": "amd64-Linux",
+        "configurations": [
+          {
+            "projectPath": ":",
+            "configuration": "runtimeClasspath",
+            "scope": "runtime"
+          },
+          {
+            "projectPath": ":backend-modules:blockfrost",
+            "configuration": "runtimeClasspath",
+            "scope": "runtime"
+          },
+          {
+            "projectPath": ":governance",
+            "configuration": "runtimeClasspath",
+            "scope": "runtime"
+          }
+        ],
+        "path": "build.gradle"
+      },
+      "status": "succeeded",
+      "attempts": 2,
+      "attemptedAt": "2026-10-18T21:07:17.164Z",
+      "profileId": "profile:bloxbean-cardano-client-library:23ed51384dd91ab286beeaa1",
+      "succeededAt": "2026-10-18T21:07:54.027Z"
+    },
+    {
+      "id": "collection:d5c0aaafb56fe7b0d7f6a9ac40ec7a3b27f2f7eb22176c4bd2a7fa0125c4e032",
+      "request": {
+        "toolId": "cardano-hw-cli",
+        "revision": "8977cc05622b5d635d406065d7f55541f2bb4159",
+        "adapter": "yarn-lock",
+        "roots": [
+          "cardano-hw-cli"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "yarn.lock"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T21:17:05.923Z",
+      "profileId": "profile:cardano-hw-cli:fca24b891602ed94eae6a326",
+      "succeededAt": "2026-10-18T21:17:14.146Z"
+    },
+    {
+      "id": "collection:77166c8dad81acb202bda55e67816032e4901ac335201c404691eae153296a32",
+      "request": {
+        "toolId": "cardano-dev-wallet",
+        "revision": "e846a7c5d2747609d791d7d47d5423616718cb34",
+        "adapter": "npm-lock",
+        "roots": [
+          "cardano-wallet"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "webext/package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T21:17:14.146Z",
+      "profileId": "profile:cardano-dev-wallet:6ed75c6080336129aa142824",
+      "succeededAt": "2026-10-18T21:17:22.840Z"
+    },
+    {
+      "id": "collection:1ca989194fa3f53601a24f2b191ec86f58950ac6eb6d65efab9bad0a532e328f",
+      "request": {
+        "toolId": "bursa",
+        "revision": "ee3ac506f88287c349d19171f2f391ac5bb835ed",
+        "adapter": "go-packages",
+        "roots": [
+          "github.com/blinklabs-io/bursa"
+        ],
+        "platform": "linux/amd64",
+        "path": "go.mod",
+        "patterns": [
+          "./..."
+        ],
+        "tags": []
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T21:17:22.840Z",
+      "profileId": "profile:bursa:fe7537b443b4c244a7da65d5",
+      "succeededAt": "2026-10-18T21:17:43.469Z"
+    },
+    {
+      "id": "collection:ae1b8bfe34e02268e7233a8cd674c374912811fc3ecafce0652a87c2c46d9519",
+      "request": {
+        "toolId": "bursa",
+        "revision": "ee3ac506f88287c349d19171f2f391ac5bb835ed",
+        "adapter": "npm-lock",
+        "roots": [
+          "bursa-wallet-ui"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "ui/web/package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T21:17:43.470Z",
+      "profileId": "profile:bursa:6a26e71f6a4154d687fb4815",
+      "succeededAt": "2026-10-18T21:17:52.277Z"
+    },
+    {
+      "id": "collection:81948c9202e042e9b7b2da3050c272825706f57b54be6a1c42a680e298cc7ca9",
+      "request": {
+        "toolId": "bursa",
+        "revision": "ee3ac506f88287c349d19171f2f391ac5bb835ed",
+        "adapter": "npm-lock",
+        "roots": [
+          "bursa-connector"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "ui/extension/package-lock.json"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T21:17:52.278Z",
+      "profileId": "profile:bursa:be7bfd64419de5730323fb67",
+      "succeededAt": "2026-10-18T21:18:01.135Z"
+    },
+    {
+      "id": "collection:e4b2461e6aff08d8e1ebf4242784098978c866e61da31c871d640fe1f88ea576",
+      "request": {
+        "toolId": "bursa",
+        "revision": "ee3ac506f88287c349d19171f2f391ac5bb835ed",
+        "adapter": "go-packages",
+        "roots": [
+          "github.com/blinklabs-io/bursa/ui"
+        ],
+        "platform": "linux/amd64",
+        "path": "ui/go.mod",
+        "patterns": [
+          "./..."
+        ],
+        "tags": []
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T21:18:46.128Z",
+      "profileId": "profile:bursa:4e0905655a23986d1c9ec50e",
+      "succeededAt": "2026-10-18T21:19:06.406Z"
+    },
+    {
+      "id": "collection:49036e06bde661b2095b74c32316a4a487ab34feb0ee1de65b7d5311f60932f9",
+      "request": {
+        "toolId": "adastat-api",
+        "revision": "2e5b5f96d2a4c0d037768107ca5dd93b7aac3436",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "adastat-backend"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "backend/pnpm-lock.yaml"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T22:24:51.433Z",
+      "profileId": "profile:adastat-api:70ce7cff20719d04c837d420",
+      "succeededAt": "2026-10-18T22:25:01.668Z"
+    },
+    {
+      "id": "collection:ba715dfacecafa3cc56e8a57c5610021a9c0d4adafc558d216eae9ba2f8a42d9",
+      "request": {
+        "toolId": "adastat-api",
+        "revision": "2e5b5f96d2a4c0d037768107ca5dd93b7aac3436",
+        "adapter": "pnpm-lock",
+        "roots": [
+          "adastat-frontend"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "frontend/pnpm-lock.yaml"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T22:25:01.669Z",
+      "profileId": "profile:adastat-api:d0506731a811eb6d5671ea74",
+      "succeededAt": "2026-10-18T22:25:12.514Z"
+    },
+    {
+      "id": "collection:f422448adb698a214c7c295ad5c5ec227a1d102d425cfa0baa654fb140ba5b54",
+      "request": {
+        "toolId": "cardano-graphql",
+        "revision": "fcfe3154115ef176788a60b2eae925ee42aabd7c",
+        "adapter": "yarn-lock",
+        "roots": [
+          "@cardano-graphql/server",
+          "@cardano-graphql/api-cardano-db-hasura"
+        ],
+        "platform": "all-lockfile-targets"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-18T22:25:12.515Z",
+      "profileId": "profile:cardano-graphql:b8fd0bccda852f0d3134c284",
+      "succeededAt": "2026-10-18T22:25:23.192Z"
+    },
+    {
+      "id": "collection:477e2802b3386d233cfff94d8df7cb2540de81c4b5192572ca814431626e6b1b",
+      "request": {
+        "toolId": "blockfrost",
+        "revision": "6d0000098ac865ebad3910732427f55bbb65fe9d",
+        "adapter": "yarn-lock",
+        "roots": [
+          "blockfrost-backend-ryo"
+        ],
+        "platform": "all-lockfile-targets",
+        "path": "yarn.lock"
+      },
+      "status": "succeeded",
+      "attempts": 1,
+      "attemptedAt": "2026-10-22T14:52:55.938Z",
+      "profileId": "profile:blockfrost:8c187c62e8aa8c950d888798",
+      "succeededAt": "2026-10-22T14:53:27.190Z"
+    }
+  ]
+}

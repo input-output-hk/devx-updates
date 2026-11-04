@@ -1,0 +1,68 @@
+
+> devx-updates@0.1.0 build
+> next build
+
+▲ Next.js 16.3.4 (Turbopack)
+✓ Running next.config.ts took 35ms
+- Experiments (use with caution):
+  · cpus: 1
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 4.1s
+  Running TypeScript ...
+  Finished TypeScript in 4.4s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/353) ...
+  Generating static pages using 1 worker (88/353) 
+  Generating static pages using 1 worker (176/353) 
+  Generating static pages using 1 worker (264/353) 
+✓ Generating static pages using 1 worker (353/353) in 50s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /api/status.json
+├   /deliverables/[slug]
+│ ├ ● /deliverables/kickoff
+│ ├ ● /deliverables/community-alignment
+│ ├ ● /deliverables/cardano-init
+│ └ ● [+5 more paths]
+├ ○ /links
+├ ○ /llms-full.txt
+├ ○ /llms.txt
+├ ○ /map
+├ ○ /map/analysis
+├ ○ /map/dijkstra
+├ ○ /map/dijkstra/changes
+├ ○ /map/dijkstra/devnet
+├ ○ /map/dijkstra/evidence
+├ ○ /map/dijkstra/history
+├ ○ /map/graph
+├ ○ /map/readiness
+├   /map/readiness/[id]
+│ ├ ● /map/readiness/1694-io
+│ ├ ● /map/readiness/ada-handle
+│ ├ ● /map/readiness/adalite
+│ └ ● [+265 more paths]
+├   /map/readiness/data/[file]
+│ ├ ● /map/readiness/data/impacts-215cc23f91be37f967e86bc7c412bbc0516c6c05a08a2e221e3a6ecdba1e1809.json
+│ ├ ● /map/readiness/data/projects-6fd9a9e009abd4ba230e3aae71d26bc782bc64a965c0faa709467be0e9dd83e6.json
+│ ├ ● /map/readiness/data/queue-cc5c55f2837bff209c6cd93527894c136a2b6adea6b012d0f85695aff4f9bdb5.json
+│ └ ● [+35 more paths]
+├ ○ /map/table
+├ ○ /opengraph-image
+├ ○ /pledge
+├ ○ /proposal
+├ ○ /twitter-image
+├ ○ /updates
+└   /updates/[week]
+  ├ ● /updates/2026-w38
+  ├ ● /updates/2026-w37
+  ├ ● /updates/2026-w36
+  └ ● [+13 more paths]
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

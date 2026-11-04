@@ -1,0 +1,29 @@
+{
+  "storageVersion": 1,
+  "kind": "occurrences",
+  "group": "profile:helios:7ac457e6c9833f81ababb556",
+  "evidenceSets": [
+    [
+      "evidence:03f35f06d75d9a2663334de7b717893840617f3006f3ed60a13a7e2e85c799f7",
+      "evidence:0afeafccee93ef5c728e9b1ec41f6cbd12dd91ed944394fd555abd21167d9e9d",
+      "evidence:cae989be54e322d9090728763c43700fc987301143414db583644f03bec2383d",
+      "evidence:f9ee6c7e5f25a47bf6450f095dc1bfb11923ff81b85261401be1ea151a6667dc"
+    ]
+  ],
+  "records": [
+    {"id":"occurrence:09dd871f8e8038e0b3be3488aeeb2959373efc4ab03dabee3e1566dc200b9865","artifactId":"artifact:9d172aaa76a3d7c0e86659569409eecad9344d82a430b95c7c31e717d68848a4","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:undici-types@6.19.8","evidenceSet":0},
+    {"id":"occurrence:383a527994d8f3ebeeb3938b7dc09fb67d2bd189aabcb054d238fd9b315e771e","artifactId":"artifact:d9c650b95ec1aab4be08ba7923084793e14a22ba95c5acad0f372bfaddfb7413","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@helios-lang/uplc@0.7.20","evidenceSet":0},
+    {"id":"occurrence:406be183b171ea6ba23f4e28e6043928b5dd635b6eb961b3777673e4ea774521","artifactId":"artifact:bdcd9eeacdeeb39756fc0d60337b0654609e0a840db5fba1f0fc7713bebec8d8","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@helios-lang/type-utils@0.2.9","evidenceSet":0},
+    {"id":"occurrence:46beae530ff206c0f2b35010fc01521a149e87072e4811fd1ff2297e74097237","artifactId":"artifact:81eb68e85e7b4ab222156cf1b6b265cc6b38d087142a810a0b0827393aecefb7","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@helios-lang/cbor@0.3.0","evidenceSet":0},
+    {"id":"occurrence:596ecce8b40e78ffc2a338d96c6bb2d702f857d6e8edb549ec714c68e05528c5","artifactId":"artifact:3bebdf4e97c88d354fad35df18944afe2588683e3bc050fec851c61cc43097fc","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@helios-lang/era@0.1.4","evidenceSet":0},
+    {"id":"occurrence:6d3ed242ac4740d59d150623d852b61f3470e12a8d7992978744f655ed945ee3","artifactId":"artifact:27a31bf893d76a6e9eff30bea3b6590983e70c9e021d267e4fd2422c90ad1f1c","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@types/node@20.16.3","evidenceSet":0},
+    {"id":"occurrence:7cbcde7e94e4f405efba012d2ffa45ebf1d5ae46b024f331d0e99a8d33324080","artifactId":"artifact:dfa7987789a2c256bfad26872da2b93599bc01e2c592bd50b3d0be263496c918","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:typescript@5.6.2","evidenceSet":0},
+    {"id":"occurrence:80536768a3d002d56a34b0dc1c515a8ae8b6470e07ecaf885039a64e63cad0d8","artifactId":"artifact:a2c2781299e5edcc8cf2270d645616028ed2ea1ba219e62bcfc7455b0df74fbb","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@helios-lang/ir@0.3.10","evidenceSet":0},
+    {"id":"occurrence:b3b467e5b8348087024e3acfde777091d641aa55043acfdbf645d63255cea131","artifactId":"artifact:e5edbe2e178185e1891269750cc1ebccce8e4f4bac3f1800b911b1e83b7808b7","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@helios-lang/type-utils@0.3.0","evidenceSet":0},
+    {"id":"occurrence:c0e686b10ab9b66e304de252c62525173691a7466391da99f7554dd3429488dc","artifactId":"artifact:9ca3df752c7eb9ef5e88599ca6aa6a4e3320f0ff6296f1b84be67f06fff614a3","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@helios-lang/codec-utils@0.3.4","evidenceSet":0},
+    {"id":"occurrence:c5b85fa23e3604200de50599aefccd9e95d813778a054567f4eee7432a264ed3","artifactId":"artifact:fe0333ed52deaff4d4c6eb0449f8a2f717b899fbbc4dc5a3a684d173851b8c41","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@helios-lang/compiler-utils@0.5.17","evidenceSet":0},
+    {"id":"occurrence:d5dac03c74f534a2595141d668af16951d6ab714c13d4cfbf8bbe3185a88fdc6","artifactId":"artifact:41d23f8cc081a559fe5514aa1260b675804ee1de2d26d2a38eb255ef326e77bf","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:@helios-lang/crypto@0.2.3","evidenceSet":0},
+    {"id":"occurrence:ec8084f6a823355d1ce9c8cb308f468de9c7184a3b7895ba8ebb66e7ae5e4677","artifactId":"artifact:e90e92065ad709f881fe1432703c71d7d4baca3bead5d2cd3979df115d305954","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"workspace:.","evidenceSet":0},
+    {"id":"occurrence:fd058909b6ae8f01cf9c29e7c8518c2e39cbd0c96f520bbeec24c8b8fbc472a6","artifactId":"artifact:32b58e5e5a4a3244ebdb0fd7f468e2e00a164b9667edbc2a7e3d9efe2f2c89c4","profileId":"profile:helios:7ac457e6c9833f81ababb556","locator":"snapshot:prettier@3.3.3","evidenceSet":0}
+  ]
+}

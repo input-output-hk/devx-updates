@@ -1,0 +1,8 @@
+node tip: {"epoch":85,"era":"Dijkstra","block":810}
+db-sync running; blocks indexed: 19, highest: 18, epoch_param rows: 2
+db-sync chain-sync decoder failures: 30
+ServerHasAgency (SingNext SingCanAwait) (DeserialiseFailure 863 "expected list len or indef")
+last db-sync log line at: 2026-11-01 13:01:05.59 UTC
+blockfrost /blocks/latest: {"height":18,"slot":361,"epoch":1}
+blockfrost /epochs/latest/parameters: {"epoch":1,"protocol_major_ver":10}
+blockfrost /network/eras: [{"end":0},{"end":3}]

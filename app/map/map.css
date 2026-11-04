@@ -209,7 +209,7 @@
      devx site header nav (mono / uppercase / wide tracking, primary active), but
      the active state is an underline rather than a color-only pill so it reads
      as a sub-level "view switcher" distinct from the header's page links. */
-  .nav { display: inline-flex; gap: 4px; }
+  .nav { display: inline-flex; flex-wrap: wrap; gap: 4px; max-width: 100%; }
   .nav-link {
     font-family: var(--mono); font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase;
     color: var(--muted); padding: 6px 10px; text-decoration: none;
