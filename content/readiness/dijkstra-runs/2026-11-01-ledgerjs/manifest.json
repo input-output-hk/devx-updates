@@ -1,0 +1,278 @@
+{
+  "schema": 1,
+  "sourceRevision": "9ce065887bfca145f7a2f46df2ea41b1b47b9640",
+  "files": [
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/README.md",
+      "sha256": "48c78740c213d2ed73639f79ba8e8b1bece85378146c42131dddccbf365f8c7a"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/critical-path.json",
+      "sha256": "66d795094463ca22c4a6d0b5a85558fcd35c38dd8aa20732491901d5d9c95c82"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/host-results.json",
+      "sha256": "9bb58a342fe37aa50e9f61e9dd8c7016fdf4386d0979040d470cc885e8da49d7"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/account-balance-interval-conway.json",
+      "sha256": "f9d68bdcd6992683a3cc11662cf45fda1ec0e12ad1be35968439da1d84f0d3ff"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/account-balance-interval-dijkstra.json",
+      "sha256": "31db60d1a0d0d52e4d3e60a731b3b199641125910ccc2ef480dab9e0f96cef81"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/array-redeemers-conway.json",
+      "sha256": "f211840e275806e6cfae451d884f0a0dc08881198d4b87a1cda301acf4f1d451"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/array-redeemers-dijkstra.json",
+      "sha256": "51eb1cbe87f09cd602e17b756199215af8bf2a03f8158028c108b1e7fbcb4ca1"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/bootstrap-chaincode-31-conway.json",
+      "sha256": "2ef674116ca5ce7a24510711dc7111f842aa73c0508ebcb82826055c550719a8"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/bootstrap-chaincode-31-dijkstra.json",
+      "sha256": "281dac113c6e138f7246892673ce59bed4bcf9a8e6f1c8d2949f99c652337390"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/bootstrap-chaincode-32-conway.json",
+      "sha256": "5a771f9b9cb5d1e8ed5245b9e3ba4e22a0e9a07292af00c4538d62a2198eadd5"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/bootstrap-chaincode-32-dijkstra.json",
+      "sha256": "9932ba2f409c2d0a0dcdb61bbd92872f1431b90c63a9d2b4369899448eb5e070"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/deposit-deregistration-conway.json",
+      "sha256": "b86b77985c369f6583078291da36bdcd4b478e571de8d5968ee784da8a228f3d"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/deposit-deregistration-dijkstra.json",
+      "sha256": "9f9d953e0e9ee94ec9b3b81eb4e0896831f6e7141b3a929f2ad9b9eee8e0a70c"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/deposit-registration-conway.json",
+      "sha256": "cd05e43804f471748c625db963bba608618a9e812ff6b249b6fb63fbdbec21d7"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/deposit-registration-dijkstra.json",
+      "sha256": "e81d43f60aa88ebf5df796dcb8a0bf97f4a5e7a03e49442b307e21ddf2fcee15"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/direct-deposit-conway.json",
+      "sha256": "057104305667babf934096339b78a14fb09249d3bc8ca669bd762e736c1239be"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/direct-deposit-dijkstra.json",
+      "sha256": "e5eff2b8242db1f7def3b9509ee87d6ff293dfcb747c505129dcb73b36897a2d"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/duplicate-datum-conway.json",
+      "sha256": "a77b5ee1338d13830416b37dae267ad7bd3dcd1af53f301189e38b4ab7bae8cf"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/duplicate-datum-dijkstra.json",
+      "sha256": "17fdaae12206c86e6883404c45179c7b68ca38f4316726c27e298686032a4b37"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/duplicate-native-script-conway.json",
+      "sha256": "16b8647f542dde6f2120fa80230d75f4998d12a3cec24a9254d9002b21c08bec"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/duplicate-native-script-dijkstra.json",
+      "sha256": "84bc2d924a45b366870ce7ae77ac988c54eca8bc76b4ca45454fe3da8a043e9f"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/duplicate-vkey-witness-conway.json",
+      "sha256": "3dde75be023243f920726806624574f3e96e69e9d1a6e29f3e7fe108d927289b"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/duplicate-vkey-witness-dijkstra.json",
+      "sha256": "55e5a177f43e09a85511a0dd7e0e52baecea1b0636d1fd3e4a714e72a8b91cd4"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/empty-inner-multiasset-conway.json",
+      "sha256": "5560aa45797bade404822e1b5d8cb38ee1c352cb82b397fdc44f12a20c2ccab6"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/empty-inner-multiasset-dijkstra.json",
+      "sha256": "43d0fbb1c5d784c5b601423015e6c2118c428b3f8dcea4c7e7484f22bb50dc1d"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/empty-outer-multiasset-conway.json",
+      "sha256": "1c07dcab7bb25a76384f49393addbfb690b05f95435e6f45a57fc83b666129a2"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/empty-outer-multiasset-dijkstra.json",
+      "sha256": "ecaa43aea5d77b196c716305268d5b4d329979e75ef8c3ca8ce94b374f86435c"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/four-element-false-conway.json",
+      "sha256": "bd9220ab59eedd1bc630067e83fbddc0b1223e34030c797831b0c8abe4bacc7e"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/four-element-false-dijkstra.json",
+      "sha256": "c935675c1edbed37ac88a4c2f4be3a0b35411ca5aeddcdc75af4b9729cdd2a5d"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/key-credential-guard-conway.json",
+      "sha256": "e257a08b14cbf5cecc34bab53718ad9235d70d9e6e2e1270c69b3c231c41bc2e"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/key-credential-guard-dijkstra.json",
+      "sha256": "f150de2051107b19437b381a9afab8d4be549ca721ff5d6140690b6ef7ef1b4a"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/key-hash-required-signer-conway.json",
+      "sha256": "f806229a6712c45fc2b76b64eb199c2e30f43b9fb3ea20fdc2fc39780132bb07"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/key-hash-required-signer-dijkstra.json",
+      "sha256": "867d4a621ea83e2bd9bb681e860edbdf5785b00f86b42c7220b816c62bca7ba1"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/legacy-deregistration-conway.json",
+      "sha256": "5657d1d433e010fa335fd9c2c67a1b13f97578d4ee763b360c5be51526e5ea09"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/legacy-deregistration-dijkstra.json",
+      "sha256": "602949c88d1fcb31ebdff2ffbadd64171e762e809f1d3d81db8901d76b9e3702"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/legacy-pool-registration-conway.json",
+      "sha256": "e41bec837e6484181311e686d462a6affb5848efed041acfc2fd7cb740087396"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/legacy-pool-registration-dijkstra.json",
+      "sha256": "1b4469d591085473f4bf91ca524a0cde0e64ad36d4adba30533e39a77f2fa4a8"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/legacy-registration-conway.json",
+      "sha256": "b68c4c67b2f66a4c4c6d82aa70b09761d1c93e9c800db7d9512b6d48431172e7"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/legacy-registration-dijkstra.json",
+      "sha256": "fbd630acea1d538b7358c60cf7cb64971e647e90266b0b54ca20f74980d3c050"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/map-redeemers-conway.json",
+      "sha256": "f466d4a42070ed7f8fc5984c148b5a8dbbe903fa64ce6865ae744c7febd05f9f"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/map-redeemers-dijkstra.json",
+      "sha256": "ebaa95d28f9ababfbdd302178858a61770cdd607b4a9dac18e388cac4f3fee0d"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/nested-transaction-conway.json",
+      "sha256": "ccc53a337a2b7eb9898ddce46d20814156091bd182767085102fa6291d7bf2a5"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/nested-transaction-dijkstra.json",
+      "sha256": "9fef252298abe2e11fd83994c06273942306c05bf2eeb4ab9f23ef3dda9ef299"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/one-datum-conway.json",
+      "sha256": "b1f58266e5a0a7068bad554fc6807b97476d753950b07d901ace775ec96caa08"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/one-datum-dijkstra.json",
+      "sha256": "d82b7b11de29a8de7aa83b187b92ca1e50d2ef3918266fc9a957fd0537efc2d4"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/one-native-script-conway.json",
+      "sha256": "447695928b7179e84e7d380350692d7b72c3680a8b1c0542e0f5071a0a8ed5b0"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/one-native-script-dijkstra.json",
+      "sha256": "c9e236916e26a67027628dfed44ec5cc9025b815550d8db464e056cec9ea4f7c"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/one-vkey-witness-conway.json",
+      "sha256": "0e7a9cb18c3b0460e661be9517d9dbbb19104e5b836fba3f3c93ddbd296a8948"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/one-vkey-witness-dijkstra.json",
+      "sha256": "0dd93562433b82b200e230311e11b876a86cbed71c5c126abc3489c6bfaf8ad4"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/ordinary-four-element-true-conway.json",
+      "sha256": "265fce9bb00d11002776465ae5551ecab34bdc7d7d2b3dc11a8632b4734d67bc"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/ordinary-four-element-true-dijkstra.json",
+      "sha256": "ad496cf07a01bde0ddf39ee94ca68e1f78ee78e838ba72d51ce12f20c1ee9998"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/ordinary-three-element-conway.json",
+      "sha256": "405c9e21d88df40de487efab656334b8d3175d77a1b50e2325d103ccd980dc5c"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/ordinary-three-element-dijkstra.json",
+      "sha256": "855b9322b3eab9083f1810a60653cb0e3726730c80022e4c67cf6f2894ae9ce6"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/pool-registration-explicit-null-bls-conway.json",
+      "sha256": "218ccf3bc1229588b4fc6f1128b6176641c235af9de89ad1ecab0681983bcd36"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/pool-registration-explicit-null-bls-dijkstra.json",
+      "sha256": "cf9c85a0d041992224c22d1dc5e7b9a12221290671bc36f23215cc78026a3b2e"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/required-top-level-guard-conway.json",
+      "sha256": "6c58a939cd09b9d69f9d60621fa0ff9ec830ec7122e05ed35b93790b931d895d"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/required-top-level-guard-dijkstra.json",
+      "sha256": "a6890d2524c5d4e7c67950d9e9f45fc1af4a2a3f5bede9b05e07736f26b790dc"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/results.json",
+      "sha256": "1e51204cd8134e09da406465997bdaf6cb8833590b5a84f3d0cf0ee200092a14"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/script-guard-conway.json",
+      "sha256": "e10c520c9cd0e7ca40d1c1f6506ca27056737967894dc5e4bb3cb7ca2eb0cfc5"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/script-guard-dijkstra.json",
+      "sha256": "4b386d5f5428e4aa9f11356d82c0dff30f05762fa5e85ce99ff6b3b07ff91ed1"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/starting-balance-interval-conway.json",
+      "sha256": "141a1e23d88bc57398118d581e12f417f09259ed1cb58dc114a577fa1b478f69"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/starting-balance-interval-dijkstra.json",
+      "sha256": "94c3e89f8843e9cfcbdc8ac2a8562ccb2de3fd4fb18158fa9d95a478c298afbb"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/tagged-input-set-conway.json",
+      "sha256": "1c85a8e4ed2a97d2bcacee60d008c0da92947e41d0fc4d4d6372c7cefb031a19"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/tagged-input-set-dijkstra.json",
+      "sha256": "2ba348794989f1bafabbaf17ef5b3c2ae93e982e1435e75c9a8d5e596f7a74be"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/v4-script-witness-conway.json",
+      "sha256": "dbc0d778d1aae7c5c51e7ff3230fa3ac24084975caceb2ad4ff057704641dc6b"
+    },
+    {
+      "path": "content/readiness/dijkstra-runs/2026-11-01-ledgerjs/ledger/v4-script-witness-dijkstra.json",
+      "sha256": "b1f5434341922e5d97bcb17e0b027280c6bf4ad0f2a9ef2c22f99435d9e445ca"
+    },
+    {
+      "path": "scripts/readiness/ledgerjs-dijkstra/dijkstra-host-probe.cjs",
+      "sha256": "dd0d0217bea0b988c104de233da5258e84f3b872cf7557b0fed394a97e750856"
+    },
+    {
+      "path": "scripts/readiness/ledgerjs-dijkstra/dijkstra-ledger-probe.py",
+      "sha256": "5c1d74e8e8a109eb560bb19a6e666dba52a75ee836b4cbdc42c54b855bf1a105"
+    }
+  ]
+}
