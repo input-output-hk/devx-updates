@@ -34,3 +34,27 @@ behavior or content model:
 - `docs/ARCHITECTURE.md` — the ADRs: static export, content-as-YAML/Markdown,
   the gatherer (roster + `teamOnly` + repo→deliverable map), CI pipelines,
   `basePath`. Cite the ADR you're implementing.
+
+## Dijkstra progress tracking: who reads what
+
+- **Developers track progress in the GitHub project**
+  [alwaystrueio/projects/1](https://github.com/orgs/alwaystrueio/projects/1)
+  ("Dijkstra outreach"). It holds one issue per component on the
+  `/map/dijkstra` critical-path graph, in the private repo
+  `alwaystrueio/dijkstra-readiness`. Each issue links to the external issues
+  and PRs that the maintainers own. Outreach (who was contacted, when, and
+  where) and day-to-day status live there, not in this repo.
+- **The website is for executives and non-developers.** It is the
+  evidence-backed summary of readiness. Don't use it as a coordination tool, and
+  don't add developer-only workflow state to it.
+- **Critical path** means every box on the `/map/dijkstra` graph, including the
+  standalone fixes, not just the bold longest chain. Every tracking issue
+  carries the `critical-path` label.
+- **Status values:** Not reached out → Reached out → Work in progress → Ready
+  for hard fork, plus Dismissed for components that turn out not to be needed.
+  Changing the Status options through the API clears every item's status, so
+  save the statuses first and restore them afterwards.
+- **Outreach is done by a person, not tooling.** Don't open issues or post
+  comments on maintainers' repositories. While the tracking repo is private,
+  links to external issues stay invisible to their maintainers. Making the repo
+  public shows them a "mentioned this" backlink on each linked issue.
