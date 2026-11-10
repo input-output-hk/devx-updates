@@ -1,0 +1,21 @@
+tip slot 49023
+blocks per era {"conway":15,"dijkstra":2356}
+chain sync reached the tip
+tx conway-legacy-reg: not on chain
+tx conway-metadata: dijkstra block 115; fields id,spends
+tx conway-payment: dijkstra block 115; fields id,spends
+tx conway-reg-with-deposit: dijkstra block 115; fields id,spends
+tx conway-required-signer: dijkstra block 115; fields id,spends
+tx dijkstra-metadata: dijkstra block 115; fields id,spends
+tx dijkstra-payment: dijkstra block 115; fields id,spends
+tx dijkstra-reg-with-deposit: dijkstra block 115; fields id,spends
+tx split: dijkstra block 114; fields id,spends
+tx dijkstra-direct-deposit: dijkstra block 185; fields id,spends
+tx dijkstra-plutusv4-reference-script: dijkstra block 187; fields id,spends
+tx dijkstra-sub-transaction: dijkstra block 187; fields id,spends
+tx adv-split: dijkstra block 183; fields id,spends
+queryLedgerState/eraSummaries: ok [{"start":{"time":{"seconds":0},"slot":0,"epoch":0},"end":{"time":{"seconds":0},"slot":0,"epoch":0},"parameters":{"epochLength":50,"slotLength":{"milliseconds":
+queryLedgerState/protocolParameters: ERROR {"code":2002,"message":"Query unavailable in the current era."}
+queryLedgerState/epoch: ok 245
+queryLedgerState/tip: ok {"slot":49023,"id":"382ca161db390d61092e21afe12ab739bdb6ac610807124ebfe3e01f5408acdf"}
+queryNetwork/genesisConfiguration: ok {"era":"shelley","startTime":"2026-11-10T18:36:26.343886205Z","networkMagic":42,"network":"testnet","activeSlotsCoefficient":"1/20","securityParameter":5,"epoch

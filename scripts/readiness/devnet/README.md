@@ -79,6 +79,13 @@ socket paths are limited to 108 bytes.
     each as `[era, block]`. Feed it the Conway line of `first-blocks.txt` as a positive control. Needs maven and Java 25
     for Yaci 0.5.x (`nix shell nixpkgs#jdk25 nixpkgs#maven`).
 
+13. Forks (added 2026-11-10). `forks.sh build` builds the IntersectMBO forks of Ogmios and Kupo at pinned commits
+    (native builds come from cache.iog.io). `forks.sh relay [BLOCK]` serves an existing chain with a plain node, which
+    does not extend it: cardano-testnet stops when an old chain cannot grow. With BLOCK, the chain is first truncated
+    after that block. `forks.sh ogmios <transaction-ids.json>` syncs from origin through Ogmios with
+    `ogmios-probe/probe.mjs` and runs the ledger queries. `forks.sh kupo [<transaction-ids.json>]` indexes from origin;
+    with the ids, and once Kupo reaches the tip, it lists how many outputs Kupo indexed for each test transaction.
+
 ## Retained evidence and determinism
 
 The current run is in `content/readiness/dijkstra-runs/2026-11-09/`; the earlier one is in

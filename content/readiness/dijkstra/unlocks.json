@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T19:57:10.620Z",
+ "generatedAt": "2026-11-10T18:54:09.889Z",
  "bumpReady": [
   {
    "tool": "marconi",
@@ -339,8 +339,6 @@
     }
    ],
    "ownGap": [
-    "era-identity",
-    "block-encoding",
     "transaction-encoding",
     "protocol-parameters",
     "plutus-language"
@@ -1335,8 +1333,6 @@
    ],
    "downstream": [],
    "ownGap": [
-    "era-identity",
-    "block-encoding",
     "transaction-encoding"
    ]
   },
@@ -4507,8 +4503,6 @@
      "via": "kupo",
      "kind": "own-gap",
      "surfaces": [
-      "era-identity",
-      "block-encoding",
       "transaction-encoding"
      ]
     },
@@ -5248,8 +5242,6 @@
      "via": "ogmios",
      "kind": "own-gap",
      "surfaces": [
-      "era-identity",
-      "block-encoding",
       "transaction-encoding",
       "protocol-parameters",
       "plutus-language"

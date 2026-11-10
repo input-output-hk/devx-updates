@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "retrieved": "2026-11-09",
+  "retrieved": "2026-11-10",
   "method": [
     "Components are catalog tools that implement a surface from changes.json directly: ledger codecs, node-to-client clients, chain indexers and query services, nodes, script toolchains, transaction builders, hardware signing and devnet tooling.",
     "Each repository was cloned at its default-branch head (observed.revision) and searched case-insensitively for Dijkstra; GitHub issues and pull requests mentioning Dijkstra were retrieved the same day.",
@@ -2556,7 +2556,7 @@
       "observed": {
         "branch": "master",
         "revision": "435189aea2d9a047dc395a6f1cdef737d52f1cbe",
-        "date": "2026-11-01",
+        "date": "2026-11-10",
         "release": {
           "tag": "v7.0.0",
           "date": "2026-06-20"
@@ -2601,14 +2601,64 @@
         {
           "surfaces": [
             "era-identity",
-            "block-encoding",
+            "block-encoding"
+          ],
+          "status": "in-progress",
+          "summary": "The IntersectMBO fork (master 2f9b5d14) moves Ogmios to the node 11.2 libraries and syncs every Dijkstra block on the devnet. None of it is merged into CardanoSolutions/ogmios or released: v7.0.0, built on node 11.0.1, still exits at the first Dijkstra block, and the two pull requests that would have brought it upstream were closed unmerged.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/ogmios",
+              "revision": "2f9b5d14daeccfece3a7d33f8a10e2136a91fbef",
+              "path": "server/cabal.project",
+              "line": 24,
+              "quote": "  , any.cardano-ledger-dijkstra >= 0.4"
+            },
+            {
+              "kind": "devnet",
+              "check": "fork-chain-sync",
+              "version": "IntersectMBO fork 2f9b5d14"
+            },
+            {
+              "kind": "devnet",
+              "check": "service-decoding",
+              "version": "v7.0.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
             "transaction-encoding",
             "protocol-parameters",
             "plutus-language"
           ],
           "status": "gap",
-          "summary": "v7.0.0 ships preliminary Dijkstra and PlutusV4 support built against cardano-node 11.0.1 (CHaP index 2026-05-08, cardano-ledger-dijkstra 0.2.0.1), whose CDDL differs from the target in 454 normalized lines, including the block body and header. The default branch is still the v7.0.0 release commit (2026-06-20) and no branch or open pull request targets the 11.2 component set. On the devnet v7.0.0 exits at the first Dijkstra block.",
+          "summary": "v7.0.0 exits at the first Dijkstra block. The IntersectMBO fork returns each Dijkstra transaction as its id only, has no Dijkstra protocol-parameters encoder, and drops a client's connection on mempool monitoring or a rejected submission; each is a TODO(dijkstra) stub in its source. Submitting a valid Dijkstra transaction through the fork works.",
           "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/ogmios",
+              "revision": "2f9b5d14daeccfece3a7d33f8a10e2136a91fbef",
+              "path": "server/src/Ogmios/Data/Json/Dijkstra.hs",
+              "line": 104,
+              "quote": "-- TODO(dijkstra): minimal body \u2014 emits txId, isValid, and (optionally)"
+            },
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/ogmios",
+              "revision": "2f9b5d14daeccfece3a7d33f8a10e2136a91fbef",
+              "path": "server/src/Ogmios/Data/Json/Query.hs",
+              "line": 1843,
+              "quote": "                -- TODO(dijkstra): Conway.encodePParams matches ConwayPParams,"
+            },
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/ogmios",
+              "revision": "2f9b5d14daeccfece3a7d33f8a10e2136a91fbef",
+              "path": "server/modules/ouroboros-network-ogmios/src/Cardano/Network/Protocol/NodeToClient.hs",
+              "line": 277,
+              "quote": "        _ -> error \"TODO(dijkstra): toRawTxIdHash Dijkstra arm (GenTxIdDijkstra)\""
+            },
             {
               "kind": "source",
               "repo": "CardanoSolutions/ogmios",
@@ -2624,6 +2674,11 @@
               "path": "server/cabal.project",
               "line": 14,
               "quote": "  , cardano-haskell-packages 2026-05-08T13:26:45Z"
+            },
+            {
+              "kind": "devnet",
+              "check": "fork-ogmios-api",
+              "version": "IntersectMBO fork 2f9b5d14"
             },
             {
               "kind": "devnet",
@@ -2649,7 +2704,7 @@
       "observed": {
         "branch": "master",
         "revision": "1c7346789188d7a1a05343e7888ad8f08854cbca",
-        "date": "2026-11-01",
+        "date": "2026-11-10",
         "release": {
           "tag": "v2.12",
           "date": "2026-07-18"
@@ -2686,12 +2741,46 @@
         {
           "surfaces": [
             "era-identity",
-            "block-encoding",
+            "block-encoding"
+          ],
+          "status": "in-progress",
+          "summary": "The IntersectMBO fork (master bdb44975) moves Kupo to the node 11.2 libraries and indexes Dijkstra blocks on the devnet up to the first transaction with a sub-transaction. None of it is merged into CardanoSolutions/kupo or released: v2.12, built on node 11.0.1, still stops at the first Dijkstra block.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/kupo",
+              "revision": "bdb4497537b922e4e2eab2807e402c89f64da5b3",
+              "path": "cabal.project",
+              "line": 51,
+              "quote": "  , any.ouroboros-consensus ^>= 5.3"
+            },
+            {
+              "kind": "devnet",
+              "check": "fork-chain-sync",
+              "version": "IntersectMBO fork bdb44975"
+            },
+            {
+              "kind": "devnet",
+              "check": "service-decoding",
+              "version": "v2.12"
+            }
+          ]
+        },
+        {
+          "surfaces": [
             "transaction-encoding"
           ],
           "status": "gap",
-          "summary": "Handles Dijkstra blocks through cardano-node 11.0.1 libraries (cardano-ledger-dijkstra 0.2.0.1), which predate the 11.2 block format; on the devnet v2.12 stops at the first Dijkstra block. The default branch has only test changes since v2.12 and no branch or open pull request targets the 11.2 component set.",
+          "summary": "v2.12 stops at the first Dijkstra block. The IntersectMBO fork indexes ordinary Dijkstra transactions and direct deposits, but stops with an error on any transaction carrying sub-transactions: how to number them in the index is still undecided.",
           "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/kupo",
+              "revision": "bdb4497537b922e4e2eab2807e402c89f64da5b3",
+              "path": "src/Kupo/Data/Cardano.hs",
+              "line": 170,
+              "quote": "                <> \" carries sub-transactions, which Kupo does not index yet.\""
+            },
             {
               "kind": "source",
               "repo": "CardanoSolutions/kupo",
@@ -2706,6 +2795,11 @@
               "title": "Add cardano-node 11.0.1 support",
               "state": "merged",
               "date": "2026-07-18"
+            },
+            {
+              "kind": "devnet",
+              "check": "fork-chain-sync",
+              "version": "IntersectMBO fork bdb44975"
             },
             {
               "kind": "devnet",

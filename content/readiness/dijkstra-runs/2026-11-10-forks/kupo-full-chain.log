@@ -1,0 +1,7 @@
+## Full chain (2370 blocks): forks.sh kupo (--match '*' --since origin)
+kupo nightly+bdb449
+last logged roll-forward slot: 3526
+{"Kupo":{"tag":"KupoUnexpectedError","exception":"Dijkstra transaction 4a6db05a4f7436ba27aba60f08399e06bbde7fd528e3b83c58e531f6dc06c219 carries sub-transactions, which Kupo does not index yet."}}
+
+## Versioned node configuration
+Failed to configure network parameters: missing or invalid 'ByronGenesisFile' and/or 'ShelleyGenesisFile' from Cardano's configuration

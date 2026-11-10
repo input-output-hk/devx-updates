@@ -17,6 +17,13 @@
 # GitHub titles and open/merged/closed state are not written here. Refresh them
 # with `npm run readiness -- sync-tracking`, which writes tracking-state.json.
 #
+# Work in a fork counts only once it is upstream. A PR merged in a fork shows as
+# "merged in fork, not upstream". To follow a fork branch, link the GitHub
+# compare view against upstream:
+#   https://github.com/<upstream>/compare/<branch>...<owner>:<repo>:<branch>
+# The sync records how many fork commits are not upstream yet and the fork's
+# latest commit; the link reads as merged once none are left.
+#
 # Example:
 #   tools:
 #     nami:
@@ -197,6 +204,16 @@ tools:
       - url: https://github.com/txpipe/pallas/pull/823
   ogmios:
     links:
+      - url: https://github.com/CardanoSolutions/ogmios/compare/master...IntersectMBO:ogmios:master
+        note: IntersectMBO fork on the node 11.2 libraries; done only once merged upstream
+      - url: https://github.com/IntersectMBO/ogmios/pull/17
+        note: Fork; moves to the node 11.2 libraries and maps Dijkstra submission errors
+      - url: https://github.com/IntersectMBO/ogmios/pull/16
+        note: Fork; GHC 9.12.4, which the new libraries need
+      - url: https://github.com/CardanoSolutions/ogmios/pull/485
+        note: Upstream attempt to bump the Cardano libraries, closed unmerged
+      - url: https://github.com/CardanoSolutions/ogmios/pull/484
+        note: Upstream attempt to move to GHC 9.12, closed unmerged
       - url: https://github.com/CardanoSolutions/ogmios/pull/462
         note: Closed draft mapping the migration; ~100 TODO(dijkstra) stubs
   blockfrost:
@@ -341,6 +358,12 @@ tools:
       - url: https://github.com/bloxbean/yaci-store/tree/next-leios
   kupo:
     links:
+      - url: https://github.com/CardanoSolutions/kupo/compare/master...IntersectMBO:kupo:master
+        note: IntersectMBO fork on the node 11.2 libraries; done only once merged upstream
+      - url: https://github.com/IntersectMBO/kupo/pull/9
+        note: Fork; indexes Dijkstra blocks, stops on transactions with sub-transactions
+      - url: https://github.com/IntersectMBO/kupo/pull/10
+        note: Fork; GHC 9.12.4, which the new libraries need
       - url: https://github.com/CardanoSolutions/kupo/pull/204
         note: Merged node 11.0.1 support, before the Dijkstra era
   ledgerjs-hw-app-cardano:

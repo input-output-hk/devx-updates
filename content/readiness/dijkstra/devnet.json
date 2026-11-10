@@ -488,6 +488,58 @@
         "scripts/readiness/devnet/jvm-probe/CclProbe.java",
         "scripts/readiness/devnet/jvm-probe/YaciProbe.java"
       ]
+    },
+    {
+      "id": "fork-chain-sync",
+      "title": "The IntersectMBO forks of Ogmios and Kupo read Dijkstra blocks; Kupo stops at sub-transactions",
+      "summary": "Run on 2026-11-10 against the same 11.2.0 chain. The forks are not merged upstream or released. Ogmios master 2f9b5d14 syncs all 2356 Dijkstra blocks without a decode error. Kupo master bdb44975 indexes every block and test transaction up to block 186, including the direct deposit, then stops with an explicit error at the first transaction carrying a sub-transaction.",
+      "results": [
+        {
+          "kind": "component",
+          "id": "ogmios",
+          "version": "IntersectMBO fork 2f9b5d14",
+          "outcome": "pass",
+          "note": "Chain sync from origin to the tip; transaction contents are checked separately (fork-ogmios-api)"
+        },
+        {
+          "kind": "component",
+          "id": "kupo",
+          "version": "IntersectMBO fork bdb44975",
+          "outcome": "fail",
+          "note": "Stops at block 187: sub-transactions are not indexed yet"
+        }
+      ],
+      "observed": [
+        "ogmios-chain-sync.log:\ntip slot 49023\nblocks per era {\"conway\":15,\"dijkstra\":2356}\nchain sync reached the tip\ntx conway-legacy-reg: not on chain",
+        "kupo-full-chain.log:\nkupo nightly+bdb449\nlast logged roll-forward slot: 3526\n{\"Kupo\":{\"tag\":\"KupoUnexpectedError\",\"exception\":\"Dijkstra transaction 4a6db05a4f7436ba27aba60f08399e06bbde7fd528e3b83c58e531f6dc06c219 carries sub-transactions, which Kupo does not index yet.\"}}",
+        "kupo-before-sub-transaction.log (chain truncated after block 186):\ndijkstra-metadata: 1 outputs indexed, slot 2302\ndijkstra-payment: 1 outputs indexed, slot 2302\ndijkstra-reg-with-deposit: 1 outputs indexed, slot 2302\ndijkstra-direct-deposit: 1 outputs indexed, slot 3710\nerrors: 0"
+      ],
+      "recipe": [
+        "scripts/readiness/devnet/forks.sh",
+        "scripts/readiness/devnet/ogmios-probe/probe.mjs"
+      ]
+    },
+    {
+      "id": "fork-ogmios-api",
+      "title": "The Ogmios fork returns Dijkstra transactions as an id only and drops mempool clients",
+      "summary": "Run on 2026-11-10 with Ogmios IntersectMBO fork 2f9b5d14. Each Dijkstra transaction in chain sync carries only its id (the fork's encoder is a stub). Submitting a Dijkstra payment works and returns the right id, but a rejected submission and mempool monitoring hit another stub and drop the client's connection. The protocol-parameters query is unavailable in Dijkstra.",
+      "results": [
+        {
+          "kind": "component",
+          "id": "ogmios",
+          "version": "IntersectMBO fork 2f9b5d14",
+          "outcome": "fail",
+          "note": "Transaction contents, protocol parameters and mempool monitoring are not implemented for Dijkstra"
+        }
+      ],
+      "observed": [
+        "ogmios-chain-sync.log:\ntx dijkstra-metadata: dijkstra block 115; fields id,spends\ntx dijkstra-payment: dijkstra block 115; fields id,spends\ntx dijkstra-reg-with-deposit: dijkstra block 115; fields id,spends\ntx dijkstra-direct-deposit: dijkstra block 185; fields id,spends\ntx dijkstra-plutusv4-reference-script: dijkstra block 187; fields id,spends\ntx dijkstra-sub-transaction: dijkstra block 187; fields id,spends\nqueryLedgerState/protocolParameters: ERROR {\"code\":2002,\"message\":\"Query unavailable in the current era.\"}",
+        "ogmios-api.log:\nevaluateTransaction: []\nsubmitTransaction: {\"transaction\":{\"id\":\"1969dbd744acc57c1c6b88d657b18940d49f2c9fa68f43a2905a802757d3988f\"}} (the id cardano-cli computed)\nclient: connection dropped, no JSON-RPC reply\n{\"WebSocket\":{\"exception\":\"TODO(dijkstra): toRawTxIdHash Dijkstra arm (GenTxIdDijkstra)\",\"tag\":\"WebSocketUnknownException\"}}\nclient: connection dropped, no JSON-RPC reply\n{\"WebSocket\":{\"exception\":\"TODO(dijkstra): toRawTxIdHash Dijkstra arm (GenTxIdDijkstra)\",\"tag\":\"WebSocketUnknownException\"}}\nMissing 'ByronGenesisFile' and/or 'ShelleyGenesisFile' from Cardano's configuration?"
+      ],
+      "recipe": [
+        "scripts/readiness/devnet/forks.sh",
+        "scripts/readiness/devnet/ogmios-probe/probe.mjs"
+      ]
     }
   ]
 }

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { dijkstraSite, toolState } from "./dijkstra-site";
-import { githubRef, linkLabel, loadTracking, parseTrackingState, syncTracking } from "./tracking";
+import { forkRef, githubRef, linkLabel, loadTracking, parseTrackingState, syncTracking } from "./tracking";
 
 const known = new Set(["nami", "ogmios"]);
 const yaml = (source: string) => loadTracking(source, known);
@@ -46,6 +46,7 @@ tools:
     links: [https://github.com/o/r/issues/1, https://github.com/o/r/pull/2, https://github.com/o/r/pull/3, https://github.com/o/r/issues/4, https://example.com/x]
 `);
   const answers: Record<string, unknown> = {
+    "repos/o/r": { fork: false },
     "repos/o/r/issues/1": { title: "Bug", state: "open" },
     "repos/o/r/issues/2": { title: "Fix", state: "closed", pull_request: { merged_at: "2026-10-01T00:00:00Z" } },
     "repos/o/r/issues/3": { title: "Abandoned", state: "closed", pull_request: { merged_at: null } },
@@ -70,4 +71,27 @@ test("a dismissal replaces the computed state and keeps it alongside", () => {
   assert.equal(state.reason, "Test");
   assert.deepEqual(state.links, [{ url, label: "CardanoSolutions/ogmios#1", info: tracked.linkState[url] }]);
   assert.equal(toolState(site, ogmios).state, "breaks", "without an entry the computed state stands");
+});
+
+test("work merged only in a fork is tracked against upstream, never as merged upstream", async () => {
+  const compare = "https://github.com/up/r/compare/master...fk:r:master";
+  assert.deepEqual(forkRef(compare), { upstream: "up/r", base: "master", fork: "fk/r", branch: "master" });
+  assert.equal(linkLabel(compare), "fk/r@master");
+  const register = yaml(`
+tools:
+  ogmios:
+    links: [https://github.com/fk/r/pull/9, "${compare}"]
+`);
+  const answers = (ahead: number): Record<string, unknown> => ({
+    "repos/fk/r": { fork: true, parent: { full_name: "up/r" } },
+    "repos/fk/r/issues/9": { title: "Dijkstra", state: "closed", pull_request: { merged_at: "2026-11-06T00:00:00Z" } },
+    "repos/up/r/compare/master...fk:r:master": { ahead_by: ahead, behind_by: 3 },
+    "repos/fk/r/commits/master": { sha: "abc", commit: { committer: { date: "2026-11-06T14:41:39Z" } } },
+  });
+  const run = async (ahead: number) => (await syncTracking(register, { schemaVersion: 1, links: {} }, async (e) => answers(ahead)[e], "2026-11-10")).state;
+  const pending = await run(29);
+  assert.deepEqual(pending.links["https://github.com/fk/r/pull/9"], { kind: "pull", title: "Dijkstra", state: "merged", checked: "2026-11-10", forkOf: "up/r" });
+  assert.deepEqual(pending.links[compare], { kind: "fork", title: "fk/r@master against up/r@master", state: "open", checked: "2026-11-10", forkOf: "up/r", ahead: 29, behind: 3, head: { sha: "abc", date: "2026-11-06" } });
+  assert.deepEqual(parseTrackingState(pending), pending, "the written file parses back");
+  assert.equal((await run(0)).links[compare].state, "merged", "nothing left to upstream");
 });

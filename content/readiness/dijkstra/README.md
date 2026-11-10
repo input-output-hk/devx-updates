@@ -118,9 +118,14 @@ archived assessment and on `/map/dijkstra/history`.
 | `csl-decoding` | CSL 17.0.0 and 15.0.3 decode no Dijkstra block or new body; re-encoding adds the legacy fourth element. |
 | `pycardano-transactions` | PyCardano 0.19.2 fails on Dijkstra metadata and on all three new bodies. |
 | `jvm-codecs` | New: cardano-client-lib 0.8.0-pre7 drops direct deposits and sub-transactions (wrong transaction id); Yaci 0.5.0-pre15 decodes no Dijkstra block. |
+| `fork-chain-sync` | 2026-11-10, same chain: the IntersectMBO Ogmios fork (2f9b5d14) syncs all 2356 Dijkstra blocks; the Kupo fork (bdb44975) indexes everything up to block 186, including the direct deposit, then stops at the first sub-transaction. |
+| `fork-ogmios-api` | 2026-11-10: the Ogmios fork returns Dijkstra transactions as an id only, has no Dijkstra protocol-parameters query, and drops mempool clients; submitting a Dijkstra payment works. |
 
-Not run: Koios, guards and balance intervals (the 11.2.0 CLI has no options for them), executing a PlutusV4 script,
-and Ogmios/Kupo against the versioned configuration. db-sync stops before the direct deposit and the sub-transaction.
+The two fork checks ran on 2026-11-10 against the same chain, served by a node that does not produce blocks; their
+evidence is in `content/readiness/dijkstra-runs/2026-11-10-forks/`. Neither fork is merged upstream or released.
+
+Not run: Koios, guards and balance intervals (the 11.2.0 CLI has no options for them), and executing a PlutusV4 script.
+Ogmios and Kupo, releases and forks alike, still reject the versioned configuration. db-sync stops before the direct deposit and the sub-transaction.
 Source progress remains separate from runtime results: a newly published release is not an end-to-end devnet pass.
 
 ## Not yet covered
@@ -161,6 +166,14 @@ parameters without the BLS key, era tables ending at Conway, script contexts
 without V4's fields, and Pallas or Yaci versions that cannot decode Dijkstra
 blocks. Transaction rules stay `no-evidence` unless code specific to a rule
 change was found.
+
+What changed on 2026-11-10:
+
+- Ogmios and Kupo: the node team is porting both to the node 11.2 libraries in its own forks (IntersectMBO/ogmios,
+  IntersectMBO/kupo). Block decoding moves to in progress on the strength of the forks' devnet runs. Both stay gaps:
+  the Ogmios fork stubs Dijkstra transaction contents, protocol parameters and mempool monitoring, the Kupo fork stops
+  at sub-transactions, and nothing is merged upstream or released. Neither is marked done until the work is merged into
+  CardanoSolutions/ogmios and CardanoSolutions/kupo.
 
 What changed on 2026-11-09:
 
@@ -480,7 +493,12 @@ or field fails the build.
 `tracking-state.json` is generated: `sync-tracking` reads the title and
 open/merged/closed state of every GitHub issue/PR link through `gh api`
 (read-only) and writes them there, so the YAML and its comments are never
-rewritten. A link that has not been synced yet shows without a state. A failed
+rewritten. Work in a fork is tracked against upstream. An issue or PR in a fork
+records the repository it was forked from (`forkOf`), and the site shows a
+merged one as "merged in fork, not upstream", not as merged. A GitHub compare
+link (`https://github.com/<upstream>/compare/<branch>...<owner>:<repo>:<branch>`)
+records how many fork commits are not upstream yet and the fork's latest commit.
+It reads as merged only once none are left. A link that has not been synced yet shows without a state. A failed
 lookup keeps the previous entry and exits non-zero.
 
 ## On the site

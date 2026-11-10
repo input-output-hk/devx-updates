@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "files": {
+    "README.md": "a0639970db4d22f761622bdbaab8168d5ea536a9b3659ed7b765ddf1b8222276",
+    "build-inputs.txt": "82998314521546f667e7ee2821e6aa14bf0db97904800e2926b3d5059a7de07c",
+    "kupo-before-sub-transaction.log": "b5b046a6d85b57d1d9d703a1b0002bdbef56c9e6f5ab278b4a1ec565dc3c7abe",
+    "kupo-full-chain.log": "bfa0afdb1df9cc04da36f9bfe5aa14a6950b7a9c063bc35e4c3cdf8c523c3b56",
+    "ogmios-api.log": "abfa386d47ab761efbb610db2a3a7542a01eda91f0d346bf8c706a2424416643",
+    "ogmios-chain-sync.log": "82b221ce60caa56cdf51c9dafd840f4f87c5e6fd339126fa9b80a8d4036a4a54",
+    "ogmios-dijkstra-transactions.json": "863b91b65282a76f8209fbb5899a10711c2520b71f1a9ef55a0e3ab8291a364d"
+  }
+}
