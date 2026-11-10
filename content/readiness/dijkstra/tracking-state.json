@@ -111,6 +111,20 @@
    "state": "open",
    "checked": "2026-11-10"
   },
+  "https://github.com/IntersectMBO/kupo/issues/12": {
+   "kind": "issue",
+   "title": "Spike: index Dijkstra sub-transactions",
+   "state": "open",
+   "checked": "2026-11-10",
+   "forkOf": "CardanoSolutions/kupo"
+  },
+  "https://github.com/IntersectMBO/kupo/issues/13": {
+   "kind": "issue",
+   "title": "Get Kupo ready for the Dijkstra hard fork",
+   "state": "open",
+   "checked": "2026-11-10",
+   "forkOf": "CardanoSolutions/kupo"
+  },
   "https://github.com/IntersectMBO/kupo/pull/10": {
    "kind": "pull",
    "title": "Bump GHC to 9.12.4",
@@ -142,6 +156,13 @@
    "title": "feat: support for upcoming Cardano `11.2`",
    "state": "merged",
    "checked": "2026-11-10"
+  },
+  "https://github.com/IntersectMBO/ogmios/issues/21": {
+   "kind": "issue",
+   "title": "Get Ogmios ready for the Dijkstra hard fork",
+   "state": "open",
+   "checked": "2026-11-10",
+   "forkOf": "CardanoSolutions/ogmios"
   },
   "https://github.com/IntersectMBO/ogmios/pull/16": {
    "kind": "pull",

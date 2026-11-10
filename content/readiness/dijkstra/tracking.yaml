@@ -206,6 +206,8 @@ tools:
     links:
       - url: https://github.com/CardanoSolutions/ogmios/compare/master...IntersectMBO:ogmios:master
         note: IntersectMBO fork on the node 11.2 libraries; done only once merged upstream
+      - url: https://github.com/IntersectMBO/ogmios/issues/21
+        note: Fork; checklist of what's left for Dijkstra, from our 2026-11-10 devnet run
       - url: https://github.com/IntersectMBO/ogmios/pull/17
         note: Fork; moves to the node 11.2 libraries and maps Dijkstra submission errors
       - url: https://github.com/IntersectMBO/ogmios/pull/16
@@ -360,6 +362,10 @@ tools:
     links:
       - url: https://github.com/CardanoSolutions/kupo/compare/master...IntersectMBO:kupo:master
         note: IntersectMBO fork on the node 11.2 libraries; done only once merged upstream
+      - url: https://github.com/IntersectMBO/kupo/issues/13
+        note: Fork; checklist of what's left for Dijkstra, from our 2026-11-10 devnet run
+      - url: https://github.com/IntersectMBO/kupo/issues/12
+        note: Fork; design spike for indexing sub-transactions
       - url: https://github.com/IntersectMBO/kupo/pull/9
         note: Fork; indexes Dijkstra blocks, stops on transactions with sub-transactions
       - url: https://github.com/IntersectMBO/kupo/pull/10
