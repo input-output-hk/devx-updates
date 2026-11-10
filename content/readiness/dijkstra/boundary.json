@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "retrieved": "2026-11-01",
+  "retrieved": "2026-11-09",
   "method": [
     "Components are catalog tools that implement a surface from changes.json directly: ledger codecs, node-to-client clients, chain indexers and query services, nodes, script toolchains, transaction builders, hardware signing and devnet tooling.",
     "Each repository was cloned at its default-branch head (observed.revision) and searched case-insensitively for Dijkstra; GitHub issues and pull requests mentioning Dijkstra were retrieved the same day.",
@@ -345,11 +345,11 @@
       ],
       "observed": {
         "branch": "main",
-        "revision": "b4a519faa9522a1ab0629d976316d9153dfeebd7",
-        "date": "2026-11-01",
+        "revision": "d8a5c765f566f7c641dbdcd1fea3c8098e36cc77",
+        "date": "2026-11-09",
         "release": {
-          "tag": "v1.4.0",
-          "date": "2026-09-17"
+          "tag": "v1.5.0-rc.1",
+          "date": "2026-11-05"
         }
       },
       "dependsOn": [],
@@ -401,7 +401,7 @@
             "stake-pool-registration"
           ],
           "status": "in-progress",
-          "summary": "Dijkstra primitives are released since v1.3.0 but are generated from ledger commit 1587f21a, not the 11.2 component set: compared with the target CDDL they lack protocol-parameter keys 49-56 and witness-set key 8 (PlutusV4). On the dijkstra branch, decode_for_era(Dijkstra) reads all seven transactions captured from the devnet mempool (devnet check pallas-transactions).",
+          "summary": "The Dijkstra era is on main behind the unstable feature (PR #849) and in the v1.5.0-rc.1 prerelease. Its primitives are still generated from ledger commit 1587f21a, not the 11.2 component set: they lack protocol-parameter keys 49-56 and witness-set key 8 (PlutusV4). decode_for_era(Dijkstra) reads all 12 Dijkstra encodings, including a direct deposit, a sub-transaction and a PlutusV4 reference script; MultiEraTx::decode still cannot detect their era (devnet check pallas-transactions).",
           "evidence": [
             {
               "kind": "source",
@@ -419,9 +419,16 @@
               "date": "2026-09-16"
             },
             {
+              "kind": "tracker",
+              "url": "https://github.com/txpipe/pallas/pull/849",
+              "title": "feat: land the Dijkstra era behind unstable",
+              "state": "merged",
+              "date": "2026-11-05"
+            },
+            {
               "kind": "devnet",
               "check": "pallas-transactions",
-              "version": "dijkstra e7ea1726"
+              "version": "v1.5.0-rc.1"
             }
           ]
         },
@@ -431,15 +438,15 @@
             "block-encoding"
           ],
           "status": "gap",
-          "summary": "Against the tagged 11.2.0 node no revision decodes a Dijkstra block (devnet check pallas-chain-sync). v1.4.0 and main have no Dijkstra era in multi-era traversal (used by Oura, Dolos and Mithril): PRs #800 and #817 merged into the dijkstra branch, not main. That branch decodes Dijkstra behind its unstable feature, but its header body requires the twelve fields of the target CDDL, adding block_body_contains_leios_cert and eb_announcement after protocol_version, while the node emits ten; the twelve-field header has been in the Dijkstra primitives since #799, so v1.4.0 has it too. MultiEraTx::decode does not recognise the three-element mempool form in any revision (pallas-transactions). The rerun covers release v1.4.0, main b4a519fa and dijkstra e7ea1726; none decodes the tagged node\u2019s Dijkstra blocks.",
+          "summary": "Against the tagged 11.2.0 node neither v1.5.0-rc.1 nor main (3da6ff9f) decodes a Dijkstra block (devnet check pallas-chain-sync), so multi-era traversal used by Oura, Dolos and Mithril still stops at the fork. The header body requires the twelve fields of the target CDDL, adding block_body_contains_leios_cert and eb_announcement after protocol_version, while the node emits ten. MultiEraTx::decode does not recognise the three-element form (pallas-transactions).",
           "evidence": [
             {
               "kind": "source",
               "repo": "txpipe/pallas",
-              "revision": "e7ea1726ea17797f6028fd089e9de928bcee45b9",
+              "revision": "bb02e7a96b6b4fa9cecbd0879ce577ce5951f6a9",
               "path": "pallas-primitives/src/dijkstra/model.rs",
               "line": 233,
-              "quote": "pub block_body_contains_leios_cert: bool,"
+              "quote": "    pub block_body_contains_leios_cert: bool,"
             },
             {
               "kind": "tracker",
@@ -451,27 +458,12 @@
             {
               "kind": "devnet",
               "check": "pallas-chain-sync",
-              "version": "v1.4.0"
+              "version": "v1.5.0-rc.1"
             },
             {
               "kind": "devnet",
               "check": "pallas-chain-sync",
-              "version": "main b4a519fa"
-            },
-            {
-              "kind": "devnet",
-              "check": "pallas-chain-sync",
-              "version": "dijkstra e7ea1726"
-            },
-            {
-              "kind": "devnet",
-              "check": "pallas-transactions",
-              "version": "v1.4.0"
-            },
-            {
-              "kind": "devnet",
-              "check": "pallas-transactions",
-              "version": "main b4a519fa"
+              "version": "main 3da6ff9f"
             }
           ]
         },
@@ -480,7 +472,7 @@
             "transaction-rules"
           ],
           "status": "in-progress",
-          "summary": "Sub-transaction handling is on the dijkstra branch only, partly still in open pull requests; nothing is released.",
+          "summary": "Sub-transaction handling (PRs #817 and #830) is merged and in the v1.5.0-rc.1 prerelease behind the unstable feature; no stable release has it.",
           "evidence": [
             {
               "kind": "tracker",
@@ -503,7 +495,7 @@
             "consensus-participation"
           ],
           "status": "in-progress",
-          "summary": "Leios endorser-block reading is merged on main and unreleased.",
+          "summary": "Leios endorser-block reading (PR #816) is in the v1.5.0-rc.1 prerelease; no stable release has it.",
           "evidence": [
             {
               "kind": "tracker",
@@ -536,11 +528,11 @@
       ],
       "observed": {
         "branch": "main",
-        "revision": "d170b4d2c4f9d8659f35a789672f858b74c60468",
-        "date": "2026-11-01",
+        "revision": "34aebaa496b68e439997c4762b2206219814ae67",
+        "date": "2026-11-09",
         "release": {
-          "tag": "v0.216.3",
-          "date": "2026-10-31"
+          "tag": "v0.218.2",
+          "date": "2026-11-09"
         }
       },
       "dependsOn": [],
@@ -550,7 +542,7 @@
             "node-to-client-protocol"
           ],
           "status": "verified",
-          "summary": "Node-to-client V23 was added in v0.213.0; v0.209.0 to v0.212.6 stop at V21 or V22, so consumers pinned below v0.213.0 cannot handshake with 11.2.",
+          "summary": "Node-to-client V23 was added in v0.213.0; v0.209.0 to v0.212.6 stop at V21 or V22, so consumers pinned below v0.213.0 cannot handshake with 11.2. v0.218.2 completes the handshake with the tagged node on 2026-11-09 (devnet check n2c-handshake).",
           "releasedIn": {
             "tag": "v0.213.0",
             "date": "2026-10-14"
@@ -573,12 +565,7 @@
             {
               "kind": "devnet",
               "check": "n2c-handshake",
-              "version": "v0.213.0"
-            },
-            {
-              "kind": "devnet",
-              "check": "n2c-handshake",
-              "version": "v0.213.9"
+              "version": "v0.218.2"
             }
           ]
         },
@@ -630,27 +617,51 @@
         },
         {
           "surfaces": [
-            "era-identity",
             "block-encoding"
           ],
-          "status": "gap",
-          "summary": "Against the tagged 11.2.0 node, v0.213.0, v0.213.9 and v0.216.3 stop at the first Dijkstra block: the decoder requires the twelve-field header of the target CDDL, while the node emits the ten-field Praos header (devnet check block-shape). The current release v0.216.3 reproduces the header and generic transaction-detection failures. DetermineTransactionType places a transaction in Dijkstra only when its body has key 23, 25 or 26 or a credential guard, so it rejects ordinary Dijkstra transactions, and LocalTxMonitor's NextTx drops the era id that would let a caller decode them anyway (tx-era-detection); both are unchanged on main. PR #2776 adds the era to HasTx only. ",
+          "status": "verified",
+          "summary": "From v0.217.0 the Dijkstra decoder accepts the ten-field header the 11.2.0 node emits as well as the twelve-field one of the target CDDL (PR #2884). v0.218.2 decodes all 205 Dijkstra blocks of the devnet (devnet check block-shape).",
+          "releasedIn": {
+            "tag": "v0.217.0",
+            "date": "2026-11-03"
+          },
           "evidence": [
             {
               "kind": "source",
               "repo": "blinklabs-io/gouroboros",
-              "revision": "d170b4d2c4f9d8659f35a789672f858b74c60468",
+              "revision": "38b46811eb7304c20af7d22a1a8e623619cc5f61",
               "path": "ledger/dijkstra/dijkstra.go",
-              "line": 548,
-              "quote": "if len(bodyElems) != dijkstraHeaderBodyFieldCount {"
+              "line": 556,
+              "quote": "\tcase babbageHeaderBodyFieldCount:"
             },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blinklabs-io/gouroboros/pull/2884",
+              "title": "fix(ledger): accept and encode 10-field Dijkstra header bodies",
+              "state": "merged",
+              "date": "2026-11-02"
+            },
+            {
+              "kind": "devnet",
+              "check": "block-shape",
+              "version": "v0.218.2"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity"
+          ],
+          "status": "gap",
+          "summary": "DetermineTransactionType in v0.218.2 places a transaction in Dijkstra only when its body has a Dijkstra-only key or guard; an ordinary three-element Dijkstra transaction falls through to the Conway decoder and is reported as Conway (devnet check tx-era-detection). Transactions read from Dijkstra blocks come back from tx.Cbor() in the four-element Conway shape, which its own decoder rejects, so tools that forward transaction bytes from blocks (Adder, indexers) get bytes that are not on chain. LocalTxMonitor's NextTx still drops the era id; PR #2776 adds it to HasTx only.",
+          "evidence": [
             {
               "kind": "source",
               "repo": "blinklabs-io/gouroboros",
-              "revision": "d170b4d2c4f9d8659f35a789672f858b74c60468",
+              "revision": "38b46811eb7304c20af7d22a1a8e623619cc5f61",
               "path": "ledger/tx.go",
-              "line": 279,
-              "quote": "for _, field := range []uint{23, 25, 26} {"
+              "line": 187,
+              "quote": "\t\tif _, err := NewConwayTransactionFromCbor(data); err == nil {"
             },
             {
               "kind": "source",
@@ -662,13 +673,8 @@
             },
             {
               "kind": "devnet",
-              "check": "block-shape",
-              "version": "v0.213.9"
-            },
-            {
-              "kind": "devnet",
               "check": "tx-era-detection",
-              "version": "v0.213.9"
+              "version": "v0.218.2"
             },
             {
               "kind": "tracker",
@@ -783,8 +789,8 @@
       ],
       "observed": {
         "branch": "master",
-        "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
-        "date": "2026-11-01",
+        "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
+        "date": "2026-11-09",
         "release": {
           "tag": "v0.8.0-pre7",
           "date": "2026-10-28"
@@ -813,7 +819,7 @@
             "transaction-encoding"
           ],
           "status": "gap",
-          "summary": "The transaction body serializer ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards.",
+          "summary": "The transaction body serializer ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards. On the devnet 0.8.0-pre7 decodes a direct deposit and a sub-transaction without error but drops those fields, so the transaction id it computes differs from the one on chain (devnet check jvm-codecs).",
           "evidence": [
             {
               "kind": "source",
@@ -822,6 +828,11 @@
               "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/spec/TransactionBody.java",
               "line": 231,
               "quote": "            bodyMap.put(new UnsignedInteger(22), new UnsignedInteger(donation));"
+            },
+            {
+              "kind": "devnet",
+              "check": "jvm-codecs",
+              "version": "0.8.0-pre7"
             }
           ]
         },
@@ -923,7 +934,7 @@
       "observed": {
         "branch": "main",
         "revision": "02f699be9f0020862141f8fa047e3ad76ed82458",
-        "date": "2026-11-01",
+        "date": "2026-11-09",
         "release": {
           "tag": "v0.5.0-pre15",
           "date": "2026-10-28"
@@ -973,7 +984,7 @@
             "block-encoding"
           ],
           "status": "in-progress",
-          "summary": "Dijkstra structure parsing and Leios mini-protocols are in open pull requests.",
+          "summary": "Dijkstra structure parsing (PR #222) and Dijkstra serialization (PR #171) are merged into the feat/leios_protocol_impl feature branch, not main or any release; the Leios mini-protocols (PR #167) are an open pull request.",
           "evidence": [
             {
               "kind": "tracker",
@@ -995,6 +1006,21 @@
               "title": "feat: Leios network mini-protocols (LeiosNotify/LeiosFetch) for Musashi \u2014 transport-only [ADR 0007]",
               "state": "open",
               "date": "2026-07-01"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity",
+            "block-encoding"
+          ],
+          "status": "gap",
+          "summary": "The newest release, 0.5.0-pre15, decodes a Conway control block but none of the 247 Dijkstra blocks of the devnet (devnet check jvm-codecs). The Dijkstra parsing of PR #222 is merged into a feature branch that the release does not contain.",
+          "evidence": [
+            {
+              "kind": "devnet",
+              "check": "jvm-codecs",
+              "version": "0.5.0-pre15"
             }
           ]
         }
@@ -2707,10 +2733,10 @@
       "observed": {
         "branch": "master",
         "revision": "ccb9c0f4f6168593ec8d8568a6358dbac84d2045",
-        "date": "2026-11-01",
+        "date": "2026-11-09",
         "release": {
-          "tag": "13.7.2.1",
-          "date": "2026-06-17"
+          "tag": "13.8.0.0",
+          "date": "2026-11-04"
         }
       },
       "dependsOn": [],
@@ -2720,7 +2746,7 @@
             "node-to-client-protocol"
           ],
           "status": "verified",
-          "summary": "Takes its version table from ouroboros-consensus; the release builds on cardano-node 11.0.1 (ouroboros-consensus 3.0.1), which includes V23. On the devnet, 13.7.2.1 handshakes with the V23-only node and indexes every Conway block (devnet check n2c-handshake).",
+          "summary": "Takes its version table from ouroboros-consensus. 13.7.2.1 already handshook with the V23-only node; 13.8.0.0, built on node 11.2.0, does too on 2026-11-09 (devnet check n2c-handshake).",
           "releasedIn": {
             "tag": "13.7.2.1",
             "date": "2026-06-17"
@@ -2737,38 +2763,21 @@
             {
               "kind": "devnet",
               "check": "n2c-handshake",
-              "version": "13.7.2.1"
+              "version": "13.8.0.0"
             }
           ]
         },
         {
           "surfaces": [
             "era-identity",
-            "block-encoding",
-            "transaction-encoding",
-            "protocol-parameters",
-            "stake-pool-registration"
+            "block-encoding"
           ],
-          "status": "gap",
-          "summary": "The current released version 13.7.2.1 still cannot decode the first Dijkstra block on node 11.2.0 and therefore serves none of the post-fork transactions, parameters or registrations. Merged master work is recorded separately as in progress; it has not been released or run here.",
-          "evidence": [
-            {
-              "kind": "devnet",
-              "check": "db-sync-and-blockfrost",
-              "version": "13.7.2.1"
-            }
-          ]
-        },
-        {
-          "surfaces": [
-            "era-identity",
-            "block-encoding",
-            "transaction-encoding",
-            "protocol-parameters",
-            "stake-pool-registration"
-          ],
-          "status": "in-progress",
-          "summary": "The node-11.2 dependency and Dijkstra implementation work is now merged on master, pinned to the tagged node; it is not in a released db-sync version. The released 13.7.2.1 still fails at the first Dijkstra block. New-field storage and the unreleased implementation require separate execution.",
+          "status": "released",
+          "summary": "13.8.0.0 is built on the tagged node 11.2.0 and decodes its Dijkstra blocks: on the devnet it indexed Dijkstra blocks with no decoder failures, along with the ordinary Dijkstra transactions, until the PlutusV4 script below stopped it.",
+          "releasedIn": {
+            "tag": "13.8.0.0",
+            "date": "2026-11-04"
+          },
           "evidence": [
             {
               "kind": "source",
@@ -2785,6 +2794,30 @@
               "path": "cardano-db-sync/src/Cardano/DbSync/Config/Cardano.hs",
               "line": 77,
               "quote": "        <*> readDijkstraGenesisConfig enc"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding",
+            "protocol-parameters",
+            "stake-pool-registration"
+          ],
+          "status": "gap",
+          "summary": "13.8.0.0 exits on the first PlutusV4 script: it maps the language to plutusV4, but the database's scripttype enum has no such value (TODO(Dijkstra) in the source), so the insert fails and indexing stops (devnet check db-sync-and-blockfrost). Direct deposits, sub-transactions, Dijkstra parameter columns and pool BLS keys were not reached and remain unverified. Nothing on master addresses it yet.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "ccb9c0f4f6168593ec8d8568a6358dbac84d2045",
+              "path": "cardano-db/src/Cardano/Db/Types.hs",
+              "line": 301,
+              "quote": "  \"plutusV4\" -> Just PlutusV4 -- TODO(Dijkstra): Add to Schema"
+            },
+            {
+              "kind": "devnet",
+              "check": "db-sync-and-blockfrost",
+              "version": "13.8.0.0"
             }
           ]
         }
@@ -3385,11 +3418,11 @@
       ],
       "observed": {
         "branch": "master",
-        "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
-        "date": "2026-11-01",
+        "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
+        "date": "2026-11-09",
         "release": {
-          "tag": "v6.8.2",
-          "date": "2026-10-23"
+          "tag": "v7.0.0",
+          "date": "2026-11-09"
         }
       },
       "dependsOn": [
@@ -3404,12 +3437,12 @@
             "era-identity"
           ],
           "status": "gap",
-          "summary": "/network/eras looks every protocol major from db-sync's epoch_param up in a table that ends at 11, so the endpoint throws once an epoch with protocol version 12 is recorded.",
+          "summary": "/network/eras looks every protocol major from db-sync's epoch_param up in a table that ends at 11, so the endpoint throws once an epoch with protocol version 12 is recorded. Reproduced with the v7.0.0 prerelease on db-sync 13.8.0.0, which otherwise serves Dijkstra blocks, transactions and protocol version 12 (devnet check db-sync-and-blockfrost).",
           "evidence": [
             {
               "kind": "source",
               "repo": "blockfrost/blockfrost-backend-ryo",
-              "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
+              "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
               "path": "src/constants/genesis.ts",
               "line": 51,
               "quote": "    name: 'Conway (intra era hardfork #2)',"
@@ -3417,7 +3450,7 @@
             {
               "kind": "source",
               "repo": "blockfrost/blockfrost-backend-ryo",
-              "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
+              "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
               "path": "src/routes/network/eras.ts",
               "line": 83,
               "quote": "          if (PROTOCOL_VERSIONS[epochProto.protocol_major].is_era_hardfork) {"
@@ -3429,6 +3462,11 @@
               "path": "src/sql/network/network_protocols.sql",
               "line": 3,
               "quote": "FROM epoch_param"
+            },
+            {
+              "kind": "devnet",
+              "check": "db-sync-and-blockfrost",
+              "version": "v7.0.0"
             }
           ]
         },

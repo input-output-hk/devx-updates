@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09",
+  "targetRevision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+  "previousAssessment": "content/readiness/dijkstra-history/2026-11-01-node-11.2.0",
+  "fixtureFormats": {
+    "blocks.txt.gz": "era-tag followed by unwrapped block hex (247 Dijkstra blocks)",
+    "blocks-hfc.txt.gz": "era-tag followed by HFC-wrapped hex (1 Conway control + the same 247 Dijkstra blocks)",
+    "first-blocks.txt": "era-tag followed by the first raw block of each era",
+    "transactions-labeled.txt": "label followed by signed-envelope or mempool transaction hex (25 encodings)"
+  },
+  "recipeSha256": {
+    "scripts/readiness/devnet/README.md": "bddce471a59a36dcb823850d0bae7f18096bb1e11bf0d752ce5401df5f2ae04c",
+    "scripts/readiness/devnet/advanced.sh": "b5b230b183498589ee84fadb26dfbac47461ac80644d487fc050b9aac3a12cc1",
+    "scripts/readiness/devnet/build-cml-probe.sh": "c88ba4731f8ab27d56bcf0ff2b97947a37a5a6b02aced3a11c7e30bfd441549b",
+    "scripts/readiness/devnet/build-pallas-probe.sh": "1f8e285f389c4e7b23f5b2d00adc1f409b2e1dbe33a83dda7eb6ad81223d15ed",
+    "scripts/readiness/devnet/build-probe.sh": "3abebf2e74444487c02fa86c4bf6db3e4fca0b67ae46ff39e49afeaa054313b2",
+    "scripts/readiness/devnet/cbor_dump.py": "ca1a2aec09eb1432b9311fdd62b658b0d2480ca93648a2a73f12fc97a4de99c8",
+    "scripts/readiness/devnet/cml-probe/main.rs": "ed8f954cb27cf1241afe02dc332267f4611c6751dd6837c25ddf74e94b5ed98d",
+    "scripts/readiness/devnet/csl-probe/probe.cjs": "d8a640703a2f6b3fe0ceb0c243b4bbdcd157976a85d0b183645e69a3c7115063",
+    "scripts/readiness/devnet/env.sh": "da1334afdfc4bc53ea124c02bf240d28b6320ddc43abe5a85f9133e4d96fb354",
+    "scripts/readiness/devnet/handshake.py": "2b64a54b57871f0859d302a42a06d6c073bcb1a119bd14dd1dd37d0318658e52",
+    "scripts/readiness/devnet/hardfork.sh": "87bf0bd1146de136d8dad9a66b04a65907cf5f1790d9f3e0e53d961be43be8ff",
+    "scripts/readiness/devnet/js-probe/probe.cjs": "80a19760418bb96e05802f84578b0af6cc5215aea2cb183f4d8817f1d29799fa",
+    "scripts/readiness/devnet/jvm-probe/CclProbe.java": "e74f81ee182321963f1d0fb0772835cf7d9e23600ef26d036ac5f840ca47c398",
+    "scripts/readiness/devnet/jvm-probe/YaciProbe.java": "b9390e5dfe99e9584fa0e70e4754bf9162962257bd28e83a83bd182ac287972f",
+    "scripts/readiness/devnet/jvm-probe/run.sh": "4eeaa5375e0404799f8dad833ed7f9a77662f54a64b61f0c9c3dd23b1f4153e7",
+    "scripts/readiness/devnet/pallas-probe/main.rs": "a4c389775cd4a49eeac0ceac3bf80e2747ad631329165d107aadc338c6e62eb9",
+    "scripts/readiness/devnet/patches/adder-v0.45.0-gouroboros-v0.213.9.diff": "5e6e362ab6b74b4dcc85d9aba42c54718aeaa3faf4c6fc9e2d03a89bbc069064",
+    "scripts/readiness/devnet/patches/cardano-node-api-gouroboros-v0.213.9.diff": "2f40a85d6281071411bdaf49bc29ae9deed8038e39ef618bf168a97512225707",
+    "scripts/readiness/devnet/probe/main.go": "9d2a11b59f43c7cb5b02cedae7945ecf33eb6965efa8b8978d9a44cb798b47cb",
+    "scripts/readiness/devnet/py-probe/probe.py": "e0e99e63de32a07e4537923ee5f5154941feb53c7ed74d2325264f888336e20c",
+    "scripts/readiness/devnet/service-layer.sh": "2a83f58f715626895ce352e6dd8452e1946cd50e4c86063a3a8eba8f4767b39a",
+    "scripts/readiness/devnet/services.sh": "cd25dc180741fb8c1a20b64785c8aa9b78ffd0693b4676f3e6eab9ef170d5f26",
+    "scripts/readiness/devnet/start.sh": "8357d15f4ab2a7920958f75ea16e1f572dc84ba3ed3dc684036cf5abfa7d8d9f",
+    "scripts/readiness/devnet/tools.sh": "5e4cc2ad151c41567c752ffd41361e4e1e2d38d8a395c26078378b5279991436",
+    "scripts/readiness/devnet/transactions.sh": "ec83cb038b879f14f86e6b8e29d8c3c0e1530494ebf757c7f858b106eb4ccd91",
+    "scripts/readiness/devnet/txid.py": "f6184c4507a40e3de121ae87b733d9fd84b60e559a8a468fd765805ffabcd63e"
+  },
+  "limits": [
+    "Live chain timing, generated keys, hashes and slots vary.",
+    "Dependency resolution was captured after the build; fresh builds must reuse the retained lockfiles and classpaths to replay it.",
+    "Source observations and human reachability decisions are not runtime proof.",
+    "Only the explicitly named tool versions and test cases were executed; db-sync did not reach the direct deposit or the sub-transaction."
+  ]
+}

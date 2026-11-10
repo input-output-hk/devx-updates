@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-01T13:14:07.180Z",
+ "generatedAt": "2026-11-09T19:57:10.620Z",
  "bumpReady": [
   {
    "tool": "marconi",
@@ -319,14 +319,16 @@
     {
      "tool": "yaci-devkit",
      "stillBlockedBy": [
-      "kupo"
+      "kupo",
+      "yaci"
      ]
     },
     {
      "tool": "yaci-store",
      "stillBlockedBy": [
       "scalus",
-      "bloxbean-cardano-client-library"
+      "bloxbean-cardano-client-library",
+      "yaci"
      ]
     }
    ],
@@ -528,8 +530,6 @@
    ],
    "downstream": [],
    "ownGap": [
-    "era-identity",
-    "block-encoding",
     "transaction-encoding",
     "protocol-parameters",
     "stake-pool-registration"
@@ -593,8 +593,7 @@
    ],
    "downstream": [],
    "ownGap": [
-    "era-identity",
-    "block-encoding"
+    "era-identity"
    ]
   },
   {
@@ -1057,6 +1056,23 @@
    ]
   },
   {
+   "component": "buildooor",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "gerolamo",
+     "stillBlockedBy": [
+      "koios"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "plutus-language",
+    "transaction-encoding"
+   ]
+  },
+  {
    "component": "cardano-graphql",
    "unlocks": [],
    "partial": [
@@ -1099,7 +1115,8 @@
     {
      "tool": "cardano-rosetta-java",
      "stillBlockedBy": [
-      "bloxbean-cardano-client-library"
+      "bloxbean-cardano-client-library",
+      "yaci"
      ]
     }
    ],
@@ -1152,7 +1169,8 @@
     {
      "tool": "cf-ledger-sync",
      "stillBlockedBy": [
-      "bloxbean-cardano-client-library"
+      "bloxbean-cardano-client-library",
+      "yaci"
      ]
     }
    ],
@@ -1480,6 +1498,23 @@
     "era-identity",
     "transaction-encoding"
    ]
+  },
+  {
+   "component": "yaci",
+   "unlocks": [],
+   "partial": [
+    {
+     "tool": "yaci",
+     "stillBlockedBy": [
+      "bloxbean-cardano-client-library"
+     ]
+    }
+   ],
+   "downstream": [],
+   "ownGap": [
+    "era-identity",
+    "block-encoding"
+   ]
   }
  ],
  "fixOrder": [
@@ -1533,7 +1568,6 @@
     "cf-java-rewards-calculation",
     "create-evolution-app",
     "cscli",
-    "gerolamo",
     "govtool",
     "guild-operators-suite",
     "koios-cli",
@@ -1542,7 +1576,7 @@
     "koios-python",
     "odatano"
    ],
-   "unlocked": 37
+   "unlocked": 36
   },
   {
    "component": "kupo",
@@ -1553,10 +1587,9 @@
     "chrysalis",
     "dandelion-apis",
     "dexter",
-    "midgard",
-    "yaci-devkit"
+    "midgard"
    ],
-   "unlocked": 45
+   "unlocked": 43
   },
   {
    "component": "service:maestro",
@@ -1568,7 +1601,7 @@
     "nmkr-studio-api",
     "rum"
    ],
-   "unlocked": 51
+   "unlocked": 49
   },
   {
    "component": "pallas",
@@ -1579,7 +1612,7 @@
     "lace-anatomy",
     "mumak"
    ],
-   "unlocked": 56
+   "unlocked": 54
   },
   {
    "component": "cardano-serialization-lib-csl",
@@ -1589,7 +1622,7 @@
     "csl-mobile-bridge",
     "masumi"
    ],
-   "unlocked": 60
+   "unlocked": 58
   },
   {
    "component": "gouroboros",
@@ -1599,7 +1632,7 @@
     "dingo",
     "txtop"
    ],
-   "unlocked": 64
+   "unlocked": 62
   },
   {
    "component": "aiken",
@@ -1608,7 +1641,7 @@
     "de-uplc-web",
     "sutra"
    ],
-   "unlocked": 67
+   "unlocked": 65
   },
   {
    "component": "ledgerjs-hw-app-cardano",
@@ -1616,7 +1649,7 @@
     "bursa",
     "yoroi"
    ],
-   "unlocked": 69
+   "unlocked": 67
   },
   {
    "component": "cardano-js-sdk",
@@ -1624,23 +1657,7 @@
     "blaze",
     "lace"
    ],
-   "unlocked": 71
-  },
-  {
-   "component": "bloxbean-cardano-client-library",
-   "added": [
-    "cardano-client-bindings",
-    "yaci"
-   ],
-   "unlocked": 73
-  },
-  {
-   "component": "scalus",
-   "added": [
-    "yaci-store",
-    "yano"
-   ],
-   "unlocked": 75
+   "unlocked": 69
   },
   {
    "component": "cardano-wallet",
@@ -1648,19 +1665,49 @@
     "cardano-wallet-js",
     "daedalus"
    ],
-   "unlocked": 77
+   "unlocked": 71
+  },
+  {
+   "component": "bloxbean-cardano-client-library",
+   "added": [
+    "cardano-client-bindings"
+   ],
+   "unlocked": 72
+  },
+  {
+   "component": "yaci",
+   "added": [
+    "yaci-bridge",
+    "yaci-devkit"
+   ],
+   "unlocked": 74
+  },
+  {
+   "component": "scalus",
+   "added": [
+    "yaci-store",
+    "yano"
+   ],
+   "unlocked": 76
   },
   {
    "component": "cquisitor-lib",
    "added": [
     "cquisitor"
    ],
-   "unlocked": 78
+   "unlocked": 77
   },
   {
    "component": "whisky",
    "added": [
     "hydra-sdk"
+   ],
+   "unlocked": 78
+  },
+  {
+   "component": "buildooor",
+   "added": [
+    "gerolamo"
    ],
    "unlocked": 79
   },
@@ -1709,8 +1756,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "transaction-encoding"
      ]
     }
@@ -1730,8 +1775,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -1759,7 +1802,6 @@
      "via": "gouroboros",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
       "era-identity"
      ]
     },
@@ -2029,8 +2071,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -2189,7 +2229,8 @@
     "blockfrost",
     "julc",
     "koios",
-    "ogmios"
+    "ogmios",
+    "yaci"
    ],
    "unread": []
   },
@@ -2269,8 +2310,7 @@
     }
    ],
    "cleared": [
-    "cardano-serialization-lib-csl",
-    "gouroboros"
+    "cardano-serialization-lib-csl"
    ],
    "unread": []
   },
@@ -2422,8 +2462,6 @@
      "via": "cardano-db-sync",
      "kind": "own-gap",
      "surfaces": [
-      "era-identity",
-      "block-encoding",
       "transaction-encoding",
       "protocol-parameters",
       "stake-pool-registration"
@@ -2508,8 +2546,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -2581,7 +2617,6 @@
      "via": "gouroboros",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
       "era-identity"
      ]
     },
@@ -2684,8 +2719,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -2796,7 +2829,6 @@
      "via": "gouroboros",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
       "era-identity"
      ]
     }
@@ -2831,6 +2863,14 @@
      "surfaces": [
       "transaction-encoding"
      ]
+    },
+    {
+     "via": "yaci",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
     }
    ],
    "undetermined": [],
@@ -2856,8 +2896,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -3255,8 +3293,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -3302,6 +3338,14 @@
      "kind": "upstream-fix",
      "surfaces": [
       "plutus-language"
+     ]
+    },
+    {
+     "via": "yaci",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
      ]
     }
    ],
@@ -3608,8 +3652,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -3732,8 +3774,7 @@
      "via": "gouroboros",
      "kind": "upstream-fix",
      "surfaces": [
-      "era-identity",
-      "block-encoding"
+      "era-identity"
      ]
     }
    ],
@@ -3963,12 +4004,19 @@
      "surfaces": [
       "protocol-parameters"
      ]
+    },
+    {
+     "via": "buildooor",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "plutus-language",
+      "transaction-encoding"
+     ]
     }
    ],
    "undetermined": [],
    "cleared": [
     "blockfrost",
-    "buildooor",
     "cardano-db-sync",
     "cardano-serialization-lib-csl",
     "koios",
@@ -4015,8 +4063,7 @@
      "via": "gouroboros",
      "kind": "own-gap",
      "surfaces": [
-      "era-identity",
-      "block-encoding"
+      "era-identity"
      ]
     }
    ],
@@ -4032,8 +4079,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -4088,8 +4133,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -4325,8 +4368,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -4869,6 +4910,7 @@
    "cleared": [
     "aiken",
     "blockfrost",
+    "kupo",
     "ogmios",
     "whisky"
    ],
@@ -4882,8 +4924,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -5121,8 +5161,6 @@
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
      "surfaces": [
-      "block-encoding",
-      "era-identity",
       "protocol-parameters",
       "stake-pool-registration",
       "transaction-encoding"
@@ -5596,6 +5634,7 @@
    "cleared": [
     "bloxbean-cardano-client-library",
     "koios",
+    "kupo",
     "ogmios"
    ],
    "unread": []
@@ -5651,8 +5690,7 @@
    "blockers": [],
    "undetermined": [],
    "cleared": [
-    "blockfrost",
-    "cardano-multiplatform-lib-cml"
+    "blockfrost"
    ],
    "unread": []
   },
@@ -5790,9 +5828,7 @@
     }
    ],
    "undetermined": [],
-   "cleared": [
-    "gouroboros"
-   ],
+   "cleared": [],
    "unread": []
   },
   {
@@ -5958,6 +5994,14 @@
    "boundary": true,
    "blockers": [
     {
+     "via": "yaci",
+     "kind": "own-gap",
+     "surfaces": [
+      "era-identity",
+      "block-encoding"
+     ]
+    },
+    {
      "via": "bloxbean-cardano-client-library",
      "kind": "upstream-fix",
      "surfaces": [
@@ -5969,6 +6013,23 @@
    "cleared": [
     "bloxbean-cardano-client-library"
    ],
+   "unread": []
+  },
+  {
+   "tool": "yaci-bridge",
+   "boundary": false,
+   "blockers": [
+    {
+     "via": "yaci",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
+    }
+   ],
+   "undetermined": [],
+   "cleared": [],
    "unread": []
   },
   {
@@ -5993,6 +6054,14 @@
       "block-encoding",
       "era-identity",
       "transaction-encoding"
+     ]
+    },
+    {
+     "via": "yaci",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
      ]
     }
    ],
@@ -6028,6 +6097,14 @@
      "surfaces": [
       "era-identity"
      ]
+    },
+    {
+     "via": "yaci",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
+     ]
     }
    ],
    "undetermined": [],
@@ -6050,6 +6127,14 @@
      "surfaces": [
       "plutus-script-context",
       "transaction-encoding"
+     ]
+    },
+    {
+     "via": "yaci",
+     "kind": "upstream-fix",
+     "surfaces": [
+      "block-encoding",
+      "era-identity"
      ]
     }
    ],

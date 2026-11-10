@@ -1,0 +1,20 @@
+array[2]
+  [0] array[2]
+    [0] array[10]
+      [0] 15
+      [1] 425
+      [2] bytes[32]
+      [3] bytes[32]
+      [4] bytes[32]
+      [5] array[2]
+      [6] 4
+      [7] bytes[32]
+      [8] array[4]
+      [9] array[2]
+    [1] bytes[448]
+  [1] array[3]
+    [0] array[0]
+
+    [1] None
+    [2] None 
+(consumed 854 of 854 bytes)

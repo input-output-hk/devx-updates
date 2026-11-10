@@ -1,0 +1,47 @@
+Transaction successfully submitted. Transaction hash is:
+## conway-payment (conway build-raw)
+envelope: Tx ConwayEra 84a3
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"553ff385b68838e3a4b722bbbd2ff42d17f2fca5176b492ac46d73267381d154"}
+
+## conway-legacy-reg (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Command failed: transaction submit
+Error: The era of the node and the tx do not match. The node is running in the Dijkstra era, but the transaction is for the Conway era.
+
+
+## conway-reg-with-deposit (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"46d6e8236bc0611c834377eea6eb75ce937f206f03c1715beaacd781dda42d36"}
+
+## conway-required-signer (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"4900b5205e5ac04c1e92512960e4950bc76ce1c7690c973b9180c61b63239003"}
+
+## conway-metadata (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"462dfa945b30fc602078ca91d1118eedd691830179a3f168b73d1792a7b85322"}
+
+## dijkstra-payment (dijkstra build-raw)
+envelope: Tx DijkstraEra 83a3
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"11336636dfb1218b1103bc6f0fc43a176233a8093c2df96bce37d9d2402a3837"}
+
+## dijkstra-legacy-reg (dijkstra build-raw)
+Command failed: transaction build-raw
+Error: /tmp/dj-1109/work/tx/kd0.cert: TextEnvelope decode error: DecoderErrorDeserialiseFailure "DijkstraTxCert DijkstraEra" (DeserialiseFailure 2 "Certificates without deposits are no longer supported")
+CallStack (from HasCallStack):
+
+## dijkstra-reg-with-deposit (dijkstra build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"9603458937a36b504eca0fe555b4e6789f7fb1fc9d36691b098e2f705e0500b2"}
+
+## dijkstra-metadata (dijkstra build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"ba9d566b15f40aba433e4caaa041aa4c93c352f640e1632e87411028bad3ea26"}
+

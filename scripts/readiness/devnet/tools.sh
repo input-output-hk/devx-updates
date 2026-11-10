@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Build and run the gouroboros consumers checked on the devnet, at the revisions the classification scanned.
 #   tools.sh txtop             txtop at its pin (gouroboros 0.208.5) and upgraded to v0.213.0
+#   tools.sh txtop-release [GOUROBOROS]
+#                              txtop v0.17.0 as released (gouroboros v0.215.0) and raised to GOUROBOROS (default v0.218.2)
 #   tools.sh cardano-node-api  pinned (gouroboros 0.202.7), and upgraded to v0.213.9 with the patches in patches/;
 #                              starts both, queries them, mints a token and submits a Dijkstra payment through the API
 set -euo pipefail
@@ -20,6 +22,28 @@ txtop)
   for v in pinned up; do
     CARDANO_NODE_NETWORK_MAGIC=42 TERM=xterm script -qfc "timeout 20 $DEVNET_DIR/txtop-$v" /dev/null > "$DEVNET_DIR/txtop-$v.typescript" 2>&1 || true
     echo "txtop-$v: $(sed -e 's/\x1b\[[0-9;?>]*[a-zA-Z]//g' -e 's/\x1b[()][0-9A-Za-z]//g' "$DEVNET_DIR/txtop-$v.typescript" | LC_ALL=C grep -aoE 'Mempool capacity \(bytes\): [0-9]+|failed to connect to node: failed to connect after [0-9]+ attempts' | head -1 || echo 'nothing drawn')"
+  done
+  ;;
+txtop-release)
+  checkout txtop blinklabs-io/txtop cc1ebf8210647952e3f0b90301e49c199c273675 # v0.17.0
+  (cd "$S/txtop" && go build -o "$DEVNET_DIR/txtop-release" .)
+  rm -rf "$S/txtop-raised" && cp -r "$S/txtop" "$S/txtop-raised"
+  (cd "$S/txtop-raised" && go get "github.com/blinklabs-io/gouroboros@${2:-v0.218.2}" && go build -o "$DEVNET_DIR/txtop-raised" .)
+  # Put a Dijkstra payment in the mempool so the transaction list has something to decode.
+  W=$DEVNET_DIR/work/txtop; rm -rf "$W"; mkdir -p "$W"
+  IN=$(cli query utxo --address "$ADDR" "${M[@]}" --output-json | jq -r 'to_entries | max_by(.value.value.lovelace) | .key')
+  for v in release raised; do
+    cli transaction build "${M[@]}" --tx-in "$IN" --tx-out "$ADDR+3000000" --change-address "$ADDR" --out-file "$W/$v.tx" >/dev/null
+    cli transaction sign --tx-body-file "$W/$v.tx" --signing-key-file "$SKEY" "${M[@]}" --out-file "$W/$v.signed"
+    (sleep 4; cli transaction submit "${M[@]}" --tx-file "$W/$v.signed" >/dev/null) &
+    CARDANO_NODE_NETWORK_MAGIC=42 TERM=xterm script -qfc "timeout 20 $DEVNET_DIR/txtop-$v" /dev/null > "$DEVNET_DIR/txtop-$v.typescript" 2>&1 || true
+    wait
+    plain=$(sed -e 's/\x1b\[[0-9;?>]*[a-zA-Z]//g' -e 's/\x1b[()][0-9A-Za-z]//g' "$DEVNET_DIR/txtop-$v.typescript")
+    echo "txtop-$v: $(LC_ALL=C grep -aoE 'Mempool capacity \(bytes\): [0-9]+|failed to connect[^\r]*|panic:[^\r]*' <<<"$plain" | head -1 || echo 'nothing drawn')"
+    id=$(cli transaction txid --tx-file "$W/$v.signed" | jq -r .txhash)
+    echo "txtop-$v lists the Dijkstra payment ${id:0:16}: $(LC_ALL=C grep -aq "${id:0:16}" <<<"$plain" && echo yes || echo no); errors drawn: $(LC_ALL=C grep -aoiE '(error|failed)[^\r]{0,120}' <<<"$plain" | sort -u | head -3 | tr '\n' ' ')"
+    for _ in $(seq 1 30); do cli query utxo --tx-in "$IN" "${M[@]}" --output-json | jq -e 'length==0' >/dev/null && break; sleep 1; done
+    IN=$(cli query utxo --address "$ADDR" "${M[@]}" --output-json | jq -r 'to_entries | max_by(.value.value.lovelace) | .key')
   done
   ;;
 cardano-node-api)
@@ -68,5 +92,5 @@ cardano-node-api)
   cli transaction submit "${M[@]}" --tx-file "$W/pay.signed" >/dev/null
   echo "up GET localtxmonitor/txs with that payment in the mempool: $(curl -s -m 10 localhost:18081/api/localtxmonitor/txs)"
   ;;
-*) echo "usage: tools.sh txtop|cardano-node-api" >&2; exit 1 ;;
+*) echo "usage: tools.sh txtop|txtop-release [GOUROBOROS]|cardano-node-api" >&2; exit 1 ;;
 esac

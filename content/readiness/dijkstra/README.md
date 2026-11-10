@@ -11,8 +11,9 @@ classification of catalog tools (R3) described in
 The current target is the official [cardano-node 11.2.0 tag](https://github.com/IntersectMBO/cardano-node/releases/tag/11.2.0),
 revision `dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899`, published 2026-10-28 and marked **prerelease** by GitHub.
 Versions and source revisions come from its release dependency table, retained with the run evidence.
-The previous integration-node assessment is preserved byte for byte in
-`content/readiness/dijkstra-history/2026-10-26-integration/`, with SHA256 checksums.
+Earlier assessments are preserved byte for byte, with SHA256 checksums: the integration-node assessment in
+`content/readiness/dijkstra-history/2026-10-26-integration/` and the first tagged-node assessment (2026-11-01) in
+`content/readiness/dijkstra-history/2026-11-01-node-11.2.0/`.
 
 | Component | Version | Source commit |
 | --- | --- | --- |
@@ -91,34 +92,36 @@ holds the 24 upgrade parameters, including the PlutusV4 cost model as an array.
 
 ## Devnet run (`devnet.json`, R4)
 
-Node 11.2.0 runs a one-pool devnet that enters Dijkstra at epoch 2. Two governance hard forks raise the
-protocol version from 10 to 12 before the transaction matrix. The 2026-11-01 run uses CLI 11.6.0.0.
-Full logs, 17 transaction encodings, 168 Dijkstra blocks, a Conway positive control and resolved build inputs
-are retained under `content/readiness/dijkstra-runs/2026-11-01/`; the recipe is in `scripts/readiness/devnet/`.
-Results are specific to the named version and capability. Historical patched tool controls are labelled explicitly.
+Node 11.2.0 runs a one-pool devnet that enters Dijkstra at epoch 2. Two governance hard forks raise the protocol version
+from 10 to 12 before the transaction matrix. The 2026-11-09 run uses CLI 11.6.0.0 and re-tests the newest release of
+each critical-path component it can run. Full logs, 25 transaction encodings (including a direct deposit, a
+sub-transaction and a PlutusV4 reference script), 247 Dijkstra blocks, a Conway positive control and resolved build
+inputs are retained under `content/readiness/dijkstra-runs/2026-11-09/`; the recipe is in `scripts/readiness/devnet/`.
+Only what ran that day is recorded; the 2026-11-01 results, including the historical patched controls, stay in the
+archived assessment and on `/map/dijkstra/history`.
 
 | Check | Result |
 | --- | --- |
 | `fork-to-pv12` | Dijkstra PV12; 54 protocol parameters. |
-| `n2c-handshake` | Only V23 accepted; gouroboros 0.208.5 refused; v0.213.0, v0.213.9, v0.216.3 and adapted services connect. |
-| `cross-era-submission` | Conway payment, deposit registration, key-hash signer and metadata accepted; deposit-less registration rejected. Dijkstra payment, deposit registration and metadata accepted. |
-| `block-shape` | Ten-field header and non-segregated body; all three tested recent gouroboros versions fail at the first Dijkstra block. |
-| `service-decoding` | Ogmios 7.0.0 and Kupo 2.12 still exit on Dijkstra block decoding after configuration adaptation. |
-| `tx-era-detection` | gouroboros still cannot infer the era of ordinary Dijkstra transactions; patched cardano-node-api submission and mempool listing fail. |
-| `tool-upgrades` | Historical txtop and patched cardano-node-api controls connect after the dependency change; that is not full compatibility. |
-| `pallas-chain-sync` | v1.4.0, main b4a519fa and dijkstra e7ea1726 decode Conway, but no Dijkstra block. |
-| `pallas-transactions` | Only the dijkstra branch with explicit era and unstable decodes the three-element Dijkstra form. |
-| `cml-decoding` | CML 6.2.0 decodes the Conway control; none of 168 Dijkstra blocks or three-element transactions. |
-| `js-sdk-transactions` | @cardano-sdk/core 0.47.1 round-trips all 17 encodings exactly; advanced body keys are not covered. |
-| `db-sync-and-blockfrost` | db-sync 13.7.2.1 stalls at block 18; Blockfrost RYO 6.8.2 serves pre-fork data as latest. |
-| `csl-decoding` | CSL 17.0.0 and 15.0.3 decode no Dijkstra blocks; transaction re-encoding adds the legacy fourth element. |
-| `pycardano-transactions` | PyCardano 0.19.2 fails on three Dijkstra metadata encodings; the other 14 round-trip exactly. |
-| `node-config-envelope` | New node configuration envelope is rejected by Ogmios and Kupo; flattening settings allows their protocol checks. |
+| `n2c-handshake` | Only V23 accepted; gouroboros v0.218.2, Ogmios v7.0.0, Kupo v2.12 and db-sync 13.8.0.0 connect. |
+| `cross-era-submission` | Unchanged: Conway payment, deposit registration, key-hash signer and metadata accepted; deposit-less registration rejected. Dijkstra payment, deposit registration and metadata accepted. |
+| `advanced-transactions` | New: a direct deposit, a sub-transaction and a PlutusV4 reference script are accepted. |
+| `block-shape` | Ten-field header and non-segregated body; gouroboros v0.218.2 decodes all 205 Dijkstra blocks. |
+| `service-decoding` | Ogmios 7.0.0 and Kupo 2.12 still exit on the first Dijkstra block. |
+| `tx-era-detection` | gouroboros v0.218.2 reports ordinary Dijkstra transactions as Conway and returns block transactions in the Conway shape. |
+| `tool-upgrades` | txtop v0.17.0 connects, as released and with gouroboros v0.218.2; its transaction list was not observed. |
+| `pallas-chain-sync` | v1.5.0-rc.1 and main 3da6ff9f decode Conway, but no Dijkstra block. |
+| `pallas-transactions` | Both decode all 12 Dijkstra encodings with an explicit era and unstable; era detection still fails. |
+| `cml-decoding` | CML 6.2.0 decodes the Conway control; no Dijkstra block or three-element transaction. |
+| `js-sdk-transactions` | @cardano-sdk/core 0.47.1 round-trips all 25 encodings and reads the new fields; guards and balance intervals not covered. |
+| `db-sync-and-blockfrost` | db-sync 13.8.0.0 indexes Dijkstra blocks, then exits on the first PlutusV4 script; Blockfrost RYO v7.0.0 serves the indexed data, but /network/eras throws. |
+| `csl-decoding` | CSL 17.0.0 and 15.0.3 decode no Dijkstra block or new body; re-encoding adds the legacy fourth element. |
+| `pycardano-transactions` | PyCardano 0.19.2 fails on Dijkstra metadata and on all three new bodies. |
+| `jvm-codecs` | New: cardano-client-lib 0.8.0-pre7 drops direct deposits and sub-transactions (wrong transaction id); Yaci 0.5.0-pre15 decodes no Dijkstra block. |
 
-Koios and advanced Dijkstra bodies (nested transactions, direct deposits, balance intervals, PlutusV4) were not run.
-Source progress remains separate: cardano-c 2.0.0-rc.6 and Plutarch 1.15.0 contain new support; Cometa 2.0.0-rc.4
-contains partial support. db-sync has merged work on master, but its released version still blocks consumers.
-A newly published release is not an end-to-end devnet pass.
+Not run: Koios, guards and balance intervals (the 11.2.0 CLI has no options for them), executing a PlutusV4 script,
+and Ogmios/Kupo against the versioned configuration. db-sync stops before the direct deposit and the sub-transaction.
+Source progress remains separate from runtime results: a newly published release is not an end-to-end devnet pass.
 
 ## Not yet covered
 
@@ -127,7 +130,7 @@ A newly published release is not an end-to-end devnet pass.
 ## Boundary register (`boundary.json`)
 
 `boundary.json` records 61 components, re-observed at their default-branch heads, releases and cited trackers
-on 2026-11-01. Earlier pinned evidence is retained where the behavior is unchanged. It gives
+on 2026-11-01; the components re-tested on the devnet were re-observed on 2026-11-09. Earlier pinned evidence is retained where the behavior is unchanged. It gives
 a status for each surface group: `gap` (cited code cannot work against the
 target), `no-evidence` (nothing found; never a pass), `tracked`, `in-progress`,
 `released` and `verified` (R4). `in-progress` needs visible work toward the
@@ -139,9 +142,9 @@ records URL, state and date.
 
 | Worst status | Components |
 | --- | --- |
-| gap | 46: cardano-serialization-lib-csl, cardano-multiplatform-lib-cml, pallas, gouroboros, cardano-js-sdk, bloxbean-cardano-client-library, pycardano, cometa-js, buildooor, ouroboros-miniprotocols-ts, plu-ts, cardano-data-lite, evolution-sdk, cardanosharp, typhonjs, whisky, elm-cardano, cquisitor-lib, ledgerjs-hw-app-cardano, cardano-hw-interop-lib, ogmios, kupo, cardano-db-sync, cardano-wallet, oura, dolos, carp, scrolls, cf-ledger-sync, cardano-graphql, koios, blockfrost, cardano-rosetta-java, mithril, hydra, aiken, opshin, helios, scalus, uplc-turbo, julc, meshjs-mesh-sdk, lucid-evolution, atlas, cardano-transaction-lib-ctl, kuber |
+| gap | 47: cardano-serialization-lib-csl, cardano-multiplatform-lib-cml, pallas, gouroboros, cardano-js-sdk, bloxbean-cardano-client-library, yaci, pycardano, cometa-js, buildooor, ouroboros-miniprotocols-ts, plu-ts, cardano-data-lite, evolution-sdk, cardanosharp, typhonjs, whisky, elm-cardano, cquisitor-lib, ledgerjs-hw-app-cardano, cardano-hw-interop-lib, ogmios, kupo, cardano-db-sync, cardano-wallet, oura, dolos, carp, scrolls, cf-ledger-sync, cardano-graphql, koios, blockfrost, cardano-rosetta-java, mithril, hydra, aiken, opshin, helios, scalus, uplc-turbo, julc, meshjs-mesh-sdk, lucid-evolution, atlas, cardano-transaction-lib-ctl, kuber |
 | no-evidence | 2: ouroboros-network-js, cncli |
-| in-progress | 9: yaci, apollo, amaru, dingo, yaci-store, adder, utxorpc, blaze, yaci-devkit |
+| in-progress | 8: apollo, amaru, dingo, yaci-store, adder, utxorpc, blaze, yaci-devkit |
 | released | 4: cardano-c, plutus-plutus-core, plutarch, plutigo |
 
 
@@ -159,7 +162,18 @@ without V4's fields, and Pallas or Yaci versions that cannot decode Dijkstra
 blocks. Transaction rules stay `no-evidence` unless code specific to a rule
 change was found.
 
-What changed in this refresh:
+What changed on 2026-11-09:
+
+- gouroboros: block decoding is verified from v0.217.0 (the ten-field header is accepted). Era detection still reports
+  ordinary Dijkstra transactions as Conway, and block transactions come back in the Conway shape; it stays a gap.
+- cardano-db-sync 13.8.0.0 is released on node 11.2.0 and decodes Dijkstra blocks, but exits on the first PlutusV4
+  script (`scripttype` has no `plutusV4`). It stays the first fix in the order.
+- Blockfrost RYO v7.0.0 (prerelease) serves Dijkstra data from that db-sync; its `/network/eras` gap is reproduced.
+- Pallas v1.5.0-rc.1 carries the Dijkstra era behind `unstable` but still decodes no block from the node.
+- Yaci becomes a gap: its newest release decodes no Dijkstra block, and the parsing work sits on a feature branch.
+- cardano-client-lib 0.8.0-pre7 drops direct deposits and sub-transactions when decoding, so it computes the wrong id.
+
+What changed on 2026-11-01:
 
 - cardano-c 2.0.0-rc.6 contains the new parameter, witness and nested-transaction structures; it is a prerelease, not a runtime verification.
 - Plutarch 1.15.0 contains the V4 module and target Plutus API. Cometa 2.0.0-rc.4 has partial coverage; pool BLS handling still has a gap.
@@ -243,7 +257,9 @@ the lines it rests on:
 - `not-reached`: shipped code uses that dependency outside the gap.
 - `undetermined`: source reading cannot decide; execution or additional evidence is needed.
 
-637 entries, 1,598 surface decisions (542 confirmed, 1,013 not reached, 43 undetermined); all covered decisions are at current classified revisions.
+643 entries, 1,538 surface decisions (526 confirmed, 969 not reached, 43 undetermined); all covered decisions are at current classified revisions.
+
+On 2026-11-09, 180 leads whose quoted lines were unchanged at the newly classified revision moved to it; 7 were re-read by hand (Dolos and Oura now pin Pallas 1.4, still confirmed; Gerolamo now evaluates Plutus through buildooor, now confirmed). 81 decisions on gaps that closed (gouroboros block decoding, db-sync block and era handling, Sorbet's removed CML) were removed, and 10 new ones decided: Yaci Store, Yaci DevKit, Yano, Yaci Bridge, Ledger Sync and Rosetta Java confirmed through Yaci's block decoding; cardano-client-lib (Yaci only in an unbuilt tool), Scalus and Mesh (Kupo only in comments) and Pebble's own V4 marker not reached.
 
 Changed source citations were re-read and moved to the new revision only when the evidence still supported the decision.
 Ambiguous or missing paths remain undetermined. The sections below describe historical reading passes; their counts are as of that pass.
@@ -402,22 +418,24 @@ on its own and put Blockfrost first, which it cannot be without db-sync.
 | 1 | cardano-db-sync | 3 |
 | 2 | blockfrost | 16 |
 | 3 | ogmios | 26 |
-| 4 | koios | 37 |
-| 5 | kupo | 45 |
-| 6 | Move off Maestro | 51 |
-| 7 | pallas | 56 |
-| 8 | cardano-serialization-lib-csl | 60 |
-| 9 | gouroboros | 64 |
-| 10 | aiken | 67 |
-| 11 | ledgerjs-hw-app-cardano | 69 |
-| 12 | cardano-js-sdk | 71 |
-| 13 | bloxbean-cardano-client-library | 73 |
-| 14 | scalus | 75 |
-| 15 | cardano-wallet | 77 |
-| 16 | cquisitor-lib | 78 |
-| 17 | whisky | 79 |
-| 18 | cardano-hw-interop-lib | 80 |
-| 19 | cardano-multiplatform-lib-cml | 82 |
+| 4 | koios | 36 |
+| 5 | kupo | 43 |
+| 6 | Move off Maestro | 49 |
+| 7 | pallas | 54 |
+| 8 | cardano-serialization-lib-csl | 58 |
+| 9 | gouroboros | 62 |
+| 10 | aiken | 65 |
+| 11 | ledgerjs-hw-app-cardano | 67 |
+| 12 | cardano-js-sdk | 69 |
+| 13 | cardano-wallet | 71 |
+| 14 | bloxbean-cardano-client-library | 72 |
+| 15 | yaci | 74 |
+| 16 | scalus | 76 |
+| 17 | cquisitor-lib | 77 |
+| 18 | whisky | 78 |
+| 19 | buildooor | 79 |
+| 20 | cardano-hw-interop-lib | 80 |
+| 21 | cardano-multiplatform-lib-cml | 82 |
 
 Tools that are boundary components with a gap of their own (Mesh, Lucid
 Evolution, Evolution SDK, yaci-store, Adder, Hydra and others) are never
@@ -426,7 +444,9 @@ unlocked by upstream fixes alone.
 **2 tools have a released upstream fix**, so the next move is theirs: Marlowe
 and Marconi (the tagged target contains cardano-api 11.11.0.0; the first-support comparison is not a new dependency solve). txtop and cardano-node-api were bump-ready
 until the devnet showed gouroboros v0.213.x cannot decode the node's Dijkstra
-blocks or place ordinary Dijkstra transactions.
+blocks or place ordinary Dijkstra transactions. From v0.217.0 gouroboros decodes
+the blocks, but v0.218.2 still reports ordinary Dijkstra transactions as Conway,
+so they keep waiting on it.
 Bursa now also waits on ledgerjs-hw-app-cardano, and cf-ledger-sync has its own
 gap.
 

@@ -171,6 +171,11 @@ tools:
       date: 2026-10-26
   pallas:
     links:
+      - url: https://github.com/txpipe/pallas/pull/849
+        note: Dijkstra era on main behind the unstable feature
+      - url: https://github.com/txpipe/pallas/releases/tag/v1.5.0-rc.1
+        note: Release candidate with the Dijkstra traverse and Leios work
+      - url: https://github.com/txpipe/pallas/pull/816
       - url: https://github.com/txpipe/pallas/tree/dijkstra
         note: Dijkstra branch, ahead of main with the traverse and Leios work
       - url: https://github.com/txpipe/pallas/pull/799
@@ -215,6 +220,8 @@ tools:
       - url: https://github.com/IntersectMBO/cardano-cli/pull/1478
   cardano-db-sync:
     links:
+      - url: https://github.com/IntersectMBO/cardano-db-sync/releases/tag/13.8.0.0
+        note: Release built on node 11.2.0
       - url: https://github.com/IntersectMBO/cardano-db-sync/issues/2115
         note: Dijkstra integration; no comments yet
       - url: https://github.com/IntersectMBO/cardano-db-sync/tree/kderme/node-11.2-deps
@@ -238,8 +245,10 @@ tools:
       - url: https://github.com/utxorpc/spec/issues/218
   bloxbean-cardano-client-library:
     links:
+      - url: https://github.com/bloxbean/cardano-client-lib/pull/748
+        note: One era-aware ledger CBOR reader
       - url: https://github.com/bloxbean/cardano-client-lib/issues/707
-        note: Plutus V4 scripts; the only Dijkstra work found
+        note: Plutus V4 scripts
   plutigo:
     links:
       - url: https://github.com/blinklabs-io/plutigo/issues/274
@@ -248,6 +257,9 @@ tools:
         note: Plutus V4 script context
   gouroboros:
     links:
+      - url: https://github.com/blinklabs-io/gouroboros/pull/2884
+        note: Accept the ten-field Dijkstra header the 11.2 node emits
+      - url: https://github.com/blinklabs-io/gouroboros/pull/2776
       - url: https://github.com/blinklabs-io/gouroboros/pull/2692
         note: Align Dijkstra with the Leios release candidate
       - url: https://github.com/blinklabs-io/gouroboros/pull/2603
@@ -264,6 +276,8 @@ tools:
       - url: https://github.com/blinklabs-io/gouroboros/issues/2818
   yaci:
     links:
+      - url: https://github.com/bloxbean/yaci/pull/244
+        note: Read the ledger format through the client library reader
       - url: https://github.com/bloxbean/yaci/pull/222
         note: Parse every Dijkstra structure of the deployed CDDL
       - url: https://github.com/bloxbean/yaci/pull/171
@@ -272,6 +286,8 @@ tools:
       - url: https://github.com/bloxbean/yaci/tree/next-leios
   cardano-js-sdk:
     links:
+      - url: https://github.com/input-output-hk/cardano-js-sdk/issues/1759
+        note: Update Dijkstra definitions
       - url: https://github.com/input-output-hk/cardano-js-sdk/pull/1735
         note: Serialization and core types for Dijkstra
       - url: https://github.com/input-output-hk/cardano-js-sdk/pull/1739
@@ -279,6 +295,8 @@ tools:
       - url: https://github.com/input-output-hk/cardano-js-sdk/issues/1736
   mithril:
     links:
+      - url: https://github.com/IntersectMBO/mithril/issues/3673
+        note: Prepare Mithril for the Dijkstra hard fork
       - url: https://github.com/IntersectMBO/mithril/issues/3585
         note: Upgrade to Cardano 11.2
       - url: https://github.com/IntersectMBO/mithril/pull/3614
@@ -321,3 +339,17 @@ tools:
         note: Leios Musashi rc-2026w42
       - url: https://github.com/bloxbean/yaci-store/pull/1299
       - url: https://github.com/bloxbean/yaci-store/tree/next-leios
+  kupo:
+    links:
+      - url: https://github.com/CardanoSolutions/kupo/pull/204
+        note: Merged node 11.0.1 support, before the Dijkstra era
+  ledgerjs-hw-app-cardano:
+    links:
+      - url: https://github.com/cardano-foundation/ledgerjs-hw-app-cardano/issues/58
+  hydra:
+    links:
+      - url: https://github.com/cardano-scaling/hydra/issues/2645
+  koios:
+    links:
+      - url: https://github.com/cardano-community/koios-artifacts/tree/dijkstra
+        note: Dijkstra API fields; era details are placeholders

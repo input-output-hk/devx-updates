@@ -1,0 +1,1 @@
+19:56:45 2|server  | 2026-11-09T19:56:45: Error in /network/eras. TypeError: Cannot read properties of undefined (reading 'is_era_hardfork')

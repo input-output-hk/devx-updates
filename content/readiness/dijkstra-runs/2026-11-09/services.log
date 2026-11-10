@@ -1,0 +1,6 @@
+ogmios v7.0.0 (b3a830a1)
+ogmios exit 1; era at start: "currentEra":"dijkstra"
+ServerHasAgency (SingNext SingMustReply) (DeserialiseFailure 865 "expected list len or indef")
+kupo v2.12.0+491918
+kupo exit 1; last logged roll-forward slot: none logged
+ServerHasAgency (SingNext SingCanAwait) (DeserialiseFailure 863 "expected list len or indef")

@@ -1,0 +1,4 @@
+yaci 0.5.0-pre15
+247 blocks, 0 transaction bodies in decoded blocks
+   247  era tag 8: failed
+  first failure: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.Map (co.nstant.in.cbor.model.Array and co.nstant.in.cbor.model.Map are in unnamed module of load

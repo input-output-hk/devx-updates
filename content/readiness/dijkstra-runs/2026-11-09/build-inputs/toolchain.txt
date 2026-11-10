@@ -1,0 +1,7 @@
+go version go1.26.10 linux/amd64
+rustc 1.99.0 (b940084d7 2026-09-28) (built from a source tarball)
+v24.21.0
+openjdk version "25.0.4.1" 2026-08-18
+Apache Maven 3.10.0 (c43a36b8d67be7e0805a411bc0898af1a51f5472)
+Python 3.14.8
+aiken v1.1.24+bacbeb3
