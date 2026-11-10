@@ -10,7 +10,14 @@ const named = Object.entries(JSON.parse(readFileSync(idsFile, "utf8"))).filter((
 const ws = new WebSocket(url);
 let next = 0;
 const pending = new Map();
-ws.onmessage = (e) => { const m = JSON.parse(e.data); pending.get(m.id)?.(m); pending.delete(m.id); };
+ws.onmessage = (e) => {
+  const m = JSON.parse(e.data);
+  // Only resolve requests this script sent; ignore replies with an unknown or malformed id.
+  const resolve = Number.isInteger(m?.id) ? pending.get(m.id) : undefined;
+  if (typeof resolve !== "function") return;
+  pending.delete(m.id);
+  resolve(m);
+};
 const rpc = (method, params) => new Promise((resolve) => { const id = next++; pending.set(id, resolve); ws.send(JSON.stringify({ jsonrpc: "2.0", method, params, id })); });
 await new Promise((resolve, reject) => { ws.onopen = resolve; ws.onerror = reject; });
 
