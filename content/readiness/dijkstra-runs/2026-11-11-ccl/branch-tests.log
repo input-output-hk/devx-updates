@@ -1,0 +1,21 @@
+> Task :test-support:compileJava
+> Task :common-spec:testClasses
+> Task :test-support:processResources NO-SOURCE
+> Task :test-support:classes
+> Task :test-support:jar
+> Task :common-spec:test
+> Task :ledger-cbor:testFixturesClasses
+> Task :ledger-cbor:testFixturesJar
+> Task :ledger-cbor:testClasses
+> Task :ledger-cbor:test
+> Task :transaction-spec:testClasses
+> Task :transaction-spec:test
+> Task :plutus:testClasses
+> Task :plutus:test
+BUILD SUCCESSFUL in 1m 40s
+
+JUnit results at d3324ec3 (JDK 21, no -PcborDataset):
+common-spec 1 tests, 0 skipped, 0 failures
+ledger-cbor 252 tests, 0 skipped, 0 failures
+transaction-spec 696 tests, 12 skipped, 0 failures
+plutus 151 tests, 1 skipped, 0 failures
