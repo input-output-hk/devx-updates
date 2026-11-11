@@ -18,7 +18,10 @@ import { gradleConfigurations } from "./gradle-selection";
 const exec = promisify(execFile);
 
 async function cargoContext(directory: string) {
-  const versions = await Promise.all([exec("cargo", ["--version"], { cwd: directory, timeout: 30000, killSignal: "SIGKILL" }), exec("rustc", ["--version"], { cwd: directory, timeout: 30000, killSignal: "SIGKILL" })]);
+  // Run one after the other: the first call may make rustup install the repo's
+  // pinned toolchain, and two installs at once collide in rustup's download dir.
+  const versions = [];
+  for (const command of ["cargo", "rustc"]) versions.push(await exec(command, ["--version"], { cwd: directory, timeout: 30000, killSignal: "SIGKILL" }));
   const toolchain = versions.map((v) => v.stdout.trim()).join("; ");
   const configPaths = [join(process.env.CARGO_HOME ?? join(homedir(), ".cargo"), "config"), join(process.env.CARGO_HOME ?? join(homedir(), ".cargo"), "config.toml"), join(directory, ".cargo/config"), join(directory, ".cargo/config.toml")];
   const configuration = configPaths.map((path) => existsSync(path) ? digest(readFileSync(path, "utf8")) : null);
