@@ -220,8 +220,14 @@ tools:
         note: Closed draft mapping the migration; ~100 TODO(dijkstra) stubs
   blockfrost:
     links:
+      - url: https://github.com/blockfrost/blockfrost-backend-ryo/issues/364
+        note: Checklist of what's left for Dijkstra across RYO, blockfrost-platform and the OpenAPI spec, from our 2026-11-11 devnet run
       - url: https://github.com/blockfrost/blockfrost-platform/pull/378
-        note: Closed; TODO(dijkstra) in the tx evaluator, which rejects 3-element Dijkstra transactions
+        note: Closed unmerged; implemented transaction evaluation, which is still a not-found stub on main
+  cardano-serialization-lib-csl:
+    links:
+      - url: https://github.com/Emurgo/cardano-serialization-lib/issues/763
+        note: Checklist of what's left for Dijkstra
   cardano-cli:
     links:
       - url: https://github.com/IntersectMBO/cardano-cli/pull/1439
