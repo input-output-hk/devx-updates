@@ -1,0 +1,226 @@
+{
+  "recordedAt": "2026-11-09T19:00:06.907522+00:00",
+  "binary": "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+  "binarySha256": "4257cc8be37cbde5bf7b5dd111e43a1277f45352fb2433ad7a7e647209aa7677",
+  "scope": "Offline probes; transaction fixtures are structural only. No node verdict.",
+  "cases": [
+    {
+      "exit": 0,
+      "stdout": "aiken v1.1.24+bacbeb3\n",
+      "stderr": "",
+      "name": "version",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "--version"
+      ],
+      "cwd": "<out>",
+      "purpose": "Record executable identity"
+    },
+    {
+      "exit": 0,
+      "stdout": "",
+      "stderr": "    Compiling diagnostic/probe 0.0.0 (.)\n    Resolving dependencies\n   Generating project's blueprint (./plutus.json)\n      Summary 0 errors, 0 warnings\n",
+      "name": "build-v3",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "build"
+      ],
+      "cwd": "<out>/v3",
+      "purpose": "V3 compilation control"
+    },
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "        Error aiken::loading::toml\n\n  \u00d7 I could not load the project config file.\n   \u256d\u2500[./aiken.toml:3:10]\n 1 \u2502 name = \"diagnostic/probe\"\n 2 \u2502 version = \"0.0.0\"\n 3 \u2502 plutus = \"v4\"\n   \u00b7          \u2500\u2500\u2500\u2500\n   \u2570\u2500\u2500\u2500\u2500\n  help: unknown variant `v4`, expected one of `v1`, `v2`, `v3`\n\n",
+      "name": "build-v4",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "build"
+      ],
+      "cwd": "<out>/v4",
+      "purpose": "V4 configuration support"
+    },
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "    Compiling diagnostic/probe 0.0.0 (.)\n    Resolving dependencies\n        Error aiken::check::unknown::purpose\n\n  \u00d7 While trying to make sense of your code...\n  \u2570\u2500\u25b6 I found a validator handler referring to an unknown purpose.\n      \n   \u256d\u2500[./validators/probe.ak:2:3]\n 1 \u2502 validator probe {\n 2 \u2502   guard(_redeemer: Data, _credential: Data, _transaction: Data) { True }\n   \u00b7   \u2500\u2500\u252c\u2500\u2500\n   \u00b7     \u2570\u2500\u2500 unknown purpose\n 3 \u2502 }\n   \u2570\u2500\u2500\u2500\u2500\n  help: Handler must be named after a known purpose. Here is a list of\n        available purposes:\n        -> spend\n        -> mint\n        -> withdraw\n        -> publish\n        -> vote\n        -> propose\n        -> else\n\n      Summary 1 error, 0 warnings\n",
+      "name": "guard-handler",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "check"
+      ],
+      "cwd": "<out>/guard",
+      "purpose": "Current handler vocabulary; hypothetical guard syntax, not a V4 validator"
+    },
+    {
+      "exit": 0,
+      "stdout": "[]\n",
+      "stderr": "      Parsing script context\n   Simulating 36fdff68dfe3660f1ceea60f018a0fd7a83da13def229108794c397a879b0436\n",
+      "name": "conway-control",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "tx",
+        "simulate",
+        "conway-control.hex",
+        "inputs.hex",
+        "outputs.hex",
+        "--blueprint",
+        "<out>/v3/plutus.json"
+      ],
+      "cwd": "<out>/transactions",
+      "purpose": "CBOR shape only; empty inputs/outputs are not a ledger-valid transaction"
+    },
+    {
+      "exit": 0,
+      "stdout": "[]\n",
+      "stderr": "      Parsing script context\n   Simulating 36fdff68dfe3660f1ceea60f018a0fd7a83da13def229108794c397a879b0436\n",
+      "name": "conway-metadata-control",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "tx",
+        "simulate",
+        "conway-metadata-control.hex",
+        "inputs.hex",
+        "outputs.hex",
+        "--blueprint",
+        "<out>/v3/plutus.json"
+      ],
+      "cwd": "<out>/transactions",
+      "purpose": "CBOR shape only; empty inputs/outputs are not a ledger-valid transaction"
+    },
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "      Parsing script context\n",
+      "name": "dijkstra-null",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "tx",
+        "simulate",
+        "dijkstra-null.hex",
+        "inputs.hex",
+        "outputs.hex",
+        "--blueprint",
+        "<out>/v3/plutus.json"
+      ],
+      "cwd": "<out>/transactions",
+      "purpose": "CBOR shape only; empty inputs/outputs are not a ledger-valid transaction"
+    },
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "      Parsing script context\n",
+      "name": "dijkstra-metadata",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "tx",
+        "simulate",
+        "dijkstra-metadata.hex",
+        "inputs.hex",
+        "outputs.hex",
+        "--blueprint",
+        "<out>/v3/plutus.json"
+      ],
+      "cwd": "<out>/transactions",
+      "purpose": "CBOR shape only; empty inputs/outputs are not a ledger-valid transaction"
+    },
+    {
+      "exit": 0,
+      "stdout": "{\n  \"result\": \"(con integer 5)\",\n  \"cpu\": 181308,\n  \"mem\": 602\n}\n",
+      "stderr": "",
+      "name": "add-control",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "uplc",
+        "eval",
+        "<out>/uplc/add-control.uplc"
+      ],
+      "cwd": "<out>/uplc",
+      "purpose": "Local CLI result; compare with explicit ledger language, protocol and costs"
+    },
+    {
+      "exit": 101,
+      "stdout": "\n   \u001b[1m\u001b[31maiken::fatal::error\u001b[39m\u001b[0m\n   Whoops! You found a bug in the Aiken compiler.\n   \n   Please report this error at https://github.com/aiken-lang/aiken/issues/new.\n   In your bug report please provide the information below and if possible the code\n   that produced it.\n   \n   Operating System: linux\n   Architecture:     x86_64\n   Version:          v1.1.24+bacbeb3\n   \n   \u001b[35mcrates/uplc/src/parser.rs:111:57\n   \n       \u001b[39mcalled `Result::unwrap()` on an `Err` value: \"Default Function not found - lengthOfArray\"\n",
+      "stderr": "",
+      "name": "array-builtin",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "uplc",
+        "eval",
+        "<out>/uplc/array-builtin.uplc"
+      ],
+      "cwd": "<out>/uplc",
+      "purpose": "Local CLI result; compare with explicit ledger language, protocol and costs"
+    },
+    {
+      "exit": 0,
+      "stdout": "{\n  \"result\": \"(con bytestring #02)\",\n  \"cpu\": 247561,\n  \"mem\": 601\n}\n",
+      "stderr": "",
+      "name": "shift-small",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "uplc",
+        "eval",
+        "<out>/uplc/shift-small.uplc"
+      ],
+      "cwd": "<out>/uplc",
+      "purpose": "Local CLI result; compare with explicit ledger language, protocol and costs"
+    },
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "\nError\n-----\n\nthe validator crashed / exited prematurely\n\n\nCosts\n-----\ncpu: 167561\nmemory: 101\n",
+      "name": "shift-large",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "uplc",
+        "eval",
+        "<out>/uplc/shift-large.uplc"
+      ],
+      "cwd": "<out>/uplc",
+      "purpose": "Local CLI result; compare with explicit ledger language, protocol and costs"
+    },
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "\nError\n-----\n\nthe validator crashed / exited prematurely\n\n\nCosts\n-----\ncpu: 168291\nmemory: 101\n",
+      "name": "rotate-large",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "uplc",
+        "eval",
+        "<out>/uplc/rotate-large.uplc"
+      ],
+      "cwd": "<out>/uplc",
+      "purpose": "Local CLI result; compare with explicit ledger language, protocol and costs"
+    },
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "\nError\n-----\n\nattempted to case a non-const\n        Value Con(\n                  Data(\n                      Constr(\n                          Constr {\n                              tag: 121,\n                              any_constructor: None,\n                              fields: Def(\n                                  [],\n                              ),\n                          },\n                  ...redacted...\n              )\n\n\nCosts\n-----\ncpu: 100\nmemory: 100\n",
+      "name": "data-case",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "uplc",
+        "eval",
+        "<out>/uplc/data-case.uplc"
+      ],
+      "cwd": "<out>/uplc",
+      "purpose": "Local CLI result; compare with explicit ledger language, protocol and costs"
+    },
+    {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "\nError\n-----\n\nattempted to case a non-const\n        Value Con(\n                  Data(\n                      BigInt(\n                          Int(\n                              Int(\n                                  Int {\n                                      neg: false,\n                                      val: 7,\n                                  },\n                              ),\n                  ...redacted...\n              )\n\n\nCosts\n-----\ncpu: 100\nmemory: 100\n",
+      "name": "data-integer-negative",
+      "command": [
+        "~/.aiken/versions/v1.1.24/aiken-x86_64-unknown-linux-musl/aiken",
+        "uplc",
+        "eval",
+        "<out>/uplc/data-integer-negative.uplc"
+      ],
+      "cwd": "<out>/uplc",
+      "purpose": "Local CLI result; compare with explicit ledger language, protocol and costs"
+    }
+  ]
+}

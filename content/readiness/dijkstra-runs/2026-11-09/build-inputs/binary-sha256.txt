@@ -1,0 +1,5 @@
+dc582d6b844aaa2784b7314165e886e26ac65cbd109077ba799936e466aa7140  services/db-sync-13.8.0.0/bin/cardano-db-sync
+74a045366ae2aa0a7bb7b8295375ffeb2f7a8ee28871cbeb879abc3e984de72f  node/bin/cardano-node
+f0731775b519e5cda440289a5141f2a018e9b2b44b3ed6a5321b12d33323de6e  node/bin/cardano-cli
+73881dc5f9a6ad2831381c449c87b8620fb39f81f4c085e3a32965b925d9af57  services/ogmios/bin/ogmios
+ef01aa9c5bfab541a94dff08a9980ba8e9b7eab4bf2bc8a24fe3292ac4edab3c  services/kupo/bin/kupo

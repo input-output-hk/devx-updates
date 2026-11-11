@@ -54,6 +54,13 @@ behavior or content model:
   for hard fork, plus Dismissed for components that turn out not to be needed.
   Changing the Status options through the API clears every item's status, so
   save the statuses first and restore them afterwards.
+- **Access to the project and the tracking repo:** the default `gh` login can't
+  reach them. Use the fine-grained token in `~/.config/gh/alwaystrueio-projects.token`,
+  scoped to the command: `GH_TOKEN=$(cat ~/.config/gh/alwaystrueio-projects.token) gh …`.
+  With it you may read the project and edit the tracking issues in
+  `alwaystrueio/dijkstra-readiness` (for example, to refresh "What breaks" and
+  their links). Never print the token or commit its value. Project Status
+  changes stay with the user.
 - **Outreach is done by a person, not tooling.** Don't open issues or post
   comments on maintainers' repositories. While the tracking repo is private,
   links to external issues stay invisible to their maintainers. Making the repo

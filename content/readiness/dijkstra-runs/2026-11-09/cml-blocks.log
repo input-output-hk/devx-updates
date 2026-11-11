@@ -1,0 +1,4 @@
+era tag 7: 1 blocks; MultiEraBlock decoded 1, Conway Block decoded 1
+era tag 8: 247 blocks; MultiEraBlock decoded 0, Conway Block decoded 0
+  first MultiEraBlock failure: Deserialization: No variant matched
+  first Conway Block failure: Deserialization: Definite length mismatch: found 2

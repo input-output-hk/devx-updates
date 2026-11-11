@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-01T12:35:26.110Z",
+ "generatedAt": "2026-11-09T19:20:25.307Z",
  "method": [
   "Lockfiles committed at each tool's classified revision (package-lock, npm-shrinkwrap, pnpm-lock, yarn.lock, bun.lock, Cargo.lock, go.sum, poetry.lock, uv.lock, gradle.lockfile, packages.lock.json; test, example and vendored paths excluded) are read for packages of boundary components.",
   "A component the tool already declares in a manifest is not repeated. npm lockfile entries marked dev are skipped; other formats do not mark development-only packages, so the lead decision settles whether shipped code reaches the component.",
@@ -18,7 +18,7 @@
   },
   {
    "tool": "amaru",
-   "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+   "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
    "component": "aiken",
    "package": "uplc",
    "path": "crates/amaru/Cargo.lock",
@@ -27,11 +27,11 @@
   },
   {
    "tool": "blockfrost",
-   "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
+   "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
    "component": "cardano-serialization-lib-csl",
    "package": "@emurgo/cardano-serialization-lib-nodejs",
    "path": "yarn.lock",
-   "line": 153,
+   "line": 157,
    "quote": "\"@emurgo/cardano-serialization-lib-nodejs@npm:^15.0.3\":"
   },
   {
@@ -45,7 +45,7 @@
   },
   {
    "tool": "bursa",
-   "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+   "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
    "component": "cardano-hw-interop-lib",
    "package": "cardano-hw-interop-lib",
    "path": "ui/web/package-lock.json",
@@ -54,7 +54,7 @@
   },
   {
    "tool": "bursa",
-   "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+   "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
    "component": "cardano-serialization-lib-csl",
    "package": "@emurgo/cardano-serialization-lib-browser",
    "path": "ui/web/package-lock.json",
@@ -63,7 +63,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "component": "cardano-js-sdk",
    "package": "@cardano-sdk/crypto",
    "path": "cardano/gateway/package-lock.json",
@@ -108,7 +108,7 @@
   },
   {
    "tool": "daedalus",
-   "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+   "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
    "component": "cardano-serialization-lib-csl",
    "package": "@emurgo/cardano-serialization-lib-browser",
    "path": "yarn.lock",
@@ -144,11 +144,11 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "component": "cardano-serialization-lib-csl",
    "package": "@emurgo/cardano-serialization-lib-nodejs",
    "path": "bun.lock",
-   "line": 74,
+   "line": 75,
    "quote": "\"@emurgo/cardano-serialization-lib-nodejs\": [\"@emurgo/cardano-serialization-lib-nodejs@15.0.3\", \"\", {}, \"sha512-CZkAF7P3Ip3gUCAa6v93DLKp9hGqsfE6F/b3Qrqvym7rEJKi3j+dDk/OPxtmynWWGHhqXL85vzFOOwVduhLAjA=="
   },
   {
@@ -162,11 +162,11 @@
   },
   {
    "tool": "lace",
-   "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+   "revision": "4d553bd696903c7a78652ab61da5237165008195",
    "component": "cardano-serialization-lib-csl",
    "package": "@emurgo/cardano-serialization-lib-browser",
    "path": "package-lock.json",
-   "line": 8398,
+   "line": 8489,
    "quote": "\"node_modules/@emurgo/cardano-serialization-lib-browser\": {"
   },
   {
@@ -189,7 +189,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "component": "blaze",
    "package": "@blaze-cardano/core",
    "path": "pnpm-lock.yaml",
@@ -225,7 +225,7 @@
   },
   {
    "tool": "odatano",
-   "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+   "revision": "4777459dd965a0501d635b3135b814555ac81c20",
    "component": "cardano-serialization-lib-csl",
    "package": "@emurgo/cardano-serialization-lib-nodejs",
    "path": "package-lock.json",
@@ -240,15 +240,6 @@
    "path": "plutip-rust/Cargo.lock",
    "line": 164,
    "quote": "name = \"cardano-serialization-lib\""
-  },
-  {
-   "tool": "sorbet",
-   "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
-   "component": "cardano-multiplatform-lib-cml",
-   "package": "@dcspark/cardano-multiplatform-lib-browser",
-   "path": "bun.lock",
-   "line": 126,
-   "quote": "\"@dcspark/cardano-multiplatform-lib-browser\": [\"@dcspark/cardano-multiplatform-lib-browser@3.1.2\", \"\", {}, \"sha512-BDIF33nqEKAGn72+ESD1fLgnWCZJbPWnVKHr0cy7Al2zhvM30rGsajcJNHLPh2XXZQh1H35fBiHHR2uUyZRRp"
   },
   {
    "tool": "sutra",

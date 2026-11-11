@@ -1,0 +1,14 @@
+## Chain truncated after block 186 (slot 3713), the block before the first sub-transaction
+kupo nightly+bdb449; most recent checkpoint slot 3713
+conway-legacy-reg: 0 outputs indexed (not on chain)
+conway-metadata: 1 outputs indexed, slot 2302
+conway-payment: 1 outputs indexed, slot 2302
+conway-reg-with-deposit: 1 outputs indexed, slot 2302
+conway-required-signer: 1 outputs indexed, slot 2302
+dijkstra-metadata: 1 outputs indexed, slot 2302
+dijkstra-payment: 1 outputs indexed, slot 2302
+dijkstra-reg-with-deposit: 1 outputs indexed, slot 2302
+split: 10 outputs indexed, slot 2290
+dijkstra-direct-deposit: 1 outputs indexed, slot 3710
+adv-split: 5 outputs indexed, slot 3666
+errors: 0

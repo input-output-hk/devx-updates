@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "reviewed": "2026-11-01",
+ "reviewed": "2026-11-09",
  "method": [
   "Every shipped gap channel in classification.json was read at the classified revision in the tool's shipped code (tests, examples, benchmarks, demos and CI scripts excluded).",
   "confirmed: a shipped path uses the gapped capability, so the tool fails or misbehaves after the hardfork until the dependency moves; not-reached: shipped code uses the dependency only outside it; undetermined: reading cannot decide.",
@@ -17,7 +17,7 @@
  "leads": [
   {
    "tool": "txtop",
-   "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
+   "revision": "2d7c5f70d7cd6b8cc424acd4532ba6c9512a15de",
    "via": "gouroboros",
    "surfaces": [
     "era-identity"
@@ -27,43 +27,17 @@
    "evidence": [
     {
      "repo": "blinklabs-io/txtop",
-     "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
+     "revision": "2d7c5f70d7cd6b8cc424acd4532ba6c9512a15de",
      "path": "main.go",
      "line": 1258,
      "quote": "txType, err := ledger.DetermineTransactionType(raw)"
     },
     {
      "repo": "blinklabs-io/txtop",
-     "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
+     "revision": "2d7c5f70d7cd6b8cc424acd4532ba6c9512a15de",
      "path": "main.go",
      "line": 1262,
      "quote": "ltx, err := ledger.NewTransactionFromCbor(txType, raw)"
-    }
-   ]
-  },
-  {
-   "tool": "txtop",
-   "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
-   "via": "gouroboros",
-   "surfaces": [
-    "block-encoding"
-   ],
-   "decision": "not-reached",
-   "summary": "txtop imports only the gouroboros root, ledger and ledger/common packages and uses LocalTxMonitor; it reads no blocks or protocol parameters and applies no ledger or consensus rules.",
-   "evidence": [
-    {
-     "repo": "blinklabs-io/txtop",
-     "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
-     "path": "main.go",
-     "line": 32,
-     "quote": "\"github.com/blinklabs-io/gouroboros/ledger\""
-    },
-    {
-     "repo": "blinklabs-io/txtop",
-     "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
-     "path": "main.go",
-     "line": 351,
-     "quote": "txRawBytes, err := oConn.LocalTxMonitor().Client.NextTx()"
     }
    ]
   },
@@ -72,8 +46,7 @@
    "revision": "136815536d9d5e6de09c5b1d206714f7ec7118b8",
    "via": "gouroboros",
    "surfaces": [
-    "node-to-client-protocol",
-    "block-encoding"
+    "node-to-client-protocol"
    ],
    "decision": "confirmed",
    "summary": "Its whole purpose is a node-to-client bridge (chain-sync, state query, tx monitor, tx submission) on gouroboros v0.202.7, which stops before V23. The repository is archived.",
@@ -138,7 +111,7 @@
   },
   {
    "tool": "bursa",
-   "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+   "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
    "via": "gouroboros",
    "surfaces": [
     "era-identity"
@@ -148,45 +121,25 @@
    "evidence": [
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "transaction.go",
-     "line": 330,
+     "line": 392,
      "quote": "func SignTransaction(txCbor []byte, signers []*LoadedKey) ([]byte, error) {"
     },
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "transaction.go",
-     "line": 336,
+     "line": 398,
      "quote": "return nil, fmt.Errorf(\"failed to determine transaction era: %w\", err)"
     }
    ]
   },
   {
-   "tool": "bursa",
-   "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
-   "via": "gouroboros",
-   "surfaces": [
-    "block-encoding"
-   ],
-   "decision": "not-reached",
-   "summary": "Bursa decodes no blocks, and reads the fee-relevant protocol parameters from cardano-cli JSON with its own parser rather than gouroboros types.",
-   "evidence": [
-    {
-     "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
-     "path": "transaction.go",
-     "line": 902,
-     "quote": "func ParseProtocolParams(data []byte) (ProtocolParams, error) {"
-    }
-   ]
-  },
-  {
    "tool": "cardano-up",
-   "revision": "30b2e3547e517a6d2bf88267cc74374d6a18500f",
+   "revision": "72685dbd2ee8cbb9a151e92763938d81411f8448",
    "via": "gouroboros",
    "surfaces": [
-    "block-encoding",
     "era-identity"
    ],
    "decision": "not-reached",
@@ -194,19 +147,18 @@
    "evidence": [
     {
      "repo": "blinklabs-io/cardano-up",
-     "revision": "30b2e3547e517a6d2bf88267cc74374d6a18500f",
+     "revision": "72685dbd2ee8cbb9a151e92763938d81411f8448",
      "path": "pkgmgr/pkgmgr.go",
-     "line": 816,
+     "line": 822,
      "quote": "tmpNetwork, ok := ouroboros.NetworkByName(newContext.Network)"
     }
    ]
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "gouroboros",
    "surfaces": [
-    "block-encoding",
     "era-identity",
     "transaction-encoding",
     "stake-pool-registration"
@@ -216,14 +168,14 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cosmos/cardano-probabilistic-light-client-core/cardano_block.go",
      "line": 137,
      "quote": "blockType, err := ledger.DetermineBlockType(blockCbor)"
     },
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cosmos/cardano-probabilistic-light-client-core/cardano_block.go",
      "line": 139,
      "quote": "decodedBlock, decodeErr := ledger.NewBlockFromCbor(blockType, blockCbor)"
@@ -232,7 +184,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "gouroboros",
    "surfaces": [
     "node-to-client-protocol"
@@ -242,7 +194,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "scripts/ci/capture-praos-nonce-reference.go",
      "line": 57,
      "quote": "ouroboros.WithNodeToNode(false), ouroboros.WithChainSyncConfig(chainsync.NewConfig("
@@ -251,7 +203,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "gouroboros",
    "surfaces": [
     "consensus-participation",
@@ -265,7 +217,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "plutigo",
    "surfaces": [
     "plutus-language",
@@ -276,7 +228,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cosmos/cardano-probabilistic-light-client-core/go.mod",
      "line": 24,
      "quote": "github.com/blinklabs-io/plutigo v0.7.1 // indirect"
@@ -285,20 +237,27 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "plutus-language"
    ],
    "decision": "undetermined",
-   "summary": "CSL is used by the bundled demo dApps (address handling and transaction hex decoding); whether they meet PlutusV4 content is not decidable from source.",
+   "summary": "CSL is used by the bundled demo dApps (transaction hex decoding); whether they meet PlutusV4 content is not decidable from source.",
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
-     "path": "dapps/ibc-swap/client/containers/Swap/index.tsx",
-     "line": 21,
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
+     "path": "dapps/ibc-swap/client/containers/SendToken.tsx",
+     "line": 5,
      "quote": "import * as CSL from '@emurgo/cardano-serialization-lib-browser';"
+    },
+    {
+     "repo": "cardano-foundation/cardano-ibc-incubator",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
+     "path": "dapps/ibc-swap/client/containers/SendToken.tsx",
+     "line": 21,
+     "quote": "const tx1 = CSL.Transaction.from_hex(unsignedTx);"
     }
    ]
   },
@@ -446,7 +405,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "plutus-language"
@@ -456,7 +415,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "src/lib/hydra/hydra/node-fanout-references.ts",
      "line": 41,
      "quote": "const transaction = FixedTransaction.from_bytes(Buffer.from(confirmedProducer.cborHex, 'hex'));"
@@ -720,7 +679,7 @@
   },
   {
    "tool": "daedalus",
-   "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+   "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
    "via": "cardano-wallet",
    "surfaces": [
     "node-to-client-protocol"
@@ -730,7 +689,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/daedalus",
-     "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+     "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
      "path": "source/renderer/app/api/wallets/requests/createWallet.ts",
      "line": 16,
      "quote": "path: '/v2/wallets',"
@@ -739,7 +698,7 @@
   },
   {
    "tool": "daedalus",
-   "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+   "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
    "via": "cardano-js-sdk",
    "surfaces": [
     "protocol-parameters"
@@ -749,7 +708,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/daedalus",
-     "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+     "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
      "path": "source/renderer/app/utils/shelleyLedger.ts",
      "line": 16,
      "quote": "import { Cardano } from '@cardano-sdk/core';"
@@ -758,7 +717,7 @@
   },
   {
    "tool": "lace",
-   "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+   "revision": "4d553bd696903c7a78652ab61da5237165008195",
    "via": "cardano-js-sdk",
    "surfaces": [
     "protocol-parameters"
@@ -768,7 +727,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/lace",
-     "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+     "revision": "4d553bd696903c7a78652ab61da5237165008195",
      "path": "packages/contract/cardano-context/src/signing/cardano-in-memory-transaction-signer.ts",
      "line": 69,
      "quote": "const tx = Serialization.Transaction.fromCbor("
@@ -796,7 +755,7 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "via": "ouroboros-miniprotocols-ts",
    "surfaces": [
     "node-to-client-protocol"
@@ -806,7 +765,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
      "path": "src/network/n2c/HandshakeResponder.ts",
      "line": 17,
      "quote": "export const GEROLAMO_N2C_VERSIONS: readonly VersionNumber[] = [16, 17, 18, 19, 20, 21, 22, 23];"
@@ -815,7 +774,7 @@
   },
   {
    "tool": "yano",
-   "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
    "via": "scalus",
    "surfaces": [
     "plutus-script-context",
@@ -826,7 +785,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yano",
-     "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+     "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
      "path": "scalus-bridge/src/main/java/org/yanoproject/scalusbridge/ScalusBasedTransactionEvaluator.java",
      "line": 12,
      "quote": "import scalus.bloxbean.ScalusTransactionEvaluator;"
@@ -1125,7 +1084,7 @@
   },
   {
    "tool": "amaru",
-   "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+   "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
    "via": "pallas",
    "surfaces": [
     "node-to-client-protocol"
@@ -1135,14 +1094,14 @@
    "evidence": [
     {
      "repo": "pragma-org/amaru",
-     "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+     "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
      "path": "Cargo.toml",
-     "line": 76,
+     "line": 77,
      "quote": "pallas-network = \"0.34.0\""
     },
     {
      "repo": "pragma-org/amaru",
-     "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+     "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
      "path": "crates/amaru-bootstrap/src/bootstrap/mod.rs",
      "line": 295,
      "quote": "PeerClient::connect(peer_address, network.to_network_magic().as_u64()).await.inspect_err(|err| {"
@@ -1443,10 +1402,9 @@
   },
   {
    "tool": "adder",
-   "revision": "2d7056a0b458623d2cc8e8f24626b3ff1ad598f9",
+   "revision": "7f50d8fcf94d7009340bfde4118a91a9f7611e13",
    "via": "gouroboros",
    "surfaces": [
-    "block-encoding",
     "era-identity"
    ],
    "decision": "confirmed",
@@ -1454,14 +1412,14 @@
    "evidence": [
     {
      "repo": "blinklabs-io/adder",
-     "revision": "2d7056a0b458623d2cc8e8f24626b3ff1ad598f9",
+     "revision": "7f50d8fcf94d7009340bfde4118a91a9f7611e13",
      "path": "input/utxorpc/mapper.go",
-     "line": 95,
+     "line": 111,
      "quote": "block, err := ledger.NewBlockFromCbor(wb.Type, wb.RawBlock)"
     },
     {
      "repo": "blinklabs-io/adder",
-     "revision": "2d7056a0b458623d2cc8e8f24626b3ff1ad598f9",
+     "revision": "7f50d8fcf94d7009340bfde4118a91a9f7611e13",
      "path": "input/mempool/mempool.go",
      "line": 412,
      "quote": "return ledger.NewTransactionFromCbor(txType, data)"
@@ -1491,7 +1449,7 @@
   },
   {
    "tool": "hydra",
-   "revision": "0225555ecdd501a6bd75cc106719c2d0e0bd5507",
+   "revision": "0aa8987dc49e85756e283f042422e98d20777adb",
    "via": "cardano-api",
    "surfaces": [
     "cardano-api-haskell",
@@ -1503,7 +1461,7 @@
    "evidence": [
     {
      "repo": "cardano-scaling/hydra",
-     "revision": "0225555ecdd501a6bd75cc106719c2d0e0bd5507",
+     "revision": "0aa8987dc49e85756e283f042422e98d20777adb",
      "path": "hydra-node/src/Hydra/Chain/Direct.hs",
      "line": 277,
      "quote": "| EraNotSupportedYet {otherEraName :: Text}"
@@ -1512,7 +1470,7 @@
   },
   {
    "tool": "hydra",
-   "revision": "0225555ecdd501a6bd75cc106719c2d0e0bd5507",
+   "revision": "0aa8987dc49e85756e283f042422e98d20777adb",
    "via": "plutus-plutus-core",
    "surfaces": [
     "plutus-language",
@@ -1523,7 +1481,7 @@
    "evidence": [
     {
      "repo": "cardano-scaling/hydra",
-     "revision": "0225555ecdd501a6bd75cc106719c2d0e0bd5507",
+     "revision": "0aa8987dc49e85756e283f042422e98d20777adb",
      "path": "cabal.project",
      "line": 55,
      "quote": "plutus-core == 1.68.0.0,"
@@ -1552,7 +1510,7 @@
   },
   {
    "tool": "evolution-sdk",
-   "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+   "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
    "via": "scalus",
    "surfaces": [
     "plutus-script-context",
@@ -1563,7 +1521,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/scalus-uplc/src/Evaluator.ts",
      "line": 98,
      "quote": "try: () => ScalusLib.Scalus.evalPlutusScripts(txBytes, utxosBytes, slotConfig, costModels),"
@@ -1572,7 +1530,7 @@
   },
   {
    "tool": "meshjs-mesh-sdk",
-   "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+   "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
    "via": "scalus",
    "surfaces": [
     "plutus-script-context",
@@ -1583,16 +1541,16 @@
    "evidence": [
     {
      "repo": "MeshJS/mesh",
-     "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+     "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
      "path": "packages/mesh-core-cst/src/offline-providers/offline-evaluator-scalus.ts",
-     "line": 148,
-     "quote": "return evalPlutusScripts("
+     "line": 168,
+     "quote": ".evaluate("
     }
    ]
   },
   {
    "tool": "meshjs-mesh-sdk",
-   "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+   "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
    "via": "cardano-js-sdk",
    "surfaces": [
     "protocol-parameters"
@@ -1602,7 +1560,7 @@
    "evidence": [
     {
      "repo": "MeshJS/mesh",
-     "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+     "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
      "path": "packages/mesh-core-cst/src/utils/proposal.ts",
      "line": 94,
      "quote": "const toCardanoProtocolParamUpdate = ("
@@ -1630,7 +1588,7 @@
   },
   {
    "tool": "yaci-store",
-   "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+   "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
    "via": "scalus",
    "surfaces": [
     "plutus-script-context",
@@ -1641,7 +1599,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-store",
-     "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
      "path": "components/submit/src/main/java/com/bloxbean/cardano/yaci/store/submit/service/scalus/ScalusTxEvaluationService.java",
      "line": 22,
      "quote": "import scalus.bloxbean.ScalusTransactionEvaluator;"
@@ -1718,8 +1676,6 @@
    "revision": "5f05e897d3ef39c55e31a794973b631cd42db12c",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "transaction-encoding"
    ],
    "decision": "confirmed",
@@ -1756,11 +1712,9 @@
   },
   {
    "tool": "adastat-api",
-   "revision": "1e986fbe42d094e3001c45ac0c6dc4875dda1b5b",
+   "revision": "51710148fb33e8d186a811038e1a0336047517fa",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -1770,30 +1724,30 @@
    "evidence": [
     {
      "repo": "CardanoExplorer/adastat",
-     "revision": "1e986fbe42d094e3001c45ac0c6dc4875dda1b5b",
+     "revision": "51710148fb33e8d186a811038e1a0336047517fa",
      "path": "backend/lib/models/addresses.ts",
-     "line": 438,
+     "line": 444,
      "quote": "FROM ma_tx_out"
     },
     {
      "repo": "CardanoExplorer/adastat",
-     "revision": "1e986fbe42d094e3001c45ac0c6dc4875dda1b5b",
+     "revision": "51710148fb33e8d186a811038e1a0336047517fa",
      "path": "backend/lib/models/accounts.ts",
-     "line": 280,
+     "line": 286,
      "quote": "FROM epoch_param AS ep"
     },
     {
      "repo": "CardanoExplorer/adastat",
-     "revision": "1e986fbe42d094e3001c45ac0c6dc4875dda1b5b",
+     "revision": "51710148fb33e8d186a811038e1a0336047517fa",
      "path": "backend/lib/helpers/gov-actions.ts",
-     "line": 223,
+     "line": 224,
      "quote": "JOIN pool_update AS pu ON pu.id = aep.update_id"
     }
    ]
   },
   {
    "tool": "adder",
-   "revision": "2d7056a0b458623d2cc8e8f24626b3ff1ad598f9",
+   "revision": "7f50d8fcf94d7009340bfde4118a91a9f7611e13",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -1805,16 +1759,16 @@
    "evidence": [
     {
      "repo": "blinklabs-io/adder",
-     "revision": "2d7056a0b458623d2cc8e8f24626b3ff1ad598f9",
+     "revision": "7f50d8fcf94d7009340bfde4118a91a9f7611e13",
      "path": "input/chainsync/chainsync.go",
-     "line": 574,
+     "line": 619,
      "quote": "\"failed to resolve transaction inputs via Kupo, emitting without resolved inputs\","
     }
    ]
   },
   {
    "tool": "amaru",
-   "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+   "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -1828,7 +1782,7 @@
    "evidence": [
     {
      "repo": "pragma-org/amaru",
-     "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+     "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
      "path": "crates/amaru-kernel/src/cardano/era_history.rs",
      "line": 65,
      "quote": "/// curl -X POST \"https://mainnet.koios.rest/api/v1/ogmios\""
@@ -1837,7 +1791,7 @@
   },
   {
    "tool": "amaru",
-   "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+   "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -1848,7 +1802,7 @@
    "evidence": [
     {
      "repo": "pragma-org/amaru",
-     "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+     "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
      "path": "crates/amaru/src/bin/amaru/cmd/snapshot/create/koios.rs",
      "line": 38,
      "quote": ".get(format!(\"{}/tip\", koios_api_base(network)?))"
@@ -1857,7 +1811,7 @@
   },
   {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -1869,7 +1823,7 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/ogmios/client.go",
      "line": 339,
      "quote": "matches, err := c.client.Matches("
@@ -1878,7 +1832,7 @@
   },
   {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "ogmios",
    "surfaces": [
     "transaction-encoding",
@@ -1889,7 +1843,7 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/ogmios/ogmios.go",
      "line": 354,
      "quote": "func (o *OgmiosChainContext) SubmitTxContext(ctx context.Context, txCbor []byte) (common.Blake2b256, error) {"
@@ -1898,7 +1852,7 @@
   },
   {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "ogmios",
    "surfaces": [
     "plutus-language"
@@ -1908,7 +1862,7 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/ogmios/ogmios.go",
      "line": 373,
      "quote": "func (o *OgmiosChainContext) EvaluateTxContext("
@@ -1917,7 +1871,7 @@
   },
   {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "ogmios",
    "surfaces": [
     "protocol-parameters"
@@ -1927,7 +1881,7 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/ogmios/ogmios.go",
      "line": 220,
      "quote": "func (o *OgmiosChainContext) ProtocolParamsContext(ctx context.Context) (backend.ProtocolParameters, error) {"
@@ -1936,7 +1890,7 @@
   },
   {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "ogmios",
    "surfaces": [
     "block-encoding"
@@ -1946,7 +1900,7 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/ogmios/ogmios.go",
      "line": 350,
      "quote": "func (o *OgmiosChainContext) SubmitTx(txCbor []byte) (common.Blake2b256, error) {"
@@ -1955,7 +1909,7 @@
   },
   {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
@@ -1965,7 +1919,7 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/blockfrost/blockfrost.go",
      "line": 136,
      "quote": "data, err := b.requestContext(ctx, \"GET\", \"/epochs/latest/parameters\", nil, \"\")"
@@ -1974,7 +1928,7 @@
   },
   {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "blockfrost",
    "surfaces": [
     "era-identity"
@@ -1984,7 +1938,7 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/blockfrost/blockfrost.go",
      "line": 300,
      "quote": "func (b *BlockFrostChainContext) SubmitTx(txCbor []byte) (common.Blake2b256, error) {"
@@ -2232,11 +2186,9 @@
   },
   {
    "tool": "blockfrost",
-   "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
+   "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -2246,14 +2198,14 @@
    "evidence": [
     {
      "repo": "blockfrost/blockfrost-backend-ryo",
-     "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
+     "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
      "path": "src/sql/network/network_protocols.sql",
      "line": 3,
      "quote": "FROM epoch_param"
     },
     {
      "repo": "blockfrost/blockfrost-backend-ryo",
-     "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
+     "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
      "path": "src/routes/epochs/latest/parameters.ts",
      "line": 33,
      "quote": "rows[0].cost_models = costModelsMap(rows[0].cost_models);"
@@ -2463,7 +2415,7 @@
   },
   {
    "tool": "bloxbean-cardano-client-library",
-   "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -2475,7 +2427,7 @@
    "evidence": [
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "supplier/kupo-supplier/src/main/java/com/bloxbean/cardano/client/supplier/kupo/http/MatchesApi.java",
      "line": 13,
      "quote": "@GET(\"v1/matches/{pattern}?unspent\")"
@@ -2484,7 +2436,7 @@
   },
   {
    "tool": "bloxbean-cardano-client-library",
-   "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
    "via": "ogmios",
    "surfaces": [
     "transaction-encoding",
@@ -2497,14 +2449,14 @@
    "evidence": [
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "backend-modules/ogmios/src/main/java/com/bloxbean/cardano/client/backend/ogmios/http/OgmiosTransactionService.java",
      "line": 55,
      "quote": "public Result<List<EvaluationResult>> evaluateTx(byte[] cborData) throws ApiException {"
     },
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "backend-modules/ogmios/src/main/java/com/bloxbean/cardano/client/backend/ogmios/http/OgmiosEpochService.java",
      "line": 33,
      "quote": "public Result<ProtocolParams> getProtocolParameters() throws ApiException {"
@@ -2513,7 +2465,7 @@
   },
   {
    "tool": "bloxbean-cardano-client-library",
-   "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
    "via": "ogmios",
    "surfaces": [
     "block-encoding"
@@ -2523,7 +2475,7 @@
    "evidence": [
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "backend-modules/ogmios/src/main/java/com/bloxbean/cardano/client/backend/ogmios/http/OgmiosTransactionService.java",
      "line": 16,
      "quote": "public class OgmiosTransactionService implements TransactionService {"
@@ -2532,7 +2484,7 @@
   },
   {
    "tool": "bloxbean-cardano-client-library",
-   "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
    "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
@@ -2542,7 +2494,7 @@
    "evidence": [
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "backend-modules/blockfrost/src/main/java/com/bloxbean/cardano/client/backend/blockfrost/service/BFEpochService.java",
      "line": 72,
      "quote": "public Result<ProtocolParams> getProtocolParameters() throws ApiException {"
@@ -2551,7 +2503,7 @@
   },
   {
    "tool": "bloxbean-cardano-client-library",
-   "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
    "via": "blockfrost",
    "surfaces": [
     "era-identity"
@@ -2561,7 +2513,7 @@
    "evidence": [
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "backend-modules/blockfrost/src/main/java/com/bloxbean/cardano/client/backend/blockfrost/service/BFEpochService.java",
      "line": 72,
      "quote": "public Result<ProtocolParams> getProtocolParameters() throws ApiException {"
@@ -2570,7 +2522,7 @@
   },
   {
    "tool": "bloxbean-cardano-client-library",
-   "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
    "via": "koios",
    "surfaces": [
     "protocol-parameters"
@@ -2580,7 +2532,7 @@
    "evidence": [
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "backend-modules/koios/src/main/java/com/bloxbean/cardano/client/backend/koios/KoiosEpochService.java",
      "line": 92,
      "quote": "rest.koios.client.backend.api.base.Result<EpochParams> epochParametersResult = epochService.getEpochParametersByEpoch(epoch);"
@@ -2589,7 +2541,7 @@
   },
   {
    "tool": "bloxbean-cardano-client-library",
-   "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
    "via": "koios",
    "surfaces": [
     "era-identity"
@@ -2599,7 +2551,7 @@
    "evidence": [
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "backend-modules/koios/src/main/java/com/bloxbean/cardano/client/backend/koios/KoiosEpochService.java",
      "line": 90,
      "quote": "public Result<ProtocolParams> getProtocolParameters(Integer epoch) throws ApiException {"
@@ -2927,8 +2879,6 @@
    "revision": "fcfe3154115ef176788a60b2eae925ee42aabd7c",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -2977,7 +2927,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -2989,7 +2939,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/shared/modules/lucid/lucid.provider.ts",
      "line": 792,
      "quote": "`${kupoEndpoint}/matches/${queryPredicate}${isAddress ? '' : '/*'}?unspent`,"
@@ -2998,7 +2948,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -3012,21 +2962,21 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/shared/helpers/time.ts",
      "line": 213,
      "quote": "sendRequest('nextBlock');"
     },
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/shared/helpers/time.ts",
      "line": 124,
      "quote": "ogmiosUrl, 'queryLedgerState/eraSummaries', {},"
     },
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/shared/modules/lucid/lucid.provider.ts",
      "line": 456,
      "quote": "export async function evaluateTxWithOgmiosScriptRefFallback<T>("
@@ -3035,7 +2985,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
@@ -3045,16 +2995,16 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/query/services/yaci-history.service.ts",
-     "line": 1647,
+     "line": 1649,
      "quote": "const url = new URL(`${endpoint}/epochs/${epoch}/parameters`);"
     }
    ]
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "blockfrost",
    "surfaces": [
     "era-identity"
@@ -3064,7 +3014,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/shared/helpers/time.ts",
      "line": 124,
      "quote": "ogmiosUrl, 'queryLedgerState/eraSummaries', {},"
@@ -3073,11 +3023,9 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -3087,7 +3035,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/shared/modules/kupo/kupo.service.ts",
      "line": 71,
      "quote": "// connection/channel id without depending on a db-sync-specific row shape."
@@ -3096,7 +3044,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -3107,7 +3055,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/query/services/local-epoch-stake.ts",
      "line": 11,
      "quote": "* Like the existing Koios adapter, this trusts the configured node/data source."
@@ -3119,8 +3067,6 @@
    "revision": "48019e49c826ea77d81be0e2d2907f94406f5e04",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -3271,8 +3217,6 @@
    "revision": "95203b4e43a970c7b221b1676bc0bd2a50c9d6bc",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -3298,7 +3242,7 @@
   },
   {
    "tool": "cardano-token-registry",
-   "revision": "a7f2aed87c594ccaa42776ce6cff1faaec7ca86d",
+   "revision": "e6e32c1bd54051e29b87e44a34d8f804ba934d6f",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -3310,7 +3254,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-token-registry",
-     "revision": "a7f2aed87c594ccaa42776ce6cff1faaec7ca86d",
+     "revision": "e6e32c1bd54051e29b87e44a34d8f804ba934d6f",
      "path": "mappings/ff98bb948154acc772b8b1f9bb9242a2ccc7831770cd2d2b4a385972.json",
      "line": 5,
      "quote": "https://ipfs.blockfrost.dev/ipfs/"
@@ -3421,8 +3365,6 @@
    "revision": "0adb73357f3eaa6f8359e199b563dbb709f81e0d",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -3682,8 +3624,6 @@
    "revision": "61fe5f2034512cb9ef592918e6cb4e833242b16a",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -3705,8 +3645,6 @@
    "revision": "3727b4fe92f17d5203e58b69860de74f9f633e38",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -3728,8 +3666,6 @@
    "revision": "b976d8aabdbad7aa4f6274294a7bc744316d04d7",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -3751,8 +3687,6 @@
    "revision": "bc49b5f6103c05813cb9c839a99e3f3341e36387",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -3819,8 +3753,6 @@
    "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -4196,8 +4128,6 @@
    "revision": "f92d4b801115ec65fa1208917cebd54ea4adc62f",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -4315,8 +4245,6 @@
    "revision": "f814f568b389f13e75230f1d3175210abfddb7e9",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -4458,8 +4386,6 @@
    "revision": "5f05c1e1af6df3e2ec72d7ebf8d8d0ccb9a157b1",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -4519,11 +4445,9 @@
   },
   {
    "tool": "dingo",
-   "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+   "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -4533,16 +4457,16 @@
    "evidence": [
     {
      "repo": "blinklabs-io/dingo",
-     "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+     "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
      "path": "api/blockfrost/adapter.go",
-     "line": 2774,
+     "line": 2755,
      "quote": "// become spendable in newEpoch = snapshot+3. cardano-db-sync, which"
     }
    ]
   },
   {
    "tool": "dingo",
-   "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+   "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -4554,7 +4478,7 @@
    "evidence": [
     {
      "repo": "blinklabs-io/dingo",
-     "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+     "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
      "path": "api/kupo/server.go",
      "line": 207,
      "quote": "mux.HandleFunc(\"GET \"+prefix+\"/datums/{datum_hash}\", s.handleDatum)"
@@ -4563,7 +4487,7 @@
   },
   {
    "tool": "dingo",
-   "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+   "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -4577,7 +4501,7 @@
    "evidence": [
     {
      "repo": "blinklabs-io/dingo",
-     "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+     "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
      "path": "api/blockfrost/evaluate.go",
      "line": 40,
      "quote": "ogmiosEvaluateVersion = \"5\""
@@ -4586,7 +4510,7 @@
   },
   {
    "tool": "dingo",
-   "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+   "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -4597,16 +4521,16 @@
    "evidence": [
     {
      "repo": "blinklabs-io/dingo",
-     "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+     "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
      "path": "api/blockfrost/adapter.go",
-     "line": 888,
+     "line": 869,
      "quote": "func (a *NodeAdapter) NetworkEras() ([]NetworkEraInfo, error) {"
     }
    ]
   },
   {
    "tool": "dingo",
-   "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+   "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -4617,7 +4541,7 @@
    "evidence": [
     {
      "repo": "blinklabs-io/dingo",
-     "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+     "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
      "path": "internal/koiosparity/cache.go",
      "line": 131,
      "quote": "// KoiosEpochParams holds the Koios /epoch_params reference row for one epoch."
@@ -4626,11 +4550,9 @@
   },
   {
    "tool": "dolos",
-   "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+   "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -4640,7 +4562,7 @@
    "evidence": [
     {
      "repo": "txpipe/dolos",
-     "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+     "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
      "path": "crates/cardano/src/ewrap/loading.rs",
      "line": 178,
      "quote": "/// db-sync publishes: db-sync writes `drep_distr` for epoch N at the"
@@ -4649,7 +4571,7 @@
   },
   {
    "tool": "dolos",
-   "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+   "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -4661,16 +4583,16 @@
    "evidence": [
     {
      "repo": "txpipe/dolos",
-     "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+     "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
      "path": "Cargo.toml",
-     "line": 50,
+     "line": 48,
      "quote": "dolos-minikupo = { path = \"crates/minikupo\", optional = true }"
     }
    ]
   },
   {
    "tool": "dolos",
-   "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+   "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -4684,7 +4606,7 @@
    "evidence": [
     {
      "repo": "txpipe/dolos",
-     "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+     "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
      "path": "crates/minikupo/openapi.yaml",
      "line": 220,
      "quote": "## --ogmios-host {hostname} / --ogmios-port {port-number}"
@@ -4693,7 +4615,7 @@
   },
   {
    "tool": "dolos",
-   "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+   "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -4704,7 +4626,7 @@
    "evidence": [
     {
      "repo": "txpipe/dolos",
-     "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+     "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
      "path": "crates/minibf/src/lib.rs",
      "line": 346,
      "quote": ".route(\"/network/eras\", get(routes::network::eras::<D>))"
@@ -4855,7 +4777,7 @@
   },
   {
    "tool": "evolution-sdk",
-   "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+   "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -4867,7 +4789,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/evolution/src/sdk/provider/internal/KupmiosEffects.ts",
      "line": 216,
      "quote": "pattern = `${kupoUrl}/matches/${addressStr}?unspent`"
@@ -4876,7 +4798,7 @@
   },
   {
    "tool": "evolution-sdk",
-   "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+   "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
    "via": "ogmios",
    "surfaces": [
     "protocol-parameters",
@@ -4889,14 +4811,14 @@
    "evidence": [
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/evolution/src/sdk/provider/Kupmios.ts",
      "line": 37,
      "quote": "getProtocolParameters: () => KupmiosEffects.getProtocolParametersEffect(this.ogmiosUrl, this.headers)"
     },
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/evolution/src/sdk/provider/Kupmios.ts",
      "line": 45,
      "quote": "evaluateTx: KupmiosEffects.evaluateTxEffect(this.ogmiosUrl, this.headers),"
@@ -4905,7 +4827,7 @@
   },
   {
    "tool": "evolution-sdk",
-   "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+   "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
    "via": "ogmios",
    "surfaces": [
     "block-encoding"
@@ -4915,7 +4837,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/evolution-devnet/src/Config.ts",
      "line": 44,
      "quote": "readonly TraceChainSyncClient: boolean"
@@ -4924,7 +4846,7 @@
   },
   {
    "tool": "evolution-sdk",
-   "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+   "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
    "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
@@ -4934,7 +4856,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/evolution/src/sdk/provider/internal/BlockfrostEffect.ts",
      "line": 230,
      "quote": "`${baseUrl}/epochs/latest/parameters`,"
@@ -4943,7 +4865,7 @@
   },
   {
    "tool": "evolution-sdk",
-   "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+   "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
    "via": "blockfrost",
    "surfaces": [
     "era-identity"
@@ -4953,7 +4875,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/evolution/src/sdk/provider/internal/BlockfrostEffect.ts",
      "line": 230,
      "quote": "`${baseUrl}/epochs/latest/parameters`,"
@@ -4962,7 +4884,7 @@
   },
   {
    "tool": "evolution-sdk",
-   "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+   "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
    "via": "koios",
    "surfaces": [
     "protocol-parameters"
@@ -4972,7 +4894,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/evolution/src/sdk/provider/internal/KoiosEffect.ts",
      "line": 38,
      "quote": "const url = `${baseUrl}/epoch_params?limit=1&order=epoch_no.desc`"
@@ -4981,7 +4903,7 @@
   },
   {
    "tool": "evolution-sdk",
-   "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+   "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
    "via": "koios",
    "surfaces": [
     "era-identity"
@@ -4991,7 +4913,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/evolution/src/sdk/provider/internal/KoiosEffect.ts",
      "line": 38,
      "quote": "const url = `${baseUrl}/epoch_params?limit=1&order=epoch_no.desc`"
@@ -5003,8 +4925,6 @@
    "revision": "ccd2a704a249d9f51b48da343442800df7bf4cd8",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -5085,7 +5005,7 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "via": "koios",
    "surfaces": [
     "protocol-parameters"
@@ -5095,7 +5015,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
      "path": "src/api/liveProtocolParams.ts",
      "line": 4,
      "quote": "* Source of truth: Koios epoch_params (no project_id). Cached in protocol_params."
@@ -5104,7 +5024,7 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "via": "koios",
    "surfaces": [
     "era-identity"
@@ -5114,7 +5034,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
      "path": "src/api/liveProtocolParams.ts",
      "line": 4,
      "quote": "* Source of truth: Koios epoch_params (no project_id). Cached in protocol_params."
@@ -5123,7 +5043,7 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -5134,7 +5054,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
      "path": "dashboard/src/lib/explorer.ts",
      "line": 2,
      "quote": "* Explorer client for the node's Mini-Blockfrost API (/api/v0). Types mirror"
@@ -5184,8 +5104,6 @@
    "revision": "34bf94d5c56e701135c0418cd7a3e483810d7b37",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -5313,7 +5231,7 @@
   },
   {
    "tool": "guild-operators-suite",
-   "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+   "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
    "via": "koios",
    "surfaces": [
     "protocol-parameters"
@@ -5323,7 +5241,7 @@
    "evidence": [
     {
      "repo": "cardano-community/guild-operators",
-     "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+     "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
      "path": "scripts/cnode-helper-scripts/env",
      "line": 809,
      "quote": "if ! PROT_PARAMS=$(curl -sSL -f -X GET \"${KOIOS_API_HEADERS[@]}\" \"${KOIOS_API}/cli_protocol_params\" 2>&1); then"
@@ -5332,7 +5250,7 @@
   },
   {
    "tool": "guild-operators-suite",
-   "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+   "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
    "via": "koios",
    "surfaces": [
     "era-identity"
@@ -5342,7 +5260,7 @@
    "evidence": [
     {
      "repo": "cardano-community/guild-operators",
-     "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+     "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
      "path": "scripts/cnode-helper-scripts/cntools.sh",
      "line": 4114,
      "quote": "println INFO \"${FG_YELLOW}Not yet in Conway era, please revisit once network has crossed into Cardano governa"
@@ -5351,7 +5269,7 @@
   },
   {
    "tool": "guild-operators-suite",
-   "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+   "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
    "via": "ogmios",
    "surfaces": [
     "transaction-encoding",
@@ -5362,7 +5280,7 @@
    "evidence": [
     {
      "repo": "cardano-community/guild-operators",
-     "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+     "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
      "path": "scripts/cnode-helper-scripts/cntools.library",
      "line": 5224,
      "quote": "stdout=$(curl -sSL -X POST \"${HEADERS[@]}\" -d \"${jsonrpc}\" \"${KOIOS_API}/ogmios/\" 2>&1)"
@@ -5371,7 +5289,7 @@
   },
   {
    "tool": "guild-operators-suite",
-   "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+   "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -5383,7 +5301,7 @@
    "evidence": [
     {
      "repo": "cardano-community/guild-operators",
-     "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+     "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
      "path": "scripts/cnode-helper-scripts/cntools.library",
      "line": 5217,
      "quote": "submitTxKoiosOgmios() {"
@@ -5392,11 +5310,9 @@
   },
   {
    "tool": "guild-operators-suite",
-   "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+   "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -5406,7 +5322,7 @@
    "evidence": [
     {
      "repo": "cardano-community/guild-operators",
-     "revision": "0bace20ebaeb5365d748e77aea8bf4d6f875ed58",
+     "revision": "2c0f73eb5bf55ac2dbc36b39e43316f303336ab1",
      "path": "files/configs/mainnet/db-sync-config.json",
      "line": 19,
      "quote": "\"tx_out\": {"
@@ -5415,7 +5331,7 @@
   },
   {
    "tool": "hydra",
-   "revision": "0225555ecdd501a6bd75cc106719c2d0e0bd5507",
+   "revision": "0aa8987dc49e85756e283f042422e98d20777adb",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -5426,14 +5342,14 @@
    "evidence": [
     {
      "repo": "cardano-scaling/hydra",
-     "revision": "0225555ecdd501a6bd75cc106719c2d0e0bd5507",
+     "revision": "0aa8987dc49e85756e283f042422e98d20777adb",
      "path": "hydra-node/src/Hydra/Chain/Blockfrost/Client.hs",
      "line": 472,
      "quote": "eras' <- Blockfrost.getNetworkEras"
     },
     {
      "repo": "cardano-scaling/hydra",
-     "revision": "0225555ecdd501a6bd75cc106719c2d0e0bd5507",
+     "revision": "0aa8987dc49e85756e283f042422e98d20777adb",
      "path": "hydra-node/src/Hydra/Chain/Blockfrost/Client.hs",
      "line": 206,
      "quote": "pparams <- Blockfrost.getLatestEpochProtocolParams"
@@ -5612,11 +5528,9 @@
   },
   {
    "tool": "koios",
-   "revision": "2e2eb57933e1e2528de5ca36ee961759841cf389",
+   "revision": "c202fce5c499b117538f1886c7a9a207cfe2707b",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -5626,7 +5540,7 @@
    "evidence": [
     {
      "repo": "cardano-community/koios-artifacts",
-     "revision": "2e2eb57933e1e2528de5ca36ee961759841cf389",
+     "revision": "c202fce5c499b117538f1886c7a9a207cfe2707b",
      "path": "files/grest/rpc/000_utilities/is_dangling_delegation.sql",
      "line": 11,
      "quote": "SELECT INTO curr_epoch MAX(epoch_param.epoch_no) FROM public.epoch_param;"
@@ -5803,8 +5717,6 @@
    "revision": "2c559089e394ea7bc8a9bbde968bcdfb2ef7fac5",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -5864,7 +5776,7 @@
   },
   {
    "tool": "lace",
-   "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+   "revision": "4d553bd696903c7a78652ab61da5237165008195",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -5875,7 +5787,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/lace",
-     "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+     "revision": "4d553bd696903c7a78652ab61da5237165008195",
      "path": "packages/lib/cardano-provider-core/src/provider/blockfrost-network-info-provider.ts",
      "line": 117,
      "quote": "return await this.request<Responses['network-eras"
@@ -5884,7 +5796,7 @@
   },
   {
    "tool": "lace",
-   "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+   "revision": "4d553bd696903c7a78652ab61da5237165008195",
    "via": "ogmios",
    "surfaces": [
     "plutus-language",
@@ -5895,7 +5807,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/lace",
-     "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+     "revision": "4d553bd696903c7a78652ab61da5237165008195",
      "path": "packages/lib/cardano-provider-core/src/provider/blockfrost-tx-evaluation-provider.ts",
      "line": 17,
      "quote": "// Blockfrost `POST /utils/txs/evaluate` \u2014 Ogmios' EvaluateTx"
@@ -5904,7 +5816,7 @@
   },
   {
    "tool": "lace",
-   "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+   "revision": "4d553bd696903c7a78652ab61da5237165008195",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -5916,7 +5828,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/lace",
-     "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+     "revision": "4d553bd696903c7a78652ab61da5237165008195",
      "path": "packages/lib/cardano-provider-core/src/provider/blockfrost-tx-evaluation-provider.ts",
      "line": 17,
      "quote": "// Blockfrost `POST /utils/txs/evaluate` \u2014 Ogmios' EvaluateTx"
@@ -6207,7 +6119,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
@@ -6217,7 +6129,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "packages/payment-source-v1/src/services/purchases/x402-build/service.ts",
      "line": 171,
      "quote": "const protocolParameters = await blockchainProvider.fetchProtocolParameters(Number.NaN);"
@@ -6226,7 +6138,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "blockfrost",
    "surfaces": [
     "era-identity"
@@ -6236,7 +6148,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "packages/payment-source-v1/src/services/purchases/x402-build/service.ts",
      "line": 171,
      "quote": "const protocolParameters = await blockchainProvider.fetchProtocolParameters(Number.NaN);"
@@ -6245,7 +6157,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "ogmios",
    "surfaces": [
     "plutus-language",
@@ -6256,7 +6168,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "packages/payment-source-v1/src/services/registry/register/service.ts",
      "line": 243,
      "quote": "const estimatedFee = (await blockchainProvider.evaluateTx(evaluationTx)) as Array<{"
@@ -6265,7 +6177,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -6277,7 +6189,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "packages/payment-source-v1/src/services/registry/register/service.ts",
      "line": 243,
      "quote": "const estimatedFee = (await blockchainProvider.evaluateTx(evaluationTx)) as Array<{"
@@ -6286,7 +6198,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -6297,7 +6209,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "smart-contracts/payment-v2/example-helpers.mjs",
      "line": 26,
      "quote": "export const blockchainProvider = new KoiosProvider(network);"
@@ -6327,7 +6239,7 @@
   },
   {
    "tool": "meshjs-mesh-sdk",
-   "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+   "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -6341,7 +6253,7 @@
    "evidence": [
     {
      "repo": "MeshJS/mesh",
-     "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+     "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
      "path": "packages/mesh-common/src/constants/index.ts",
      "line": 38,
      "quote": "export const SUPPORTED_OGMIOS_LINKS: Record<Network, string> = {"
@@ -6350,7 +6262,7 @@
   },
   {
    "tool": "meshjs-mesh-sdk",
-   "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+   "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -6361,7 +6273,7 @@
    "evidence": [
     {
      "repo": "MeshJS/mesh",
-     "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+     "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
      "path": "packages/mesh-common/.env.example",
      "line": 2,
      "quote": "BLOCKFROST_API_KEY_PREPROD=preprodxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -6373,8 +6285,6 @@
    "revision": "4c07a40e26d22956bed5915ca09025073b7aa69e",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -6537,11 +6447,9 @@
   },
   {
    "tool": "mithril",
-   "revision": "1f55bfa4725043e454c5a077aa01b36910b85e2e",
+   "revision": "8040607d39de9f173c6216c5617a6611cc0cb0c2",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -6551,7 +6459,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/mithril",
-     "revision": "1f55bfa4725043e454c5a077aa01b36910b85e2e",
+     "revision": "8040607d39de9f173c6216c5617a6611cc0cb0c2",
      "path": "mithril-stm/src/circuits/halo2/circuit.rs",
      "line": 514,
      "quote": "let circuit_cost = zk::cost_model(&circuit, None);"
@@ -6560,7 +6468,7 @@
   },
   {
    "tool": "mithril",
-   "revision": "1f55bfa4725043e454c5a077aa01b36910b85e2e",
+   "revision": "8040607d39de9f173c6216c5617a6611cc0cb0c2",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -6571,7 +6479,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/mithril",
-     "revision": "1f55bfa4725043e454c5a077aa01b36910b85e2e",
+     "revision": "8040607d39de9f173c6216c5617a6611cc0cb0c2",
      "path": "mithril-aggregator/src/tools/signer_importer/blockfrost_retriever.rs",
      "line": 37,
      "quote": "let pools_extended = self"
@@ -6710,7 +6618,7 @@
   },
   {
    "tool": "odatano",
-   "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+   "revision": "4777459dd965a0501d635b3135b814555ac81c20",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -6724,21 +6632,21 @@
    "evidence": [
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": "srv/blockchain/backends/ogmios-backend.ts",
      "line": 1226,
      "quote": "const handlers: Parameters<typeof createChainSynchronizationClient>[1] = {"
     },
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": "srv/blockchain/backends/ogmios-backend.ts",
      "line": 913,
      "quote": "const results = await this.txSubmissionClient!.evaluateTransaction(unsignedTxCbor);"
     },
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": "srv/blockchain/backends/ogmios-backend.ts",
      "line": 930,
      "quote": "async getProtocolParameters(): Promise<LedgerProtocolParameters> {"
@@ -6747,7 +6655,7 @@
   },
   {
    "tool": "odatano",
-   "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+   "revision": "4777459dd965a0501d635b3135b814555ac81c20",
    "via": "blockfrost",
    "surfaces": [
     "protocol-parameters"
@@ -6757,7 +6665,7 @@
    "evidence": [
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": "srv/blockchain/backends/blockfrost-backend.ts",
      "line": 442,
      "quote": "const protocolParams = await this.api.epochsLatestParameters();"
@@ -6766,7 +6674,7 @@
   },
   {
    "tool": "odatano",
-   "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+   "revision": "4777459dd965a0501d635b3135b814555ac81c20",
    "via": "blockfrost",
    "surfaces": [
     "era-identity"
@@ -6776,7 +6684,7 @@
    "evidence": [
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": "srv/blockchain/backends/blockfrost-backend.ts",
      "line": 442,
      "quote": "const protocolParams = await this.api.epochsLatestParameters();"
@@ -6785,7 +6693,7 @@
   },
   {
    "tool": "odatano",
-   "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+   "revision": "4777459dd965a0501d635b3135b814555ac81c20",
    "via": "koios",
    "surfaces": [
     "protocol-parameters"
@@ -6795,7 +6703,7 @@
    "evidence": [
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": "srv/blockchain/backends/koios-backend.ts",
      "line": 910,
      "quote": "this.api.get('/cli_protocol_params'),"
@@ -6804,7 +6712,7 @@
   },
   {
    "tool": "odatano",
-   "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+   "revision": "4777459dd965a0501d635b3135b814555ac81c20",
    "via": "koios",
    "surfaces": [
     "era-identity"
@@ -6814,7 +6722,7 @@
    "evidence": [
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": "srv/blockchain/backends/koios-backend.ts",
      "line": 910,
      "quote": "this.api.get('/cli_protocol_params'),"
@@ -6823,11 +6731,9 @@
   },
   {
    "tool": "odatano",
-   "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+   "revision": "4777459dd965a0501d635b3135b814555ac81c20",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -6837,9 +6743,9 @@
    "evidence": [
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": "srv/blockchain/backends/koios-backend.ts",
-     "line": 1372,
+     "line": 1401,
      "quote": "// Phase-2 validity as db-sync records it; undefined on a Koios without the field, so the"
     }
    ]
@@ -6910,7 +6816,7 @@
   },
   {
    "tool": "pebble",
-   "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+   "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -6922,7 +6828,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/pebble",
-     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
      "path": "packages/pebble-cli/src/init/initPebbleProject.ts",
      "line": 11,
      "quote": "provider: \"blockfrost\" | \"koios\" | \"kupmios\" | \"local-node\" | \"utxo-rpc\" | \"maestro\";"
@@ -6931,7 +6837,7 @@
   },
   {
    "tool": "pebble",
-   "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+   "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -6945,7 +6851,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/pebble",
-     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
      "path": "packages/pebble-cli/src/init/initPebbleProject.ts",
      "line": 11,
      "quote": "provider: \"blockfrost\" | \"koios\" | \"kupmios\" | \"local-node\" | \"utxo-rpc\" | \"maestro\";"
@@ -6954,7 +6860,7 @@
   },
   {
    "tool": "pebble",
-   "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+   "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -6966,7 +6872,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/pebble",
-     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
      "path": "packages/pebble-cli/src/init/initPebbleProject.ts",
      "line": 11,
      "quote": "provider: \"blockfrost\" | \"koios\" | \"kupmios\" | \"local-node\" | \"utxo-rpc\" | \"maestro\";"
@@ -6975,7 +6881,7 @@
   },
   {
    "tool": "plu-ts",
-   "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+   "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -6987,7 +6893,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/pebble",
-     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
      "path": "packages/pebble-cli/src/init/initPebbleProject.ts",
      "line": 11,
      "quote": "provider: \"blockfrost\" | \"koios\" | \"kupmios\" | \"local-node\" | \"utxo-rpc\" | \"maestro\";"
@@ -6996,7 +6902,7 @@
   },
   {
    "tool": "plu-ts",
-   "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+   "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -7010,7 +6916,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/pebble",
-     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
      "path": "packages/pebble-cli/src/init/initPebbleProject.ts",
      "line": 11,
      "quote": "provider: \"blockfrost\" | \"koios\" | \"kupmios\" | \"local-node\" | \"utxo-rpc\" | \"maestro\";"
@@ -7019,7 +6925,7 @@
   },
   {
    "tool": "plu-ts",
-   "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+   "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -7030,7 +6936,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/pebble",
-     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
      "path": "packages/pebble-cli/src/init/initPebbleProject.ts",
      "line": 11,
      "quote": "provider: \"blockfrost\" | \"koios\" | \"kupmios\" | \"local-node\" | \"utxo-rpc\" | \"maestro\";"
@@ -7118,8 +7024,6 @@
    "revision": "cfaa69615031ca052b23893483c2deccca65ab67",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -7320,7 +7224,7 @@
   },
   {
    "tool": "scalus",
-   "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+   "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -7331,14 +7235,14 @@
    "evidence": [
     {
      "repo": "scalus3/scalus",
-     "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+     "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
      "path": "scalus-cardano-ledger/shared/src/main/scala/scalus/cardano/node/BlockfrostProvider.scala",
      "line": 499,
      "quote": "def fetchNetworkEras: Future[Seq[EraInfo]] ="
     },
     {
      "repo": "scalus3/scalus",
-     "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+     "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
      "path": "scalus-cardano-ledger/shared/src/main/scala/scalus/cardano/node/BlockfrostProvider.scala",
      "line": 575,
      "quote": "fetchProtocolParamsFromUrl(s\"$baseUrl/epochs/latest/parameters\")"
@@ -7347,7 +7251,7 @@
   },
   {
    "tool": "scalus",
-   "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+   "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -7361,7 +7265,7 @@
    "evidence": [
     {
      "repo": "scalus3/scalus",
-     "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+     "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
      "path": "scalus-cardano-ledger/shared/src/main/scala/scalus/cardano/node/stream/internal/HubDriver.scala",
      "line": 9,
      "quote": "* it, pull again. Written once so that Blockfrost, Ogmios and UTxORPC cannot each get the"
@@ -7370,7 +7274,7 @@
   },
   {
    "tool": "scalus",
-   "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+   "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -7381,7 +7285,7 @@
    "evidence": [
     {
      "repo": "scalus3/scalus",
-     "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+     "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
      "path": "bloxbean-cardano-client-lib/src/main/scala/scalus/bloxbean/StakeStateResolver.scala",
      "line": 25,
      "quote": "private val koiosUrl = \"https://api.koios.rest/api/v1\""
@@ -7431,7 +7335,7 @@
   },
   {
    "tool": "sorbet",
-   "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+   "revision": "db893849afc9fcc036b0bcafd08bda60f2e32190",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -7443,10 +7347,10 @@
    "evidence": [
     {
      "repo": "SundaeSwap-finance/Sorbet",
-     "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+     "revision": "db893849afc9fcc036b0bcafd08bda60f2e32190",
      "path": "src/background.ts",
-     "line": 441,
-     "quote": "callBlockfrost<any[] | null>(mainnet, `/api/v0/addresses/${address}/utxos`, {"
+     "line": 182,
+     "quote": "fetchAllPages(mainnet, `/api/v0/addresses/${address}/utxos`)"
     }
    ]
   },
@@ -7702,8 +7606,6 @@
    "revision": "ffe889ac08450c5d9f1272cbdc8ffcd990af671b",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -7851,7 +7753,7 @@
   },
   {
    "tool": "yaci-devkit",
-   "revision": "e67d385799b40aab0992d0b3616dfd8c14ed5ff8",
+   "revision": "d93538a264cdf3e74d291598f46daa90d0db57b4",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -7865,7 +7767,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-devkit",
-     "revision": "e67d385799b40aab0992d0b3616dfd8c14ed5ff8",
+     "revision": "d93538a264cdf3e74d291598f46daa90d0db57b4",
      "path": "applications/cli/src/main/java/com/bloxbean/cardano/yacicli/commands/common/DownloadService.java",
      "line": 35,
      "quote": "private final static String OGMIOS_DOWNLOAD_URL = \"https://github.com/CardanoSolutions/ogmios/releases/download\";"
@@ -7874,7 +7776,7 @@
   },
   {
    "tool": "yaci-devkit",
-   "revision": "e67d385799b40aab0992d0b3616dfd8c14ed5ff8",
+   "revision": "d93538a264cdf3e74d291598f46daa90d0db57b4",
    "via": "kupo",
    "surfaces": [
     "block-encoding",
@@ -7886,7 +7788,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-devkit",
-     "revision": "e67d385799b40aab0992d0b3616dfd8c14ed5ff8",
+     "revision": "d93538a264cdf3e74d291598f46daa90d0db57b4",
      "path": "applications/cli/src/main/java/com/bloxbean/cardano/yacicli/commands/common/DownloadService.java",
      "line": 36,
      "quote": "private final static String KUPO_DOWNLOAD_URL = \"https://github.com/CardanoSolutions/kupo/releases/download\";"
@@ -7895,7 +7797,7 @@
   },
   {
    "tool": "yaci-store",
-   "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+   "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
    "via": "ogmios",
    "surfaces": [
     "transaction-encoding",
@@ -7906,7 +7808,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-store",
-     "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
      "path": "components/submit/src/main/java/com/bloxbean/cardano/yaci/store/submit/service/OgmiosService.java",
      "line": 41,
      "quote": "this.ogmiosBackendService = new OgmiosBackendService(ogmiosUrl);"
@@ -7915,7 +7817,7 @@
   },
   {
    "tool": "yaci-store",
-   "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+   "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -7927,7 +7829,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-store",
-     "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
      "path": "components/submit/src/main/java/com/bloxbean/cardano/yaci/store/submit/service/OgmiosService.java",
      "line": 30,
      "quote": "@ConditionalOnProperty(name = \"store.cardano.ogmios-url\")"
@@ -7936,11 +7838,9 @@
   },
   {
    "tool": "yaci-store",
-   "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+   "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -7950,7 +7850,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-store",
-     "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
      "path": "aggregates/analytics-query/src/main/java/com/bloxbean/cardano/yaci/store/analytics/query/model/TableMetadata.java",
      "line": 222,
      "quote": "entry(\"epoch_param\""
@@ -7959,7 +7859,7 @@
   },
   {
    "tool": "yaci-store",
-   "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+   "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -7970,7 +7870,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-store",
-     "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
      "path": "extensions/blockfrost/network/src/main/java/com/bloxbean/cardano/yaci/store/blockfrost/network/controller/BFNetworkController.java",
      "line": 21,
      "quote": "@RestController"
@@ -7979,7 +7879,7 @@
   },
   {
    "tool": "yaci-store",
-   "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+   "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -7990,7 +7890,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-store",
-     "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
      "path": ".claude/skills/yaci-store-remote-debug/scripts/koios_adapot_check.py",
      "line": 3,
      "quote": "Cross-check yaci-store's adapot (ada pot) values against Koios."
@@ -7999,7 +7899,7 @@
   },
   {
    "tool": "yano",
-   "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
    "via": "blockfrost",
    "surfaces": [
     "era-identity",
@@ -8010,7 +7910,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yano",
-     "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+     "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
      "path": "app/config/application-bootstrap.yml",
      "line": 16,
      "quote": "provider: ${YANO_BOOTSTRAP_PROVIDER:blockfrost} # blockfrost | koios"
@@ -8019,7 +7919,7 @@
   },
   {
    "tool": "yano",
-   "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -8030,7 +7930,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yano",
-     "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+     "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
      "path": "app/config/application-bootstrap.yml",
      "line": 16,
      "quote": "provider: ${YANO_BOOTSTRAP_PROVIDER:blockfrost} # blockfrost | koios"
@@ -8039,7 +7939,7 @@
   },
   {
    "tool": "yano",
-   "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -8053,7 +7953,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yano",
-     "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+     "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
      "path": "app/src/main/java/org/yanoproject/app/api/utils/EvaluationResource.java",
      "line": 21,
      "quote": "* Blockfrost/Ogmios-compatible Plutus script evaluation endpoint."
@@ -8062,11 +7962,9 @@
   },
   {
    "tool": "yano",
-   "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -8076,7 +7974,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yano",
-     "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+     "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
      "path": "app/verify.sh",
      "line": 3,
      "quote": "# Cross-verify Yano parquet exports against DBSync and/or Yaci-Store"
@@ -8164,8 +8062,6 @@
    "revision": "5c8f0d18761167611c729e6eae69be67bdd5e981",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -8309,7 +8205,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "aiken",
    "surfaces": [
     "plutus-language",
@@ -8320,7 +8216,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/onchain/aiken.toml",
      "line": 2,
      "quote": "name = \"cardanofoundation/cardano-ibc\""
@@ -8349,7 +8245,7 @@
   },
   {
    "tool": "hydra",
-   "revision": "0225555ecdd501a6bd75cc106719c2d0e0bd5507",
+   "revision": "0aa8987dc49e85756e283f042422e98d20777adb",
    "via": "aiken",
    "surfaces": [
     "plutus-language",
@@ -8360,7 +8256,7 @@
    "evidence": [
     {
      "repo": "cardano-scaling/hydra",
-     "revision": "0225555ecdd501a6bd75cc106719c2d0e0bd5507",
+     "revision": "0aa8987dc49e85756e283f042422e98d20777adb",
      "path": "hydra-plutus/aiken.toml",
      "line": 1,
      "quote": "name = \"hydra/hydra-plutus\""
@@ -8369,7 +8265,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "aiken",
    "surfaces": [
     "plutus-language",
@@ -8380,7 +8276,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "smart-contracts/payment-v2/aiken.toml",
      "line": 1,
      "quote": "name = \"nmkr/masumi-payment\""
@@ -8409,7 +8305,7 @@
   },
   {
    "tool": "meshjs-mesh-sdk",
-   "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+   "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
    "via": "aiken",
    "surfaces": [
     "plutus-language",
@@ -8420,7 +8316,7 @@
    "evidence": [
     {
      "repo": "MeshJS/mesh",
-     "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+     "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
      "path": "packages/mesh-contract/src/content-ownership/aiken-workspace/aiken.toml",
      "line": 1,
      "quote": "name = \"meshjs/content-ownership\""
@@ -8549,7 +8445,7 @@
   },
   {
    "tool": "yano",
-   "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
    "via": "aiken",
    "surfaces": [
     "plutus-language",
@@ -8560,7 +8456,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yano",
-     "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+     "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
      "path": "appchain/onchain/aiken/appchain-anchor/aiken.toml",
      "line": 1,
      "quote": "name = \"bloxbean/appchain_anchor\""
@@ -8569,7 +8465,7 @@
   },
   {
    "tool": "bloxbean-cardano-client-library",
-   "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
    "via": "aiken",
    "surfaces": [
     "plutus-language",
@@ -8580,7 +8476,7 @@
    "evidence": [
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "annotation-processor/src/it/resources/blueprint/address_check/aiken.toml",
      "line": 1,
      "quote": "name = \"ccl/address_check\""
@@ -8589,7 +8485,7 @@
   },
   {
    "tool": "bloxbean-cardano-client-library",
-   "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
    "via": "julc",
    "surfaces": [
     "plutus-language"
@@ -8599,7 +8495,7 @@
    "evidence": [
     {
      "repo": "bloxbean/cardano-client-lib",
-     "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
      "path": "programmable-token/src/it/julc/build.gradle",
      "line": 18,
      "quote": "implementation(\"com.bloxbean.cardano:julc-stdlib:${julcVersion}\") {"
@@ -8628,7 +8524,7 @@
   },
   {
    "tool": "yano",
-   "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
    "via": "julc",
    "surfaces": [
     "plutus-language"
@@ -8638,7 +8534,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yano",
-     "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+     "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
      "path": "app/build.gradle",
      "line": 544,
      "quote": "// julc (org.julclang) declares its own MIT license in its POM."
@@ -8851,7 +8747,7 @@
   },
   {
    "tool": "amaru",
-   "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+   "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
    "via": "mithril",
    "surfaces": [
     "block-encoding"
@@ -8861,16 +8757,16 @@
    "evidence": [
     {
      "repo": "pragma-org/amaru",
-     "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+     "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
      "path": "Cargo.toml",
-     "line": 68,
+     "line": 69,
      "quote": "mithril-client = { version = \"0.14.17\", default-features = false, features = [\"fs\", \"num-integer-backend\", \"rustls-tls\"] }"
     }
    ]
   },
   {
    "tool": "daedalus",
-   "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+   "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
    "via": "mithril",
    "surfaces": [
     "block-encoding"
@@ -8880,7 +8776,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/daedalus",
-     "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+     "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
      "path": "watchdog/Cargo.toml",
      "line": 36,
      "quote": "name = \"mock-mithril-client\""
@@ -8889,7 +8785,7 @@
   },
   {
    "tool": "dolos",
-   "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+   "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
    "via": "mithril",
    "surfaces": [
     "block-encoding"
@@ -8899,7 +8795,7 @@
    "evidence": [
     {
      "repo": "txpipe/dolos",
-     "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+     "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
      "path": "crates/mithril/Cargo.toml",
      "line": 13,
      "quote": "mithril-client = { version = \"0.14.34\", default-features = false, features = ["
@@ -8908,7 +8804,7 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "via": "mithril",
    "surfaces": [
     "block-encoding"
@@ -8918,7 +8814,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
      "path": "flake.nix",
      "line": 42,
      "quote": "inputs.mithril.packages.${system}.mithril-client-cli"
@@ -8927,7 +8823,7 @@
   },
   {
    "tool": "oura",
-   "revision": "75482fc7585a2eee71429076c2f5f0f772a158d6",
+   "revision": "6592a85cca81727a0ef32ebb94f389cebad446bb",
    "via": "mithril",
    "surfaces": [
     "block-encoding"
@@ -8937,7 +8833,7 @@
    "evidence": [
     {
      "repo": "txpipe/oura",
-     "revision": "75482fc7585a2eee71429076c2f5f0f772a158d6",
+     "revision": "6592a85cca81727a0ef32ebb94f389cebad446bb",
      "path": "Cargo.toml",
      "line": 21,
      "quote": "mithril = [\"mithril-client\"]"
@@ -9003,7 +8899,7 @@
   },
   {
    "tool": "lace",
-   "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+   "revision": "4d553bd696903c7a78652ab61da5237165008195",
    "via": "ledgerjs-hw-app-cardano",
    "surfaces": [
     "transaction-encoding"
@@ -9013,7 +8909,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/lace",
-     "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+     "revision": "4d553bd696903c7a78652ab61da5237165008195",
      "path": "packages/lib/util-hw/src/mobile/ledger-ble-service.ts",
      "line": 1,
      "quote": "import LedgerConnection from '@cardano-foundation/ledgerjs-hw-app-cardano';"
@@ -9079,7 +8975,7 @@
   },
   {
    "tool": "bursa",
-   "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+   "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
    "via": "ledgerjs-hw-app-cardano",
    "surfaces": [
     "transaction-encoding"
@@ -9089,7 +8985,7 @@
    "evidence": [
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "ui/web/src/hw/ledger.ts",
      "line": 13,
      "quote": "import Ada from \"@cardano-foundation/ledgerjs-hw-app-cardano\";"
@@ -9117,7 +9013,7 @@
   },
   {
    "tool": "daedalus",
-   "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+   "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
    "via": "ledgerjs-hw-app-cardano",
    "surfaces": [
     "transaction-encoding"
@@ -9170,7 +9066,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "cardano-multiplatform-lib-cml",
    "surfaces": [
     "transaction-encoding"
@@ -9180,16 +9076,16 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/query/services/query.service.ts",
-     "line": 313,
+     "line": 314,
      "quote": "const body = CML.TransactionBody.from_cbor_hex(evidence.txBodyCborHex);"
     }
    ]
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "cardano-multiplatform-lib-cml",
    "surfaces": [
     "block-encoding",
@@ -9203,9 +9099,9 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/src/query/services/query.service.ts",
-     "line": 313,
+     "line": 314,
      "quote": "const body = CML.TransactionBody.from_cbor_hex(evidence.txBodyCborHex);"
     }
    ]
@@ -9392,7 +9288,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "meshjs-mesh-sdk",
    "surfaces": [
     "plutus-language",
@@ -9405,7 +9301,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "frontend/package.json",
      "line": 24,
      "quote": "\"@meshsdk/core\": \"1.9.0-beta.96\","
@@ -9438,7 +9334,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "meshjs-mesh-sdk",
    "surfaces": [
     "plutus-language",
@@ -9451,9 +9347,9 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "dapps/ibc-swap/client/package.json",
-     "line": 48,
+     "line": 46,
      "quote": "\"@meshsdk/common\": \"1.9.1\","
     }
    ]
@@ -9526,7 +9422,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "lucid-evolution",
    "surfaces": [
     "protocol-parameters",
@@ -9538,7 +9434,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/package.json",
      "line": 57,
      "quote": "\"@lucid-evolution/lucid\": \"0.6.5\","
@@ -9547,7 +9443,7 @@
   },
   {
    "tool": "meshjs-mesh-sdk",
-   "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+   "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
    "via": "whisky",
    "surfaces": [
     "transaction-encoding"
@@ -9557,7 +9453,7 @@
    "evidence": [
     {
      "repo": "MeshJS/mesh",
-     "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+     "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
      "path": "packages/mesh-core-csl/src/parser/index.ts",
      "line": 1,
      "quote": "import { js_parse_tx_body, JsVecString } from \"@sidan-lab/whisky-js-nodejs\";"
@@ -9566,7 +9462,7 @@
   },
   {
    "tool": "meshjs-mesh-sdk",
-   "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+   "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
    "via": "whisky",
    "surfaces": [
     "era-identity",
@@ -9578,7 +9474,7 @@
    "evidence": [
     {
      "repo": "MeshJS/mesh",
-     "revision": "82cc3da2e58f20d4d7367c8eed4640bc434e828d",
+     "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
      "path": "packages/mesh-core-csl/src/deser/csl.ts",
      "line": 1,
      "quote": "export * as csl from \"@sidan-lab/whisky-js-nodejs\";"
@@ -9587,7 +9483,7 @@
   },
   {
    "tool": "odatano",
-   "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+   "revision": "4777459dd965a0501d635b3135b814555ac81c20",
    "via": "buildooor",
    "surfaces": [
     "plutus-language",
@@ -9598,7 +9494,7 @@
    "evidence": [
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": ".env.example",
      "line": 27,
      "quote": "TX_BUILDERS=buildooor"
@@ -9607,21 +9503,35 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "via": "buildooor",
    "surfaces": [
     "plutus-language",
     "transaction-encoding"
    ],
-   "decision": "not-reached",
-   "summary": "buildooor is declared in package.json but no shipped module imports it.",
+   "decision": "confirmed",
+   "summary": "Plutus evaluation in the consensus rules now goes through buildooor: every body, witness set and UTxO is rebuilt with buildooor's classes, whose ledger types lack Dijkstra body keys 24 and 27, and getTxInfos builds V1-V3 contexts only; reference scripts of language 4 are dropped before evaluation.",
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
-     "path": "package.json",
-     "line": 33,
-     "quote": "\"@harmoniclabs/buildooor\": \"^0.1.31\","
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
+     "path": "src/consensus/rules/plutusEval.ts",
+     "line": 7,
+     "quote": " * So everything handed to buildooor (body, witness set, resolved UTxOs, datums)"
+    },
+    {
+     "repo": "HarmonicLabs/gerolamo",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
+     "path": "src/consensus/rules/plutusEval.ts",
+     "line": 228,
+     "quote": "return { language: lang === 1 || lang === 2 || lang === 3 ? (lang as PlutusLanguage) : null, bytes: body.bytes };"
+    },
+    {
+     "repo": "HarmonicLabs/gerolamo",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
+     "path": "src/consensus/rules/plutusEval.ts",
+     "line": 343,
+     "quote": "infos = getTxInfos(txLike as any, genesisInfos as any, { upperBoundClosed: pv > 0 && pv < 9 });"
     }
    ]
   },
@@ -9753,7 +9663,7 @@
   },
   {
    "tool": "cardano-rosetta-java",
-   "revision": "b718af64172760afdf2465c3be938c07f190149e",
+   "revision": "e3be4dac2fc1a026fab7685505f6e5960ccea946",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "transaction-encoding"
@@ -9763,7 +9673,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-rosetta-java",
-     "revision": "b718af64172760afdf2465c3be938c07f190149e",
+     "revision": "e3be4dac2fc1a026fab7685505f6e5960ccea946",
      "path": "api/src/main/java/org/cardanofoundation/rosetta/api/construction/service/CardanoConstructionServiceImpl.java",
      "line": 131,
      "quote": "DataItem dataItem = CborSerializationUtil.deserialize(decodeHexString(encoded));"
@@ -9772,7 +9682,7 @@
   },
   {
    "tool": "julc",
-   "revision": "b5ff39a84150ff9d53ba431a7f45d31a5a366d1f",
+   "revision": "c1842986a37e5db4e402eedbfe4e187321d1fe92",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "transaction-encoding",
@@ -9783,7 +9693,7 @@
    "evidence": [
     {
      "repo": "bloxbean/julc",
-     "revision": "b5ff39a84150ff9d53ba431a7f45d31a5a366d1f",
+     "revision": "c1842986a37e5db4e402eedbfe4e187321d1fe92",
      "path": "julc-cardano-client-lib/src/main/java/org/julclang/clientlib/eval/JulcTransactionEvaluator.java",
      "line": 194,
      "quote": "Transaction tx = Transaction.deserialize(cbor);"
@@ -9792,7 +9702,7 @@
   },
   {
    "tool": "scalus",
-   "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+   "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "transaction-encoding",
@@ -9803,7 +9713,7 @@
    "evidence": [
     {
      "repo": "scalus3/scalus",
-     "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+     "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
      "path": "bloxbean-cardano-client-lib/src/main/scala/scalus/bloxbean/ScalusTransactionEvaluator.scala",
      "line": 36,
      "quote": "class ScalusTransactionEvaluator("
@@ -9812,7 +9722,7 @@
   },
   {
    "tool": "yano",
-   "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "transaction-encoding",
@@ -9843,7 +9753,7 @@
   },
   {
    "tool": "yaci-store",
-   "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+   "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "era-identity"
@@ -9853,7 +9763,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-store",
-     "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
      "path": "aggregates/account/src/main/java/com/bloxbean/cardano/yaci/store/account/processor/AccountBalanceProcessor.java",
      "line": 154,
      "quote": "if (event.getMetadata().getEra().getValue() < Era.Conway.getValue()) {"
@@ -9902,7 +9812,7 @@
   },
   {
    "tool": "cardano-rosetta-java",
-   "revision": "b718af64172760afdf2465c3be938c07f190149e",
+   "revision": "e3be4dac2fc1a026fab7685505f6e5960ccea946",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "era-identity",
@@ -9915,7 +9825,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-rosetta-java",
-     "revision": "b718af64172760afdf2465c3be938c07f190149e",
+     "revision": "e3be4dac2fc1a026fab7685505f6e5960ccea946",
      "path": "api/pom.xml",
      "line": 175,
      "quote": "<artifactId>cardano-client-lib</artifactId>"
@@ -9924,7 +9834,7 @@
   },
   {
    "tool": "julc",
-   "revision": "b5ff39a84150ff9d53ba431a7f45d31a5a366d1f",
+   "revision": "c1842986a37e5db4e402eedbfe4e187321d1fe92",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "era-identity",
@@ -9936,7 +9846,7 @@
    "evidence": [
     {
      "repo": "bloxbean/julc",
-     "revision": "b5ff39a84150ff9d53ba431a7f45d31a5a366d1f",
+     "revision": "c1842986a37e5db4e402eedbfe4e187321d1fe92",
      "path": "julc-annotation-processor/build.gradle",
      "line": 11,
      "quote": "implementation project(':julc-cardano-client-lib')"
@@ -9945,7 +9855,7 @@
   },
   {
    "tool": "scalus",
-   "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+   "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "era-identity",
@@ -9957,7 +9867,7 @@
    "evidence": [
     {
      "repo": "scalus3/scalus",
-     "revision": "a3f45cb92c155991ffeac2f7dad115f9d2ad65e7",
+     "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
      "path": "build.sbt",
      "line": 288,
      "quote": "`scalus-bloxbean-cardano-client-lib`,"
@@ -9966,7 +9876,7 @@
   },
   {
    "tool": "yano",
-   "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "era-identity",
@@ -9978,7 +9888,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yano",
-     "revision": "dc1a2ac4eaaf010766f78e80eb0ddbef0f17c1e4",
+     "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
      "path": "gradle/libs.versions.toml",
      "line": 3,
      "quote": "cardano-client-lib = \"0.8.0-pre7\""
@@ -10009,7 +9919,7 @@
   },
   {
    "tool": "yaci-store",
-   "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+   "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "plutus-language",
@@ -10022,7 +9932,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-store",
-     "revision": "01b2aa85ef0fd7c716b52e1c0d6bf88333abfd26",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
      "path": "components/common/build.gradle",
      "line": 10,
      "quote": "exclude group: \"com.bloxbean.cardano\", module: \"cardano-client-core\""
@@ -10099,7 +10009,7 @@
   },
   {
    "tool": "yaci-devkit",
-   "revision": "e67d385799b40aab0992d0b3616dfd8c14ed5ff8",
+   "revision": "d93538a264cdf3e74d291598f46daa90d0db57b4",
    "via": "bloxbean-cardano-client-library",
    "surfaces": [
     "era-identity",
@@ -10113,7 +10023,7 @@
    "evidence": [
     {
      "repo": "bloxbean/yaci-devkit",
-     "revision": "e67d385799b40aab0992d0b3616dfd8c14ed5ff8",
+     "revision": "d93538a264cdf3e74d291598f46daa90d0db57b4",
      "path": "applications/cli/build.gradle",
      "line": 42,
      "quote": "exclude group: 'com.bloxbean.cardano', module: 'cardano-client-core'"
@@ -10146,7 +10056,7 @@
   },
   {
    "tool": "dingo",
-   "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+   "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
    "via": "gouroboros",
    "surfaces": [
     "era-identity"
@@ -10156,7 +10066,7 @@
    "evidence": [
     {
      "repo": "blinklabs-io/dingo",
-     "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
+     "revision": "e82916d922d528a0c804fd639030d44fd9f51659",
      "path": "api/utxorpc/submit.go",
      "line": 86,
      "quote": "txType, err := safedecode.TransactionType(txRawBytes)"
@@ -10164,30 +10074,10 @@
    ]
   },
   {
-   "tool": "dingo",
-   "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
-   "via": "gouroboros",
-   "surfaces": [
-    "block-encoding"
-   ],
-   "decision": "confirmed",
-   "summary": "Chain-sync decodes block headers with gouroboros, which requires the twelve-field Dijkstra header that the tagged node 11.2.0 does not emit.",
-   "evidence": [
-    {
-     "repo": "blinklabs-io/dingo",
-     "revision": "5da46698bdfa7818c30407e10953d450c74d533f",
-     "path": "ouroboros/chainsync.go",
-     "line": 3626,
-     "quote": "header, err = gledger.NewBlockHeaderFromCbor(blockType, raw)"
-    }
-   ]
-  },
-  {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "gouroboros",
    "surfaces": [
-    "block-encoding",
     "era-identity"
    ],
    "decision": "not-reached",
@@ -10195,16 +10085,16 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "apollo.go",
-     "line": 2329,
+     "line": 2508,
      "quote": "a.tx = &conway.ConwayTransaction{"
     }
    ]
   },
   {
    "tool": "amaru",
-   "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+   "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
    "via": "pallas",
    "surfaces": [
     "block-encoding",
@@ -10215,23 +10105,23 @@
    "evidence": [
     {
      "repo": "pragma-org/amaru",
-     "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+     "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
      "path": "crates/amaru-bootstrap/src/bootstrap/mod.rs",
      "line": 336,
      "quote": "from_cbor(&content.cbor)"
     },
     {
      "repo": "pragma-org/amaru",
-     "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+     "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
      "path": "Cargo.toml",
-     "line": 76,
+     "line": 77,
      "quote": "pallas-network = \"0.34.0\""
     }
    ]
   },
   {
    "tool": "mithril",
-   "revision": "1f55bfa4725043e454c5a077aa01b36910b85e2e",
+   "revision": "8040607d39de9f173c6216c5617a6611cc0cb0c2",
    "via": "pallas",
    "surfaces": [
     "block-encoding",
@@ -10242,14 +10132,14 @@
    "evidence": [
     {
      "repo": "IntersectMBO/mithril",
-     "revision": "1f55bfa4725043e454c5a077aa01b36910b85e2e",
+     "revision": "8040607d39de9f173c6216c5617a6611cc0cb0c2",
      "path": "internal/cardano-node/mithril-cardano-node-chain/src/chain_reader/pallas_chain_reader.rs",
      "line": 298,
      "quote": "let multi_era_block = MultiEraBlock::decode(&raw_block)"
     },
     {
      "repo": "IntersectMBO/mithril",
-     "revision": "1f55bfa4725043e454c5a077aa01b36910b85e2e",
+     "revision": "8040607d39de9f173c6216c5617a6611cc0cb0c2",
      "path": "internal/cardano-node/mithril-cardano-node-chain/Cargo.toml",
      "line": 26,
      "quote": "pallas-network = { version = \"1.4.0\" }"
@@ -10285,28 +10175,28 @@
   },
   {
    "tool": "dolos",
-   "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+   "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
    "via": "pallas",
    "surfaces": [
     "block-encoding",
     "era-identity"
    ],
    "decision": "confirmed",
-   "summary": "Dolos decodes the blocks it archives and serves with MultiEraBlock::decode; it pins Pallas 1.3.0, whose traversal has no Dijkstra era even with unstable.",
+   "summary": "Dolos decodes the blocks it archives and serves with MultiEraBlock::decode; it pins Pallas 1.4.0, which decodes no Dijkstra block from the 11.2.0 node (devnet check pallas-chain-sync on 2026-11-01; 1.5.0-rc.1 and main still fail on 2026-11-09).",
    "evidence": [
     {
      "repo": "txpipe/dolos",
-     "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+     "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
      "path": "crates/fjall/src/archive/mod.rs",
-     "line": 1189,
+     "line": 1201,
      "quote": "MultiEraBlock::decode(&body).map_err(ArchiveError::BlockDecodingError)?;"
     },
     {
      "repo": "txpipe/dolos",
-     "revision": "c5e4f77e93b53098196df404c5afe33981a056ff",
+     "revision": "f8ae0557eb4443d4f3e1a0e9d2fcbc74e9ecfede",
      "path": "Cargo.toml",
-     "line": 231,
-     "quote": "pallas = { version = \"1.3.0\", features = [\"hardano\", \"phase2\", \"unstable\"] }"
+     "line": 230,
+     "quote": "pallas = { version = \"1.4.0\", features = [\"hardano\", \"phase2\", \"unstable\"] }"
     }
    ]
   },
@@ -10372,35 +10262,35 @@
   },
   {
    "tool": "oura",
-   "revision": "75482fc7585a2eee71429076c2f5f0f772a158d6",
+   "revision": "6592a85cca81727a0ef32ebb94f389cebad446bb",
    "via": "pallas",
    "surfaces": [
     "block-encoding",
     "era-identity"
    ],
    "decision": "confirmed",
-   "summary": "The node-to-node source decodes every header with MultiEraHeader::decode and the parse_cbor filter decodes blocks with MultiEraBlock::decode, through Pallas 1.1.",
+   "summary": "The node-to-node source decodes every header with MultiEraHeader::decode and the parse_cbor filter decodes blocks with MultiEraBlock::decode, through Pallas 1.4, which decodes no Dijkstra block from the 11.2.0 node.",
    "evidence": [
     {
      "repo": "txpipe/oura",
-     "revision": "75482fc7585a2eee71429076c2f5f0f772a158d6",
+     "revision": "6592a85cca81727a0ef32ebb94f389cebad446bb",
      "path": "src/sources/n2n.rs",
      "line": 44,
      "quote": "MultiEraHeader::decode(header.variant, Some(subtag), &header.cbor)"
     },
     {
      "repo": "txpipe/oura",
-     "revision": "75482fc7585a2eee71429076c2f5f0f772a158d6",
+     "revision": "6592a85cca81727a0ef32ebb94f389cebad446bb",
      "path": "src/filters/parse_cbor.rs",
      "line": 48,
      "quote": "trv::MultiEraBlock::decode(&cbor)"
     },
     {
      "repo": "txpipe/oura",
-     "revision": "75482fc7585a2eee71429076c2f5f0f772a158d6",
+     "revision": "6592a85cca81727a0ef32ebb94f389cebad446bb",
      "path": "Cargo.toml",
      "line": 48,
-     "quote": "pallas = { version = \"1.1\", features = [\"hardano\"] }"
+     "quote": "pallas = { version = \"1.4\", features = [\"hardano\"] }"
     }
    ]
   },
@@ -10789,7 +10679,7 @@
   },
   {
    "tool": "evolution-sdk",
-   "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+   "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
    "via": "service:maestro",
    "surfaces": [
     "era-identity",
@@ -10801,7 +10691,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/evolution-sdk",
-     "revision": "b7b7672866428546a1172c487e854ae70b8d8da4",
+     "revision": "6799aacc68d0a8f692b2871c5b65c735e64fbc02",
      "path": "packages/evolution/src/sdk/client/internal/Providers.ts",
      "line": 20,
      "quote": "new Maestro.MaestroProvider(config.baseUrl, config.apiKey, config.turboSubmit)"
@@ -11107,7 +10997,7 @@
   },
   {
    "tool": "cardano-up",
-   "revision": "30b2e3547e517a6d2bf88267cc74374d6a18500f",
+   "revision": "72685dbd2ee8cbb9a151e92763938d81411f8448",
    "via": "own",
    "surfaces": [
     "block-encoding",
@@ -11118,7 +11008,7 @@
    "evidence": [
     {
      "repo": "blinklabs-io/cardano-up",
-     "revision": "30b2e3547e517a6d2bf88267cc74374d6a18500f",
+     "revision": "72685dbd2ee8cbb9a151e92763938d81411f8448",
      "path": "go.mod",
      "line": 48,
      "quote": "github.com/fxamacker/cbor/v2"
@@ -11831,7 +11721,7 @@
   },
   {
    "tool": "plinth-plutus-tx",
-   "revision": "1ef5a0eef37772e35b1e587f7a3b0afa61be4358",
+   "revision": "428060937510b7b577667faad173da8830cb98d9",
    "via": "own",
    "surfaces": [
     "block-encoding",
@@ -11846,14 +11736,14 @@
    "evidence": [
     {
      "repo": "IntersectMBO/plutus",
-     "revision": "1ef5a0eef37772e35b1e587f7a3b0afa61be4358",
+     "revision": "428060937510b7b577667faad173da8830cb98d9",
      "path": "plutus-ledger-api/src/PlutusLedgerApi/Common/Versions.hs",
      "line": 101,
      "quote": "PlutusV4"
     },
     {
      "repo": "IntersectMBO/plutus",
-     "revision": "1ef5a0eef37772e35b1e587f7a3b0afa61be4358",
+     "revision": "428060937510b7b577667faad173da8830cb98d9",
      "path": "plutus-ledger-api/src/PlutusLedgerApi/Common/Versions.hs",
      "line": 114,
      "quote": "PlutusV4 -> dijkstraPV"
@@ -11862,7 +11752,7 @@
   },
   {
    "tool": "pebble",
-   "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+   "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
    "via": "own",
    "surfaces": [
     "plutus-script-context",
@@ -11875,16 +11765,16 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/pebble",
-     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
      "path": "packages/pebble/src/compiler/tir/program/stdScope/prelude/preludeTypesSrc.ts",
      "line": 252,
      "quote": "StakeRegistration {"
     },
     {
      "repo": "HarmonicLabs/pebble",
-     "revision": "d6a5a75575d6091bc0bd3f63d5daa225d6772677",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
      "path": "packages/pebble/src/compiler/AstCompiler/AstCompiler.ts",
-     "line": 2628,
+     "line": 2635,
      "quote": "new Identifier( \"ScriptContext\", contractDecl.name.range ),"
     }
    ]
@@ -12238,7 +12128,7 @@
   },
   {
    "tool": "cardano-token-registry",
-   "revision": "a7f2aed87c594ccaa42776ce6cff1faaec7ca86d",
+   "revision": "e6e32c1bd54051e29b87e44a34d8f804ba934d6f",
    "via": "own",
    "surfaces": [
     "node-to-client-protocol"
@@ -12248,7 +12138,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-token-registry",
-     "revision": "a7f2aed87c594ccaa42776ce6cff1faaec7ca86d",
+     "revision": "e6e32c1bd54051e29b87e44a34d8f804ba934d6f",
      "path": "mappings/3866314777c915a1d6a22ef1ae76ddd888db031343f8d7fcc60148dc5245575258.json",
      "line": 46,
      "quote": "\"value\": \"iVBORw0KGgo"
@@ -12257,7 +12147,7 @@
   },
   {
    "tool": "sorbet",
-   "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+   "revision": "db893849afc9fcc036b0bcafd08bda60f2e32190",
    "via": "own",
    "surfaces": [
     "block-encoding",
@@ -12268,7 +12158,7 @@
    "evidence": [
     {
      "repo": "SundaeSwap-finance/Sorbet",
-     "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
+     "revision": "db893849afc9fcc036b0bcafd08bda60f2e32190",
      "path": "src/utils/utxo.ts",
      "line": 1,
      "quote": "import * as cbor from \"cbor-web\";"
@@ -12343,7 +12233,7 @@
   },
   {
    "tool": "cardano-addresses",
-   "revision": "8ff303919af0f02c580074baea082505f0812c8f",
+   "revision": "e6d2632754c4b1c1585e4ed9fcee97830c9bc5b0",
    "via": "own",
    "surfaces": [
     "block-encoding",
@@ -12354,7 +12244,7 @@
    "evidence": [
     {
      "repo": "IntersectMBO/cardano-addresses",
-     "revision": "8ff303919af0f02c580074baea082505f0812c8f",
+     "revision": "e6d2632754c4b1c1585e4ed9fcee97830c9bc5b0",
      "path": "cabal-wasm.project",
      "line": 34,
      "quote": "subdir: cborg"
@@ -12502,7 +12392,7 @@
   },
   {
    "tool": "amaru",
-   "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+   "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
    "via": "aiken",
    "surfaces": [
     "plutus-language",
@@ -12513,16 +12403,16 @@
    "evidence": [
     {
      "repo": "pragma-org/amaru",
-     "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+     "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
      "path": "crates/amaru-ledger/src/rules/transaction/phase_two/mod.rs",
      "line": 30,
      "quote": "use amaru_uplc::{"
     },
     {
      "repo": "pragma-org/amaru",
-     "revision": "5da03ef27d50f8ba00ea6ff5a47b2a0cc9b37d49",
+     "revision": "ab47f2c22dc9a4c1ac2d4d68fd37cc58b62b5464",
      "path": "crates/amaru-ledger/src/rules/transaction/phase_one/outputs.rs",
-     "line": 19,
+     "line": 20,
      "quote": "use amaru_uplc::{arena::Arena, arena_pool::ArenaPool, flat::decode_plutus_script};"
     }
    ]
@@ -12638,7 +12528,7 @@
   },
   {
    "tool": "blockfrost",
-   "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
+   "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "plutus-language",
@@ -12652,14 +12542,14 @@
    "evidence": [
     {
      "repo": "blockfrost/blockfrost-backend-ryo",
-     "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
+     "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
      "path": "yarn.lock",
-     "line": 69,
+     "line": 72,
      "quote": "\"@emurgo/cardano-serialization-lib-nodejs\": ^15.0.3"
     },
     {
      "repo": "blockfrost/blockfrost-backend-ryo",
-     "revision": "a762667d9d1346075f533f7f753c13ceef6fe59b",
+     "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
      "path": "src/routes/addresses/address/utxos/asset.ts",
      "line": 2,
      "quote": "import { validateAsset } from '@blockfrost/blockfrost-utils/lib/validation.js';"
@@ -12668,7 +12558,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "cardano-js-sdk",
    "surfaces": [
     "protocol-parameters"
@@ -12678,7 +12568,7 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
      "path": "cardano/gateway/package-lock.json",
      "line": 928,
      "quote": "\"node_modules/@cardano-sdk/core/node_modules/@cardano-sdk/crypto\": {"
@@ -12712,7 +12602,7 @@
   },
   {
    "tool": "bursa",
-   "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+   "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "plutus-language"
@@ -12722,14 +12612,14 @@
    "evidence": [
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "ui/web/package-lock.json",
      "line": 1268,
      "quote": "\"node_modules/@keystonehq/hw-app-ada\": {"
     },
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "ui/web/src/hw/index.ts",
      "line": 20,
      "quote": "import { connectKeystone } from \"./keystone\";"
@@ -12738,7 +12628,7 @@
   },
   {
    "tool": "bursa",
-   "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+   "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
    "via": "cardano-hw-interop-lib",
    "surfaces": [
     "transaction-encoding"
@@ -12748,14 +12638,14 @@
    "evidence": [
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "ui/web/package-lock.json",
      "line": 1268,
      "quote": "\"node_modules/@keystonehq/hw-app-ada\": {"
     },
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "ui/web/src/hw/index.ts",
      "line": 20,
      "quote": "import { connectKeystone } from \"./keystone\";"
@@ -12764,7 +12654,7 @@
   },
   {
    "tool": "odatano",
-   "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+   "revision": "4777459dd965a0501d635b3135b814555ac81c20",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "plutus-language",
@@ -12778,7 +12668,7 @@
    "evidence": [
     {
      "repo": "ODATANO/ODATANO",
-     "revision": "7c82c59ce71f972c0662c21fa823eea7c1ad2f53",
+     "revision": "4777459dd965a0501d635b3135b814555ac81c20",
      "path": "package-lock.json",
      "line": 111,
      "quote": "\"node_modules/@blockfrost/blockfrost-js\": {"
@@ -12887,7 +12777,7 @@
   },
   {
    "tool": "daedalus",
-   "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+   "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "plutus-language",
@@ -12901,7 +12791,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/daedalus",
-     "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+     "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
      "path": "yarn.lock",
      "line": 1625,
      "quote": "\"@fivebinaries/coin-selection"
@@ -12910,7 +12800,7 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "plutus-language",
@@ -12924,9 +12814,9 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
      "path": "bun.lock",
-     "line": 62,
+     "line": 63,
      "quote": "\"@blockfrost/blockfrost-js\": [\"@blockfrost/blockfrost-js@"
     }
    ]
@@ -13071,7 +12961,7 @@
   },
   {
    "tool": "lace",
-   "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+   "revision": "4d553bd696903c7a78652ab61da5237165008195",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "plutus-language",
@@ -13085,9 +12975,9 @@
    "evidence": [
     {
      "repo": "input-output-hk/lace",
-     "revision": "bec4d25a0ea75cc4fcd0dae36d63d4dfa8fb122d",
+     "revision": "4d553bd696903c7a78652ab61da5237165008195",
      "path": "package-lock.json",
-     "line": 11033,
+     "line": 11124,
      "quote": "\"node_modules/@fivebinaries/coin-selection\": {"
     }
    ]
@@ -13239,40 +13129,8 @@
    ]
   },
   {
-   "tool": "sorbet",
-   "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
-   "via": "cardano-multiplatform-lib-cml",
-   "surfaces": [
-    "block-encoding",
-    "era-identity",
-    "plutus-language",
-    "protocol-parameters",
-    "stake-pool-registration",
-    "transaction-encoding",
-    "transaction-rules"
-   ],
-   "decision": "not-reached",
-   "summary": "CML is left over in bun.lock: package.json no longer declares it and the only source reference is commented out.",
-   "evidence": [
-    {
-     "repo": "SundaeSwap-finance/Sorbet",
-     "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
-     "path": "bun.lock",
-     "line": 126,
-     "quote": "\"@dcspark/cardano-multiplatform-lib-browser\": [\"@dcspark/cardano-multiplatform-lib-browser"
-    },
-    {
-     "repo": "SundaeSwap-finance/Sorbet",
-     "revision": "9f5d7c05f3ffca26180eae1271229d3e825be19f",
-     "path": "src/modules/ImpersonatedWallet.class.ts",
-     "line": 15,
-     "quote": "// import { Address } from \"@dcspark/cardano-multiplatform-lib-browser\";"
-    }
-   ]
-  },
-  {
    "tool": "cardano-up",
-   "revision": "30b2e3547e517a6d2bf88267cc74374d6a18500f",
+   "revision": "72685dbd2ee8cbb9a151e92763938d81411f8448",
    "via": "utxorpc",
    "surfaces": [
     "block-encoding",
@@ -13283,7 +13141,7 @@
    "evidence": [
     {
      "repo": "blinklabs-io/cardano-up",
-     "revision": "30b2e3547e517a6d2bf88267cc74374d6a18500f",
+     "revision": "72685dbd2ee8cbb9a151e92763938d81411f8448",
      "path": "go.mod",
      "line": 108,
      "quote": "github.com/utxorpc/go-codegen v0.19.2 // indirect"
@@ -13292,7 +13150,7 @@
   },
   {
    "tool": "bursa",
-   "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+   "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "protocol-parameters",
@@ -13304,14 +13162,14 @@
    "evidence": [
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "ui/web/package-lock.json",
      "line": 1268,
      "quote": "\"node_modules/@keystonehq/hw-app-ada\": {"
     },
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "ui/web/src/hw/index.ts",
      "line": 20,
      "quote": "import { connectKeystone } from \"./keystone\";"
@@ -13320,7 +13178,7 @@
   },
   {
    "tool": "bursa",
-   "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+   "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "block-encoding"
@@ -13330,14 +13188,14 @@
    "evidence": [
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "ui/web/package-lock.json",
      "line": 1268,
      "quote": "\"node_modules/@keystonehq/hw-app-ada\": {"
     },
     {
      "repo": "blinklabs-io/bursa",
-     "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+     "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
      "path": "ui/web/src/hw/index.ts",
      "line": 20,
      "quote": "import { connectKeystone } from \"./keystone\";"
@@ -13440,7 +13298,7 @@
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "protocol-parameters",
@@ -13452,16 +13310,23 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
-     "path": "dapps/ibc-swap/client/containers/Swap/index.tsx",
-     "line": 21,
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
+     "path": "dapps/ibc-swap/client/containers/SendToken.tsx",
+     "line": 5,
      "quote": "import * as CSL from '@emurgo/cardano-serialization-lib-browser';"
+    },
+    {
+     "repo": "cardano-foundation/cardano-ibc-incubator",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
+     "path": "dapps/ibc-swap/client/containers/SendToken.tsx",
+     "line": 21,
+     "quote": "const tx1 = CSL.Transaction.from_hex(unsignedTx);"
     }
    ]
   },
   {
    "tool": "cardano-ibc-incubator",
-   "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+   "revision": "44c50a721c455f7745d44002e310bae026fad957",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "block-encoding"
@@ -13471,10 +13336,17 @@
    "evidence": [
     {
      "repo": "cardano-foundation/cardano-ibc-incubator",
-     "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
-     "path": "dapps/ibc-swap/client/containers/Swap/index.tsx",
-     "line": 21,
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
+     "path": "dapps/ibc-swap/client/containers/SendToken.tsx",
+     "line": 5,
      "quote": "import * as CSL from '@emurgo/cardano-serialization-lib-browser';"
+    },
+    {
+     "repo": "cardano-foundation/cardano-ibc-incubator",
+     "revision": "44c50a721c455f7745d44002e310bae026fad957",
+     "path": "dapps/ibc-swap/client/containers/SendToken.tsx",
+     "line": 21,
+     "quote": "const tx1 = CSL.Transaction.from_hex(unsignedTx);"
     }
    ]
   },
@@ -13683,7 +13555,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "transaction-encoding"
@@ -13693,7 +13565,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "src/lib/hydra/hydra/node-fanout-references.ts",
      "line": 41,
      "quote": "const transaction = FixedTransaction.from_bytes(Buffer.from(confirmedProducer.cborHex, 'hex'));"
@@ -13702,7 +13574,7 @@
   },
   {
    "tool": "masumi",
-   "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+   "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
    "via": "cardano-serialization-lib-csl",
    "surfaces": [
     "block-encoding",
@@ -13714,7 +13586,7 @@
    "evidence": [
     {
      "repo": "masumi-network/masumi-payment-service",
-     "revision": "f3a94507bbdfc2b7f8ca4b37bb6cfd8eafc23af4",
+     "revision": "e3bc18a544f5fa908d867134ef5700952521138d",
      "path": "src/lib/hydra/hydra/node-fanout-references.ts",
      "line": 41,
      "quote": "const transaction = FixedTransaction.from_bytes(Buffer.from(confirmedProducer.cborHex, 'hex'));"
@@ -13803,7 +13675,7 @@
   },
   {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "koios",
    "surfaces": [
     "protocol-parameters"
@@ -13813,7 +13685,7 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/koios/koios.go",
      "line": 172,
      "quote": "path := \"/epoch_params?_epoch_no=\""
@@ -13822,7 +13694,7 @@
   },
   {
    "tool": "apollo",
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
    "via": "koios",
    "surfaces": [
     "era-identity"
@@ -13832,7 +13704,7 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/koios/koios.go",
      "line": 241,
      "quote": "AbsSlot uint64 `json:\"abs_slot\"`"
@@ -13841,7 +13713,7 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "via": "pallas",
    "surfaces": [
     "block-encoding",
@@ -13852,7 +13724,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
      "path": "tools/uplc-ref/src/main.rs",
      "line": 8,
      "quote": "use pallas_primitives::conway::{"
@@ -13861,7 +13733,7 @@
   },
   {
    "tool": "gerolamo",
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
    "via": "ogmios",
    "surfaces": [
     "block-encoding",
@@ -13875,7 +13747,7 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
      "path": "src/api/blockfrost/routes/txs.ts",
      "line": 256,
      "quote": "const r = evaluatePhase2Sync("
@@ -13884,7 +13756,7 @@
   },
   {
    "tool": "daedalus",
-   "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+   "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
    "via": "koios",
    "surfaces": [
     "era-identity",
@@ -13895,7 +13767,7 @@
    "evidence": [
     {
      "repo": "input-output-hk/daedalus",
-     "revision": "e04ce372878f0df99983cd427eb98d2039d14e8e",
+     "revision": "8d961fa48ded99b752743b04cc2003cf15794c7d",
      "path": "source/common/config/dappCatalog.ts",
      "line": 67,
      "quote": "canonicalOrigin: 'https://unfrack.it',"
@@ -13946,7 +13818,7 @@
   },
   {
    "tool": "adastat-api",
-   "revision": "1e986fbe42d094e3001c45ac0c6dc4875dda1b5b",
+   "revision": "51710148fb33e8d186a811038e1a0336047517fa",
    "via": "own",
    "surfaces": [
     "plutus-language",
@@ -13958,7 +13830,7 @@
    "evidence": [
     {
      "repo": "CardanoExplorer/adastat",
-     "revision": "1e986fbe42d094e3001c45ac0c6dc4875dda1b5b",
+     "revision": "51710148fb33e8d186a811038e1a0336047517fa",
      "path": "backend/lib/types/tables/script.ts",
      "line": 2,
      "quote": "type: 'multisig' | 'timelock' | 'plutusV1' | 'plutusV2' | 'plutusV3'"
@@ -13969,8 +13841,6 @@
    "tool": "apollo",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -13980,20 +13850,18 @@
    "evidence": [
     {
      "repo": "Salvionied/apollo",
-     "revision": "c468d60da4a02b90e45e85475fae494aa591399e",
+     "revision": "5d73dab5b24e618d0810291e12f86055358ce423",
      "path": "backend/koios/koios.go",
      "line": 1052,
      "quote": "// from db-sync, so they are tried both as given and with one CBOR byte-string"
     }
    ],
-   "revision": "c468d60da4a02b90e45e85475fae494aa591399e"
+   "revision": "5d73dab5b24e618d0810291e12f86055358ce423"
   },
   {
    "tool": "gerolamo",
    "via": "cardano-db-sync",
    "surfaces": [
-    "block-encoding",
-    "era-identity",
     "protocol-parameters",
     "stake-pool-registration",
     "transaction-encoding"
@@ -14003,13 +13871,256 @@
    "evidence": [
     {
      "repo": "HarmonicLabs/gerolamo",
-     "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20",
+     "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7",
      "path": "scripts/ledger-koios-check.ts",
      "line": 42,
      "quote": "const base = net === \"mainnet\" ? \"https://api.koios.rest/api/v1\" : `https://${net}.koios.rest/api/v1`;"
     }
    ],
-   "revision": "ec65e87eb2e276d603fc470d85c822dd392a9c20"
+   "revision": "2c6c4356fcf2e88b86670488082231bfd98d3be7"
+  },
+  {
+   "tool": "yaci-store",
+   "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
+   "via": "yaci",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The indexer fetches and syncs every block through Yaci's BlockSync and BlockRangeSync, so it stops where Yaci's block decoding does.",
+   "evidence": [
+    {
+     "repo": "bloxbean/yaci-store",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
+     "path": "components/core/src/main/java/com/bloxbean/cardano/yaci/store/core/service/BlockFetchService.java",
+     "line": 12,
+     "quote": "import com.bloxbean.cardano.yaci.helper.BlockRangeSync;"
+    },
+    {
+     "repo": "bloxbean/yaci-store",
+     "revision": "c28932cf3befbcc671168e7e53f0dfc991d708b3",
+     "path": "components/core/src/main/java/com/bloxbean/cardano/yaci/store/core/service/BlockFetchService.java",
+     "line": 13,
+     "quote": "import com.bloxbean.cardano.yaci.helper.BlockSync;"
+    }
+   ]
+  },
+  {
+   "tool": "yaci-devkit",
+   "revision": "d93538a264cdf3e74d291598f46daa90d0db57b4",
+   "via": "yaci",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The CLI's tail command follows the chain with Yaci's BlockSync and receives each decoded block in onBlock.",
+   "evidence": [
+    {
+     "repo": "bloxbean/yaci-devkit",
+     "revision": "d93538a264cdf3e74d291598f46daa90d0db57b4",
+     "path": "applications/cli/src/main/java/com/bloxbean/cardano/yacicli/commands/tail/BlockStreamerService.java",
+     "line": 81,
+     "quote": "BlockSync blockSync = new BlockSync("
+    },
+    {
+     "repo": "bloxbean/yaci-devkit",
+     "revision": "d93538a264cdf3e74d291598f46daa90d0db57b4",
+     "path": "applications/cli/src/main/java/com/bloxbean/cardano/yacicli/commands/tail/BlockStreamerService.java",
+     "line": 84,
+     "quote": "public void onBlock(Era era, Block block, List<Transaction> transactions) {"
+    }
+   ]
+  },
+  {
+   "tool": "yano",
+   "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
+   "via": "yaci",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The block API decodes stored blocks with Yaci's BlockSerializer.",
+   "evidence": [
+    {
+     "repo": "bloxbean/yano",
+     "revision": "c1da08405eb858a4e30b8d31d1b4f4d2a73b48a1",
+     "path": "app/src/main/java/org/yanoproject/app/api/blocks/BlockResource.java",
+     "line": 72,
+     "quote": "Block block = BlockSerializer.INSTANCE.deserialize(blockCbor);"
+    }
+   ]
+  },
+  {
+   "tool": "yaci-bridge",
+   "revision": "aed55a0ad19002ebccb05997463306c26686d2d4",
+   "via": "yaci",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The bridge's sync sessions run Yaci's BlockSync and pass on each decoded block.",
+   "evidence": [
+    {
+     "repo": "bloxbean/yaci-bridge",
+     "revision": "aed55a0ad19002ebccb05997463306c26686d2d4",
+     "path": "core/src/main/java/com/bloxbean/cardano/yaci/bridge/internal/SyncSession.java",
+     "line": 44,
+     "quote": "this.blockSync = new BlockSync(host, port, protocolMagic, wellKnownPoint);"
+    },
+    {
+     "repo": "bloxbean/yaci-bridge",
+     "revision": "aed55a0ad19002ebccb05997463306c26686d2d4",
+     "path": "core/src/main/java/com/bloxbean/cardano/yaci/bridge/internal/SyncSession.java",
+     "line": 150,
+     "quote": "public void onBlock(Era era, Block block, List<Transaction> transactions) {"
+    }
+   ]
+  },
+  {
+   "tool": "cf-ledger-sync",
+   "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+   "via": "yaci",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "Ledger Sync reads the chain through the Yaci Store starters on Yaci 0.3.4.1, so blocks are decoded by Yaci.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/cf-ledger-sync",
+     "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+     "path": "gradle/libs.versions.toml",
+     "line": 2,
+     "quote": "yaci = \"com.bloxbean.cardano:yaci:0.3.4.1\""
+    },
+    {
+     "repo": "cardano-foundation/cf-ledger-sync",
+     "revision": "c93dc4d81de8f6234811e2f0b43929531ec5905a",
+     "path": "gradle/libs.versions.toml",
+     "line": 3,
+     "quote": "yaci-store-starter=\"com.bloxbean.cardano:yaci-store-spring-boot-starter:0.1.0-rc6\""
+    }
+   ]
+  },
+  {
+   "tool": "cardano-rosetta-java",
+   "revision": "e3be4dac2fc1a026fab7685505f6e5960ccea946",
+   "via": "yaci",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "confirmed",
+   "summary": "The bundled indexer is a Yaci Store application (blocks starter included), which syncs blocks through Yaci.",
+   "evidence": [
+    {
+     "repo": "cardano-foundation/cardano-rosetta-java",
+     "revision": "e3be4dac2fc1a026fab7685505f6e5960ccea946",
+     "path": "yaci-indexer/pom.xml",
+     "line": 21,
+     "quote": "<yaci-store.version>2.0.2.1</yaci-store.version>"
+    },
+    {
+     "repo": "cardano-foundation/cardano-rosetta-java",
+     "revision": "e3be4dac2fc1a026fab7685505f6e5960ccea946",
+     "path": "yaci-indexer/pom.xml",
+     "line": 74,
+     "quote": "<artifactId>yaci-store-blocks-spring-boot-starter</artifactId>"
+    }
+   ]
+  },
+  {
+   "tool": "bloxbean-cardano-client-library",
+   "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
+   "via": "yaci",
+   "surfaces": [
+    "block-encoding",
+    "era-identity"
+   ],
+   "decision": "not-reached",
+   "summary": "yaci-core is used only by tools/chain-parse-check, a conformance tool that settings.gradle does not include, so no published module uses it.",
+   "evidence": [
+    {
+     "repo": "bloxbean/cardano-client-lib",
+     "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
+     "path": "tools/chain-parse-check/build.gradle",
+     "line": 23,
+     "quote": "implementation \"com.bloxbean.cardano:yaci-core:${yaciVersion}\""
+    }
+   ]
+  },
+  {
+   "tool": "scalus",
+   "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
+   "via": "kupo",
+   "surfaces": [
+    "block-encoding",
+    "era-identity",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Kupo appears only in a doc comment of the emulator's chain view; Scalus calls no Kupo endpoint.",
+   "evidence": [
+    {
+     "repo": "scalus3/scalus",
+     "revision": "8f92cd18b4367b3346e9f40b0e022119c57f0c1f",
+     "path": "scalus-cardano-ledger/shared/src/main/scala/scalus/cardano/node/emulator/ChainView.scala",
+     "line": 6,
+     "quote": "/** The tip snapshot: what Blockfrost, Koios and Kupo show, spec [VW-1]. */"
+    }
+   ]
+  },
+  {
+   "tool": "meshjs-mesh-sdk",
+   "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
+   "via": "kupo",
+   "surfaces": [
+    "block-encoding",
+    "era-identity",
+    "transaction-encoding"
+   ],
+   "decision": "not-reached",
+   "summary": "Kupo appears only in a code comment of the transaction builder; Mesh ships no Kupo provider.",
+   "evidence": [
+    {
+     "repo": "MeshJS/mesh",
+     "revision": "527e36ff41f6fbf90c1869c869852edd6c88730c",
+     "path": "packages/mesh-transaction/src/mesh-tx-builder/index.ts",
+     "line": 2170,
+     "quote": "* missing transaction (Kupo, UTxO RPC, the Scalus emulator) do not get here."
+    }
+   ]
+  },
+  {
+   "tool": "pebble",
+   "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
+   "via": "own",
+   "surfaces": [
+    "plutus-language"
+   ],
+   "decision": "not-reached",
+   "summary": "The only marker is the doc comment of the compiler's target option, which already offers an experimental-v4 target mirroring plutus-ledger-api 1.71.0.0, the target's version.",
+   "evidence": [
+    {
+     "repo": "HarmonicLabs/pebble",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
+     "path": "packages/pebble/src/IR/toUPLC/CompilerOptions.ts",
+     "line": 158,
+     "quote": "reality (protocol version 11 runs PlutusV3 scripts)."
+    },
+    {
+     "repo": "HarmonicLabs/pebble",
+     "revision": "f774789de0cb897a8cbc023af36f48efb1062447",
+     "path": "packages/pebble/src/IR/toUPLC/CompilerOptions.ts",
+     "line": 170,
+     "quote": "export type TargetPlutusVersion = \"v3\" | \"experimental-v4\";"
+    }
+   ]
   }
  ]
 }

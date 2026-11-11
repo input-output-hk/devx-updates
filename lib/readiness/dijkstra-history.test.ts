@@ -60,3 +60,38 @@ test("tagged target components retain the earlier integration assessment in hist
   assert.ok(comparison.runtime.filter((r) => r.before && r.after).every((r) => r.before === r.after),
     "a new membership label does not turn unchanged runtime outcomes into fixes");
 });
+
+test("a newer version that passes reads as a fix, and a new subject as first tested", () => {
+  const before = loadDijkstraSite(source), after = loadDijkstraSite(source);
+  const check = after.devnet.checks.find((c) => c.id === "db-sync-and-blockfrost")!;
+  const result = check.results.find((r) => r.id === "blockfrost")!;
+  const previous = before.devnet.checks.find((c) => c.id === "db-sync-and-blockfrost")!.results.find((r) => r.id === "blockfrost")!;
+  assert.equal(previous.outcome, "fail");
+  result.version = "v9.0.0";
+  result.outcome = "pass";
+  check.results.push({ kind: "tool", id: "kupo", version: "v3.0.0", outcome: "fail" });
+  const subjects = compareDijkstra(before, after).subjects;
+  const blockfrost = subjects.find((s) => s.check === check.id && s.id === "blockfrost")!;
+  assert.equal(blockfrost.change, "now-passes");
+  assert.deepEqual(blockfrost.after, [{ version: "v9.0.0", outcome: "pass" }]);
+  assert.equal(subjects.find((s) => s.check === check.id && s.id === "kupo")!.change, "first-tested");
+  assert.equal(subjects[0].change, "now-passes", "outcome flips sort first");
+  assert.ok(subjects.filter((s) => s !== blockfrost && s.id !== "kupo").every((s) => s.change === "unchanged"));
+});
+
+test("the fix-order diff marks new and dropped steps, and the grid keeps changed components off the path", () => {
+  const before = loadDijkstraSite(source), after = loadDijkstraSite(source);
+  const [first, ...rest] = after.unlocks.fixOrder;
+  after.unlocks.fixOrder = [...rest, { ...first, component: "brand-new" }];
+  const diff = compareDijkstra(before, after).fixOrder;
+  assert.deepEqual(diff.removed, [first.component]);
+  assert.equal(diff.steps.at(-1)!.previousStep, null);
+  assert.equal(diff.steps[0].previousStep, 2);
+  const cardanoC = after.boundary.components.find((c) => c.id === "cardano-c")!;
+  cardanoC.assessments = cardanoC.assessments.map((a) => ({ ...a, status: "gap" as const }));
+  const grid = compareDijkstra(before, after).grid;
+  const row = grid.rows.find((r) => r.component === "cardano-c")!;
+  assert.equal(row.changed, true);
+  assert.ok(row.cells.some((c) => c.before !== c.after && c.after === "gap"));
+  assert.ok(grid.rows.filter((r) => !r.changed).every((r) => r.criticalPath), "unchanged rows are only critical-path components");
+});

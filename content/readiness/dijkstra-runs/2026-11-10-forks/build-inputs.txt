@@ -1,0 +1,10 @@
+ogmios  IntersectMBO/ogmios master 2f9b5d14daeccfece3a7d33f8a10e2136a91fbef  nix build .#ogmios (native, substituted from cache.iog.io)
+        /nix/store/ic8xgvgqq42qy075ndhxh0mhcdr8jhvy-ogmios-exe-ogmios-0  version: nightly (2f9b5d14)
+        sha256 43e756e6627f02592dad4d43a3add930e591d3012667ca0ebf6e592d4d20b0bb
+kupo    IntersectMBO/kupo master bdb4497537b922e4e2eab2807e402c89f64da5b3  nix build .#kupo (native, substituted from cache.iog.io)
+        /nix/store/lacpw6x7kbri8r8c48f8ymkyz4skrra4-kupo-exe-kupo-0  version: nightly+bdb449
+        sha256 7dac20b87b0c3378c132f24fd20e74e0906d63b27a3219bae674479e579e9b5b
+node    cardano-node 11.2.0 dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899 (same binaries as the 2026-11-09 run)
+chain   the 2026-11-09 devnet chain (2370 blocks, tip slot 49023), served by cardano-node run without block production;
+        the truncated copy ends after block 186 (slot 3713, hash 34461b78658af00e76df9fe04f326dae740789e49492583fc13cc732952fa058)
+node.js v24.21.0 for ogmios-probe/probe.mjs

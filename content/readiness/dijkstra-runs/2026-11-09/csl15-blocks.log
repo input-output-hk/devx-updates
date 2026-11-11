@@ -1,0 +1,3 @@
+cardano-serialization-lib 15.0.3
+247 blocks (type 8 = Dijkstra):
+  247  Block error: Deserialization failed in Block because: Definite length mismatch: found 2; FixedBlock error: Deserialization: Definite length mismatch: found 2

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewed": "2026-11-01",
+  "reviewed": "2026-11-09",
   "method": [
     "Every bump-ready tool was read at its classified revision for era-specific code in shipped paths: fixed era types, exhaustive era cases, era tables and per-era parameter or schema handling.",
     "own-work needs a quoted line that stops before Dijkstra; prepared and generic need the quoted lines that make the era handling Dijkstra-aware or era-generic; undetermined records what a run must settle.",
@@ -47,49 +47,49 @@
     },
     {
       "tool": "bursa",
-      "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+      "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
       "eraHandling": "prepared",
       "summary": "Already names the Dijkstra transaction type and decides witness-set tagging with a forward-open comparison; transactions are decoded through gouroboros's era-generic entry points.",
       "evidence": [
         {
           "repo": "blinklabs-io/bursa",
-          "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+          "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
           "path": "transaction.go",
-          "line": 131,
+          "line": 154,
           "quote": "\treturn txType >= ledger.TxTypeConway"
         },
         {
           "repo": "blinklabs-io/bursa",
-          "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+          "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
           "path": "transaction.go",
-          "line": 630,
+          "line": 719,
           "quote": "\tcase ledger.TxTypeDijkstra:"
         },
         {
           "repo": "blinklabs-io/bursa",
-          "revision": "77e998911b238d64a71280f21c0334a4081f0fbf",
+          "revision": "34f1643d78dc1c6c8a2c8e0776e6349561d644f2",
           "path": "transaction.go",
-          "line": 155,
+          "line": 182,
           "quote": "\ttxType, err := ledger.DetermineTransactionType(txCbor)"
         }
       ]
     },
     {
       "tool": "cardano-ibc-incubator",
-      "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+      "revision": "44c50a721c455f7745d44002e310bae026fad957",
       "eraHandling": "own-work",
-      "summary": "The light client decodes every block header as a Babbage header and switches on Babbage and Conway blocks only; it needs a Dijkstra case besides the bump. Its Babbage header decoding matches the ten-field header the tagged 11.2.0 node emits (devnet check block-shape), not the twelve-field one gouroboros v0.213.x requires.",
+      "summary": "The light client decodes every block header as a Babbage header and switches on Babbage and Conway blocks only; it needs a Dijkstra case besides the bump. Its Babbage header decoding matches the ten-field header the tagged 11.2.0 node emits (devnet check block-shape), which gouroboros accepts from v0.217.0 (devnet check block-shape with v0.218.2).",
       "evidence": [
         {
           "repo": "cardano-foundation/cardano-ibc-incubator",
-          "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+          "revision": "44c50a721c455f7745d44002e310bae026fad957",
           "path": "cosmos/cardano-probabilistic-light-client-core/cardano_block.go",
           "line": 162,
           "quote": "func DecodeLedgerHeader(headerCbor []byte) (decoded *ledger.BabbageBlockHeader, err error) {"
         },
         {
           "repo": "cardano-foundation/cardano-ibc-incubator",
-          "revision": "d978c9d934cd71f848a4576d966cbd3da1066edb",
+          "revision": "44c50a721c455f7745d44002e310bae026fad957",
           "path": "cosmos/cardano-probabilistic-light-client-core/cardano_block.go",
           "line": 202,
           "quote": "\tcase *ledger.ConwayBlock:"
@@ -280,20 +280,20 @@
     },
     {
       "tool": "txtop",
-      "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
+      "revision": "2d7c5f70d7cd6b8cc424acd4532ba6c9512a15de",
       "eraHandling": "generic",
-      "summary": "Decodes mempool transactions through gouroboros's era-generic entry points and names no era itself. On the devnet the upgraded build connects and shows mempool sizes, but gouroboros's era detection rejects ordinary Dijkstra transactions, so its transaction list stays empty until gouroboros fixes that (devnet checks tool-upgrades, tx-era-detection).",
+      "summary": "Decodes mempool transactions through gouroboros's era-generic entry points and names no era itself. Its latest release v0.17.0 connects and shows mempool sizes, as released and with gouroboros v0.218.2; that gouroboros reports ordinary Dijkstra transactions as Conway, so a listed transaction would carry the wrong era (devnet checks tool-upgrades, tx-era-detection).",
       "evidence": [
         {
           "repo": "blinklabs-io/txtop",
-          "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
+          "revision": "2d7c5f70d7cd6b8cc424acd4532ba6c9512a15de",
           "path": "main.go",
           "line": 1258,
           "quote": "\ttxType, err := ledger.DetermineTransactionType(raw)"
         },
         {
           "repo": "blinklabs-io/txtop",
-          "revision": "1814ba43aafd3e0ec4510ffefd820ab569ba05d5",
+          "revision": "2d7c5f70d7cd6b8cc424acd4532ba6c9512a15de",
           "path": "main.go",
           "line": 1262,
           "quote": "\tltx, err := ledger.NewTransactionFromCbor(txType, raw)"

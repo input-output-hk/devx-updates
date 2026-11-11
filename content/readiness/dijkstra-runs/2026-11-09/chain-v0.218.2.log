@@ -1,0 +1,4 @@
+tip slot 4414
+    15  Conway: block decoded
+   205  Dijkstra: block decoded
+    19  Dijkstra: transaction DetermineTransactionType: unknown transaction type; forced Dijkstra decode: failed to decode TxIsValid: CBOR value is not a boolean
