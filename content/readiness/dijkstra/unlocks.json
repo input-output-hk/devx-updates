@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-11T15:11:04.433Z",
+ "generatedAt": "2026-11-11T18:25:57.123Z",
  "bumpReady": [
   {
    "tool": "marconi",
@@ -1047,11 +1047,7 @@
    ],
    "downstream": [],
    "ownGap": [
-    "transaction-encoding",
-    "plutus-language",
-    "protocol-parameters",
-    "stake-pool-registration",
-    "era-identity"
+    "transaction-rules"
    ]
   },
   {
@@ -2180,11 +2176,7 @@
      "via": "bloxbean-cardano-client-library",
      "kind": "own-gap",
      "surfaces": [
-      "transaction-encoding",
-      "plutus-language",
-      "protocol-parameters",
-      "stake-pool-registration",
-      "era-identity"
+      "transaction-rules"
      ]
     },
     {

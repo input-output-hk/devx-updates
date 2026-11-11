@@ -316,6 +316,12 @@
    "state": "open",
    "checked": "2026-11-11"
   },
+  "https://github.com/bloxbean/cardano-client-lib/issues/752": {
+   "kind": "issue",
+   "title": "Dijkstra hard fork readiness",
+   "state": "open",
+   "checked": "2026-11-11"
+  },
   "https://github.com/bloxbean/cardano-client-lib/pull/748": {
    "kind": "pull",
    "title": "feat(ledger-cbor): one era-aware ledger CBOR reader (ADR 0003, M0-M6)",

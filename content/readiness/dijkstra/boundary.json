@@ -790,7 +790,7 @@
       "observed": {
         "branch": "master",
         "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
-        "date": "2026-11-09",
+        "date": "2026-11-11",
         "release": {
           "tag": "v0.8.0-pre7",
           "date": "2026-10-28"
@@ -800,107 +800,50 @@
       "assessments": [
         {
           "surfaces": [
-            "plutus-language"
+            "transaction-encoding"
           ],
-          "status": "tracked",
-          "summary": "PlutusV4 support is an open issue.",
+          "status": "in-progress",
+          "summary": "No release writes or keeps the Dijkstra body fields: 0.8.0-pre7 drops a direct deposit and a sub-transaction when it reads them, so its transaction id differs from the one on chain (devnet check jvm-codecs). Draft PR #748 adds the fields (keys 23-27, guards on key 14) behind an era-aware reader and serialize(Era.Dijkstra); every feature built that way was accepted on the devnet. On the branch, TransactionSigner.sign(Transaction, key) re-reads the signed bytes without an era and drops those fields, and reading without an era still drops them silently.",
           "evidence": [
             {
               "kind": "tracker",
-              "url": "https://github.com/bloxbean/cardano-client-lib/issues/707",
-              "title": "Support Plutus V4 scripts (Dijkstra era / Leios)",
+              "url": "https://github.com/bloxbean/cardano-client-lib/issues/752",
+              "title": "Dijkstra hard fork readiness",
               "state": "open",
-              "date": "2026-10-19"
-            }
-          ]
-        },
-        {
-          "surfaces": [
-            "transaction-encoding"
-          ],
-          "status": "gap",
-          "summary": "The transaction body serializer ends at key 22 (donation); Dijkstra adds body keys 23-27 (sub-transactions, required guards, direct deposits, balance intervals) and redefines key 14 as guards. On the devnet 0.8.0-pre7 decodes a direct deposit and a sub-transaction without error but drops those fields, so the transaction id it computes differs from the one on chain (devnet check jvm-codecs).",
-          "evidence": [
+              "date": "2026-11-11"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/cardano-client-lib/pull/748",
+              "title": "feat(ledger-cbor): one era-aware ledger CBOR reader (ADR 0003, M0-M6)",
+              "state": "open",
+              "date": "2026-11-09"
+            },
             {
               "kind": "source",
               "repo": "bloxbean/cardano-client-lib",
-              "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
+              "revision": "d3324ec367615ed46ea9fc9904f9b73da78bc8fc",
               "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/spec/TransactionBody.java",
-              "line": 231,
-              "quote": "            bodyMap.put(new UnsignedInteger(22), new UnsignedInteger(donation));"
+              "line": 374,
+              "quote": "            bodyMap.put(new UnsignedInteger(25), Withdrawal.serializeInLedgerOrder(directDeposits));"
+            },
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "d3324ec367615ed46ea9fc9904f9b73da78bc8fc",
+              "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/TransactionSigner.java",
+              "line": 35,
+              "quote": "            var signedTx = Transaction.deserialize(signedTxBytes);"
             },
             {
               "kind": "devnet",
               "check": "jvm-codecs",
               "version": "0.8.0-pre7"
-            }
-          ]
-        },
-        {
-          "surfaces": [
-            "plutus-language"
-          ],
-          "status": "gap",
-          "summary": "The language enum stops at PlutusV3; PlutusV4 is language 3.",
-          "evidence": [
+            },
             {
-              "kind": "source",
-              "repo": "bloxbean/cardano-client-lib",
-              "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
-              "path": "plutus/src/main/java/com/bloxbean/cardano/client/plutus/spec/Language.java",
-              "line": 4,
-              "quote": "    PLUTUS_V1(0), PLUTUS_V2(1), PLUTUS_V3(2);"
-            }
-          ]
-        },
-        {
-          "surfaces": [
-            "protocol-parameters"
-          ],
-          "status": "gap",
-          "summary": "ProtocolParamUpdate maps keys only up to 24, so even Conway's keys 25-33 and all of Dijkstra's 34-56 are missing from parameter-change proposals.",
-          "evidence": [
-            {
-              "kind": "source",
-              "repo": "bloxbean/cardano-client-lib",
-              "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
-              "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/spec/ProtocolParamUpdate.java",
-              "line": 63,
-              "quote": "    private Integer maxCollateralInputs; //24"
-            }
-          ]
-        },
-        {
-          "surfaces": [
-            "stake-pool-registration"
-          ],
-          "status": "gap",
-          "summary": "PoolRegistration ends at pool metadata, without Dijkstra's optional BLS key.",
-          "evidence": [
-            {
-              "kind": "source",
-              "repo": "bloxbean/cardano-client-lib",
-              "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
-              "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/spec/cert/PoolRegistration.java",
-              "line": 83,
-              "quote": "    private String poolMetadataHash;"
-            }
-          ]
-        },
-        {
-          "surfaces": [
-            "era-identity"
-          ],
-          "status": "gap",
-          "summary": "The Era enum ends at Conway.",
-          "evidence": [
-            {
-              "kind": "source",
-              "repo": "bloxbean/cardano-client-lib",
-              "revision": "4649b91433f2c5558f5f1035df7e27c31e97a1aa",
-              "path": "common-spec/src/main/java/com/bloxbean/cardano/client/spec/Era.java",
-              "line": 18,
-              "quote": "    Conway(7);"
+              "kind": "devnet",
+              "check": "ccl-branch-transactions",
+              "version": "feat/ledger-cbor d3324ec3"
             }
           ]
         },
@@ -908,9 +851,166 @@
           "surfaces": [
             "transaction-rules"
           ],
-          "status": "no-evidence",
-          "summary": "Re-observed 2026-10-20: no Dijkstra reference and no code specific to these surfaces' changes was identified.",
-          "evidence": []
+          "status": "gap",
+          "summary": "QuickTx registerStakeAddress and deregisterStakeAddress write the deposit-less certificates that Dijkstra removes, on master, the branch and every release; the node rejects them (devnet check ccl-quicktx). The RegCert and UnregCert models are accepted but QuickTx never uses them. 0.7.3 also writes a duplicate vkey witness when one key signs twice, which Dijkstra rejects; 0.8.0 fixed it, 0.7.x has no backport. Both are reported in #752.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/cardano-client-lib/issues/752",
+              "title": "Dijkstra hard fork readiness",
+              "state": "open",
+              "date": "2026-11-11"
+            },
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
+              "path": "quicktx/src/main/java/com/bloxbean/cardano/client/quicktx/intent/StakeRegistrationIntent.java",
+              "line": 120,
+              "quote": "                txn.getBody().getCerts().add(new StakeRegistration(stakeCredential));"
+            },
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
+              "path": "quicktx/src/main/java/com/bloxbean/cardano/client/quicktx/intent/StakeDeregistrationIntent.java",
+              "line": 179,
+              "quote": "                txn.getBody().getCerts().add(new StakeDeregistration(stakeCredential));"
+            },
+            {
+              "kind": "devnet",
+              "check": "ccl-quicktx",
+              "version": "0.8.0-pre7"
+            },
+            {
+              "kind": "devnet",
+              "check": "ccl-quicktx",
+              "version": "0.7.3"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "plutus-language"
+          ],
+          "status": "in-progress",
+          "summary": "No release has PlutusV4; issue #707 is open. Draft PR #748 adds PLUTUS_V4, and a V4 reference script and a V4 lock and spend built with it were accepted on the devnet. QuickTx and the Ogmios and Koios parameter mappings still cover V1-V3 only, so no V4 cost model reaches the builder.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/cardano-client-lib/issues/707",
+              "title": "Support Plutus V4 scripts (Dijkstra era / Leios)",
+              "state": "open",
+              "date": "2026-10-19"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/cardano-client-lib/pull/748",
+              "title": "feat(ledger-cbor): one era-aware ledger CBOR reader (ADR 0003, M0-M6)",
+              "state": "open",
+              "date": "2026-11-09"
+            },
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "d3324ec367615ed46ea9fc9904f9b73da78bc8fc",
+              "path": "plutus/src/main/java/com/bloxbean/cardano/client/plutus/spec/Language.java",
+              "line": 6,
+              "quote": "    PLUTUS_V4(3);"
+            },
+            {
+              "kind": "devnet",
+              "check": "ccl-branch-transactions",
+              "version": "feat/ledger-cbor d3324ec3"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "protocol-parameters"
+          ],
+          "status": "in-progress",
+          "summary": "Releases map ProtocolParamUpdate keys only up to 24; master adds Conway's 25-33, unreleased. Draft PR #748 adds Dijkstra's 34-56. The reference-script fee still hard-codes Conway's multiplier and stride, which Dijkstra turns into parameters 36 and 37.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/cardano-client-lib/issues/752",
+              "title": "Dijkstra hard fork readiness",
+              "state": "open",
+              "date": "2026-11-11"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/cardano-client-lib/pull/748",
+              "title": "feat(ledger-cbor): one era-aware ledger CBOR reader (ADR 0003, M0-M6)",
+              "state": "open",
+              "date": "2026-11-09"
+            },
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "d3324ec367615ed46ea9fc9904f9b73da78bc8fc",
+              "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/spec/ProtocolParamUpdate.java",
+              "line": 101,
+              "quote": "    private Long maxRefScriptSizePerBlock; //34"
+            },
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "5ca123ea004f8a4acdb3f61ef829c65cb5113200",
+              "path": "core/src/main/java/com/bloxbean/cardano/client/api/helper/impl/FeeCalculationServiceImpl.java",
+              "line": 229,
+              "quote": "        BigDecimal multiplier = BigDecimal.valueOf(1.2);"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "stake-pool-registration"
+          ],
+          "status": "in-progress",
+          "summary": "No release writes Dijkstra's optional pool BLS key; draft PR #748 adds it, written only for Dijkstra. Not exercised on the devnet.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/cardano-client-lib/pull/748",
+              "title": "feat(ledger-cbor): one era-aware ledger CBOR reader (ADR 0003, M0-M6)",
+              "state": "open",
+              "date": "2026-11-09"
+            },
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "d3324ec367615ed46ea9fc9904f9b73da78bc8fc",
+              "path": "transaction-spec/src/main/java/com/bloxbean/cardano/client/transaction/spec/cert/PoolRegistration.java",
+              "line": 120,
+              "quote": "            requireDijkstra(era, \"PoolRegistration.blsKey\");"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "era-identity"
+          ],
+          "status": "in-progress",
+          "summary": "The Era enum ends at Conway in every release and on master; draft PR #748 adds Dijkstra as experimental.",
+          "evidence": [
+            {
+              "kind": "tracker",
+              "url": "https://github.com/bloxbean/cardano-client-lib/pull/748",
+              "title": "feat(ledger-cbor): one era-aware ledger CBOR reader (ADR 0003, M0-M6)",
+              "state": "open",
+              "date": "2026-11-09"
+            },
+            {
+              "kind": "source",
+              "repo": "bloxbean/cardano-client-lib",
+              "revision": "d3324ec367615ed46ea9fc9904f9b73da78bc8fc",
+              "path": "common-spec/src/main/java/com/bloxbean/cardano/client/spec/Era.java",
+              "line": 22,
+              "quote": "    Dijkstra(8);"
+            }
+          ]
         }
       ]
     },

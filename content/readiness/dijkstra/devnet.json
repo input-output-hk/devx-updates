@@ -601,6 +601,88 @@
         "scripts/readiness/devnet/platform-probe/src/main.rs",
         "scripts/readiness/devnet/handshake.py"
       ]
+    },
+    {
+      "id": "ccl-quicktx",
+      "title": "cardano-client-lib releases build Dijkstra payments, but QuickTx stake registration is rejected",
+      "summary": "Run on 2026-11-11 on a fresh devnet from the same 11.2.0 release, raised to protocol version 12. Transactions were built, signed and submitted by cardano-client-lib through cardano-submit-api. In 0.7.3 and 0.8.0-pre7, payments, metadata and a PlutusV3 lock and spend are accepted. QuickTx registerStakeAddress and deregisterStakeAddress write the deposit-less certificates (types 0 and 1), which the node rejects with an era mismatch. The Conway RegCert and UnregCert certificates are accepted from both releases. 0.7.3 writes a duplicate vkey witness when one key signs twice, which the node also rejects; 0.8.0-pre7 removes the duplicate.",
+      "results": [
+        {
+          "kind": "component",
+          "id": "bloxbean-cardano-client-library",
+          "version": "0.8.0-pre7",
+          "outcome": "fail",
+          "note": "QuickTx stake registration and deregistration are rejected"
+        },
+        {
+          "kind": "component",
+          "id": "bloxbean-cardano-client-library",
+          "version": "0.7.3",
+          "outcome": "fail",
+          "note": "QuickTx stake registration and deregistration, and duplicate vkey witnesses, are rejected"
+        },
+        {
+          "kind": "change",
+          "id": "removed-encodings",
+          "outcome": "pass",
+          "note": "Deposit-less registration and unregistration certificates and a duplicate vkey witness, all rejected."
+        }
+      ],
+      "observed": [
+        "e2e-0.8.0-pre7.log (second block, after harness fixes):\npay            head 84a3 certs -                      OK\nmeta           head 84a4 certs -                      OK\nreg-legacy     head 84a4 certs StakeRegistration      REJECTED(400) EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}\nreg-new        head 84a4 certs RegCert                OK\nlock-v3        head 84a3 certs -                      OK\nspend-v3       head 84a7 certs -                      OK\ndereg-legacy   head 84a4 certs StakeDeregistration    REJECTED(400) EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}\ndereg-new      head 84a4 certs UnregCert              OK",
+        "e2e-0.7.3.log:\npay            OK\nmeta           OK\nreg-legacy     certs StakeRegistration      REJECTED(400) EraMismatch\nreg-new        certs RegCert                OK\nlock-v3        OK\nspend-v3       OK\ndereg-legacy   certs StakeDeregistration    REJECTED(400) EraMismatch\ndereg-new      certs UnregCert              OK",
+        "e2e-dups.log:\n# 0.8.0-pre7\ndup-signer     head 84a3 certs - vkeys 1              OK\n# 0.7.3\ndup-signer     head 84a3 certs - vkeys 2              REJECTED(400) EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}"
+      ],
+      "recipe": [
+        "scripts/readiness/devnet/jvm-probe/ccl-e2e/E2E.java",
+        "scripts/readiness/devnet/jvm-probe/ccl-e2e/cp.sh"
+      ]
+    },
+    {
+      "id": "ccl-branch-transactions",
+      "title": "The cardano-client-lib Dijkstra branch builds every new transaction feature; signing a Transaction object drops them",
+      "summary": "Run on 2026-11-11 on the same devnet as ccl-quicktx, with draft PR #748 (feat/ledger-cbor d3324ec3, unmerged and unreleased) built locally. Transactions built with the branch's Dijkstra models and written with serialize(Era.Dijkstra) are accepted: a three-element payment, a direct deposit, a key-hash guard, an account balance interval, a PlutusV4 reference script, a PlutusV4 lock and spend, and a top-level transaction with one sub-transaction. A missing guard witness and a balance outside the interval are rejected. TransactionSigner.sign(Transaction, key) re-reads the signed bytes without an era and drops the Dijkstra fields, so a direct deposit signed that way is rejected. Read with Era.Dijkstra, all 25 encodings of the 2026-11-09 corpus give the on-chain id; read without an era, the direct deposit and the sub-transaction still give a wrong id.",
+      "results": [
+        {
+          "kind": "component",
+          "id": "bloxbean-cardano-client-library",
+          "version": "feat/ledger-cbor d3324ec3",
+          "outcome": "fail",
+          "note": "Every Dijkstra feature built with the models is accepted; signing a Transaction object drops them"
+        },
+        {
+          "kind": "change",
+          "id": "guards",
+          "outcome": "pass",
+          "note": "A key-hash guard on body key 14; a guard without its witness is rejected. Required top-level guards and script guards were not exercised."
+        },
+        {
+          "kind": "change",
+          "id": "account-enhancements",
+          "outcome": "pass",
+          "note": "A direct deposit (the account balance rose by 5 ADA) and an account balance interval; a balance outside the interval is rejected."
+        },
+        {
+          "kind": "change",
+          "id": "plutus-v4",
+          "outcome": "pass",
+          "note": "A PlutusV4 script was executed: an always-succeeding V4 script locked and spent with a V4 cost model in the script data hash."
+        },
+        {
+          "kind": "change",
+          "id": "nested-transactions",
+          "outcome": "pass",
+          "note": "One sub-transaction without scripts, built with the branch's models."
+        }
+      ],
+      "observed": [
+        "branch-build.log:\npay            head 83a3, body kept, OK\ndd             head 83a4, body kept, OK\ndd-modelsign   head 83a3, BODY CHANGED BY SIGNING, REJECTED(400) ValueNotConservedUTxO\nguard          head 83a4, body kept, OK\nguard-fail     head 83a4, body kept, REJECTED(400) MissingVKeyWitnessesUTXOW\nabi-ok         head 83a4, body kept, OK\nabi-fail       head 83a4, body kept, REJECTED(400) BalancesOutsideAccountBalanceIntervals\nv4ref          head 83a3, body kept, OK\nlock-v4        head 83a3, body kept, OK\nspend-v4       head 83a5, body kept, OK\nsub            head 83a4, body kept, OK",
+        "branch-decode.log:\nmempool-dijkstra-direct-deposit              raw id = chain | era-less: model id ≠ chain (94d0f0a8e197…), re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact, directDeposits=1\nmempool-dijkstra-sub-transaction             raw id = chain | era-less: model id ≠ chain (cafafa4b0635…), re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact, subTxs=1"
+      ],
+      "recipe": [
+        "scripts/readiness/devnet/jvm-probe/ccl-e2e/BranchProbe.java",
+        "scripts/readiness/devnet/jvm-probe/ccl-e2e/cp.sh"
+      ]
     }
   ]
 }

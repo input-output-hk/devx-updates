@@ -1,0 +1,26 @@
+# branch feat/ledger-cbor: era-less deserialize vs deserialize(bytes, Era.Dijkstra)
+conway-legacy-reg                            raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id error CborSerializationException: A StakeRegistration certificate (tag 0) cannot be written in Dijkstra
+conway-metadata                              raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode differs(83a4)
+conway-payment                               raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id = chain, re-encode differs(83a3)
+conway-reg-with-deposit                      raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id = chain, re-encode differs(83a4)
+conway-required-signer                       raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id ≠ chain (8464bb983254…), re-encode differs(83a4), guards=1
+dijkstra-metadata                            raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode exact
+dijkstra-payment                             raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+dijkstra-reg-with-deposit                    raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode exact
+split                                        raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+dijkstra-direct-deposit                      raw id = chain | era-less: model id ≠ chain (94d0f0a8e197…), re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact, directDeposits=1
+dijkstra-plutusv4-reference-script           raw id = chain | era-less: model id = chain, re-encode differs(84a3), scriptRef=8204 | Dijkstra: model id = chain, re-encode exact, scriptRef=8204
+dijkstra-sub-transaction                     raw id = chain | era-less: model id ≠ chain (cafafa4b0635…), re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact, subTxs=1
+adv-split                                    raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+mempool-split                                raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+mempool-conway-payment                       raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+mempool-conway-reg-with-deposit              raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode exact
+mempool-conway-required-signer               raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id ≠ chain (8464bb983254…), re-encode differs(83a4), guards=1
+mempool-conway-metadata                      raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode exact
+mempool-dijkstra-payment                     raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+mempool-dijkstra-reg-with-deposit            raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode exact
+mempool-dijkstra-metadata                    raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode exact
+mempool-adv-split                            raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+mempool-dijkstra-direct-deposit              raw id = chain | era-less: model id ≠ chain (94d0f0a8e197…), re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact, directDeposits=1
+mempool-dijkstra-sub-transaction             raw id = chain | era-less: model id ≠ chain (cafafa4b0635…), re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact, subTxs=1
+mempool-dijkstra-plutusv4-reference-script   raw id = chain | era-less: model id = chain, re-encode differs(84a3), scriptRef=8204 | Dijkstra: model id = chain, re-encode exact, scriptRef=8204

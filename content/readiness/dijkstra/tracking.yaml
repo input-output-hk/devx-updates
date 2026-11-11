@@ -270,8 +270,10 @@ tools:
       - url: https://github.com/utxorpc/spec/issues/218
   bloxbean-cardano-client-library:
     links:
+      - url: https://github.com/bloxbean/cardano-client-lib/issues/752
+        note: Checklist of what's left for Dijkstra, from our 2026-11-11 devnet run
       - url: https://github.com/bloxbean/cardano-client-lib/pull/748
-        note: One era-aware ledger CBOR reader
+        note: Draft; era-aware reader and Dijkstra transaction models, accepted on the devnet; QuickTx not started
       - url: https://github.com/bloxbean/cardano-client-lib/issues/707
         note: Plutus V4 scripts
   plutigo:
