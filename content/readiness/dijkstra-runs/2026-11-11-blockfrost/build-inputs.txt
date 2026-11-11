@@ -1,0 +1,12 @@
+node        cardano-node 11.2.0 dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899 (official release asset, as in the 2026-11-09 run)
+chain       a fresh devnet built on 2026-11-11 with start.sh, hardfork.sh, transactions.sh, advanced.sh and
+            `blockfrost.sh spend-sub` (255 blocks), served afterwards by cardano-node run without block production
+db-sync     cardano-db-sync 13.8.0.0 (ccb9c0f4f6168593ec8d8568a6358dbac84d2045), release asset linux-amd64
+            sha256 dc582d6b844aaa2784b7314165e886e26ac65cbd109077ba799936e466aa7140; postgres:16@sha256:5db6dac2…
+blockfrost  blockfrost/backend-ryo:v7.0.0@sha256:2db3d989228863b559cbff46dc16dd8ac168c0337704775b88cff68fa51f6a7e
+            (source blockfrost/blockfrost-backend-ryo 24816390e50827e4f6c772cb47a142874b58f7f5)
+platform    scripts/readiness/devnet/platform-probe, Pallas 3e87e6c704a6c3fac7ef02a633465592fd2730f0 (the pin of
+            blockfrost/blockfrost-platform main 842cf323013f2073eb45e749bf1fd81a3c80b461), rustc 1.99.0
+            sha256 2364fff0c499def90c13d37ee1f43cf0a35d424612bb7a8071048ec26c0a569b
+            input: ../2026-11-09/transactions-labeled.txt (25 encodings)
+handshake   scripts/readiness/devnet/handshake.py with the version sets each platform build offers

@@ -2898,7 +2898,7 @@
             "stake-pool-registration"
           ],
           "status": "gap",
-          "summary": "13.8.0.0 exits on the first PlutusV4 script: it maps the language to plutusV4, but the database's scripttype enum has no such value (TODO(Dijkstra) in the source), so the insert fails and indexing stops (devnet check db-sync-and-blockfrost). Direct deposits, sub-transactions, Dijkstra parameter columns and pool BLS keys were not reached and remain unverified. Nothing on master addresses it yet.",
+          "summary": "13.8.0.0 exits on the first PlutusV4 script: it maps the language to plutusV4, but the database's scripttype enum has no such value (TODO(Dijkstra) in the source), so the insert fails and indexing stops (devnet check db-sync-and-blockfrost). With plutusV4 added to the enum by hand, it reads only top-level transaction bodies: a sub-transaction's inputs and outputs are never recorded, and the first transaction that spends a sub-transaction's output stops indexing with TxId not found. Direct deposits are recorded nowhere, and the Dijkstra protocol parameters have no columns (devnet check blockfrost-dijkstra-data). Pool BLS keys remain unverified. Nothing on master addresses it yet.",
           "evidence": [
             {
               "kind": "source",
@@ -2909,8 +2909,29 @@
               "quote": "  \"plutusV4\" -> Just PlutusV4 -- TODO(Dijkstra): Add to Schema"
             },
             {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "ccb9c0f4f6168593ec8d8568a6358dbac84d2045",
+              "path": "cardano-db-sync/src/Cardano/DbSync/Era/Shelley/Generic/Tx/Dijkstra.hs",
+              "line": 38,
+              "quote": "fromDijkstraTx :: Bool -> Maybe Alonzo.Prices -> (Word64, Core.Tx Core.TopTx DijkstraEra) -> Tx"
+            },
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/cardano-db-sync",
+              "revision": "ccb9c0f4f6168593ec8d8568a6358dbac84d2045",
+              "path": "cardano-db-sync/src/Cardano/DbSync/Era/Shelley/Generic/ParamProposal.hs",
+              "line": 101,
+              "quote": "-- TODO(Dijkstra): the `DijkstraEraPParams` lenses are dropped when this converter"
+            },
+            {
               "kind": "devnet",
               "check": "db-sync-and-blockfrost",
+              "version": "13.8.0.0"
+            },
+            {
+              "kind": "devnet",
+              "check": "blockfrost-dijkstra-data",
               "version": "13.8.0.0"
             }
           ]
@@ -3503,17 +3524,19 @@
       "id": "blockfrost",
       "repo": "blockfrost/blockfrost-backend-ryo",
       "roles": [
-        "chain-indexer"
+        "chain-indexer",
+        "network-client"
       ],
       "surfaces": [
         "era-identity",
+        "node-to-client-protocol",
         "transaction-encoding",
         "protocol-parameters"
       ],
       "observed": {
         "branch": "master",
         "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
-        "date": "2026-11-09",
+        "date": "2026-11-11",
         "release": {
           "tag": "v7.0.0",
           "date": "2026-11-09"
@@ -3531,7 +3554,7 @@
             "era-identity"
           ],
           "status": "gap",
-          "summary": "/network/eras looks every protocol major from db-sync's epoch_param up in a table that ends at 11, so the endpoint throws once an epoch with protocol version 12 is recorded. Reproduced with the v7.0.0 prerelease on db-sync 13.8.0.0, which otherwise serves Dijkstra blocks, transactions and protocol version 12 (devnet check db-sync-and-blockfrost).",
+          "summary": "/network/eras looks every protocol major from db-sync's epoch_param up in a table that ends at 11, so the endpoint answers HTTP 500 once an epoch with protocol version 12 is recorded. Reproduced with v7.0.0 on db-sync 13.8.0.0, which otherwise serves Dijkstra blocks, transactions and protocol version 12 (devnet checks db-sync-and-blockfrost and blockfrost-dijkstra-data).",
           "evidence": [
             {
               "kind": "source",
@@ -3561,6 +3584,115 @@
               "kind": "devnet",
               "check": "db-sync-and-blockfrost",
               "version": "v7.0.0"
+            },
+            {
+              "kind": "devnet",
+              "check": "blockfrost-dijkstra-data",
+              "version": "v7.0.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "node-to-client-protocol"
+          ],
+          "status": "in-progress",
+          "summary": "blockfrost-platform 1.0.0, the latest release (2026-05-18), pins a Pallas whose node-to-client versions stop at V16, which node 11.2 refuses, so it cannot connect (devnet check blockfrost-platform-submit). Main moved to a Pallas that offers V23 in June 2026 and connects, but it is unreleased.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-platform",
+              "revision": "1134f1a3027e3cbaf81f5e5595aadd1bcfefdae7",
+              "path": "Cargo.toml",
+              "line": 75,
+              "quote": "pallas-primitives = { git = \"https://github.com/txpipe/pallas.git\", rev = \"ed422bc0d5a09f77617d4882dd4c71089a8bcdb2\" }"
+            },
+            {
+              "kind": "source",
+              "repo": "txpipe/pallas",
+              "revision": "ed422bc0d5a09f77617d4882dd4c71089a8bcdb2",
+              "path": "pallas-network/src/miniprotocols/handshake/n2c.rs",
+              "line": 71,
+              "quote": "            (PROTOCOL_V16, VersionData(network_magic, Some(false))),"
+            },
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-platform",
+              "revision": "842cf323013f2073eb45e749bf1fd81a3c80b461",
+              "path": "Cargo.toml",
+              "line": 77,
+              "quote": "pallas-primitives = { git = \"https://github.com/txpipe/pallas.git\", rev = \"3e87e6c704a6c3fac7ef02a633465592fd2730f0\" }"
+            },
+            {
+              "kind": "devnet",
+              "check": "blockfrost-platform-submit",
+              "version": "blockfrost-platform 1.0.0"
+            }
+          ]
+        },
+        {
+          "surfaces": [
+            "transaction-encoding"
+          ],
+          "status": "gap",
+          "summary": "Transaction data follows db-sync, which stops at the first PlutusV4 script. With plutusV4 added to db-sync's enum by hand, v7.0.0 serves a wrong UTxO set after a sub-transaction: the output it spent is still listed as unspent, the output it created is missing, and /txs/<sub-transaction> is 404. A direct deposit is missing from the account's balance. PlutusV4 scripts come back as plutusV4, which neither the RYO script types nor the OpenAPI enum include, and the redeemer purpose enum has no guard (devnet check blockfrost-dijkstra-data). RYO has no submission endpoint. Blockfrost's open-source submission path, blockfrost-platform, decodes every body as a Conway transaction before submitting, and answers every three-element Dijkstra or mempool encoding with HTTP 400 (devnet check blockfrost-platform-submit). Its evaluation endpoint is a not-found stub; the pull request that implemented it was closed unmerged.",
+          "evidence": [
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-backend-ryo",
+              "revision": "24816390e50827e4f6c772cb47a142874b58f7f5",
+              "path": "src/types/queries/scripts.ts",
+              "line": 48,
+              "quote": "type ScriptType = 'timelock' | 'plutusV1' | 'plutusV2';"
+            },
+            {
+              "kind": "source",
+              "repo": "blockfrost/openapi",
+              "revision": "1d4d5d8bac8f0c641eea5c6f7b1f3fbbed8d1505",
+              "path": "src/schemas/scripts/script.yaml",
+              "line": 9,
+              "quote": "    enum: [timelock, plutusV1, plutusV2, plutusV3]"
+            },
+            {
+              "kind": "source",
+              "repo": "blockfrost/openapi",
+              "revision": "1d4d5d8bac8f0c641eea5c6f7b1f3fbbed8d1505",
+              "path": "src/schemas/txs/tx_content_redeemers.yaml",
+              "line": 11,
+              "quote": "      enum: [spend, mint, cert, reward, vote, propose]"
+            },
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-platform",
+              "revision": "842cf323013f2073eb45e749bf1fd81a3c80b461",
+              "path": "crates/node/src/cbor/validation.rs",
+              "line": 11,
+              "quote": "    match pallas_codec::minicbor::decode::<Tx>(tx) {"
+            },
+            {
+              "kind": "source",
+              "repo": "blockfrost/blockfrost-platform",
+              "revision": "842cf323013f2073eb45e749bf1fd81a3c80b461",
+              "path": "crates/platform/src/api/utils/txs/evaluate/root.rs",
+              "line": 5,
+              "quote": "    Err(BlockfrostError::not_found())"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/blockfrost/blockfrost-platform/pull/378",
+              "title": "Tx evaluation",
+              "state": "closed",
+              "date": "2026-06-03"
+            },
+            {
+              "kind": "devnet",
+              "check": "blockfrost-dijkstra-data",
+              "version": "v7.0.0"
+            },
+            {
+              "kind": "devnet",
+              "check": "blockfrost-platform-submit",
+              "version": "blockfrost-platform main 842cf323"
             }
           ]
         },
@@ -3569,7 +3701,7 @@
             "protocol-parameters"
           ],
           "status": "gap",
-          "summary": "The epoch parameter endpoints select a fixed Conway column list from db-sync's epoch_param, so Dijkstra parameters are not served; db-sync has no columns for them either.",
+          "summary": "The epoch parameter endpoints select a fixed Conway column list from db-sync's epoch_param, so none of the 23 new Dijkstra parameters are served; db-sync has no columns for them either. Protocol version 12 and the PlutusV4 cost model are served (devnet check blockfrost-dijkstra-data).",
           "evidence": [
             {
               "kind": "source",
@@ -3586,16 +3718,13 @@
               "path": "src/sql/epochs/epochs_number_parameters.sql",
               "line": 66,
               "quote": "  min_fee_ref_script_cost_per_byte AS \"min_fee_ref_script_cost_per_byte\""
+            },
+            {
+              "kind": "devnet",
+              "check": "blockfrost-dijkstra-data",
+              "version": "v7.0.0"
             }
           ]
-        },
-        {
-          "surfaces": [
-            "transaction-encoding"
-          ],
-          "status": "no-evidence",
-          "summary": "Serves transaction CBOR from db-sync and forwards submissions to the submit API without decoding them itself; this surface follows those services.",
-          "evidence": []
         }
       ]
     },

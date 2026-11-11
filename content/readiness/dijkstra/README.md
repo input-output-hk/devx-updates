@@ -120,12 +120,18 @@ archived assessment and on `/map/dijkstra/history`.
 | `jvm-codecs` | New: cardano-client-lib 0.8.0-pre7 drops direct deposits and sub-transactions (wrong transaction id); Yaci 0.5.0-pre15 decodes no Dijkstra block. |
 | `fork-chain-sync` | 2026-11-10, same chain: the IntersectMBO Ogmios fork (2f9b5d14) syncs all 2356 Dijkstra blocks; the Kupo fork (bdb44975) indexes everything up to block 186, including the direct deposit, then stops at the first sub-transaction. |
 | `fork-ogmios-api` | 2026-11-10: the Ogmios fork returns Dijkstra transactions as an id only, has no Dijkstra protocol-parameters query, and drops mempool clients; submitting a Dijkstra payment works. |
+| `blockfrost-dijkstra-data` | 2026-11-11, fresh chain: with `plutusV4` added to db-sync's enum by hand, db-sync 13.8.0.0 skips sub-transactions and exits on the first spend of a sub-transaction output. Blockfrost v7.0.0 lists spent outputs as unspent, misses direct deposits, returns `plutusV4` outside its API schema, serves no new parameters, and `/network/eras` answers HTTP 500. |
+| `blockfrost-platform-submit` | 2026-11-11: blockfrost-platform 1.0.0 cannot connect to node 11.2 (no V23); main connects but its `/tx/submit` rejects all 20 three-element encodings with HTTP 400 and passes the 5 Conway ones. |
 
 The two fork checks ran on 2026-11-10 against the same chain, served by a node that does not produce blocks; their
 evidence is in `content/readiness/dijkstra-runs/2026-11-10-forks/`. Neither fork is merged upstream or released.
 
+The two Blockfrost checks ran on 2026-11-11 on a fresh chain built with the same recipe, plus a payment spending the
+sub-transaction's output; their evidence is in `content/readiness/dijkstra-runs/2026-11-11-blockfrost/`.
+
 Not run: Koios, guards and balance intervals (the 11.2.0 CLI has no options for them), and executing a PlutusV4 script.
-Ogmios and Kupo, releases and forks alike, still reject the versioned configuration. db-sync stops before the direct deposit and the sub-transaction.
+Ogmios and Kupo, releases and forks alike, still reject the versioned configuration. db-sync stops before the direct deposit and the sub-transaction unless `plutusV4` is added to its enum by hand (2026-11-11).
+Hosted Blockfrost (its submission and mempool endpoints) is closed source and was not run.
 Source progress remains separate from runtime results: a newly published release is not an end-to-end devnet pass.
 
 ## Not yet covered
@@ -166,6 +172,17 @@ parameters without the BLS key, era tables ending at Conway, script contexts
 without V4's fields, and Pallas or Yaci versions that cannot decode Dijkstra
 blocks. Transaction rules stay `no-evidence` unless code specific to a rule
 change was found.
+
+What changed on 2026-11-11:
+
+- Blockfrost: transaction encoding moves from no evidence to a gap. Past db-sync's PlutusV4 stop, v7.0.0 serves a wrong
+  UTxO set after a sub-transaction and misses direct deposits; PlutusV4 scripts come back as a type its API schema does
+  not allow. The run-your-own backend has no submission endpoint, as the previous summary wrongly said;
+  Blockfrost's open-source submission path is blockfrost-platform, now assessed under this component. Its 1.0.0
+  release cannot connect to node 11.2. Main connects but rejects every Dijkstra transaction before the node sees it.
+  No Blockfrost repository has an issue, pull request or branch about Dijkstra.
+- cardano-db-sync: past the PlutusV4 stop, 13.8.0.0 reads only top-level transaction bodies and stops indexing at the
+  first spend of a sub-transaction's output; direct deposits are recorded nowhere.
 
 What changed on 2026-11-10:
 

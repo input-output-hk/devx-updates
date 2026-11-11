@@ -1,0 +1,11 @@
+[package]
+name = "platform-probe"
+version = "0.1.0"
+edition = "2021"
+[dependencies]
+# The Pallas revision blockfrost-platform main (842cf323) pins. Its 1.0.0 release pins ed422bc0, which cannot
+# connect to an 11.2 node at all (no node-to-client V23), so it never reaches this check.
+pallas-codec = { git = "https://github.com/txpipe/pallas.git", rev = "3e87e6c704a6c3fac7ef02a633465592fd2730f0" }
+pallas-primitives = { git = "https://github.com/txpipe/pallas.git", rev = "3e87e6c704a6c3fac7ef02a633465592fd2730f0" }
+pallas-hardano = { git = "https://github.com/txpipe/pallas.git", rev = "3e87e6c704a6c3fac7ef02a633465592fd2730f0" }
+hex = "0.4"

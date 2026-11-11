@@ -1,0 +1,25 @@
+conway-legacy-reg                        accepted: forwarded to the node
+conway-metadata                          accepted: forwarded to the node
+conway-payment                           accepted: forwarded to the node
+conway-reg-with-deposit                  accepted: forwarded to the node
+conway-required-signer                   accepted: forwarded to the node
+dijkstra-metadata                        rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 230 (\"unexpected type
+dijkstra-payment                         rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 195 (\"unexpected type
+dijkstra-reg-with-deposit                rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 340 (\"unexpected type
+split                                    rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 530 (\"unexpected type
+dijkstra-direct-deposit                  rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 234 (\"unexpected type
+dijkstra-plutusv4-reference-script       rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 1 (\"missing value at 
+dijkstra-sub-transaction                 rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 387 (\"unexpected type
+adv-split                                rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 345 (\"unexpected type
+mempool-split                            rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 530 (\"unexpected type
+mempool-conway-payment                   rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 195 (\"unexpected type
+mempool-conway-reg-with-deposit          rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 340 (\"unexpected type
+mempool-conway-required-signer           rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 331 (\"unexpected type
+mempool-conway-metadata                  rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 230 (\"unexpected type
+mempool-dijkstra-payment                 rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 195 (\"unexpected type
+mempool-dijkstra-reg-with-deposit        rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 340 (\"unexpected type
+mempool-dijkstra-metadata                rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 230 (\"unexpected type
+mempool-adv-split                        rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 345 (\"unexpected type
+mempool-dijkstra-direct-deposit          rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 234 (\"unexpected type
+mempool-dijkstra-sub-transaction         rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 387 (\"unexpected type
+mempool-dijkstra-plutusv4-reference-script rejected, HTTP 400: {"tag":"TxSubmitFail","contents":{"tag":"TxCmdTxReadError","contents":["DecoderErrorDeserialiseFailure \"Shelley Tx\" (DeserialiseFailure 1 (\"missing value at 

@@ -1,0 +1,78 @@
+{"at":"2026-11-11T15:02:52.493298539Z","ns":"Reflection.TracerInfo","data":{"allTracers":"ChainSync DBSync Handshake LocalStateQuery Mux Subscription","kind":"TracerMeta","noMetrics":"ChainSync DBSync Handshake LocalStateQuery Subscription","silentTracers":"ChainSync Handshake Mux"},"sev":"Notice","thread":"5","host":"devbox"}
+[2026-11-11 15:02:52.4933Z][devbox:DBSync.Message](Info,5) Version number: 13.8.0.0
+[2026-11-11 15:02:52.4933Z][devbox:DBSync.Message](Info,5) Git hash: ccb9c0f4f6168593ec8d8568a6358dbac84d2045
+[2026-11-11 15:02:52.4933Z][devbox:DBSync.Message](Info,5) Enviroment variable DbSyncAbortOnPanic: False
+[2026-11-11 15:02:52.4933Z][devbox:DBSync.Message](Info,5) SyncNodeParams {enpConfigFile = ConfigFile {unConfigFile = "config.yaml"}, enpSocketPath = SocketPath {unSocketPath = "/tmp/dijkstra-11.2.0/env/socket/node1/sock"}, enpTracerSocket = Nothing, enpMaybeLedgerStateDir = Just (LedgerStateDir {unLedgerStateDir = "state"}), enpMigrationDir = MigrationDir "schema", enpPGPassSource = PGPassDefaultEnv, enpHasCache = True, enpForceIndexes = False, enpHasInOut = True, enpMaybeRollback = Nothing, enpAllowPrivateOffChainUrls = False, enpLedgerOnly = False}
+[2026-11-11 15:02:52.4933Z][devbox:DBSync.Message](Info,5) SyncOptions {soptEpochViewEnabled = True, soptAbortOnInvalid = False, soptCache = True, soptPruneConsumeMigration = PruneConsumeMigration {pcmPruneTxOut = False, pcmConsumedTxOut = False, pcmSkipTxIn = False}, soptInsertOptions = InsertOptions {ioTxCBOR = False, ioInOut = True, ioUseLedger = True, ioShelley = True, ioRewards = True, ioMultiAssets = True, ioMetadata = True, ioKeepMetadataNames = Nothing, ioPlutusExtra = True, ioOffChainPoolData = False, ioOffChainVoteData = False, ioPoolStats = False, ioGov = True, ioRemoveJsonbFromSchema = False, ioTxOutVariantType = TxOutVariantCore}, soptSnapshotInterval = SnapshotIntervalConfig {sicNearTipEpoch = 580}, soptAllowPrivateOffChainUrls = False}
+[2026-11-11 15:02:52.5020Z][devbox:DBSync.Message](Info,5) Schema migration files validated
+[2026-11-11 15:02:52.5142Z][devbox:DBSync.Message](Info,5) Running database migrations in mode Initial
+[2026-11-11 15:02:52.5142Z][devbox:DBSync.Message](Info,5) Found maintenance_work_mem=64MB, max_parallel_maintenance_workers=2
+[2026-11-11 15:02:53.8871Z][devbox:DBSync.Message](Info,5) Reapplied index or schema script migration-3-0001-20190816.sql
+[2026-11-11 15:02:53.9050Z][devbox:DBSync.Message](Info,5) Reapplied index or schema script migration-3-0002-20200521.sql
+[2026-11-11 15:02:53.9211Z][devbox:DBSync.Message](Info,5) Reapplied index or schema script migration-3-0003-20240121.sql
+[2026-11-11 15:02:53.9369Z][devbox:DBSync.Message](Info,5) Reapplied index or schema script migration-3-0004-20240603.sql
+[2026-11-11 15:02:53.9566Z][devbox:DBSync.Message](Info,5) Reapplied index or schema script migration-3-9999-20200728.sql
+[2026-11-11 15:02:53.9566Z][devbox:DBSync.Message](Info,5) Migrations: 0 applied, 69 already applied, 5 reapplied (index and schema scripts)
+[2026-11-11 15:02:53.9567Z][devbox:DBSync.Message](Info,5) All migrations were executed
+[2026-11-11 15:02:53.9567Z][devbox:DBSync.Message](Info,5) New user indexes were not created. They may be created later if necessary.
+[2026-11-11 15:02:53.9568Z][devbox:DBSync.Message](Info,5) SyncOptions {soptEpochViewEnabled = True, soptAbortOnInvalid = False, soptCache = True, soptPruneConsumeMigration = PruneConsumeMigration {pcmPruneTxOut = False, pcmConsumedTxOut = False, pcmSkipTxIn = False}, soptInsertOptions = InsertOptions {ioTxCBOR = False, ioInOut = True, ioUseLedger = True, ioShelley = True, ioRewards = True, ioMultiAssets = True, ioMetadata = True, ioKeepMetadataNames = Nothing, ioPlutusExtra = True, ioOffChainPoolData = False, ioOffChainVoteData = False, ioPoolStats = False, ioGov = True, ioRemoveJsonbFromSchema = False, ioTxOutVariantType = TxOutVariantCore}, soptSnapshotInterval = SnapshotIntervalConfig {sicNearTipEpoch = 580}, soptAllowPrivateOffChainUrls = False}
+[2026-11-11 15:02:53.9569Z][devbox:DBSync.Message](Info,5) Using byron genesis file from: "/tmp/dijkstra-11.2.0/env/byron-genesis.json"
+[2026-11-11 15:02:53.9570Z][devbox:DBSync.Message](Info,5) Using shelley genesis file from: "/tmp/dijkstra-11.2.0/services/db-sync-13.8.0.0/shelley-genesis.json"
+[2026-11-11 15:02:53.9570Z][devbox:DBSync.Message](Info,5) Using alonzo genesis file from: "/tmp/dijkstra-11.2.0/env/alonzo-genesis.json"
+[2026-11-11 15:02:53.9744Z][devbox:DBSync.Message](Info,5) NetworkMagic: 42
+[2026-11-11 15:02:53.9793Z][devbox:DBSync.Message](Info,5) runConsumedTxOutMigrationsMaybe: PruneConsumeMigration {pcmPruneTxOut = False, pcmConsumedTxOut = False, pcmSkipTxIn = False}
+[2026-11-11 15:02:53.9799Z][devbox:DBSync.Message](Info,5) runConsumedTxOutMigrations: No extra migration specified
+[2026-11-11 15:02:53.9828Z][devbox:DBSync.Message](Warning,5) Backfilling epoch_finalized from block/tx; on mainnet this one-time cost can take several minutes.
+[2026-11-11 15:02:53.9851Z][devbox:DBSync.Message](Info,5) epoch_finalized backfill complete.
+[2026-11-11 15:02:53.9872Z][devbox:DBSync.Message](Info,5) Initial genesis distribution present and correct
+[2026-11-11 15:02:53.9872Z][devbox:DBSync.Message](Info,5) Total genesis supply of Ada: 3000.000000
+[2026-11-11 15:02:53.9874Z][devbox:DBSync.Message](Info,5) Resolved the Shelley genesis extraConfig: 6 initial funds, 1 stake pools, 3 delegations
+[2026-11-11 15:02:53.9877Z][devbox:DBSync.Message](Info,5) Validating Genesis distribution
+[2026-11-11 15:02:53.9886Z][devbox:DBSync.Message](Info,5) Initial genesis distribution present and correct
+[2026-11-11 15:02:53.9886Z][devbox:DBSync.Message](Info,5) Total genesis supply of Ada: 90000018.000000
+[2026-11-11 15:02:53.9888Z][devbox:DBSync.Message](Info,162) Starting DB thread
+[2026-11-11 15:02:53.9888Z][devbox:DBSync.Message](Info,164) Connecting to node via "/tmp/dijkstra-11.2.0/env/socket/node1/sock"
+[2026-11-11 15:02:53.9893Z][devbox:DBSync.Message](Info,175) Starting ChainSync client
+[2026-11-11 15:02:53.9893Z][devbox:DBSync.Message](Info,175) Setting ConsistencyLevel to Unchecked
+[2026-11-11 15:02:53.9894Z][devbox:DBSync.Message](Info,162) Chain Sync client thread has restarted
+[2026-11-11 15:02:53.9920Z][devbox:DBSync.Message](Info,162) Database tip is at slot 1404, block 76
+[2026-11-11 15:02:53.9921Z][devbox:DBSync.Message](Info,175) Suggesting intersection points from memory: [] and from disk: [Point (At (Block {blockPointSlot = SlotNo 1367, blockPointHash = 2c5d411f0b508bcc52fe22030a464f036b5b8094fc8be50f6391c9bca02d6c3f})),Point (At (Block {blockPointSlot = SlotNo 1170, blockPointHash = 201ba2e29c8bfda0c65d09b99df75d5d7342319518f5a0b7f3087471c90a07f8})),Point (At (Block {blockPointSlot = SlotNo 993, blockPointHash = 4116545acd8923617e3b7015e2efb86dfd8972e6cb95e174d91a00875864cc32}))]
+[2026-11-11 15:02:53.9956Z][devbox:DBSync.Message](Info,162) Delaying delete of 1 blocks after 75 while rolling back to (slot 1367, hash 2c5d411f0b508bcc52fe22030a464f036b5b8094fc8be50f6391c9bca02d6c3f). Applying blocks until a new block is found. The node is currently at Tip (SlotNo 5110) 13be2b604144da8524bce2526c15de69bd7046cd62ca671bb9a8b289b1836f3a (BlockNo 255)
+[2026-11-11 15:02:54.9783Z][devbox:DBSync.Message](Info,162) Loaded snapshot "1367" in 0.975727905s
+[2026-11-11 15:02:54.9783Z][devbox:DBSync.Message](Info,162) Found snapshot for slot 1367, hash 2c5d411f0b508bcc52fe22030a464f036b5b8094fc8be50f6391c9bca02d6c3f
+[2026-11-11 15:02:54.9783Z][devbox:DBSync.Message](Info,162) Setting ConsistencyLevel to DBAheadOfLedger
+[2026-11-11 15:02:54.9842Z][devbox:DBSync.Message](Info,162) Reached EpochNo 7
+[2026-11-11 15:02:54.9853Z][devbox:DBSync.Message](Info,162) Received block which is not in the db with HeaderFields {headerFieldSlot = SlotNo 1415, headerFieldBlockNo = BlockNo 77, headerFieldHash = 44d6bbfd38077900b74732e5f92ae23c9f361699c4d564ee5fbc43d4f64aee38}. Time to restore consistency.
+[2026-11-11 15:02:54.9874Z][devbox:DBSync.Message](Info,162) Starting at epoch 7
+[2026-11-11 15:02:54.9920Z][devbox:DBSync.Message](Info,162) Insert Dijkstra Block: epoch 7, slot 1415, block 77, hash 44d6bbfd38077900b74732e5f92ae23c9f361699c4d564ee5fbc43d4f64aee38
+[2026-11-11 15:02:54.9920Z][devbox:DBSync.Message](Info,162) Setting ConsistencyLevel to Consistent
+[2026-11-11 15:02:55.0050Z][devbox:DBSync.Message](Info,162) Inserted 3 EpochStake for EpochNo 8
+[2026-11-11 15:02:55.0127Z][devbox:DBSync.Message](Info,166) Wrote snapshot "1584" in 0.001392196s
+[2026-11-11 15:02:55.0129Z][devbox:DBSync.Message](Info,166) Trimmed 1 old snapshots
+[2026-11-11 15:02:55.0129Z][devbox:DBSync.Message](Info,162) Validate Epoch Stake: total entries in epoch 8 are 3
+[2026-11-11 15:02:55.0134Z][devbox:DBSync.Message](Info,162) Database Statement Cache size is 37
+[2026-11-11 15:02:55.0141Z][devbox:DBSync.Message](Info,162) 
+----------------------- Statistics for Epoch 7 -----------------------
+This epoch took: 00:00:00.02 to process.
+
+Null Unicodes:
+  No Unicode NUL characters found in JSON parsing.
+
+Epoch Cache Statistics: 
+  Caches Cleaned For Tip: False
+  Stake Addresses: cache sizes: 3 and 0, hit rate: 0%, hits: 0, misses: 3
+  Pools: cache size: 1, hit rate: 92%, hits: 13, misses: 1
+  Datums: cache capacity: 125000, cache size: 0, hits: 0, misses: 0
+  Addresses: cache capacity: 50000, cache size: 0, hits: 0, misses: 0
+  Multi Assets: cache capacity: 125000, cache size: 0, hits: 0, misses: 0
+  Previous Block: , hit rate: 45%, hits: 10, misses: 12
+  TxId: cache size: 3, cache capacity: 150000, hits: 0, misses: 0
+-----------------------------------------------------------------
+[2026-11-11 15:02:55.0141Z][devbox:DBSync.Message](Info,162) Starting epoch 8
+[2026-11-11 15:02:55.0149Z][devbox:DBSync.Message](Error,162) Error SNErrDefault: "TxId not found for hash: \"Mm\\ENQ\\237\\149\\212\\194)\\ENQ\\188J\\195\\212:\\147\\233I\\DC1\\SYN\\161\\159:9\\207&ah\\172\\133\\226\\152\\135\"":
+[2026-11-11 15:02:55.0149Z][devbox:DBSync.Message](Error,162) runDbThread: Error SNErrDefault: "TxId not found for hash: \"Mm\\ENQ\\237\\149\\212\\194)\\ENQ\\188J\\195\\212:\\147\\233I\\DC1\\SYN\\161\\159:9\\207&ah\\172\\133\\226\\152\\135\"":
+[2026-11-11 15:02:55.0151Z][devbox:DBSync.Message](Error,180) recvMsgRollForward: AsyncCancelled
+[2026-11-11 15:02:55.0152Z][devbox:DBSync.Message](Error,175) ChainSyncWithBlocksPtcl: AsyncCancelled
+[2026-11-11 15:02:55.0153Z][devbox:DBSync.Message](Info,5) closeLedgerEnv: closing LSM session...
+[2026-11-11 15:02:55.0153Z][devbox:DBSync.Message](Info,5) closeLedgerEnv: closed.
+cardano-db-sync: Error SNErrDefault: "TxId not found for hash: \"Mm\\ENQ\\237\\149\\212\\194)\\ENQ\\188J\\195\\212:\\147\\233I\\DC1\\SYN\\161\\159:9\\207&ah\\172\\133\\226\\152\\135\"":

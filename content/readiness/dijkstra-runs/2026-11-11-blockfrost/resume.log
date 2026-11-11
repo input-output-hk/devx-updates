@@ -1,0 +1,4 @@
+db-sync stopped at block 76
+ALTER TYPE
+node tip: {"block":255}
+db-sync exited; highest block indexed: 80
