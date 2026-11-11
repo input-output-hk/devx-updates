@@ -1,0 +1,4 @@
+# blockfrost-platform 1.0.0 (Pallas ed422bc0): VersionTable::v10_and_above offers V10..V16
+offered V10..V16: refused, reason VersionMismatch ['V23']
+# blockfrost-platform main 842cf323 (Pallas 3e87e6c7): v10_and_above offers V10..V23
+offered V10..V23: accepted V23 [42, False]

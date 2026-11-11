@@ -540,6 +540,67 @@
         "scripts/readiness/devnet/forks.sh",
         "scripts/readiness/devnet/ogmios-probe/probe.mjs"
       ]
+    },
+    {
+      "id": "blockfrost-dijkstra-data",
+      "title": "Past db-sync's PlutusV4 stop, Blockfrost v7.0.0 serves wrong UTxOs and balances for sub-transactions and direct deposits",
+      "summary": "Run on 2026-11-11 on a fresh 11.2.0 devnet built with the same recipe, plus a payment that spends the sub-transaction's output. db-sync 13.8.0.0 again exits at the first PlutusV4 script. With plutusV4 added to its scripttype enum by hand, it indexes the PlutusV4 script, the direct deposit and the transaction carrying the sub-transaction, but records nothing of the sub-transaction, and it exits with TxId not found on the payment that spends the sub-transaction's output. On that data Blockfrost RYO v7.0.0 still lists the output the sub-transaction spent as unspent and returns 404 for the sub-transaction. It reports 0 for an account the node credits with a 2 ADA direct deposit, and types the PlutusV4 script as plutusV4, which its OpenAPI enum does not allow. It serves none of the 23 new protocol parameters, and /network/eras returns HTTP 500.",
+      "results": [
+        {
+          "kind": "component",
+          "id": "cardano-db-sync",
+          "version": "13.8.0.0",
+          "outcome": "fail",
+          "note": "Exits at the first PlutusV4 script. With plutusV4 added by hand, it skips sub-transactions and exits on the first spend of a sub-transaction output."
+        },
+        {
+          "kind": "component",
+          "id": "blockfrost",
+          "version": "v7.0.0",
+          "outcome": "fail",
+          "note": "Wrong UTxO set after a sub-transaction, direct deposits missing from balances, plutusV4 script type outside the API schema, no Dijkstra parameters, /network/eras HTTP 500."
+        }
+      ],
+      "observed": [
+        "service-layer.log:\ndb-sync exited; blocks indexed: 77, highest: 76, epoch_param rows: 8\ndijkstra-direct-deposit              db-sync missing; blockfrost The requested component has not been found.\ndijkstra-plutusv4-reference-script   db-sync missing; blockfrost The requested component has not been found.\ndijkstra-sub-transaction             db-sync missing; blockfrost The requested component has not been found.",
+        "db-sync-resumed.log (after ALTER TYPE scripttype ADD VALUE 'plutusV4'; the hash is 4d6d05ed…, the sub-transaction's id):\nError SNErrDefault: \"TxId not found for hash: \\\"Mm\\\\ENQ\\\\237\\\\149\\\\212\\\\194)\\\\ENQ\\\\188J…\\\"\"",
+        "blockfrost-probe.log:\ndb-sync: top-level with sub-transaction indexed, sub-transaction missing, spend of its output missing\n/txs/<top>/utxos: {\"inputs\":[\"3a7c211d#2\"],\"outputs\":[\"49700000\"]}\n/txs/<sub>: 404\nnode: split#1 unspent? false; sub#0 unspent? false\nblockfrost /addresses/<addr>/utxos: split outputs listed [1,4]; sub#0 listed false",
+        "blockfrost-probe.log:\nnode: rewardAccountBalance 2000000\nblockfrost /accounts/<stake>: {\"active\":false,\"controlled_amount\":\"0\",\"withdrawable_amount\":\"0\"}\nblockfrost /txs/<dd>: {\"fees\":\"300000\",\"deposit\":\"0\",\"withdrawal_count\":0} utxos {\"in\":[\"50000000\"],\"out\":[\"47700000\"]}",
+        "blockfrost-probe.log:\nblockfrost /scripts/<hash>: {\"type\":\"plutusV4\",\"serialised_size\":6} (OpenAPI enum: timelock, plutusV1, plutusV2, plutusV3)\nnode: {\"parameters\":54,\"costModels\":[\"PlutusV1\",\"PlutusV2\",\"PlutusV3\",\"PlutusV4\"]}\nblockfrost /epochs/latest/parameters: {\"protocol_major_ver\":12,\"fields\":56,\"cost_models_raw\":[\"PlutusV1\",\"PlutusV2\",\"PlutusV3\",\"PlutusV4\"],\"plutusV4_entries\":251}\nnode's new Dijkstra parameters: 23 […]; served by Blockfrost: []\n/network/eras: HTTP 500"
+      ],
+      "recipe": [
+        "scripts/readiness/devnet/service-layer.sh",
+        "scripts/readiness/devnet/blockfrost.sh"
+      ]
+    },
+    {
+      "id": "blockfrost-platform-submit",
+      "title": "blockfrost-platform cannot submit Dijkstra transactions: 1.0.0 cannot connect, main rejects them before the node",
+      "summary": "Run on 2026-11-11. blockfrost-platform 1.0.0, its latest release, uses a Pallas that offers node-to-client V10 to V16, which node 11.2.0 refuses. Main (842cf323, unreleased) offers V23, but /tx/submit first decodes every body as a Conway transaction with Pallas 3e87e6c7. Run on the 25 encodings of the 2026-11-09 matrix, that check passes the 5 Conway four-element encodings and answers the 20 three-element ones with HTTP 400 before the node sees them. Those are every Dijkstra-built transaction and every mempool re-encoding. The 400 body has the shape of a node decode failure.",
+      "results": [
+        {
+          "kind": "component",
+          "id": "blockfrost",
+          "version": "blockfrost-platform 1.0.0",
+          "outcome": "fail",
+          "note": "No node-to-client V23: cannot connect to an 11.2 node."
+        },
+        {
+          "kind": "component",
+          "id": "blockfrost",
+          "version": "blockfrost-platform main 842cf323",
+          "outcome": "fail",
+          "note": "Rejects every three-element transaction at /tx/submit; Conway four-element transactions pass."
+        }
+      ],
+      "observed": [
+        "platform-handshake.log:\n# blockfrost-platform 1.0.0 (Pallas ed422bc0): VersionTable::v10_and_above offers V10..V16\noffered V10..V16: refused, reason VersionMismatch ['V23']\n# blockfrost-platform main 842cf323 (Pallas 3e87e6c7): v10_and_above offers V10..V23\noffered V10..V23: accepted V23 [42, False]",
+        "platform-submit.log (25 lines: 5 accepted, 20 rejected; three shown):\nconway-payment                           accepted: forwarded to the node\ndijkstra-payment                         rejected, HTTP 400: {\"tag\":\"TxSubmitFail\",\"contents\":{\"tag\":\"TxCmdTxReadError\",\"contents\":[\"DecoderErrorDeser…\nmempool-conway-payment                   rejected, HTTP 400: …"
+      ],
+      "recipe": [
+        "scripts/readiness/devnet/platform-probe/src/main.rs",
+        "scripts/readiness/devnet/handshake.py"
+      ]
     }
   ]
 }

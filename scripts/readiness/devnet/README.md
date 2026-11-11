@@ -86,6 +86,16 @@ socket paths are limited to 108 bytes.
     `ogmios-probe/probe.mjs` and runs the ledger queries. `forks.sh kupo [<transaction-ids.json>]` indexes from origin;
     with the ids, and once Kupo reaches the tip, it lists how many outputs Kupo indexed for each test transaction.
 
+14. Blockfrost (added 2026-11-11). On the live chain, after `advanced.sh`, `blockfrost.sh spend-sub` spends the
+    sub-transaction's output in an ordinary payment. Then (live, or under `forks.sh relay`) run `service-layer.sh` with
+    `DBSYNC_VERSION=13.8.0.0` and the v7.0.0 image; db-sync stops at the PlutusV4 script. `blockfrost.sh resume` adds
+    `plutusV4` to the database's `scripttype` enum and restarts db-sync. That is this experiment's workaround, not a fix.
+    `blockfrost.sh probe` puts Blockfrost's answers for the advanced transactions next to the node's.
+    `platform-probe/` runs blockfrost-platform's `/tx/submit` pre-check (a Conway decode, at the platform's Pallas pin) on
+    labeled transactions: `CARGO_TARGET_DIR=$DEVNET_DIR/platform-build cargo build --release --manifest-path
+    platform-probe/Cargo.toml`, then `platform-probe < labeled`. `handshake.py` with `10,...,16` and `10,...,23`
+    reproduces the version sets of the platform's 1.0.0 release and main.
+
 ## Retained evidence and determinism
 
 The current run is in `content/readiness/dijkstra-runs/2026-11-09/`; the earlier one is in
