@@ -89,8 +89,8 @@
   slug: cardano-init
   title: Setup CLI/TUI
   quarter: Q3-2026
-  status: in-progress
-  statusUpdatedAt: 2026-07-06
+  status: done
+  statusUpdatedAt: 2026-11-10
   updates:
     - date: "2026-06-12"
       description: First Aiken + MeshJS templates scaffold a buildable project end to end.
@@ -129,7 +129,8 @@
     - id: DX.05
       title: RC ready
       dueDate: "2026-11-30"
-      status: not-started
+      deliveredDate: "2026-11-10"
+      status: done
       description: >-
         First Release Candidate for the tool, with the website and docs, has
         been published. Users can already use this tool to create new Cardano
@@ -202,12 +203,15 @@
   slug: developer-hub
   title: Developer HUB
   quarter: Q4-2026
-  status: in-progress
-  statusUpdatedAt: 2026-07-06
+  status: done
+  statusUpdatedAt: 2026-10-28
   updates:
     - date: "2026-07-08"
       description: Proposed a hands-on onboarding flow for the Cardano Developer Portal.
       week: "2026-W28"
+    - date: "2026-10-28"
+      description: Developer Portal improvements delivered — the advanced lectures, design patterns, introduction, and the weekly CI that runs every example project merged, completing milestone DX.04.
+      week: "2026-W44"
   summary: >-
     One entry point for developers new to Cardano, built on the Developer Portal
     with onboarding paths for three personas and content LLMs can consume.
@@ -221,7 +225,8 @@
     - id: DX.04
       title: Improving Developer Portal
       dueDate: "2026-10-30"
-      status: in-progress
+      deliveredDate: "2026-10-28"
+      status: done
       description: >-
         Contribution strategy for developers.cardano.org, highlighting paths
         that will increase the onboarding of new builders. Implement those
@@ -303,7 +308,7 @@
   title: Reactive
   quarter: ongoing
   status: in-progress
-  statusUpdatedAt: 2026-07-06
+  statusUpdatedAt: 2026-11-06
   updates:
     - date: "2026-06-13"
       description: Fixed environment-variable inheritance in Yaci DevKit's npm launcher so child processes receive the parent environment.
@@ -320,6 +325,12 @@
     - date: "2026-08-17"
       description: Added a scalability-advice skill to cardano-dev-skills, helping coding agents assess whether Layer 2 is needed and choose an approach and Hydra topology.
       week: "2026-W34"
+    - date: "2026-10-27"
+      description: The Dijkstra hard-fork readiness tracker went public. It tests ecosystem tools against a live Dijkstra devnet, shows which ones break and why, and lays out the critical path of upstream fixes that unblocks the tools DApps build on.
+      week: "2026-W44"
+    - date: "2026-11-06"
+      description: Diagnosed Ledger hardware-wallet signing and Aiken for Dijkstra, and reported the Ledger findings upstream. Some signing paths fail or silently drop new transaction fields, and existing Aiken V3 validators stay valid.
+      week: "2026-W45"
   summary: >-
     Address high-ROI opportunities surfaced through ecosystem alignment, with
     transparent reporting of what we picked and why.
