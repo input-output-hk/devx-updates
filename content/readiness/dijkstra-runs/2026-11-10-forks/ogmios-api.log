@@ -1,0 +1,14 @@
+## Submission through Ogmios (chain truncated after block 186, served by a non-producing node)
+evaluateTransaction: []
+submitTransaction: {"transaction":{"id":"1969dbd744acc57c1c6b88d657b18940d49f2c9fa68f43a2905a802757d3988f"}} (the id cardano-cli computed)
+
+## Resubmitting the same transaction (a rejected submission)
+client: connection dropped, no JSON-RPC reply
+{"WebSocket":{"exception":"TODO(dijkstra): toRawTxIdHash Dijkstra arm (GenTxIdDijkstra)","tag":"WebSocketUnknownException"}}
+
+## Mempool monitoring (acquireMempool, mempool holding the Dijkstra payment)
+client: connection dropped, no JSON-RPC reply
+{"WebSocket":{"exception":"TODO(dijkstra): toRawTxIdHash Dijkstra arm (GenTxIdDijkstra)","tag":"WebSocketUnknownException"}}
+
+## Versioned node configuration
+Missing 'ByronGenesisFile' and/or 'ShelleyGenesisFile' from Cardano's configuration?

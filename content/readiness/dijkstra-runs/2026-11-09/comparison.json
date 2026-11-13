@@ -1,0 +1,398 @@
+{
+  "before": {
+    "date": "2026-11-01",
+    "node": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899"
+  },
+  "after": {
+    "date": "2026-11-09",
+    "node": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899"
+  },
+  "tools": [
+    {
+      "tool": "yaci",
+      "before": "in-progress",
+      "after": "breaks",
+      "reason": "Blocked by bloxbean-cardano-client-library; own code lacks Dijkstra support; failed on the devnet"
+    },
+    {
+      "tool": "yaci-bridge",
+      "before": "unverified",
+      "after": "breaks",
+      "reason": "Blocked by yaci"
+    }
+  ],
+  "components": [
+    {
+      "component": "cardano-db-sync",
+      "surfaces": [
+        {
+          "surface": "era-identity",
+          "before": "gap",
+          "after": "released"
+        },
+        {
+          "surface": "block-encoding",
+          "before": "gap",
+          "after": "released"
+        }
+      ]
+    },
+    {
+      "component": "gouroboros",
+      "surfaces": [
+        {
+          "surface": "block-encoding",
+          "before": "gap",
+          "after": "verified"
+        }
+      ]
+    },
+    {
+      "component": "yaci",
+      "surfaces": [
+        {
+          "surface": "era-identity",
+          "before": "in-progress",
+          "after": "gap"
+        },
+        {
+          "surface": "block-encoding",
+          "before": "in-progress",
+          "after": "gap"
+        }
+      ]
+    }
+  ],
+  "runtime": [
+    {
+      "key": "advanced-transactions/change/account-enhancements/",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "advanced-transactions/change/nested-transactions/",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "advanced-transactions/change/plutus-v4/",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "block-shape/change/block-body-non-segregated/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "block-shape/change/header-version-info/",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "block-shape/component/gouroboros/v0.213.0",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "block-shape/component/gouroboros/v0.213.9",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "block-shape/component/gouroboros/v0.216.3",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "block-shape/component/gouroboros/v0.218.2",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "cml-decoding/component/cardano-multiplatform-lib-cml/6.2.0",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "cross-era-submission/change/guards/",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "cross-era-submission/change/mempool-cross-era/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "cross-era-submission/change/mempool-tx-is-valid/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "cross-era-submission/change/removed-encodings/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "csl-decoding/component/cardano-serialization-lib-csl/15.0.3",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "csl-decoding/component/cardano-serialization-lib-csl/17.0.0",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "db-sync-and-blockfrost/component/blockfrost/v6.8.2",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "db-sync-and-blockfrost/component/blockfrost/v7.0.0",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "db-sync-and-blockfrost/component/cardano-db-sync/13.7.2.1",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "db-sync-and-blockfrost/component/cardano-db-sync/13.8.0.0",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "fork-to-pv12/change/dijkstra-genesis-config/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "fork-to-pv12/change/era-dijkstra/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "fork-to-pv12/change/protocol-parameters/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "fork-to-pv12/change/query-pparams-encoding/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "js-sdk-transactions/component/cardano-js-sdk/@cardano-sdk/core 0.47.1",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "jvm-codecs/component/bloxbean-cardano-client-library/0.7.3",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "jvm-codecs/component/bloxbean-cardano-client-library/0.8.0-pre7",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "jvm-codecs/component/yaci/0.5.0-pre15",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "n2c-handshake/change/n2c-only-v23/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "n2c-handshake/component/cardano-db-sync/13.7.2.1",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "n2c-handshake/component/cardano-db-sync/13.8.0.0",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "n2c-handshake/component/gouroboros/0.208.5",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "n2c-handshake/component/gouroboros/v0.213.0",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "n2c-handshake/component/gouroboros/v0.213.9",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "n2c-handshake/component/gouroboros/v0.216.3",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "n2c-handshake/component/gouroboros/v0.218.2",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "n2c-handshake/component/kupo/v2.12",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "n2c-handshake/component/ogmios/v7.0.0",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "node-config-envelope/change/node-config-envelope/",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "node-config-envelope/component/kupo/v2.12",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "node-config-envelope/component/ogmios/v7.0.0",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "pallas-chain-sync/component/pallas/dijkstra e7ea1726",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "pallas-chain-sync/component/pallas/main 3da6ff9f",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "pallas-chain-sync/component/pallas/main b4a519fa",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "pallas-chain-sync/component/pallas/v1.4.0",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "pallas-chain-sync/component/pallas/v1.5.0-rc.1",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "pallas-transactions/component/pallas/dijkstra e7ea1726",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "pallas-transactions/component/pallas/main 3da6ff9f",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "pallas-transactions/component/pallas/main b4a519fa",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "pallas-transactions/component/pallas/v1.4.0",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "pallas-transactions/component/pallas/v1.5.0-rc.1",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "pycardano-transactions/component/pycardano/v0.19.2",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "service-decoding/component/kupo/v2.12",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "service-decoding/component/ogmios/v7.0.0",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "tool-upgrades/tool/cardano-node-api/1368155 pinned (gouroboros 0.202.7)",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "tool-upgrades/tool/cardano-node-api/1368155 with gouroboros v0.213.9 and patches",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "tool-upgrades/tool/txtop/86a013e pinned (gouroboros 0.208.5)",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "tool-upgrades/tool/txtop/86a013e with gouroboros v0.213.0",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "tool-upgrades/tool/txtop/v0.17.0 (gouroboros v0.215.0)",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "tool-upgrades/tool/txtop/v0.17.0 with gouroboros v0.218.2",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "tx-era-detection/component/gouroboros/v0.213.0",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "tx-era-detection/component/gouroboros/v0.213.9",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "tx-era-detection/component/gouroboros/v0.216.3",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "tx-era-detection/component/gouroboros/v0.218.2",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "tx-era-detection/tool/cardano-node-api/1368155 with gouroboros v0.213.9 and patches",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "tx-era-detection/tool/txtop/86a013e with gouroboros v0.213.0",
+      "before": "fail",
+      "after": null
+    }
+  ]
+}

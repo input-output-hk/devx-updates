@@ -1,0 +1,25 @@
+node tip: {"epoch":25,"era":"Dijkstra","block":255}
+db-sync exited; blocks indexed: 77, highest: 76, epoch_param rows: 8
+db-sync 13.8.0.0 chain-sync decoder failures: 0
+db-sync errors logged: 6
+[2026-11-11 14:59:49.4368Z][devbox:DBSync.Message](Warning,162) Database transaction error: DbSessionError {dbSessionErrCallStack = DbCallStack {dbCsFncName = "insertScript", dbCsModule = "Cardano.DbSync.Era.Universal.Insert.Other", dbCsFile = "src/Cardano/DbSync/Era/Universal/Insert/Other.hs", dbCs
+[2026-11-11 14:59:49.4369Z][devbox:DBSync.Message](Error,162) Error SNErrDbSessionErr: 
+[2026-11-11 14:59:49.4369Z][devbox:DBSync.Message](Error,162) runDbThread: Error SNErrDbSessionErr: 
+last db-sync log line at: 
+blockfrost image: blockfrost/backend-ryo:v7.0.0@sha256:2db3d989228863b559cbff46dc16dd8ac168c0337704775b88cff68fa51f6a7e
+blockfrost /blocks/latest: {"height":76,"slot":1404,"epoch":7}
+blockfrost /epochs/latest/parameters: {"epoch":7,"protocol_major_ver":12}
+blockfrost /network/eras: {}
+conway-legacy-reg                    db-sync missing; blockfrost The requested component has not been found.
+conway-metadata                      db-sync indexed; blockfrost block 73
+conway-payment                       db-sync indexed; blockfrost block 73
+conway-reg-with-deposit              db-sync indexed; blockfrost block 73
+conway-required-signer               db-sync indexed; blockfrost block 73
+dijkstra-metadata                    db-sync indexed; blockfrost block 73
+dijkstra-payment                     db-sync indexed; blockfrost block 73
+dijkstra-reg-with-deposit            db-sync indexed; blockfrost block 73
+split                                db-sync indexed; blockfrost block 72
+dijkstra-direct-deposit              db-sync missing; blockfrost The requested component has not been found.
+dijkstra-plutusv4-reference-script   db-sync missing; blockfrost The requested component has not been found.
+dijkstra-sub-transaction             db-sync missing; blockfrost The requested component has not been found.
+split                                db-sync indexed; blockfrost block 76

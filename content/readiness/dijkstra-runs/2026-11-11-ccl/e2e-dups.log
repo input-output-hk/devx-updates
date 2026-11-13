@@ -1,0 +1,13 @@
+# cardano-client-lib 0.8.0-pre7  account addr_test1qpa8muwcz2dv9acgf2hr9rhlnfc4qddehlm56m99n2f7hzsrphrt94v4zaa266mx8vk22kgtrw29vea4vdnndqj27xmsf2har5  stake stake_test1uqpsm34j6k23w74dddnrkt99ty93h9zkv76kxeeksf90rdcqn689r
+dup-signer     head 84a3 certs - vkeys 1              OK "dd1f39a6923949e63f448829b5e5716200fd5d2c08574f524cd47f8895c6d8f0"
+lock-hash2     head 84a3 certs - vkeys 1              OK "e69cdd9711ae37591f65bbc01a1632e96ca78669ef630b3fd56db7fdb326493b"
+  datums in witness set: 1
+spend-hash2    head 84a7 certs - vkeys 1              OK "3ad797b2802fa6379461374ad9143d6405fd4f2693c0bd5d4d5a833002e1305d"
+# cardano-client-lib 0.7.3  account addr_test1qpa8muwcz2dv9acgf2hr9rhlnfc4qddehlm56m99n2f7hzsrphrt94v4zaa266mx8vk22kgtrw29vea4vdnndqj27xmsf2har5  stake stake_test1uqpsm34j6k23w74dddnrkt99ty93h9zkv76kxeeksf90rdcqn689r
+dup-signer     head 84a3 certs - vkeys 2              REJECTED(400) {"contents":{"contents":{"contents":"EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}","tag":"TxValidationEraMismatch"},"tag":"TxCmdTxSubmitValidationError"},"tag":"TxSubmitFail"}
+lock-hash2     head 84a3 certs - vkeys 1              OK "e2de8b132ebe66e7720508c9f25ebafa0f4245c2a73390775d54b465e273a1cf"
+spend-hash2    BUILD-ERROR IllegalStateException: need two outputs with datum hash, have 1
+# cardano-client-lib 0.7.3  account addr_test1qpa8muwcz2dv9acgf2hr9rhlnfc4qddehlm56m99n2f7hzsrphrt94v4zaa266mx8vk22kgtrw29vea4vdnndqj27xmsf2har5  stake stake_test1uqpsm34j6k23w74dddnrkt99ty93h9zkv76kxeeksf90rdcqn689r
+lock-hash2     head 84a3 certs - vkeys 1              OK "41e5ba1cf389b186cd2030890910c5e526832a4c0a3111d6f62566dc918f87b5"
+  datums in witness set: 1
+spend-hash2    head 84a7 certs - vkeys 1              REJECTED(400) {"contents":{"contents":{"contents":{"era":"ShelleyBasedEraDijkstra","error":["LedgerFailure (DijkstraUtxowFailure (ScriptIntegrityHashMismatch Mismatch (RelEQ) {supplied: SJust (SafeHash \"810d77b8f9a03221cb88454819dc99ecc2043160b3739c4f0466e45d6085c04e\"), expected: SJust (SafeHash \"2a9d4631a0c54a95c6632c314a7ddea413e7b87a2c34518124eb339f4f84bf16\")} (SJust \"\\162\\130\\NUL\\NUL\\130\\SOH\\130\\SUB\\NUL\\RS\\132\\128\\SUB/\\175\\b\\NUL\\130\\NUL\\SOH\\130\\SOH\\130\\SUB\\NUL\\RS\\132\\128\\SUB/\\175\\b\\NUL\\217\\SOH\\STX\\129\\a\\161\\STX\\152\\251\\SUB\\NUL\\SOH\\137\\180\\EM\\SOH\\164\\SOH\\SOH\\EM\\ETX\\232\\CAN\\173\\NUL\\SOH\\EM\\ETX\\232\\EM\\234\\&5\\EOT\\SOH\\EM+\\175\\CAN \\SUB…

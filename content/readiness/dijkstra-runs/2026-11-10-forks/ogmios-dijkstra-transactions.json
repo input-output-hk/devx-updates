@@ -1,0 +1,26 @@
+{
+ "dijkstra-metadata": {
+  "id": "ba9d566b15f40aba433e4caaa041aa4c93c352f640e1632e87411028bad3ea26",
+  "spends": "inputs"
+ },
+ "dijkstra-payment": {
+  "id": "11336636dfb1218b1103bc6f0fc43a176233a8093c2df96bce37d9d2402a3837",
+  "spends": "inputs"
+ },
+ "dijkstra-reg-with-deposit": {
+  "id": "9603458937a36b504eca0fe555b4e6789f7fb1fc9d36691b098e2f705e0500b2",
+  "spends": "inputs"
+ },
+ "dijkstra-direct-deposit": {
+  "id": "65814c11bf322034b9ed78cad78af3f7f11fe82f19126dad0cef756bc1d5a969",
+  "spends": "inputs"
+ },
+ "dijkstra-plutusv4-reference-script": {
+  "id": "7c183f0341b1a281058012707a517c9f41a21ca54031a75178974ebc5ea0d76c",
+  "spends": "inputs"
+ },
+ "dijkstra-sub-transaction": {
+  "id": "4a6db05a4f7436ba27aba60f08399e06bbde7fd528e3b83c58e531f6dc06c219",
+  "spends": "inputs"
+ }
+}

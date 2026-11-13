@@ -28,12 +28,20 @@ socket paths are limited to 108 bytes.
 5. `MEMPOOL_PROBE=$DEVNET_DIR/probe-v0.213.9 ./transactions.sh`. The script refuses to run below PV12. Conway-built and Dijkstra-built cases (including Dijkstra metadata), one
    submission each, while the probe records the mempool to `$DEVNET_DIR/work/tx/mempool.hex`. Label those lines
    with `python3 -I txid.py`, prefix each with a name, and feed them to `probe-<version> decode`.
+   Then `MEMPOOL_PROBE=... ./advanced.sh` builds the Dijkstra-only bodies transactions.sh does not: a direct deposit
+   into the stake key transactions.sh registered, a top-level transaction carrying a signed sub-transaction
+   (`cardano-cli dijkstra sub-transaction`), and an output holding a PlutusV4 reference script. Its mempool goes to
+   `$DEVNET_DIR/work/adv/mempool.hex`. Label both mempools and envelopes the same way (one file, `labeled`); the 11.2.0
+   CLI has no options for guards or balance intervals.
 6. `probe-<version> chain <socket>` syncs from origin through gouroboros; `probe-v0.213.9 first-blocks <socket>`
    prints the first raw block per era, and `python3 -I cbor_dump.py <hex> 3` shows its structure.
-7. `./services.sh` runs Ogmios v7.0.0 and Kupo v2.12.
+7. `./services.sh` runs Ogmios v7.0.0 and Kupo v2.12. `OGMIOS_PORT` and `KUPO_PORT` move them off 1337 and 1442 when
+   another local service (Yaci DevKit, for one) holds those ports.
 8. `./tools.sh txtop` and `./tools.sh cardano-node-api` build both tools at their historical control revisions (txtop `86a013e`, cardano-node-api `1368155`), pinned and
    upgraded, and exercise them. The upgraded cardano-node-api only builds with the two files in `patches/`; those
-   patches are this experiment's, not upstream changes.
+   patches are this experiment's, not upstream changes. `./tools.sh txtop-release [GOUROBOROS]` builds txtop's latest
+   release v0.17.0 as released and with its gouroboros pin raised (default v0.218.2), puts a Dijkstra payment in the
+   mempool and records what each build draws.
 9. Codecs (rerun 2026-11-01). `build-pallas-probe.sh <revision> $DEVNET_DIR/pallas-probe-<name> [dijkstra]` for Pallas
    v1.4.0 (`aef0b5a0`), main (`b4a519faa9522a1ab0629d976316d9153dfeebd7`) and the dijkstra branch (`e7ea1726`, with `dijkstra`, which turns on
    Pallas's unstable feature). `pallas-probe-<name> chain <socket>` decodes every block the way Oura and Dolos do;
@@ -49,6 +57,12 @@ socket paths are limited to 108 bytes.
     db-sync requires the genesis hashes in the node config and Shelley's systemStart to equal Byron's
     whole-second startTime; cardano-testnet writes neither, so the script gives db-sync its own node config and a
     Shelley genesis copy rounded to Byron's second. Koios was not run: it reads the same db-sync tables.
+    `DBSYNC_VERSION` and `BLOCKFROST_IMAGE` pick other versions; the defaults reproduce the 2026-11-01 run. The
+    2026-11-09 run used `DBSYNC_VERSION=13.8.0.0` and `blockfrost/backend-ryo:v7.0.0@sha256:2db3d989…`. From 13.8.0.0
+    db-sync reads `TraceOptions` instead of the iohk-monitoring keys, and from v7 the Blockfrost image reads no
+    `BLOCKFROST_CONFIG_*` variables and has no YAML parser, so the script mounts a generated `config/default.json`.
+    `BLOCKFROST_ONLY=1` reruns only Blockfrost on the database a previous run left. After the chain is indexed, the script
+    checks that each test transaction is in db-sync and served by Blockfrost.
 
 11. CSL and PyCardano (rerun 2026-11-01). Without Rust: `probe-v0.213.9 blocks <socket> > $DEVNET_DIR/blocks.txt` dumps
     every Dijkstra block through gouroboros (it stops after 3 idle seconds at the tip). For CSL,
@@ -59,10 +73,34 @@ socket paths are limited to 108 bytes.
     labeled`. The labeled file adds one Dijkstra-built transaction with metadata (`cardano-cli dijkstra transaction
     build ... --metadata-json-file`), which tells the codecs that read the third array element as `is_valid` apart.
 
+12. JVM codecs (added 2026-11-09). `jvm-probe/run.sh ccl <version> < labeled` decodes the transactions with
+    cardano-client-lib (0.8.0-pre7, 0.7.3) and compares each re-encode and transaction id with the original;
+    `jvm-probe/run.sh yaci <version> < blocks.txt` decodes the blocks with Yaci's BlockSerializer (0.5.0-pre15), wrapping
+    each as `[era, block]`. Feed it the Conway line of `first-blocks.txt` as a positive control. Needs maven and Java 25
+    for Yaci 0.5.x (`nix shell nixpkgs#jdk25 nixpkgs#maven`).
+
+13. Forks (added 2026-11-10). `forks.sh build` builds the IntersectMBO forks of Ogmios and Kupo at pinned commits
+    (native builds come from cache.iog.io). `forks.sh relay [BLOCK]` serves an existing chain with a plain node, which
+    does not extend it: cardano-testnet stops when an old chain cannot grow. With BLOCK, the chain is first truncated
+    after that block. `forks.sh ogmios <transaction-ids.json>` syncs from origin through Ogmios with
+    `ogmios-probe/probe.mjs` and runs the ledger queries. `forks.sh kupo [<transaction-ids.json>]` indexes from origin;
+    with the ids, and once Kupo reaches the tip, it lists how many outputs Kupo indexed for each test transaction.
+
+14. Blockfrost (added 2026-11-11). On the live chain, after `advanced.sh`, `blockfrost.sh spend-sub` spends the
+    sub-transaction's output in an ordinary payment. Then (live, or under `forks.sh relay`) run `service-layer.sh` with
+    `DBSYNC_VERSION=13.8.0.0` and the v7.0.0 image; db-sync stops at the PlutusV4 script. `blockfrost.sh resume` adds
+    `plutusV4` to the database's `scripttype` enum and restarts db-sync. That is this experiment's workaround, not a fix.
+    `blockfrost.sh probe` puts Blockfrost's answers for the advanced transactions next to the node's.
+    `platform-probe/` runs blockfrost-platform's `/tx/submit` pre-check (a Conway decode, at the platform's Pallas pin) on
+    labeled transactions: `CARGO_TARGET_DIR=$DEVNET_DIR/platform-build cargo build --release --manifest-path
+    platform-probe/Cargo.toml`, then `platform-probe < labeled`. `handshake.py` with `10,...,16` and `10,...,23`
+    reproduces the version sets of the platform's 1.0.0 release and main.
+
 ## Retained evidence and determinism
 
-The November run is in `content/readiness/dijkstra-runs/2026-11-01/`; the complete previous assessment is in
-`content/readiness/dijkstra-history/2026-10-26-integration/`. The site's `/map/dijkstra/history` compares them.
+The current run is in `content/readiness/dijkstra-runs/2026-11-09/`; the earlier one is in
+`content/readiness/dijkstra-runs/2026-11-01/`, and the complete previous assessments are in
+`content/readiness/dijkstra-history/`. The site's `/map/dijkstra/history` compares them.
 Ogmios and Kupo were also tried with the generated versioned configuration: both reject its nested genesis paths.
 The remaining service checks use the flattened configuration; their successful handshake does not imply block decoding.
 

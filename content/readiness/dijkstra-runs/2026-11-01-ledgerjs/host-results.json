@@ -1,0 +1,192 @@
+{
+  "schema": 1,
+  "observedAt": "2026-11-01T19:47:19.364Z",
+  "node": "v24.21.0",
+  "typescript": "5.9.3",
+  "sourceDirectory": "/tmp/ledgerjs-dijkstra-investigation",
+  "sourceRevision": "9ce065887bfca145f7a2f46df2ea41b1b47b9640",
+  "scope": "Unmodified host source. Synthetic unsigned fixtures. No device, signatures, node submission or production readiness certification.",
+  "assertionsPassed": 27,
+  "assertionsTotal": 27,
+  "results": [
+    {
+      "name": "ordinary control",
+      "verified": true,
+      "rawBytes": 91,
+      "initBytes": 45
+    },
+    {
+      "name": "ordinary_transaction: unknown subTransactions",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "ordinary_transaction: unknown requiredTopLevelGuards",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "ordinary_transaction: unknown directDeposits",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "ordinary_transaction: unknown accountBalanceIntervals",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "ordinary_transaction: unknown startingAccountBalanceIntervals",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "ordinary_transaction: unknown guards",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "ordinary_transaction: unknown proposalProcedures",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "unrestricted_transaction: unknown subTransactions",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "unrestricted_transaction: unknown requiredTopLevelGuards",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "unrestricted_transaction: unknown directDeposits",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "unrestricted_transaction: unknown accountBalanceIntervals",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "unrestricted_transaction: unknown startingAccountBalanceIntervals",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "unrestricted_transaction: unknown guards",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "unrestricted_transaction: unknown proposalProcedures",
+      "verified": true,
+      "observation": "silently discarded; identical parsed request and v8 signing payload"
+    },
+    {
+      "name": "legacy stake registration",
+      "verified": true,
+      "observation": "accepted by host parser and v8 serializer",
+      "certificateType": 0,
+      "rawHex": "111111111111111111111111111111111111111111111111111111111111111100000000002d01001d602222222222222222222222222222222222222222222222222222222200000000001e848000010100000000000000030d400002058000073c80000717800000000000000200000000"
+    },
+    {
+      "name": "legacy stake deregistration",
+      "verified": true,
+      "observation": "accepted by host parser and v8 serializer",
+      "certificateType": 1,
+      "rawHex": "111111111111111111111111111111111111111111111111111111111111111100000000002d01001d602222222222222222222222222222222222222222222222222222222200000000001e848000010100000000000000030d400102058000073c80000717800000000000000200000000"
+    },
+    {
+      "name": "deposit stake registration",
+      "verified": true,
+      "observation": "accepted by host parser and v8 serializer",
+      "certificateType": 7,
+      "rawHex": "111111111111111111111111111111111111111111111111111111111111111100000000002d01001d602222222222222222222222222222222222222222222222222222222200000000001e848000010100000000000000030d400702058000073c8000071780000000000000020000000000000000001e8480"
+    },
+    {
+      "name": "deposit stake deregistration",
+      "verified": true,
+      "observation": "accepted by host parser and v8 serializer",
+      "certificateType": 8,
+      "rawHex": "111111111111111111111111111111111111111111111111111111111111111100000000002d01001d602222222222222222222222222222222222222222222222222222222200000000001e848000010100000000000000030d400802058000073c8000071780000000000000020000000000000000001e8480"
+    },
+    {
+      "name": "key-hash required signer control",
+      "verified": true,
+      "observation": "accepted and represented in signing payload"
+    },
+    {
+      "name": "pool registration BLS extension",
+      "verified": true,
+      "observation": "unknown BLS property discarded; same pool-owner signing payload. Synthetic BLS bytes, not a valid proof."
+    },
+    {
+      "name": "script credential in requiredSigners",
+      "verified": true,
+      "observation": "rejected; existing requiredSigners API cannot express script guard"
+    },
+    {
+      "name": "set tagging option",
+      "verified": true,
+      "observation": "supported; tag choice carried in TX_INIT"
+    },
+    {
+      "name": "empty inner token map",
+      "verified": true,
+      "observation": "already rejected by host parser"
+    },
+    {
+      "name": "empty token bundle control",
+      "verified": true,
+      "observation": "normalises to ordinary ADA-only signing payload; firmware CBOR still needs checking"
+    },
+    {
+      "name": "opaque V4 reference script bytes",
+      "verified": true,
+      "observation": "opaque bytes accepted; this is not a valid-script evaluation or device result"
+    },
+    {
+      "name": "device-returned tx hash is passed through",
+      "verified": true,
+      "observation": "mock response passed through; caller must compare original transaction-body hash",
+      "exchanges": 3
+    }
+  ],
+  "loadedSourceSha256": {
+    "src/errors/deviceStatusError.ts": "071c88b0232e035e16a66f40aeabdf9253b274f187ebe002332428242145cf06",
+    "src/errors/deviceUnsupported.ts": "7f4eda7ce83fb4b703bfb2c95ec695348785535d6c24085dcb74bd42f55c86ea",
+    "src/errors/errorBase.ts": "3b9664966b1d36685bfb184a8269d959739243c1ca4520d17f01852b087953eb",
+    "src/errors/index.ts": "36513c6eec71dd9d3c82c287d49803e6383a18d3c61a7d7230eb35a283bd6632",
+    "src/errors/invalidData.ts": "2c6fe205ac1092496cc991e5ac9fabeca056a95a78f62e03e4e69204925da913",
+    "src/errors/invalidDataReason.ts": "bbb16894219a377d974b52a08be1f050284971151c772c12491caeec6775b8bc",
+    "src/interactions/common/ins.ts": "b407ed681769208ccfb98d8bc866af7967cc740baebdf9ce2a225cb5f3ce3297",
+    "src/interactions/common/witnessPaths.ts": "55e28046652afc2fbc6625b6c45f936a51c6dc3675224bf4d74878b8043366a4",
+    "src/interactions/v8/commandBuilder.ts": "ec3cf75616598de1cbf125b6cb6e5ad8d7d34d20a63af9bd500cf8e2085f7e49",
+    "src/interactions/v8/commandSender.ts": "c5e2c48e9a26bbf54d9f5ca0d33cc47d1879a5d4ae0b695932cc29bbc0c9c2e1",
+    "src/interactions/v8/common/apdu.ts": "cc45b3ff6eb913a56adc550cf8e48172034940446bda620fbd7c65c82eb10dc6",
+    "src/interactions/v8/serialization/addressParams.ts": "a37edd245e05097e2dd786b9195de7d485c7fc30907d2812ec721fc64afeccab",
+    "src/interactions/v8/serialization/credential.ts": "a616f02a415bfcfbdb123912022e7f50263e875ae345b86aeef6e8b73cebd04a",
+    "src/interactions/v8/serialization/messageData.ts": "19f6b5096acc222d0c77c854d4b596b27874a3d2f5b3fc7b4d8ccc637da42512",
+    "src/interactions/v8/serialization/nativeScript.ts": "fa2aaa6694581f59b839fbefa0f3e17a7f96ca521a93f13c675292c7efbc5c0b",
+    "src/interactions/v8/serialization/operationalCertificate.ts": "7fc9a31e4e6e13bfe8f19ccf4886a104170a1d0f6b6dc7a1285d96369a0da725",
+    "src/interactions/v8/serialization/tx.ts": "725e479ec493f9b89e4ce05610601f84026b6daf5192c7cf0f624a046cad64a2",
+    "src/interactions/v8/serialization/wireTypes.ts": "cde8844e5d5cf52a2861659fe780e2b6381647b90c82d4f1a0b66ef221c6ddab",
+    "src/interactions/v8/signTx.ts": "58ef3f6d0850f4b5eecde2bc5dff9061b18bc342e4921ea58af253fe9d0b0dda",
+    "src/parsing/address.ts": "23e96c52f83926c72280d712e4196dfd54c217ee9e3654cf33617f61479cb5c5",
+    "src/parsing/certificate.ts": "b67f32fdd161ba11bd61a1d53d74dcbfe05fd8b32dbc620687e7e7cf9da5db71",
+    "src/parsing/constants.ts": "6efd373398013c9e1ffc9d86d3fdd7837f6de3043ac15a7ea0c13a23a73218e3",
+    "src/parsing/network.ts": "fdc9154afe07030286c9f434a3cfef4bc75782bebb6c9228aa3282fdee2c31de",
+    "src/parsing/output.ts": "c6edd66a16295c8b24312b68751cf00a19e077442f712e06bd97c17a8614c973",
+    "src/parsing/poolRegistration.ts": "71ec3c33024d8fcd8f3c185c706e5986091147ef1f81e979d467f11605d509a0",
+    "src/parsing/transaction.ts": "f4fe3daabbbc647fc5dae56caf23b4f81ea80485989a0d162cb73e41605450d3",
+    "src/parsing/txAuxiliaryData.ts": "e947108fce7ee7a7a21ceb267767b8a91f8942dbbccf36f8b9459440bded234c",
+    "src/types/internal.ts": "79b9ae78a30f52dcbb1fa5b1e4858e948aed902e516c49df8df6a4429001c1eb",
+    "src/types/public.ts": "c03cea4dd33ba9a861b984996cd1de7dd740ef64521bcaa82a34e905e7bbf4a4",
+    "src/utils/assert.ts": "6decfcd930fcc486b8c079605ec1bedcae29f0dcbcc043b230becb17c4df12e0",
+    "src/utils/parse.ts": "8f0abff48b1e3cb73fe7ceb4ac7bc3cac9a1e16a9724c0af1a6bd8c5af98bf57",
+    "src/utils/serialize.ts": "89526c56438bac6caf5d42830be81b4f234cbb4b5c55ddf83b81e2094ac804b9"
+  }
+}

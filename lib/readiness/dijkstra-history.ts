@@ -1,8 +1,9 @@
 import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { basename, join } from "node:path";
-import { loadDijkstraSite, toolStates, type DijkstraSite } from "./dijkstra-site";
-import { worstStatus } from "./boundary";
+import { loadDijkstraSite, toolStates, type DijkstraSite, type HardforkState } from "./dijkstra-site";
+import { worstStatus, type Status } from "./boundary";
+import type { Outcome } from "./devnet";
 
 const hash = (path: string) => createHash("sha256").update(readFileSync(path)).digest("hex");
 interface Manifest { schemaVersion: 1; id: string; repositoryRevision: string; nodeRevision: string; files: Record<string, string> }
@@ -65,5 +66,95 @@ export function compareDijkstra(before: DijkstraSite, after: DijkstraSite) {
     before: { date: before.classification.generatedAt.slice(0, 10), node: before.devnet.run.node.revision },
     after: { date: after.classification.generatedAt.slice(0, 10), node: after.devnet.run.node.revision },
     tools, components, runtime,
+    states: stateCounts(before, after), fixOrder: fixOrderDiff(before, after),
+    grid: statusGrid(before, after), subjects: runtimeBySubject(before, after),
   };
+}
+
+const count = (site: DijkstraSite) => toolStates(site).reduce((m, t) => m.set(t.state, (m.get(t.state) ?? 0) + 1), new Map<HardforkState, number>());
+
+/** Tool counts per hard-fork state in each assessment. */
+function stateCounts(before: DijkstraSite, after: DijkstraSite) {
+  const a = count(before), b = count(after);
+  return { total: { before: toolStates(before).length, after: toolStates(after).length },
+    states: [...new Set([...a.keys(), ...b.keys()])].map((state) => ({ state, before: a.get(state) ?? 0, after: b.get(state) ?? 0 })) };
+}
+
+/** The fix order now, each step marked new or kept with its earlier position; dropped steps listed apart. */
+function fixOrderDiff(before: DijkstraSite, after: DijkstraSite) {
+  const old = before.unlocks.fixOrder.map((f) => f.component);
+  const steps = after.unlocks.fixOrder.map((f, i) => {
+    const was = old.indexOf(f.component);
+    return { component: f.component, step: i + 1, previousStep: was < 0 ? null : was + 1, unlocked: f.unlocked };
+  });
+  const kept = new Set(steps.map((s) => s.component));
+  return { steps, removed: old.filter((c) => !kept.has(c)),
+    unlocked: { before: before.unlocks.fixOrder.at(-1)?.unlocked ?? 0, after: after.unlocks.fixOrder.at(-1)?.unlocked ?? 0 } };
+}
+
+export interface GridCell { surface: string; before: Status | null; after: Status | null }
+export interface GridRow { component: string; criticalPath: boolean; changed: boolean; cells: GridCell[] }
+
+/**
+ * Worst status per component and surface in both assessments. Rows are the critical path (every fix-order step in
+ * either assessment) plus any other component whose status changed; cells for surfaces a component lacks stay null.
+ */
+function statusGrid(before: DijkstraSite, after: DijkstraSite) {
+  const oldComponents = new Map(before.boundary.components.map((c) => [c.id, c]));
+  const newComponents = new Map(after.boundary.components.map((c) => [c.id, c]));
+  const critical = new Set([...before.unlocks.fixOrder, ...after.unlocks.fixOrder].map((f) => f.component));
+  const ids = [...new Set([...oldComponents.keys(), ...newComponents.keys()])];
+  const surfaces = [...new Set([...after.changes.surfaces.map((s) => s.id), ...ids.flatMap((id) => [...(oldComponents.get(id)?.surfaces ?? []), ...(newComponents.get(id)?.surfaces ?? [])])])];
+  const rows: GridRow[] = ids.map((component) => {
+    const old = oldComponents.get(component), now = newComponents.get(component);
+    const cells = surfaces.map((surface) => ({
+      surface,
+      before: old?.surfaces.includes(surface) ? worstStatus(old, surface) : null,
+      after: now?.surfaces.includes(surface) ? worstStatus(now, surface) : null,
+    }));
+    return { component, criticalPath: critical.has(component), changed: cells.some((c) => c.before !== c.after), cells };
+  }).filter((r) => r.criticalPath || r.changed);
+  // Keep the critical path in fix order; the other changed components follow alphabetically.
+  const order = after.unlocks.fixOrder.map((f) => f.component);
+  const rank = (id: string) => (order.includes(id) ? order.indexOf(id) : critical.has(id) ? order.length : order.length + 1);
+  rows.sort((a, b) => rank(a.component) - rank(b.component) || a.component.localeCompare(b.component));
+  const used = surfaces.filter((s) => rows.some((r) => r.cells.some((c) => c.surface === s && (c.before || c.after))));
+  return { surfaces: used, rows: rows.map((r) => ({ ...r, cells: r.cells.filter((c) => used.includes(c.surface)) })) };
+}
+
+export type RuntimeChange = "now-passes" | "now-fails" | "new-version" | "first-tested" | "not-rerun" | "unchanged";
+export interface RuntimeSubject {
+  check: string; title: string; kind: string; id: string; change: RuntimeChange;
+  before: { version: string | null; outcome: Outcome }[]; after: { version: string | null; outcome: Outcome }[];
+}
+
+/** Devnet results per check and subject across versions, so a newer version that passes reads as a change. */
+function runtimeBySubject(before: DijkstraSite, after: DijkstraSite): RuntimeSubject[] {
+  const group = (site: DijkstraSite) => {
+    const m = new Map<string, { version: string | null; outcome: Outcome }[]>();
+    for (const c of site.devnet.checks) for (const r of c.results) {
+      const key = `${c.id}\u0000${r.kind}\u0000${r.id}`;
+      m.set(key, [...(m.get(key) ?? []), { version: r.version ?? null, outcome: r.outcome }]);
+    }
+    return m;
+  };
+  const a = group(before), b = group(after);
+  const titles = new Map([...before.devnet.checks, ...after.devnet.checks].map((c) => [c.id, c.title]));
+  return [...new Set([...a.keys(), ...b.keys()])].map((key) => {
+    const [check, kind, id] = key.split("\u0000");
+    const was = a.get(key) ?? [], now = b.get(key) ?? [];
+    return { check, title: titles.get(check) ?? check, kind, id, before: was, after: now, change: runtimeChange(was, now) };
+  }).sort((x, y) => CHANGE_ORDER.indexOf(x.change) - CHANGE_ORDER.indexOf(y.change) || x.id.localeCompare(y.id) || x.check.localeCompare(y.check));
+}
+
+const CHANGE_ORDER: RuntimeChange[] = ["now-passes", "now-fails", "first-tested", "new-version", "not-rerun", "unchanged"];
+
+function runtimeChange(was: { version: string | null; outcome: Outcome }[], now: { version: string | null; outcome: Outcome }[]): RuntimeChange {
+  if (!was.length) return "first-tested";
+  if (!now.length) return "not-rerun";
+  const failed = (rs: typeof was) => rs.some((r) => r.outcome === "fail");
+  if (failed(was) && !failed(now)) return "now-passes";
+  if (!failed(was) && failed(now)) return "now-fails";
+  const versions = (rs: typeof was) => rs.map((r) => `${r.version}:${r.outcome}`).sort().join(",");
+  return versions(was) === versions(now) ? "unchanged" : "new-version";
 }

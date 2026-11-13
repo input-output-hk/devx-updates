@@ -1,0 +1,18 @@
+# cardano-client-lib 0.8.0-pre7  account addr_test1qpa8muwcz2dv9acgf2hr9rhlnfc4qddehlm56m99n2f7hzsrphrt94v4zaa266mx8vk22kgtrw29vea4vdnndqj27xmsf2har5  stake stake_test1uqpsm34j6k23w74dddnrkt99ty93h9zkv76kxeeksf90rdcqn689r
+reg-new        head 84a4 certs RegCert vkeys 2        OK "27aa1650d8c37dfa973062e760ca9354fcc65306bf43db27d602acdecacdc8f6"
+# branch feat/ledger-cbor model build, account addr_test1qpa8muwcz2dv9acgf2hr9rhlnfc4qddehlm56m99n2f7hzsrphrt94v4zaa266mx8vk22kgtrw29vea4vdnndqj27xmsf2har5
+pay            head 83a3, body kept, OK "7d7cca74de59e5bded8cbffd3c155c62ea41b04510629262010d910b320db888"
+pay-modelsign  head 83a3, body kept, OK "ccba5e1a130338f593cddb8d9a70852427054a511ff4e53ffc32d8ec898a63db"
+dd             head 83a4, body kept, OK "05b5cfc089538c05606f5464511ee0b9c5cbec240b6380fc3d3bf7ff0ada0c3e"
+dd-modelsign   head 83a3, BODY CHANGED BY SIGNING, REJECTED(400) {"contents":{"contents":{"contents":{"era":"ShelleyBasedEraDijkstra","error":["LedgerFailure (DijkstraUtxowFailure (UtxoFailure (ValueNotConservedUTxO Mismatch (RelEQ) {supplied: MaryValue (Coin 494199529) (MultiAsset (fromList [])), expected: MaryValue (Coin 489199529) (MultiAsset (fromList []))})))","LedgerFailure (DijkstraUtxowFailure (InvalidWitnessesUTXOW (VKey (VerKeyEd25519DSIGN \"b0358b9a788b80794d8b33fbf140c9603ea89b43f41a2648d5039c9f1bee0a86\") :| [])))"],"kind":"ShelleyTxValidationError"},"tag":"TxValidationErrorInCardanoMode"},"tag":"TxCmdTxSubmitValidationError"},"tag":"TxSubmitFail"}
+guard          head 83a4, body kept, OK "ef263b305ddc6ad41f78fc4a3ae32f2808f71c9cf7be6c99cf33be8eb4c113b2"
+v4ref          head 83a3, body kept, OK "6dde796d4d11674a61c1fee22a799f23482a72b5b35973df8ee328332099231d"
+lock-v4        head 83a3, body kept, OK "0d0d24cd81589243975c1368e526b6679d619efd6f0a84ea9e0b66da5018083a"
+spend-v4       head 83a5, body kept, OK "eb8be382b69839c26f99b3543b3d1be03c6c6a16c36e86911fb857121755ca7c"
+  sub-transaction id 90872c03f7c020793a641cf27b1c29e4cb5a63457c3af94ec2a932acbe08cfbb
+sub            head 83a4, body kept, OK "61438a65fa6a1672d608fb34eff25ec6014c2c644ae0dbc15b6608741561c5a0"
+# branch feat/ledger-cbor model build, account addr_test1qpa8muwcz2dv9acgf2hr9rhlnfc4qddehlm56m99n2f7hzsrphrt94v4zaa266mx8vk22kgtrw29vea4vdnndqj27xmsf2har5
+abi-ok         head 83a4, body kept, OK "ca7a6b2ca937f7dbe7bbe768a34569f5dc3673d5b5a40df2f5fd053d8f9901ca"
+abi-fail       head 83a4, body kept, REJECTED(400) {"contents":{"contents":{"contents":{"era":"ShelleyBasedEraDijkstra","error":["LedgerFailure (DijkstraEntitiesFailure (BalancesOutsideAccountBalanceIntervals (NonEmptyMap (fromList [(AccountAddress {aaNetworkId = Testnet, aaId = AccountId {unAccountId = KeyHashObj (KeyHash {unKeyHash = \"030dc6b2d595177aad6b663b2ca5590b1b945667b5636736824af1b7\"})}},(Coin 5000000,AccountBalanceLowerBound (Coin 100000000)))]))))"],"kind":"ShelleyTxValidationError"},"tag":"TxValidationErrorInCardanoMode"},"tag":"TxCmdTxSubmitValidationError"},"tag":"TxSubmitFail"}
+# branch feat/ledger-cbor model build, account addr_test1qpa8muwcz2dv9acgf2hr9rhlnfc4qddehlm56m99n2f7hzsrphrt94v4zaa266mx8vk22kgtrw29vea4vdnndqj27xmsf2har5
+guard-fail     head 83a4, body kept, REJECTED(400) {"contents":{"contents":{"contents":{"era":"ShelleyBasedEraDijkstra","error":["LedgerFailure (DijkstraUtxowFailure (MissingVKeyWitnessesUTXOW (NonEmptySet (fromList [KeyHash {unKeyHash = \"030dc6b2d595177aad6b663b2ca5590b1b945667b5636736824af1b7\"}]))))"],"kind":"ShelleyTxValidationError"},"tag":"TxValidationErrorInCardanoMode"},"tag":"TxCmdTxSubmitValidationError"},"tag":"TxSubmitFail"}

@@ -1,0 +1,20 @@
+Transaction successfully submitted. Transaction hash is:
+## dijkstra-direct-deposit (build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"65814c11bf322034b9ed78cad78af3f7f11fe82f19126dad0cef756bc1d5a969"}
+
+balance before inclusion: 2000000
+account after deposit: {"address":"stake_test1urqln5v2xe0ml8evucc7whh32j8ps8qehl4w0r4wajklu0q3nel3e","govActionDeposits":{},"rewardAccountBalance":4000000,"stakeRegistrationDeposit":400000}
+
+## dijkstra-sub-transaction (sub-transaction build-raw, embedded)
+sub-transaction: Witnessed SubTx DijkstraEra 83a2
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"4a6db05a4f7436ba27aba60f08399e06bbde7fd528e3b83c58e531f6dc06c219"}
+
+## dijkstra-plutusv4-reference-script (build-raw)
+envelope: Tx DijkstraEra 83a3
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"7c183f0341b1a281058012707a517c9f41a21ca54031a75178974ebc5ea0d76c"}
+

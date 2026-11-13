@@ -1,0 +1,20 @@
+db-sync: top-level with sub-transaction indexed, sub-transaction missing, spend of its output missing
+## sub-transaction: top-level 1f8b4a01ceb9221e756c78231bd81242912125f3c6fe0898be111be4caa5e822 carries sub-transaction 4d6d05ed95d4c22905bc4ac3d43a93e9491116a19f3a39cf266168ac85e29887 (spends split#1, pays 50 ADA)
+/txs/<top>/utxos: {"inputs":["3a7c211d#2"],"outputs":["49700000"]}
+/txs/<sub>: 404
+node: split#1 unspent? false; sub#0 unspent? false
+blockfrost /addresses/<addr>/utxos: split outputs listed [1,4]; sub#0 listed false
+## direct deposit 32bff4b17284d4ced96330cf41400bb5bb8b259402573f55977a67f99291af1c into stake_test1uq6zqhjg67fxunacmw0rtzlgy6s5fy6uw000c2zpaq6hrcg8hmq9a
+node: rewardAccountBalance 2000000
+blockfrost /accounts/<stake>: {"active":false,"controlled_amount":"0","withdrawable_amount":"0"}
+blockfrost /txs/<dd>: {"fees":"300000","deposit":"0","withdrawal_count":0} utxos {"in":["50000000"],"out":["47700000"]}
+## PlutusV4 reference script in 040a1ffa8dded0e6b1db226abcbb5b51719a818ff29e263a52e0784bcd1972bb
+blockfrost /scripts/<hash>: {"type":"plutusV4","serialised_size":6} (OpenAPI enum: timelock, plutusV1, plutusV2, plutusV3)
+blockfrost /scripts/<hash>/cbor: {"cbor":"450101002499"}
+## protocol parameters
+node: {"parameters":54,"costModels":["PlutusV1","PlutusV2","PlutusV3","PlutusV4"]}
+blockfrost /epochs/latest/parameters: {"protocol_major_ver":12,"fields":56,"cost_models_raw":["PlutusV1","PlutusV2","PlutusV3","PlutusV4"],"plutusV4_entries":251}
+node's new Dijkstra parameters: 23 ["leiosAnnouncementPeriodLength","leiosCommitteeSize","leiosDiffusionPeriodLength","leiosQuorumStakeThreshold","leiosVotePeriodLength","maxEndorserBlockExecutionUnits","maxEndorserBlockReferencesSize","maxEndorserBlockTxsSize","maxPledgeLeverage","maxRefScriptSizePerBlock","maxRefScriptSizePerEndorserBlock","maxRefScriptSizePerTx","minPoolMargin","perasBootstrapRound","perasCertBoost","perasHealingFactor","perasMinCandidateBlockAge","perasQuorumThresholdSafetyMargin","perasTargetCommitteeSize","refInputsCostPerDatumByte","refInputsCostPerMultiAssetPolicy","refScriptCostMultiplier","refScriptCostStride"]; served by Blockfrost: []
+## era summary
+/network/eras: HTTP 500
+15:02:25 3|server  | 2026-11-11T15:02:25: Error in /network/eras. TypeError: Cannot read properties of undefined (reading 'is_era_hardfork')

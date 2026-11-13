@@ -1,0 +1,542 @@
+{
+ "schemaVersion": 1,
+ "run": {
+  "date": "2026-11-01",
+  "node": {
+   "repo": "IntersectMBO/cardano-node",
+   "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+   "build": "Official 11.2.0 Linux amd64 release asset; SHA256 8b287e300ffb2063522fc33d50da6ecee8fa10fc7445c906fae0ca9783db8e03 (GitHub marks this tag as a prerelease)."
+  },
+  "cli": "cardano-cli 11.6.0.0 from the same release archive",
+  "setup": [
+   "One stake pool, three DReps, no constitutional committee, testnet magic 42, 200-slot epochs of 0.1 s, generated with cardano-testnet create-env.",
+   "ExperimentalHardForksEnabled and TestDijkstraHardForkAtEpoch 2 in the generated versioned configuration. The epoch trigger changes the era but initially leaves protocol version 10. Two governance actions raised it to 11 then 12.",
+   "The recorded transaction matrix was rerun after checking protocol version 12; earlier pre-PV12 trial output is excluded. Live slots, hashes, keys, timing, transaction inclusion and build resolution are not deterministic.",
+   "Ogmios and Kupo first rejected the versioned configuration envelope. Their subsequent protocol checks use an equivalent flattened legacy configuration. db-sync also needs Protocol and LastKnownBlockVersion fields plus a Shelley genesis copy rounded to Byron whole-second startTime (under one second difference).",
+   "Version labels identify exactly what ran: current releases and Pallas main are checked alongside historical gouroboros, txtop and cardano-node-api controls. The locally patched tool builds are experiments, not upstream releases.",
+   "The codec matrix retains 17 transaction encodings (9 signed envelopes, including a rejected legacy certificate, plus 8 mempool encodings), 168 raw Dijkstra blocks, and a Conway block as a positive CML control. HFC framing is added only for the CML MultiEraBlock probe.",
+   "Raw logs, fixtures, resolved build inputs and checksums are retained under content/readiness/dijkstra-runs/2026-11-01/. No signing keys or credentials are retained.",
+   "Koios and advanced Dijkstra transaction bodies (nested transactions, direct deposits, balance intervals, PlutusV4) were not executed. Pass means only the capability and cases named by that check."
+  ],
+  "recipe": "scripts/readiness/devnet/README.md"
+ },
+ "checks": [
+  {
+   "id": "fork-to-pv12",
+   "title": "Node 11.2.0 forks to Dijkstra and reaches protocol version 12",
+   "summary": "The chain entered Dijkstra at the configured epoch and two governance hard forks raised the protocol version to 12. The protocol-parameter query returns 54 parameters: the 31 Conway ones plus the 23 Dijkstra additions (Leios, Peras, reference-script limits, minimum pool margin and maximum pledge leverage).",
+   "results": [
+    {
+     "kind": "change",
+     "id": "era-dijkstra",
+     "outcome": "pass"
+    },
+    {
+     "kind": "change",
+     "id": "dijkstra-genesis-config",
+     "outcome": "pass"
+    },
+    {
+     "kind": "change",
+     "id": "protocol-parameters",
+     "outcome": "pass"
+    },
+    {
+     "kind": "change",
+     "id": "query-pparams-encoding",
+     "outcome": "pass",
+     "note": "cardano-cli 11.6.0.0 decodes 54 parameters through local state query."
+    }
+   ],
+   "observed": [
+    "54 protocol parameters; protocolVersion {\"major\": 12, \"minor\": 0}",
+    "tip: {\n    \"block\": 574,\n    \"epoch\": 58,\n    \"era\": \"Dijkstra\",\n    \"hash\": \"e3a0388f0bf39b4e93d257fabd175e6b5a7525645fda872f37fddcd7e3b5684b\",\n    \"slot\": 11744,\n    \"slotInEpoch\": 144,\n    \"slotsToEpochEnd\": 56,\n    \"syncProgress\": \"100.00\"\n}"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/start.sh",
+    "scripts/readiness/devnet/hardfork.sh"
+   ]
+  },
+  {
+   "id": "n2c-handshake",
+   "title": "Node-to-client handshake accepts only V23",
+   "summary": "The V16\u2013V22 offer and gouroboros 0.208.5 are refused; V23 and gouroboros v0.213.0, v0.213.9 and v0.216.3 connect. Ogmios v7.0.0, Kupo v2.12 and db-sync 13.7.2.1 connect with the adapted legacy configuration, then fail when decoding Dijkstra blocks.",
+   "results": [
+    {
+     "kind": "change",
+     "id": "n2c-only-v23",
+     "outcome": "pass"
+    },
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "0.208.5",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "v0.213.0",
+     "outcome": "pass"
+    },
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "v0.213.9",
+     "outcome": "pass"
+    },
+    {
+     "kind": "component",
+     "id": "ogmios",
+     "version": "v7.0.0",
+     "outcome": "pass"
+    },
+    {
+     "kind": "component",
+     "id": "kupo",
+     "version": "v2.12",
+     "outcome": "pass"
+    },
+    {
+     "kind": "component",
+     "id": "cardano-db-sync",
+     "version": "13.7.2.1",
+     "outcome": "pass",
+     "note": "Indexed 19 Conway blocks from the V23-only node before the first Dijkstra block."
+    },
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "v0.216.3",
+     "outcome": "pass"
+    }
+   ],
+   "observed": [
+    "handshake-old.log:\noffered V16..V22: refused, reason VersionMismatch ['V23']",
+    "handshake-v23.log:\noffered V23..V23: accepted V23 [42, False]",
+    "handshake-v0.208.5.log:\ndial: handshake: version mismatch (supported versions: [32791])",
+    "handshake-v0.213.0.log:\nhandshake ok; mempool capacity 25294848 size 0 transactions 0"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/handshake.py",
+    "scripts/readiness/devnet/probe/main.go",
+    "scripts/readiness/devnet/services.sh",
+    "scripts/readiness/devnet/service-layer.sh"
+   ]
+  },
+  {
+   "id": "cross-era-submission",
+   "title": "Which Conway-built transactions the node accepts after the fork",
+   "summary": "Conway-built payments, deposit registrations, required signers and metadata submit successfully after PV12. The deposit-less Conway registration is rejected as an era mismatch; the Dijkstra builder refuses the same certificate. Dijkstra-built payment, deposit registration and metadata submit successfully. The eight captured mempool encodings have three elements and retain the signed-envelope transaction ids. This checks submission and encoding; it is not full coverage of every guard or removed encoding.",
+   "results": [
+    {
+     "kind": "change",
+     "id": "mempool-cross-era",
+     "outcome": "pass"
+    },
+    {
+     "kind": "change",
+     "id": "mempool-tx-is-valid",
+     "outcome": "pass"
+    },
+    {
+     "kind": "change",
+     "id": "removed-encodings",
+     "outcome": "pass",
+     "note": "Only the deposit-less registration was exercised."
+    },
+    {
+     "kind": "change",
+     "id": "guards",
+     "outcome": "pass",
+     "note": "Only a Conway key-hash required signer was exercised."
+    }
+   ],
+   "observed": [
+    "transactions.log:\nTransaction successfully submitted. Transaction hash is:\n## conway-payment (conway build-raw)\nenvelope: Tx ConwayEra 84a3\nTransaction successfully submitted. Transaction hash is:\n{\"txhash\":\"7c6f9ee56f56624659916e0478aa4aa031a4a522d7e57d377739144154dd3bcf\"}\n\n## conway-legacy-reg (conway build-raw)\nenvelope: Tx ConwayEra 84a4\nCommand failed: transaction submit\nError: The era of the node and the tx do not match. The node is running in the Dijkstra era, but the transaction is for the Conway era.\n\n\n## conway-reg-with-deposit (conway build-raw)\nenvelope: Tx ConwayEra 84a4\nTransaction successfully submitted. Transaction hash is:\n{\"txhash\":\"f8feee4d9bac7f2b3b76acec43324289e466e8d36874e42e834aa535e620e967\"}\n\n## conway-required-signer (conway build-raw)\nenvelope: Tx ConwayEra 84a4\nTransaction successfully submitted. Transaction hash is:\n{\"txhash\":\"27eeb7435e5f18dff69c6f5d367589354c1693557c9a387e729bcea5277ae8d2\"}\n\n## conway-metadata (conway build-raw)\nenvelope: Tx ConwayEra 84a4\nTransaction successfully submitted. Transaction hash is:\n{\"txhash\":\"4fa14513e70cfd7dca94e4ae6610932f23736717267e0a467c2fe7716893e3c9\"}\n\n## dijkstra-payment (dijkstra build-raw)\nenvelope: Tx DijkstraEra 83a3\nTransaction successfully submitted. Transaction hash is:\n{\"txhash\":\"f61dcb8425f26cd99bae239f0002751c8e10badee48d51e5138c80a6f740b7ba\"}\n\n## dijkstra-legacy-reg (dijkstra build-raw)\nCommand failed: transaction build-raw\nError: /tmp/dijkstra-11.2.0/work/tx/kd0.cert: TextEnvelope decode error: DecoderErrorDeserialiseFailure \"DijkstraTxCert DijkstraEra\" (DeserialiseFailure 2 \"Certificates without deposits are no longer supported\")\nCallStack (from HasCallStack):\n\n## dijkstra-reg-with-deposit (dijkstra build-raw)\nenvelope: Tx DijkstraEra 83a4\nTransaction successfully submitted. Transaction hash is:\n{\"txhash\":\"898c3f6d9235f0728e2073b0f55ccfd48f112c86d78d1fd7670c2e848aa28bf5\"}\n\n## dijkstra-metadata (dijkstra build-raw)\nenvelope: Tx DijkstraEra 83a4\nTransaction successfully submitted. Transaction hash is:\n{\"txhash\":\"31a6c502976cd97641a567fd2366f8ab4102a4099421200fff110c726ba187e1\"}"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/transactions.sh",
+    "scripts/readiness/devnet/txid.py"
+   ]
+  },
+  {
+   "id": "block-shape",
+   "title": "The node's Dijkstra block: non-segregated body, ten-field Babbage header",
+   "summary": "The tagged node still emits a two-element Dijkstra block with a non-segregated body and a ten-field Babbage header ending in protocol version [12, 0]. The target CDDL describes a different header. gouroboros v0.213.0, v0.213.9 and v0.216.3 decode 19 Conway blocks then fail because the Dijkstra decoder expects twelve header fields.",
+   "results": [
+    {
+     "kind": "change",
+     "id": "block-body-non-segregated",
+     "outcome": "pass"
+    },
+    {
+     "kind": "change",
+     "id": "header-version-info",
+     "outcome": "fail",
+     "note": "The node emits the ten-field header with protocol_version."
+    },
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "v0.213.0",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "v0.213.9",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "v0.216.3",
+     "outcome": "fail"
+    }
+   ],
+   "observed": [
+    "block-shape.log:\narray[2]\n  [0] array[2]\n    [0] array[10]\n      [0] 19\n      [1] 430\n      [2] bytes[32]\n      [3] bytes[32]\n      [4] bytes[32]\n      [5] array[2]\n        [0] bytes[64]\n        [1] bytes[80]\n      [6] 4\n      [7] bytes[32]\n      [8] array[4]\n        [0] bytes[32]\n        [1] 0\n        [2] 0\n        [3] bytes[64]\n      [9] array[2]\n        [0] 12\n        [1] 0\n    [1] bytes[448]\n  [1] array[3]\n    [0] array[0]\n\n    [1] None\n    [2] None \n(consumed 854 of 854 bytes)",
+    "chain-v0.213.0.log:\ntip slot 12377\nconnection error: protocol error: decode Dijkstra block error: decode Dijkstra block header: unexpected Dijkstra block header body: expected exactly 12 fields, got 10\n    19  Conway: block decoded",
+    "chain-v0.213.9.log:\ntip slot 3542\nconnection error: protocol error: decode Dijkstra block error: decode Dijkstra block header: unexpected Dijkstra block header body: expected exactly 12 fields, got 10\n    19  Conway: block decoded",
+    "chain-v0.216.3.log:\ntip slot 3542\nconnection error: protocol error: decode Dijkstra block error: decode Dijkstra block header: unexpected Dijkstra block header body: expected exactly 12 fields, got 10\n    19  Conway: block decoded"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/probe/main.go",
+    "scripts/readiness/devnet/cbor_dump.py"
+   ]
+  },
+  {
+   "id": "service-decoding",
+   "title": "Ogmios v7.0.0 and Kupo v2.12 stop at the first Dijkstra block",
+   "summary": "With flattened legacy configuration, both services connect and then exit on the first Dijkstra block. Kupo indexes Conway through slot 361; Ogmios exits from its health chain-sync. The configuration-envelope failure is recorded separately.",
+   "results": [
+    {
+     "kind": "component",
+     "id": "ogmios",
+     "version": "v7.0.0",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "kupo",
+     "version": "v2.12",
+     "outcome": "fail"
+    }
+   ],
+   "observed": [
+    "services.log:\nogmios v7.0.0 (b3a830a1)\nogmios exit 1; era at start: \"currentEra\":\"dijkstra\"\nServerHasAgency (SingNext SingMustReply) (DeserialiseFailure 2530 \"expected map len or indef\")\nkupo v2.12.0+491918\nkupo exit 1; last logged roll-forward slot: 361\nServerHasAgency (SingNext SingCanAwait) (DeserialiseFailure 863 \"expected list len or indef\")"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/services.sh"
+   ]
+  },
+  {
+   "id": "tx-era-detection",
+   "title": "gouroboros cannot tell the era of an ordinary Dijkstra transaction",
+   "summary": "On all three tested gouroboros releases, generic era detection fails for ordinary three-element Dijkstra transactions; the key-hash guard case is recognised and explicit Dijkstra decoding succeeds. txtop uses these same probe-exercised calls; this is not an end-to-end assertion about its rendered transaction list. The locally patched cardano-node-api reproduces HTTP 400 on Dijkstra submission and an unknown-type error on mempool listing.",
+   "results": [
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "v0.213.0",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "v0.213.9",
+     "outcome": "fail"
+    },
+    {
+     "kind": "tool",
+     "id": "txtop",
+     "version": "86a013e with gouroboros v0.213.0",
+     "outcome": "fail",
+     "note": "Decoding path exercised through the probe, which runs txtop's extractTx calls."
+    },
+    {
+     "kind": "tool",
+     "id": "cardano-node-api",
+     "version": "1368155 with gouroboros v0.213.9 and patches",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "gouroboros",
+     "version": "v0.216.3",
+     "outcome": "fail"
+    }
+   ],
+   "observed": [
+    "tx-decode-v0.216.3.log:\nconway-legacy-reg              head 84a4: type 6: decoded\nconway-metadata                head 84a4: type 6: decoded\nconway-payment                 head 84a3: type 6: decoded\nconway-reg-with-deposit        head 84a4: type 6: decoded\nconway-required-signer         head 84a4: type 6: decoded\ndijkstra-metadata              head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\ndijkstra-payment               head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\ndijkstra-reg-with-deposit      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\nsplit                          head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\nmempool-0                      head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\nmempool-1                      head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\nmempool-2                      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\nmempool-3                      head 83a4: type 7: decoded\nmempool-4                      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\nmempool-5                      head 83a3: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\nmempool-6                      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok\nmempool-7                      head 83a4: DetermineTransactionType: unknown transaction type; forced Dijkstra decode: ok",
+    " {\"msg\":\"failure connecting to node via UNIX socket: handshake: version mismatch (supported versions: [32791])\"} [HTTP 500]\npinned localstatequery/tip: {\"msg\":\"failure connecting to node via UNIX socket: handshake: version mismatch (supported versions: [32791])\"} [HTTP 500]\npinned localtxmonitor/sizes: {\"msg\":\"failure connecting to node via UNIX socket: handshake: version mismatch (supported versions: [32791])\"} [HTTP 500]\nup localstatequery/current-era: {\"name\":\"Dijkstra\",\"id\":7} [HTTP 200]\nup localstatequery/tip: {\"era\":\"Dijkstra\",\"hash\":\"ab09a8b9093767aecb45af04b17a4c47b7f2800b6020f96586a2c3ae487cf350\",\"epoch_no\":32,\"block_no\":321,\"slot_no\":6476} [HTTP 200]\nup localtxmonitor/sizes: {\"capacity\":25294848,\"size\":0,\"tx_count\":0} [HTTP 200]\nTransaction successfully submitted. Transaction hash is:\nup utxos/search-by-asset after minting in a Dijkstra transaction: {\"utxos\":[{\"tx_hash\":\"40f94d22e5e03865dcbd5e5c679d127429b26e11c3bea4de1116bc6e0623eb16\",\"index\":0,\"address\":\"addr_test1vpcue4x55l44krk7pype0asgykcm39tpsn5vw4czg8gzetsuf6we4\",\"amount\":5000000,\"assets\":[{\"name\":\"devnet\",\"nameHex\":\"6465766e6574\",\"policyId\":\"9ed8d78e5229aa32f4efdda8776231c8459d2590abbd39794ae99097\",\"fingerprint\":\"asset1ukh73nu0lpe4njnhtxkmuj5lhjprqsgjx453v5\",\"amount\":\"1\"}]}],\"count\":1,\"truncated\":false}\nup POST localtxsubmission/tx with a Dijkstra payment: \"could not parse transaction to determine type: unknown transaction type\" [HTTP 400]\nTransaction successfully submitted. Transaction hash is:\nup GET localtxmonitor/txs with that payment in the mempool: {\"msg\":\"unknown transaction type\"}\n"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/probe/main.go",
+    "scripts/readiness/devnet/transactions.sh",
+    "scripts/readiness/devnet/tools.sh"
+   ]
+  },
+  {
+   "id": "tool-upgrades",
+   "title": "txtop and cardano-node-api before and after the gouroboros upgrade",
+   "summary": "Historical txtop revision 86a013e and cardano-node-api revision 1368155 fail the V23 handshake at their original pins. txtop with gouroboros v0.213.0 connects and displays mempool capacity. cardano-node-api with gouroboros v0.213.9 and the retained local patches answers era, tip and mempool-size queries and returns the asset minted in a Dijkstra transaction. Its submission and mempool decoding still fail. This run rebuilds the patched controls; earlier unpatched compiler diagnostics remain in the archived assessment.",
+   "results": [
+    {
+     "kind": "tool",
+     "id": "txtop",
+     "version": "86a013e pinned (gouroboros 0.208.5)",
+     "outcome": "fail"
+    },
+    {
+     "kind": "tool",
+     "id": "txtop",
+     "version": "86a013e with gouroboros v0.213.0",
+     "outcome": "pass",
+     "note": "Connects and shows mempool sizes; mempool decoding is the tx-era-detection check."
+    },
+    {
+     "kind": "tool",
+     "id": "cardano-node-api",
+     "version": "1368155 pinned (gouroboros 0.202.7)",
+     "outcome": "fail"
+    },
+    {
+     "kind": "tool",
+     "id": "cardano-node-api",
+     "version": "1368155 with gouroboros v0.213.9 and patches",
+     "outcome": "pass",
+     "note": "Only after patching adder and its own code; UTxO, era, tip, parameter and mempool-size queries."
+    }
+   ],
+   "observed": [
+    "txtop upgraded: Mempool capacity (bytes): 25294848",
+    "cardano-node-api pinned: handshake version mismatch, supported versions [32791]",
+    "cardano-node-api patched: current-era Dijkstra id 7 [HTTP 200]; tip [HTTP 200]; mempool sizes [HTTP 200]; utxos/search-by-asset returns devnet token."
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/tools.sh",
+    "scripts/readiness/devnet/patches/adder-v0.45.0-gouroboros-v0.213.9.diff",
+    "scripts/readiness/devnet/patches/cardano-node-api-gouroboros-v0.213.9.diff"
+   ]
+  },
+  {
+   "id": "pallas-chain-sync",
+   "title": "None of the three tested Pallas revisions decodes the node\u2019s Dijkstra blocks",
+   "summary": "v1.4.0 and main b4a519fa decode Conway but do not recognise Dijkstra blocks. The dijkstra branch e7ea1726 with unstable recognises the era but expects header field 10, which the tagged node does not emit. Live runs reach different tips; their block counts are not a progress metric.",
+   "results": [
+    {
+     "kind": "component",
+     "id": "pallas",
+     "version": "v1.4.0",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "pallas",
+     "version": "main b4a519fa",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "pallas",
+     "version": "dijkstra e7ea1726",
+     "outcome": "fail",
+     "note": "Built with the unstable feature."
+    }
+   ],
+   "observed": [
+    "pallas-chain-v1.4.0.log:\nera tag 7: 19 blocks decoded, 0 transactions, 0 failed\nera tag 8: 0 blocks decoded, 0 transactions, 399 failed\n  first failure: block 856 bytes: Unknown CBOR structure: 820882828a131901ae582010b648d8a114f989d6f1c45dba3d0c41b55ea958eb8e512f575f295a0e5bbb1858206c25b61240d7b5d9ab03ba831536474dd46e3265515d7f",
+    "pallas-chain-main.log:\nera tag 7: 19 blocks decoded, 0 transactions, 0 failed\nera tag 8: 0 blocks decoded, 0 transactions, 719 failed\n  first failure: block 856 bytes: Unknown CBOR structure: 820882828a131901ae582010b648d8a114f989d6f1c45dba3d0c41b55ea958eb8e512f575f295a0e5bbb1858206c25b61240d7b5d9ab03ba831536474dd46e3265515d7f",
+    "pallas-chain-dijkstra.log:\nera tag 7: 19 blocks decoded, 0 transactions, 0 failed\nera tag 8: 0 blocks decoded, 0 transactions, 440 failed\n  first failure: block 856 bytes: Invalid CBOR structure: missing value at index 10 (HeaderBody::block_body_contains_leios_cert) in map or array starting at position 4"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/pallas-probe/main.rs",
+    "scripts/readiness/devnet/build-pallas-probe.sh"
+   ]
+  },
+  {
+   "id": "pallas-transactions",
+   "title": "Pallas decodes mempool Dijkstra transactions only on its dijkstra branch, and only when told the era",
+   "summary": "Across the 17 retained encodings, generic MultiEraTx::decode accepts the Conway envelopes but rejects every three-element Dijkstra encoding in all three tested revisions. The dijkstra branch with unstable decodes the Dijkstra encodings when explicitly given the era; its passing result is limited to that forced path.",
+   "results": [
+    {
+     "kind": "component",
+     "id": "pallas",
+     "version": "v1.4.0",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "pallas",
+     "version": "main b4a519fa",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "pallas",
+     "version": "dijkstra e7ea1726",
+     "outcome": "pass",
+     "note": "Only through decode_for_era(Era::Dijkstra) with the unstable feature; MultiEraTx::decode still fails."
+    }
+   ],
+   "observed": [
+    "pallas-txs-main.log:\nconway-legacy-reg              head 84a4: Conway: decoded, 1 inputs, 1 outputs\nconway-metadata                head 84a4: Conway: decoded, 1 inputs, 1 outputs\nconway-payment                 head 84a3: Conway: decoded, 1 inputs, 1 outputs\nconway-reg-with-deposit        head 84a4: Conway: decoded, 1 inputs, 1 outputs\nconway-required-signer         head 84a4: Conway: decoded, 1 inputs, 1 outputs\ndijkstra-metadata              head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac08018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\ndijkstra-payment               head 83a3: decode: Unknown CBOR structure: 83a300d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac05018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\ndijkstra-reg-with-deposit      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac07018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\nsplit                          head 83a3: decode: Unknown CBOR structure: 83a300d901028182582040f94d22e5e03865dcbd5e5c679d127429b26e11c3bea4de1116bc6e0623eb1601018a82581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\nmempool-0                      head 83a3: decode: Unknown CBOR structure: 83a300d901028182582040f94d22e5e03865dcbd5e5c679d127429b26e11c3bea4de1116bc6e0623eb1601018a82581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\nmempool-1                      head 83a3: decode: Unknown CBOR structure: 83a300d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac00018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\nmempool-2                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac02018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\nmempool-3                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac03018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\nmempool-4                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac04018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\nmempool-5                      head 83a3: decode: Unknown CBOR structure: 83a300d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac05018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\nmempool-6                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac07018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561\nmempool-7                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac08018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561",
+    "pallas-txs-dijkstra.log:\nconway-legacy-reg              head 84a4: Conway: decoded, 1 inputs, 1 outputs; forced Dijkstra decode: decode error: certificate variant 0 was removed in Dijkstra\nconway-metadata                head 84a4: Conway: decoded, 1 inputs, 1 outputs; forced Dijkstra decode: ok, 1 inputs\nconway-payment                 head 84a3: Conway: decoded, 1 inputs, 1 outputs; forced Dijkstra decode: ok, 1 inputs\nconway-reg-with-deposit        head 84a4: Conway: decoded, 1 inputs, 1 outputs; forced Dijkstra decode: ok, 1 inputs\nconway-required-signer         head 84a4: Conway: decoded, 1 inputs, 1 outputs; forced Dijkstra decode: ok, 1 inputs\ndijkstra-metadata              head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac08018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\ndijkstra-payment               head 83a3: decode: Unknown CBOR structure: 83a300d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac05018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\ndijkstra-reg-with-deposit      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac07018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\nsplit                          head 83a3: decode: Unknown CBOR structure: 83a300d901028182582040f94d22e5e03865dcbd5e5c679d127429b26e11c3bea4de1116bc6e0623eb1601018a82581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\nmempool-0                      head 83a3: decode: Unknown CBOR structure: 83a300d901028182582040f94d22e5e03865dcbd5e5c679d127429b26e11c3bea4de1116bc6e0623eb1601018a82581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\nmempool-1                      head 83a3: decode: Unknown CBOR structure: 83a300d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac00018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\nmempool-2                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac02018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\nmempool-3                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac03018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\nmempool-4                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac04018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\nmempool-5                      head 83a3: decode: Unknown CBOR structure: 83a300d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac05018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\nmempool-6                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac07018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs\nmempool-7                      head 83a4: decode: Unknown CBOR structure: 83a400d9010281825820f4a52df48475e130a7875e6cd248be04c1e5ebeadb7e7a68fecb4e55b19f28ac08018182581d6071ccd4d4a7eb5b0ede090397f60825b1b89561; forced Dijkstra decode: ok, 1 inputs"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/pallas-probe/main.rs",
+    "scripts/readiness/devnet/build-pallas-probe.sh",
+    "scripts/readiness/devnet/transactions.sh"
+   ]
+  },
+  {
+   "id": "cml-decoding",
+   "title": "CML 6.2.0 decodes neither Dijkstra blocks nor Dijkstra transactions",
+   "summary": "CML 6.2.0 decodes the Conway positive-control block and four-element Conway envelopes. Neither MultiEraBlock nor Conway Block decodes any of the 168 Dijkstra blocks; Transaction rejects every three-element Dijkstra encoding. MultiEraBlock receives HFC-wrapped fixtures, while Conway Block receives the unwrapped bytes.",
+   "results": [
+    {
+     "kind": "component",
+     "id": "cardano-multiplatform-lib-cml",
+     "version": "6.2.0",
+     "outcome": "fail"
+    }
+   ],
+   "observed": [
+    "cml-blocks.log:\nera tag 7: 1 blocks; MultiEraBlock decoded 1, Conway Block decoded 1\nera tag 8: 168 blocks; MultiEraBlock decoded 0, Conway Block decoded 0\n  first MultiEraBlock failure: Deserialization: No variant matched\n  first Conway Block failure: Deserialization: Definite length mismatch: found 2",
+    "cml-txs.log:\nconway-legacy-reg              head 84a4: decoded, 1 inputs\nconway-metadata                head 84a4: decoded, 1 inputs\nconway-payment                 head 84a3: decoded, 1 inputs\nconway-reg-with-deposit        head 84a4: decoded, 1 inputs\nconway-required-signer         head 84a4: decoded, 1 inputs\ndijkstra-metadata              head 83a4: decode: Deserialization: Definite length mismatch: found 3\ndijkstra-payment               head 83a3: decode: Deserialization: Definite length mismatch: found 3\ndijkstra-reg-with-deposit      head 83a4: decode: Deserialization: Definite length mismatch: found 3\nsplit                          head 83a3: decode: Deserialization: Definite length mismatch: found 3\nmempool-0                      head 83a3: decode: Deserialization: Definite length mismatch: found 3\nmempool-1                      head 83a3: decode: Deserialization: Definite length mismatch: found 3\nmempool-2                      head 83a4: decode: Deserialization: Definite length mismatch: found 3\nmempool-3                      head 83a4: decode: Deserialization: Definite length mismatch: found 3\nmempool-4                      head 83a4: decode: Deserialization: Definite length mismatch: found 3\nmempool-5                      head 83a3: decode: Deserialization: Definite length mismatch: found 3\nmempool-6                      head 83a4: decode: Deserialization: Definite length mismatch: found 3\nmempool-7                      head 83a4: decode: Deserialization: Definite length mismatch: found 3"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/cml-probe/main.rs",
+    "scripts/readiness/devnet/build-cml-probe.sh",
+    "scripts/readiness/devnet/pallas-probe/main.rs"
+   ]
+  },
+  {
+   "id": "js-sdk-transactions",
+   "title": "cardano-js-sdk 0.47.1 decodes and re-encodes plain Dijkstra transactions",
+   "summary": "@cardano-sdk/core 0.47.1 decodes all 17 retained encodings and re-encodes them byte for byte, including Dijkstra metadata. This covers payments, deposit registration, a key-hash signer and metadata; it establishes neither advanced Dijkstra body support nor block decoding.",
+   "results": [
+    {
+     "kind": "component",
+     "id": "cardano-js-sdk",
+     "version": "@cardano-sdk/core 0.47.1",
+     "outcome": "pass"
+    }
+   ],
+   "observed": [
+    "js-sdk-txs.log:\n@cardano-sdk/core 0.47.1\nconway-legacy-reg                  head 84a4: decoded, 1 inputs, 1 certificates, isValid true, id 93b074aad9cade68\u2026, round-trip exact\nconway-metadata                    head 84a4: decoded, 1 inputs, 0 certificates, isValid true, id 4fa14513e70cfd7d\u2026, round-trip exact\nconway-payment                     head 84a3: decoded, 1 inputs, 0 certificates, isValid true, id 7c6f9ee56f566246\u2026, round-trip exact\nconway-reg-with-deposit            head 84a4: decoded, 1 inputs, 1 certificates, isValid true, id f8feee4d9bac7f2b\u2026, round-trip exact\nconway-required-signer             head 84a4: decoded, 1 inputs, 0 certificates, isValid true, id 27eeb7435e5f18df\u2026, round-trip exact\ndijkstra-metadata                  head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 31a6c502976cd976\u2026, round-trip exact\ndijkstra-payment                   head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id f61dcb8425f26cd9\u2026, round-trip exact\ndijkstra-reg-with-deposit          head 83a4: decoded, 1 inputs, 1 certificates, isValid true, id 898c3f6d9235f072\u2026, round-trip exact\nsplit                              head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id f4a52df48475e130\u2026, round-trip exact\nmempool-0                          head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id f4a52df48475e130\u2026, round-trip exact\nmempool-1                          head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 7c6f9ee56f566246\u2026, round-trip exact\nmempool-2                          head 83a4: decoded, 1 inputs, 1 certificates, isValid true, id f8feee4d9bac7f2b\u2026, round-trip exact\nmempool-3                          head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 27eeb7435e5f18df\u2026, round-trip exact\nmempool-4                          head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 4fa14513e70cfd7d\u2026, round-trip exact\nmempool-5                          head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id f61dcb8425f26cd9\u2026, round-trip exact\nmempool-6                          head 83a4: decoded, 1 inputs, 1 certificates, isValid true, id 898c3f6d9235f072\u2026, round-trip exact\nmempool-7                          head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 31a6c502976cd976\u2026, round-trip exact"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/js-probe/probe.cjs",
+    "scripts/readiness/devnet/transactions.sh"
+   ]
+  },
+  {
+   "id": "db-sync-and-blockfrost",
+   "title": "cardano-db-sync 13.7.2.1 stops at the first Dijkstra block, and Blockfrost RYO serves the pre-fork chain as current",
+   "summary": "db-sync 13.7.2.1 indexes the 19 Conway blocks and then repeatedly fails to decode the first Dijkstra block. Blockfrost RYO v6.8.2 on that database serves block 18 and protocol version 10 as latest while the node runs Dijkstra PV12. Its own Dijkstra paths are not reached. Koios was not run.",
+   "results": [
+    {
+     "kind": "component",
+     "id": "cardano-db-sync",
+     "version": "13.7.2.1",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "blockfrost",
+     "version": "v6.8.2",
+     "outcome": "fail",
+     "note": "Inherited: it serves db-sync's last pre-fork state as current; its own Dijkstra code paths were not reached."
+    }
+   ],
+   "observed": [
+    "service-layer.log:\nnode tip: {\"epoch\":85,\"era\":\"Dijkstra\",\"block\":810}\ndb-sync running; blocks indexed: 19, highest: 18, epoch_param rows: 2\ndb-sync chain-sync decoder failures: 30\nServerHasAgency (SingNext SingCanAwait) (DeserialiseFailure 863 \"expected list len or indef\")\nlast db-sync log line at: 2026-11-01 13:01:05.59 UTC\nblockfrost /blocks/latest: {\"height\":18,\"slot\":361,\"epoch\":1}\nblockfrost /epochs/latest/parameters: {\"epoch\":1,\"protocol_major_ver\":10}\nblockfrost /network/eras: [{\"end\":0},{\"end\":3}]"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/service-layer.sh"
+   ]
+  },
+  {
+   "id": "csl-decoding",
+   "title": "CSL 17.0.0 and 15.0.3 decode no Dijkstra block; plain Dijkstra transactions decode but re-encode in the legacy form",
+   "summary": "CSL 17.0.0 and 15.0.3 decode none of the 168 Dijkstra blocks. All 17 transaction encodings decode, but three-element Dijkstra transactions re-encode as the legacy four-element form; FixedTransaction retains the transaction id. Advanced Dijkstra-only body keys were not exercised.",
+   "results": [
+    {
+     "kind": "component",
+     "id": "cardano-serialization-lib-csl",
+     "version": "17.0.0",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "cardano-serialization-lib-csl",
+     "version": "15.0.3",
+     "outcome": "fail"
+    }
+   ],
+   "observed": [
+    "csl17-blocks.log:\ncardano-serialization-lib 17.0.0\n168 blocks (type 8 = Dijkstra):\n  168  Block error: Deserialization failed in Block because: Definite length mismatch: found 2; FixedBlock error: Deserialization: Definite length mismatch: found 2",
+    "csl15-blocks.log:\ncardano-serialization-lib 15.0.3\n168 blocks (type 8 = Dijkstra):\n  168  Block error: Deserialization failed in Block because: Definite length mismatch: found 2; FixedBlock error: Deserialization: Definite length mismatch: found 2",
+    "csl17-txs.log:\ncardano-serialization-lib 17.0.0\nconway-legacy-reg                    head 84a4: Transaction decoded, 1 inputs, re-encode exact; FixedTransaction decoded, id 93b074aad9cade68\u2026\nconway-metadata                      head 84a4: Transaction decoded, 1 inputs, re-encode exact; FixedTransaction decoded, id 4fa14513e70cfd7d\u2026\nconway-payment                       head 84a3: Transaction decoded, 1 inputs, re-encode exact; FixedTransaction decoded, id 7c6f9ee56f566246\u2026\nconway-reg-with-deposit              head 84a4: Transaction decoded, 1 inputs, re-encode exact; FixedTransaction decoded, id f8feee4d9bac7f2b\u2026\nconway-required-signer               head 84a4: Transaction decoded, 1 inputs, re-encode exact; FixedTransaction decoded, id 27eeb7435e5f18df\u2026\ndijkstra-metadata                    head 83a4: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 31a6c502976cd976\u2026\ndijkstra-payment                     head 83a3: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id f61dcb8425f26cd9\u2026\ndijkstra-reg-with-deposit            head 83a4: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 898c3f6d9235f072\u2026\nsplit                                head 83a3: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id f4a52df48475e130\u2026\nmempool-0                            head 83a3: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id f4a52df48475e130\u2026\nmempool-1                            head 83a3: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 7c6f9ee56f566246\u2026\nmempool-2                            head 83a4: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id f8feee4d9bac7f2b\u2026\nmempool-3                            head 83a4: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 27eeb7435e5f18df\u2026\nmempool-4                            head 83a4: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 4fa14513e70cfd7d\u2026\nmempool-5                            head 83a3: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id f61dcb8425f26cd9\u2026\nmempool-6                            head 83a4: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 898c3f6d9235f072\u2026\nmempool-7                            head 83a4: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 31a6c502976cd976\u2026"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/csl-probe/probe.cjs",
+    "scripts/readiness/devnet/probe/main.go"
+   ]
+  },
+  {
+   "id": "pycardano-transactions",
+   "title": "PyCardano 0.19.2 cannot decode a Dijkstra transaction that carries metadata",
+   "summary": "PyCardano 0.19.2 mistakes the third transaction element for is_valid. Three Dijkstra metadata encodings fail: the Dijkstra envelope and two mempool forms. The other 14 encodings decode and re-encode exactly. Installation used cbor2<6 for cbor2pure compatibility; the resolved environment is retained.",
+   "results": [
+    {
+     "kind": "component",
+     "id": "pycardano",
+     "version": "v0.19.2",
+     "outcome": "fail"
+    }
+   ],
+   "observed": [
+    "pycardano-txs.log:\npycardano 0.19.2\nconway-legacy-reg                    head 84a4: decoded, 1 inputs, id 93b074aad9cade68\u2026, re-encode exact\nconway-metadata                      head 84a4: decoded, 1 inputs, id 4fa14513e70cfd7d\u2026, re-encode exact\nconway-payment                       head 84a3: decoded, 1 inputs, id 7c6f9ee56f566246\u2026, re-encode exact\nconway-reg-with-deposit              head 84a4: decoded, 1 inputs, id f8feee4d9bac7f2b\u2026, re-encode exact\nconway-required-signer               head 84a4: decoded, 1 inputs, id 27eeb7435e5f18df\u2026, re-encode exact\ndijkstra-metadata                    head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(259, {0: {674: {'msg': ['devnet']}}}) in any valid type from (<class 'bool'>, <class 'NoneType'>).\ndijkstra-payment                     head 83a3: decoded, 1 inputs, id f61dcb8425f26cd9\u2026, re-encode exact\ndijkstra-reg-with-deposit            head 83a4: decoded, 1 inputs, id 898c3f6d9235f072\u2026, re-encode exact\nsplit                                head 83a3: decoded, 1 inputs, id f4a52df48475e130\u2026, re-encode exact\nmempool-0                            head 83a3: decoded, 1 inputs, id f4a52df48475e130\u2026, re-encode exact\nmempool-1                            head 83a3: decoded, 1 inputs, id 7c6f9ee56f566246\u2026, re-encode exact\nmempool-2                            head 83a4: decoded, 1 inputs, id f8feee4d9bac7f2b\u2026, re-encode exact\nmempool-3                            head 83a4: decoded, 1 inputs, id 27eeb7435e5f18df\u2026, re-encode exact\nmempool-4                            head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(259, {0: {674: {'msg': ['devnet']}}}) in any valid type from (<class 'bool'>, <class 'NoneType'>).\nmempool-5                            head 83a3: decoded, 1 inputs, id f61dcb8425f26cd9\u2026, re-encode exact\nmempool-6                            head 83a4: decoded, 1 inputs, id 898c3f6d9235f072\u2026, re-encode exact\nmempool-7                            head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(259, {0: {674: {'msg': ['devnet']}}}) in any valid type from (<class 'bool'>, <class 'NoneType'>)."
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/py-probe/probe.py"
+   ]
+  },
+  {
+   "id": "node-config-envelope",
+   "title": "The versioned node configuration needs adaptation for Ogmios and Kupo",
+   "summary": "Node 11.2.0 generates and runs with a versioned configuration envelope. Ogmios v7.0.0 and Kupo v2.12 expect genesis paths at the top level and fail before connecting. Flattening equivalent settings lets the separate decoding checks run. This is a node-upgrade compatibility change, independent of PV12 activation.",
+   "results": [
+    {
+     "kind": "change",
+     "id": "node-config-envelope",
+     "outcome": "pass"
+    },
+    {
+     "kind": "component",
+     "id": "ogmios",
+     "version": "v7.0.0",
+     "outcome": "fail"
+    },
+    {
+     "kind": "component",
+     "id": "kupo",
+     "version": "v2.12",
+     "outcome": "fail"
+    }
+   ],
+   "observed": [
+    "ogmios-envelope.log:\nMissing 'ByronGenesisFile' and/or 'ShelleyGenesisFile' from Cardano's configuration?",
+    "Kupo: missing or invalid 'ByronGenesisFile' and/or 'ShelleyGenesisFile' from Cardano's configuration"
+   ],
+   "recipe": [
+    "scripts/readiness/devnet/start.sh",
+    "scripts/readiness/devnet/services.sh"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+15:02:25 1|server  | 2026-11-11T15:02:25: The size of the Plutus V1 cost model from db is 166 but our name mapping length is 332
+15:02:25 1|server  | 2026-11-11T15:02:25: The size of the Plutus V2 cost model from db is 175 but our name mapping length is 332
+15:02:25 1|server  | 2026-11-11T15:02:25: The size of the Plutus V3 cost model from db is 251 but our name mapping length is 350
+15:02:25 3|server  | 2026-11-11T15:02:25: Error: Release called on client which has already been released to the pool.
+15:02:25 3|server  | 2026-11-11T15:02:25: Error in /network/eras. TypeError: Cannot read properties of undefined (reading 'is_era_hardfork')
+15:04:33 3|server  | 2026-11-11T15:04:33: The size of the Plutus V1 cost model from db is 166 but our name mapping length is 332
+15:04:33 3|server  | 2026-11-11T15:04:33: The size of the Plutus V2 cost model from db is 175 but our name mapping length is 332
+15:04:33 3|server  | 2026-11-11T15:04:33: The size of the Plutus V3 cost model from db is 251 but our name mapping length is 350
+15:04:34 0|server  | 2026-11-11T15:04:34: Error: Release called on client which has already been released to the pool.
+15:04:34 0|server  | 2026-11-11T15:04:34: Error in /network/eras. TypeError: Cannot read properties of undefined (reading 'is_era_hardfork')
+15:04:53 3|server  | 2026-11-11T15:04:53: The size of the Plutus V1 cost model from db is 166 but our name mapping length is 332
+15:04:53 3|server  | 2026-11-11T15:04:53: The size of the Plutus V2 cost model from db is 175 but our name mapping length is 332
+15:04:53 3|server  | 2026-11-11T15:04:53: The size of the Plutus V3 cost model from db is 251 but our name mapping length is 350
+15:04:53 0|server  | 2026-11-11T15:04:53: The size of the Plutus V1 cost model from db is 166 but our name mapping length is 332
+15:04:53 0|server  | 2026-11-11T15:04:53: The size of the Plutus V2 cost model from db is 175 but our name mapping length is 332
+15:04:53 0|server  | 2026-11-11T15:04:53: The size of the Plutus V3 cost model from db is 251 but our name mapping length is 350
+15:04:53 2|server  | 2026-11-11T15:04:53: Error: Release called on client which has already been released to the pool.
+15:04:53 2|server  | 2026-11-11T15:04:53: Error in /network/eras. TypeError: Cannot read properties of undefined (reading 'is_era_hardfork')
+15:04:53 1|server  | 2026-11-11T15:04:53: The size of the Plutus V1 cost model from db is 166 but our name mapping length is 332
+15:04:53 1|server  | 2026-11-11T15:04:53: The size of the Plutus V2 cost model from db is 175 but our name mapping length is 332
+15:04:53 1|server  | 2026-11-11T15:04:53: The size of the Plutus V3 cost model from db is 251 but our name mapping length is 350
+15:04:59 2|server  | 2026-11-11T15:04:59: The size of the Plutus V1 cost model from db is 166 but our name mapping length is 332
+15:04:59 2|server  | 2026-11-11T15:04:59: The size of the Plutus V2 cost model from db is 175 but our name mapping length is 332
+15:04:59 2|server  | 2026-11-11T15:04:59: The size of the Plutus V3 cost model from db is 251 but our name mapping length is 350
+15:04:59 1|server  | 2026-11-11T15:04:59: The size of the Plutus V1 cost model from db is 166 but our name mapping length is 332
+15:04:59 1|server  | 2026-11-11T15:04:59: The size of the Plutus V2 cost model from db is 175 but our name mapping length is 332
+15:04:59 1|server  | 2026-11-11T15:04:59: The size of the Plutus V3 cost model from db is 251 but our name mapping length is 350
+15:04:59 3|server  | 2026-11-11T15:04:59: Error: Release called on client which has already been released to the pool.
+15:04:59 3|server  | 2026-11-11T15:04:59: Error in /network/eras. TypeError: Cannot read properties of undefined (reading 'is_era_hardfork')
