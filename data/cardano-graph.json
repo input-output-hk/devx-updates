@@ -21218,7 +21218,8 @@
               "source_commit": "bdceb649269240a9f1c5f891f48c0df351fcb71a",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "prototype"
         }
       ]
     },
@@ -21248,7 +21249,8 @@
               "source_commit": "c3293ad435792ba502f5a2b1691c6736e5f167e6",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21271,7 +21273,8 @@
               "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21294,7 +21297,8 @@
               "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "optional"
         }
       ]
     },
@@ -21317,7 +21321,8 @@
               "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "optional"
         }
       ]
     },
@@ -21340,7 +21345,8 @@
               "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21363,7 +21369,8 @@
               "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "optional"
         }
       ]
     },
@@ -21386,7 +21393,8 @@
               "source_commit": "c3293ad435792ba502f5a2b1691c6736e5f167e6",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "dev-test"
         }
       ]
     },
@@ -21409,7 +21417,8 @@
               "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21432,7 +21441,8 @@
               "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21455,7 +21465,8 @@
               "source_commit": "6afe522d9116e81359e30cc202feab5f3d0b8e60",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21478,7 +21489,8 @@
               "source_commit": "9e4921e373796b0d3feaf73a342246e24231cde5",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21501,7 +21513,8 @@
               "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "optional"
         }
       ]
     },
@@ -21524,7 +21537,8 @@
               "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "optional"
         }
       ]
     },
@@ -21553,7 +21567,8 @@
               "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
               "checked_on": "2026-11-13"
             }
-          ]
+          ],
+          "scope": "optional"
         }
       ]
     },
@@ -21576,7 +21591,8 @@
               "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "dev-test"
         }
       ]
     },
@@ -21608,7 +21624,8 @@
               "source_commit_date": "2025-02-26T16:47:57Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21632,7 +21649,8 @@
               "source_commit_date": "2026-10-17T02:13:44Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21656,7 +21674,8 @@
               "source_commit_date": "2026-10-17T02:13:44Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21680,7 +21699,8 @@
               "source_commit_date": "2025-02-26T16:47:57Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "dev-test"
         }
       ]
     },
@@ -21704,7 +21724,8 @@
               "source_commit_date": "2026-09-13T19:14:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21728,7 +21749,8 @@
               "source_commit_date": "2026-09-13T19:14:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21752,7 +21774,8 @@
               "source_commit_date": "2025-11-29T09:03:49Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21776,7 +21799,8 @@
               "source_commit_date": "2026-07-16T10:06:39Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21800,7 +21824,8 @@
               "source_commit_date": "2026-07-16T10:06:39Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21824,7 +21849,8 @@
               "source_commit_date": "2026-07-16T10:06:39Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "dev-test"
         }
       ]
     },
@@ -21845,7 +21871,8 @@
               "url": "https://docs.cswap.fi/cswap-platform/cswap-dex-capabilities",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21869,7 +21896,8 @@
               "source_commit_date": "2023-08-23T16:41:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "historical"
         }
       ]
     },
@@ -21893,7 +21921,8 @@
               "source_commit_date": "2023-06-02T08:57:20Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "historical"
         }
       ]
     },
@@ -21917,7 +21946,8 @@
               "source_commit_date": "2023-06-02T08:57:20Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "historical"
         }
       ]
     },
@@ -21939,7 +21969,8 @@
               "checked_on": "2026-10-22",
               "access_state": "Search-indexed primary text; direct page returned 404"
             }
-          ]
+          ],
+          "scope": "historical"
         }
       ]
     },
@@ -21963,7 +21994,8 @@
               "source_commit_date": "2024-08-23T13:46:39Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -21987,7 +22019,8 @@
               "source_commit_date": "2026-09-24T06:24:54Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22011,7 +22044,8 @@
               "source_commit_date": "2026-09-24T06:24:54Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22035,7 +22069,8 @@
               "source_commit_date": "2026-07-04T18:12:26Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "dev-test"
         }
       ]
     },
@@ -22059,7 +22094,8 @@
               "source_commit_date": "2026-10-21T09:28:20Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22083,7 +22119,8 @@
               "source_commit_date": "2026-10-21T09:28:20Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22107,7 +22144,8 @@
               "source_commit_date": "2026-10-21T09:28:20Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22131,7 +22169,8 @@
               "source_commit_date": "2026-10-21T09:28:20Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22155,7 +22194,8 @@
               "source_commit_date": "2024-08-08T12:01:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22179,7 +22219,8 @@
               "source_commit_date": "2024-08-08T12:01:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22203,7 +22244,8 @@
               "source_commit_date": "2024-08-08T12:01:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22227,7 +22269,8 @@
               "source_commit_date": "2024-08-08T12:01:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22251,7 +22294,8 @@
               "source_commit_date": "2024-08-08T12:01:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "runtime"
         }
       ]
     },
@@ -22275,7 +22319,8 @@
               "source_commit_date": "2024-08-08T12:01:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "dev-test"
         }
       ]
     },
@@ -22299,7 +22344,8 @@
               "source_commit_date": "2024-08-08T12:01:29Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "dev-test"
         }
       ]
     },
@@ -22323,7 +22369,8 @@
               "source_commit_date": "2025-09-18T20:07:04Z",
               "checked_on": "2026-10-22"
             }
-          ]
+          ],
+          "scope": "optional"
         }
       ]
     }
