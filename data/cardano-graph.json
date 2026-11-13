@@ -3,7 +3,7 @@
     "title": "Cardano Developer Tooling Map",
     "generated": "2026-07-20",
     "source": "developers.cardano.org/tools + GitHub + project docs",
-    "toolCount": 268,
+    "toolCount": 301,
     "note": "Status and stars are a research-time snapshot and drift over time.",
     "enrichedFields": [
       "license",
@@ -23,9 +23,13 @@
       "teamX"
     ],
     "communitySource": "State of the Developer Ecosystem 2025 (Cardano Foundation), n=109",
-    "edgeCount": 247,
+    "edgeCount": 294,
     "contactsNote": "teamGithub / teamX are the GitHub org and verified X/Twitter handle for each node's team. The top-level `teams` map holds, per team, its githubOrg, x, and top human maintainers (login + x) to @-mention (GitHub @org does not notify).",
-    "contactsGenerated": "2026-08-18"
+    "contactsGenerated": "2026-08-18",
+    "extendedOn": "2026-10-26",
+    "baselineCommit": "a5a8788d23b5d9eeb9725440d904d7a887d9d033",
+    "baselineSha256": "eafbc0edbeab3ca978c1172ae82f0e428723323107861d22d5e678d5f85ab142",
+    "extensionNote": "Application/component observations checked 2026-10-22. Edge evidence qualifies manifest, optional, testing, prototype and historical relationships; none attributes application transaction totals to tools. Baseline fields retain their original observation dates. Added identities have unknown maintenance, stars and usage. For added identities, starsNum 0 is a display fallback for unavailable repository counts, not a measured count; stars remains null."
   },
   "categories": [
     {
@@ -36,7 +40,7 @@
     {
       "key": "sdk",
       "label": "SDKs & Libraries",
-      "count": 65
+      "count": 73
     },
     {
       "key": "api",
@@ -46,7 +50,7 @@
     {
       "key": "idx",
       "label": "Indexers & Data",
-      "count": 17
+      "count": 18
     },
     {
       "key": "node",
@@ -66,7 +70,7 @@
     {
       "key": "dev",
       "label": "Dev Tools & Testing",
-      "count": 43
+      "count": 48
     },
     {
       "key": "ops",
@@ -87,6 +91,11 @@
       "key": "infra",
       "label": "Infrastructure & Integration",
       "count": 21
+    },
+    {
+      "key": "dapp",
+      "label": "DApps",
+      "count": 18
     }
   ],
   "statuses": {
@@ -96,7 +105,8 @@
     "abandoned": "Abandoned",
     "archived": "Archived",
     "experimental": "Experimental",
-    "research": "Research"
+    "research": "Research",
+    "unknown": "Unknown / not assessed"
   },
   "linkTypes": {
     "compiles": "compiles to",
@@ -119,8 +129,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": "1.6k",
-      "repo": "input-output-hk/plutus",
-      "repoUrl": "https://github.com/input-output-hk/plutus",
+      "repo": "IntersectMBO/plutus",
+      "repoUrl": "https://github.com/IntersectMBO/plutus",
       "description": "Cardano's native on-chain platform. Plutus Core is the UPLC scripting language embedded in the ledger; the reference implementation all validators ultimately compile to.",
       "features": [
         "UPLC compiler",
@@ -194,8 +204,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": null,
-      "repo": "input-output-hk/plutus",
-      "repoUrl": "https://github.com/input-output-hk/plutus",
+      "repo": "IntersectMBO/plutus",
+      "repoUrl": "https://github.com/IntersectMBO/plutus",
       "description": "The Haskell subset (renamed from Plutus Tx in 2025) that compiles to UPLC. Emphasizes type-safe, deterministic contracts with formal-verification hooks.",
       "features": [
         "Haskell-subset DSL",
@@ -249,7 +259,7 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 0,
-      "degree": 2,
+      "degree": 3,
       "teamGithub": "input-output-hk",
       "teamX": "IOGroup"
     },
@@ -329,7 +339,7 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 584,
-      "degree": 17,
+      "degree": 23,
       "teamGithub": "aiken-lang",
       "teamX": "aiken_eng"
     },
@@ -403,7 +413,7 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 134,
-      "degree": 1,
+      "degree": 4,
       "teamGithub": "Plutonomicon",
       "teamX": null
     },
@@ -486,8 +496,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": null,
-      "repo": "HarmonicLabs/plu-ts",
-      "repoUrl": "https://github.com/HarmonicLabs/plu-ts",
+      "repo": "HarmonicLabs/pebble",
+      "repoUrl": "https://github.com/HarmonicLabs/pebble",
       "description": "TypeScript eDSL for on-chain validators bundled with an off-chain transaction builder — write contracts in 100% valid TypeScript with full JS tooling.",
       "features": [
         "On-chain + off-chain in one lib",
@@ -673,7 +683,7 @@
       "lastCommit": "2026-06-24",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 168,
-      "degree": 3,
+      "degree": 4,
       "teamGithub": "OpShin",
       "teamX": "OpShinDev"
     },
@@ -1414,7 +1424,7 @@
       "lastCommit": "2026-07-18",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 87,
-      "degree": 6,
+      "degree": 7,
       "teamGithub": "Anastasia-Labs",
       "teamX": "AnastasiaLabs"
     },
@@ -1479,7 +1489,7 @@
       "lastCommit": "2026-04-07",
       "statusReason": "curated: superseded by Lucid Evolution",
       "starsNum": 359,
-      "degree": 5,
+      "degree": 9,
       "teamGithub": "spacebudz",
       "teamX": "spacebudznft"
     },
@@ -1559,7 +1569,7 @@
       "lastCommit": "2026-06-19",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 270,
-      "degree": 6,
+      "degree": 9,
       "teamGithub": "MeshJS",
       "teamX": "meshsdk"
     },
@@ -1630,7 +1640,7 @@
       "lastCommit": "2026-07-17",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 250,
-      "degree": 11,
+      "degree": 12,
       "teamGithub": "Emurgo",
       "teamX": "emurgo_io"
     },
@@ -1701,7 +1711,7 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 105,
-      "degree": 7,
+      "degree": 9,
       "teamGithub": "dcSpark",
       "teamX": "dcspark_io"
     },
@@ -1773,7 +1783,7 @@
       "lastCommit": "2026-06-14",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 253,
-      "degree": 1,
+      "degree": 2,
       "teamGithub": "Python-Cardano",
       "teamX": "PyCardano"
     },
@@ -1848,7 +1858,7 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 66,
-      "degree": 3,
+      "degree": 4,
       "teamGithub": "butaneprotocol",
       "teamX": "butaneprotocol"
     },
@@ -2117,7 +2127,7 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 18,
-      "degree": 2,
+      "degree": 3,
       "teamGithub": "IntersectMBO",
       "teamX": "IntersectMBO"
     },
@@ -2247,7 +2257,7 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 132,
-      "degree": 7,
+      "degree": 8,
       "teamGithub": "bloxbean",
       "teamX": "BloxBean"
     },
@@ -2313,7 +2323,7 @@
       "lastCommit": "2026-07-01",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 203,
-      "degree": 5,
+      "degree": 6,
       "teamGithub": "txpipe",
       "teamX": "txpipe_tools"
     },
@@ -2587,8 +2597,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": "27",
-      "repo": "mpizenberg/elm-cardano",
-      "repoUrl": "https://github.com/mpizenberg/elm-cardano",
+      "repo": "elm-cardano/elm-cardano",
+      "repoUrl": "https://github.com/elm-cardano/elm-cardano",
       "description": "Elm off-chain package for Cardano, designed to pair with Aiken for on-chain code.",
       "features": [
         "Off-chain in Elm",
@@ -2714,8 +2724,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": "47",
-      "repo": "xray-network/cardano-web3-js",
-      "repoUrl": "https://github.com/xray-network/cardano-web3-js",
+      "repo": "xray-network/xray-js",
+      "repoUrl": "https://github.com/xray-network/xray-js",
       "description": "TypeScript SDK providing unified abstractions over CML, UPLC and Plutus-data libraries for Node and browser.",
       "features": [
         "Abstractions over CML/MSL/UPLC",
@@ -3222,7 +3232,7 @@
       "lastCommit": "2026-07-16",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 85,
-      "degree": 10,
+      "degree": 12,
       "teamGithub": "blockfrost",
       "teamX": "blockfrost_io"
     },
@@ -3425,7 +3435,7 @@
       "lastCommit": null,
       "statusReason": "hosted / no GitHub repo — status not auto-derived",
       "starsNum": 0,
-      "degree": 0,
+      "degree": 1,
       "teamGithub": null,
       "teamX": null
     },
@@ -4495,8 +4505,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": "8",
-      "repo": "SAIB-Inc/Cardano.Sync",
-      "repoUrl": "https://github.com/SAIB-Inc/Cardano.Sync",
+      "repo": "SAIB-Inc/Argus",
+      "repoUrl": "https://github.com/SAIB-Inc/Argus",
       "description": ".NET indexing framework where you define reducers to shape the data stored in PostgreSQL.",
       "features": [
         "Reducer-based indexing",
@@ -4673,7 +4683,7 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 49,
-      "degree": 5,
+      "degree": 6,
       "teamGithub": "bloxbean",
       "teamX": "BloxBean"
     },
@@ -4880,7 +4890,7 @@
       "lastCommit": "2026-07-21",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 72,
-      "degree": 5,
+      "degree": 6,
       "teamGithub": "IntersectMBO",
       "teamX": "IntersectMBO"
     },
@@ -5499,8 +5509,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": "152",
-      "repo": "input-output-hk/mithril",
-      "repoUrl": "https://github.com/input-output-hk/mithril",
+      "repo": "IntersectMBO/mithril",
+      "repoUrl": "https://github.com/IntersectMBO/mithril",
       "description": "Stake-based multi-signature protocol producing certified snapshots for fast node bootstrapping and lightweight chain certification.",
       "features": [
         "Threshold multi-sigs",
@@ -5816,7 +5826,19 @@
       "starsNum": 0,
       "degree": 1,
       "teamGithub": "input-output-hk",
-      "teamX": "IOGroup"
+      "teamX": "IOGroup",
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Cardano NIGHT redemption documented; distribution stack unknown",
+        "gap": "Cardano distribution language, SDK, provider/indexer and devnet unknown; Compact not assigned to distribution.",
+        "sources": [
+          {
+            "title": "Official NIGHT launch and redemption guide",
+            "url": "https://midnight.network/blog/guide-to-the-night-token-launch-and-redemption",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      }
     },
     {
       "id": "partner-chains",
@@ -9773,7 +9795,7 @@
       "stars": "11",
       "repo": "github.com/ODATANO/ODATANO",
       "repoUrl": "https://github.com/ODATANO/ODATANO",
-      "description": "SAP CAP–based service that exposes the Cardano blockchain through a standardized OData V4 API, giving SAP systems enterprise-grade read/write access and native transaction building. Ships as a CAP plugin (@odatano/core) or standalone. Catalyst Fund 14 (all milestones completed).",
+      "description": "SAP CAP–based service that exposes the Cardano blockchain through a standardized OData V4 API, giving SAP systems enterprise-grade read/write access and native transaction building. Ships as a CAP plugin (@odatano/core) or standalone. Catalyst Fund 14.",
       "features": [
         "OData V4",
         "SAP CAP",
@@ -10666,8 +10688,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": null,
-      "repo": "input-output-hk/catalyst-toolbox",
-      "repoUrl": "https://github.com/input-output-hk/catalyst-toolbox",
+      "repo": "cardano-foundation/catalyst-toolbox",
+      "repoUrl": "https://github.com/cardano-foundation/catalyst-toolbox",
       "description": "CLI utilities for Project Catalyst voting: archive dumps, transaction verification, vote tally computation and reward calculation.",
       "features": [
         "Archive data dump",
@@ -10731,8 +10753,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": null,
-      "repo": "input-output-hk/catalyst-core",
-      "repoUrl": "https://github.com/input-output-hk/catalyst-core",
+      "repo": "cardano-foundation/catalyst-core",
+      "repoUrl": "https://github.com/cardano-foundation/catalyst-core",
       "description": "Core Project Catalyst governance engine and utilities — jormungandr automation, metrics and testing infrastructure.",
       "features": [
         "Governance engine",
@@ -14531,8 +14553,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": "10",
-      "repo": "txpipe/cardaminal",
-      "repoUrl": "https://github.com/txpipe/cardaminal",
+      "repo": "IntersectMBO/cardaminal",
+      "repoUrl": "https://github.com/IntersectMBO/cardaminal",
       "description": "A command-line Cardano wallet for developers and automation — key management, tx building and submission without a GUI.",
       "features": [
         "CLI wallet",
@@ -15301,8 +15323,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": null,
-      "repo": "cardano-foundation/keria",
-      "repoUrl": "https://github.com/cardano-foundation/keria",
+      "repo": "veridian-id/keria",
+      "repoUrl": "https://github.com/veridian-id/keria",
       "description": "A KERI agent for cloud-based decentralized-identifier and verifiable-credential management, with multi-sig and client-side (Signify) signing.",
       "features": [
         "KERI agent",
@@ -16132,8 +16154,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": "143",
-      "repo": "cardano-foundation/veridian-wallet",
-      "repoUrl": "https://github.com/cardano-foundation/veridian-wallet",
+      "repo": "veridian-id/veridian-wallet",
+      "repoUrl": "https://github.com/veridian-id/veridian-wallet",
       "description": "An open-source mobile identity wallet from the Cardano Foundation for decentralized identifiers and verifiable credentials (KERI/Signify).",
       "features": [
         "DIDs & credentials",
@@ -16437,7 +16459,7 @@
       "lastCommit": "2026-06-18",
       "statusReason": "active — pushed 1mo ago",
       "starsNum": 108,
-      "degree": 1,
+      "degree": 3,
       "teamGithub": "blockfrost",
       "teamX": "blockfrost_io"
     },
@@ -17075,9 +17097,48 @@
       "lastCommit": "2026-07-31",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 14,
-      "degree": 5,
+      "degree": 9,
       "teamGithub": "masumi-network",
-      "teamX": "MasumiNetwork"
+      "teamX": "MasumiNetwork",
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Aiken; Mesh payment components; Blockfrost; Lucid also declared",
+        "gap": "Dedicated devnet and historical deployment configuration unknown; current repository postdates transaction window.",
+        "sources": [
+          {
+            "title": "masumi-network/masumi-payment-service / smart-contracts/payment-v2/aiken.toml",
+            "url": "https://github.com/masumi-network/masumi-payment-service/blob/7cb71dba4445a330d179a3859f4fe7be0b43b23e/smart-contracts/payment-v2/aiken.toml",
+            "sha256": "1f16983d5ba66ca17b822fe5c70d1e7d9d911aa4a8554106d55715f1383797d0",
+            "source_commit": "7cb71dba4445a330d179a3859f4fe7be0b43b23e",
+            "source_commit_date": "2026-10-21T09:28:20Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "masumi-network/masumi-payment-service / package.json",
+            "url": "https://github.com/masumi-network/masumi-payment-service/blob/7cb71dba4445a330d179a3859f4fe7be0b43b23e/package.json",
+            "sha256": "b4b3170907e07eff59ca78e0621e92224f8d4dfc3a07222f8fff97b20455448b",
+            "source_commit": "7cb71dba4445a330d179a3859f4fe7be0b43b23e",
+            "source_commit_date": "2026-10-21T09:28:20Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "masumi-network/masumi-payment-service / packages/payment-source-v2/package.json",
+            "url": "https://github.com/masumi-network/masumi-payment-service/blob/7cb71dba4445a330d179a3859f4fe7be0b43b23e/packages/payment-source-v2/package.json",
+            "sha256": "ff5e27f0a4ab9acad62ca1eed67a15910c0cf9e83031aa7f10dc83a5489378ff",
+            "source_commit": "7cb71dba4445a330d179a3859f4fe7be0b43b23e",
+            "source_commit_date": "2026-10-21T09:28:20Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "masumi-network/masumi-payment-service / README.md",
+            "url": "https://github.com/masumi-network/masumi-payment-service/blob/7cb71dba4445a330d179a3859f4fe7be0b43b23e/README.md",
+            "sha256": "c86c4899eaf7fd4326f783086ac77854cad1490d37aa911866efd275a178905c",
+            "source_commit": "7cb71dba4445a330d179a3859f4fe7be0b43b23e",
+            "source_commit_date": "2026-10-21T09:28:20Z",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      }
     },
     {
       "id": "masumi-registry-service",
@@ -17625,8 +17686,8 @@
       "status": "active",
       "statusLabel": "Maintained",
       "stars": "3",
-      "repo": "bloxbean/cardano-client-bindings",
-      "repoUrl": "https://github.com/bloxbean/cardano-client-bindings",
+      "repo": "bloxbean/mesmo",
+      "repoUrl": "https://github.com/bloxbean/mesmo",
       "description": "Native (Rust) bindings for the Cardano Client Library, exposing transaction building to non-JVM languages.",
       "features": [
         "FFI bindings",
@@ -17739,6 +17800,2168 @@
       "degree": 1,
       "teamGithub": "bloxbean",
       "teamX": "BloxBean"
+    },
+    {
+      "id": "app-hosky",
+      "name": "Hosky",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Public claim prototype: Python + cardano-cli; production unknown",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "HOSKYToken/poo-genericClaim",
+      "repoUrl": "https://github.com/HOSKYToken/poo-genericClaim",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Public claim prototype: Python + cardano-cli; production unknown",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Hosky claims prototype README",
+          "url": "https://github.com/HOSKYToken/poo-genericClaim/blob/bdceb649269240a9f1c5f891f48c0df351fcb71a/README.md",
+          "source_commit": "bdceb649269240a9f1c5f891f48c0df351fcb71a",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/HOSKYToken/poo-genericClaim",
+          "checked_on": "2026-11-13",
+          "qualification": "Public claim prototype only; complete production distribution source is unverified."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://hosky.io/",
+          "website": "https://hosky.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official Hosky project website; direct request was rate-limited (HTTP 429)."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Public claim prototype: Python + cardano-cli; production unknown",
+        "gap": "Production distribution language, SDK, provider/indexer and devnet unknown; public prototype only.",
+        "sources": [
+          {
+            "title": "Hosky claims prototype README",
+            "url": "https://github.com/HOSKYToken/poo-genericClaim/blob/bdceb649269240a9f1c5f891f48c0df351fcb71a/README.md",
+            "source_commit": "bdceb649269240a9f1c5f891f48c0df351fcb71a",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://hosky.io/"
+    },
+    {
+      "id": "app-minswap",
+      "name": "Minswap",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 7,
+      "description": "V2: Aiken; SDK: Lucid; Blockfrost/Maestro adapters",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "minswap/minswap-dex-v2",
+      "repoUrl": "https://github.com/minswap/minswap-dex-v2",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "V2: Aiken; SDK: Lucid; Blockfrost/Maestro adapters",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "minswap/minswap-dex-v2 / aiken.toml",
+          "url": "https://github.com/minswap/minswap-dex-v2/blob/c3293ad435792ba502f5a2b1691c6736e5f167e6/aiken.toml",
+          "sha256": "938a56b3bb38047bae92fc8542b622b2088ea526d719feeb475014458d1edb6f",
+          "source_commit": "c3293ad435792ba502f5a2b1691c6736e5f167e6",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "minswap/minswap-dex-v2 / README.md",
+          "url": "https://github.com/minswap/minswap-dex-v2/blob/c3293ad435792ba502f5a2b1691c6736e5f167e6/README.md",
+          "sha256": "a200697687d6d04e7d3ae8d01689b9e179647d7ecffcc90d977a0fef8b1a1f56",
+          "source_commit": "c3293ad435792ba502f5a2b1691c6736e5f167e6",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "minswap/sdk / package.json",
+          "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/package.json",
+          "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
+          "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "minswap/sdk / README.md",
+          "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/README.md",
+          "sha256": "17c694cdca2bc539d4d17db72be1b93a0360e29c5243798326a7090ad49db616",
+          "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/minswap/minswap-dex-v2",
+          "checked_on": "2026-11-13",
+          "qualification": "DEX V2 on-chain component; does not represent every Minswap component."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://minswap.org/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "V2: Aiken; SDK: Lucid; Blockfrost/Maestro adapters",
+        "gap": "Production provider and dedicated devnet unknown; application activity has no contract-version split.",
+        "sources": [
+          {
+            "title": "minswap/minswap-dex-v2 / aiken.toml",
+            "url": "https://github.com/minswap/minswap-dex-v2/blob/c3293ad435792ba502f5a2b1691c6736e5f167e6/aiken.toml",
+            "sha256": "938a56b3bb38047bae92fc8542b622b2088ea526d719feeb475014458d1edb6f",
+            "source_commit": "c3293ad435792ba502f5a2b1691c6736e5f167e6",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "minswap/minswap-dex-v2 / README.md",
+            "url": "https://github.com/minswap/minswap-dex-v2/blob/c3293ad435792ba502f5a2b1691c6736e5f167e6/README.md",
+            "sha256": "a200697687d6d04e7d3ae8d01689b9e179647d7ecffcc90d977a0fef8b1a1f56",
+            "source_commit": "c3293ad435792ba502f5a2b1691c6736e5f167e6",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "minswap/sdk / package.json",
+            "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/package.json",
+            "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
+            "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "minswap/sdk / README.md",
+            "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/README.md",
+            "sha256": "17c694cdca2bc539d4d17db72be1b93a0360e29c5243798326a7090ad49db616",
+            "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://minswap.org/"
+    },
+    {
+      "id": "maestro-typescript-sdk",
+      "name": "Maestro TypeScript SDK",
+      "category": "sdk",
+      "categoryLabel": "SDKs & Libraries",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for Maestro TypeScript SDK. Dependency and available adapter; active provider unknown.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "maestro-org/maestro-cardano-typescript-sdk",
+      "repoUrl": "https://github.com/maestro-org/maestro-cardano-typescript-sdk",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for Maestro TypeScript SDK. Dependency and available adapter; active provider unknown.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "minswap/sdk / package.json",
+          "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/package.json",
+          "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
+          "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/maestro-org/maestro-cardano-typescript-sdk",
+          "checked_on": "2026-11-13",
+          "qualification": "Canonical repository redirects from maestro-org/typescript-sdk; repository is archived as of this check."
+        }
+      ]
+    },
+    {
+      "id": "ogmios-client-schema",
+      "name": "Ogmios client/schema",
+      "category": "sdk",
+      "categoryLabel": "SDKs & Libraries",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 2,
+      "description": "Research identity for Ogmios client/schema. Client dependency; production deployment unverified.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "CardanoSolutions/ogmios",
+      "repoUrl": "https://github.com/CardanoSolutions/ogmios",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for Ogmios client/schema. Client dependency; production deployment unverified.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "minswap/sdk / package.json",
+          "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/package.json",
+          "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
+          "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/CardanoSolutions/ogmios",
+          "checked_on": "2026-11-13",
+          "qualification": "Monorepo containing the @cardano-ogmios/client and @cardano-ogmios/schema packages."
+        }
+      ]
+    },
+    {
+      "id": "minswap-self-hosted-syncer",
+      "name": "Minswap self-hosted syncer",
+      "category": "idx",
+      "categoryLabel": "Indexers & Data",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for Minswap self-hosted syncer. Supported alternative; not a confirmed production configuration.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "minswap/sdk",
+      "repoUrl": "https://github.com/minswap/sdk",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for Minswap self-hosted syncer. Supported alternative; not a confirmed production configuration.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "minswap/sdk / README.md",
+          "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/README.md",
+          "sha256": "17c694cdca2bc539d4d17db72be1b93a0360e29c5243798326a7090ad49db616",
+          "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/minswap/sdk",
+          "checked_on": "2026-11-13",
+          "qualification": "SDK monorepo includes src/syncer; not a separate hosted-provider repository."
+        }
+      ]
+    },
+    {
+      "id": "app-5am.earth",
+      "name": "5am.earth",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 0,
+      "description": "Cardano anchoring documented; language/SDK/provider unknown",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": null,
+      "repoUrl": null,
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Cardano anchoring documented; language/SDK/provider unknown",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Official website",
+          "url": "https://5am.earth/",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Official case study",
+          "url": "https://5am.earth/case-studies/",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public organisation proposal repository",
+          "url": "https://github.com/5am-earth/cardano-budget-2026",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://github.com/5am-earth",
+          "checked_on": "2026-11-13",
+          "qualification": "Only a budget-submission artifact repository was listed; implementation source was not established."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://5am.earth/",
+          "website": "https://5am.earth/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official 5am.earth project website."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Cardano anchoring documented; language/SDK/provider unknown",
+        "gap": "Language, SDK, provider/indexer and devnet unknown; Cardano anchoring alone identifies no concrete tool.",
+        "sources": [
+          {
+            "title": "Official website",
+            "url": "https://5am.earth/",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "Official case study",
+            "url": "https://5am.earth/case-studies/",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "Public organisation proposal repository",
+            "url": "https://github.com/5am-earth/cardano-budget-2026",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://5am.earth/"
+    },
+    {
+      "id": "app-dano-finance",
+      "name": "Dano Finance",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 2,
+      "description": "CLMM SDK: Evolution SDK, Ogmios; Kupmios documented",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "dano-finance/clmm-sdk",
+      "repoUrl": "https://github.com/dano-finance/clmm-sdk",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "CLMM SDK: Evolution SDK, Ogmios; Kupmios documented",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "dano-finance/clmm-sdk / package.json",
+          "url": "https://github.com/dano-finance/clmm-sdk/blob/0416dc1f3531ce77eec7664ea3947f192a3aca40/package.json",
+          "sha256": "1b850cc74cef7028c24239c4155dabe7ab387ceb8844ce51c3aa0327b6f3f268",
+          "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "dano-finance/clmm-sdk / README.md",
+          "url": "https://github.com/dano-finance/clmm-sdk/blob/0416dc1f3531ce77eec7664ea3947f192a3aca40/README.md",
+          "sha256": "8459ef7af3ef28517d06739be3cc2938db996a7298836c6994f5f3f20eadbb5f",
+          "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/dano-finance/clmm-sdk",
+          "checked_on": "2026-11-13",
+          "qualification": "CLMM SDK component only; lending application source remains unverified."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://dano.finance/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "CLMM SDK: Evolution SDK, Ogmios; Kupmios documented",
+        "gap": "Contract language and devnet unknown; CLMM sources do not establish lending stack; Evolution version mismatch unresolved. Kupo/Ogmios provider endpoints in the Kupmios example are configured through Evolution; direct provider use is not established.",
+        "sources": [
+          {
+            "title": "dano-finance/clmm-sdk / package.json",
+            "url": "https://github.com/dano-finance/clmm-sdk/blob/0416dc1f3531ce77eec7664ea3947f192a3aca40/package.json",
+            "sha256": "1b850cc74cef7028c24239c4155dabe7ab387ceb8844ce51c3aa0327b6f3f268",
+            "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "dano-finance/clmm-sdk / README.md",
+            "url": "https://github.com/dano-finance/clmm-sdk/blob/0416dc1f3531ce77eec7664ea3947f192a3aca40/README.md",
+            "sha256": "8459ef7af3ef28517d06739be3cc2938db996a7298836c6994f5f3f20eadbb5f",
+            "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://dano.finance/"
+    },
+    {
+      "id": "app-wingriders",
+      "name": "WingRiders",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 6,
+      "description": "Component-specific: Rapid Aiken/Mesh; DEX Blockfrost adapter",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "WingRiders/rapid-dex",
+      "repoUrl": "https://github.com/WingRiders/rapid-dex",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Component-specific: Rapid Aiken/Mesh; DEX Blockfrost adapter",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "WingRiders/rapid-dex-contracts / aiken.toml",
+          "url": "https://github.com/WingRiders/rapid-dex-contracts/blob/6afe522d9116e81359e30cc202feab5f3d0b8e60/aiken.toml",
+          "sha256": "e5da7387d3f1accd6b90ff1789c28ee415a73874106c89fe16a997d838984f0c",
+          "source_commit": "6afe522d9116e81359e30cc202feab5f3d0b8e60",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "WingRiders/rapid-dex / sdk/core/package.json",
+          "url": "https://github.com/WingRiders/rapid-dex/blob/9e4921e373796b0d3feaf73a342246e24231cde5/sdk/core/package.json",
+          "sha256": "655d0ed45ddf7b9b2103f81f8b667d049fb5936dfb8ca7c26eee1c54ac44c09b",
+          "source_commit": "9e4921e373796b0d3feaf73a342246e24231cde5",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "WingRiders/rapid-dex / sdk/core/README.md",
+          "url": "https://github.com/WingRiders/rapid-dex/blob/9e4921e373796b0d3feaf73a342246e24231cde5/sdk/core/README.md",
+          "sha256": "dbb4e4e1205cb28fe0900ea57af48e0967b28f59e0338fb26a260e4e3d75ab12",
+          "source_commit": "9e4921e373796b0d3feaf73a342246e24231cde5",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "WingRiders/dex-blockfrost-adapter / README.md",
+          "url": "https://github.com/WingRiders/dex-blockfrost-adapter/blob/99a1c7106dfcc2c32ff62345991608f222ad92a8/README.md",
+          "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
+          "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/WingRiders/rapid-dex",
+          "checked_on": "2026-11-13",
+          "qualification": "Rapid DEX component only; not the original/V1 DEX source."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://www.wingriders.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Component-specific: Rapid Aiken/Mesh; DEX Blockfrost adapter",
+        "gap": "Original/V1 language, production builder/provider and devnet unknown; Rapid evidence stays component-specific.",
+        "sources": [
+          {
+            "title": "WingRiders/rapid-dex-contracts / aiken.toml",
+            "url": "https://github.com/WingRiders/rapid-dex-contracts/blob/6afe522d9116e81359e30cc202feab5f3d0b8e60/aiken.toml",
+            "sha256": "e5da7387d3f1accd6b90ff1789c28ee415a73874106c89fe16a997d838984f0c",
+            "source_commit": "6afe522d9116e81359e30cc202feab5f3d0b8e60",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "WingRiders/rapid-dex / sdk/core/package.json",
+            "url": "https://github.com/WingRiders/rapid-dex/blob/9e4921e373796b0d3feaf73a342246e24231cde5/sdk/core/package.json",
+            "sha256": "655d0ed45ddf7b9b2103f81f8b667d049fb5936dfb8ca7c26eee1c54ac44c09b",
+            "source_commit": "9e4921e373796b0d3feaf73a342246e24231cde5",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "WingRiders/rapid-dex / sdk/core/README.md",
+            "url": "https://github.com/WingRiders/rapid-dex/blob/9e4921e373796b0d3feaf73a342246e24231cde5/sdk/core/README.md",
+            "sha256": "dbb4e4e1205cb28fe0900ea57af48e0967b28f59e0338fb26a260e4e3d75ab12",
+            "source_commit": "9e4921e373796b0d3feaf73a342246e24231cde5",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "WingRiders/dex-blockfrost-adapter / README.md",
+            "url": "https://github.com/WingRiders/dex-blockfrost-adapter/blob/99a1c7106dfcc2c32ff62345991608f222ad92a8/README.md",
+            "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
+            "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://www.wingriders.com/"
+    },
+    {
+      "id": "wingriders-dex-serializer",
+      "name": "WingRiders dex-serializer",
+      "category": "sdk",
+      "categoryLabel": "SDKs & Libraries",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for WingRiders dex-serializer. State deserialization in this adapter.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "WingRiders/dex-serializer",
+      "repoUrl": "https://github.com/WingRiders/dex-serializer",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for WingRiders dex-serializer. State deserialization in this adapter.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "WingRiders/dex-blockfrost-adapter / README.md",
+          "url": "https://github.com/WingRiders/dex-blockfrost-adapter/blob/99a1c7106dfcc2c32ff62345991608f222ad92a8/README.md",
+          "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
+          "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/WingRiders/dex-serializer",
+          "checked_on": "2026-11-13",
+          "qualification": "Serializer library linked directly from the existing DEX adapter documentation."
+        }
+      ]
+    },
+    {
+      "id": "app-sundaeswap",
+      "name": "SundaeSwap",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 4,
+      "description": "V3: Aiken; core SDK: Blaze; Blockfrost example",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "SundaeSwap-finance/sundae-contracts",
+      "repoUrl": "https://github.com/SundaeSwap-finance/sundae-contracts",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "V3: Aiken; core SDK: Blaze; Blockfrost example",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "SundaeSwap-finance/sundae-contracts / README.md",
+          "url": "https://github.com/SundaeSwap-finance/sundae-contracts/blob/be33466b7dbe0f8e6c0e0f46ff23737897f45835/README.md",
+          "sha256": "e0cfc1077d891ce0cb38c8791f87a41b58a52dd1d610b2f05064d64f2c9aa522",
+          "source_commit": "be33466b7dbe0f8e6c0e0f46ff23737897f45835",
+          "source_commit_date": "2025-02-26T16:47:57Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "SundaeSwap-finance/sundae-contracts / aiken.toml",
+          "url": "https://github.com/SundaeSwap-finance/sundae-contracts/blob/be33466b7dbe0f8e6c0e0f46ff23737897f45835/aiken.toml",
+          "sha256": "ebdbfa594afd77da930668c135ccebbb45de747b2b28aee24e71666874b7c04f",
+          "source_commit": "be33466b7dbe0f8e6c0e0f46ff23737897f45835",
+          "source_commit_date": "2025-02-26T16:47:57Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "SundaeSwap-finance/sundae-sdk / packages/core/package.json",
+          "url": "https://github.com/SundaeSwap-finance/sundae-sdk/blob/9f032253e0711e3a308068ed55cc85b5de71a348/packages/core/package.json",
+          "sha256": "9e3cd11ba4d2ef2eb986f7b43190e7c95e2d58df3426375a922b803d8a12e8c3",
+          "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
+          "source_commit_date": "2026-10-17T02:13:44Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "SundaeSwap-finance/sundae-sdk / docs/guides/core/index.md",
+          "url": "https://github.com/SundaeSwap-finance/sundae-sdk/blob/9f032253e0711e3a308068ed55cc85b5de71a348/docs/guides/core/index.md",
+          "sha256": "2a275b29fa460b5a94e17f1889be8aa59e31e0be172afb384fe74c2f4005a99b",
+          "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
+          "source_commit_date": "2026-10-17T02:13:44Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/SundaeSwap-finance/sundae-contracts",
+          "checked_on": "2026-11-13",
+          "qualification": "Published on-chain component only; not the hosted query API implementation."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://app.sundae.fi/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "V3: Aiken; core SDK: Blaze; Blockfrost example",
+        "gap": "Production provider and devnet unknown; V1/V3 activity split absent. The guide configures Blockfrost through Blaze; direct independent provider use is not established.",
+        "sources": [
+          {
+            "title": "SundaeSwap-finance/sundae-contracts / README.md",
+            "url": "https://github.com/SundaeSwap-finance/sundae-contracts/blob/be33466b7dbe0f8e6c0e0f46ff23737897f45835/README.md",
+            "sha256": "e0cfc1077d891ce0cb38c8791f87a41b58a52dd1d610b2f05064d64f2c9aa522",
+            "source_commit": "be33466b7dbe0f8e6c0e0f46ff23737897f45835",
+            "source_commit_date": "2025-02-26T16:47:57Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "SundaeSwap-finance/sundae-contracts / aiken.toml",
+            "url": "https://github.com/SundaeSwap-finance/sundae-contracts/blob/be33466b7dbe0f8e6c0e0f46ff23737897f45835/aiken.toml",
+            "sha256": "ebdbfa594afd77da930668c135ccebbb45de747b2b28aee24e71666874b7c04f",
+            "source_commit": "be33466b7dbe0f8e6c0e0f46ff23737897f45835",
+            "source_commit_date": "2025-02-26T16:47:57Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "SundaeSwap-finance/sundae-sdk / packages/core/package.json",
+            "url": "https://github.com/SundaeSwap-finance/sundae-sdk/blob/9f032253e0711e3a308068ed55cc85b5de71a348/packages/core/package.json",
+            "sha256": "9e3cd11ba4d2ef2eb986f7b43190e7c95e2d58df3426375a922b803d8a12e8c3",
+            "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
+            "source_commit_date": "2026-10-17T02:13:44Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "SundaeSwap-finance/sundae-sdk / docs/guides/core/index.md",
+            "url": "https://github.com/SundaeSwap-finance/sundae-sdk/blob/9f032253e0711e3a308068ed55cc85b5de71a348/docs/guides/core/index.md",
+            "sha256": "2a275b29fa460b5a94e17f1889be8aa59e31e0be172afb384fe74c2f4005a99b",
+            "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
+            "source_commit_date": "2026-10-17T02:13:44Z",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://app.sundae.fi/"
+    },
+    {
+      "id": "sundaeswap-api",
+      "name": "SundaeSwap API",
+      "category": "api",
+      "categoryLabel": "APIs & Providers",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for SundaeSwap API. Documented pool-query interface.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": null,
+      "repoUrl": null,
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for SundaeSwap API. Documented pool-query interface.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "SundaeSwap-finance/sundae-sdk / docs/guides/core/index.md",
+          "url": "https://github.com/SundaeSwap-finance/sundae-sdk/blob/9f032253e0711e3a308068ed55cc85b5de71a348/docs/guides/core/index.md",
+          "sha256": "2a275b29fa460b5a94e17f1889be8aa59e31e0be172afb384fe74c2f4005a99b",
+          "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
+          "source_commit_date": "2026-10-17T02:13:44Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://github.com/SundaeSwap-finance",
+          "checked_on": "2026-11-13",
+          "qualification": "The documented client/SDK is public, but a repository for the hosted pool-query API implementation was not established."
+        }
+      ]
+    },
+    {
+      "id": "app-splash",
+      "name": "Splash Protocol",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 6,
+      "description": "Plutarch/Aiken contracts; CML builders; Rust/Pallas agents",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "splashprotocol/splash-core",
+      "repoUrl": "https://github.com/splashprotocol/splash-core",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Plutarch/Aiken contracts; CML builders; Rust/Pallas agents",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "splashprotocol/splash-core / plutarch-validators/plutarch-validators.cabal",
+          "url": "https://github.com/splashprotocol/splash-core/blob/a185ee8668414fc2bafc232fb74533bc135137fd/plutarch-validators/plutarch-validators.cabal",
+          "sha256": "c7733e487b512e0e780dc90f91ecb9dc1950a17a4d144de592e2ab6286e10484",
+          "source_commit": "a185ee8668414fc2bafc232fb74533bc135137fd",
+          "source_commit_date": "2026-09-13T19:14:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "splashprotocol/splash-core / validators_v3/aiken.toml",
+          "url": "https://github.com/splashprotocol/splash-core/blob/a185ee8668414fc2bafc232fb74533bc135137fd/validators_v3/aiken.toml",
+          "sha256": "3946595245b86e182257c6d3ab1248cef18f5cf075cebb6aa6b33dd765676f81",
+          "source_commit": "a185ee8668414fc2bafc232fb74533bc135137fd",
+          "source_commit_date": "2026-09-13T19:14:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "splashprotocol/protocol-sdk / packages/builder/package.json",
+          "url": "https://github.com/splashprotocol/protocol-sdk/blob/ebc01e8871284c6ac450c35e8d5e3bcab7d5fb56/packages/builder/package.json",
+          "sha256": "9d77c8fbd0224c543978bb1b79275dfbdbb5f8157e1a63aab2f0d8aafac24026",
+          "source_commit": "ebc01e8871284c6ac450c35e8d5e3bcab7d5fb56",
+          "source_commit_date": "2025-11-29T09:03:49Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "splashprotocol/splash-offchain-multiplatform / bloom-cardano-agent/Cargo.toml",
+          "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/bloom-cardano-agent/Cargo.toml",
+          "sha256": "7fe8086c33b657fef0b97b16288a50930e879c65fff8d9d342df11d96c1d2ab2",
+          "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+          "source_commit_date": "2026-07-16T10:06:39Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "splashprotocol/splash-offchain-multiplatform / cardano-chain-sync/Cargo.toml",
+          "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/cardano-chain-sync/Cargo.toml",
+          "sha256": "63d1601fef7664fbc76788c3dce7634a24f9873bef819315bf228f32249cbd85",
+          "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+          "source_commit_date": "2026-07-16T10:06:39Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "splashprotocol/splash-offchain-multiplatform / splash-testing-cardano/package.json",
+          "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/splash-testing-cardano/package.json",
+          "sha256": "f74ee911cd17176ddf889cc05a4bdd777ab1439b1902c7453203487c9ece75c6",
+          "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+          "source_commit_date": "2026-07-16T10:06:39Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/splashprotocol/splash-core",
+          "checked_on": "2026-11-13",
+          "qualification": "Published core validator components; off-chain packages have separate repositories in the attached evidence."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://www.splash.trade/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Plutarch/Aiken contracts; CML builders; Rust/Pallas agents",
+        "gap": "Production provider/devnet and contract-version activity split unknown; test dependencies are not production dependencies.",
+        "sources": [
+          {
+            "title": "splashprotocol/splash-core / plutarch-validators/plutarch-validators.cabal",
+            "url": "https://github.com/splashprotocol/splash-core/blob/a185ee8668414fc2bafc232fb74533bc135137fd/plutarch-validators/plutarch-validators.cabal",
+            "sha256": "c7733e487b512e0e780dc90f91ecb9dc1950a17a4d144de592e2ab6286e10484",
+            "source_commit": "a185ee8668414fc2bafc232fb74533bc135137fd",
+            "source_commit_date": "2026-09-13T19:14:29Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "splashprotocol/splash-core / validators_v3/aiken.toml",
+            "url": "https://github.com/splashprotocol/splash-core/blob/a185ee8668414fc2bafc232fb74533bc135137fd/validators_v3/aiken.toml",
+            "sha256": "3946595245b86e182257c6d3ab1248cef18f5cf075cebb6aa6b33dd765676f81",
+            "source_commit": "a185ee8668414fc2bafc232fb74533bc135137fd",
+            "source_commit_date": "2026-09-13T19:14:29Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "splashprotocol/protocol-sdk / packages/builder/package.json",
+            "url": "https://github.com/splashprotocol/protocol-sdk/blob/ebc01e8871284c6ac450c35e8d5e3bcab7d5fb56/packages/builder/package.json",
+            "sha256": "9d77c8fbd0224c543978bb1b79275dfbdbb5f8157e1a63aab2f0d8aafac24026",
+            "source_commit": "ebc01e8871284c6ac450c35e8d5e3bcab7d5fb56",
+            "source_commit_date": "2025-11-29T09:03:49Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "splashprotocol/splash-offchain-multiplatform / bloom-cardano-agent/Cargo.toml",
+            "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/bloom-cardano-agent/Cargo.toml",
+            "sha256": "7fe8086c33b657fef0b97b16288a50930e879c65fff8d9d342df11d96c1d2ab2",
+            "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+            "source_commit_date": "2026-07-16T10:06:39Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "splashprotocol/splash-offchain-multiplatform / cardano-chain-sync/Cargo.toml",
+            "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/cardano-chain-sync/Cargo.toml",
+            "sha256": "63d1601fef7664fbc76788c3dce7634a24f9873bef819315bf228f32249cbd85",
+            "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+            "source_commit_date": "2026-07-16T10:06:39Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "splashprotocol/splash-offchain-multiplatform / splash-testing-cardano/package.json",
+            "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/splash-testing-cardano/package.json",
+            "sha256": "f74ee911cd17176ddf889cc05a4bdd777ab1439b1902c7453203487c9ece75c6",
+            "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+            "source_commit_date": "2026-07-16T10:06:39Z",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://www.splash.trade/"
+    },
+    {
+      "id": "splash-cml-fork",
+      "name": "CML fork",
+      "category": "sdk",
+      "categoryLabel": "SDKs & Libraries",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for CML fork. Pinned fork in agent manifest.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "oskin1/cardano-multiplatform-lib",
+      "repoUrl": "https://github.com/oskin1/cardano-multiplatform-lib",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for CML fork. Pinned fork in agent manifest.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "splashprotocol/splash-offchain-multiplatform / bloom-cardano-agent/Cargo.toml",
+          "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/bloom-cardano-agent/Cargo.toml",
+          "sha256": "7fe8086c33b657fef0b97b16288a50930e879c65fff8d9d342df11d96c1d2ab2",
+          "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+          "source_commit_date": "2026-07-16T10:06:39Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/oskin1/cardano-multiplatform-lib",
+          "checked_on": "2026-11-13",
+          "qualification": "Exact oskin1 fork named in the pinned Rust manifest; not the upstream CML repository."
+        }
+      ]
+    },
+    {
+      "id": "app-cswap",
+      "name": "CSWAP",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Aiken named in project docs; SDK/provider unknown",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": null,
+      "repoUrl": null,
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Aiken named in project docs; SDK/provider unknown",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "CSWAP capabilities documentation",
+          "url": "https://docs.cswap.fi/cswap-platform/cswap-dex-capabilities",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://github.com/cswapsystems",
+          "checked_on": "2026-11-13",
+          "qualification": "Public registry/adaptor forks and other project artifacts do not establish the DEX implementation repository."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://www.cswap.fi/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Aiken named in project docs; SDK/provider unknown",
+        "gap": "SDK, provider/indexer and devnet unknown; documented Aiken claim lacks deployment/source confirmation.",
+        "sources": [
+          {
+            "title": "CSWAP capabilities documentation",
+            "url": "https://docs.cswap.fi/cswap-platform/cswap-dex-capabilities",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://www.cswap.fi/"
+    },
+    {
+      "id": "app-fms-by-trivolve",
+      "name": "FMS by Trivolve",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 0,
+      "description": "Forensic application described; implementation stack unknown",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": null,
+      "repoUrl": null,
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Forensic application described; implementation stack unknown",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Trivolve official product portfolio",
+          "url": "https://trivolvetech.com/",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Cardano Foundation June update",
+          "url": "https://cardanofoundation.org/blog/june-2026-activities",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://trivolvetech.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Public project material and a focused repository search did not establish an implementation repository."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://trivolvetech.com/",
+          "website": "https://trivolvetech.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Trivolve company website; a dedicated public product website was not established."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Forensic application described; implementation stack unknown",
+        "gap": "Language, SDK, provider/indexer and devnet unknown; no specific dependency established.",
+        "sources": [
+          {
+            "title": "Trivolve official product portfolio",
+            "url": "https://trivolvetech.com/",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "Cardano Foundation June update",
+            "url": "https://cardanofoundation.org/blog/june-2026-activities",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://trivolvetech.com/"
+    },
+    {
+      "id": "app-indianchain-by-trivolve",
+      "name": "Indianchain by Trivolve",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 0,
+      "description": "Trivolve/Quixy integration proposal; implementation stack unknown",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": null,
+      "repoUrl": null,
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Trivolve/Quixy integration proposal; implementation stack unknown",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Team-authored IndianChain proposal",
+          "url": "https://projectcatalyst.io/funds/14/cardano-use-cases-partners-and-products/indianchain-indian-governments-10m-settlements-on-cardano",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://projectcatalyst.io/funds/14/cardano-use-cases-partners-and-products/indianchain-indian-governments-10m-settlements-on-cardano",
+          "checked_on": "2026-11-13",
+          "qualification": "The proposal does not establish a public implementation repository."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://trivolvetech.com/",
+          "website": "https://trivolvetech.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Trivolve company website; a dedicated public product website was not established."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Trivolve/Quixy integration proposal; implementation stack unknown",
+        "gap": "Language, SDK, provider/indexer and devnet unknown; planned integration does not establish deployed tools.",
+        "sources": [
+          {
+            "title": "Team-authored IndianChain proposal",
+            "url": "https://projectcatalyst.io/funds/14/cardano-use-cases-partners-and-products/indianchain-indian-governments-10m-settlements-on-cardano",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://trivolvetech.com/"
+    },
+    {
+      "id": "app-spectrum-finance",
+      "name": "Spectrum Finance",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 3,
+      "description": "Published Plutarch contracts and Haskell SDK; current deployment unknown",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "spectrum-finance/cardano-dex-contracts",
+      "repoUrl": "https://github.com/spectrum-finance/cardano-dex-contracts",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Published Plutarch contracts and Haskell SDK; current deployment unknown",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "spectrum-finance/cardano-dex-contracts / cardano-dex-contracts-onchain/cardano-dex-contracts-onchain.cabal",
+          "url": "https://github.com/spectrum-finance/cardano-dex-contracts/blob/c25c8ab7daf52871d29efd00d3dac236cc9d6a36/cardano-dex-contracts-onchain/cardano-dex-contracts-onchain.cabal",
+          "sha256": "81d61ebe99feb8146375666311bb2f4cc8461099c283d9c137b9bbe8fc54051d",
+          "source_commit": "c25c8ab7daf52871d29efd00d3dac236cc9d6a36",
+          "source_commit_date": "2023-08-23T16:41:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "spectrum-finance/cardano-dex-sdk-haskell / cardano-tx/cardano-tx.cabal",
+          "url": "https://github.com/spectrum-finance/cardano-dex-sdk-haskell/blob/39d53d78fce1cf20b78b10bff9a9fc73b747cf2a/cardano-tx/cardano-tx.cabal",
+          "sha256": "5834453c36474cd6f358c24f08050fde3afe8ee265d0e6ae67e48e573cdd0241",
+          "source_commit": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
+          "source_commit_date": "2023-06-02T08:57:20Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/spectrum-finance/cardano-dex-contracts",
+          "checked_on": "2026-11-13",
+          "qualification": "Published historical on-chain component; current deployment is unverified."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://spectrum.fi/sunset-notice",
+          "website": "https://spectrum.fi/",
+          "checked_on": "2026-11-13",
+          "qualification": "Historical Spectrum project website; its public sunset notice describes the Cardano DEX transition to Splash."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Published Plutarch contracts and Haskell SDK; current deployment unknown",
+        "gap": "Current contract/SDK deployment, provider/indexer and devnet unknown; historical packages only.",
+        "sources": [
+          {
+            "title": "spectrum-finance/cardano-dex-contracts / cardano-dex-contracts-onchain/cardano-dex-contracts-onchain.cabal",
+            "url": "https://github.com/spectrum-finance/cardano-dex-contracts/blob/c25c8ab7daf52871d29efd00d3dac236cc9d6a36/cardano-dex-contracts-onchain/cardano-dex-contracts-onchain.cabal",
+            "sha256": "81d61ebe99feb8146375666311bb2f4cc8461099c283d9c137b9bbe8fc54051d",
+            "source_commit": "c25c8ab7daf52871d29efd00d3dac236cc9d6a36",
+            "source_commit_date": "2023-08-23T16:41:29Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "spectrum-finance/cardano-dex-sdk-haskell / cardano-tx/cardano-tx.cabal",
+            "url": "https://github.com/spectrum-finance/cardano-dex-sdk-haskell/blob/39d53d78fce1cf20b78b10bff9a9fc73b747cf2a/cardano-tx/cardano-tx.cabal",
+            "sha256": "5834453c36474cd6f358c24f08050fde3afe8ee265d0e6ae67e48e573cdd0241",
+            "source_commit": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
+            "source_commit_date": "2023-06-02T08:57:20Z",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://spectrum.fi/"
+    },
+    {
+      "id": "cardano-api-haskell",
+      "name": "Cardano API",
+      "category": "sdk",
+      "categoryLabel": "SDKs & Libraries",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for Cardano API. Historical SDK; production use unverified.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "IntersectMBO/cardano-api",
+      "repoUrl": "https://github.com/IntersectMBO/cardano-api",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for Cardano API. Historical SDK; production use unverified.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "spectrum-finance/cardano-dex-sdk-haskell / cardano-tx/cardano-tx.cabal",
+          "url": "https://github.com/spectrum-finance/cardano-dex-sdk-haskell/blob/39d53d78fce1cf20b78b10bff9a9fc73b747cf2a/cardano-tx/cardano-tx.cabal",
+          "sha256": "5834453c36474cd6f358c24f08050fde3afe8ee265d0e6ae67e48e573cdd0241",
+          "source_commit": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
+          "source_commit_date": "2023-06-02T08:57:20Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/IntersectMBO/cardano-api",
+          "checked_on": "2026-11-13",
+          "qualification": "Current standalone source repository for the cardano-api package; does not identify the historical version resolved by the consuming SDK."
+        }
+      ]
+    },
+    {
+      "id": "plutus-chain-index-ledger-libraries",
+      "name": "Plutus chain-index/ledger libraries",
+      "category": "sdk",
+      "categoryLabel": "SDKs & Libraries",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for Plutus chain-index/ledger libraries. Library dependencies; deployed indexer unknown.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "IntersectMBO/plutus-apps",
+      "repoUrl": "https://github.com/IntersectMBO/plutus-apps",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for Plutus chain-index/ledger libraries. Library dependencies; deployed indexer unknown.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "spectrum-finance/cardano-dex-sdk-haskell / cardano-tx/cardano-tx.cabal",
+          "url": "https://github.com/spectrum-finance/cardano-dex-sdk-haskell/blob/39d53d78fce1cf20b78b10bff9a9fc73b747cf2a/cardano-tx/cardano-tx.cabal",
+          "sha256": "5834453c36474cd6f358c24f08050fde3afe8ee265d0e6ae67e48e573cdd0241",
+          "source_commit": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
+          "source_commit_date": "2023-06-02T08:57:20Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/IntersectMBO/plutus-apps",
+          "checked_on": "2026-11-13",
+          "qualification": "Archived Plutus Apps source covers the ledger/constraints/chain-index components; plutus-ledger-api is maintained separately in IntersectMBO/plutus. This bundled identity spans repositories."
+        }
+      ]
+    },
+    {
+      "id": "app-vyfinance",
+      "name": "VyFinance",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 0,
+      "description": "Docs and public org reviewed; implementation stack unknown",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": null,
+      "repoUrl": null,
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Docs and public org reviewed; implementation stack unknown",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "VyFinance official docs",
+          "url": "https://docs.vyfi.io/",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Officially linked GitHub organisation",
+          "url": "https://github.com/vyfi",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://github.com/VYFI",
+          "checked_on": "2026-11-13",
+          "qualification": "The public organization listed registry/adaptor forks; a protocol implementation repository was not established."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://vyfi.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Docs and public org reviewed; implementation stack unknown",
+        "gap": "Language, SDK, provider/indexer and devnet unknown; registry forks excluded as stack evidence.",
+        "sources": [
+          {
+            "title": "VyFinance official docs",
+            "url": "https://docs.vyfi.io/",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "Officially linked GitHub organisation",
+            "url": "https://github.com/vyfi",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://vyfi.io/"
+    },
+    {
+      "id": "app-wayup",
+      "name": "Wayup",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Indexed Anvil build-tx integration docs; current implementation unknown",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": null,
+      "repoUrl": null,
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Indexed Anvil build-tx integration docs; current implementation unknown",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Anvil Wayup integration documentation (indexed content)",
+          "url": "https://dev.ada-anvil.io/wayup",
+          "checked_on": "2026-10-22",
+          "access_state": "Search-indexed primary text; direct page returned 404"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://dev.ada-anvil.io/wayup",
+          "checked_on": "2026-11-13",
+          "qualification": "Available integration documentation and focused repository search did not establish Wayup implementation source."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://www.wayup.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog. Direct request was rate-limited (HTTP 429)."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Indexed Anvil build-tx integration docs; current implementation unknown",
+        "gap": "Current implementation and endpoint unverified; language, internal SDK, provider/indexer and devnet unknown.",
+        "sources": [
+          {
+            "title": "Anvil Wayup integration documentation (indexed content)",
+            "url": "https://dev.ada-anvil.io/wayup",
+            "checked_on": "2026-10-22",
+            "access_state": "Search-indexed primary text; direct page returned 404"
+          }
+        ]
+      },
+      "website": "https://www.wayup.io/"
+    },
+    {
+      "id": "app-shadowbook",
+      "name": "Shadowbook",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 0,
+      "description": "Primary product mention found; attribution and stack unresolved",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": null,
+      "repoUrl": null,
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Primary product mention found; attribution and stack unresolved",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "DexHunter primary ShadowBook product mention",
+          "url": "https://landing.dexhunter.io/",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://landing.dexhunter.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "The product mention does not identify a public implementation repository; similarly named unrelated projects were excluded."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://landing.dexhunter.io/",
+          "website": "https://landing.dexhunter.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "DexHunter product page explicitly mentions ShadowBook; a standalone ShadowBook website was not established."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Primary product mention found; attribution and stack unresolved",
+        "gap": "Registry-label/product identity unresolved; language, SDK, provider/indexer and devnet unknown.",
+        "sources": [
+          {
+            "title": "DexHunter primary ShadowBook product mention",
+            "url": "https://landing.dexhunter.io/",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://landing.dexhunter.io/"
+    },
+    {
+      "id": "app-liqwid-finance",
+      "name": "Liqwid Finance",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Published Plutarch libraries/tests; complete application stack unresolved",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "Liqwid-Labs/liqwid-libs",
+      "repoUrl": "https://github.com/Liqwid-Labs/liqwid-libs",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Published Plutarch libraries/tests; complete application stack unresolved",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Liqwid-Labs/liqwid-libs / README.md",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/README.md",
+          "sha256": "7fedca6c34639f75f9a7e2760d2ee87a38492e19df21d8bcc5d0685d1ff63f25",
+          "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
+          "source_commit_date": "2024-08-23T13:46:39Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Liqwid-Labs/liqwid-libs / liqwid-plutarch-extra/liqwid-plutarch-extra.cabal",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/liqwid-plutarch-extra/liqwid-plutarch-extra.cabal",
+          "sha256": "827bdaf66e0d2e15e6e2b7e4a5db1e7aa29e1b167560cbff78d41223b6a23fcf",
+          "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
+          "source_commit_date": "2024-08-23T13:46:39Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs",
+          "checked_on": "2026-11-13",
+          "qualification": "Published team-library component only; complete lending application source is not established."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://app.liqwid.finance/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Published Plutarch libraries/tests; complete application stack unresolved",
+        "gap": "Current lending implementation, off-chain SDK, provider/indexer and devnet unknown; team libraries only. README-listed testing libraries do not establish application imports or direct dependencies.",
+        "sources": [
+          {
+            "title": "Liqwid-Labs/liqwid-libs / README.md",
+            "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/README.md",
+            "sha256": "7fedca6c34639f75f9a7e2760d2ee87a38492e19df21d8bcc5d0685d1ff63f25",
+            "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
+            "source_commit_date": "2024-08-23T13:46:39Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "Liqwid-Labs/liqwid-libs / liqwid-plutarch-extra/liqwid-plutarch-extra.cabal",
+            "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/liqwid-plutarch-extra/liqwid-plutarch-extra.cabal",
+            "sha256": "827bdaf66e0d2e15e6e2b7e4a5db1e7aa29e1b167560cbff78d41223b6a23fcf",
+            "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
+            "source_commit_date": "2024-08-23T13:46:39Z",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://app.liqwid.finance/"
+    },
+    {
+      "id": "plutarch-quickcheck",
+      "name": "plutarch-quickcheck",
+      "category": "dev",
+      "categoryLabel": "Dev Tools & Testing",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 0,
+      "description": "Research identity for plutarch-quickcheck. Team tooling; not confirmed production dependency.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "Liqwid-Labs/liqwid-libs",
+      "repoUrl": "https://github.com/Liqwid-Labs/liqwid-libs",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for plutarch-quickcheck. Team tooling; not confirmed production dependency.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Liqwid-Labs/liqwid-libs / README.md",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/README.md",
+          "sha256": "7fedca6c34639f75f9a7e2760d2ee87a38492e19df21d8bcc5d0685d1ff63f25",
+          "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
+          "source_commit_date": "2024-08-23T13:46:39Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs",
+          "checked_on": "2026-11-13",
+          "qualification": "plutarch-quickcheck package in the liqwid-libs monorepo cited by the existing evidence."
+        }
+      ]
+    },
+    {
+      "id": "plutarch-context-builder",
+      "name": "plutarch-context-builder",
+      "category": "dev",
+      "categoryLabel": "Dev Tools & Testing",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 0,
+      "description": "Research identity for plutarch-context-builder. Test/context tooling; no production-stack inference.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "Liqwid-Labs/liqwid-libs",
+      "repoUrl": "https://github.com/Liqwid-Labs/liqwid-libs",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for plutarch-context-builder. Test/context tooling; no production-stack inference.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Liqwid-Labs/liqwid-libs / README.md",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/README.md",
+          "sha256": "7fedca6c34639f75f9a7e2760d2ee87a38492e19df21d8bcc5d0685d1ff63f25",
+          "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
+          "source_commit_date": "2024-08-23T13:46:39Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs",
+          "checked_on": "2026-11-13",
+          "qualification": "plutarch-context-builder package in the liqwid-libs monorepo cited by the existing evidence."
+        }
+      ]
+    },
+    {
+      "id": "plutarch-unit",
+      "name": "plutarch-unit",
+      "category": "dev",
+      "categoryLabel": "Dev Tools & Testing",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 0,
+      "description": "Research identity for plutarch-unit. Unit-test tooling; not a devnet.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "Liqwid-Labs/liqwid-libs",
+      "repoUrl": "https://github.com/Liqwid-Labs/liqwid-libs",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for plutarch-unit. Unit-test tooling; not a devnet.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Liqwid-Labs/liqwid-libs / README.md",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/README.md",
+          "sha256": "7fedca6c34639f75f9a7e2760d2ee87a38492e19df21d8bcc5d0685d1ff63f25",
+          "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
+          "source_commit_date": "2024-08-23T13:46:39Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs",
+          "checked_on": "2026-11-13",
+          "qualification": "plutarch-unit package in the liqwid-libs monorepo cited by the existing evidence."
+        }
+      ]
+    },
+    {
+      "id": "app-indigo-protocol",
+      "name": "Indigo Protocol",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 0,
+      "description": "Current docs reviewed; historical contract URL unavailable",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "IndigoProtocol/indigo-sdk",
+      "repoUrl": "https://github.com/IndigoProtocol/indigo-sdk",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Current docs reviewed; historical contract URL unavailable",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "Indigo official documentation",
+          "url": "https://docs.indigoprotocol.io/",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Historical official contract URL",
+          "url": "https://github.com/IndigoProtocol/indigo-smart-contracts",
+          "checked_on": "2026-10-22",
+          "access_state": "Direct GitHub and API 404; historical primary content indexed"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/IndigoProtocol/indigo-sdk",
+          "checked_on": "2026-11-13",
+          "qualification": "Archived public SDK only. Its README says current SDK development moved to a private repository; original validator URL still returns 404. No current implementation inference."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://indigoprotocol.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Current docs reviewed; historical contract URL unavailable",
+        "gap": "Current language, SDK, provider/indexer and devnet unresolved; unavailable historical contract URL excluded from edges.",
+        "sources": [
+          {
+            "title": "Indigo official documentation",
+            "url": "https://docs.indigoprotocol.io/",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "Historical official contract URL",
+            "url": "https://github.com/IndigoProtocol/indigo-smart-contracts",
+            "checked_on": "2026-10-22",
+            "access_state": "Direct GitHub and API 404; historical primary content indexed"
+          }
+        ]
+      },
+      "website": "https://indigoprotocol.io/"
+    },
+    {
+      "id": "app-uverify",
+      "name": "UVerify",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 3,
+      "description": "Java/Cardano Client Lib; Yaci Store; documented local devnet",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "UVerify-io/uverify-backend",
+      "repoUrl": "https://github.com/UVerify-io/uverify-backend",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Java/Cardano Client Lib; Yaci Store; documented local devnet",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "UVerify-io/uverify-backend / README.md",
+          "url": "https://github.com/UVerify-io/uverify-backend/blob/cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865/README.md",
+          "sha256": "b69e669773ce1cc5cb3b18379cbf484fb335c106cfca4e806f5c2ff0a4dc9f04",
+          "source_commit": "cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865",
+          "source_commit_date": "2026-09-24T06:24:54Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "UVerify-io/uverify-backend / pom.xml",
+          "url": "https://github.com/UVerify-io/uverify-backend/blob/cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865/pom.xml",
+          "sha256": "81b179efeac4de72fda3433b3cde727ac50b244d09e9fde3ef09bf997b172266",
+          "source_commit": "cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865",
+          "source_commit_date": "2026-09-24T06:24:54Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "UVerify-io/uverify-examples / README.md",
+          "url": "https://github.com/UVerify-io/uverify-examples/blob/a822d08748e7373c8f25195185bad8a99cfa40ba/README.md",
+          "sha256": "21fd7e4aaebd14d7d33d4525e1499e6b810e01b6c3ce1012414f86229e0fb1f6",
+          "source_commit": "a822d08748e7373c8f25195185bad8a99cfa40ba",
+          "source_commit_date": "2026-07-04T18:12:26Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "UVerify-io/uverify-examples / sandbox/bootstrap/package.json",
+          "url": "https://github.com/UVerify-io/uverify-examples/blob/a822d08748e7373c8f25195185bad8a99cfa40ba/sandbox/bootstrap/package.json",
+          "sha256": "897bcc176de24ef12b71f6ce205895c1527c46f5f00d2d360b13afdc43fbeac7",
+          "source_commit": "a822d08748e7373c8f25195185bad8a99cfa40ba",
+          "source_commit_date": "2026-07-04T18:12:26Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/UVerify-io/uverify-backend",
+          "checked_on": "2026-11-13",
+          "qualification": "Java backend component; example/sandbox source is separate."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://uverify.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Java/Cardano Client Lib; Yaci Store; documented local devnet",
+        "gap": "Validator source language and production provider unknown; Plutus V3 is a target; local sandbox is documented. CCL backend adapters do not identify direct service use or the active production provider.",
+        "sources": [
+          {
+            "title": "UVerify-io/uverify-backend / README.md",
+            "url": "https://github.com/UVerify-io/uverify-backend/blob/cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865/README.md",
+            "sha256": "b69e669773ce1cc5cb3b18379cbf484fb335c106cfca4e806f5c2ff0a4dc9f04",
+            "source_commit": "cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865",
+            "source_commit_date": "2026-09-24T06:24:54Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "UVerify-io/uverify-backend / pom.xml",
+            "url": "https://github.com/UVerify-io/uverify-backend/blob/cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865/pom.xml",
+            "sha256": "81b179efeac4de72fda3433b3cde727ac50b244d09e9fde3ef09bf997b172266",
+            "source_commit": "cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865",
+            "source_commit_date": "2026-09-24T06:24:54Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "UVerify-io/uverify-examples / README.md",
+            "url": "https://github.com/UVerify-io/uverify-examples/blob/a822d08748e7373c8f25195185bad8a99cfa40ba/README.md",
+            "sha256": "21fd7e4aaebd14d7d33d4525e1499e6b810e01b6c3ce1012414f86229e0fb1f6",
+            "source_commit": "a822d08748e7373c8f25195185bad8a99cfa40ba",
+            "source_commit_date": "2026-07-04T18:12:26Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "UVerify-io/uverify-examples / sandbox/bootstrap/package.json",
+            "url": "https://github.com/UVerify-io/uverify-examples/blob/a822d08748e7373c8f25195185bad8a99cfa40ba/sandbox/bootstrap/package.json",
+            "sha256": "897bcc176de24ef12b71f6ce205895c1527c46f5f00d2d360b13afdc43fbeac7",
+            "source_commit": "a822d08748e7373c8f25195185bad8a99cfa40ba",
+            "source_commit_date": "2026-07-04T18:12:26Z",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://uverify.io/"
+    },
+    {
+      "id": "app-muesliswap",
+      "name": "MuesliSwap",
+      "category": "dapp",
+      "categoryLabel": "DApps",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 8,
+      "description": "Component-specific Haskell/Plutus and OpShin; PyCardano/Ogmios",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex",
+      "repoUrl": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Component-specific Haskell/Plutus and OpShin; PyCardano/Ogmios",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / concentrated-lp/onchain/concentrated-liquidity-pools.cabal",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/concentrated-lp/onchain/concentrated-liquidity-pools.cabal",
+          "sha256": "4fa5ce431877954632266716efcca66fdd03b067421d65fb134be7d9b5f5ec18",
+          "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+          "source_commit_date": "2024-08-08T12:01:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+          "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+          "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+          "source_commit_date": "2024-08-08T12:01:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / concentrated-lp/offchain/pyproject.toml",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/concentrated-lp/offchain/pyproject.toml",
+          "sha256": "6fa9dd5a5c68f890d826f1f9f3432f4263614d06127e660ee3f6d62f7ddad5fb",
+          "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+          "source_commit_date": "2024-08-08T12:01:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / README.md",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/README.md",
+          "sha256": "fae96f09e5767fbc783be81b596c651d96ef7197244d2d90fe0a58f97e8dace3",
+          "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+          "source_commit_date": "2024-08-08T12:01:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "MuesliSwapTeam/muesliswap-market-maker / README.md",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-market-maker/blob/d15eee7c5759404fe09633bdb0ecbbc920c52f45/README.md",
+          "sha256": "73a68c8d66086b54faa3f343955b906148aa950c117f124d2d66075a2a748d86",
+          "source_commit": "d15eee7c5759404fe09633bdb0ecbbc920c52f45",
+          "source_commit_date": "2025-09-18T20:07:04Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex",
+          "checked_on": "2026-11-13",
+          "qualification": "Published liquidity-efficient DEX components; no complete production-stack inference."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://muesliswap.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
+        }
+      ],
+      "applicationEvidence": {
+        "checkedOn": "2026-10-22",
+        "summary": "Component-specific Haskell/Plutus and OpShin; PyCardano/Ogmios",
+        "gap": "Production provider, dedicated devnet and component activity split unknown; optional bot kept separate.",
+        "sources": [
+          {
+            "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / concentrated-lp/onchain/concentrated-liquidity-pools.cabal",
+            "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/concentrated-lp/onchain/concentrated-liquidity-pools.cabal",
+            "sha256": "4fa5ce431877954632266716efcca66fdd03b067421d65fb134be7d9b5f5ec18",
+            "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+            "source_commit_date": "2024-08-08T12:01:29Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+            "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+            "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+            "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+            "source_commit_date": "2024-08-08T12:01:29Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / concentrated-lp/offchain/pyproject.toml",
+            "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/concentrated-lp/offchain/pyproject.toml",
+            "sha256": "6fa9dd5a5c68f890d826f1f9f3432f4263614d06127e660ee3f6d62f7ddad5fb",
+            "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+            "source_commit_date": "2024-08-08T12:01:29Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / README.md",
+            "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/README.md",
+            "sha256": "fae96f09e5767fbc783be81b596c651d96ef7197244d2d90fe0a58f97e8dace3",
+            "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+            "source_commit_date": "2024-08-08T12:01:29Z",
+            "checked_on": "2026-10-22"
+          },
+          {
+            "title": "MuesliSwapTeam/muesliswap-market-maker / README.md",
+            "url": "https://github.com/MuesliSwapTeam/muesliswap-market-maker/blob/d15eee7c5759404fe09633bdb0ecbbc920c52f45/README.md",
+            "sha256": "73a68c8d66086b54faa3f343955b906148aa950c117f124d2d66075a2a748d86",
+            "source_commit": "d15eee7c5759404fe09633bdb0ecbbc920c52f45",
+            "source_commit_date": "2025-09-18T20:07:04Z",
+            "checked_on": "2026-10-22"
+          }
+        ]
+      },
+      "website": "https://muesliswap.com/"
+    },
+    {
+      "id": "ogmios-python-client",
+      "name": "Ogmios Python client",
+      "category": "sdk",
+      "categoryLabel": "SDKs & Libraries",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for Ogmios Python client. Client integration; production endpoint unknown.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "gitlab.com/nielstron/ogmios-python",
+      "repoUrl": "https://gitlab.com/nielstron/ogmios-python",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for Ogmios Python client. Client integration; production endpoint unknown.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+          "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+          "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+          "source_commit_date": "2024-08-08T12:01:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://gitlab.com/nielstron/ogmios-python",
+          "checked_on": "2026-11-13",
+          "qualification": "Exact public GitLab fork named in the pinned manifest; not the separate upstream project or the Ogmios server. The GitHub-only readiness collector cannot scan this host; repo retains the host to avoid GitHub misidentification."
+        }
+      ]
+    },
+    {
+      "id": "muesliswap-cardano-python-utilities",
+      "name": "MuesliSwap Cardano Python utilities",
+      "category": "sdk",
+      "categoryLabel": "SDKs & Libraries",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for MuesliSwap Cardano Python utilities. Team utility package; component only.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "MuesliSwapTeam/muesliswap-cardano-python-utils",
+      "repoUrl": "https://github.com/MuesliSwapTeam/muesliswap-cardano-python-utils",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for MuesliSwap Cardano Python utilities. Team utility package; component only.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / concentrated-lp/offchain/pyproject.toml",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/concentrated-lp/offchain/pyproject.toml",
+          "sha256": "6fa9dd5a5c68f890d826f1f9f3432f4263614d06127e660ee3f6d62f7ddad5fb",
+          "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+          "source_commit_date": "2024-08-08T12:01:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-cardano-python-utils",
+          "checked_on": "2026-11-13",
+          "qualification": "Public MuesliSwapTeam repository matches the utility package; the MuesliSwapLabs URL in the pinned manifest returns 404."
+        }
+      ]
+    },
+    {
+      "id": "pytest",
+      "name": "pytest",
+      "category": "dev",
+      "categoryLabel": "Dev Tools & Testing",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for pytest. Testing dependency; no tests run in this review.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "pytest-dev/pytest",
+      "repoUrl": "https://github.com/pytest-dev/pytest",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for pytest. Testing dependency; no tests run in this review.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+          "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+          "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+          "source_commit_date": "2024-08-08T12:01:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/pytest-dev/pytest",
+          "checked_on": "2026-11-13",
+          "qualification": "Source repository for the declared pytest test framework."
+        }
+      ]
+    },
+    {
+      "id": "hypothesis",
+      "name": "Hypothesis",
+      "category": "dev",
+      "categoryLabel": "Dev Tools & Testing",
+      "status": "unknown",
+      "statusLabel": "Unknown / not assessed",
+      "statusReason": "Maintenance not assessed; source evidence describes components only.",
+      "languages": [],
+      "team": "Unknown / not assessed",
+      "stars": null,
+      "starsNum": 0,
+      "communityUsage": null,
+      "communityRank": null,
+      "degree": 1,
+      "description": "Research identity for Hypothesis. Property-testing dependency; not a devnet.",
+      "features": [],
+      "dependencies": "See sourced graph relationships.",
+      "usedBy": "Not independently established.",
+      "repo": "HypothesisWorks/hypothesis",
+      "repoUrl": "https://github.com/HypothesisWorks/hypothesis",
+      "reviewed": false,
+      "reviewedAt": null,
+      "notes": "Research identity for Hypothesis. Property-testing dependency; not a devnet.",
+      "agentReadiness": "unknown",
+      "evidence": [
+        {
+          "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+          "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+          "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+          "source_commit_date": "2024-08-08T12:01:29Z",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/HypothesisWorks/hypothesis",
+          "checked_on": "2026-11-13",
+          "qualification": "Source monorepo for the declared Hypothesis test library."
+        }
+      ]
     }
   ],
   "links": [
@@ -18976,6 +21199,1180 @@
       "source": "cardano-client-bindings",
       "target": "bloxbean-cardano-client-library",
       "type": "depends"
+    },
+    {
+      "source": "app-hosky",
+      "target": "cardano-cli",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "P.o.O claim prototype",
+          "tool": "cardano-cli",
+          "relationship": "invokes",
+          "evidenceType": "prototype-doc",
+          "qualification": "Beta prototype; production distribution unverified.",
+          "sources": [
+            {
+              "title": "Hosky claims prototype README",
+              "url": "https://github.com/HOSKYToken/poo-genericClaim/blob/bdceb649269240a9f1c5f891f48c0df351fcb71a/README.md",
+              "source_commit": "bdceb649269240a9f1c5f891f48c0df351fcb71a",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "prototype"
+        }
+      ]
+    },
+    {
+      "source": "app-minswap",
+      "target": "aiken",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "DEX V2 contracts",
+          "tool": "Aiken",
+          "relationship": "written-in",
+          "evidenceType": "manifest",
+          "qualification": "V2 only; aggregate activity has no version split.",
+          "sources": [
+            {
+              "title": "minswap/minswap-dex-v2 / aiken.toml",
+              "url": "https://github.com/minswap/minswap-dex-v2/blob/c3293ad435792ba502f5a2b1691c6736e5f167e6/aiken.toml",
+              "sha256": "938a56b3bb38047bae92fc8542b622b2088ea526d719feeb475014458d1edb6f",
+              "source_commit": "c3293ad435792ba502f5a2b1691c6736e5f167e6",
+              "checked_on": "2026-10-22"
+            },
+            {
+              "title": "minswap/minswap-dex-v2 / README.md",
+              "url": "https://github.com/minswap/minswap-dex-v2/blob/c3293ad435792ba502f5a2b1691c6736e5f167e6/README.md",
+              "sha256": "a200697687d6d04e7d3ae8d01689b9e179647d7ecffcc90d977a0fef8b1a1f56",
+              "source_commit": "c3293ad435792ba502f5a2b1691c6736e5f167e6",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-minswap",
+      "target": "lucid",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Published SDK",
+          "tool": "Lucid (@spacebudz/lucid)",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Published SDK dependency; production adoption unverified.",
+          "sources": [
+            {
+              "title": "minswap/sdk / package.json",
+              "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/package.json",
+              "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
+              "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-minswap",
+      "target": "blockfrost-js",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Published SDK",
+          "tool": "Blockfrost JS",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Dependency and available adapter; active provider unknown.",
+          "sources": [
+            {
+              "title": "minswap/sdk / package.json",
+              "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/package.json",
+              "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
+              "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "optional"
+        }
+      ]
+    },
+    {
+      "source": "app-minswap",
+      "target": "maestro-typescript-sdk",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Published SDK",
+          "tool": "Maestro TypeScript SDK",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Dependency and available adapter; active provider unknown.",
+          "sources": [
+            {
+              "title": "minswap/sdk / package.json",
+              "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/package.json",
+              "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
+              "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "optional"
+        }
+      ]
+    },
+    {
+      "source": "app-minswap",
+      "target": "ogmios-client-schema",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Published SDK",
+          "tool": "Ogmios client/schema",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Client dependency; production deployment unverified.",
+          "sources": [
+            {
+              "title": "minswap/sdk / package.json",
+              "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/package.json",
+              "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
+              "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-minswap",
+      "target": "minswap-self-hosted-syncer",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "SDK syncer adapter",
+          "tool": "Minswap self-hosted syncer",
+          "relationship": "supports-integration",
+          "evidenceType": "documentation",
+          "qualification": "Supported alternative; not a confirmed production configuration.",
+          "sources": [
+            {
+              "title": "minswap/sdk / README.md",
+              "url": "https://github.com/minswap/sdk/blob/ee95d4317414ae1fe2cdc40549e14a1e185dcf59/README.md",
+              "sha256": "17c694cdca2bc539d4d17db72be1b93a0360e29c5243798326a7090ad49db616",
+              "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "optional"
+        }
+      ]
+    },
+    {
+      "source": "app-minswap",
+      "target": "aiken",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "DEX V2 test workflow",
+          "tool": "Aiken check",
+          "relationship": "documents-testing",
+          "evidenceType": "documentation",
+          "qualification": "Tests documented; not executed in this review.",
+          "sources": [
+            {
+              "title": "minswap/minswap-dex-v2 / README.md",
+              "url": "https://github.com/minswap/minswap-dex-v2/blob/c3293ad435792ba502f5a2b1691c6736e5f167e6/README.md",
+              "sha256": "a200697687d6d04e7d3ae8d01689b9e179647d7ecffcc90d977a0fef8b1a1f56",
+              "source_commit": "c3293ad435792ba502f5a2b1691c6736e5f167e6",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "dev-test"
+        }
+      ]
+    },
+    {
+      "source": "app-dano-finance",
+      "target": "evolution-sdk",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "CLMM SDK",
+          "tool": "Evolution SDK (@evolution-sdk/evolution)",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "CLMM only; manifest/README versions differ.",
+          "sources": [
+            {
+              "title": "dano-finance/clmm-sdk / package.json",
+              "url": "https://github.com/dano-finance/clmm-sdk/blob/0416dc1f3531ce77eec7664ea3947f192a3aca40/package.json",
+              "sha256": "1b850cc74cef7028c24239c4155dabe7ab387ceb8844ce51c3aa0327b6f3f268",
+              "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-dano-finance",
+      "target": "ogmios-client-schema",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "CLMM SDK",
+          "tool": "Ogmios client/schema",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "CLMM component; production infrastructure unknown.",
+          "sources": [
+            {
+              "title": "dano-finance/clmm-sdk / package.json",
+              "url": "https://github.com/dano-finance/clmm-sdk/blob/0416dc1f3531ce77eec7664ea3947f192a3aca40/package.json",
+              "sha256": "1b850cc74cef7028c24239c4155dabe7ab387ceb8844ce51c3aa0327b6f3f268",
+              "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-wingriders",
+      "target": "aiken",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Rapid DEX contracts",
+          "tool": "Aiken",
+          "relationship": "written-in",
+          "evidenceType": "manifest",
+          "qualification": "Rapid only; not an original/V1 DEX claim.",
+          "sources": [
+            {
+              "title": "WingRiders/rapid-dex-contracts / aiken.toml",
+              "url": "https://github.com/WingRiders/rapid-dex-contracts/blob/6afe522d9116e81359e30cc202feab5f3d0b8e60/aiken.toml",
+              "sha256": "e5da7387d3f1accd6b90ff1789c28ee415a73874106c89fe16a997d838984f0c",
+              "source_commit": "6afe522d9116e81359e30cc202feab5f3d0b8e60",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-wingriders",
+      "target": "meshjs-mesh-sdk",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Rapid DEX SDK core",
+          "tool": "Mesh (@meshsdk/core, core-csl)",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Rapid only.",
+          "sources": [
+            {
+              "title": "WingRiders/rapid-dex / sdk/core/package.json",
+              "url": "https://github.com/WingRiders/rapid-dex/blob/9e4921e373796b0d3feaf73a342246e24231cde5/sdk/core/package.json",
+              "sha256": "655d0ed45ddf7b9b2103f81f8b667d049fb5936dfb8ca7c26eee1c54ac44c09b",
+              "source_commit": "9e4921e373796b0d3feaf73a342246e24231cde5",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-wingriders",
+      "target": "blockfrost",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "DEX state adapter",
+          "tool": "Blockfrost",
+          "relationship": "supports-integration",
+          "evidenceType": "documentation",
+          "qualification": "Adapter capability; production provider unknown.",
+          "sources": [
+            {
+              "title": "WingRiders/dex-blockfrost-adapter / README.md",
+              "url": "https://github.com/WingRiders/dex-blockfrost-adapter/blob/99a1c7106dfcc2c32ff62345991608f222ad92a8/README.md",
+              "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
+              "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "optional"
+        }
+      ]
+    },
+    {
+      "source": "app-wingriders",
+      "target": "wingriders-dex-serializer",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "DEX state adapter",
+          "tool": "WingRiders dex-serializer",
+          "relationship": "uses-library",
+          "evidenceType": "documentation",
+          "qualification": "State deserialization in this adapter.",
+          "sources": [
+            {
+              "title": "WingRiders/dex-blockfrost-adapter / README.md",
+              "url": "https://github.com/WingRiders/dex-blockfrost-adapter/blob/99a1c7106dfcc2c32ff62345991608f222ad92a8/README.md",
+              "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
+              "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "optional"
+        }
+      ]
+    },
+    {
+      "source": "app-wingriders",
+      "target": "cardano-multiplatform-lib-cml",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "DEX state adapter peer dependencies",
+          "tool": "Cardano Multiplatform Library",
+          "relationship": "declares-peer-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Adapter directly declares CML browser/node peer dependencies; not a whole-application production claim.",
+          "sources": [
+            {
+              "title": "WingRiders/dex-blockfrost-adapter / README.md",
+              "url": "https://github.com/WingRiders/dex-blockfrost-adapter/blob/99a1c7106dfcc2c32ff62345991608f222ad92a8/README.md",
+              "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
+              "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
+              "checked_on": "2026-10-22"
+            },
+            {
+              "title": "WingRiders/dex-blockfrost-adapter / package.json",
+              "url": "https://github.com/WingRiders/dex-blockfrost-adapter/blob/99a1c7106dfcc2c32ff62345991608f222ad92a8/package.json",
+              "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
+              "checked_on": "2026-11-13"
+            }
+          ],
+          "scope": "optional"
+        }
+      ]
+    },
+    {
+      "source": "app-wingriders",
+      "target": "lucid",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "DEX adapter swap example",
+          "tool": "Lucid",
+          "relationship": "example-uses",
+          "evidenceType": "example",
+          "qualification": "Example only; original frontend builder unknown.",
+          "sources": [
+            {
+              "title": "WingRiders/dex-blockfrost-adapter / README.md",
+              "url": "https://github.com/WingRiders/dex-blockfrost-adapter/blob/99a1c7106dfcc2c32ff62345991608f222ad92a8/README.md",
+              "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
+              "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "dev-test"
+        }
+      ]
+    },
+    {
+      "source": "app-sundaeswap",
+      "target": "aiken",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "V3+ contracts",
+          "tool": "Aiken",
+          "relationship": "written-in",
+          "evidenceType": "manifest",
+          "qualification": "V3 and onward; not older V1 contracts.",
+          "sources": [
+            {
+              "title": "SundaeSwap-finance/sundae-contracts / README.md",
+              "url": "https://github.com/SundaeSwap-finance/sundae-contracts/blob/be33466b7dbe0f8e6c0e0f46ff23737897f45835/README.md",
+              "sha256": "e0cfc1077d891ce0cb38c8791f87a41b58a52dd1d610b2f05064d64f2c9aa522",
+              "source_commit": "be33466b7dbe0f8e6c0e0f46ff23737897f45835",
+              "source_commit_date": "2025-02-26T16:47:57Z",
+              "checked_on": "2026-10-22"
+            },
+            {
+              "title": "SundaeSwap-finance/sundae-contracts / aiken.toml",
+              "url": "https://github.com/SundaeSwap-finance/sundae-contracts/blob/be33466b7dbe0f8e6c0e0f46ff23737897f45835/aiken.toml",
+              "sha256": "ebdbfa594afd77da930668c135ccebbb45de747b2b28aee24e71666874b7c04f",
+              "source_commit": "be33466b7dbe0f8e6c0e0f46ff23737897f45835",
+              "source_commit_date": "2025-02-26T16:47:57Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-sundaeswap",
+      "target": "blaze",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Core SDK",
+          "tool": "Blaze SDK/data",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "SDK source snapshot; no historical activity attribution.",
+          "sources": [
+            {
+              "title": "SundaeSwap-finance/sundae-sdk / packages/core/package.json",
+              "url": "https://github.com/SundaeSwap-finance/sundae-sdk/blob/9f032253e0711e3a308068ed55cc85b5de71a348/packages/core/package.json",
+              "sha256": "9e3cd11ba4d2ef2eb986f7b43190e7c95e2d58df3426375a922b803d8a12e8c3",
+              "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
+              "source_commit_date": "2026-10-17T02:13:44Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-sundaeswap",
+      "target": "sundaeswap-api",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "SDK pool-query guide",
+          "tool": "SundaeSwap API",
+          "relationship": "supports-integration",
+          "evidenceType": "documentation",
+          "qualification": "Documented pool-query interface.",
+          "sources": [
+            {
+              "title": "SundaeSwap-finance/sundae-sdk / docs/guides/core/index.md",
+              "url": "https://github.com/SundaeSwap-finance/sundae-sdk/blob/9f032253e0711e3a308068ed55cc85b5de71a348/docs/guides/core/index.md",
+              "sha256": "2a275b29fa460b5a94e17f1889be8aa59e31e0be172afb384fe74c2f4005a99b",
+              "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
+              "source_commit_date": "2026-10-17T02:13:44Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-sundaeswap",
+      "target": "lucid",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Contract benchmark scaffolding",
+          "tool": "Lucid",
+          "relationship": "documents-testing",
+          "evidenceType": "documentation",
+          "qualification": "Testing scaffolding only.",
+          "sources": [
+            {
+              "title": "SundaeSwap-finance/sundae-contracts / README.md",
+              "url": "https://github.com/SundaeSwap-finance/sundae-contracts/blob/be33466b7dbe0f8e6c0e0f46ff23737897f45835/README.md",
+              "sha256": "e0cfc1077d891ce0cb38c8791f87a41b58a52dd1d610b2f05064d64f2c9aa522",
+              "source_commit": "be33466b7dbe0f8e6c0e0f46ff23737897f45835",
+              "source_commit_date": "2025-02-26T16:47:57Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "dev-test"
+        }
+      ]
+    },
+    {
+      "source": "app-splash",
+      "target": "plutarch",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Plutarch validator package",
+          "tool": "Plutarch",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Specific validator package; version split unknown.",
+          "sources": [
+            {
+              "title": "splashprotocol/splash-core / plutarch-validators/plutarch-validators.cabal",
+              "url": "https://github.com/splashprotocol/splash-core/blob/a185ee8668414fc2bafc232fb74533bc135137fd/plutarch-validators/plutarch-validators.cabal",
+              "sha256": "c7733e487b512e0e780dc90f91ecb9dc1950a17a4d144de592e2ab6286e10484",
+              "source_commit": "a185ee8668414fc2bafc232fb74533bc135137fd",
+              "source_commit_date": "2026-09-13T19:14:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-splash",
+      "target": "aiken",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "V3 validator package",
+          "tool": "Aiken",
+          "relationship": "written-in",
+          "evidenceType": "manifest",
+          "qualification": "Specific validator package; version split unknown.",
+          "sources": [
+            {
+              "title": "splashprotocol/splash-core / validators_v3/aiken.toml",
+              "url": "https://github.com/splashprotocol/splash-core/blob/a185ee8668414fc2bafc232fb74533bc135137fd/validators_v3/aiken.toml",
+              "sha256": "3946595245b86e182257c6d3ab1248cef18f5cf075cebb6aa6b33dd765676f81",
+              "source_commit": "a185ee8668414fc2bafc232fb74533bc135137fd",
+              "source_commit_date": "2026-09-13T19:14:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-splash",
+      "target": "cardano-multiplatform-lib-cml",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "TypeScript builder package",
+          "tool": "Cardano Multiplatform Library",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Browser/node packages; no whole-application inference.",
+          "sources": [
+            {
+              "title": "splashprotocol/protocol-sdk / packages/builder/package.json",
+              "url": "https://github.com/splashprotocol/protocol-sdk/blob/ebc01e8871284c6ac450c35e8d5e3bcab7d5fb56/packages/builder/package.json",
+              "sha256": "9d77c8fbd0224c543978bb1b79275dfbdbb5f8157e1a63aab2f0d8aafac24026",
+              "source_commit": "ebc01e8871284c6ac450c35e8d5e3bcab7d5fb56",
+              "source_commit_date": "2025-11-29T09:03:49Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-splash",
+      "target": "splash-cml-fork",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Rust bloom-cardano-agent",
+          "tool": "CML fork",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Pinned fork in agent manifest.",
+          "sources": [
+            {
+              "title": "splashprotocol/splash-offchain-multiplatform / bloom-cardano-agent/Cargo.toml",
+              "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/bloom-cardano-agent/Cargo.toml",
+              "sha256": "7fe8086c33b657fef0b97b16288a50930e879c65fff8d9d342df11d96c1d2ab2",
+              "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+              "source_commit_date": "2026-07-16T10:06:39Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-splash",
+      "target": "pallas",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Rust chain-sync package",
+          "tool": "Pallas networking",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Chain-sync component; hosted provider unknown.",
+          "sources": [
+            {
+              "title": "splashprotocol/splash-offchain-multiplatform / cardano-chain-sync/Cargo.toml",
+              "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/cardano-chain-sync/Cargo.toml",
+              "sha256": "63d1601fef7664fbc76788c3dce7634a24f9873bef819315bf228f32249cbd85",
+              "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+              "source_commit_date": "2026-07-16T10:06:39Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-splash",
+      "target": "lucid-evolution",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Testing package",
+          "tool": "Lucid Evolution",
+          "relationship": "declares-test-dependency",
+          "evidenceType": "test-manifest",
+          "qualification": "Testing only; no production swap-builder inference.",
+          "sources": [
+            {
+              "title": "splashprotocol/splash-offchain-multiplatform / splash-testing-cardano/package.json",
+              "url": "https://github.com/splashprotocol/splash-offchain-multiplatform/blob/f23126425063d9d4dbf5ba07401f97737f99d3aa/splash-testing-cardano/package.json",
+              "sha256": "f74ee911cd17176ddf889cc05a4bdd777ab1439b1902c7453203487c9ece75c6",
+              "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
+              "source_commit_date": "2026-07-16T10:06:39Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "dev-test"
+        }
+      ]
+    },
+    {
+      "source": "app-cswap",
+      "target": "aiken",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Token-swap contracts",
+          "tool": "Aiken",
+          "relationship": "project-doc-claim",
+          "evidenceType": "documentation",
+          "qualification": "Some forward-looking wording; deployment/source match unverified.",
+          "sources": [
+            {
+              "title": "CSWAP capabilities documentation",
+              "url": "https://docs.cswap.fi/cswap-platform/cswap-dex-capabilities",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-spectrum-finance",
+      "target": "plutarch",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Published on-chain package",
+          "tool": "Plutarch",
+          "relationship": "declares-dependency",
+          "evidenceType": "historical-manifest",
+          "qualification": "Historical source; current deployed version unknown.",
+          "sources": [
+            {
+              "title": "spectrum-finance/cardano-dex-contracts / cardano-dex-contracts-onchain/cardano-dex-contracts-onchain.cabal",
+              "url": "https://github.com/spectrum-finance/cardano-dex-contracts/blob/c25c8ab7daf52871d29efd00d3dac236cc9d6a36/cardano-dex-contracts-onchain/cardano-dex-contracts-onchain.cabal",
+              "sha256": "81d61ebe99feb8146375666311bb2f4cc8461099c283d9c137b9bbe8fc54051d",
+              "source_commit": "c25c8ab7daf52871d29efd00d3dac236cc9d6a36",
+              "source_commit_date": "2023-08-23T16:41:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "historical"
+        }
+      ]
+    },
+    {
+      "source": "app-spectrum-finance",
+      "target": "cardano-api-haskell",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Published Haskell cardano-tx SDK",
+          "tool": "Cardano API",
+          "relationship": "declares-dependency",
+          "evidenceType": "historical-manifest",
+          "qualification": "Historical SDK; production use unverified.",
+          "sources": [
+            {
+              "title": "spectrum-finance/cardano-dex-sdk-haskell / cardano-tx/cardano-tx.cabal",
+              "url": "https://github.com/spectrum-finance/cardano-dex-sdk-haskell/blob/39d53d78fce1cf20b78b10bff9a9fc73b747cf2a/cardano-tx/cardano-tx.cabal",
+              "sha256": "5834453c36474cd6f358c24f08050fde3afe8ee265d0e6ae67e48e573cdd0241",
+              "source_commit": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
+              "source_commit_date": "2023-06-02T08:57:20Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "historical"
+        }
+      ]
+    },
+    {
+      "source": "app-spectrum-finance",
+      "target": "plutus-chain-index-ledger-libraries",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Published Haskell cardano-tx SDK",
+          "tool": "Plutus chain-index/ledger libraries",
+          "relationship": "declares-dependency",
+          "evidenceType": "historical-manifest",
+          "qualification": "Library dependencies; deployed indexer unknown.",
+          "sources": [
+            {
+              "title": "spectrum-finance/cardano-dex-sdk-haskell / cardano-tx/cardano-tx.cabal",
+              "url": "https://github.com/spectrum-finance/cardano-dex-sdk-haskell/blob/39d53d78fce1cf20b78b10bff9a9fc73b747cf2a/cardano-tx/cardano-tx.cabal",
+              "sha256": "5834453c36474cd6f358c24f08050fde3afe8ee265d0e6ae67e48e573cdd0241",
+              "source_commit": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
+              "source_commit_date": "2023-06-02T08:57:20Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "historical"
+        }
+      ]
+    },
+    {
+      "source": "app-wayup",
+      "target": "anvil",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Marketplace build-tx interface",
+          "tool": "Anvil transaction-building API",
+          "relationship": "documents-integration",
+          "evidenceType": "historical-indexed-doc",
+          "qualification": "Indexed primary docs; direct URL returned 404.",
+          "sources": [
+            {
+              "title": "Anvil Wayup integration documentation (indexed content)",
+              "url": "https://dev.ada-anvil.io/wayup",
+              "checked_on": "2026-10-22",
+              "access_state": "Search-indexed primary text; direct page returned 404"
+            }
+          ],
+          "scope": "historical"
+        }
+      ]
+    },
+    {
+      "source": "app-liqwid-finance",
+      "target": "plutarch",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "liqwid-plutarch-extra library",
+          "tool": "Plutarch",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Team library; complete lending stack unverified.",
+          "sources": [
+            {
+              "title": "Liqwid-Labs/liqwid-libs / liqwid-plutarch-extra/liqwid-plutarch-extra.cabal",
+              "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/liqwid-plutarch-extra/liqwid-plutarch-extra.cabal",
+              "sha256": "827bdaf66e0d2e15e6e2b7e4a5db1e7aa29e1b167560cbff78d41223b6a23fcf",
+              "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
+              "source_commit_date": "2024-08-23T13:46:39Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-uverify",
+      "target": "bloxbean-cardano-client-library",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Java backend",
+          "tool": "Cardano Client Lib",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Bloxbean dependency; production configuration unknown.",
+          "sources": [
+            {
+              "title": "UVerify-io/uverify-backend / pom.xml",
+              "url": "https://github.com/UVerify-io/uverify-backend/blob/cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865/pom.xml",
+              "sha256": "81b179efeac4de72fda3433b3cde727ac50b244d09e9fde3ef09bf997b172266",
+              "source_commit": "cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865",
+              "source_commit_date": "2026-09-24T06:24:54Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-uverify",
+      "target": "yaci-store",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Java backend",
+          "tool": "Yaci Store",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Indexer starters; README also describes indexing.",
+          "sources": [
+            {
+              "title": "UVerify-io/uverify-backend / pom.xml",
+              "url": "https://github.com/UVerify-io/uverify-backend/blob/cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865/pom.xml",
+              "sha256": "81b179efeac4de72fda3433b3cde727ac50b244d09e9fde3ef09bf997b172266",
+              "source_commit": "cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865",
+              "source_commit_date": "2026-09-24T06:24:54Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-uverify",
+      "target": "meshjs-mesh-sdk",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Examples sandbox bootstrap",
+          "tool": "Mesh (@meshsdk/core, wallet)",
+          "relationship": "declares-test-dependency",
+          "evidenceType": "test-manifest",
+          "qualification": "Sandbox/bootstrap only.",
+          "sources": [
+            {
+              "title": "UVerify-io/uverify-examples / sandbox/bootstrap/package.json",
+              "url": "https://github.com/UVerify-io/uverify-examples/blob/a822d08748e7373c8f25195185bad8a99cfa40ba/sandbox/bootstrap/package.json",
+              "sha256": "897bcc176de24ef12b71f6ce205895c1527c46f5f00d2d360b13afdc43fbeac7",
+              "source_commit": "a822d08748e7373c8f25195185bad8a99cfa40ba",
+              "source_commit_date": "2026-07-04T18:12:26Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "dev-test"
+        }
+      ]
+    },
+    {
+      "source": "masumi",
+      "target": "lucid",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Payment service root",
+          "tool": "Lucid (lucid-cardano)",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Root declaration; not proof of every transaction path.",
+          "sources": [
+            {
+              "title": "masumi-network/masumi-payment-service / package.json",
+              "url": "https://github.com/masumi-network/masumi-payment-service/blob/7cb71dba4445a330d179a3859f4fe7be0b43b23e/package.json",
+              "sha256": "b4b3170907e07eff59ca78e0621e92224f8d4dfc3a07222f8fff97b20455448b",
+              "source_commit": "7cb71dba4445a330d179a3859f4fe7be0b43b23e",
+              "source_commit_date": "2026-10-21T09:28:20Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "masumi",
+      "target": "cardano-serialization-lib-csl",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Payment service root",
+          "tool": "Cardano Serialization Lib",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Root declaration; source snapshot after volume window.",
+          "sources": [
+            {
+              "title": "masumi-network/masumi-payment-service / package.json",
+              "url": "https://github.com/masumi-network/masumi-payment-service/blob/7cb71dba4445a330d179a3859f4fe7be0b43b23e/package.json",
+              "sha256": "b4b3170907e07eff59ca78e0621e92224f8d4dfc3a07222f8fff97b20455448b",
+              "source_commit": "7cb71dba4445a330d179a3859f4fe7be0b43b23e",
+              "source_commit_date": "2026-10-21T09:28:20Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "masumi",
+      "target": "blockfrost-js",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Payment service root",
+          "tool": "Blockfrost JS",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Provider client; production configuration unknown.",
+          "sources": [
+            {
+              "title": "masumi-network/masumi-payment-service / package.json",
+              "url": "https://github.com/masumi-network/masumi-payment-service/blob/7cb71dba4445a330d179a3859f4fe7be0b43b23e/package.json",
+              "sha256": "b4b3170907e07eff59ca78e0621e92224f8d4dfc3a07222f8fff97b20455448b",
+              "source_commit": "7cb71dba4445a330d179a3859f4fe7be0b43b23e",
+              "source_commit_date": "2026-10-21T09:28:20Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "masumi",
+      "target": "meshjs-mesh-sdk",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Payment-source-v2 package",
+          "tool": "Mesh (@meshsdk/core, core-cst)",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "V2 component.",
+          "sources": [
+            {
+              "title": "masumi-network/masumi-payment-service / packages/payment-source-v2/package.json",
+              "url": "https://github.com/masumi-network/masumi-payment-service/blob/7cb71dba4445a330d179a3859f4fe7be0b43b23e/packages/payment-source-v2/package.json",
+              "sha256": "ff5e27f0a4ab9acad62ca1eed67a15910c0cf9e83031aa7f10dc83a5489378ff",
+              "source_commit": "7cb71dba4445a330d179a3859f4fe7be0b43b23e",
+              "source_commit_date": "2026-10-21T09:28:20Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-muesliswap",
+      "target": "plinth-plutus-tx",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Concentrated-pool on-chain package",
+          "tool": "Plutus Tx",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Haskell component; not an orderbook-language claim.",
+          "sources": [
+            {
+              "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / concentrated-lp/onchain/concentrated-liquidity-pools.cabal",
+              "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/concentrated-lp/onchain/concentrated-liquidity-pools.cabal",
+              "sha256": "4fa5ce431877954632266716efcca66fdd03b067421d65fb134be7d9b5f5ec18",
+              "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+              "source_commit_date": "2024-08-08T12:01:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-muesliswap",
+      "target": "opshin",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Orderbook package",
+          "tool": "OpShin",
+          "relationship": "written-in",
+          "evidenceType": "manifest",
+          "qualification": "Orderbook component only.",
+          "sources": [
+            {
+              "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+              "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+              "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+              "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+              "source_commit_date": "2024-08-08T12:01:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-muesliswap",
+      "target": "pycardano",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Orderbook package",
+          "tool": "PyCardano",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Pinned package references a branch; no locked resolution inferred.",
+          "sources": [
+            {
+              "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+              "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+              "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+              "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+              "source_commit_date": "2024-08-08T12:01:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-muesliswap",
+      "target": "ogmios-python-client",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Orderbook package",
+          "tool": "Ogmios Python client",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Client integration; production endpoint unknown.",
+          "sources": [
+            {
+              "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+              "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+              "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+              "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+              "source_commit_date": "2024-08-08T12:01:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-muesliswap",
+      "target": "muesliswap-cardano-python-utilities",
+      "type": "depends",
+      "evidence": [
+        {
+          "component": "Concentrated-pool off-chain package",
+          "tool": "MuesliSwap Cardano Python utilities",
+          "relationship": "declares-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Team utility package; component only.",
+          "sources": [
+            {
+              "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / concentrated-lp/offchain/pyproject.toml",
+              "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/concentrated-lp/offchain/pyproject.toml",
+              "sha256": "6fa9dd5a5c68f890d826f1f9f3432f4263614d06127e660ee3f6d62f7ddad5fb",
+              "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+              "source_commit_date": "2024-08-08T12:01:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "runtime"
+        }
+      ]
+    },
+    {
+      "source": "app-muesliswap",
+      "target": "pytest",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Orderbook test dependencies",
+          "tool": "pytest",
+          "relationship": "declares-test-dependency",
+          "evidenceType": "test-manifest",
+          "qualification": "Testing dependency; no tests run in this review.",
+          "sources": [
+            {
+              "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+              "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+              "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+              "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+              "source_commit_date": "2024-08-08T12:01:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "dev-test"
+        }
+      ]
+    },
+    {
+      "source": "app-muesliswap",
+      "target": "hypothesis",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Orderbook test dependencies",
+          "tool": "Hypothesis",
+          "relationship": "declares-test-dependency",
+          "evidenceType": "test-manifest",
+          "qualification": "Property-testing dependency; not a devnet.",
+          "sources": [
+            {
+              "title": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex / orderbook/pyproject.toml",
+              "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex/blob/d0d96b9d518bb36d970be91145e86cd348712e86/orderbook/pyproject.toml",
+              "sha256": "c4e68f9c5abc563fb09b019367331bc86875e7d63c8477ab4aaa2136a3d93365",
+              "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
+              "source_commit_date": "2024-08-08T12:01:29Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "dev-test"
+        }
+      ]
+    },
+    {
+      "source": "app-muesliswap",
+      "target": "blockfrost",
+      "type": "connects",
+      "evidence": [
+        {
+          "component": "Optional market-maker bot",
+          "tool": "Blockfrost",
+          "relationship": "documents-integration",
+          "evidenceType": "documentation",
+          "qualification": "Bot requirement; not the production DEX provider.",
+          "sources": [
+            {
+              "title": "MuesliSwapTeam/muesliswap-market-maker / README.md",
+              "url": "https://github.com/MuesliSwapTeam/muesliswap-market-maker/blob/d15eee7c5759404fe09633bdb0ecbbc920c52f45/README.md",
+              "sha256": "73a68c8d66086b54faa3f343955b906148aa950c117f124d2d66075a2a748d86",
+              "source_commit": "d15eee7c5759404fe09633bdb0ecbbc920c52f45",
+              "source_commit_date": "2025-09-18T20:07:04Z",
+              "checked_on": "2026-10-22"
+            }
+          ],
+          "scope": "optional"
+        }
+      ]
     }
   ],
   "teams": {

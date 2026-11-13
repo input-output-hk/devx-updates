@@ -1,4 +1,4 @@
-export type Status = "active" | "maintenance" | "deprecated" | "abandoned" | "archived" | "experimental" | "research";
+export type Status = "active" | "maintenance" | "deprecated" | "abandoned" | "archived" | "experimental" | "research" | "unknown";
 export type LinkType = "compiles" | "depends" | "backend" | "successor" | "connects";
 
 export interface ToolNode {
@@ -107,6 +107,7 @@ export const STATUS_COLORS: Record<Status, string> = {
   archived: "#d0503b",
   experimental: "#8257c9",
   research: "#3f6ae0",
+  unknown: "#737b88",
 };
 
 export const CATEGORY_COLORS: Record<string, string> = {
@@ -122,6 +123,7 @@ export const CATEGORY_COLORS: Record<string, string> = {
   gov: "#dc2626",
   oracle: "#0e7490",
   infra: "#7c3aed",
+  dapp: "#be185d",
 };
 
 export const READINESS_LABEL: Record<string, string> = {
