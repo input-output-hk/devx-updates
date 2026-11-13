@@ -17820,8 +17820,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "HOSKYToken/poo-genericClaim",
+      "repoUrl": "https://github.com/HOSKYToken/poo-genericClaim",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Public claim prototype: Python + cardano-cli; production unknown",
@@ -17832,6 +17832,12 @@
           "url": "https://github.com/HOSKYToken/poo-genericClaim/blob/bdceb649269240a9f1c5f891f48c0df351fcb71a/README.md",
           "source_commit": "bdceb649269240a9f1c5f891f48c0df351fcb71a",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/HOSKYToken/poo-genericClaim",
+          "checked_on": "2026-11-13",
+          "qualification": "Public claim prototype only; complete production distribution source is unverified."
         }
       ],
       "applicationEvidence": {
@@ -17867,8 +17873,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "minswap/minswap-dex-v2",
+      "repoUrl": "https://github.com/minswap/minswap-dex-v2",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "V2: Aiken; SDK: Lucid; Blockfrost/Maestro adapters",
@@ -17901,6 +17907,12 @@
           "sha256": "17c694cdca2bc539d4d17db72be1b93a0360e29c5243798326a7090ad49db616",
           "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/minswap/minswap-dex-v2",
+          "checked_on": "2026-11-13",
+          "qualification": "DEX V2 on-chain component; does not represent every Minswap component."
         }
       ],
       "applicationEvidence": {
@@ -17958,8 +17970,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "maestro-org/maestro-cardano-typescript-sdk",
+      "repoUrl": "https://github.com/maestro-org/maestro-cardano-typescript-sdk",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for Maestro TypeScript SDK. Dependency and available adapter; active provider unknown.",
@@ -17971,6 +17983,12 @@
           "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
           "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/maestro-org/maestro-cardano-typescript-sdk",
+          "checked_on": "2026-11-13",
+          "qualification": "Canonical repository redirects from maestro-org/typescript-sdk; repository is archived as of this check."
         }
       ]
     },
@@ -17993,8 +18011,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "CardanoSolutions/ogmios",
+      "repoUrl": "https://github.com/CardanoSolutions/ogmios",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for Ogmios client/schema. Client dependency; production deployment unverified.",
@@ -18006,6 +18024,12 @@
           "sha256": "b18a9e4d22aee1b938dad5e87e73b55ea5fd594e93f91b2b5b329c7220a21738",
           "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/CardanoSolutions/ogmios",
+          "checked_on": "2026-11-13",
+          "qualification": "Monorepo containing the @cardano-ogmios/client and @cardano-ogmios/schema packages."
         }
       ]
     },
@@ -18028,8 +18052,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "minswap/sdk",
+      "repoUrl": "https://github.com/minswap/sdk",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for Minswap self-hosted syncer. Supported alternative; not a confirmed production configuration.",
@@ -18041,6 +18065,12 @@
           "sha256": "17c694cdca2bc539d4d17db72be1b93a0360e29c5243798326a7090ad49db616",
           "source_commit": "ee95d4317414ae1fe2cdc40549e14a1e185dcf59",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/minswap/sdk",
+          "checked_on": "2026-11-13",
+          "qualification": "SDK monorepo includes src/syncer; not a separate hosted-provider repository."
         }
       ]
     },
@@ -18084,6 +18114,12 @@
           "title": "Public organisation proposal repository",
           "url": "https://github.com/5am-earth/cardano-budget-2026",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://github.com/5am-earth",
+          "checked_on": "2026-11-13",
+          "qualification": "Only a budget-submission artifact repository was listed; implementation source was not established."
         }
       ],
       "applicationEvidence": {
@@ -18128,8 +18164,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "dano-finance/clmm-sdk",
+      "repoUrl": "https://github.com/dano-finance/clmm-sdk",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "CLMM SDK: Evolution SDK, Ogmios; Kupmios documented",
@@ -18148,6 +18184,12 @@
           "sha256": "8459ef7af3ef28517d06739be3cc2938db996a7298836c6994f5f3f20eadbb5f",
           "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/dano-finance/clmm-sdk",
+          "checked_on": "2026-11-13",
+          "qualification": "CLMM SDK component only; lending application source remains unverified."
         }
       ],
       "applicationEvidence": {
@@ -18191,8 +18233,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "WingRiders/rapid-dex",
+      "repoUrl": "https://github.com/WingRiders/rapid-dex",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Component-specific: Rapid Aiken/Mesh; DEX Blockfrost adapter",
@@ -18225,6 +18267,12 @@
           "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
           "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/WingRiders/rapid-dex",
+          "checked_on": "2026-11-13",
+          "qualification": "Rapid DEX component only; not the original/V1 DEX source."
         }
       ],
       "applicationEvidence": {
@@ -18282,8 +18330,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "WingRiders/dex-serializer",
+      "repoUrl": "https://github.com/WingRiders/dex-serializer",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for WingRiders dex-serializer. State deserialization in this adapter.",
@@ -18295,6 +18343,12 @@
           "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
           "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/WingRiders/dex-serializer",
+          "checked_on": "2026-11-13",
+          "qualification": "Serializer library linked directly from the existing DEX adapter documentation."
         }
       ]
     },
@@ -18317,8 +18371,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "SundaeSwap-finance/sundae-contracts",
+      "repoUrl": "https://github.com/SundaeSwap-finance/sundae-contracts",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "V3: Aiken; core SDK: Blaze; Blockfrost example",
@@ -18355,6 +18409,12 @@
           "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
           "source_commit_date": "2026-10-17T02:13:44Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/SundaeSwap-finance/sundae-contracts",
+          "checked_on": "2026-11-13",
+          "qualification": "Published on-chain component only; not the hosted query API implementation."
         }
       ],
       "applicationEvidence": {
@@ -18430,6 +18490,12 @@
           "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
           "source_commit_date": "2026-10-17T02:13:44Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://github.com/SundaeSwap-finance",
+          "checked_on": "2026-11-13",
+          "qualification": "The documented client/SDK is public, but a repository for the hosted pool-query API implementation was not established."
         }
       ]
     },
@@ -18452,8 +18518,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "splashprotocol/splash-core",
+      "repoUrl": "https://github.com/splashprotocol/splash-core",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Plutarch/Aiken contracts; CML builders; Rust/Pallas agents",
@@ -18506,6 +18572,12 @@
           "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
           "source_commit_date": "2026-07-16T10:06:39Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/splashprotocol/splash-core",
+          "checked_on": "2026-11-13",
+          "qualification": "Published core validator components; off-chain packages have separate repositories in the attached evidence."
         }
       ],
       "applicationEvidence": {
@@ -18583,8 +18655,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "oskin1/cardano-multiplatform-lib",
+      "repoUrl": "https://github.com/oskin1/cardano-multiplatform-lib",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for CML fork. Pinned fork in agent manifest.",
@@ -18597,6 +18669,12 @@
           "source_commit": "f23126425063d9d4dbf5ba07401f97737f99d3aa",
           "source_commit_date": "2026-07-16T10:06:39Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/oskin1/cardano-multiplatform-lib",
+          "checked_on": "2026-11-13",
+          "qualification": "Exact oskin1 fork named in the pinned Rust manifest; not the upstream CML repository."
         }
       ]
     },
@@ -18630,6 +18708,12 @@
           "title": "CSWAP capabilities documentation",
           "url": "https://docs.cswap.fi/cswap-platform/cswap-dex-capabilities",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://github.com/cswapsystems",
+          "checked_on": "2026-11-13",
+          "qualification": "Public registry/adaptor forks and other project artifacts do not establish the DEX implementation repository."
         }
       ],
       "applicationEvidence": {
@@ -18680,6 +18764,12 @@
           "title": "Cardano Foundation June update",
           "url": "https://cardanofoundation.org/blog/june-2026-activities",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://trivolvetech.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Public project material and a focused repository search did not establish an implementation repository."
         }
       ],
       "applicationEvidence": {
@@ -18730,6 +18820,12 @@
           "title": "Team-authored IndianChain proposal",
           "url": "https://projectcatalyst.io/funds/14/cardano-use-cases-partners-and-products/indianchain-indian-governments-10m-settlements-on-cardano",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://projectcatalyst.io/funds/14/cardano-use-cases-partners-and-products/indianchain-indian-governments-10m-settlements-on-cardano",
+          "checked_on": "2026-11-13",
+          "qualification": "The proposal does not establish a public implementation repository."
         }
       ],
       "applicationEvidence": {
@@ -18764,8 +18860,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "spectrum-finance/cardano-dex-contracts",
+      "repoUrl": "https://github.com/spectrum-finance/cardano-dex-contracts",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Published Plutarch contracts and Haskell SDK; current deployment unknown",
@@ -18786,6 +18882,12 @@
           "source_commit": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
           "source_commit_date": "2023-06-02T08:57:20Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/spectrum-finance/cardano-dex-contracts",
+          "checked_on": "2026-11-13",
+          "qualification": "Published historical on-chain component; current deployment is unverified."
         }
       ],
       "applicationEvidence": {
@@ -18831,8 +18933,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "IntersectMBO/cardano-api",
+      "repoUrl": "https://github.com/IntersectMBO/cardano-api",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for Cardano API. Historical SDK; production use unverified.",
@@ -18845,6 +18947,12 @@
           "source_commit": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
           "source_commit_date": "2023-06-02T08:57:20Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/IntersectMBO/cardano-api",
+          "checked_on": "2026-11-13",
+          "qualification": "Current standalone source repository for the cardano-api package; does not identify the historical version resolved by the consuming SDK."
         }
       ]
     },
@@ -18867,8 +18975,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "IntersectMBO/plutus-apps",
+      "repoUrl": "https://github.com/IntersectMBO/plutus-apps",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for Plutus chain-index/ledger libraries. Library dependencies; deployed indexer unknown.",
@@ -18881,6 +18989,12 @@
           "source_commit": "39d53d78fce1cf20b78b10bff9a9fc73b747cf2a",
           "source_commit_date": "2023-06-02T08:57:20Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/IntersectMBO/plutus-apps",
+          "checked_on": "2026-11-13",
+          "qualification": "Archived Plutus Apps source covers the ledger/constraints/chain-index components; plutus-ledger-api is maintained separately in IntersectMBO/plutus. This bundled identity spans repositories."
         }
       ]
     },
@@ -18919,6 +19033,12 @@
           "title": "Officially linked GitHub organisation",
           "url": "https://github.com/vyfi",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://github.com/VYFI",
+          "checked_on": "2026-11-13",
+          "qualification": "The public organization listed registry/adaptor forks; a protocol implementation repository was not established."
         }
       ],
       "applicationEvidence": {
@@ -18970,6 +19090,12 @@
           "url": "https://dev.ada-anvil.io/wayup",
           "checked_on": "2026-10-22",
           "access_state": "Search-indexed primary text; direct page returned 404"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://dev.ada-anvil.io/wayup",
+          "checked_on": "2026-11-13",
+          "qualification": "Available integration documentation and focused repository search did not establish Wayup implementation source."
         }
       ],
       "applicationEvidence": {
@@ -19016,6 +19142,12 @@
           "title": "DexHunter primary ShadowBook product mention",
           "url": "https://landing.dexhunter.io/",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Repository lookup gap",
+          "url": "https://landing.dexhunter.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "The product mention does not identify a public implementation repository; similarly named unrelated projects were excluded."
         }
       ],
       "applicationEvidence": {
@@ -19050,8 +19182,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "Liqwid-Labs/liqwid-libs",
+      "repoUrl": "https://github.com/Liqwid-Labs/liqwid-libs",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Published Plutarch libraries/tests; complete application stack unresolved",
@@ -19072,6 +19204,12 @@
           "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
           "source_commit_date": "2024-08-23T13:46:39Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs",
+          "checked_on": "2026-11-13",
+          "qualification": "Published team-library component only; complete lending application source is not established."
         }
       ],
       "applicationEvidence": {
@@ -19117,8 +19255,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "Liqwid-Labs/liqwid-libs",
+      "repoUrl": "https://github.com/Liqwid-Labs/liqwid-libs",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for plutarch-quickcheck. Team tooling; not confirmed production dependency.",
@@ -19131,6 +19269,12 @@
           "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
           "source_commit_date": "2024-08-23T13:46:39Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs",
+          "checked_on": "2026-11-13",
+          "qualification": "plutarch-quickcheck package in the liqwid-libs monorepo cited by the existing evidence."
         }
       ]
     },
@@ -19153,8 +19297,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "Liqwid-Labs/liqwid-libs",
+      "repoUrl": "https://github.com/Liqwid-Labs/liqwid-libs",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for plutarch-context-builder. Test/context tooling; no production-stack inference.",
@@ -19167,6 +19311,12 @@
           "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
           "source_commit_date": "2024-08-23T13:46:39Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs",
+          "checked_on": "2026-11-13",
+          "qualification": "plutarch-context-builder package in the liqwid-libs monorepo cited by the existing evidence."
         }
       ]
     },
@@ -19189,8 +19339,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "Liqwid-Labs/liqwid-libs",
+      "repoUrl": "https://github.com/Liqwid-Labs/liqwid-libs",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for plutarch-unit. Unit-test tooling; not a devnet.",
@@ -19203,6 +19353,12 @@
           "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
           "source_commit_date": "2024-08-23T13:46:39Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/Liqwid-Labs/liqwid-libs",
+          "checked_on": "2026-11-13",
+          "qualification": "plutarch-unit package in the liqwid-libs monorepo cited by the existing evidence."
         }
       ]
     },
@@ -19225,8 +19381,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "IndigoProtocol/indigo-sdk",
+      "repoUrl": "https://github.com/IndigoProtocol/indigo-sdk",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Current docs reviewed; historical contract URL unavailable",
@@ -19242,6 +19398,12 @@
           "url": "https://github.com/IndigoProtocol/indigo-smart-contracts",
           "checked_on": "2026-10-22",
           "access_state": "Direct GitHub and API 404; historical primary content indexed"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/IndigoProtocol/indigo-sdk",
+          "checked_on": "2026-11-13",
+          "qualification": "Archived public SDK only. Its README says current SDK development moved to a private repository; original validator URL still returns 404. No current implementation inference."
         }
       ],
       "applicationEvidence": {
@@ -19282,8 +19444,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "UVerify-io/uverify-backend",
+      "repoUrl": "https://github.com/UVerify-io/uverify-backend",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Java/Cardano Client Lib; Yaci Store; documented local devnet",
@@ -19320,6 +19482,12 @@
           "source_commit": "a822d08748e7373c8f25195185bad8a99cfa40ba",
           "source_commit_date": "2026-07-04T18:12:26Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/UVerify-io/uverify-backend",
+          "checked_on": "2026-11-13",
+          "qualification": "Java backend component; example/sandbox source is separate."
         }
       ],
       "applicationEvidence": {
@@ -19381,8 +19549,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "MuesliSwapTeam/muesliswap-liquidity-efficient-dex",
+      "repoUrl": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Component-specific Haskell/Plutus and OpShin; PyCardano/Ogmios",
@@ -19427,6 +19595,12 @@
           "source_commit": "d15eee7c5759404fe09633bdb0ecbbc920c52f45",
           "source_commit_date": "2025-09-18T20:07:04Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex",
+          "checked_on": "2026-11-13",
+          "qualification": "Published liquidity-efficient DEX components; no complete production-stack inference."
         }
       ],
       "applicationEvidence": {
@@ -19496,8 +19670,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "gitlab.com/nielstron/ogmios-python",
+      "repoUrl": "https://gitlab.com/nielstron/ogmios-python",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for Ogmios Python client. Client integration; production endpoint unknown.",
@@ -19510,6 +19684,12 @@
           "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
           "source_commit_date": "2024-08-08T12:01:29Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://gitlab.com/nielstron/ogmios-python",
+          "checked_on": "2026-11-13",
+          "qualification": "Exact public GitLab fork named in the pinned manifest; not the separate upstream project or the Ogmios server. The GitHub-only readiness collector cannot scan this host; repo retains the host to avoid GitHub misidentification."
         }
       ]
     },
@@ -19532,8 +19712,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "MuesliSwapTeam/muesliswap-cardano-python-utils",
+      "repoUrl": "https://github.com/MuesliSwapTeam/muesliswap-cardano-python-utils",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for MuesliSwap Cardano Python utilities. Team utility package; component only.",
@@ -19546,6 +19726,12 @@
           "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
           "source_commit_date": "2024-08-08T12:01:29Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/MuesliSwapTeam/muesliswap-cardano-python-utils",
+          "checked_on": "2026-11-13",
+          "qualification": "Public MuesliSwapTeam repository matches the utility package; the MuesliSwapLabs URL in the pinned manifest returns 404."
         }
       ]
     },
@@ -19568,8 +19754,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "pytest-dev/pytest",
+      "repoUrl": "https://github.com/pytest-dev/pytest",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for pytest. Testing dependency; no tests run in this review.",
@@ -19582,6 +19768,12 @@
           "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
           "source_commit_date": "2024-08-08T12:01:29Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/pytest-dev/pytest",
+          "checked_on": "2026-11-13",
+          "qualification": "Source repository for the declared pytest test framework."
         }
       ]
     },
@@ -19604,8 +19796,8 @@
       "features": [],
       "dependencies": "See sourced graph relationships.",
       "usedBy": "Not independently established.",
-      "repo": null,
-      "repoUrl": null,
+      "repo": "HypothesisWorks/hypothesis",
+      "repoUrl": "https://github.com/HypothesisWorks/hypothesis",
       "reviewed": false,
       "reviewedAt": null,
       "notes": "Research identity for Hypothesis. Property-testing dependency; not a devnet.",
@@ -19618,6 +19810,12 @@
           "source_commit": "d0d96b9d518bb36d970be91145e86cd348712e86",
           "source_commit_date": "2024-08-08T12:01:29Z",
           "checked_on": "2026-10-22"
+        },
+        {
+          "title": "Public source repository check",
+          "url": "https://github.com/HypothesisWorks/hypothesis",
+          "checked_on": "2026-11-13",
+          "qualification": "Source monorepo for the declared Hypothesis test library."
         }
       ]
     }
