@@ -123,7 +123,7 @@ export const CATEGORY_COLORS: Record<string, string> = {
   gov: "#dc2626",
   oracle: "#0e7490",
   infra: "#7c3aed",
-  app: "#be185d",
+  dapp: "#be185d",
 };
 
 export const READINESS_LABEL: Record<string, string> = {

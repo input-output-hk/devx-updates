@@ -23,7 +23,7 @@
       "teamX"
     ],
     "communitySource": "State of the Developer Ecosystem 2025 (Cardano Foundation), n=109",
-    "edgeCount": 303,
+    "edgeCount": 294,
     "contactsNote": "teamGithub / teamX are the GitHub org and verified X/Twitter handle for each node's team. The top-level `teams` map holds, per team, its githubOrg, x, and top human maintainers (login + x) to @-mention (GitHub @org does not notify).",
     "contactsGenerated": "2026-08-18",
     "extendedOn": "2026-10-26",
@@ -93,8 +93,8 @@
       "count": 21
     },
     {
-      "key": "app",
-      "label": "Applications",
+      "key": "dapp",
+      "label": "DApps",
       "count": 18
     }
   ],
@@ -3232,7 +3232,7 @@
       "lastCommit": "2026-07-16",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 85,
-      "degree": 14,
+      "degree": 12,
       "teamGithub": "blockfrost",
       "teamX": "blockfrost_io"
     },
@@ -3300,7 +3300,7 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 22,
-      "degree": 11,
+      "degree": 10,
       "teamGithub": "cardano-community",
       "teamX": "CardanoKoios"
     },
@@ -4027,7 +4027,7 @@
       "lastCommit": "2026-07-22",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 138,
-      "degree": 7,
+      "degree": 6,
       "teamGithub": "CardanoSolutions",
       "teamX": null
     },
@@ -4960,7 +4960,7 @@
       "lastCommit": "2026-07-08",
       "statusReason": "active — pushed 0mo ago",
       "starsNum": 326,
-      "degree": 15,
+      "degree": 13,
       "teamGithub": "CardanoSolutions",
       "teamX": null
     },
@@ -17804,8 +17804,8 @@
     {
       "id": "app-hosky",
       "name": "Hosky",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -17838,6 +17838,13 @@
           "url": "https://github.com/HOSKYToken/poo-genericClaim",
           "checked_on": "2026-11-13",
           "qualification": "Public claim prototype only; complete production distribution source is unverified."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://hosky.io/",
+          "website": "https://hosky.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official Hosky project website; direct request was rate-limited (HTTP 429)."
         }
       ],
       "applicationEvidence": {
@@ -17852,13 +17859,14 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://hosky.io/"
     },
     {
       "id": "app-minswap",
       "name": "Minswap",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -17913,6 +17921,13 @@
           "url": "https://github.com/minswap/minswap-dex-v2",
           "checked_on": "2026-11-13",
           "qualification": "DEX V2 on-chain component; does not represent every Minswap component."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://minswap.org/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
@@ -17949,7 +17964,8 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://minswap.org/"
     },
     {
       "id": "maestro-typescript-sdk",
@@ -18077,8 +18093,8 @@
     {
       "id": "app-5am.earth",
       "name": "5am.earth",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -18120,6 +18136,13 @@
           "url": "https://github.com/5am-earth",
           "checked_on": "2026-11-13",
           "qualification": "Only a budget-submission artifact repository was listed; implementation source was not established."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://5am.earth/",
+          "website": "https://5am.earth/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official 5am.earth project website."
         }
       ],
       "applicationEvidence": {
@@ -18143,13 +18166,14 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://5am.earth/"
     },
     {
       "id": "app-dano-finance",
       "name": "Dano Finance",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -18159,7 +18183,7 @@
       "starsNum": 0,
       "communityUsage": null,
       "communityRank": null,
-      "degree": 4,
+      "degree": 2,
       "description": "CLMM SDK: Evolution SDK, Ogmios; Kupmios documented",
       "features": [],
       "dependencies": "See sourced graph relationships.",
@@ -18190,12 +18214,19 @@
           "url": "https://github.com/dano-finance/clmm-sdk",
           "checked_on": "2026-11-13",
           "qualification": "CLMM SDK component only; lending application source remains unverified."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://dano.finance/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
         "checkedOn": "2026-10-22",
         "summary": "CLMM SDK: Evolution SDK, Ogmios; Kupmios documented",
-        "gap": "Contract language and devnet unknown; CLMM sources do not establish lending stack; Evolution version mismatch unresolved.",
+        "gap": "Contract language and devnet unknown; CLMM sources do not establish lending stack; Evolution version mismatch unresolved. Kupo/Ogmios provider endpoints in the Kupmios example are configured through Evolution; direct provider use is not established.",
         "sources": [
           {
             "title": "dano-finance/clmm-sdk / package.json",
@@ -18212,13 +18243,14 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://dano.finance/"
     },
     {
       "id": "app-wingriders",
       "name": "WingRiders",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -18273,6 +18305,13 @@
           "url": "https://github.com/WingRiders/rapid-dex",
           "checked_on": "2026-11-13",
           "qualification": "Rapid DEX component only; not the original/V1 DEX source."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://www.wingriders.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
@@ -18309,7 +18348,8 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://www.wingriders.com/"
     },
     {
       "id": "wingriders-dex-serializer",
@@ -18355,8 +18395,8 @@
     {
       "id": "app-sundaeswap",
       "name": "SundaeSwap",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -18366,7 +18406,7 @@
       "starsNum": 0,
       "communityUsage": null,
       "communityRank": null,
-      "degree": 5,
+      "degree": 4,
       "description": "V3: Aiken; core SDK: Blaze; Blockfrost example",
       "features": [],
       "dependencies": "See sourced graph relationships.",
@@ -18415,12 +18455,19 @@
           "url": "https://github.com/SundaeSwap-finance/sundae-contracts",
           "checked_on": "2026-11-13",
           "qualification": "Published on-chain component only; not the hosted query API implementation."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://app.sundae.fi/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
         "checkedOn": "2026-10-22",
         "summary": "V3: Aiken; core SDK: Blaze; Blockfrost example",
-        "gap": "Production provider and devnet unknown; V1/V3 activity split absent.",
+        "gap": "Production provider and devnet unknown; V1/V3 activity split absent. The guide configures Blockfrost through Blaze; direct independent provider use is not established.",
         "sources": [
           {
             "title": "SundaeSwap-finance/sundae-contracts / README.md",
@@ -18455,7 +18502,8 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://app.sundae.fi/"
     },
     {
       "id": "sundaeswap-api",
@@ -18502,8 +18550,8 @@
     {
       "id": "app-splash",
       "name": "Splash Protocol",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -18578,6 +18626,13 @@
           "url": "https://github.com/splashprotocol/splash-core",
           "checked_on": "2026-11-13",
           "qualification": "Published core validator components; off-chain packages have separate repositories in the attached evidence."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://www.splash.trade/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
@@ -18634,7 +18689,8 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://www.splash.trade/"
     },
     {
       "id": "splash-cml-fork",
@@ -18681,8 +18737,8 @@
     {
       "id": "app-cswap",
       "name": "CSWAP",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -18714,6 +18770,13 @@
           "url": "https://github.com/cswapsystems",
           "checked_on": "2026-11-13",
           "qualification": "Public registry/adaptor forks and other project artifacts do not establish the DEX implementation repository."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://www.cswap.fi/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
@@ -18727,13 +18790,14 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://www.cswap.fi/"
     },
     {
       "id": "app-fms-by-trivolve",
       "name": "FMS by Trivolve",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -18770,6 +18834,13 @@
           "url": "https://trivolvetech.com/",
           "checked_on": "2026-11-13",
           "qualification": "Public project material and a focused repository search did not establish an implementation repository."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://trivolvetech.com/",
+          "website": "https://trivolvetech.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Trivolve company website; a dedicated public product website was not established."
         }
       ],
       "applicationEvidence": {
@@ -18788,13 +18859,14 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://trivolvetech.com/"
     },
     {
       "id": "app-indianchain-by-trivolve",
       "name": "Indianchain by Trivolve",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -18826,6 +18898,13 @@
           "url": "https://projectcatalyst.io/funds/14/cardano-use-cases-partners-and-products/indianchain-indian-governments-10m-settlements-on-cardano",
           "checked_on": "2026-11-13",
           "qualification": "The proposal does not establish a public implementation repository."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://trivolvetech.com/",
+          "website": "https://trivolvetech.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Trivolve company website; a dedicated public product website was not established."
         }
       ],
       "applicationEvidence": {
@@ -18839,13 +18918,14 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://trivolvetech.com/"
     },
     {
       "id": "app-spectrum-finance",
       "name": "Spectrum Finance",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -18888,6 +18968,13 @@
           "url": "https://github.com/spectrum-finance/cardano-dex-contracts",
           "checked_on": "2026-11-13",
           "qualification": "Published historical on-chain component; current deployment is unverified."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://spectrum.fi/sunset-notice",
+          "website": "https://spectrum.fi/",
+          "checked_on": "2026-11-13",
+          "qualification": "Historical Spectrum project website; its public sunset notice describes the Cardano DEX transition to Splash."
         }
       ],
       "applicationEvidence": {
@@ -18912,7 +18999,8 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://spectrum.fi/"
     },
     {
       "id": "cardano-api-haskell",
@@ -19001,8 +19089,8 @@
     {
       "id": "app-vyfinance",
       "name": "VyFinance",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -19039,6 +19127,13 @@
           "url": "https://github.com/VYFI",
           "checked_on": "2026-11-13",
           "qualification": "The public organization listed registry/adaptor forks; a protocol implementation repository was not established."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://vyfi.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
@@ -19057,13 +19152,14 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://vyfi.io/"
     },
     {
       "id": "app-wayup",
       "name": "Wayup",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -19096,6 +19192,13 @@
           "url": "https://dev.ada-anvil.io/wayup",
           "checked_on": "2026-11-13",
           "qualification": "Available integration documentation and focused repository search did not establish Wayup implementation source."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://www.wayup.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog. Direct request was rate-limited (HTTP 429)."
         }
       ],
       "applicationEvidence": {
@@ -19110,13 +19213,14 @@
             "access_state": "Search-indexed primary text; direct page returned 404"
           }
         ]
-      }
+      },
+      "website": "https://www.wayup.io/"
     },
     {
       "id": "app-shadowbook",
       "name": "Shadowbook",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -19148,6 +19252,13 @@
           "url": "https://landing.dexhunter.io/",
           "checked_on": "2026-11-13",
           "qualification": "The product mention does not identify a public implementation repository; similarly named unrelated projects were excluded."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://landing.dexhunter.io/",
+          "website": "https://landing.dexhunter.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "DexHunter product page explicitly mentions ShadowBook; a standalone ShadowBook website was not established."
         }
       ],
       "applicationEvidence": {
@@ -19161,13 +19272,14 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://landing.dexhunter.io/"
     },
     {
       "id": "app-liqwid-finance",
       "name": "Liqwid Finance",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -19177,7 +19289,7 @@
       "starsNum": 0,
       "communityUsage": null,
       "communityRank": null,
-      "degree": 4,
+      "degree": 1,
       "description": "Published Plutarch libraries/tests; complete application stack unresolved",
       "features": [],
       "dependencies": "See sourced graph relationships.",
@@ -19210,12 +19322,19 @@
           "url": "https://github.com/Liqwid-Labs/liqwid-libs",
           "checked_on": "2026-11-13",
           "qualification": "Published team-library component only; complete lending application source is not established."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://app.liqwid.finance/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
         "checkedOn": "2026-10-22",
         "summary": "Published Plutarch libraries/tests; complete application stack unresolved",
-        "gap": "Current lending implementation, off-chain SDK, provider/indexer and devnet unknown; team libraries only.",
+        "gap": "Current lending implementation, off-chain SDK, provider/indexer and devnet unknown; team libraries only. README-listed testing libraries do not establish application imports or direct dependencies.",
         "sources": [
           {
             "title": "Liqwid-Labs/liqwid-libs / README.md",
@@ -19234,7 +19353,8 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://app.liqwid.finance/"
     },
     {
       "id": "plutarch-quickcheck",
@@ -19250,7 +19370,7 @@
       "starsNum": 0,
       "communityUsage": null,
       "communityRank": null,
-      "degree": 1,
+      "degree": 0,
       "description": "Research identity for plutarch-quickcheck. Team tooling; not confirmed production dependency.",
       "features": [],
       "dependencies": "See sourced graph relationships.",
@@ -19292,7 +19412,7 @@
       "starsNum": 0,
       "communityUsage": null,
       "communityRank": null,
-      "degree": 1,
+      "degree": 0,
       "description": "Research identity for plutarch-context-builder. Test/context tooling; no production-stack inference.",
       "features": [],
       "dependencies": "See sourced graph relationships.",
@@ -19334,7 +19454,7 @@
       "starsNum": 0,
       "communityUsage": null,
       "communityRank": null,
-      "degree": 1,
+      "degree": 0,
       "description": "Research identity for plutarch-unit. Unit-test tooling; not a devnet.",
       "features": [],
       "dependencies": "See sourced graph relationships.",
@@ -19365,8 +19485,8 @@
     {
       "id": "app-indigo-protocol",
       "name": "Indigo Protocol",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -19404,6 +19524,13 @@
           "url": "https://github.com/IndigoProtocol/indigo-sdk",
           "checked_on": "2026-11-13",
           "qualification": "Archived public SDK only. Its README says current SDK development moved to a private repository; original validator URL still returns 404. No current implementation inference."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://indigoprotocol.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
@@ -19423,13 +19550,14 @@
             "access_state": "Direct GitHub and API 404; historical primary content indexed"
           }
         ]
-      }
+      },
+      "website": "https://indigoprotocol.io/"
     },
     {
       "id": "app-uverify",
       "name": "UVerify",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -19439,7 +19567,7 @@
       "starsNum": 0,
       "communityUsage": null,
       "communityRank": null,
-      "degree": 6,
+      "degree": 3,
       "description": "Java/Cardano Client Lib; Yaci Store; documented local devnet",
       "features": [],
       "dependencies": "See sourced graph relationships.",
@@ -19488,12 +19616,19 @@
           "url": "https://github.com/UVerify-io/uverify-backend",
           "checked_on": "2026-11-13",
           "qualification": "Java backend component; example/sandbox source is separate."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://uverify.io/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
         "checkedOn": "2026-10-22",
         "summary": "Java/Cardano Client Lib; Yaci Store; documented local devnet",
-        "gap": "Validator source language and production provider unknown; Plutus V3 is a target; local sandbox is documented.",
+        "gap": "Validator source language and production provider unknown; Plutus V3 is a target; local sandbox is documented. CCL backend adapters do not identify direct service use or the active production provider.",
         "sources": [
           {
             "title": "UVerify-io/uverify-backend / README.md",
@@ -19528,13 +19663,14 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://uverify.io/"
     },
     {
       "id": "app-muesliswap",
       "name": "MuesliSwap",
-      "category": "app",
-      "categoryLabel": "Applications",
+      "category": "dapp",
+      "categoryLabel": "DApps",
       "status": "unknown",
       "statusLabel": "Unknown / not assessed",
       "statusReason": "Maintenance not assessed; source evidence describes components only.",
@@ -19601,6 +19737,13 @@
           "url": "https://github.com/MuesliSwapTeam/muesliswap-liquidity-efficient-dex",
           "checked_on": "2026-11-13",
           "qualification": "Published liquidity-efficient DEX components; no complete production-stack inference."
+        },
+        {
+          "title": "DApp website reference",
+          "url": "https://github.com/cardano-foundation/cardano-org/blob/ca52a533ff7da0ed4d32fc893f0a8e942e311855/src/data/apps.js",
+          "website": "https://muesliswap.com/",
+          "checked_on": "2026-11-13",
+          "qualification": "Official project destination listed in the Cardano app catalog."
         }
       ],
       "applicationEvidence": {
@@ -19649,7 +19792,8 @@
             "checked_on": "2026-10-22"
           }
         ]
-      }
+      },
+      "website": "https://muesliswap.com/"
     },
     {
       "id": "ogmios-python-client",
@@ -21293,52 +21437,6 @@
       ]
     },
     {
-      "source": "app-dano-finance",
-      "target": "kupo",
-      "type": "connects",
-      "evidence": [
-        {
-          "component": "CLMM SDK provider example",
-          "tool": "Kupo",
-          "relationship": "supports-integration",
-          "evidenceType": "documentation",
-          "qualification": "Kupmios example; production provider unverified.",
-          "sources": [
-            {
-              "title": "dano-finance/clmm-sdk / README.md",
-              "url": "https://github.com/dano-finance/clmm-sdk/blob/0416dc1f3531ce77eec7664ea3947f192a3aca40/README.md",
-              "sha256": "8459ef7af3ef28517d06739be3cc2938db996a7298836c6994f5f3f20eadbb5f",
-              "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
-              "checked_on": "2026-10-22"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "source": "app-dano-finance",
-      "target": "ogmios",
-      "type": "connects",
-      "evidence": [
-        {
-          "component": "CLMM SDK provider example",
-          "tool": "Ogmios",
-          "relationship": "supports-integration",
-          "evidenceType": "documentation",
-          "qualification": "Kupmios example; not a separate activity attribution.",
-          "sources": [
-            {
-              "title": "dano-finance/clmm-sdk / README.md",
-              "url": "https://github.com/dano-finance/clmm-sdk/blob/0416dc1f3531ce77eec7664ea3947f192a3aca40/README.md",
-              "sha256": "8459ef7af3ef28517d06739be3cc2938db996a7298836c6994f5f3f20eadbb5f",
-              "source_commit": "0416dc1f3531ce77eec7664ea3947f192a3aca40",
-              "checked_on": "2026-10-22"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "source": "app-wingriders",
       "target": "aiken",
       "type": "depends",
@@ -21436,11 +21534,11 @@
       "type": "connects",
       "evidence": [
         {
-          "component": "DEX adapter installation",
+          "component": "DEX state adapter peer dependencies",
           "tool": "Cardano Multiplatform Library",
-          "relationship": "documents-integration",
-          "evidenceType": "documentation",
-          "qualification": "Installation requirement; no whole-application inference.",
+          "relationship": "declares-peer-dependency",
+          "evidenceType": "manifest",
+          "qualification": "Adapter directly declares CML browser/node peer dependencies; not a whole-application production claim.",
           "sources": [
             {
               "title": "WingRiders/dex-blockfrost-adapter / README.md",
@@ -21448,6 +21546,12 @@
               "sha256": "119f3cac964bd5fab8e0ff0ce4ef5cb10cf30c4d35232e6b84a02df3d948f3b7",
               "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
               "checked_on": "2026-10-22"
+            },
+            {
+              "title": "WingRiders/dex-blockfrost-adapter / package.json",
+              "url": "https://github.com/WingRiders/dex-blockfrost-adapter/blob/99a1c7106dfcc2c32ff62345991608f222ad92a8/package.json",
+              "source_commit": "99a1c7106dfcc2c32ff62345991608f222ad92a8",
+              "checked_on": "2026-11-13"
             }
           ]
         }
@@ -21524,30 +21628,6 @@
               "title": "SundaeSwap-finance/sundae-sdk / packages/core/package.json",
               "url": "https://github.com/SundaeSwap-finance/sundae-sdk/blob/9f032253e0711e3a308068ed55cc85b5de71a348/packages/core/package.json",
               "sha256": "9e3cd11ba4d2ef2eb986f7b43190e7c95e2d58df3426375a922b803d8a12e8c3",
-              "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
-              "source_commit_date": "2026-10-17T02:13:44Z",
-              "checked_on": "2026-10-22"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "source": "app-sundaeswap",
-      "target": "blockfrost",
-      "type": "connects",
-      "evidence": [
-        {
-          "component": "SDK swap guide",
-          "tool": "Blockfrost",
-          "relationship": "example-uses",
-          "evidenceType": "example",
-          "qualification": "Guide configuration; production provider unknown.",
-          "sources": [
-            {
-              "title": "SundaeSwap-finance/sundae-sdk / docs/guides/core/index.md",
-              "url": "https://github.com/SundaeSwap-finance/sundae-sdk/blob/9f032253e0711e3a308068ed55cc85b5de71a348/docs/guides/core/index.md",
-              "sha256": "2a275b29fa460b5a94e17f1889be8aa59e31e0be172afb384fe74c2f4005a99b",
               "source_commit": "9f032253e0711e3a308068ed55cc85b5de71a348",
               "source_commit_date": "2026-10-17T02:13:44Z",
               "checked_on": "2026-10-22"
@@ -21888,78 +21968,6 @@
       ]
     },
     {
-      "source": "app-liqwid-finance",
-      "target": "plutarch-quickcheck",
-      "type": "connects",
-      "evidence": [
-        {
-          "component": "Published testing utilities",
-          "tool": "plutarch-quickcheck",
-          "relationship": "documents-testing",
-          "evidenceType": "documentation",
-          "qualification": "Team tooling; not confirmed production dependency.",
-          "sources": [
-            {
-              "title": "Liqwid-Labs/liqwid-libs / README.md",
-              "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/README.md",
-              "sha256": "7fedca6c34639f75f9a7e2760d2ee87a38492e19df21d8bcc5d0685d1ff63f25",
-              "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
-              "source_commit_date": "2024-08-23T13:46:39Z",
-              "checked_on": "2026-10-22"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "source": "app-liqwid-finance",
-      "target": "plutarch-context-builder",
-      "type": "connects",
-      "evidence": [
-        {
-          "component": "Published testing utilities",
-          "tool": "plutarch-context-builder",
-          "relationship": "documents-testing",
-          "evidenceType": "documentation",
-          "qualification": "Test/context tooling; no production-stack inference.",
-          "sources": [
-            {
-              "title": "Liqwid-Labs/liqwid-libs / README.md",
-              "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/README.md",
-              "sha256": "7fedca6c34639f75f9a7e2760d2ee87a38492e19df21d8bcc5d0685d1ff63f25",
-              "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
-              "source_commit_date": "2024-08-23T13:46:39Z",
-              "checked_on": "2026-10-22"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "source": "app-liqwid-finance",
-      "target": "plutarch-unit",
-      "type": "connects",
-      "evidence": [
-        {
-          "component": "Published testing utilities",
-          "tool": "plutarch-unit",
-          "relationship": "documents-testing",
-          "evidenceType": "documentation",
-          "qualification": "Unit-test tooling; not a devnet.",
-          "sources": [
-            {
-              "title": "Liqwid-Labs/liqwid-libs / README.md",
-              "url": "https://github.com/Liqwid-Labs/liqwid-libs/blob/27c4b50edc39128a0506ed3ef0e065b270377def/README.md",
-              "sha256": "7fedca6c34639f75f9a7e2760d2ee87a38492e19df21d8bcc5d0685d1ff63f25",
-              "source_commit": "27c4b50edc39128a0506ed3ef0e065b270377def",
-              "source_commit_date": "2024-08-23T13:46:39Z",
-              "checked_on": "2026-10-22"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "source": "app-uverify",
       "target": "bloxbean-cardano-client-library",
       "type": "depends",
@@ -21994,78 +22002,6 @@
           "relationship": "declares-dependency",
           "evidenceType": "manifest",
           "qualification": "Indexer starters; README also describes indexing.",
-          "sources": [
-            {
-              "title": "UVerify-io/uverify-backend / pom.xml",
-              "url": "https://github.com/UVerify-io/uverify-backend/blob/cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865/pom.xml",
-              "sha256": "81b179efeac4de72fda3433b3cde727ac50b244d09e9fde3ef09bf997b172266",
-              "source_commit": "cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865",
-              "source_commit_date": "2026-09-24T06:24:54Z",
-              "checked_on": "2026-10-22"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "source": "app-uverify",
-      "target": "blockfrost",
-      "type": "connects",
-      "evidence": [
-        {
-          "component": "Java backend adapters",
-          "tool": "Blockfrost",
-          "relationship": "supports-integration",
-          "evidenceType": "manifest",
-          "qualification": "Backend adapter; active production provider unknown.",
-          "sources": [
-            {
-              "title": "UVerify-io/uverify-backend / pom.xml",
-              "url": "https://github.com/UVerify-io/uverify-backend/blob/cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865/pom.xml",
-              "sha256": "81b179efeac4de72fda3433b3cde727ac50b244d09e9fde3ef09bf997b172266",
-              "source_commit": "cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865",
-              "source_commit_date": "2026-09-24T06:24:54Z",
-              "checked_on": "2026-10-22"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "source": "app-uverify",
-      "target": "koios",
-      "type": "connects",
-      "evidence": [
-        {
-          "component": "Java backend adapters",
-          "tool": "Koios",
-          "relationship": "supports-integration",
-          "evidenceType": "manifest",
-          "qualification": "Backend adapter; active production provider unknown.",
-          "sources": [
-            {
-              "title": "UVerify-io/uverify-backend / pom.xml",
-              "url": "https://github.com/UVerify-io/uverify-backend/blob/cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865/pom.xml",
-              "sha256": "81b179efeac4de72fda3433b3cde727ac50b244d09e9fde3ef09bf997b172266",
-              "source_commit": "cb1fb2ecef3cee3fe63138898a99c7a5ae1e9865",
-              "source_commit_date": "2026-09-24T06:24:54Z",
-              "checked_on": "2026-10-22"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "source": "app-uverify",
-      "target": "ogmios",
-      "type": "connects",
-      "evidence": [
-        {
-          "component": "Java backend adapters",
-          "tool": "Ogmios",
-          "relationship": "supports-integration",
-          "evidenceType": "manifest",
-          "qualification": "Backend adapter; active production provider unknown.",
           "sources": [
             {
               "title": "UVerify-io/uverify-backend / pom.xml",
