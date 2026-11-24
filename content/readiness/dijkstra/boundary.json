@@ -2513,7 +2513,7 @@
             "transaction-encoding"
           ],
           "status": "gap",
-          "summary": "Body keys end at DONATION = 22 and the parser rejects bodies with any other key, so a Dijkstra transaction using keys 23-27 fails to parse.",
+          "summary": "Body keys end at DONATION = 22 and the parser rejects bodies with any other key, so a Dijkstra transaction using keys 23-27 fails to parse. Two open PRs from 2026-11-17/18 cover part of the Dijkstra encoding: #40 parses and serialises guards in the credentials encoding (key 14) and #39 the optional pool BLS key; neither adds body keys 23-27.",
           "evidence": [
             {
               "kind": "source",
@@ -2530,6 +2530,20 @@
               "path": "src/txParsers.ts",
               "line": 1152,
               "quote": "    ParseErrorReason.INVALID_TX_BODY_UNKNOWN_ITEMS,"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/vacuumlabs/cardano-hw-interop-lib/pull/40",
+              "title": "Support guards in the credentials encoding (CIP-112)",
+              "state": "open",
+              "date": "2026-11-24"
+            },
+            {
+              "kind": "tracker",
+              "url": "https://github.com/vacuumlabs/cardano-hw-interop-lib/pull/39",
+              "title": "feat: support the optional BLS key in pool registration certificates",
+              "state": "open",
+              "date": "2026-11-24"
             }
           ]
         }

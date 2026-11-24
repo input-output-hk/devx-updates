@@ -451,10 +451,18 @@ tools:
     links:
       - url: https://github.com/vacuumlabs/cardano-hw-interop-lib/issues/38
         note: Checklist of what's left for Dijkstra
+      - url: https://github.com/vacuumlabs/cardano-hw-interop-lib/pull/40
+        note: Guards in the credentials encoding (CIP-112); not the new body keys 23-27
+      - url: https://github.com/vacuumlabs/cardano-hw-interop-lib/pull/39
+        note: Optional pool BLS key
   cardano-hw-cli:
     links:
       - url: https://github.com/vacuumlabs/cardano-hw-cli/issues/219
         note: Checklist of what's left for Dijkstra
+      - url: https://github.com/vacuumlabs/cardano-hw-cli/pull/221
+        note: Dijkstra guards (CIP-112)
+      - url: https://github.com/vacuumlabs/cardano-hw-cli/pull/220
+        note: Optional pool BLS key
   cometa-js:
     unreleased:
       note: "2.0.0-rc.4 (release candidate) has Dijkstra builders, sub-transactions, PlutusV4 and the new protocol parameters; the pool BLS key is missing."

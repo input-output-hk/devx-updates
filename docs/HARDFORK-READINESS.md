@@ -28,7 +28,7 @@ The register formats and findings are in
 | Area | File | State |
 | --- | --- | --- |
 | Changes | `changes.json` | 20 changes and 2 unchanged areas; 74 change citations, re-read at the 11.2.1 revisions |
-| Boundary | `boundary.json` | 61 components, 279 evidence items; 44 gap, 3 no-evidence, 10 in-progress, 4 released |
+| Boundary | `boundary.json` | 61 components, 281 evidence items; 44 gap, 3 no-evidence, 10 in-progress, 4 released |
 | Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source; 62 revisions changed |
 | Transitive links | `transitive.json` | 27 lockfile-only component links in 26 tools |
 | Leads | `leads.json` | 732 entries, 1,631 surface decisions (590 confirmed, 1,000 not reached, 41 undetermined); none unreviewed, stale or orphaned |
