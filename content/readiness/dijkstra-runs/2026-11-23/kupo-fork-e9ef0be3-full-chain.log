@@ -1,0 +1,22 @@
+# 2026-11-24: IntersectMBO/kupo master e9ef0be33abe5f702848536e70b75972011a9fa7 (PR #19), forks.sh kupo on the relayed 2026-11-23 chain (tip slot 47773)
+# build: nix build of #kupo from cache.iog.io, kupo --version "nightly+e9ef0b", bin/kupo sha256 de33635ee8d6c1826c41399b861b6e94b512d67071f1527629cd22bc5c7c3496
+adv-split: 8 outputs indexed
+conway-legacy-reg: 0 outputs indexed
+conway-metadata: 1 outputs indexed
+conway-payment: 1 outputs indexed
+conway-reg-with-deposit: 1 outputs indexed
+conway-required-signer: 1 outputs indexed
+dijkstra-balance-interval: 1 outputs indexed
+dijkstra-balance-interval-unmet: 0 outputs indexed
+dijkstra-direct-deposit: 1 outputs indexed
+dijkstra-metadata: 1 outputs indexed
+dijkstra-native-guard: 1 outputs indexed
+dijkstra-payment: 1 outputs indexed
+dijkstra-plutusv4-guard: 1 outputs indexed
+dijkstra-plutusv4-reference-script: 1 outputs indexed
+dijkstra-reg-with-deposit: 1 outputs indexed
+dijkstra-sub-transaction: 1 outputs indexed
+split: 10 outputs indexed
+last logged roll-forward slot: 47773
+# sub-transaction output (matches/*@02cfa999...)
+{"transaction_id":"02cfa999c835380f0f9953ff903b39f0aff5954473432fd40b73f974e6b384d4","output_index":0,"value":{"coins":"50000000","assets":{}},"created_at":3612,"spent_at":{"slot_no":11844,"transaction_id":"486c36425dcd2174fff43635c6263e80980b352d369d94a1c17bd0ad00c5c688","top_level_transaction_id":null}}

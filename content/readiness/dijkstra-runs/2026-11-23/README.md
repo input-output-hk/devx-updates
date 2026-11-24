@@ -29,6 +29,21 @@ Its CLI adds the options for guards and account balance intervals, so this run e
 | blockfrost-platform | 1.0.0, main d5a48256 | Unchanged: 1.0.0 cannot connect; main rejects every three-element transaction. |
 | txtop, Aiken | v0.17.0 (+ gouroboros v0.221.0), v1.1.24 | Unchanged. |
 
+## Fork rerun (2026-11-24)
+
+The IntersectMBO forks moved after this run: Ogmios merged the Dijkstra protocol-parameters query (PR #41, master
+`20c383a2`) and Kupo merged sub-transaction indexing (PR #19, master `e9ef0be3`). Both were rebuilt from cache.iog.io and
+run against this run's chain, served by `forks.sh relay` (the chain had grown to block 2423, slot 47773; cardano-testnet
+cannot restart an old chain). The `54bb8c1c` and `ee51691d` logs above are kept as they were.
+
+| Fork | Result |
+| --- | --- |
+| Ogmios `20c383a2` | Chain sync from origin to the tip with every Dijkstra field, as before. **Protocol parameters now answer**: all 54 node parameters (53 Ogmios fields: the three reference-script fee parameters are one object, and a zero `minUtxoDepositConstant` is added), including the Leios and Peras parameters, `refInputsCostPerMultiAssetPolicy` and a 251-entry PlutusV4 cost model, with the node's values. `ogmios-api` passes against the relay: evaluate (payment and PlutusV4 guard), submit, mempool, resubmission error. |
+| Kupo `e9ef0be3` | **Indexes the whole chain to the tip** (`ee51691d` stopped at the first sub-transaction). Every test transaction has the outputs Ogmios reports, and the sub-transaction's own output (`02cfa999…`) is indexed with its later spend. |
+| Versioned configuration | Kupo `e9ef0be3` reads the node's `configuration.yaml` (Kupo PR #23) and syncs to the tip. Ogmios `20c383a2` does not: it exits with "Missing 'ByronGenesisFile' and/or 'ShelleyGenesisFile'". |
+
+Neither fork's work is merged upstream or released.
+
 ## Files
 
 - `transactions-labeled.txt`, `transaction-ids.json`: 32 envelope and mempool encodings; every mempool id matches its
@@ -46,6 +61,8 @@ Its CLI adds the options for guards and account balance intervals, so this run e
 - `ccl-e2e-*.log`: QuickTx built, signed and submitted through cardano-submit-api 11.2.1. In `ccl-e2e-dups.log`, 0.7.3's
   QuickTx merged the two outputs of the first lock into one, so it was locked again before the spend.
 - `ogmios-fork-*.log`, `ogmios-fork-dijkstra-transactions.json`, `kupo-fork-full-chain.log`: the IntersectMBO forks.
+  The `-20c383a2`/`-e9ef0be3` files and `forks-versioned-config.log` are the 2026-11-24 fork rerun;
+  `ogmios-fork-20c383a2-protocol-parameters.json` is Ogmios's full protocol-parameters answer.
 - `blockfrost-*.log`, `platform-*.log`: Blockfrost RYO v7.0.1 and blockfrost-platform. `blockfrost-resume.log` is this
   experiment's workaround (adding `plutusV4` to db-sync's enum), not a fix.
 - `aiken/results.json`: the offline Aiken runner against v1.1.24; identical to 2026-11-09 apart from the timestamp.
@@ -54,6 +71,6 @@ Its CLI adds the options for guards and account balance intervals, so this run e
   image digests and binary hashes.
 - `manifest.json`: SHA256 for every retained file. Testnet signing keys, mnemonics and chain databases are excluded.
 
-Not run: Koios, required top-level guards, the historical patched gouroboros controls and cardano-node-api, and Ogmios
-and Kupo against the versioned configuration. Source releases are not runtime verification; transaction ids, slots and
+Not run: Koios, required top-level guards, the historical patched gouroboros controls and cardano-node-api, and the
+Ogmios v7.0.0 and Kupo v2.12 releases against the versioned configuration. Source releases are not runtime verification; transaction ids, slots and
 block counts are specific to this devnet.

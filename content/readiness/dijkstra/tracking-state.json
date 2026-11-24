@@ -138,6 +138,13 @@
    "checked": "2026-11-24",
    "forkOf": "CardanoSolutions/kupo"
   },
+  "https://github.com/IntersectMBO/kupo/pull/19": {
+   "kind": "pull",
+   "title": "Index Dijkstra sub-transactions",
+   "state": "merged",
+   "checked": "2026-11-24",
+   "forkOf": "CardanoSolutions/kupo"
+  },
   "https://github.com/IntersectMBO/kupo/pull/9": {
    "kind": "pull",
    "title": "Support Dijkstra blocks and move to node 11.1",
@@ -193,6 +200,13 @@
   "https://github.com/IntersectMBO/ogmios/pull/24": {
    "kind": "pull",
    "title": "Fix two dijkstra tx submission bugs",
+   "state": "merged",
+   "checked": "2026-11-24",
+   "forkOf": "CardanoSolutions/ogmios"
+  },
+  "https://github.com/IntersectMBO/ogmios/pull/41": {
+   "kind": "pull",
+   "title": "Add support for querying protocol parameters in Dijkstra",
    "state": "merged",
    "checked": "2026-11-24",
    "forkOf": "CardanoSolutions/ogmios"

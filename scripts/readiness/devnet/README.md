@@ -90,13 +90,13 @@ socket paths are limited to 108 bytes.
     for Yaci 0.5.x (`nix shell nixpkgs#jdk25 nixpkgs#maven`).
 
 13. Forks (added 2026-11-10). `forks.sh build` builds the IntersectMBO forks of Ogmios and Kupo at pinned commits
-    (Ogmios `54bb8c1c`, Kupo `ee51691d` on 2026-11-23; native builds come from cache.iog.io; Ogmios is fetched with its
-    git submodules). `forks.sh relay [BLOCK]` serves an existing chain with a plain node, which
+    (Ogmios `20c383a2`, Kupo `e9ef0be3`, rerun on 2026-11-24; the 2026-11-23 run used `54bb8c1c` and `ee51691d`, which
+    `OGMIOS_COMMIT` and `KUPO_COMMIT` select. Native builds come from cache.iog.io; Ogmios is fetched with its git submodules). `forks.sh relay [BLOCK]` serves an existing chain with a plain node, which
     does not extend it: cardano-testnet stops when an old chain cannot grow. With BLOCK, the chain is first truncated
     after that block. `forks.sh ogmios <transaction-ids.json>` syncs from origin through Ogmios with
     `ogmios-probe/probe.mjs` and runs the ledger queries. `forks.sh kupo [<transaction-ids.json>]` indexes from origin;
     with the ids, and once Kupo reaches the tip, it lists how many outputs Kupo indexed for each test transaction.
-    `forks.sh ogmios-api` (live chain only, added 2026-11-23) builds a fresh payment and a PlutusV4 guard spend, then
+    `forks.sh ogmios-api` (added 2026-11-23; live chain, or under `forks.sh relay`, whose mempool still validates) builds a fresh payment and a PlutusV4 guard spend, then
     runs `ogmios-probe/api.mjs`: evaluate both, submit the payment, follow it in the mempool and submit it again.
 
 14. Blockfrost (added 2026-11-11). On the live chain, after `advanced.sh`, `blockfrost.sh spend-sub` spends the

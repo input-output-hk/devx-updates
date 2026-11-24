@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-24T13:46:16.144Z",
+ "generatedAt": "2026-11-24T15:44:44.376Z",
  "rulesDigest": "259035e3c762db7e45c29d850d85a4af0a639858492d7c57f121999c9c9e6eaf",
  "changeTarget": {
   "name": "Dijkstra",
@@ -403,7 +403,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 4,
        "scope": "shipped"
       }
@@ -1961,7 +1961,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 1,
        "scope": "shipped"
       }
@@ -3010,7 +3010,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 8,
        "scope": "shipped"
       }
@@ -3106,7 +3106,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 95,
        "scope": "shipped"
       },
@@ -5346,7 +5346,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 23,
        "scope": "shipped"
       }
@@ -5421,7 +5421,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 4,
        "scope": "shipped"
       },
@@ -6191,7 +6191,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 106,
        "scope": "shipped"
       }
@@ -6294,7 +6294,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 37,
        "scope": "shipped"
       },
@@ -7014,7 +7014,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 91,
        "scope": "shipped"
       }
@@ -7879,7 +7879,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 1,
        "scope": "auxiliary"
       }
@@ -8709,7 +8709,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 82,
        "scope": "shipped"
       }
@@ -8826,7 +8826,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 77,
        "scope": "shipped"
       },
@@ -11093,12 +11093,12 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 125,
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "in-progress"
     },
     {
      "surface": "stake-pool-registration",
@@ -11210,7 +11210,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 81,
        "scope": "shipped"
       },
@@ -11229,7 +11229,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "in-progress"
     },
     {
      "surface": "transaction-rules",
@@ -12066,7 +12066,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 49,
        "scope": "shipped"
       },
@@ -12078,7 +12078,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "in-progress"
     },
     {
      "surface": "transaction-rules",
@@ -12582,7 +12582,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 14,
        "scope": "shipped"
       }
@@ -12643,7 +12643,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 17,
        "scope": "shipped"
       },
@@ -13995,7 +13995,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 72,
        "scope": "shipped"
       }
@@ -14077,7 +14077,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 76,
        "scope": "shipped"
       },
@@ -15181,7 +15181,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 9,
        "scope": "shipped"
       }
@@ -15284,7 +15284,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 76,
        "scope": "shipped"
       },
@@ -16082,7 +16082,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 76,
        "scope": "shipped"
       }
@@ -16171,7 +16171,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 85,
        "scope": "shipped"
       },
@@ -16919,7 +16919,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
       }
@@ -16987,7 +16987,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 5,
        "scope": "shipped"
       },
@@ -16999,7 +16999,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "no-evidence"
     },
     {
      "surface": "transaction-rules",
@@ -17670,7 +17670,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
       }
@@ -17787,7 +17787,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 1,
        "scope": "shipped"
       },
@@ -19517,7 +19517,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 54,
        "scope": "shipped"
       }
@@ -20932,7 +20932,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 74,
        "scope": "shipped"
       }
@@ -21014,7 +21014,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 21,
        "scope": "shipped"
       },
@@ -21718,7 +21718,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 76,
        "scope": "shipped"
       }
@@ -21800,7 +21800,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 32,
        "scope": "shipped"
       },
@@ -22358,12 +22358,12 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 3,
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "no-evidence"
     },
     {
      "surface": "stake-pool-registration",
@@ -23317,7 +23317,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 1,
        "scope": "shipped"
       }
@@ -24142,7 +24142,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 6,
        "scope": "shipped"
       }
@@ -24804,7 +24804,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 17,
        "scope": "shipped"
       }
@@ -25866,7 +25866,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 3,
        "scope": "shipped"
       }
@@ -25955,7 +25955,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 1,
        "scope": "shipped"
       },
@@ -26636,7 +26636,7 @@
       {
        "channel": "implements",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 0,
        "scope": "shipped"
       },
@@ -26655,7 +26655,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "in-progress"
     },
     {
      "surface": "transaction-encoding",
@@ -27709,12 +27709,12 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 10,
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "in-progress"
     },
     {
      "surface": "stake-pool-registration",
@@ -29155,12 +29155,12 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "in-progress"
     },
     {
      "surface": "stake-pool-registration",
@@ -29838,7 +29838,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 104,
        "scope": "auxiliary"
       }
@@ -31853,12 +31853,12 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 44,
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "in-progress"
     },
     {
      "surface": "transaction-encoding",
@@ -31866,7 +31866,7 @@
       {
        "channel": "implements",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 0,
        "scope": "shipped"
       },
@@ -31892,7 +31892,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "in-progress"
     },
     {
      "surface": "transaction-rules",
@@ -36490,7 +36490,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 9,
        "scope": "auxiliary"
       }
@@ -37654,7 +37654,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 312,
        "scope": "shipped"
       },
@@ -37813,7 +37813,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 230,
        "scope": "shipped"
       },
@@ -39580,7 +39580,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 13,
        "scope": "shipped"
       }
@@ -42059,7 +42059,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 5,
        "scope": "shipped"
       }
@@ -43696,7 +43696,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 10,
        "scope": "shipped"
       }
@@ -44374,12 +44374,12 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 7,
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "in-progress"
     },
     {
      "surface": "stake-pool-registration",
@@ -44442,7 +44442,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 4,
        "scope": "shipped"
       },
@@ -45068,7 +45068,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 269,
        "scope": "shipped"
       },
@@ -48424,7 +48424,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 8,
        "scope": "shipped"
       }
@@ -48506,7 +48506,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 5,
        "scope": "shipped"
       },
@@ -49203,7 +49203,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 12,
        "scope": "shipped"
       },
@@ -49884,7 +49884,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 12,
        "scope": "shipped"
       },
@@ -50713,7 +50713,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 3,
        "scope": "shipped"
       },
@@ -51501,7 +51501,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 7,
        "scope": "shipped"
       }
@@ -51583,7 +51583,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 4,
        "scope": "shipped"
       },
@@ -53619,7 +53619,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 21,
        "scope": "shipped"
       }
@@ -55276,7 +55276,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 6,
        "scope": "shipped"
       }
@@ -55951,7 +55951,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 8,
        "scope": "shipped"
       },
@@ -56012,7 +56012,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 24,
        "scope": "shipped"
       },
@@ -56582,7 +56582,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
       },
@@ -57272,7 +57272,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 17,
        "scope": "shipped"
       }
@@ -59178,7 +59178,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 4,
        "scope": "shipped"
       }
@@ -59755,7 +59755,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 11,
        "scope": "shipped"
       }
@@ -59809,7 +59809,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 10,
        "scope": "shipped"
       },
@@ -60564,7 +60564,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 29,
        "scope": "shipped"
       },
@@ -64534,7 +64534,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 24,
        "scope": "shipped"
       },
@@ -65782,7 +65782,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
       }
@@ -65822,7 +65822,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 6,
        "scope": "shipped"
       },
@@ -66192,7 +66192,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 6,
        "scope": "shipped"
       }
@@ -66239,7 +66239,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 6,
        "scope": "shipped"
       },
@@ -73925,7 +73925,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 10,
        "scope": "shipped"
       }
@@ -74007,7 +74007,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 19,
        "scope": "shipped"
       },
@@ -74645,7 +74645,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 2,
        "scope": "shipped"
       }
@@ -74706,7 +74706,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 5,
        "scope": "shipped"
       },
@@ -74718,7 +74718,7 @@
        "scope": "shipped"
       }
      ],
-     "readiness": "gap"
+     "readiness": "no-evidence"
     },
     {
      "surface": "transaction-rules",
@@ -75228,7 +75228,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 104,
        "scope": "shipped"
       }
@@ -75261,7 +75261,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 70,
        "scope": "shipped"
       },
@@ -75617,7 +75617,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 50,
        "scope": "shipped"
       }
@@ -75957,304 +75957,6 @@
    "activity": {
     "archived": false,
     "pushedAt": "2026-11-22T12:56:06Z"
-   }
-  },
-  {
-   "id": "libcardano",
-   "repo": "ViperScience/libcardano",
-   "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
-   "scan": {
-    "status": "scanned",
-    "files": 108,
-    "skipped": 20
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:segregated-block-body",
-       "readiness": "unassessed",
-       "lines": 12,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-configuration",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:genesis-config",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "auxiliary"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 12,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "stake-pool-registration",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:pool-registration",
-       "readiness": "unassessed",
-       "lines": 64,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "unassessed"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:legacy-stake-certificate",
-       "readiness": "unassessed",
-       "lines": 33,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 1,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:closed-era-list",
-     "files": 2,
-     "lines": 0,
-     "auxLines": 0,
-     "docLines": 2,
-     "examples": [
-      {
-       "path": "README.md",
-       "line": 16,
-       "quote": "libcardano is an **offline** SDK: it focuses on key management, address derivation, and transaction construction, signing, and (de)serialization. It does **not** include node networking or chain synch"
-      },
-      {
-       "path": "docs/pages/main_page.md",
-       "line": 9,
-       "quote": "Libcardano is an **offline** SDK: it focuses on key management, address derivation, and transaction construction, signing, and (de)serialization. It does **not** include node networking or chain synch"
-      }
-     ]
-    },
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 3,
-     "lines": 12,
-     "auxLines": 2,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "include/cardano/genesis.hpp",
-       "line": 260,
-       "quote": "/// Struct for execution units (maxTxExUnits, maxBlockExUnits)"
-      },
-      {
-       "path": "include/cardano/genesis.hpp",
-       "line": 271,
-       "quote": "struct CostModels"
-      },
-      {
-       "path": "include/cardano/genesis.hpp",
-       "line": 275,
-       "quote": "friend auto to_json(json& j, const CostModels& cm) -> void;"
-      }
-     ]
-    },
-    {
-     "rule": "marker:genesis-config",
-     "files": 1,
-     "lines": 0,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "test/test_cardano_genesis_api.cpp",
-       "line": 50,
-       "quote": "const auto params = cardano::conway::GenesisParameters::fromFile(\"data/genesis/conway-genesis.json\");"
-      }
-     ]
-    },
-    {
-     "rule": "marker:legacy-stake-certificate",
-     "files": 5,
-     "lines": 33,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "include/cardano/ledger.hpp",
-       "line": 762,
-       "quote": "///     stake_registration = (0, stake_credential)"
-      },
-      {
-       "path": "include/cardano/ledger.hpp",
-       "line": 764,
-       "quote": "struct StakeRegistration"
-      },
-      {
-       "path": "include/cardano/ledger.hpp",
-       "line": 771,
-       "quote": "};  // StakeRegistration"
-      }
-     ]
-    },
-    {
-     "rule": "marker:pool-registration",
-     "files": 7,
-     "lines": 64,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "include/cardano/ledger.hpp",
-       "line": 673,
-       "quote": "///     pool_params = ( operator:       pool_keyhash"
-      },
-      {
-       "path": "include/cardano/ledger.hpp",
-       "line": 684,
-       "quote": "struct PoolParams"
-      },
-      {
-       "path": "include/cardano/ledger.hpp",
-       "line": 810,
-       "quote": "///     pool_registration = (3, pool_params)"
-      }
-     ]
-    },
-    {
-     "rule": "marker:segregated-block-body",
-     "files": 1,
-     "lines": 12,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "include/cardano/ledger.hpp",
-       "line": 1128,
-       "quote": "///       , transaction_bodies         : [* transaction_body]"
-      },
-      {
-       "path": "include/cardano/ledger.hpp",
-       "line": 1129,
-       "quote": "///       , transaction_witness_sets   : [* transaction_witness_set]"
-      },
-      {
-       "path": "include/cardano/ledger.hpp",
-       "line": 1133,
-       "quote": "///        ; 1) the length of transaction_bodies and transaction_witness_sets"
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 5,
-     "lines": 1,
-     "auxLines": 1,
-     "docLines": 4,
-     "examples": [
-      {
-       "path": "include/cardano/transaction.hpp",
-       "line": 94,
-       "quote": "/// @brief Provide de-serialization from JSON, i.e., Ogmios."
-      },
-      {
-       "path": "examples/build_transaction/main.cpp",
-       "line": 78,
-       "quote": "// Ogmios, or a service like Blockfrost)."
-      },
-      {
-       "path": "README.md",
-       "line": 166,
-       "quote": "* [nlohmann/json](https://github.com/nlohmann/json): JSON for Modern C++. Used by libcardano to parse JSON data such as Ogmios UTxO output."
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-06-14T23:57:06Z"
    }
   },
   {
@@ -76650,7 +76352,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 57,
        "scope": "shipped"
       }
@@ -76711,7 +76413,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 15,
        "scope": "shipped"
       },
@@ -77554,7 +77256,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 8,
        "scope": "shipped"
       },
@@ -78084,7 +77786,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 2,
        "scope": "auxiliary"
       }
@@ -78272,7 +77974,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 3,
        "scope": "shipped"
       }
@@ -78353,259 +78055,6 @@
    "activity": {
     "archived": false,
     "pushedAt": "2026-03-16T13:16:12Z"
-   }
-  },
-  {
-   "id": "cab",
-   "repo": "WingRiders/cab",
-   "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
-   "scan": {
-    "status": "scanned",
-    "files": 184,
-    "skipped": 0
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 22,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 14,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 14,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 14,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 9,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 14,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 6,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 14,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:legacy-stake-certificate",
-       "readiness": "unassessed",
-       "lines": 15,
-       "scope": "shipped"
-      },
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 22,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 14,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 2,
-     "lines": 6,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/ledger/transaction/costModel.ts",
-       "line": 11,
-       "quote": "// ;     For example, the script_integrity_data corresponding to the all zero costmodel for V1"
-      },
-      {
-       "path": "src/ledger/transaction/costModel.ts",
-       "line": 20,
-       "quote": "// ;     For example, the script_integrity_data corresponding to the all zero costmodel for V2"
-      },
-      {
-       "path": "src/ledger/transaction/costModel.ts",
-       "line": 28,
-       "quote": "costModels: ProtocolParameters['plutusCostModels']"
-      }
-     ]
-    },
-    {
-     "rule": "marker:legacy-stake-certificate",
-     "files": 6,
-     "lines": 15,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/ledger/transaction/cbor/cborize.ts",
-       "line": 139,
-       "quote": "TxCertificateKey.STAKE_REGISTRATION,"
-      },
-      {
-       "path": "src/ledger/transaction/cbor/cborize.ts",
-       "line": 146,
-       "quote": "TxCertificateKey.STAKE_DEREGISTRATION,"
-      },
-      {
-       "path": "src/ledger/transaction/cbor/cborize.ts",
-       "line": 172,
-       "quote": "case TxCertificateType.STAKE_REGISTRATION:"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 1,
-     "lines": 9,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/types/transaction.ts",
-       "line": 62,
-       "quote": "PLUTUS_V3 = 3,"
-      },
-      {
-       "path": "src/types/transaction.ts",
-       "line": 166,
-       "quote": "PLUTUSV3 = 2,"
-      },
-      {
-       "path": "src/types/transaction.ts",
-       "line": 241,
-       "quote": "PlutusScriptV3 = 'PlutusScriptV3',"
-      }
-     ]
-    },
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 28,
-     "lines": 22,
-     "auxLines": 7,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "declarations.d.ts",
-       "line": 1,
-       "quote": "declare module 'borc' {"
-      },
-      {
-       "path": "package.json",
-       "line": 60,
-       "quote": "\"borc\": \"^3.0.0\","
-      },
-      {
-       "path": "src/crypto/JsCryptoProvider.ts",
-       "line": 3,
-       "quote": "import {encode} from 'borc'"
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 13,
-     "lines": 14,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "package.json",
-       "line": 69,
-       "quote": "\"@cardano-ogmios/schema\": \"^6.10.0\","
-      },
-      {
-       "path": "src/dataProvider/index.ts",
-       "line": 5,
-       "quote": "import {PointOrOrigin, RewardAccountSummary, Utxo as OgmiosUTxO} from '@cardano-ogmios/schema'"
-      },
-      {
-       "path": "src/helpers/exUnits.ts",
-       "line": 1,
-       "quote": "import {ExecutionUnits} from '@cardano-ogmios/schema'"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2025-02-14T08:46:47Z"
    }
   },
   {
@@ -79382,346 +78831,6 @@
    }
   },
   {
-   "id": "iris",
-   "repo": "IndigoProtocol/iris",
-   "revision": "c9c85b18ebfb7045552c02842cf5259403939ad0",
-   "scan": {
-    "status": "scanned",
-    "files": 287,
-    "skipped": 1
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 75,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 75,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 75,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 75,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 75,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:raw-cbor-codec",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 75,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:raw-cbor-codec",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "package.json",
-       "line": 50,
-       "quote": "\"cbor-x\": \"^1.6.0\","
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 67,
-     "lines": 75,
-     "auxLines": 0,
-     "docLines": 3,
-     "examples": [
-      {
-       "path": "package.json",
-       "line": 29,
-       "quote": "\"@cardano-ogmios/client\": \"^6.9.0\","
-      },
-      {
-       "path": "src/IndexerApplication.ts",
-       "line": 7,
-       "quote": "} from '@cardano-ogmios/client';"
-      },
-      {
-       "path": "src/IndexerApplication.ts",
-       "line": 8,
-       "quote": "import { Block, TipOrOrigin, Point, PointOrOrigin, BlockPraos } from '@cardano-ogmios/schema';"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": true,
-    "pushedAt": "2026-10-24T08:25:49Z"
-   }
-  },
-  {
-   "id": "kogmios",
-   "repo": "projectNEWM/kogmios",
-   "revision": "f0160af84d18a5669f721b0cd0c032847c316c6b",
-   "scan": {
-    "status": "scanned",
-    "files": 297,
-    "skipped": 14
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 35,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:closed-era-list",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 35,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:node-to-client",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 35,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 35,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 35,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 35,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:closed-era-list",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/main/kotlin/io/newm/kogmios/StateQueryClient.kt",
-       "line": 94,
-       "quote": "* Get the genesis configuration for any era: \"byron\", \"shelley\", \"alonzo\", \"conway\""
-      }
-     ]
-    },
-    {
-     "rule": "marker:node-to-client",
-     "files": 2,
-     "lines": 2,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/main/kotlin/io/newm/kogmios/protocols/messages/MsgAcquire.kt",
-       "line": 10,
-       "quote": "* Acquire a ledger state for the Local State Query miniprotocol. If you don't specify a ChainPoint argument,"
-      },
-      {
-       "path": "src/main/kotlin/io/newm/kogmios/protocols/messages/MsgRelease.kt",
-       "line": 6,
-       "quote": "* Release the Acquired ledger state for the Local State Query miniprotocol."
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/main/kotlin/io/newm/kogmios/protocols/model/PlutusCostModels.kt",
-       "line": 16,
-       "quote": "val plutusV3: List<BigInteger>? = null,"
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 39,
-     "lines": 35,
-     "auxLines": 11,
-     "docLines": 5,
-     "examples": [
-      {
-       "path": "build.gradle.kts",
-       "line": 68,
-       "quote": "description.set(\"Kotlin Wrapper for Ogmios\")"
-      },
-      {
-       "path": "src/main/kotlin/io/newm/kogmios/Client.kt",
-       "line": 10,
-       "quote": "* Open a connection to the Ogmios server. Must be called before other query methods"
-      },
-      {
-       "path": "src/main/kotlin/io/newm/kogmios/Client.kt",
-       "line": 21,
-       "quote": "* Shutdown and disconnect from the Ogmios server"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-09-17T03:36:17Z"
-   }
-  },
-  {
    "id": "koios-cli",
    "repo": "cardano-community/koios-cli",
    "revision": "f6cd77d0b6f44e8ee04f2c5f7f7a59ebf86f5867",
@@ -79805,7 +78914,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 7,
        "scope": "shipped"
       }
@@ -79972,7 +79081,7 @@
       {
        "channel": "service",
        "via": "ogmios",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 4,
        "scope": "shipped"
       }
@@ -80072,359 +79181,6 @@
    "activity": {
     "archived": false,
     "pushedAt": "2024-03-02T18:34:46Z"
-   }
-  },
-  {
-   "id": "ogmiosdotnet",
-   "repo": "ItsDaveB/OgmiosDotnet",
-   "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
-   "scan": {
-    "status": "scanned",
-    "files": 3295,
-    "skipped": 0
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 16945,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:closed-era-list",
-       "readiness": "unassessed",
-       "lines": 24,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 16945,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 16945,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:plutus-language-enum",
-       "readiness": "unassessed",
-       "lines": 2,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 16945,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:cost-models-or-parameters",
-       "readiness": "unassessed",
-       "lines": 309,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 16945,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 16945,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:closed-era-list",
-     "files": 12,
-     "lines": 24,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
-       "line": 163,
-       "quote": ", \"enum\": [ \"shelley\", \"allegra\", \"mary\", \"alonzo\", \"babbage\", \"conway\" ]"
-      },
-      {
-       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
-       "line": 934,
-       "quote": ", \"enum\": [ \"byron\", \"shelley\", \"allegra\", \"mary\", \"alonzo\", \"babbage\", \"conway\" ]"
-      },
-      {
-       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
-       "line": 940,
-       "quote": ", \"enum\": [ \"byron\", \"shelley\", \"alonzo\", \"conway\" ]"
-      }
-     ]
-    },
-    {
-     "rule": "marker:cost-models-or-parameters",
-     "files": 18,
-     "lines": 309,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
-       "line": 769,
-       "quote": ", \"CostModels\":"
-      },
-      {
-       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
-       "line": 770,
-       "quote": "{ \"title\": \"CostModels\""
-      },
-      {
-       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
-       "line": 772,
-       "quote": ", \"additionalProperties\": { \"$ref\": \"cardano.json#/definitions/CostModel\" }"
-      }
-     ]
-    },
-    {
-     "rule": "marker:plutus-language-enum",
-     "files": 2,
-     "lines": 2,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/Ogmios.Schema/Ogmios/v6.14/Generated/Language.Validate.cs",
-       "line": 98,
-       "quote": "public static Language PlutusV3 { get; } = CorvusValidation.Enum3.As<Language>();"
-      },
-      {
-       "path": "src/Ogmios.Schema/Ogmios/v6.14/Generated/Script.Plutus.LanguageEntity.Validate.cs",
-       "line": 109,
-       "quote": "public static LanguageEntity PlutusV3 { get; } = CorvusValidation.Enum3.As<LanguageEntity>();"
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 2933,
-     "lines": 16945,
-     "auxLines": 176,
-     "docLines": 163,
-     "examples": [
-      {
-       "path": ".github/workflows/publish.yml",
-       "line": 24,
-       "quote": "dotnet restore ./src/Ogmios.Domain/Ogmios.Domain.csproj"
-      },
-      {
-       "path": ".github/workflows/publish.yml",
-       "line": 25,
-       "quote": "dotnet restore ./src/Ogmios.Schema/Ogmios.Schema.csproj"
-      },
-      {
-       "path": ".github/workflows/publish.yml",
-       "line": 26,
-       "quote": "dotnet restore ./src/Ogmios.Services/Ogmios.Services.csproj"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-06-14T08:45:17Z"
-   }
-  },
-  {
-   "id": "ogmiosdotnet-blockchainevents",
-   "repo": "ItsDaveB/OgmiosDotnet.BlockchainEvents",
-   "revision": "7b35ff2d40d14d3c44dc734d159e3ddb01de66a1",
-   "scan": {
-    "status": "scanned",
-    "files": 144,
-    "skipped": 8
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 28,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 28,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 28,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 28,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 28,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:legacy-stake-certificate",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 28,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:legacy-stake-certificate",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "src/BlockchainEvents.Engine/Rules/GovernanceTreasuryRule.cs",
-       "line": 36,
-       "quote": "if (options.Value.IncludeStakeRegistrations && transaction.HasStakeRegistration) matchTypes.Add(\"stake_registration\");"
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 27,
-     "lines": 28,
-     "auxLines": 3,
-     "docLines": 39,
-     "examples": [
-      {
-       "path": "Directory.Build.props",
-       "line": 13,
-       "quote": "<PackageTags>cardano;ogmios;blockchain;events;cloudevents;filtering</PackageTags>"
-      },
-      {
-       "path": "dapr/secrets/secrets.json",
-       "line": 2,
-       "quote": "\"ogmios\": {"
-      },
-      {
-       "path": "dapr/secrets/secrets.json",
-       "line": 3,
-       "quote": "\"host\": \"ogmios\","
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-08-08T21:13:25Z"
    }
   },
   {
@@ -80559,7 +79315,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 3,
        "scope": "shipped"
       },
@@ -81148,328 +79904,6 @@
    }
   },
   {
-   "id": "veridian-wallet",
-   "repo": "veridian-id/veridian-wallet",
-   "revision": "ed015b12142a58e5112f814bfe1c56e7d999322c",
-   "scan": {
-    "status": "scanned",
-    "files": 1431,
-    "skipped": 118
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 5,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 5,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "service:node-socket",
-       "readiness": "upstream",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 5,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "upstream"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 5,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 5,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 5,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "service:node-socket",
-     "files": 1,
-     "lines": 1,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "docker-compose.production.cardano-witnesses.yaml",
-       "line": 53,
-       "quote": "\"--node-socket\", \"/ipc/node.socket\","
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 2,
-     "lines": 5,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "docker-compose.production.cardano-witnesses.yaml",
-       "line": 15,
-       "quote": "- OGMIOS_HOST=${OGMIOS_HOST:-ogmios}"
-      },
-      {
-       "path": "docker-compose.production.cardano-witnesses.yaml",
-       "line": 47,
-       "quote": "ogmios:"
-      },
-      {
-       "path": "docker-compose.production.cardano-witnesses.yaml",
-       "line": 50,
-       "quote": "image: cardanosolutions/ogmios:${CARDANO_OGMIOS_IMAGE_TAG:-v6.13.0}"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2026-09-16T16:44:57Z"
-   }
-  },
-  {
-   "id": "xogmios",
-   "repo": "wowica/xogmios",
-   "revision": "d48eebfe10cbd5de12d4a6b52dee226dd9627894",
-   "scan": {
-    "status": "scanned",
-    "files": 49,
-    "skipped": 2
-   },
-   "exposure": "service",
-   "readiness": "gap",
-   "surfaces": [
-    {
-     "surface": "block-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 20,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "era-identity",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:closed-era-list",
-       "readiness": "unassessed",
-       "lines": 1,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 20,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "node-to-client-protocol",
-     "channels": [
-      {
-       "channel": "marker",
-       "via": "marker:node-to-client",
-       "readiness": "unassessed",
-       "lines": 6,
-       "scope": "shipped"
-      },
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "verified",
-       "lines": 20,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "verified"
-    },
-    {
-     "surface": "plutus-language",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 20,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    },
-    {
-     "surface": "protocol-parameters",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "gap",
-       "lines": 20,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "gap"
-    },
-    {
-     "surface": "transaction-encoding",
-     "channels": [
-      {
-       "channel": "service",
-       "via": "ogmios",
-       "readiness": "in-progress",
-       "lines": 20,
-       "scope": "shipped"
-      }
-     ],
-     "readiness": "in-progress"
-    }
-   ],
-   "hits": [
-    {
-     "rule": "marker:closed-era-list",
-     "files": 2,
-     "lines": 1,
-     "auxLines": 1,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "lib/xogmios.ex",
-       "line": 52,
-       "quote": "`:shelley`, `:allegra`, `:mary`, `:alonzo`, `:babbage`, `:conway`."
-      },
-      {
-       "path": "test/tx_submission_test.exs",
-       "line": 5,
-       "quote": "@eras [\"allegra\", \"alonzo\", \"babbage\", \"conway\", \"mary\", \"shelley\"]"
-      }
-     ]
-    },
-    {
-     "rule": "marker:node-to-client",
-     "files": 3,
-     "lines": 6,
-     "auxLines": 0,
-     "docLines": 0,
-     "examples": [
-      {
-       "path": "lib/xogmios/state_query.ex",
-       "line": 29,
-       "quote": "Support for all [Ledger-state](https://ogmios.dev/mini-protocols/local-state-query/#ledger-state)"
-      },
-      {
-       "path": "lib/xogmios/state_query.ex",
-       "line": 30,
-       "quote": "and [Network](https://ogmios.dev/mini-protocols/local-state-query/#network) queries."
-      },
-      {
-       "path": "lib/xogmios/state_query/http.ex",
-       "line": 21,
-       "quote": "Support for all [Ledger-state](https://ogmios.dev/mini-protocols/local-state-query/#ledger-state)"
-      }
-     ]
-    },
-    {
-     "rule": "service:ogmios",
-     "files": 14,
-     "lines": 20,
-     "auxLines": 0,
-     "docLines": 13,
-     "examples": [
-      {
-       "path": "lib/xogmios.ex",
-       "line": 4,
-       "quote": "modules that wish to connect with Ogmios."
-      },
-      {
-       "path": "lib/xogmios/chain_sync.ex",
-       "line": 114,
-       "quote": "Logger.warning(\"Error connecting with Ogmios server #{inspect(error)}\")"
-      },
-      {
-       "path": "lib/xogmios/chain_sync.ex",
-       "line": 276,
-       "quote": "# From Ogmios' official docs:"
-      }
-     ]
-    }
-   ],
-   "activity": {
-    "archived": false,
-    "pushedAt": "2025-09-01T17:16:27Z"
-   }
-  },
-  {
    "id": "cardano-cli-guru",
    "repo": "ajnabi-workshop/cardano-cli-guru",
    "revision": "2904b58b35c5cab9d1c6550b0b4be26eb272c348",
@@ -81738,7 +80172,7 @@
       {
        "channel": "service",
        "via": "kupo",
-       "readiness": "gap",
+       "readiness": "in-progress",
        "lines": 4,
        "scope": "shipped"
       }
@@ -82690,6 +81124,1572 @@
    "activity": {
     "archived": false,
     "pushedAt": "2026-11-13T15:08:44Z"
+   }
+  },
+  {
+   "id": "libcardano",
+   "repo": "ViperScience/libcardano",
+   "revision": "7a63ffabafe00c7d4399bf5e51b253f4b2c6f47b",
+   "scan": {
+    "status": "scanned",
+    "files": 108,
+    "skipped": 20
+   },
+   "exposure": "service",
+   "readiness": "in-progress",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:segregated-block-body",
+       "readiness": "unassessed",
+       "lines": 12,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "node-configuration",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:genesis-config",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "auxiliary"
+      }
+     ],
+     "readiness": "unassessed"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 12,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "stake-pool-registration",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:pool-registration",
+       "readiness": "unassessed",
+       "lines": 64,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "unassessed"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:legacy-stake-certificate",
+       "readiness": "unassessed",
+       "lines": 33,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 1,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:closed-era-list",
+     "files": 2,
+     "lines": 0,
+     "auxLines": 0,
+     "docLines": 2,
+     "examples": [
+      {
+       "path": "README.md",
+       "line": 16,
+       "quote": "libcardano is an **offline** SDK: it focuses on key management, address derivation, and transaction construction, signing, and (de)serialization. It does **not** include node networking or chain synch"
+      },
+      {
+       "path": "docs/pages/main_page.md",
+       "line": 9,
+       "quote": "Libcardano is an **offline** SDK: it focuses on key management, address derivation, and transaction construction, signing, and (de)serialization. It does **not** include node networking or chain synch"
+      }
+     ]
+    },
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 3,
+     "lines": 12,
+     "auxLines": 2,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "include/cardano/genesis.hpp",
+       "line": 260,
+       "quote": "/// Struct for execution units (maxTxExUnits, maxBlockExUnits)"
+      },
+      {
+       "path": "include/cardano/genesis.hpp",
+       "line": 271,
+       "quote": "struct CostModels"
+      },
+      {
+       "path": "include/cardano/genesis.hpp",
+       "line": 275,
+       "quote": "friend auto to_json(json& j, const CostModels& cm) -> void;"
+      }
+     ]
+    },
+    {
+     "rule": "marker:genesis-config",
+     "files": 1,
+     "lines": 0,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "test/test_cardano_genesis_api.cpp",
+       "line": 50,
+       "quote": "const auto params = cardano::conway::GenesisParameters::fromFile(\"data/genesis/conway-genesis.json\");"
+      }
+     ]
+    },
+    {
+     "rule": "marker:legacy-stake-certificate",
+     "files": 5,
+     "lines": 33,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "include/cardano/ledger.hpp",
+       "line": 762,
+       "quote": "///     stake_registration = (0, stake_credential)"
+      },
+      {
+       "path": "include/cardano/ledger.hpp",
+       "line": 764,
+       "quote": "struct StakeRegistration"
+      },
+      {
+       "path": "include/cardano/ledger.hpp",
+       "line": 771,
+       "quote": "};  // StakeRegistration"
+      }
+     ]
+    },
+    {
+     "rule": "marker:pool-registration",
+     "files": 7,
+     "lines": 64,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "include/cardano/ledger.hpp",
+       "line": 673,
+       "quote": "///     pool_params = ( operator:       pool_keyhash"
+      },
+      {
+       "path": "include/cardano/ledger.hpp",
+       "line": 684,
+       "quote": "struct PoolParams"
+      },
+      {
+       "path": "include/cardano/ledger.hpp",
+       "line": 810,
+       "quote": "///     pool_registration = (3, pool_params)"
+      }
+     ]
+    },
+    {
+     "rule": "marker:segregated-block-body",
+     "files": 1,
+     "lines": 12,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "include/cardano/ledger.hpp",
+       "line": 1128,
+       "quote": "///       , transaction_bodies         : [* transaction_body]"
+      },
+      {
+       "path": "include/cardano/ledger.hpp",
+       "line": 1129,
+       "quote": "///       , transaction_witness_sets   : [* transaction_witness_set]"
+      },
+      {
+       "path": "include/cardano/ledger.hpp",
+       "line": 1133,
+       "quote": "///        ; 1) the length of transaction_bodies and transaction_witness_sets"
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 5,
+     "lines": 1,
+     "auxLines": 1,
+     "docLines": 4,
+     "examples": [
+      {
+       "path": "include/cardano/transaction.hpp",
+       "line": 94,
+       "quote": "/// @brief Provide de-serialization from JSON, i.e., Ogmios."
+      },
+      {
+       "path": "examples/build_transaction/main.cpp",
+       "line": 78,
+       "quote": "// Ogmios, or a service like Blockfrost)."
+      },
+      {
+       "path": "README.md",
+       "line": 166,
+       "quote": "* [nlohmann/json](https://github.com/nlohmann/json): JSON for Modern C++. Used by libcardano to parse JSON data such as Ogmios UTxO output."
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-06-14T23:57:06Z"
+   }
+  },
+  {
+   "id": "cab",
+   "repo": "WingRiders/cab",
+   "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+   "scan": {
+    "status": "scanned",
+    "files": 184,
+    "skipped": 0
+   },
+   "exposure": "service",
+   "readiness": "in-progress",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 22,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 14,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 14,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 14,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 9,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 14,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 14,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:legacy-stake-certificate",
+       "readiness": "unassessed",
+       "lines": 15,
+       "scope": "shipped"
+      },
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 22,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 14,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 2,
+     "lines": 6,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/ledger/transaction/costModel.ts",
+       "line": 11,
+       "quote": "// ;     For example, the script_integrity_data corresponding to the all zero costmodel for V1"
+      },
+      {
+       "path": "src/ledger/transaction/costModel.ts",
+       "line": 20,
+       "quote": "// ;     For example, the script_integrity_data corresponding to the all zero costmodel for V2"
+      },
+      {
+       "path": "src/ledger/transaction/costModel.ts",
+       "line": 28,
+       "quote": "costModels: ProtocolParameters['plutusCostModels']"
+      }
+     ]
+    },
+    {
+     "rule": "marker:legacy-stake-certificate",
+     "files": 6,
+     "lines": 15,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/ledger/transaction/cbor/cborize.ts",
+       "line": 139,
+       "quote": "TxCertificateKey.STAKE_REGISTRATION,"
+      },
+      {
+       "path": "src/ledger/transaction/cbor/cborize.ts",
+       "line": 146,
+       "quote": "TxCertificateKey.STAKE_DEREGISTRATION,"
+      },
+      {
+       "path": "src/ledger/transaction/cbor/cborize.ts",
+       "line": 172,
+       "quote": "case TxCertificateType.STAKE_REGISTRATION:"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 1,
+     "lines": 9,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/types/transaction.ts",
+       "line": 62,
+       "quote": "PLUTUS_V3 = 3,"
+      },
+      {
+       "path": "src/types/transaction.ts",
+       "line": 166,
+       "quote": "PLUTUSV3 = 2,"
+      },
+      {
+       "path": "src/types/transaction.ts",
+       "line": 241,
+       "quote": "PlutusScriptV3 = 'PlutusScriptV3',"
+      }
+     ]
+    },
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 28,
+     "lines": 22,
+     "auxLines": 7,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "declarations.d.ts",
+       "line": 1,
+       "quote": "declare module 'borc' {"
+      },
+      {
+       "path": "package.json",
+       "line": 60,
+       "quote": "\"borc\": \"^3.0.0\","
+      },
+      {
+       "path": "src/crypto/JsCryptoProvider.ts",
+       "line": 3,
+       "quote": "import {encode} from 'borc'"
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 13,
+     "lines": 14,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "package.json",
+       "line": 69,
+       "quote": "\"@cardano-ogmios/schema\": \"^6.10.0\","
+      },
+      {
+       "path": "src/dataProvider/index.ts",
+       "line": 5,
+       "quote": "import {PointOrOrigin, RewardAccountSummary, Utxo as OgmiosUTxO} from '@cardano-ogmios/schema'"
+      },
+      {
+       "path": "src/helpers/exUnits.ts",
+       "line": 1,
+       "quote": "import {ExecutionUnits} from '@cardano-ogmios/schema'"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2025-02-14T08:46:47Z"
+   }
+  },
+  {
+   "id": "iris",
+   "repo": "IndigoProtocol/iris",
+   "revision": "c9c85b18ebfb7045552c02842cf5259403939ad0",
+   "scan": {
+    "status": "scanned",
+    "files": 287,
+    "skipped": 1
+   },
+   "exposure": "service",
+   "readiness": "in-progress",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 75,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 75,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 75,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 75,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 75,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:raw-cbor-codec",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 75,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:raw-cbor-codec",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "package.json",
+       "line": 50,
+       "quote": "\"cbor-x\": \"^1.6.0\","
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 67,
+     "lines": 75,
+     "auxLines": 0,
+     "docLines": 3,
+     "examples": [
+      {
+       "path": "package.json",
+       "line": 29,
+       "quote": "\"@cardano-ogmios/client\": \"^6.9.0\","
+      },
+      {
+       "path": "src/IndexerApplication.ts",
+       "line": 7,
+       "quote": "} from '@cardano-ogmios/client';"
+      },
+      {
+       "path": "src/IndexerApplication.ts",
+       "line": 8,
+       "quote": "import { Block, TipOrOrigin, Point, PointOrOrigin, BlockPraos } from '@cardano-ogmios/schema';"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": true,
+    "pushedAt": "2026-10-24T08:25:49Z"
+   }
+  },
+  {
+   "id": "kogmios",
+   "repo": "projectNEWM/kogmios",
+   "revision": "f0160af84d18a5669f721b0cd0c032847c316c6b",
+   "scan": {
+    "status": "scanned",
+    "files": 297,
+    "skipped": 14
+   },
+   "exposure": "service",
+   "readiness": "in-progress",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 35,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:closed-era-list",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 35,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:node-to-client",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 35,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 35,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 35,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 35,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:closed-era-list",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/main/kotlin/io/newm/kogmios/StateQueryClient.kt",
+       "line": 94,
+       "quote": "* Get the genesis configuration for any era: \"byron\", \"shelley\", \"alonzo\", \"conway\""
+      }
+     ]
+    },
+    {
+     "rule": "marker:node-to-client",
+     "files": 2,
+     "lines": 2,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/main/kotlin/io/newm/kogmios/protocols/messages/MsgAcquire.kt",
+       "line": 10,
+       "quote": "* Acquire a ledger state for the Local State Query miniprotocol. If you don't specify a ChainPoint argument,"
+      },
+      {
+       "path": "src/main/kotlin/io/newm/kogmios/protocols/messages/MsgRelease.kt",
+       "line": 6,
+       "quote": "* Release the Acquired ledger state for the Local State Query miniprotocol."
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/main/kotlin/io/newm/kogmios/protocols/model/PlutusCostModels.kt",
+       "line": 16,
+       "quote": "val plutusV3: List<BigInteger>? = null,"
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 39,
+     "lines": 35,
+     "auxLines": 11,
+     "docLines": 5,
+     "examples": [
+      {
+       "path": "build.gradle.kts",
+       "line": 68,
+       "quote": "description.set(\"Kotlin Wrapper for Ogmios\")"
+      },
+      {
+       "path": "src/main/kotlin/io/newm/kogmios/Client.kt",
+       "line": 10,
+       "quote": "* Open a connection to the Ogmios server. Must be called before other query methods"
+      },
+      {
+       "path": "src/main/kotlin/io/newm/kogmios/Client.kt",
+       "line": 21,
+       "quote": "* Shutdown and disconnect from the Ogmios server"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-09-17T03:36:17Z"
+   }
+  },
+  {
+   "id": "ogmiosdotnet",
+   "repo": "ItsDaveB/OgmiosDotnet",
+   "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+   "scan": {
+    "status": "scanned",
+    "files": 3295,
+    "skipped": 0
+   },
+   "exposure": "service",
+   "readiness": "in-progress",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 16945,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:closed-era-list",
+       "readiness": "unassessed",
+       "lines": 24,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 16945,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 16945,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:plutus-language-enum",
+       "readiness": "unassessed",
+       "lines": 2,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 16945,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:cost-models-or-parameters",
+       "readiness": "unassessed",
+       "lines": 309,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 16945,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 16945,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:closed-era-list",
+     "files": 12,
+     "lines": 24,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
+       "line": 163,
+       "quote": ", \"enum\": [ \"shelley\", \"allegra\", \"mary\", \"alonzo\", \"babbage\", \"conway\" ]"
+      },
+      {
+       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
+       "line": 934,
+       "quote": ", \"enum\": [ \"byron\", \"shelley\", \"allegra\", \"mary\", \"alonzo\", \"babbage\", \"conway\" ]"
+      },
+      {
+       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
+       "line": 940,
+       "quote": ", \"enum\": [ \"byron\", \"shelley\", \"alonzo\", \"conway\" ]"
+      }
+     ]
+    },
+    {
+     "rule": "marker:cost-models-or-parameters",
+     "files": 18,
+     "lines": 309,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
+       "line": 769,
+       "quote": ", \"CostModels\":"
+      },
+      {
+       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
+       "line": 770,
+       "quote": "{ \"title\": \"CostModels\""
+      },
+      {
+       "path": "src/Ogmios.Schema/Ogmios/v6.10/Source/cardano.json",
+       "line": 772,
+       "quote": ", \"additionalProperties\": { \"$ref\": \"cardano.json#/definitions/CostModel\" }"
+      }
+     ]
+    },
+    {
+     "rule": "marker:plutus-language-enum",
+     "files": 2,
+     "lines": 2,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/Ogmios.Schema/Ogmios/v6.14/Generated/Language.Validate.cs",
+       "line": 98,
+       "quote": "public static Language PlutusV3 { get; } = CorvusValidation.Enum3.As<Language>();"
+      },
+      {
+       "path": "src/Ogmios.Schema/Ogmios/v6.14/Generated/Script.Plutus.LanguageEntity.Validate.cs",
+       "line": 109,
+       "quote": "public static LanguageEntity PlutusV3 { get; } = CorvusValidation.Enum3.As<LanguageEntity>();"
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 2933,
+     "lines": 16945,
+     "auxLines": 176,
+     "docLines": 163,
+     "examples": [
+      {
+       "path": ".github/workflows/publish.yml",
+       "line": 24,
+       "quote": "dotnet restore ./src/Ogmios.Domain/Ogmios.Domain.csproj"
+      },
+      {
+       "path": ".github/workflows/publish.yml",
+       "line": 25,
+       "quote": "dotnet restore ./src/Ogmios.Schema/Ogmios.Schema.csproj"
+      },
+      {
+       "path": ".github/workflows/publish.yml",
+       "line": 26,
+       "quote": "dotnet restore ./src/Ogmios.Services/Ogmios.Services.csproj"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-06-14T08:45:17Z"
+   }
+  },
+  {
+   "id": "ogmiosdotnet-blockchainevents",
+   "repo": "ItsDaveB/OgmiosDotnet.BlockchainEvents",
+   "revision": "7b35ff2d40d14d3c44dc734d159e3ddb01de66a1",
+   "scan": {
+    "status": "scanned",
+    "files": 144,
+    "skipped": 8
+   },
+   "exposure": "service",
+   "readiness": "in-progress",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 28,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 28,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 28,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 28,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 28,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:legacy-stake-certificate",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 28,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:legacy-stake-certificate",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "src/BlockchainEvents.Engine/Rules/GovernanceTreasuryRule.cs",
+       "line": 36,
+       "quote": "if (options.Value.IncludeStakeRegistrations && transaction.HasStakeRegistration) matchTypes.Add(\"stake_registration\");"
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 27,
+     "lines": 28,
+     "auxLines": 3,
+     "docLines": 39,
+     "examples": [
+      {
+       "path": "Directory.Build.props",
+       "line": 13,
+       "quote": "<PackageTags>cardano;ogmios;blockchain;events;cloudevents;filtering</PackageTags>"
+      },
+      {
+       "path": "dapr/secrets/secrets.json",
+       "line": 2,
+       "quote": "\"ogmios\": {"
+      },
+      {
+       "path": "dapr/secrets/secrets.json",
+       "line": 3,
+       "quote": "\"host\": \"ogmios\","
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-08-08T21:13:25Z"
+   }
+  },
+  {
+   "id": "veridian-wallet",
+   "repo": "veridian-id/veridian-wallet",
+   "revision": "ed015b12142a58e5112f814bfe1c56e7d999322c",
+   "scan": {
+    "status": "scanned",
+    "files": 1431,
+    "skipped": 118
+   },
+   "exposure": "service",
+   "readiness": "in-progress",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 5,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 5,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "service:node-socket",
+       "readiness": "upstream",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 5,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "upstream"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 5,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 5,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 5,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "service:node-socket",
+     "files": 1,
+     "lines": 1,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "docker-compose.production.cardano-witnesses.yaml",
+       "line": 53,
+       "quote": "\"--node-socket\", \"/ipc/node.socket\","
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 2,
+     "lines": 5,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "docker-compose.production.cardano-witnesses.yaml",
+       "line": 15,
+       "quote": "- OGMIOS_HOST=${OGMIOS_HOST:-ogmios}"
+      },
+      {
+       "path": "docker-compose.production.cardano-witnesses.yaml",
+       "line": 47,
+       "quote": "ogmios:"
+      },
+      {
+       "path": "docker-compose.production.cardano-witnesses.yaml",
+       "line": 50,
+       "quote": "image: cardanosolutions/ogmios:${CARDANO_OGMIOS_IMAGE_TAG:-v6.13.0}"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2026-09-16T16:44:57Z"
+   }
+  },
+  {
+   "id": "xogmios",
+   "repo": "wowica/xogmios",
+   "revision": "d48eebfe10cbd5de12d4a6b52dee226dd9627894",
+   "scan": {
+    "status": "scanned",
+    "files": 49,
+    "skipped": 2
+   },
+   "exposure": "service",
+   "readiness": "in-progress",
+   "surfaces": [
+    {
+     "surface": "block-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 20,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "era-identity",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:closed-era-list",
+       "readiness": "unassessed",
+       "lines": 1,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 20,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "node-to-client-protocol",
+     "channels": [
+      {
+       "channel": "marker",
+       "via": "marker:node-to-client",
+       "readiness": "unassessed",
+       "lines": 6,
+       "scope": "shipped"
+      },
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "verified",
+       "lines": 20,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "verified"
+    },
+    {
+     "surface": "plutus-language",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 20,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "protocol-parameters",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 20,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    },
+    {
+     "surface": "transaction-encoding",
+     "channels": [
+      {
+       "channel": "service",
+       "via": "ogmios",
+       "readiness": "in-progress",
+       "lines": 20,
+       "scope": "shipped"
+      }
+     ],
+     "readiness": "in-progress"
+    }
+   ],
+   "hits": [
+    {
+     "rule": "marker:closed-era-list",
+     "files": 2,
+     "lines": 1,
+     "auxLines": 1,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "lib/xogmios.ex",
+       "line": 52,
+       "quote": "`:shelley`, `:allegra`, `:mary`, `:alonzo`, `:babbage`, `:conway`."
+      },
+      {
+       "path": "test/tx_submission_test.exs",
+       "line": 5,
+       "quote": "@eras [\"allegra\", \"alonzo\", \"babbage\", \"conway\", \"mary\", \"shelley\"]"
+      }
+     ]
+    },
+    {
+     "rule": "marker:node-to-client",
+     "files": 3,
+     "lines": 6,
+     "auxLines": 0,
+     "docLines": 0,
+     "examples": [
+      {
+       "path": "lib/xogmios/state_query.ex",
+       "line": 29,
+       "quote": "Support for all [Ledger-state](https://ogmios.dev/mini-protocols/local-state-query/#ledger-state)"
+      },
+      {
+       "path": "lib/xogmios/state_query.ex",
+       "line": 30,
+       "quote": "and [Network](https://ogmios.dev/mini-protocols/local-state-query/#network) queries."
+      },
+      {
+       "path": "lib/xogmios/state_query/http.ex",
+       "line": 21,
+       "quote": "Support for all [Ledger-state](https://ogmios.dev/mini-protocols/local-state-query/#ledger-state)"
+      }
+     ]
+    },
+    {
+     "rule": "service:ogmios",
+     "files": 14,
+     "lines": 20,
+     "auxLines": 0,
+     "docLines": 13,
+     "examples": [
+      {
+       "path": "lib/xogmios.ex",
+       "line": 4,
+       "quote": "modules that wish to connect with Ogmios."
+      },
+      {
+       "path": "lib/xogmios/chain_sync.ex",
+       "line": 114,
+       "quote": "Logger.warning(\"Error connecting with Ogmios server #{inspect(error)}\")"
+      },
+      {
+       "path": "lib/xogmios/chain_sync.ex",
+       "line": 276,
+       "quote": "# From Ogmios' official docs:"
+      }
+     ]
+    }
+   ],
+   "activity": {
+    "archived": false,
+    "pushedAt": "2025-09-01T17:16:27Z"
    }
   },
   {

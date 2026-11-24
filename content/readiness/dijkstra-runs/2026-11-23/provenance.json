@@ -11,7 +11,7 @@
   },
   "recipeSha256": {
     "scripts/readiness/aiken-dijkstra-smoke.py": "420d74b27cb89635fdc0ea996a9d93414407dc3c403ee99ecc803a34b2a4c3d2",
-    "scripts/readiness/devnet/README.md": "9ab01fb44d2ab4708eb6790cdb13d08e71f99d5b012a2800ccd5f3d77b2f50d1",
+    "scripts/readiness/devnet/README.md": "26ee4a5e77d68a2c738d8aec8df34bb4a2c07d8c473dbb8aa9108fac6bc4cac3",
     "scripts/readiness/devnet/advanced.sh": "de10a9c480f2bd34857cae0d4b00963d357b22f0a1fc4bcd21a4eab04206164a",
     "scripts/readiness/devnet/blockfrost.sh": "dc37f1f6421e35598bbfa491bfa80f1c8fb634f7d98e5c15971d436cce851a78",
     "scripts/readiness/devnet/build-cml-probe.sh": "c88ba4731f8ab27d56bcf0ff2b97947a37a5a6b02aced3a11c7e30bfd441549b",
@@ -21,7 +21,7 @@
     "scripts/readiness/devnet/cml-probe/main.rs": "ed8f954cb27cf1241afe02dc332267f4611c6751dd6837c25ddf74e94b5ed98d",
     "scripts/readiness/devnet/csl-probe/probe.cjs": "d8a640703a2f6b3fe0ceb0c243b4bbdcd157976a85d0b183645e69a3c7115063",
     "scripts/readiness/devnet/env.sh": "74bf0e02ce5c9af62a326f9ebaef331ef21a90e4115a0d8781c8d6317a41a2f2",
-    "scripts/readiness/devnet/forks.sh": "d08ffb2b08af50d63a73b30d0e530b659327470f961cdbfcadb8060cdbc73a8b",
+    "scripts/readiness/devnet/forks.sh": "1f82926e65e03e3e090865ed225b01705f30860fcfce3deca9ea3a5a5034e17c",
     "scripts/readiness/devnet/handshake.py": "2b64a54b57871f0859d302a42a06d6c073bcb1a119bd14dd1dd37d0318658e52",
     "scripts/readiness/devnet/hardfork.sh": "87bf0bd1146de136d8dad9a66b04a65907cf5f1790d9f3e0e53d961be43be8ff",
     "scripts/readiness/devnet/js-probe/probe.cjs": "80a19760418bb96e05802f84578b0af6cc5215aea2cb183f4d8817f1d29799fa",
@@ -53,6 +53,7 @@
     "Dependency resolution was captured after the build; fresh builds must reuse the retained lockfiles and classpaths to replay it.",
     "Source observations and human reachability decisions are not runtime proof.",
     "Only the explicitly named tool versions and test cases were executed; db-sync reached the guards and balance interval only with plutusV4 added to its enum by hand, and never the sub-transaction.",
-    "The IntersectMBO Ogmios and Kupo forks, cardano-client-lib 0.8.0-pre8 and Yaci 0.5.0-pre17 are unmerged or prerelease builds; their results do not describe a stable release."
+    "The IntersectMBO Ogmios and Kupo forks, cardano-client-lib 0.8.0-pre8 and Yaci 0.5.0-pre17 are unmerged or prerelease builds; their results do not describe a stable release.",
+    "The 2026-11-24 fork rerun (Ogmios 20c383a2, Kupo e9ef0be3) served this run's chain with a plain node (forks.sh relay), which validates submissions but forges no blocks; recipe hashes for forks.sh and the devnet README are as of that rerun."
   ]
 }

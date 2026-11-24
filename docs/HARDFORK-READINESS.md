@@ -28,15 +28,15 @@ The register formats and findings are in
 | Area | File | State |
 | --- | --- | --- |
 | Changes | `changes.json` | 20 changes and 2 unchanged areas; 74 change citations, re-read at the 11.2.1 revisions |
-| Boundary | `boundary.json` | 61 components, 267 evidence items; 45 gap, 3 no-evidence, 9 in-progress, 4 released |
+| Boundary | `boundary.json` | 61 components, 279 evidence items; 44 gap, 3 no-evidence, 10 in-progress, 4 released |
 | Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source; 62 revisions changed |
 | Transitive links | `transitive.json` | 27 lockfile-only component links in 26 tools |
-| Leads | `leads.json` | 725 entries, 1,619 surface decisions (584 confirmed, 994 not reached, 41 undetermined); none unreviewed, stale or orphaned |
-| Unlocks | `unlocks.json` | 21 fixes unlock 78 tools; Marlowe and Marconi remain bump-ready by pin comparison |
-| Upgrades | `upgrades.json` | 11 readings: 8 own-work, 1 prepared, 2 generic |
-| Devnet | `devnet.json` | 22 checks, 54 results, 24 failing (node 11.2.1, 2026-11-23) |
-| Site | `/map/dijkstra` | 207 tools: 108 break, 8 in progress, 4 ready, 4 target components, 49 not verified, 34 dismissed |
-| History | `/map/dijkstra/history` | Six tool-state changes; of 30 same-version runtime results, 29 matched and one changed because new cases were added (@cardano-sdk/core 0.47.1 on balance intervals) |
+| Leads | `leads.json` | 732 entries, 1,631 surface decisions (590 confirmed, 1,000 not reached, 41 undetermined); none unreviewed, stale or orphaned |
+| Unlocks | `unlocks.json` | 19 fixes unlock 73 tools; Marlowe, Marconi, Midgard, Ogmios and Kupo are bump-ready by pin comparison |
+| Upgrades | `upgrades.json` | 13 readings: 8 own-work, 3 prepared, 2 generic |
+| Devnet | `devnet.json` | 22 checks, 57 results, 24 failing (node 11.2.1, 2026-11-23; Ogmios and Kupo forks rerun 2026-11-24) |
+| Site | `/map/dijkstra` | 207 tools: 105 break, 10 in progress, 4 ready, 4 target components, 50 not verified, 34 dismissed |
+| History | `/map/dijkstra/history` | Ten tool-state changes; of 30 same-version runtime results, 29 matched and one changed because new cases were added (@cardano-sdk/core 0.47.1 on balance intervals) |
 | Dependency graph | `data/readiness/` | Existing 55 native profiles retained and replayed; broad native collection remains paused |
 
 Prior complete assessments are checksummed under `content/readiness/dijkstra-history/`; the last 11.2.0 one is
@@ -241,29 +241,27 @@ listed prerequisites first:
 
 | Step | Fix | Tools unlocked (running total) |
 | --- | --- | --- |
-| 1 | cardano-db-sync | 3 |
-| 2 | blockfrost | 20 |
-| 3 | koios | 29 |
-| 4 | ogmios | 34 |
-| 5 | kupo | 41 |
-| 6 | Move off Maestro | 47 |
-| 7 | pallas | 52 |
-| 8 | cardano-serialization-lib-csl | 56 |
-| 9 | gouroboros | 60 |
-| 10 | aiken | 63 |
-| 11 | bloxbean-cardano-client-library | 65 |
-| 12 | ledgerjs-hw-app-cardano | 67 |
-| 13 | cardano-wallet | 69 |
-| 14 | cquisitor-lib | 70 |
-| 15 | whisky | 71 |
-| 16 | cardano-js-sdk | 72 |
-| 17 | buildooor | 73 |
-| 18 | cardano-hw-interop-lib | 74 |
-| 19 | cardano-multiplatform-lib-cml | 76 |
-| 20 | scalus | 77 |
-| 21 | julc | 78 |
+| 1 | cardano-db-sync | 4 |
+| 2 | blockfrost | 24 |
+| 3 | koios | 36 |
+| 4 | Move off Maestro | 42 |
+| 5 | pallas | 47 |
+| 6 | cardano-serialization-lib-csl | 51 |
+| 7 | gouroboros | 55 |
+| 8 | aiken | 58 |
+| 9 | ledgerjs-hw-app-cardano | 60 |
+| 10 | bloxbean-cardano-client-library | 62 |
+| 11 | cardano-wallet | 64 |
+| 12 | cquisitor-lib | 65 |
+| 13 | whisky | 66 |
+| 14 | cardano-js-sdk | 67 |
+| 15 | buildooor | 68 |
+| 16 | cardano-hw-interop-lib | 69 |
+| 17 | cardano-multiplatform-lib-cml | 71 |
+| 18 | scalus | 72 |
+| 19 | julc | 73 |
 
-Marlowe and Marconi have a released upstream fix by the pin comparison; the current target API is 11.11.0.0. This is not a new dependency solve.
+Marlowe, Marconi and Midgard (cardano-api; the current target API is 11.12.0.0) and Ogmios and Kupo (ouroboros-consensus 5.4.0.0) have a released upstream fix by the pin comparison. This is not a new dependency solve.
 `upgrades.json` records, from quoted shipped code, whether each bump-ready
 tool's own code handles the new era, and the unlock report records how far
 each pin moves (most cross a breaking release).
@@ -295,8 +293,8 @@ named version and capability; the 11.2.0 runs are in the archived assessments.
 | `csl-decoding` | CSL 17.0.0, 15.0.3 and 18.0.0-beta.1 decode no Dijkstra block or new body; re-encoding adds the legacy fourth element. |
 | `pycardano-transactions` | PyCardano 0.19.2 fails on Dijkstra metadata and on every new body. |
 | `jvm-codecs` | Yaci 0.5.0-pre17 now decodes all 336 Dijkstra blocks. cardano-client-lib 0.8.0-pre8 reads every new field; with Era.Dijkstra 31 of 32 ids match (not the PlutusV4 guard); without an era it re-encodes the Conway shape. 0.7.3 fails on guards and Dijkstra metadata. |
-| `fork-chain-sync` | The IntersectMBO Ogmios fork (54bb8c1c) syncs every block and now returns full Dijkstra transactions; the Kupo fork (ee51691d) still stops at the first sub-transaction. |
-| `fork-ogmios-api` | The Ogmios fork evaluates a PlutusV4 guard, submits, follows the mempool and answers a rejected submission; Dijkstra protocol parameters are still unavailable. |
+| `fork-chain-sync` | The IntersectMBO Ogmios fork syncs every block and returns full Dijkstra transactions (54bb8c1c, and 20c383a2 on 2026-11-24). The Kupo fork stopped at the first sub-transaction at ee51691d; at e9ef0be3 (2026-11-24) it indexes the whole chain. |
+| `fork-ogmios-api` | The Ogmios fork evaluates a PlutusV4 guard, submits, follows the mempool and answers a rejected submission. Dijkstra protocol parameters were unavailable at 54bb8c1c; at 20c383a2 (2026-11-24) they match the node's. |
 | `blockfrost-dijkstra-data` | With `plutusV4` added to db-sync's enum by hand, db-sync 13.8.0.0 skips sub-transactions and exits on the first spend of a sub-transaction output. Blockfrost v7.0.1 lists spent outputs as unspent, misses direct deposits, returns `plutusV4` and redeemer purpose `guard` (with an empty script hash) outside its API schema, serves no new parameters, and `/network/eras` answers HTTP 500. |
 | `blockfrost-platform-submit` | blockfrost-platform 1.0.0 cannot connect to node 11.2.1 (no V23); main (d5a48256) connects but its `/tx/submit` rejects all 27 three-element encodings with HTTP 400 and passes the 5 Conway ones. |
 | `ccl-quicktx` | cardano-client-lib 0.8.0-pre8 and 0.7.3: QuickTx stake registration and deregistration are still rejected (deposit-less certificates); 0.7.3 also writes a duplicate vkey witness and a wrong script integrity hash for shared datum hashes. |

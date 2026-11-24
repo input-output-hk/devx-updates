@@ -37,7 +37,7 @@ test("each tool touching a changed surface gets one hardfork state, most reached
   }
   const node = by.get("cardano-node")!;
   assert.ok(node.reachedBy.includes("meshjs-mesh-sdk") && !node.dependents.includes("meshjs-mesh-sdk"), "reached through the tools it uses");
-  assert.equal(by.get("ogmios")?.state, "breaks", "a confirmed own gap breaks");
+  assert.equal(by.get("cardano-db-sync")?.state, "breaks", "a confirmed own gap breaks");
   assert.deepEqual(states.filter((s) => s.state === "target-component").map((s) => s.tool).sort(),
     ["cardano-cli", "cardano-node", "cardano-submit-api", "cardano-testnet"], "only the four reference components receive the target label");
   assert.equal(by.get("plutus-plutus-core")?.state, "ready", "released support with nothing open is ready");

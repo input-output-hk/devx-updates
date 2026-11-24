@@ -1,0 +1,10 @@
+# 2026-11-24: IntersectMBO/ogmios master 20c383a2, forks.sh ogmios-api against forks.sh relay
+payment id (cardano-cli): fccb54462a77afbbfa2f30263ed1b1ebbad9f63a3d319c3beb7bae0c9b3cd045
+evaluateTransaction (payment): ok []
+evaluateTransaction (PlutusV4 guard): ok [{"validator":{"index":0,"purpose":"guard"},"budget":{"memory":500,"cpu":64100}}]
+submitTransaction (payment): ok {"transaction":{"id":"fccb54462a77afbbfa2f30263ed1b1ebbad9f63a3d319c3beb7bae0c9b3cd045"}}
+acquireMempool: ok {"acquired":"mempool","slot":47774}
+sizeOfMempool: ok {"maxCapacity":{"bytes":25294848},"currentSize":{"bytes":239},"transactions":{"count":1}}
+nextTransaction: ok {"transaction":{"id":"fccb54462a77afbbfa2f30263ed1b1ebbad9f63a3d319c3beb7bae0c9b3cd045","spends":"inputs","inputs":[{"transaction":{"id":"adc0700aa8064514d3c6895d5f1cce4e0bc0c8ab7d9630399683de9cc68e0604"},"index":12}],"outputs":[{"address":"addr_test1vze4g20ege8nwk5mpjjacl2arxpw9c22j7wullgwqvcfjecwgc93y","value":{"ada":{"lovelace":5000000}}},{"address":"addr_test1vze4g20ege8nwk5mpjjacl2arxpw9c22j7
+releaseMempool: ok {"released":"mempool"}
+submitTransaction (same payment again): ERROR {"code":3173,"message":"All inputs of the transaction are already spent. This usually means that the transaction has already been included in the ledger, so there's no need to submit it again."}

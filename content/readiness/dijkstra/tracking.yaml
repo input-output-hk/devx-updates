@@ -216,9 +216,11 @@ tools:
       - url: https://github.com/txpipe/pallas/pull/823
   ogmios:
     unreleased:
-      note: "IntersectMBO fork on the node 11.2 libraries: at 54bb8c1c it returned full Dijkstra transactions, submitted and followed the mempool on the 11.2.1 devnet; the protocol-parameters query, the one gap left, was added in PR #41 on 2026-11-23 and is not tested yet. Not merged upstream."
+      note: "IntersectMBO fork on the node 11.2 libraries: at 20c383a2 (after PR #41) it returns full Dijkstra transactions, Dijkstra protocol parameters matching the node's, submits and follows the mempool on the 11.2.1 devnet. Left: governance-proposal queries in Dijkstra, and the node's versioned configuration. Not merged upstream."
       date: 2026-11-24
     links:
+      - url: https://github.com/IntersectMBO/ogmios/pull/41
+        note: Fork; Dijkstra protocol parameters, matching the node's on our 2026-11-24 devnet rerun
       - url: https://github.com/IntersectMBO/ogmios/pull/24
         note: Fork; reads and submits full Dijkstra transactions, accepted on our 2026-11-23 devnet run
       - url: https://github.com/CardanoSolutions/ogmios/compare/master...IntersectMBO:ogmios:master
@@ -405,7 +407,12 @@ tools:
       - url: https://github.com/bloxbean/yaci-store/pull/1299
       - url: https://github.com/bloxbean/yaci-store/tree/next-leios
   kupo:
+    unreleased:
+      note: "IntersectMBO fork on the node 11.2 libraries: at e9ef0be3 (after PR #19) it indexes the whole 11.2.1 devnet chain, sub-transaction outputs and their spends included. Left: connected through Ogmios instead of a node, it still refuses Dijkstra blocks. Not merged upstream."
+      date: 2026-11-24
     links:
+      - url: https://github.com/IntersectMBO/kupo/pull/19
+        note: Fork; indexes sub-transactions, accepted on our 2026-11-24 devnet rerun
       - url: https://github.com/CardanoSolutions/kupo/compare/master...IntersectMBO:kupo:master
         note: IntersectMBO fork on the node 11.2 libraries; done only once merged upstream
       - url: https://github.com/IntersectMBO/kupo/issues/13
@@ -413,7 +420,7 @@ tools:
       - url: https://github.com/IntersectMBO/kupo/issues/12
         note: Fork; design spike for indexing sub-transactions
       - url: https://github.com/IntersectMBO/kupo/pull/9
-        note: Fork; indexes Dijkstra blocks, stops on transactions with sub-transactions
+        note: Fork; indexes Dijkstra blocks (sub-transactions came in PR #19)
       - url: https://github.com/IntersectMBO/kupo/pull/10
         note: Fork; GHC 9.12.4, which the new libraries need
       - url: https://github.com/CardanoSolutions/kupo/pull/204

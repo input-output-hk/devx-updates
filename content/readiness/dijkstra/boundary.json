@@ -2752,7 +2752,7 @@
             "plutus-language"
           ],
           "status": "in-progress",
-          "summary": "The IntersectMBO fork (master 54bb8c1c) moves Ogmios to the node 11.2 libraries. On the 11.2.1 devnet it syncs every Dijkstra block and returns full Dijkstra transactions (direct deposits, guards, balance intervals, sub-transactions, PlutusV4 redeemers and scripts); it evaluates a PlutusV4 guard, submits, follows the mempool and answers a rejected submission with an error (devnet checks fork-chain-sync and fork-ogmios-api). None of it is merged into CardanoSolutions/ogmios or released: v7.0.0, built on node 11.0.1, still exits at the first Dijkstra block.",
+          "summary": "The IntersectMBO fork moves Ogmios to the node 11.2 libraries. On the 11.2.1 devnet, master 54bb8c1c (2026-11-23) and 20c383a2 (2026-11-24) sync every Dijkstra block and return full Dijkstra transactions (direct deposits, guards, balance intervals, sub-transactions, PlutusV4 redeemers and scripts); both evaluate a PlutusV4 guard, submit, follow the mempool and answer a rejected submission with an error (devnet checks fork-chain-sync and fork-ogmios-api). None of it is merged into CardanoSolutions/ogmios or released: v7.0.0, built on node 11.0.1, still exits at the first Dijkstra block.",
           "evidence": [
             {
               "kind": "source",
@@ -2772,12 +2772,12 @@
             {
               "kind": "devnet",
               "check": "fork-chain-sync",
-              "version": "IntersectMBO fork 54bb8c1c"
+              "version": "IntersectMBO fork 20c383a2"
             },
             {
               "kind": "devnet",
               "check": "fork-ogmios-api",
-              "version": "IntersectMBO fork 54bb8c1c"
+              "version": "IntersectMBO fork 20c383a2"
             },
             {
               "kind": "devnet",
@@ -2790,21 +2790,21 @@
           "surfaces": [
             "protocol-parameters"
           ],
-          "status": "gap",
-          "summary": "v7.0.0 exits at the first Dijkstra block. The IntersectMBO fork still has no Dijkstra protocol-parameters encoder (a TODO(dijkstra) stub), so queryLedgerState/protocolParameters answers \"Query unavailable in the current era\" on the devnet (devnet check fork-ogmios-api). PR #41, merged in the fork on 2026-11-23 after the devnet run (fork master 20c383a2), adds the Dijkstra protocol-parameters query; it has not been run on the devnet, and nothing is merged upstream.",
+          "status": "in-progress",
+          "summary": "v7.0.0 exits at the first Dijkstra block. The IntersectMBO fork had no Dijkstra protocol-parameters encoder at 54bb8c1c (\"Query unavailable in the current era\" on the devnet). PR #41, merged in the fork on 2026-11-23 (master 20c383a2), adds it: on the devnet on 2026-11-24 queryLedgerState/protocolParameters returns all 54 node parameters at the node's values, including the Leios and Peras parameters and the PlutusV4 cost model (devnet check fork-ogmios-api). Nothing is merged upstream or released. The governance-proposal queries still answer nothing in Dijkstra (TODO(dijkstra) in Query.hs).",
           "evidence": [
             {
               "kind": "source",
               "repo": "IntersectMBO/ogmios",
-              "revision": "54bb8c1cd02b081314a2c5a48149b0ca338e39ce",
+              "revision": "20c383a280ba7265a471ad6a7127aa63b3be00d8",
               "path": "server/src/Ogmios/Data/Json/Query.hs",
-              "line": 1850,
-              "quote": "-- TODO(dijkstra): Conway.encodePParams matches ConwayPParams,"
+              "line": 1854,
+              "quote": "                            (eraMismatchOrResult Dijkstra.encodePParams)"
             },
             {
               "kind": "devnet",
               "check": "fork-ogmios-api",
-              "version": "IntersectMBO fork 54bb8c1c"
+              "version": "IntersectMBO fork 20c383a2"
             },
             {
               "kind": "devnet",
@@ -2877,7 +2877,7 @@
             "block-encoding"
           ],
           "status": "in-progress",
-          "summary": "The IntersectMBO fork (master ee51691d) moves Kupo to the node 11.2 libraries and indexes Dijkstra blocks on the devnet up to the first transaction with a sub-transaction. None of it is merged into CardanoSolutions/kupo or released: v2.12, built on node 11.0.1, still stops at the first Dijkstra block. PR #19, merged in the fork on 2026-11-23 after the devnet run, indexes sub-transactions instead of refusing them; it has not been run on the devnet.",
+          "summary": "The IntersectMBO fork moves Kupo to the node 11.2 libraries. Master ee51691d (2026-11-23) indexed Dijkstra blocks on the devnet up to the first transaction with a sub-transaction; e9ef0be3 (2026-11-24, after PR #19) indexes every block to the tip (devnet check fork-chain-sync), and reads the node's versioned configuration (PR #23). None of it is merged into CardanoSolutions/kupo or released: v2.12, built on node 11.0.1, still stops at the first Dijkstra block.",
           "evidence": [
             {
               "kind": "source",
@@ -2890,7 +2890,7 @@
             {
               "kind": "devnet",
               "check": "fork-chain-sync",
-              "version": "IntersectMBO fork ee51691d"
+              "version": "IntersectMBO fork e9ef0be3"
             },
             {
               "kind": "devnet",
@@ -2910,16 +2910,24 @@
           "surfaces": [
             "transaction-encoding"
           ],
-          "status": "gap",
-          "summary": "v2.12 stops at the first Dijkstra block. The IntersectMBO fork indexes ordinary Dijkstra transactions and direct deposits, but stops with an error on any transaction carrying sub-transactions: how to number them in the index is still undecided.",
+          "status": "in-progress",
+          "summary": "v2.12 stops at the first Dijkstra block. The IntersectMBO fork at ee51691d refused any transaction carrying sub-transactions. PR #19, merged in the fork on 2026-11-23 (master e9ef0be3), indexes them: a valid transaction's sub-transactions are applied and an invalid one's discarded, as the ledger does. On the devnet on 2026-11-24 it indexes the whole chain, including a sub-transaction's own output and its later spend (devnet check fork-chain-sync). Nothing is merged upstream or released. Connected through Ogmios instead of directly to a node, the fork still refuses Dijkstra blocks.",
           "evidence": [
             {
               "kind": "source",
               "repo": "IntersectMBO/kupo",
-              "revision": "ee51691d4d8e286bf4a69deafe5817e1c2329212",
+              "revision": "e9ef0be33abe5f702848536e70b75972011a9fa7",
               "path": "src/Kupo/Data/Cardano.hs",
-              "line": 170,
-              "quote": "<> \" carries sub-transactions, which Kupo does not index yet.\""
+              "line": 264,
+              "quote": "                    SubTransactionDijkstra <$> toList (tx ^. Ledger.bodyTxL . Ledger.subTransactionsTxBodyL)"
+            },
+            {
+              "kind": "source",
+              "repo": "IntersectMBO/kupo",
+              "revision": "e9ef0be33abe5f702848536e70b75972011a9fa7",
+              "path": "src/Kupo/Data/Cardano.hs",
+              "line": 182,
+              "quote": "            \"Ogmios does not serialise Dijkstra transactions yet, so Kupo cannot index the block at slot \""
             },
             {
               "kind": "source",
@@ -2937,9 +2945,16 @@
               "date": "2026-07-18"
             },
             {
+              "kind": "tracker",
+              "url": "https://github.com/IntersectMBO/kupo/pull/19",
+              "title": "Index Dijkstra sub-transactions",
+              "state": "merged",
+              "date": "2026-11-23"
+            },
+            {
               "kind": "devnet",
               "check": "fork-chain-sync",
-              "version": "IntersectMBO fork ee51691d"
+              "version": "IntersectMBO fork e9ef0be3"
             },
             {
               "kind": "devnet",

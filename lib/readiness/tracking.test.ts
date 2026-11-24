@@ -82,15 +82,15 @@ tools:
 
 test("a dismissal replaces the computed state and keeps it alongside", () => {
   const site = dijkstraSite();
-  const ogmios = site.classification.tools.get("ogmios")!;
-  const url = "https://github.com/CardanoSolutions/ogmios/issues/1";
-  const tracked = { ...site, tracking: new Map([["ogmios", { dismissed: { reason: "Test" }, links: [{ url }] }]]), linkState: { [url]: { kind: "issue" as const, title: "T", state: "merged" as const, checked: "2026-10-22" } } };
-  const state = toolState(tracked, ogmios);
+  const dbSync = site.classification.tools.get("cardano-db-sync")!;
+  const url = "https://github.com/IntersectMBO/cardano-db-sync/issues/1";
+  const tracked = { ...site, tracking: new Map([["cardano-db-sync", { dismissed: { reason: "Test" }, links: [{ url }] }]]), linkState: { [url]: { kind: "issue" as const, title: "T", state: "merged" as const, checked: "2026-10-22" } } };
+  const state = toolState(tracked, dbSync);
   assert.equal(state.state, "dismissed");
   assert.equal(state.computed, "breaks");
   assert.equal(state.reason, "Test");
-  assert.deepEqual(state.links, [{ url, label: "CardanoSolutions/ogmios#1", info: tracked.linkState[url] }]);
-  assert.equal(toolState(site, ogmios).state, "breaks", "without an entry the computed state stands");
+  assert.deepEqual(state.links, [{ url, label: "IntersectMBO/cardano-db-sync#1", info: tracked.linkState[url] }]);
+  assert.equal(toolState(site, dbSync).state, "breaks", "without an entry the computed state stands");
 });
 
 test("work merged only in a fork is tracked against upstream, never as merged upstream", async () => {

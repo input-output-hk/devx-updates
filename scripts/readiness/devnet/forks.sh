@@ -5,7 +5,7 @@
 #   DEVNET_DIR=/tmp/dj-1110 ./forks.sh relay [BLOCK]   # serve the chain with a plain node, optionally truncated after BLOCK
 #   DEVNET_DIR=/tmp/dj-1110 ./forks.sh ogmios IDS      # chain sync + queries through Ogmios (ogmios-probe/probe.mjs)
 #   DEVNET_DIR=/tmp/dj-1110 ./forks.sh kupo [IDS]      # index from origin; with IDS, report the outputs of each named tx
-#   ./forks.sh ogmios-api                               # live chain only: evaluate, submit and watch a fresh payment
+#   ./forks.sh ogmios-api                               # live chain or relay: evaluate, submit and watch a fresh payment
 #                                                       # through Ogmios, resubmit it, and evaluate a PlutusV4 guard
 #
 # DEVNET_DIR holds a chain that start.sh, hardfork.sh, transactions.sh and advanced.sh produced. Restarting
@@ -14,8 +14,8 @@
 # and its mempool still validates submissions. The forks' native builds are on cache.iog.io; the static musl builds are not.
 set -euo pipefail
 . "$(dirname "$0")/env.sh"
-OGMIOS_COMMIT=${OGMIOS_COMMIT:-54bb8c1cd02b081314a2c5a48149b0ca338e39ce}
-KUPO_COMMIT=${KUPO_COMMIT:-ee51691d4d8e286bf4a69deafe5817e1c2329212}
+OGMIOS_COMMIT=${OGMIOS_COMMIT:-20c383a280ba7265a471ad6a7127aa63b3be00d8}
+KUPO_COMMIT=${KUPO_COMMIT:-e9ef0be33abe5f702848536e70b75972011a9fa7}
 OUT=$DEVNET_DIR/forks
 mkdir -p "$OUT"
 here=$(cd "$(dirname "$0")" && pwd)

@@ -1,0 +1,3 @@
+# 2026-11-24: both forks with --node-config env/configuration.yaml (the node's versioned configuration) instead of legacy-configuration.json
+ogmios 20c383a2: Missing 'ByronGenesisFile' and/or 'ShelleyGenesisFile' from Cardano's configuration?
+kupo e9ef0be3: reached checkpoint slot 47773 (the tip), no errors logged

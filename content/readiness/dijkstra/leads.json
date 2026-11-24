@@ -2564,6 +2564,81 @@
       ]
     },
     {
+      "tool": "cab",
+      "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+      "via": "own",
+      "surfaces": [
+        "block-encoding",
+        "plutus-language"
+      ],
+      "decision": "not-reached",
+      "summary": "borc decodes wallet UTxOs and its own transactions, never blocks. The language tables stop at PlutusV3, which limits new scripts but leaves V1-V3 transactions valid; a PlutusV4 script in a UTxO only gets no language, nothing throws.",
+      "evidence": [
+        {
+          "repo": "WingRiders/cab",
+          "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+          "path": "src/wallet/connector/parse.ts",
+          "line": 93,
+          "quote": "export const parseCborHexUtxo = (encodedUtxo: CborHexString) => parseUtxo(decode(encodedUtxo))"
+        },
+        {
+          "repo": "WingRiders/cab",
+          "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+          "path": "src/types/transaction.ts",
+          "line": 277,
+          "quote": "'plutus:v3': Language.PLUTUSV3,"
+        },
+        {
+          "repo": "WingRiders/cab",
+          "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+          "path": "src/dataProvider/index.ts",
+          "line": 88,
+          "quote": "language: OGMIOS_LANGUAGE_TO_LANGUAGE[utxo.script.language],"
+        }
+      ]
+    },
+    {
+      "tool": "cab",
+      "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+      "via": "own",
+      "surfaces": [
+        "protocol-parameters",
+        "transaction-encoding"
+      ],
+      "decision": "confirmed",
+      "summary": "Protocol parameters from Ogmios must carry maxReferenceScriptsSize or parsing throws; the Ogmios fork's Dijkstra answer (devnet, 2026-11-24) names it maxReferenceScriptsSizePerTransaction. Stake registration is only offered as certificate 0, the deposit-less form the node rejects at protocol version 12.",
+      "evidence": [
+        {
+          "repo": "WingRiders/cab",
+          "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+          "path": "src/types/protocolParameters.ts",
+          "line": 29,
+          "quote": "'maxReferenceScriptsSize',"
+        },
+        {
+          "repo": "WingRiders/cab",
+          "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+          "path": "src/helpers/ogmios.ts",
+          "line": 14,
+          "quote": "throw new Error(`Missing required field: ${field}`)"
+        },
+        {
+          "repo": "WingRiders/cab",
+          "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+          "path": "src/types/transaction.ts",
+          "line": 96,
+          "quote": "STAKE_REGISTRATION = 0,"
+        },
+        {
+          "repo": "WingRiders/cab",
+          "revision": "31e2488a4452dc4c9c5eefe4b74cd6b8ce6deec8",
+          "path": "src/ledger/transaction/cbor/cborize.ts",
+          "line": 139,
+          "quote": "TxCertificateKey.STAKE_REGISTRATION,"
+        }
+      ]
+    },
+    {
       "tool": "cardano-cli-guru",
       "revision": "2904b58b35c5cab9d1c6550b0b4be26eb272c348",
       "via": "blockfrost",
@@ -5473,6 +5548,66 @@
       ]
     },
     {
+      "tool": "kogmios",
+      "revision": "f0160af84d18a5669f721b0cd0c032847c316c6b",
+      "via": "own",
+      "surfaces": [
+        "era-identity",
+        "plutus-language"
+      ],
+      "decision": "confirmed",
+      "summary": "Ogmios's health answer is read into a closed CardanoEra enum ending at CONWAY, and Jackson rejects an unknown enum value unless configured to accept it, which kogmios is not; \"dijkstra\" fails. Scripts are a sealed type keyed on language up to plutus:v3, so a UTxO holding a plutus:v4 script fails to deserialize.",
+      "evidence": [
+        {
+          "repo": "projectNEWM/kogmios",
+          "revision": "f0160af84d18a5669f721b0cd0c032847c316c6b",
+          "path": "src/main/kotlin/io/newm/kogmios/protocols/model/CardanoEra.kt",
+          "line": 25,
+          "quote": "    CONWAY,"
+        },
+        {
+          "repo": "projectNEWM/kogmios",
+          "revision": "f0160af84d18a5669f721b0cd0c032847c316c6b",
+          "path": "src/main/kotlin/io/newm/kogmios/protocols/model/result/HealthResult.kt",
+          "line": 16,
+          "quote": "val currentEra: CardanoEra,"
+        },
+        {
+          "repo": "projectNEWM/kogmios",
+          "revision": "f0160af84d18a5669f721b0cd0c032847c316c6b",
+          "path": "src/main/kotlin/io/newm/kogmios/protocols/model/Script.kt",
+          "line": 37,
+          "quote": "@JsonTypeName(\"plutus:v3\")"
+        },
+        {
+          "repo": "projectNEWM/kogmios",
+          "revision": "f0160af84d18a5669f721b0cd0c032847c316c6b",
+          "path": "src/main/kotlin/io/newm/kogmios/protocols/model/result/UtxoResult.kt",
+          "line": 37,
+          "quote": "val script: Script? = null,"
+        }
+      ]
+    },
+    {
+      "tool": "kogmios",
+      "revision": "f0160af84d18a5669f721b0cd0c032847c316c6b",
+      "via": "own",
+      "surfaces": [
+        "node-to-client-protocol"
+      ],
+      "decision": "not-reached",
+      "summary": "The local-state-query markers are doc comments; kogmios talks to Ogmios over WebSocket, never to the node.",
+      "evidence": [
+        {
+          "repo": "projectNEWM/kogmios",
+          "revision": "f0160af84d18a5669f721b0cd0c032847c316c6b",
+          "path": "src/main/kotlin/io/newm/kogmios/protocols/messages/MsgAcquire.kt",
+          "line": 10,
+          "quote": "* Acquire a ledger state for the Local State Query miniprotocol. If you don't specify a ChainPoint argument,"
+        }
+      ]
+    },
+    {
       "tool": "koios",
       "revision": "c202fce5c499b117538f1886c7a9a207cfe2707b",
       "via": "cardano-db-sync",
@@ -6720,6 +6855,80 @@
       ]
     },
     {
+      "tool": "ogmiosdotnet",
+      "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+      "via": "own",
+      "surfaces": [
+        "era-identity"
+      ],
+      "decision": "not-reached",
+      "summary": "The closed era enum appears only in era-mismatch and evaluation-failure payloads; chain sync forwards blocks without validating them and the health answer keeps the era as a string.",
+      "evidence": [
+        {
+          "repo": "ItsDaveB/OgmiosDotnet",
+          "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+          "path": "src/Ogmios.Services/ChainSynchronization/BlockService.cs",
+          "line": 81,
+          "quote": "var block = result.Instance.Result.AsRollForward.Block;"
+        },
+        {
+          "repo": "ItsDaveB/OgmiosDotnet",
+          "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+          "path": "src/Ogmios.Domain/Server/ServerHealth.cs",
+          "line": 5,
+          "quote": "public required string CurrentEra { get; set; }"
+        }
+      ]
+    },
+    {
+      "tool": "ogmiosdotnet",
+      "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+      "via": "own",
+      "surfaces": [
+        "plutus-language",
+        "protocol-parameters"
+      ],
+      "decision": "confirmed",
+      "summary": "Ledger-state answers are validated against the Ogmios v6.14 schema before use. Its ProtocolParameters allows no extra properties and its Language enum ends at plutus:v3, so a Dijkstra protocol-parameters answer (Leios and Peras fields, a plutus:v4 cost model) or a UTxO with a plutus:v4 script fails validation and the service throws.",
+      "evidence": [
+        {
+          "repo": "ItsDaveB/OgmiosDotnet",
+          "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+          "path": "src/Ogmios.Services/LedgerStateQueries/LedgerStateProtocolParametersService.cs",
+          "line": 34,
+          "quote": "if (responseEntity.IsQueryLedgerStateProtocolParametersResponse) return responseEntity;"
+        },
+        {
+          "repo": "ItsDaveB/OgmiosDotnet",
+          "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+          "path": "src/Ogmios.Services/LedgerStateQueries/LedgerStateProtocolParametersService.cs",
+          "line": 40,
+          "quote": "throw new LedgerStateQueryFailedException(\"Failed to query ledger state protocol parameters: \" + responseMessage, responseMessage);"
+        },
+        {
+          "repo": "ItsDaveB/OgmiosDotnet",
+          "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+          "path": "src/Ogmios.Schema/Ogmios/v6.14/Generated/ProtocolParameters.Validate.cs",
+          "line": 900,
+          "quote": "ValidationContext propertyResult = property.Value.As<Corvus.Json.JsonNotAny>().Validate(result.CreateChildContext(), level);"
+        },
+        {
+          "repo": "ItsDaveB/OgmiosDotnet",
+          "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+          "path": "src/Ogmios.Schema/Ogmios/v6.14/Generated/Language.Validate.cs",
+          "line": 98,
+          "quote": "public static Language PlutusV3 { get; } = CorvusValidation.Enum3.As<Language>();"
+        },
+        {
+          "repo": "ItsDaveB/OgmiosDotnet",
+          "revision": "abe2f4c28d1ead875ac46fd2ae0bfba95e2529e0",
+          "path": "src/Ogmios.Services/LedgerStateQueries/LedgerStateUTxOService.cs",
+          "line": 34,
+          "quote": "if (responseEntity.IsQueryLedgerStateUtxoResponse) return responseEntity;"
+        }
+      ]
+    },
+    {
       "tool": "ogmiosdotnet-blockchainevents",
       "revision": "7b35ff2d40d14d3c44dc734d159e3ddb01de66a1",
       "via": "ogmios",
@@ -7694,6 +7903,40 @@
           "path": "lib/xogmios/tx_submission/messages.ex",
           "line": 15,
           "quote": "\"method\": \"submitTransaction\","
+        }
+      ]
+    },
+    {
+      "tool": "xogmios",
+      "revision": "d48eebfe10cbd5de12d4a6b52dee226dd9627894",
+      "via": "own",
+      "surfaces": [
+        "era-identity",
+        "node-to-client-protocol"
+      ],
+      "decision": "not-reached",
+      "summary": "Blocks are passed to the handler as decoded JSON maps without era-specific parsing; the era list only names mainnet starting points for a sync (a slot and block id still work), and the local-state-query markers are documentation links. It talks to Ogmios, not the node.",
+      "evidence": [
+        {
+          "repo": "wowica/xogmios",
+          "revision": "d48eebfe10cbd5de12d4a6b52dee226dd9627894",
+          "path": "lib/xogmios/chain_sync.ex",
+          "line": 22,
+          "quote": "@callback handle_block(block :: map(), state) ::"
+        },
+        {
+          "repo": "wowica/xogmios",
+          "revision": "d48eebfe10cbd5de12d4a6b52dee226dd9627894",
+          "path": "lib/xogmios/chain_sync/messages.ex",
+          "line": 124,
+          "quote": "conway: {133_660_799, \"e757d57eb8dc9500a61c60a39fadb63d9be6973ba96ae337fd24453d4d15c343\"}"
+        },
+        {
+          "repo": "wowica/xogmios",
+          "revision": "d48eebfe10cbd5de12d4a6b52dee226dd9627894",
+          "path": "lib/xogmios/state_query.ex",
+          "line": 29,
+          "quote": "Support for all [Ledger-state](https://ogmios.dev/mini-protocols/local-state-query/#ledger-state)"
         }
       ]
     },

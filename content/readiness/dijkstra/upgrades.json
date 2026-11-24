@@ -155,6 +155,28 @@
       ]
     },
     {
+      "tool": "kupo",
+      "revision": "1c7346789188d7a1a05343e7888ad8f08854cbca",
+      "eraHandling": "prepared",
+      "summary": "Already has Dijkstra block and transaction cases, written against the Dijkstra prototype of its node 11.0.1 libraries. Moving to ouroboros-consensus 5.4 crosses breaking releases: the IntersectMBO fork, 68 commits ahead, did that port and added sub-transaction indexing (PR #19), which upstream lacks; at e9ef0be3 it indexes the 11.2.1 devnet chain (devnet check fork-chain-sync).",
+      "evidence": [
+        {
+          "repo": "CardanoSolutions/kupo",
+          "revision": "1c7346789188d7a1a05343e7888ad8f08854cbca",
+          "path": "src/Kupo/Data/Cardano.hs",
+          "line": 197,
+          "quote": "BlockDijkstra (ShelleyBlock (Ledger.Block _ txs) _) ->"
+        },
+        {
+          "repo": "CardanoSolutions/kupo",
+          "revision": "1c7346789188d7a1a05343e7888ad8f08854cbca",
+          "path": "src/Kupo/Data/Cardano.hs",
+          "line": 230,
+          "quote": "TransactionDijkstra tx ->"
+        }
+      ]
+    },
+    {
       "tool": "marconi",
       "revision": "d39923eb7b81156f5783e6252469b321ad89a253",
       "eraHandling": "own-work",
@@ -224,6 +246,28 @@
           "path": "offchain/src/Midgard/Constants.hs",
           "line": 30,
           "quote": "refScriptStorage :: C.NetworkId -> C.AddressInEra C.ConwayEra"
+        }
+      ]
+    },
+    {
+      "tool": "ogmios",
+      "revision": "435189aea2d9a047dc395a6f1cdef737d52f1cbe",
+      "eraHandling": "prepared",
+      "summary": "Already names the Dijkstra era and routes queries and JSON encoding to Dijkstra cases, written against the Dijkstra prototype of its node 11.0.1 libraries. Moving to ouroboros-consensus 5.4 crosses breaking releases: the IntersectMBO fork, 135 commits ahead, did that port, and at 20c383a2 it serves Dijkstra blocks, transactions and protocol parameters on the 11.2.1 devnet (devnet checks fork-chain-sync and fork-ogmios-api).",
+      "evidence": [
+        {
+          "repo": "CardanoSolutions/ogmios",
+          "revision": "435189aea2d9a047dc395a6f1cdef737d52f1cbe",
+          "path": "server/src/Ogmios/Prelude.hs",
+          "line": 348,
+          "quote": "SomeShelleyEra ShelleyBasedEraDijkstra -> toJSON @Text \"dijkstra\""
+        },
+        {
+          "repo": "CardanoSolutions/ogmios",
+          "revision": "435189aea2d9a047dc395a6f1cdef737d52f1cbe",
+          "path": "server/src/Ogmios/Data/Json/Query.hs",
+          "line": 1705,
+          "quote": "(LSQ.BlockQuery (QueryIfCurrentDijkstra GetCurrentPParams))"
         }
       ]
     },

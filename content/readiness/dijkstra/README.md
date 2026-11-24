@@ -126,8 +126,8 @@ archived assessments and on `/map/dijkstra/history`.
 | `csl-decoding` | CSL 17.0.0, 15.0.3 and 18.0.0-beta.1 decode no Dijkstra block or new body; re-encoding adds the legacy fourth element. |
 | `pycardano-transactions` | PyCardano 0.19.2 fails on Dijkstra metadata and on every new body. |
 | `jvm-codecs` | Yaci 0.5.0-pre17 now decodes all 336 Dijkstra blocks. cardano-client-lib 0.8.0-pre8 reads every new field; with Era.Dijkstra 31 of 32 ids match (not the PlutusV4 guard); without an era it re-encodes the Conway shape. 0.7.3 fails on guards and Dijkstra metadata. |
-| `fork-chain-sync` | The IntersectMBO Ogmios fork (54bb8c1c) syncs every block and now returns full Dijkstra transactions; the Kupo fork (ee51691d) still stops at the first sub-transaction. |
-| `fork-ogmios-api` | The Ogmios fork evaluates a PlutusV4 guard, submits, follows the mempool and answers a rejected submission; Dijkstra protocol parameters are still unavailable. |
+| `fork-chain-sync` | The IntersectMBO Ogmios fork syncs every block and returns full Dijkstra transactions (54bb8c1c, and 20c383a2 on 2026-11-24). The Kupo fork stopped at the first sub-transaction at ee51691d; at e9ef0be3 (2026-11-24) it indexes the whole chain. |
+| `fork-ogmios-api` | The Ogmios fork evaluates a PlutusV4 guard, submits, follows the mempool and answers a rejected submission. Dijkstra protocol parameters were unavailable at 54bb8c1c; at 20c383a2 (2026-11-24) they match the node's. |
 | `blockfrost-dijkstra-data` | With `plutusV4` added to db-sync's enum by hand, db-sync 13.8.0.0 skips sub-transactions and exits on the first spend of a sub-transaction output. Blockfrost v7.0.1 lists spent outputs as unspent, misses direct deposits, returns `plutusV4` and redeemer purpose `guard` (with an empty script hash) outside its API schema, serves no new parameters, and `/network/eras` answers HTTP 500. |
 | `blockfrost-platform-submit` | blockfrost-platform 1.0.0 cannot connect to node 11.2.1 (no V23); main (d5a48256) connects but its `/tx/submit` rejects all 27 three-element encodings with HTTP 400 and passes the 5 Conway ones. |
 | `ccl-quicktx` | cardano-client-lib 0.8.0-pre8 and 0.7.3: QuickTx stake registration and deregistration are still rejected (deposit-less certificates); 0.7.3 also writes a duplicate vkey witness and a wrong script integrity hash for shared datum hashes. |
@@ -137,7 +137,7 @@ Neither fork is merged upstream or released, and neither 0.8.0-pre8 nor 0.5.0-pr
 register keeps cardano-client-lib and Yaci in progress so consumers on older pins are not counted as fixed.
 
 Not run: Koios, required top-level guards, the historical patched gouroboros controls and cardano-node-api.
-Ogmios and Kupo were run with a flattened configuration; their rejection of the versioned one (seen on 11.2.0) was not re-tested. db-sync stops before the direct deposit and the sub-transaction unless `plutusV4` is added to its enum by hand.
+Ogmios and Kupo were run with a flattened configuration. On 2026-11-24 the Kupo fork (e9ef0be3) read the versioned one and the Ogmios fork (20c383a2) did not; the releases were not re-tested with it. db-sync stops before the direct deposit and the sub-transaction unless `plutusV4` is added to its enum by hand.
 Hosted Blockfrost (its submission and mempool endpoints) is closed source and was not run.
 Source progress remains separate from runtime results: a newly published release is not an end-to-end devnet pass.
 
@@ -160,9 +160,9 @@ records URL, state and date.
 
 | Worst status | Components |
 | --- | --- |
-| gap | 46: cardano-serialization-lib-csl, cardano-multiplatform-lib-cml, pallas, gouroboros, cardano-js-sdk, bloxbean-cardano-client-library, pycardano, cometa-js, buildooor, ouroboros-miniprotocols-ts, cardano-data-lite, evolution-sdk, cardanosharp, typhonjs, whisky, elm-cardano, cquisitor-lib, ledgerjs-hw-app-cardano, cardano-hw-interop-lib, ogmios, kupo, cardano-db-sync, cardano-wallet, oura, dolos, carp, scrolls, cf-ledger-sync, cardano-graphql, koios, blockfrost, cardano-rosetta-java, mithril, hydra, aiken, opshin, helios, scalus, uplc-turbo, julc, meshjs-mesh-sdk, lucid-evolution, atlas, cardano-transaction-lib-ctl, kuber, blaze |
+| gap | 44: cardano-serialization-lib-csl, cardano-multiplatform-lib-cml, pallas, gouroboros, cardano-js-sdk, bloxbean-cardano-client-library, pycardano, cometa-js, buildooor, ouroboros-miniprotocols-ts, cardano-data-lite, evolution-sdk, cardanosharp, typhonjs, whisky, elm-cardano, cquisitor-lib, ledgerjs-hw-app-cardano, cardano-hw-interop-lib, cardano-db-sync, cardano-wallet, oura, dolos, carp, scrolls, cf-ledger-sync, cardano-graphql, koios, blockfrost, cardano-rosetta-java, mithril, hydra, aiken, opshin, helios, scalus, uplc-turbo, julc, meshjs-mesh-sdk, lucid-evolution, atlas, cardano-transaction-lib-ctl, kuber, blaze |
 | no-evidence | 3: ouroboros-network-js, plu-ts, cncli |
-| in-progress | 8: yaci, apollo, amaru, dingo, yaci-store, adder, utxorpc, yaci-devkit |
+| in-progress | 10: yaci, apollo, amaru, dingo, ogmios, kupo, yaci-store, adder, utxorpc, yaci-devkit |
 | released | 4: cardano-c, plutus-plutus-core, plutarch, plutigo |
 
 
@@ -179,6 +179,17 @@ parameters without the BLS key, era tables ending at Conway, script contexts
 without V4's fields, and Pallas or Yaci versions that cannot decode Dijkstra
 blocks. Transaction rules stay `no-evidence` unless code specific to a rule
 change was found.
+
+What changed on 2026-11-24 (fork rerun on the 2026-11-23 chain):
+
+- Ogmios: protocol parameters move from gap to in-progress. The IntersectMBO fork at 20c383a2 (PR #41) answers every
+  Dijkstra parameter with the node's values. Ogmios is now in progress on every surface; nothing is upstream or released.
+- Kupo: transaction encoding moves from gap to in-progress. The fork at e9ef0be3 (PR #19) indexes sub-transactions and
+  the whole devnet chain. Behind Ogmios instead of a node it still refuses Dijkstra blocks.
+- Neither is a fix step any more, so the order below has 19 steps. Four Ogmios clients that had been counted broken only
+  through Ogmios were read: cab, kogmios and OgmiosDotnet break on their own code (closed era or Plutus language types,
+  schema-validated or renamed protocol parameters, cab's deposit-less stake registration); xogmios passes Ogmios's JSON
+  through and now waits on Ogmios's verdict.
 
 What changed on 2026-11-23 (node 11.2.1):
 
@@ -312,7 +323,7 @@ the lines it rests on:
 - `not-reached`: shipped code uses that dependency outside the gap.
 - `undetermined`: source reading cannot decide; execution or additional evidence is needed.
 
-725 entries, 1,619 surface decisions (584 confirmed, 994 not reached, 41 undetermined); none is unreviewed, stale or orphaned.
+732 entries, 1,631 surface decisions (590 confirmed, 1,000 not reached, 41 undetermined); none is unreviewed, stale or orphaned.
 
 On 2026-11-23, 227 stale leads moved to the newly classified revisions because every cited file was unchanged or changed
 only outside the cited hunk; 19 were re-read by hand (Oura and Dolos now pin Pallas 1.5.0-rc.3, still confirmed; Yano now
@@ -481,39 +492,42 @@ on its own and put Blockfrost first, which it cannot be without db-sync.
 
 | Step | Fix | Tools unlocked (running total) |
 | --- | --- | --- |
-| 1 | cardano-db-sync | 3 |
-| 2 | blockfrost | 20 |
-| 3 | koios | 29 |
-| 4 | ogmios | 34 |
-| 5 | kupo | 41 |
-| 6 | Move off Maestro | 47 |
-| 7 | pallas | 52 |
-| 8 | cardano-serialization-lib-csl | 56 |
-| 9 | gouroboros | 60 |
-| 10 | aiken | 63 |
-| 11 | bloxbean-cardano-client-library | 65 |
-| 12 | ledgerjs-hw-app-cardano | 67 |
-| 13 | cardano-wallet | 69 |
-| 14 | cquisitor-lib | 70 |
-| 15 | whisky | 71 |
-| 16 | cardano-js-sdk | 72 |
-| 17 | buildooor | 73 |
-| 18 | cardano-hw-interop-lib | 74 |
-| 19 | cardano-multiplatform-lib-cml | 76 |
-| 20 | scalus | 77 |
-| 21 | julc | 78 |
+| 1 | cardano-db-sync | 4 |
+| 2 | blockfrost | 24 |
+| 3 | koios | 36 |
+| 4 | Move off Maestro | 42 |
+| 5 | pallas | 47 |
+| 6 | cardano-serialization-lib-csl | 51 |
+| 7 | gouroboros | 55 |
+| 8 | aiken | 58 |
+| 9 | ledgerjs-hw-app-cardano | 60 |
+| 10 | bloxbean-cardano-client-library | 62 |
+| 11 | cardano-wallet | 64 |
+| 12 | cquisitor-lib | 65 |
+| 13 | whisky | 66 |
+| 14 | cardano-js-sdk | 67 |
+| 15 | buildooor | 68 |
+| 16 | cardano-hw-interop-lib | 69 |
+| 17 | cardano-multiplatform-lib-cml | 71 |
+| 18 | scalus | 72 |
+| 19 | julc | 73 |
 
 On 2026-11-23 Blockfrost's step grew, because its 49 consumers that read transaction data or submit through it now count
 (the gap was recorded on 2026-11-11 but its consumers were first read in this refresh). Yaci left the order: its
 consumers wait on their own pins and on cardano-client-lib. On 2026-11-24 Blaze's record was corrected (own PlutusV4 and
-protocol-parameter gaps), so cardano-js-sdk no longer unlocks it and the order unlocks 78 tools instead of 79.
+protocol-parameter gaps), so cardano-js-sdk no longer unlocks it and the order unlocks 78 tools instead of 79. On 2026-11-24 Ogmios and Kupo
+left the order (both in progress); the remaining 19 steps unlock 73 tools. Earlier steps grew because tools that had
+waited on Ogmios or Kupo as well are now unlocked by their other fixes.
 
 Tools that are boundary components with a gap of their own (Mesh, Lucid
 Evolution, Evolution SDK, Blaze, yaci-store, Adder, Hydra and others) are never
 unlocked by upstream fixes alone.
 
-**2 tools have a released upstream fix**, so the next move is theirs: Marlowe
-and Marconi (the tagged target contains cardano-api 11.11.0.0; the first-support comparison is not a new dependency solve). txtop and cardano-node-api were bump-ready
+**5 tools have a released upstream fix**, so the next move is theirs: Marlowe,
+Marconi and Midgard on cardano-api (the tagged target contains cardano-api 11.12.0.0; the first-support comparison is not
+a new dependency solve), and Ogmios and Kupo on ouroboros-consensus 5.4.0.0. Midgard joined on 2026-11-24, when Ogmios
+and Kupo stopped counting as gaps; Ogmios and Kupo themselves count because their IntersectMBO forks have done the port,
+which is not upstream or released yet. txtop and cardano-node-api were bump-ready
 until the devnet showed gouroboros v0.213.x cannot decode the node's Dijkstra
 blocks or place ordinary Dijkstra transactions. From v0.217.0 gouroboros decodes
 the blocks, but v0.221.0 (2026-11-23) still reports ordinary Dijkstra transactions as Conway,
@@ -522,7 +536,7 @@ Bursa now also waits on ledgerjs-hw-app-cardano, and cf-ledger-sync has its own
 gap.
 
 Raising the pin is only the minimum. The unlock report derives each step's
-distance (`steps`): ten of the eleven cross a breaking release (a 0.x minor
+distance (`steps`): twelve of the thirteen cross a breaking release (a 0.x minor
 under semver, A.B under the Haskell PVP); only cf-ledger-sync stays on its
 yaci line. `upgrades.json` records, with quoted lines at the classified
 revision, whether the tool's own code handles the new era:
@@ -530,7 +544,7 @@ revision, whether the tool's own code handles the new era:
 | Own era handling | Tools |
 | --- | --- |
 | own-work (names eras and stops before Dijkstra) | Atlas, Marconi, Marlowe, sc-tools, Midgard (Conway-typed builders and queries), cf-ledger-sync (era enum and genesis transitions end at Conway), IBC incubator (no Dijkstra block case), cardano-node-api (PlutusV4 gets the V3 context; adder and its own calls break on v0.213.x) |
-| prepared (already has Dijkstra cases) | Bursa |
+| prepared (already has Dijkstra cases) | Bursa, Ogmios and Kupo (against the 11.0.1 Dijkstra prototype; the forks did the 11.2 port) |
 | generic (only era-generic library entry points) | txtop, Scrolls |
 
 

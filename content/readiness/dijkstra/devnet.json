@@ -13,9 +13,9 @@
       "ExperimentalHardForksEnabled and TestDijkstraHardForkAtEpoch 2 in the generated versioned configuration. The epoch trigger changes the era but initially leaves protocol version 10. Two governance actions raised it to 11 then 12.",
       "The recorded transaction matrix ran after checking protocol version 12. It has 32 encodings: the 25 of the 2026-11-09 matrix plus a native guard, a PlutusV4 guard and an account balance interval (cardano-cli 11.7 added the options), with their mempool encodings, and a balance interval the account does not meet, which the node rejects.",
       "Ogmios and Kupo, releases and forks, were run with a flattened legacy configuration equivalent to the versioned one, as on 11.2.0, when both rejected the versioned envelope; that rejection was not re-tested on 11.2.1. db-sync needs Protocol and LastKnownBlockVersion fields plus a Shelley genesis copy rounded to Byron whole-second startTime.",
-      "Only what ran on 2026-11-23 is recorded; the 2026-11-09 to 2026-11-11 results stay in the archived assessment. Version labels name exactly what ran: current releases and prereleases, Pallas main, the IntersectMBO Ogmios and Kupo forks, blockfrost-platform main, and txtop's latest release with its gouroboros pin raised.",
+      "Only what ran on 2026-11-23 is recorded, plus a rerun of the IntersectMBO Ogmios and Kupo forks at newer commits on 2026-11-24 against the same chain, served by a plain node (forks.sh relay) because cardano-testnet cannot restart an old chain; the 2026-11-09 to 2026-11-11 results stay in the archived assessment. Version labels name exactly what ran: current releases and prereleases, Pallas main, the IntersectMBO Ogmios and Kupo forks, blockfrost-platform main, and txtop's latest release with its gouroboros pin raised.",
       "Raw logs, fixtures, resolved build inputs and checksums are retained under content/readiness/dijkstra-runs/2026-11-23/. No signing keys, mnemonics or credentials are retained.",
-      "Not run: Koios (it reads the db-sync tables, and db-sync stops before the advanced transactions), required top-level guards, the historical patched gouroboros controls and cardano-node-api, and Ogmios and Kupo against the versioned configuration. Pass means only the capability and cases named by that check."
+      "Not run: Koios (it reads the db-sync tables, and db-sync stops before the advanced transactions), required top-level guards, the historical patched gouroboros controls and cardano-node-api, and the Ogmios v7.0.0 and Kupo v2.12 releases against the versioned configuration (on 2026-11-24 Kupo fork e9ef0be3 read it and synced; Ogmios fork 20c383a2 exited asking for ByronGenesisFile and ShelleyGenesisFile). Pass means only the capability and cases named by that check."
     ],
     "recipe": "scripts/readiness/devnet/README.md"
   },
@@ -376,7 +376,7 @@
         }
       ],
       "observed": [
-        "js-sdk-txs.log:\ndijkstra-balance-interval          head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-balance-interval-unmet    head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-native-guard              head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 03666e3029c32718\u2026, round-trip exact; guards 1\ndijkstra-plutusv4-guard            head 83a6: decoded, 1 inputs, 0 certificates, isValid true, id 876e9a66743a5879\u2026, round-trip exact; guards 1\ndijkstra-sub-transaction           head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id caa270da2e96"
+        "js-sdk-txs.log:\ndijkstra-balance-interval          head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-balance-interval-unmet    head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-native-guard              head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 03666e3029c32718…, round-trip exact; guards 1\ndijkstra-plutusv4-guard            head 83a6: decoded, 1 inputs, 0 certificates, isValid true, id 876e9a66743a5879…, round-trip exact; guards 1\ndijkstra-sub-transaction           head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id caa270da2e96"
       ],
       "recipe": [
         "scripts/readiness/devnet/js-probe/probe.cjs",
@@ -491,7 +491,7 @@
       ],
       "observed": [
         "yaci-0.5.0-pre17-blocks.log:\nyaci 0.5.0-pre17\n337 blocks, 19 transaction bodies in decoded blocks\n     1  era Conway: block decoded\n   336  era Dijkstra: block decoded",
-        "ccl-0.8.0-pre8-era-decode.log:\ndijkstra-payment                             raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact\ndijkstra-plutusv4-guard                      raw id = chain | era-less: model id \u2260 chain (f0f359bb25e1\u2026), re-encode differs(83a6), guards=1 | Dijkstra: model id \u2260 chain (f0f359bb25e1\u2026), re-encode differs(83a6), guards=1",
+        "ccl-0.8.0-pre8-era-decode.log:\ndijkstra-payment                             raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact\ndijkstra-plutusv4-guard                      raw id = chain | era-less: model id ≠ chain (f0f359bb25e1…), re-encode differs(83a6), guards=1 | Dijkstra: model id ≠ chain (f0f359bb25e1…), re-encode differs(83a6), guards=1",
         "ccl-0.7.3-txs.log:\ndijkstra-metadata                    head 83a4: error: IndexOutOfBoundsException: Index 3 out of bounds for length 3\ndijkstra-native-guard                head 83a4: error: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.ByteString (co.nstant.in.cbor.model.Array and co.nstant.\ndijkstra-plutusv4-guard              head 83a6: error: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.ByteString (co.nstant.in.cbor.model.Array and co.nstant."
       ],
       "recipe": [
@@ -503,8 +503,8 @@
     },
     {
       "id": "fork-chain-sync",
-      "title": "The IntersectMBO forks of Ogmios and Kupo read Dijkstra blocks; Kupo stops at sub-transactions",
-      "summary": "Not merged upstream or released. Ogmios master 54bb8c1c syncs all Dijkstra blocks of the 11.2.1 devnet and now returns full Dijkstra transactions: direct deposits as credits, guards, balance intervals, sub-transactions, PlutusV4 redeemers and scripts. Kupo master ee51691d still stops with an explicit error at the first transaction carrying a sub-transaction.",
+      "title": "The IntersectMBO forks of Ogmios and Kupo read every Dijkstra block and transaction",
+      "summary": "Not merged upstream or released. Ogmios master 54bb8c1c (2026-11-23) and 20c383a2 (2026-11-24) sync all Dijkstra blocks of the 11.2.1 devnet and return full Dijkstra transactions: direct deposits as credits, guards, balance intervals, sub-transactions, PlutusV4 redeemers and scripts. Kupo master ee51691d (2026-11-23) stopped with an explicit error at the first transaction carrying a sub-transaction; e9ef0be3 (2026-11-24, PR #19) indexes the whole chain, including the sub-transaction's own output and its later spend.",
       "results": [
         {
           "kind": "component",
@@ -515,15 +515,31 @@
         },
         {
           "kind": "component",
+          "id": "ogmios",
+          "version": "IntersectMBO fork 20c383a2",
+          "outcome": "pass",
+          "note": "Chain sync from origin to the tip with every Dijkstra field (2026-11-24)."
+        },
+        {
+          "kind": "component",
           "id": "kupo",
           "version": "IntersectMBO fork ee51691d",
           "outcome": "fail",
           "note": "Stops at the first sub-transaction: not indexed yet"
+        },
+        {
+          "kind": "component",
+          "id": "kupo",
+          "version": "IntersectMBO fork e9ef0be3",
+          "outcome": "pass",
+          "note": "Indexes every block to the tip, sub-transaction outputs included (2026-11-24)."
         }
       ],
       "observed": [
         "ogmios-fork-chain-sync.log:\nblocks per era {\"conway\":15,\"dijkstra\":534}\nchain sync reached the tip\ntx dijkstra-balance-interval: dijkstra block 190; fields accountBalanceIntervals,fee,id,inputs,outputs,signatories,spends\ntx dijkstra-balance-interval-unmet: not on chain\ntx dijkstra-native-guard: dijkstra block 190; fields fee,guards,id,inputs,outputs,scripts,signatories,spends\ntx dijkstra-plutusv4-guard: dijkstra block 190; fields collaterals,fee,guards,id,inputs,outputs,redeemers,scriptIntegrityHash,scripts,signatories,spends\ntx dijkstra-sub-transaction: dijkstra block 190; fields fee,id,inputs,outputs,signatories,spends",
-        "kupo-fork-full-chain.log:\nlast logged roll-forward slot: 2374\n{\"Kupo\":{\"tag\":\"KupoUnexpectedError\",\"exception\":\"Dijkstra transaction caa270da2e964edb17b1e80598ec475f07c217582ea1fa488b1ff31239241217 carries sub-transactions, which Kupo does not index yet.\"}}"
+        "kupo-fork-full-chain.log:\nlast logged roll-forward slot: 2374\n{\"Kupo\":{\"tag\":\"KupoUnexpectedError\",\"exception\":\"Dijkstra transaction caa270da2e964edb17b1e80598ec475f07c217582ea1fa488b1ff31239241217 carries sub-transactions, which Kupo does not index yet.\"}}",
+        "ogmios-fork-20c383a2-chain-sync.log:\nblocks per era {\"conway\":15,\"dijkstra\":2409}\nchain sync reached the tip\ntx dijkstra-sub-transaction: dijkstra block 190; fields fee,id,inputs,outputs,signatories,spends,subTransactions",
+        "kupo-fork-e9ef0be3-full-chain.log:\ndijkstra-sub-transaction: 1 outputs indexed\nsplit: 10 outputs indexed\nlast logged roll-forward slot: 47773\n# sub-transaction output (matches/*@02cfa999...)\n{\"transaction_id\":\"02cfa999c835380f0f9953ff903b39f0aff5954473432fd40b73f974e6b384d4\",\"output_index\":0,...,\"spent_at\":{\"slot_no\":11844,\"transaction_id\":\"486c36425dcd2174fff43635c6263e80980b352d369d94a1c17bd0ad00c5c688\",...}}"
       ],
       "recipe": [
         "scripts/readiness/devnet/forks.sh",
@@ -532,8 +548,8 @@
     },
     {
       "id": "fork-ogmios-api",
-      "title": "The Ogmios fork evaluates, submits and follows the mempool; Dijkstra protocol parameters are still unavailable",
-      "summary": "Ogmios fork 54bb8c1c evaluates a PlutusV4 guard, submits a Dijkstra payment with the right id, lists it through acquireMempool and nextTransaction, and answers a repeated submission with a ledger error instead of dropping the connection (fixed by PR #24). queryLedgerState/protocolParameters still answers \"Query unavailable in the current era\".",
+      "title": "The Ogmios fork evaluates, submits, follows the mempool and, from 20c383a2, answers Dijkstra protocol parameters",
+      "summary": "Ogmios fork 54bb8c1c evaluates a PlutusV4 guard, submits a Dijkstra payment with the right id, lists it through acquireMempool and nextTransaction, and answers a repeated submission with a ledger error instead of dropping the connection (fixed by PR #24); queryLedgerState/protocolParameters answered \"Query unavailable in the current era\". Fork 20c383a2 (PR #41, 2026-11-24, against the relayed chain) passes the same API steps and answers protocolParameters with all 54 node parameters at the node's values, including the Leios and Peras parameters, refInputsCostPerMultiAssetPolicy and the PlutusV4 cost model.",
       "results": [
         {
           "kind": "component",
@@ -541,11 +557,20 @@
           "version": "IntersectMBO fork 54bb8c1c",
           "outcome": "fail",
           "note": "Dijkstra protocol parameters are not implemented."
+        },
+        {
+          "kind": "component",
+          "id": "ogmios",
+          "version": "IntersectMBO fork 20c383a2",
+          "outcome": "pass",
+          "note": "Dijkstra protocol parameters match the node's."
         }
       ],
       "observed": [
         "ogmios-fork-api.log:\npayment id (cardano-cli): f669378da02e2af2f0c9a7915da743cde65ca42f055781c62f1150c803244296\nevaluateTransaction (payment): ok []\nevaluateTransaction (PlutusV4 guard): ok [{\"validator\":{\"index\":0,\"purpose\":\"guard\"},\"budget\":{\"memory\":500,\"cpu\":64100}}]\nsubmitTransaction (payment): ok {\"transaction\":{\"id\":\"f669378da02e2af2f0c9a7915da743cde65ca42f055781c62f1150c803244296\"}}\nacquireMempool: ok {\"acquired\":\"mempool\",\"slot\":11125}\nsizeOfMempool: ok {\"maxCapacity\":{\"bytes\":25294848},\"currentSize\":{\"bytes\":239},\"transactions\":{\"count\":1}}\nnextTransaction: ok {\"transaction\":{\"id\":\"f669378da02e2af2f0c9a7915da743cde65ca42f055781c62f1150c803244296\",\"spends\":\"inputs\",\"inputs\":[{\"transaction\":{\"id\":\"7ff5b2d13eae2732c8e61185a639cc1c25636279b77d05fd4334eeb1e7f35d\nreleaseMempool: ok {\"released\":\"mempool\"}\nsubmitTransaction (same payment again): ERROR {\"code\":3173,\"message\":\"All inputs of the transaction a",
-        "ogmios-fork-chain-sync.log:\nqueryLedgerState/protocolParameters: ERROR {\"code\":2002,\"message\":\"Query unavailable in the current era.\"}"
+        "ogmios-fork-chain-sync.log:\nqueryLedgerState/protocolParameters: ERROR {\"code\":2002,\"message\":\"Query unavailable in the current era.\"}",
+        "ogmios-fork-20c383a2-chain-sync.log:\nqueryLedgerState/protocolParameters: ok {\"minFeeCoefficient\":1,\"minFeeConstant\":{\"ada\":{\"lovelace\":0}},\"minFeeReferenceScripts\":{\"base\":15,\"range\":25600,\"multiplier\":1.2},...",
+        "ogmios-fork-20c383a2-api.log:\nevaluateTransaction (PlutusV4 guard): ok [{\"validator\":{\"index\":0,\"purpose\":\"guard\"},\"budget\":{\"memory\":500,\"cpu\":64100}}]\nsubmitTransaction (payment): ok {\"transaction\":{\"id\":\"fccb54462a77afbbfa2f30263ed1b1ebbad9f63a3d319c3beb7bae0c9b3cd045\"}}\nsubmitTransaction (same payment again): ERROR {\"code\":3173,\"message\":\"All inputs of the transaction are already spent. ...\"}"
       ],
       "recipe": [
         "scripts/readiness/devnet/forks.sh",
