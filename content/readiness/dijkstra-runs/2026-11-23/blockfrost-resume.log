@@ -1,0 +1,4 @@
+db-sync stopped at block 187
+ALTER TYPE
+node tip: {"block":875}
+db-sync exited; highest block indexed: 604

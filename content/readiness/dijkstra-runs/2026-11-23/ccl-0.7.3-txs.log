@@ -1,0 +1,33 @@
+cardano-client-lib 0.7.3
+adv-split                            head 83a3: decoded, 1 inputs, 8 outputs, id 7ff5b2d13eae2732…, re-encode differs (head 84a3)
+conway-legacy-reg                    head 84a4: decoded, 1 inputs, 1 outputs, id 739f570faa998fdd…, re-encode exact
+conway-metadata                      head 84a4: decoded, 1 inputs, 1 outputs, id 987b7e4c800a7c44…, re-encode differs (head 84a4)
+conway-payment                       head 84a3: decoded, 1 inputs, 1 outputs, id 1ddbc9b94110c272…, re-encode exact
+conway-reg-with-deposit              head 84a4: decoded, 1 inputs, 1 outputs, id 50cdb84e9418b262…, re-encode exact
+conway-required-signer               head 84a4: decoded, 1 inputs, 1 outputs, id cd4781f1af458f27…, re-encode exact
+dijkstra-balance-interval            head 83a4: decoded, 1 inputs, 1 outputs, id 5a6f1da911233440…, re-encode differs (head 84a3)
+dijkstra-balance-interval-unmet      head 83a4: decoded, 1 inputs, 1 outputs, id e953a3fa655a2261…, re-encode differs (head 84a3)
+dijkstra-direct-deposit              head 83a4: decoded, 1 inputs, 1 outputs, id abf6908eb6d56250…, re-encode differs (head 84a3)
+dijkstra-metadata                    head 83a4: error: IndexOutOfBoundsException: Index 3 out of bounds for length 3
+dijkstra-native-guard                head 83a4: error: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.ByteString (co.nstant.in.cbor.model.Array and co.nstant.
+dijkstra-payment                     head 83a3: decoded, 1 inputs, 1 outputs, id 6b4ac3dc5f74a903…, re-encode differs (head 84a3)
+dijkstra-plutusv4-guard              head 83a6: error: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.ByteString (co.nstant.in.cbor.model.Array and co.nstant.
+dijkstra-plutusv4-reference-script   head 83a3: decoded, 1 inputs, 1 outputs, id 27266d0a03105a53…, re-encode differs (head 84a3)
+dijkstra-reg-with-deposit            head 83a4: decoded, 1 inputs, 1 outputs, id 5e5cc532015cc2a9…, re-encode differs (head 84a4)
+dijkstra-sub-transaction             head 83a4: decoded, 1 inputs, 1 outputs, id ee1f81ce735b481e…, re-encode differs (head 84a3)
+split                                head 83a3: decoded, 1 inputs, 10 outputs, id 89a0365c75e92fa6…, re-encode differs (head 84a3)
+mempool-split                        head 83a3: decoded, 1 inputs, 10 outputs, id 89a0365c75e92fa6…, re-encode differs (head 84a3)
+mempool-conway-payment               head 83a3: decoded, 1 inputs, 1 outputs, id 1ddbc9b94110c272…, re-encode differs (head 84a3)
+mempool-conway-reg-with-deposit      head 83a4: decoded, 1 inputs, 1 outputs, id 50cdb84e9418b262…, re-encode differs (head 84a4)
+mempool-conway-required-signer       head 83a4: decoded, 1 inputs, 1 outputs, id cd4781f1af458f27…, re-encode differs (head 84a4)
+mempool-conway-metadata              head 83a4: error: IndexOutOfBoundsException: Index 3 out of bounds for length 3
+mempool-dijkstra-payment             head 83a3: decoded, 1 inputs, 1 outputs, id 6b4ac3dc5f74a903…, re-encode differs (head 84a3)
+mempool-dijkstra-reg-with-deposit    head 83a4: decoded, 1 inputs, 1 outputs, id 5e5cc532015cc2a9…, re-encode differs (head 84a4)
+mempool-dijkstra-metadata            head 83a4: error: IndexOutOfBoundsException: Index 3 out of bounds for length 3
+mempool-adv-split                    head 83a3: decoded, 1 inputs, 8 outputs, id 7ff5b2d13eae2732…, re-encode differs (head 84a3)
+mempool-dijkstra-direct-deposit      head 83a4: decoded, 1 inputs, 1 outputs, id abf6908eb6d56250…, re-encode differs (head 84a3)
+mempool-dijkstra-sub-transaction     head 83a4: decoded, 1 inputs, 1 outputs, id ee1f81ce735b481e…, re-encode differs (head 84a3)
+mempool-dijkstra-plutusv4-reference-script head 83a3: decoded, 1 inputs, 1 outputs, id 27266d0a03105a53…, re-encode differs (head 84a3)
+mempool-dijkstra-native-guard        head 83a4: error: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.ByteString (co.nstant.in.cbor.model.Array and co.nstant.
+mempool-dijkstra-plutusv4-guard      head 83a6: error: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.ByteString (co.nstant.in.cbor.model.Array and co.nstant.
+mempool-dijkstra-balance-interval    head 83a4: decoded, 1 inputs, 1 outputs, id 5a6f1da911233440…, re-encode differs (head 84a3)

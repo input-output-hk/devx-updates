@@ -1,0 +1,2 @@
+last logged roll-forward slot: 2374
+{"Kupo":{"tag":"KupoUnexpectedError","exception":"Dijkstra transaction caa270da2e964edb17b1e80598ec475f07c217582ea1fa488b1ff31239241217 carries sub-transactions, which Kupo does not index yet."}}

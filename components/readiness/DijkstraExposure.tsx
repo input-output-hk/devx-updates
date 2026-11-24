@@ -3,6 +3,7 @@ import { citationUrl, componentStatus, devnetResults, dijkstraSite, toolLeads, t
 import { HARDFORK_STATES, hardforkStateLabel } from "@/lib/readiness/hardfork-states";
 import StateFacts from "./StateFacts";
 import TrackingLinks from "./TrackingLinks";
+import UnreleasedDot, { UNRELEASED_LABEL } from "./UnreleasedDot";
 
 const Chip = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-block rounded-md border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[11px] leading-tight text-muted">{children}</span>
@@ -37,6 +38,10 @@ export default function DijkstraExposure({ id }: { id: string }) {
         {state.state !== "breaks" && state.state !== "in-progress" && <span className="text-sm text-muted">{state.reason}{state.dismissed?.date && ` (${state.dismissed.date})`}</span>}
       </p>
       {(state.blockedBy.length > 0 || state.tags.length > 0) && <div className="mt-2"><StateFacts blockedBy={state.blockedBy} tags={state.tags} /></div>}
+      {state.unreleased && <p className="mt-2 flex items-start gap-2 text-sm">
+        <span className="mt-1.5"><UnreleasedDot /></span>
+        <span><span className="font-medium text-status-done">{UNRELEASED_LABEL}:</span> <span className="text-muted">{state.unreleased.note}{state.unreleased.date && ` (checked ${state.unreleased.date})`}</span></span>
+      </p>}
       {state.computed && <p className="mt-1 text-xs text-muted">Otherwise: {hardforkStateLabel(state.computed, String(site.changes.target.nodeRelease))}</p>}
     </div>}
     {state && state.links.length > 0 && <div>

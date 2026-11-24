@@ -1,0 +1,9 @@
+# cardano-client-lib 0.7.3  account addr_test1qze668p3wrfew6dgpf2r3v4uykhay9trufpcjh9fyl47fdf2j9tap9rrmpk3952z8cv03gamj328f9dvhc0t8qkdjnrqzlrxwv  stake stake_test1uq4fz47sj33asmgj69prux8c5waeg4r5jkktu84nstxef3sw3hea9
+pay            head 84a3 certs - vkeys 1              OK "9959189287c01690c6b92afbf6c51a04d82d06c01c55af79496b15fff6757d19"
+meta           head 84a4 certs - vkeys 1              OK "d542c7ddfa532f027c117f41282d46c16ec7831f1ce6180e2406e27abd2f86fc"
+reg-legacy     head 84a4 certs StakeRegistration vkeys 1 REJECTED(400) {"contents":{"contents":{"contents":"EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}","tag":"TxValidationEraMismatch"},"tag":"TxCmdTxSubmitValidationError"},"tag":"TxSubmitFail"}
+reg-new        head 84a4 certs RegCert vkeys 2        OK "36ddf31e8608b2aba0612e29b96ac760928f7cc49f0e3316412c8b68bfbd6f34"
+lock-v3        head 84a3 certs - vkeys 1              OK "973fcbba25e99f3cd98c93ce99b71b77ba4ead5b3fc5ebd5add2d02eb61aa81c"
+spend-v3       head 84a7 certs - vkeys 1              OK "680f46b06c2870b8661d458749780eeaf7ff3177c456ac48c7731f8584e85bc6"
+dereg-legacy   head 84a4 certs StakeDeregistration vkeys 2 REJECTED(400) {"contents":{"contents":{"contents":"EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}","tag":"TxValidationEraMismatch"},"tag":"TxCmdTxSubmitValidationError"},"tag":"TxSubmitFail"}
+dereg-new      head 84a4 certs UnregCert vkeys 2      OK "964c51a137f9604333d7801ed09adbbce3c602d221d3fa9f57b15f977f1a918e"

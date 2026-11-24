@@ -37,8 +37,9 @@ import java.util.*;
 
 public class E2E {
     static final ObjectMapper M = new ObjectMapper();
-    static final String CLI = "/tmp/dj-ccl/node/bin/cardano-cli";
-    static final String SOCK = "/tmp/dj-ccl/env/socket/node1/sock";
+    static final String DEVNET = System.getenv().getOrDefault("DEVNET_DIR", "/tmp/dj-ccl");
+    static final String CLI = DEVNET + "/node/bin/cardano-cli";
+    static final String SOCK = DEVNET + "/env/socket/node1/sock";
     static final String SUBMIT = "http://127.0.0.1:8191/api/submit/tx";
     static final PlutusV3Script V3 = PlutusV3Script.builder().type("PlutusScriptV3").cborHex("46450101002499").build();
     static String label;

@@ -7,11 +7,20 @@
 #   dismissed:            optional. The tool shows as "Dismissed" instead of its
 #     reason: <text>      computed state (which is still shown, smaller).
 #     date: YYYY-MM-DD    Any reason: abandoned, too little use to matter, etc.
+#   unreleased:           optional. Shows a green dot next to the tool: Dijkstra
+#     note: <text>        work is done or nearly done (a branch, an open or
+#     date: YYYY-MM-DD    merged PR, a release candidate) but tools downstream
+#                         cannot use it yet (unreleased, prerelease only, or in
+#                         a fork). Only for work that covers the tool's known
+#                         Dijkstra gaps, give or take a small remainder named
+#                         in the note; not for one fix among several open gaps.
+#                         Remove it once a stable release has the work.
 #   links:                optional. Issues, PRs or any other https URL.
 #     - url: <url>
 #       note: <text>      optional, shown next to the link
 #
-# A bare string works for either: `dismissed: Archived in 2024` or
+# A bare string works for any of them: `dismissed: Archived in 2024`,
+# `unreleased: Release candidate v2.0.0-rc.1` or
 # `- https://github.com/owner/repo/issues/1`.
 #
 # GitHub titles and open/merged/closed state are not written here. Refresh them
@@ -177,6 +186,9 @@ tools:
       reason: Abandoned; no activity since 2024-04.
       date: 2026-10-26
   pallas:
+    unreleased:
+      note: "v1.5.0-rc.3 (release candidate) decodes every Dijkstra encoding of the 11.2.1 devnet behind the unstable feature; open PR #875 moves its definitions to the 11.2 ledger. The newest stable release, v1.4.0, has none of it."
+      date: 2026-11-24
     links:
       - url: https://github.com/txpipe/pallas/pull/849
         note: Dijkstra era on main behind the unstable feature
@@ -203,7 +215,12 @@ tools:
       - url: https://github.com/txpipe/pallas/pull/831
       - url: https://github.com/txpipe/pallas/pull/823
   ogmios:
+    unreleased:
+      note: "IntersectMBO fork on the node 11.2 libraries: at 54bb8c1c it returned full Dijkstra transactions, submitted and followed the mempool on the 11.2.1 devnet; the protocol-parameters query, the one gap left, was added in PR #41 on 2026-11-23 and is not tested yet. Not merged upstream."
+      date: 2026-11-24
     links:
+      - url: https://github.com/IntersectMBO/ogmios/pull/24
+        note: Fork; reads and submits full Dijkstra transactions, accepted on our 2026-11-23 devnet run
       - url: https://github.com/CardanoSolutions/ogmios/compare/master...IntersectMBO:ogmios:master
         note: IntersectMBO fork on the node 11.2 libraries; done only once merged upstream
       - url: https://github.com/IntersectMBO/ogmios/issues/21
@@ -220,6 +237,10 @@ tools:
         note: Closed draft mapping the migration; ~100 TODO(dijkstra) stubs
   blockfrost:
     links:
+      - url: https://github.com/blockfrost/blockfrost-backend-ryo/issues/368
+        note: Sub-transactions (CIP-118)
+      - url: https://github.com/blockfrost/blockfrost-backend-ryo/pull/365
+        note: Fixes /network/eras and deprecated cost_models for Dijkstra
       - url: https://github.com/blockfrost/blockfrost-backend-ryo/issues/364
         note: Checklist of what's left for Dijkstra across RYO, blockfrost-platform and the OpenAPI spec, from our 2026-11-11 devnet run
       - url: https://github.com/blockfrost/blockfrost-platform/pull/378
@@ -264,16 +285,22 @@ tools:
       - url: https://github.com/IntersectMBO/plutus/issues/6408
         note: Open ScriptContext suggestions for V4
   utxorpc:
+    unreleased:
+      note: "Dijkstra sub-transactions and ledger fields (PR #215) are only in the v0.20.0-dev.1 prerelease; the newest stable release, v0.19.2, does not have them."
+      date: 2026-11-24
     links:
       - url: https://github.com/utxorpc/spec/pull/215
         note: Dijkstra sub-transactions and ledger fields
       - url: https://github.com/utxorpc/spec/issues/218
   bloxbean-cardano-client-library:
+    unreleased:
+      note: "0.8.0-pre8 (prerelease) builds Dijkstra transactions the 11.2.1 devnet accepted; QuickTx stake registration is still rejected and one transaction id comes out wrong. The newest stable release, 0.7.3, has none of it."
+      date: 2026-11-24
     links:
       - url: https://github.com/bloxbean/cardano-client-lib/issues/752
         note: Checklist of what's left for Dijkstra, from our 2026-11-11 devnet run
       - url: https://github.com/bloxbean/cardano-client-lib/pull/748
-        note: Draft; era-aware reader and Dijkstra transaction models, accepted on the devnet; QuickTx not started
+        note: Era-aware reader and Dijkstra transaction models, released in 0.8.0-pre8; QuickTx not started
       - url: https://github.com/bloxbean/cardano-client-lib/issues/707
         note: Plutus V4 scripts
   plutigo:
@@ -302,6 +329,9 @@ tools:
       - url: https://github.com/blinklabs-io/gouroboros/issues/2817
       - url: https://github.com/blinklabs-io/gouroboros/issues/2818
   yaci:
+    unreleased:
+      note: "0.5.0-pre17 (prerelease) decodes every Dijkstra block of the 11.2.1 devnet; the newest stable line, 0.4.x, decodes none."
+      date: 2026-11-24
     links:
       - url: https://github.com/bloxbean/yaci/pull/244
         note: Read the ledger format through the client library reader
@@ -322,6 +352,8 @@ tools:
       - url: https://github.com/input-output-hk/cardano-js-sdk/issues/1736
   mithril:
     links:
+      - url: https://github.com/IntersectMBO/mithril/pull/3702
+        note: Draft; Dijkstra era support, before Leios
       - url: https://github.com/IntersectMBO/mithril/issues/3673
         note: Prepare Mithril for the Dijkstra hard fork
       - url: https://github.com/IntersectMBO/mithril/issues/3585
@@ -336,6 +368,8 @@ tools:
         note: Data case gated to PV12
   pycardano:
     links:
+      - url: https://github.com/Python-Cardano/pycardano/issues/515
+        note: Checklist of what's left for Dijkstra
       - url: https://github.com/Python-Cardano/pycardano/pull/489
         note: Dijkstra genesis only
   blaze:
@@ -346,6 +380,10 @@ tools:
         note: CIP-118 sub-transactions
   cardano-wallet:
     links:
+      - url: https://github.com/cardano-foundation/cardano-wallet/issues/5485
+        note: Epic, move to node 11.2.1
+      - url: https://github.com/cardano-foundation/cardano-wallet/pull/5484
+        note: Pins advanced to node 11.2.1
       - url: https://github.com/cardano-foundation/cardano-wallet/issues/5395
         note: Epic, Dijkstra era support
       - url: https://github.com/cardano-foundation/cardano-wallet/issues/5209
@@ -388,5 +426,29 @@ tools:
       - url: https://github.com/cardano-scaling/hydra/issues/2645
   koios:
     links:
+      - url: https://github.com/cardano-community/koios-artifacts/issues/425
+        note: Checklist of what's left for Dijkstra
       - url: https://github.com/cardano-community/koios-artifacts/tree/dijkstra
         note: Dijkstra API fields; era details are placeholders
+  meshjs-mesh-sdk:
+    links:
+      - url: https://github.com/MeshJS/mesh/issues/870
+        note: Checklist of what's left for Dijkstra
+      - url: https://github.com/MeshJS/mesh/pull/871
+        note: Deposit-bearing stake certificates; merged, not released yet
+  cardano-multiplatform-lib-cml:
+    links:
+      - url: https://github.com/dcSpark/cardano-multiplatform-lib/issues/377
+        note: Checklist of what's left for Dijkstra
+  cardano-hw-interop-lib:
+    links:
+      - url: https://github.com/vacuumlabs/cardano-hw-interop-lib/issues/38
+        note: Checklist of what's left for Dijkstra
+  cardano-hw-cli:
+    links:
+      - url: https://github.com/vacuumlabs/cardano-hw-cli/issues/219
+        note: Checklist of what's left for Dijkstra
+  cometa-js:
+    unreleased:
+      note: "2.0.0-rc.4 (release candidate) has Dijkstra builders, sub-transactions, PlutusV4 and the new protocol parameters; the pool BLS key is missing."
+      date: 2026-11-24

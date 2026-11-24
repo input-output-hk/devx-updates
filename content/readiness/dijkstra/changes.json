@@ -3,27 +3,27 @@
   "target": {
     "name": "Dijkstra",
     "majorProtocolVersion": 12,
-    "nodeRelease": "11.2.0",
+    "nodeRelease": "11.2.1",
     "componentSelection": {
-      "method": "Versions and immutable source revisions published in the official node 11.2.0 release dependency table; retained in the 2026-11-01 release evidence.",
+      "method": "Versions and immutable source revisions published in the official node 11.2.1 release dependency table; retained in the 2026-11-23 run evidence.",
       "components": [
         {
           "package": "cardano-ledger-dijkstra",
-          "version": "0.4.0.0",
+          "version": "0.5.0.0",
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a"
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2"
         },
         {
           "package": "cardano-ledger-conway",
-          "version": "1.24.0.0",
+          "version": "1.24.0.1",
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a"
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2"
         },
         {
           "package": "ouroboros-consensus",
-          "version": "5.2.0.0",
+          "version": "5.4.0.0",
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909"
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730"
         },
         {
           "package": "ouroboros-network",
@@ -39,15 +39,15 @@
         },
         {
           "package": "cardano-api",
-          "version": "11.11.0.0",
+          "version": "11.12.0.0",
           "repo": "IntersectMBO/cardano-api",
-          "revision": "76fa5f2d5064d74b25b0ff85318762fb96c97f62"
+          "revision": "c727cd63bd4753d59fef75efc864876f182eb1a8"
         },
         {
           "package": "cardano-cli",
-          "version": "11.6.0.0",
+          "version": "11.7.0.0",
           "repo": "IntersectMBO/cardano-cli",
-          "revision": "90cc2b9ae147abacf8169c848ec10dc4296796f6"
+          "revision": "24c05829e854f9b2f56dcb9422bff5ff3ff60f77"
         }
       ]
     },
@@ -71,12 +71,12 @@
     },
     "release": {
       "repo": "IntersectMBO/cardano-node",
-      "tag": "11.2.0",
-      "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
-      "publishedAt": "2026-10-28T12:53:25Z",
+      "tag": "11.2.1",
+      "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
+      "publishedAt": "2026-11-10T15:27:16Z",
       "prerelease": true,
-      "url": "https://github.com/IntersectMBO/cardano-node/releases/tag/11.2.0",
-      "assetSha256": "8b287e300ffb2063522fc33d50da6ecee8fa10fc7445c906fae0ca9783db8e03"
+      "url": "https://github.com/IntersectMBO/cardano-node/releases/tag/11.2.1",
+      "assetSha256": "88276ed753f460ee876c03c305ad68de9e4a16945f7c741e08130bf296791174"
     }
   },
   "scope": [
@@ -228,28 +228,28 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "libs/cardano-ledger-core/internal/Cardano/Ledger/Internal/Definition/Era.hs",
           "line": 140,
           "quote": "type ProtVerLow DijkstraEra = 12"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "libs/cardano-ledger-core/internal/Cardano/Ledger/Internal/Definition/Era.hs",
           "line": 133,
           "quote": "type ProtVerHigh ConwayEra = 11"
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909",
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Block.hs",
           "line": 293,
           "quote": "pattern TagDijkstra x = S (S (S (S (S (S (S (Z x)))))))"
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909",
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 180,
           "quote": "BlockDijkstra blockDijkstra -> prependTag 8 $ encodeDisk ccfgDijkstra blockDijkstra"
@@ -280,7 +280,7 @@
       "citations": [
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909",
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 346,
           "quote": "[ (NodeToClientV_23, CardanoNodeToClientVersion19)"
@@ -294,7 +294,7 @@
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909",
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 342,
           "quote": "Note that 11.x introduced no new version"
@@ -320,28 +320,28 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 3,
           "quote": "block = [header, block_body]"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 9,
           "quote": "[transaction_body, transaction_witness_set, auxiliary_data/ nil, bool]"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 112,
           "quote": "leios_certificate : leios_certificate/ nil"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/conway/impl/cddl/data/conway.cddl",
           "line": 13,
           "quote": "invalid_transactions     : [* transaction_index]"
@@ -360,47 +360,47 @@
       ],
       "compatibility": "decode-break",
       "basis": "source-verified",
-      "summary": "The target CDDL's header_body replaces protocol_version with header_version_info [highest_supported_major_version, self_reported_software_tag] and adds block_body_contains_leios_cert and eb_references_announcement, with vrf_cert's output exactly 64 bytes. The shared Praos header encoder at the same ledger revision still writes the ten-field header with protocol_version, and the tagged node 11.2.0 emits that header in Dijkstra blocks (devnet check block-shape): decoders that follow the CDDL reject the node's blocks.",
+      "summary": "The target CDDL's header_body replaces protocol_version with header_version_info [highest_supported_major_version, self_reported_software_tag] and adds block_body_contains_leios_cert and eb_references_announcement, with vrf_cert's output exactly 64 bytes. The shared Praos header encoder at the same ledger revision still writes the ten-field header with protocol_version, and the tagged node emits (11.2.0, and 11.2.1 on 2026-11-23) that header in Dijkstra blocks (devnet check block-shape): decoders that follow the CDDL reject the node's blocks.",
       "affects": "Header decoders in chain-sync clients, explorers that show the header protocol version, and pool/version telemetry tools.",
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 68,
           "quote": ", header_version_info"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 69,
           "quote": "block_body_contains_leios_cert : bool"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 83,
           "quote": "vrf_cert = [bytes .size 64, bytes .size 80]"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/conway/impl/cddl/data/conway.cddl",
           "line": 73,
           "quote": ", protocol_version"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "libs/cardano-protocol/src/Cardano/Protocol/Praos/BlockHeader.hs",
           "line": 106,
           "quote": ", hbProtVer :: !ProtVer"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "libs/cardano-protocol/src/Cardano/Protocol/Praos/BlockHeader.hs",
           "line": 192,
           "quote": "encodeListLen 10"
@@ -424,14 +424,14 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 24,
           "quote": "/ [transaction_body, transaction_witness_set, true, auxiliary_data/ nil]"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 18,
           "quote": "; In the next era the `is_valid` flag will not be allowed in mempool"
@@ -456,28 +456,28 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 137,
           "quote": "? 23 : sub_transactions"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 829,
           "quote": "sub_transaction_body ="
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/CHANGELOG.md",
-          "line": 31,
+          "line": 35,
           "quote": "* Include subtransaction execution units in transaction and block limits and minimum script fees."
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/TxInfo.hs",
           "line": 162,
           "quote": "UnsupportedScriptInSubTx Language TxId"
@@ -502,35 +502,35 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 128,
           "quote": "; guards (replaces required_signers)"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 644,
           "quote": "guards = nonempty_set<addr_keyhash>/ nonempty_oset<credential>"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 436,
           "quote": "script_require_guard = (6, credential)"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 898,
           "quote": "/ 6 ; guarding"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/conway/impl/cddl/data/conway.cddl",
           "line": 799,
           "quote": "redeemer_tag = 0 .. 5"
@@ -555,21 +555,21 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 139,
           "quote": "? 25 : direct_deposits"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 853,
           "quote": "direct_deposits = {+ reward_account => coin}"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 141,
           "quote": "? 27 : starting_account_balance_intervals"
@@ -593,42 +593,42 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/conway/impl/cddl/data/conway.cddl",
           "line": 434,
           "quote": "account_registration_cert = (0, stake_credential)"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/conway/impl/cddl/data/conway.cddl",
           "line": 441,
           "quote": "account_unregistration_cert = (1, stake_credential)"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 39,
           "quote": "[  delegation_to_stake_pool_cert"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/conway/impl/cddl/data/conway.cddl",
           "line": 786,
           "quote": "[ + redeemer"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 192,
           "quote": "multiasset<a0> = {+ policy_id => {+ asset_name => a0}}"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 879,
           "quote": ", chain_code : bytes .size 32"
@@ -654,14 +654,14 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 871,
           "quote": "? 8 : nonempty_set<plutus_v4_script>"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 32,
           "quote": "language = 0 .. 3"
@@ -689,9 +689,9 @@
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/CHANGELOG.md",
-          "line": 50,
+          "line": 54,
           "quote": "remove `txInfoFee` from PV4 `TxInfo`"
         }
       ]
@@ -713,14 +713,14 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/TxInfo.hs",
           "line": 160,
           "quote": "PointerPresentInOutput TxOutSource"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/TxInfo.hs",
           "line": 164,
           "quote": "DirectDepositsNotSupported DirectDeposits"
@@ -749,28 +749,28 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 713,
           "quote": "? 34 : uint .size 4                ; max refScript size per block"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 717,
           "quote": "? 38 : max_pledge_leverage         ; max pledge leverage"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 734,
           "quote": "? 55 : coin                        ; minfee per multi-asset policy id in reference inputs"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 735,
           "quote": "? 56 : coin                        ; minfee per datum byte in reference inputs"
@@ -794,23 +794,23 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 470,
           "quote": ", ? bls_key        : bls_key/ nil"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/cddl/data/dijkstra.cddl",
           "line": 483,
           "quote": "bls_key = [bls_pubkey : bytes .size 96, bls_possession_proof : bytes .size 48]"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/CHANGELOG.md",
-          "line": 9,
+          "line": 13,
           "quote": "Verify BLS proof of possession when (re-)registering a pool with a BLS key set"
         }
       ]
@@ -832,9 +832,9 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/CHANGELOG.md",
-          "line": 319,
+          "line": 323,
           "quote": "* Remove DRep requirement for reward withdrawals"
         }
       ]
@@ -856,7 +856,7 @@
       "citations": [
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909",
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730",
           "path": "ouroboros-consensus/src/ouroboros-consensus/Ouroboros/Consensus/HardFork/Combinator/InjectTxs.hs",
           "line": 227,
           "quote": "-- Tx failed to deserialise in the target era"
@@ -881,21 +881,21 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-api",
-          "revision": "76fa5f2d5064d74b25b0ff85318762fb96c97f62",
+          "revision": "c727cd63bd4753d59fef75efc864876f182eb1a8",
           "path": "cardano-api/src/Cardano/Api/Era/Internal/Eon/ShelleyBasedEra.hs",
           "line": 132,
           "quote": "ShelleyBasedEraDijkstra :: ShelleyBasedEra DijkstraEra"
         },
         {
           "repo": "IntersectMBO/cardano-cli",
-          "revision": "90cc2b9ae147abacf8169c848ec10dc4296796f6",
+          "revision": "24c05829e854f9b2f56dcb9422bff5ff3ff60f77",
           "path": "cardano-cli/src/Cardano/CLI/EraBased/Option.hs",
           "line": 64,
           "quote": "Opt.progDesc \"Dijkstra era commands\""
         },
         {
           "repo": "IntersectMBO/cardano-cli",
-          "revision": "90cc2b9ae147abacf8169c848ec10dc4296796f6",
+          "revision": "24c05829e854f9b2f56dcb9422bff5ff3ff60f77",
           "path": "cardano-cli/src/Cardano/CLI/EraBased/Option.hs",
           "line": 35,
           "quote": "type MainnetEra = ConwayEra"
@@ -921,16 +921,16 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/CHANGELOG.md",
-          "line": 26,
+          "line": 30,
           "quote": "Make sure `validatePerasCert` always returns `False`, thus effectively disabling unimplemented"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/CHANGELOG.md",
-          "line": 71,
+          "line": 75,
           "quote": "seats the Leios voting committee (CIP-0164)"
         }
       ]
@@ -954,63 +954,63 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
           "path": "cardano-node/src/Cardano/Node/Configuration/POM.hs",
           "line": 648,
           "quote": "npcDijkstraGenesisFile     <- v .:  \"DijkstraGenesisFile\""
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
           "path": "cardano-node/src/Cardano/Node/Configuration/POM.hs",
           "line": 361,
           "quote": "<*> (if npcExperimentalHardForksEnabled hfp then Just <$> parseDijkstraProtocol v else pure Nothing)"
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
           "path": "cardano-node/src/Cardano/Node/Configuration/POM.hs",
           "line": 687,
           "quote": "then (,) <$>  v .:? \"TestDijkstraHardForkAtEpoch\" <*> v .:? \"TestDijkstraHardForkAtVersion\""
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
           "path": "cardano-node/src/Cardano/Node/Protocol/Cardano.hs",
           "line": 139,
           "quote": "Nothing -> pure Dijkstra.emptyDijkstraGenesis"
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
           "path": "cardano-node/src/Cardano/Node/Protocol/Cardano.hs",
           "line": 193,
           "quote": "then ProtVer (natVersion @12) 0"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/Genesis.hs",
           "line": 33,
           "quote": "{ dgUpgradePParams :: UpgradeDijkstraPParams Identity DijkstraEra"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/PParams.hs",
           "line": 450,
           "quote": "udppPlutusV4CostModel <- parseCostModelAsArray False PlutusV4 =<< o .: \"plutusV4CostModel\""
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
           "path": "cardano-testnet/CHANGELOG.md",
-          "line": 73,
+          "line": 91,
           "quote": "- Disable `ExperimentalHardForksEnabled` in the default testnet config."
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
           "path": "cardano-testnet/src/Testnet/Defaults.hs",
           "line": 318,
           "quote": ", (\"TestDijkstraHardForkAtEpoch\", Aeson.Number 0)"
@@ -1038,28 +1038,28 @@
       "citations": [
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "libs/cardano-ledger-core/src/Cardano/Ledger/Core/PParams.hs",
           "line": 206,
           "quote": "encodeListLen (fromIntegral (length (eraPParams @era)))"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/PParams.hs",
           "line": 773,
           "quote": "    , ppMaxRefScriptSizePerBlock"
         },
         {
           "repo": "IntersectMBO/cardano-ledger",
-          "revision": "54e24ba4858b5f5cb4c5f6f0adfa3d7cae669b7a",
+          "revision": "95b369053fd32422695a81fb7d5289d6dd35eee2",
           "path": "eras/dijkstra/impl/src/Cardano/Ledger/Dijkstra/PParams.hs",
           "line": 795,
           "quote": "    , ppRefInputsCostPerDatumByte"
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909",
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730",
           "path": "ouroboros-consensus-cardano/src/shelley/Ouroboros/Consensus/Shelley/Ledger/Query.hs",
           "line": 131,
           "quote": "  GetCurrentPParams ::"
@@ -1078,12 +1078,12 @@
       ],
       "compatibility": "interface-change",
       "basis": "source-verified",
-      "summary": "Node 11.2.0 publishes configuration sections inside a versioned Configuration envelope. Consumers that directly read legacy top-level genesis paths need an equivalent flat configuration or envelope support. Released Ogmios and Kupo fail at configuration loading when given the new envelope; their decoder tests use a separate flattened configuration.",
+      "summary": "Node 11.2 (11.2.0 and 11.2.1) publishes configuration sections inside a versioned Configuration envelope. Consumers that directly read legacy top-level genesis paths need an equivalent flat configuration or envelope support. Released Ogmios and Kupo fail at configuration loading when given the new envelope; their decoder tests use a separate flattened configuration.",
       "affects": "Services and deployment tools that read the node configuration directly.",
       "citations": [
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
           "path": "configuration/cardano/mainnet-config.json",
           "line": 3,
           "quote": "\"Configuration\": {"
@@ -1099,14 +1099,14 @@
       "citations": [
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909",
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 324,
           "quote": "[ (NodeToNodeV_14, CardanoNodeToNodeVersion2)"
         },
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909",
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730",
           "path": "ouroboros-consensus-cardano/src/ouroboros-consensus-cardano/Ouroboros/Consensus/Cardano/Node.hs",
           "line": 349,
           "quote": "latestReleasedNodeVersion _prx = (Just NodeToNodeV_15, Just NodeToClientV_23)"
@@ -1127,7 +1127,7 @@
         },
         {
           "repo": "IntersectMBO/cardano-node",
-          "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
+          "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
           "path": "cardano-node/src/Cardano/Node/Run.hs",
           "line": 431,
           "quote": ", rnFeatureFlags = mempty -- TODO(10.7) forward this to CLI options?"
@@ -1141,7 +1141,7 @@
       "citations": [
         {
           "repo": "IntersectMBO/ouroboros-consensus",
-          "revision": "952b7020172dd7ab135b66e736da070309b47909",
+          "revision": "808e400545729b1246ba4393c69326ec4a04a730",
           "path": "ouroboros-consensus-cardano/src/shelley/Ouroboros/Consensus/Shelley/Ledger/NetworkProtocolVersion.hs",
           "line": 36,
           "quote": "[ (NodeToClientV_23, ShelleyNodeToClientVersion15)"

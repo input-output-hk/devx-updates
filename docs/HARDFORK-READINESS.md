@@ -1,6 +1,6 @@
 # Dependency mapping and hardfork readiness
 
-State of the repository on 2026-11-01, branch `hardfork-readiness`.
+State of the repository on 2026-11-23 (target node 11.2.1).
 
 This repository finds the catalog tools that stop working after the Dijkstra
 hard fork (protocol version 12, cardano-node 11.2), explains why from quoted
@@ -27,32 +27,33 @@ The register formats and findings are in
 
 | Area | File | State |
 | --- | --- | --- |
-| Changes | `changes.json` | 20 changes and 2 unchanged areas; 74 change citations |
-| Boundary | `boundary.json` | 61 components, 213 evidence items; 46 gap, 2 no-evidence, 9 in-progress, 4 released |
-| Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source; 72 revisions changed |
-| Transitive links | `transitive.json` | 29 lockfile-only component links in 28 tools |
-| Leads | `leads.json` | 637 entries, 1,598 surface decisions (542 confirmed, 1,013 not reached, 43 undetermined); all covered decisions are at current classified revisions. |
-| Unlocks | `unlocks.json` | 19 fixes unlock 82 tools; Marlowe and Marconi remain bump-ready by pin comparison |
+| Changes | `changes.json` | 20 changes and 2 unchanged areas; 74 change citations, re-read at the 11.2.1 revisions |
+| Boundary | `boundary.json` | 61 components, 267 evidence items; 45 gap, 3 no-evidence, 9 in-progress, 4 released |
+| Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source; 62 revisions changed |
+| Transitive links | `transitive.json` | 27 lockfile-only component links in 26 tools |
+| Leads | `leads.json` | 725 entries, 1,619 surface decisions (584 confirmed, 994 not reached, 41 undetermined); none unreviewed, stale or orphaned |
+| Unlocks | `unlocks.json` | 21 fixes unlock 78 tools; Marlowe and Marconi remain bump-ready by pin comparison |
 | Upgrades | `upgrades.json` | 11 readings: 8 own-work, 1 prepared, 2 generic |
-| Devnet | `devnet.json` | 15 checks, 48 results, 27 failing |
-| Site | `/map/dijkstra` | 206 tools: 110 break, 9 in progress, 4 ready, 4 target components, 45 not verified, 34 dismissed |
-| History | `/map/dijkstra/history` | Seven tool-state changes; 39 same-version runtime results matched, zero changed outcomes |
+| Devnet | `devnet.json` | 22 checks, 54 results, 24 failing (node 11.2.1, 2026-11-23) |
+| Site | `/map/dijkstra` | 207 tools: 108 break, 8 in progress, 4 ready, 4 target components, 49 not verified, 34 dismissed |
+| History | `/map/dijkstra/history` | Six tool-state changes; of 30 same-version runtime results, 29 matched and one changed because new cases were added (@cardano-sdk/core 0.47.1 on balance intervals) |
 | Dependency graph | `data/readiness/` | Existing 55 native profiles retained and replayed; broad native collection remains paused |
 
-The prior complete assessment is checksummed under `content/readiness/dijkstra-history/2026-10-26-integration/`.
-New raw evidence is under `content/readiness/dijkstra-runs/2026-11-01/`. New versions and checks appear separately
+Prior complete assessments are checksummed under `content/readiness/dijkstra-history/`; the last 11.2.0 one is
+`2026-11-11-node-11.2.0/`. New raw evidence is under `content/readiness/dijkstra-runs/2026-11-23/`. New versions and checks appear separately
 in the runtime comparison; lower counts or changed classification alone do not establish a fix.
 
 ## Target
 
-The current target is the official [cardano-node 11.2.0 tag](https://github.com/IntersectMBO/cardano-node/releases/tag/11.2.0),
-revision `dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899`, published 2026-10-28 and marked **prerelease** by GitHub.
+The current target is the official [cardano-node 11.2.1 tag](https://github.com/IntersectMBO/cardano-node/releases/tag/11.2.1),
+revision `90bc1cd9380a78a63091ff673f8c5693152c8f60`, published 2026-11-10 and marked **prerelease** by GitHub.
 Versions and source revisions come from its release dependency table, retained with the run evidence.
-The previous integration-node assessment is preserved byte for byte in
-`content/readiness/dijkstra-history/2026-10-26-integration/`, with SHA256 checksums.
+11.2.1 is a maintenance release on 11.2.0 with no ledger-rule change and the same Dijkstra CDDL; it fixes a pool-relay
+IPv4 byte-order regression of 11.2.0, and its CLI can build guards and balance intervals. Previous assessments are
+preserved byte for byte, with SHA256 checksums, in `content/readiness/dijkstra-history/`.
 
 The site identifies cardano-node, cardano-cli, cardano-submit-api and cardano-testnet
-as **Target component · 11.2.0**: they belong to the reference node release.
+as **Target component · 11.2.1**: they belong to the reference node release.
 The version in this label is the node release, not each executable's version.
 This is separate from **Ready for HF** and from capability test outcomes.
 Component-specific devnet results remain visible; where none are recorded, the
@@ -62,13 +63,13 @@ assessments keep **In progress** and their original results.
 
 | Component | Version | Source commit |
 | --- | --- | --- |
-| cardano-ledger-dijkstra | 0.4.0.0 | `54e24ba4` |
-| cardano-ledger-conway | 1.24.0.0 | `54e24ba4` |
-| ouroboros-consensus | 5.2.0.0 | `952b7020` |
+| cardano-ledger-dijkstra | 0.5.0.0 | `95b36905` |
+| cardano-ledger-conway | 1.24.0.1 | `95b36905` |
+| ouroboros-consensus | 5.4.0.0 | `808e4005` |
 | ouroboros-network | 2.0.0.0 | `4646039f` |
 | plutus-ledger-api | 1.71.0.0 | `261766ad` |
-| cardano-api | 11.11.0.0 | `76fa5f2d` |
-| cardano-cli | 11.6.0.0 | `90cc2b9a` |
+| cardano-api | 11.12.0.0 | `c727cd63` |
+| cardano-cli | 11.7.0.0 | `24c05829` |
 
 ## How the readiness assessment works
 
@@ -241,24 +242,26 @@ listed prerequisites first:
 | Step | Fix | Tools unlocked (running total) |
 | --- | --- | --- |
 | 1 | cardano-db-sync | 3 |
-| 2 | blockfrost | 16 |
-| 3 | ogmios | 26 |
-| 4 | koios | 37 |
-| 5 | kupo | 45 |
-| 6 | Move off Maestro | 51 |
-| 7 | pallas | 56 |
-| 8 | cardano-serialization-lib-csl | 60 |
-| 9 | gouroboros | 64 |
-| 10 | aiken | 67 |
-| 11 | ledgerjs-hw-app-cardano | 69 |
-| 12 | cardano-js-sdk | 71 |
-| 13 | bloxbean-cardano-client-library | 73 |
-| 14 | scalus | 75 |
-| 15 | cardano-wallet | 77 |
-| 16 | cquisitor-lib | 78 |
-| 17 | whisky | 79 |
-| 18 | cardano-hw-interop-lib | 80 |
-| 19 | cardano-multiplatform-lib-cml | 82 |
+| 2 | blockfrost | 20 |
+| 3 | koios | 29 |
+| 4 | ogmios | 34 |
+| 5 | kupo | 41 |
+| 6 | Move off Maestro | 47 |
+| 7 | pallas | 52 |
+| 8 | cardano-serialization-lib-csl | 56 |
+| 9 | gouroboros | 60 |
+| 10 | aiken | 63 |
+| 11 | bloxbean-cardano-client-library | 65 |
+| 12 | ledgerjs-hw-app-cardano | 67 |
+| 13 | cardano-wallet | 69 |
+| 14 | cquisitor-lib | 70 |
+| 15 | whisky | 71 |
+| 16 | cardano-js-sdk | 72 |
+| 17 | buildooor | 73 |
+| 18 | cardano-hw-interop-lib | 74 |
+| 19 | cardano-multiplatform-lib-cml | 76 |
+| 20 | scalus | 77 |
+| 21 | julc | 78 |
 
 Marlowe and Marconi have a released upstream fix by the pin comparison; the current target API is 11.11.0.0. This is not a new dependency solve.
 `upgrades.json` records, from quoted shipped code, whether each bump-ready
@@ -267,34 +270,40 @@ each pin moves (most cross a breaking release).
 
 ### Devnet verification (R4)
 
-Node 11.2.0 runs a one-pool devnet that enters Dijkstra at epoch 2. Two governance hard forks raise the
-protocol version from 10 to 12 before the transaction matrix. The 2026-11-01 run uses CLI 11.6.0.0.
-Full logs, 17 transaction encodings, 168 Dijkstra blocks, a Conway positive control and resolved build inputs
-are retained under `content/readiness/dijkstra-runs/2026-11-01/`; the recipe is in `scripts/readiness/devnet/`.
-Results are specific to the named version and capability. Historical patched tool controls are labelled explicitly.
+Node 11.2.1 runs a one-pool devnet that enters Dijkstra at epoch 2. Two governance hard forks raise the
+protocol version from 10 to 12 before the transaction matrix. The 2026-11-23 run uses CLI 11.7.0.0.
+Full logs, 32 transaction encodings (including direct deposits, a sub-transaction, guards, balance intervals and
+PlutusV4), 336 Dijkstra blocks, a Conway positive control and resolved build inputs are retained under
+`content/readiness/dijkstra-runs/2026-11-23/`; the recipe is in `scripts/readiness/devnet/`. Results are specific to the
+named version and capability; the 11.2.0 runs are in the archived assessments.
 
 | Check | Result |
 | --- | --- |
 | `fork-to-pv12` | Dijkstra PV12; 54 protocol parameters. |
-| `n2c-handshake` | Only V23 accepted; gouroboros 0.208.5 refused; v0.213.0, v0.213.9, v0.216.3 and adapted services connect. |
-| `cross-era-submission` | Conway payment, deposit registration, key-hash signer and metadata accepted; deposit-less registration rejected. Dijkstra payment, deposit registration and metadata accepted. |
-| `block-shape` | Ten-field header and non-segregated body; all three tested recent gouroboros versions fail at the first Dijkstra block. |
-| `service-decoding` | Ogmios 7.0.0 and Kupo 2.12 still exit on Dijkstra block decoding after configuration adaptation. |
-| `tx-era-detection` | gouroboros still cannot infer the era of ordinary Dijkstra transactions; patched cardano-node-api submission and mempool listing fail. |
-| `tool-upgrades` | Historical txtop and patched cardano-node-api controls connect after the dependency change; that is not full compatibility. |
-| `pallas-chain-sync` | v1.4.0, main b4a519fa and dijkstra e7ea1726 decode Conway, but no Dijkstra block. |
-| `pallas-transactions` | Only the dijkstra branch with explicit era and unstable decodes the three-element Dijkstra form. |
-| `cml-decoding` | CML 6.2.0 decodes the Conway control; none of 168 Dijkstra blocks or three-element transactions. |
-| `js-sdk-transactions` | @cardano-sdk/core 0.47.1 round-trips all 17 encodings exactly; advanced body keys are not covered. |
-| `db-sync-and-blockfrost` | db-sync 13.7.2.1 stalls at block 18; Blockfrost RYO 6.8.2 serves pre-fork data as latest. |
-| `csl-decoding` | CSL 17.0.0 and 15.0.3 decode no Dijkstra blocks; transaction re-encoding adds the legacy fourth element. |
-| `pycardano-transactions` | PyCardano 0.19.2 fails on three Dijkstra metadata encodings; the other 14 round-trip exactly. |
-| `node-config-envelope` | New node configuration envelope is rejected by Ogmios and Kupo; flattening settings allows their protocol checks. |
+| `n2c-handshake` | Only V23 accepted; gouroboros v0.221.0, Ogmios v7.0.0, Kupo v2.12 and db-sync 13.8.0.0 connect. |
+| `cross-era-submission` | Unchanged: Conway payment, deposit registration, key-hash signer and metadata accepted; deposit-less registration rejected. Dijkstra payment, deposit registration and metadata accepted. |
+| `advanced-transactions` | A direct deposit, a sub-transaction, a PlutusV4 reference script, a native guard, a PlutusV4 guard (its script ran) and a balance interval are accepted; an unmet interval is rejected. |
+| `block-shape` | Ten-field header (protocol version 12.0) and non-segregated body; gouroboros v0.221.0 decodes all 205 Dijkstra blocks it synced. |
+| `service-decoding` | Ogmios 7.0.0 and Kupo 2.12 still exit on the first Dijkstra block. |
+| `tx-era-detection` | gouroboros v0.221.0 still reports ordinary Dijkstra transactions as Conway. |
+| `tool-upgrades` | txtop v0.17.0 connects, as released and with gouroboros v0.221.0; its transaction list was not observed. |
+| `pallas-chain-sync` | v1.5.0-rc.3 and main 0b17c8f6 decode Conway, but no Dijkstra block. |
+| `pallas-transactions` | Both decode all 32 encodings with an explicit era and unstable; era detection still fails. |
+| `cml-decoding` | CML 6.2.0 decodes the Conway control; no Dijkstra block or three-element transaction. |
+| `js-sdk-transactions` | Fails: @cardano-sdk/core 0.47.1 round-trips 29 of 32 encodings, guards included, but cannot decode balance intervals (keyed by credential instead of reward account). |
+| `db-sync-and-blockfrost` | db-sync 13.8.0.0 indexes Dijkstra blocks, then exits on the first PlutusV4 script; Blockfrost RYO v7.0.1 serves the indexed data, but /network/eras answers HTTP 500. |
+| `csl-decoding` | CSL 17.0.0, 15.0.3 and 18.0.0-beta.1 decode no Dijkstra block or new body; re-encoding adds the legacy fourth element. |
+| `pycardano-transactions` | PyCardano 0.19.2 fails on Dijkstra metadata and on every new body. |
+| `jvm-codecs` | Yaci 0.5.0-pre17 now decodes all 336 Dijkstra blocks. cardano-client-lib 0.8.0-pre8 reads every new field; with Era.Dijkstra 31 of 32 ids match (not the PlutusV4 guard); without an era it re-encodes the Conway shape. 0.7.3 fails on guards and Dijkstra metadata. |
+| `fork-chain-sync` | The IntersectMBO Ogmios fork (54bb8c1c) syncs every block and now returns full Dijkstra transactions; the Kupo fork (ee51691d) still stops at the first sub-transaction. |
+| `fork-ogmios-api` | The Ogmios fork evaluates a PlutusV4 guard, submits, follows the mempool and answers a rejected submission; Dijkstra protocol parameters are still unavailable. |
+| `blockfrost-dijkstra-data` | With `plutusV4` added to db-sync's enum by hand, db-sync 13.8.0.0 skips sub-transactions and exits on the first spend of a sub-transaction output. Blockfrost v7.0.1 lists spent outputs as unspent, misses direct deposits, returns `plutusV4` and redeemer purpose `guard` (with an empty script hash) outside its API schema, serves no new parameters, and `/network/eras` answers HTTP 500. |
+| `blockfrost-platform-submit` | blockfrost-platform 1.0.0 cannot connect to node 11.2.1 (no V23); main (d5a48256) connects but its `/tx/submit` rejects all 27 three-element encodings with HTTP 400 and passes the 5 Conway ones. |
+| `ccl-quicktx` | cardano-client-lib 0.8.0-pre8 and 0.7.3: QuickTx stake registration and deregistration are still rejected (deposit-less certificates); 0.7.3 also writes a duplicate vkey witness and a wrong script integrity hash for shared datum hashes. |
+| `ccl-dijkstra-transactions` | cardano-client-lib 0.8.0-pre8 (released): every Dijkstra feature it models is accepted, also when signed through the Transaction object; a missing guard witness and an unmet interval are rejected. |
 
-Koios and advanced Dijkstra bodies (nested transactions, direct deposits, balance intervals, PlutusV4) were not run.
-Source progress remains separate: cardano-c 2.0.0-rc.6 and Plutarch 1.15.0 contain new support; Cometa 2.0.0-rc.4
-contains partial support. db-sync has merged work on master, but its released version still blocks consumers.
-A newly published release is not an end-to-end devnet pass.
+Koios and required top-level guards were not run. A newly published release is not an end-to-end devnet pass, and
+neither is work in a fork or a prerelease.
 
 Historical Marlowe/Marconi dependency solves under `scripts/readiness/bump-solve/` targeted cardano-api 11.8.0.0.
 They were not rerun as part of this source-and-devnet refresh and do not prove resolution against 11.11.0.0.
@@ -386,11 +395,14 @@ The site is a static export; a malformed register fails the build.
 | 2026-10-26 | A non-boundary tool's own code is read like an inherited gap (`via: "own"`); a confirmed read is an own gap. |
 | 2026-10-26 | Lockfiles are a classification input; a lockfile link goes to the nearest catalog component, never around a component the tool declares. |
 | 2026-10-26 | Surfaces waiting on a component's verdict may be decided; `not-reached` clears the wait, a reached surface keeps waiting. |
+| 2026-11-23 | Target moves to tagged node 11.2.1; the 11.2.0 assessment is archived and every devnet check is rerun. |
+| 2026-11-23 | Support shipped only in a prerelease stays `in-progress`: pin comparison cannot order prerelease tags or read variable pins, so a `released` status would count consumers on older pins as fixed. |
+| 2026-11-23 | Blockfrost transaction encoding is reached by reading UTxOs, transactions, accounts or scripts or by submitting; Blockfrost-compatible servers are not reached. |
 | standing | Maintainer outreach and issues are the project owner's. The tooling prepares evidence and never contacts maintainers. |
 
 ## Known limits
 
-- The target is the tagged 11.2.0 prerelease. Component revisions and releases were re-observed on 2026-11-01; unpublished work is unknown.
+- The target is the tagged 11.2.1 prerelease. Component revisions and releases were re-observed on 2026-11-23; unpublished work is unknown.
 - Newly recorded library releases are supported by source evidence, not by a full runtime matrix. Prerelease support must not be assumed present in an older stable consumer pin.
 - Classification is lexical. Lead decisions settle reachability by reading;
   only the devnet checks execute anything.
@@ -399,13 +411,18 @@ The site is a static export; a malformed register fails the build.
   lockfile (catalyst-voices' gateway) are read by hand. yarn, pnpm, bun and
   Cargo lockfiles do not mark development-only packages, so lead decisions
   settle those links.
-- Blockfrost's and Koios's transaction encoding is still `no-evidence`: they
-  serve db-sync's transactions. The devnet shows db-sync stopping at the fork,
-  but recording a gap there needs a read of each of their roughly 90
-  consumers.
-- cardano-cli cannot build transactions with Dijkstra-only body keys (23-27),
-  so the codec gaps on those keys rest on source; the devnet only exercises
-  plain Dijkstra transactions.
+- Blockfrost's transaction encoding is a gap (devnet, 2026-11-11); its 58
+  consumers were read on 2026-11-23. Koios's is still `no-evidence`: it serves
+  db-sync's tables, which stop at the first PlutusV4 script.
+- cardano-cli 11.7 builds direct deposits, sub-transactions, guards and balance
+  intervals, so the devnet exercises every Dijkstra-only body key except
+  required top-level guards.
+- Pin comparison reads a version only where the manifest line names it (not
+  Gradle or Maven variables, version catalogs referenced by name, or sbt
+  values), and ignores prerelease suffixes (0.8.0-pre4 compares equal to
+  0.8.0-pre8). Support shipped only in a prerelease is therefore kept
+  `in-progress` (cardano-client-lib, Yaci), so consumers on older pins are not
+  counted as fixed.
 - 41 tools have no public source and are unclassified.
 - R1 does not cover JSON representations in cardano-api/cli beyond the era
   commands.

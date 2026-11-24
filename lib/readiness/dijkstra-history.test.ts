@@ -57,7 +57,9 @@ test("tagged target components retain the earlier integration assessment in hist
   const targets = comparison.tools.filter((t) => t.after === "target-component");
   assert.deepEqual(targets.map((t) => t.tool), ["cardano-cli", "cardano-node", "cardano-submit-api", "cardano-testnet"]);
   assert.ok(targets.every((t) => t.before === "in-progress"), "the archived untagged target keeps its original state");
-  assert.ok(comparison.runtime.filter((r) => r.before && r.after).every((r) => r.before === r.after),
+  // Same-version outcomes can change when a later run adds cases (cardano-js-sdk 0.47.1 failed on the balance intervals
+  // first exercised on 2026-11-23); what must never happen is a failure turning into a fix through relabelling.
+  assert.ok(comparison.runtime.filter((r) => r.before && r.after).every((r) => !(r.before === "fail" && r.after === "pass")),
     "a new membership label does not turn unchanged runtime outcomes into fixes");
 });
 

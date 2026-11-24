@@ -6,10 +6,13 @@ import type { Blocker, HardforkState, StateTag, ToolLink } from "@/lib/readiness
 import { HARDFORK_STATES, hardforkStateLabel } from "@/lib/readiness/hardfork-states";
 import StateFacts from "./StateFacts";
 import TrackingLinks from "./TrackingLinks";
+import UnreleasedDot, { UNRELEASED_LABEL } from "./UnreleasedDot";
 
 export interface HardforkRow {
   tool: string; name: string; category: string; state: HardforkState; reason: string; blockedBy: Blocker[]; tags: StateTag[]; dependents: number; reachedBy: number;
   computed?: HardforkState; links: ToolLink[];
+  /** What Dijkstra work is done or nearly done but not consumable downstream yet; shown as a green dot. */
+  unreleased?: string;
 }
 
 const FIRST = 25;
@@ -19,7 +22,8 @@ const th = "px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text
 export default function HardforkToolList({ rows, nodeRelease }: { rows: HardforkRow[]; nodeRelease: string }) {
   const [state, setState] = useState<HardforkState | "">("");
   const [all, setAll] = useState(false);
-  const filtered = rows.filter((r) => !state || r.state === state);
+  const [unreleased, setUnreleased] = useState(false);
+  const filtered = rows.filter((r) => (!state || r.state === state) && (!unreleased || r.unreleased));
   const shown = all ? filtered : filtered.slice(0, FIRST);
   const filter = (value: HardforkState | "", label: string, count: number) => (
     <button key={label} type="button" onClick={() => setState(value)} aria-pressed={state === value}
@@ -31,6 +35,10 @@ export default function HardforkToolList({ rows, nodeRelease }: { rows: Hardfork
     <div className="flex flex-wrap gap-2">
       {filter("", "All", rows.length)}
       {(Object.keys(HARDFORK_STATES) as HardforkState[]).map((s) => filter(s, HARDFORK_STATES[s].label, rows.filter((r) => r.state === s).length))}
+      <button type="button" onClick={() => setUnreleased(!unreleased)} aria-pressed={unreleased}
+        className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm ${unreleased ? "border-foreground bg-surface-2 font-medium" : "border-border bg-surface text-muted hover:text-foreground"}`}>
+        <UnreleasedDot />{UNRELEASED_LABEL} <span className="tabular-nums">{rows.filter((r) => r.unreleased).length}</span>
+      </button>
     </div>
     <div className="mt-3 overflow-x-auto rounded-xl border border-border bg-surface">
       <table className="w-full text-sm">
@@ -42,12 +50,16 @@ export default function HardforkToolList({ rows, nodeRelease }: { rows: Hardfork
           const s = HARDFORK_STATES[r.state];
           return <tr key={r.tool} className="border-t border-border align-top">
             <td className="px-4 py-3 tabular-nums text-muted">{rows.indexOf(r) + 1}</td>
-            <td className="px-4 py-3"><Link href={`/map/readiness/${r.tool}`} className="font-medium">{r.name}</Link><div className="text-xs text-muted">{r.category}</div></td>
+            <td className="px-4 py-3">
+              <Link href={`/map/readiness/${r.tool}`} className="font-medium">{r.name}</Link>{r.unreleased && <>{" "}<UnreleasedDot note={r.unreleased} /></>}
+              <div className="text-xs text-muted">{r.category}</div>
+            </td>
             <td className="whitespace-nowrap px-4 py-3"><span className={`inline-flex items-center gap-1.5 font-medium ${s.text}`}><span className={`size-2 rounded-full ${s.dot}`} />{hardforkStateLabel(r.state, nodeRelease)}</span></td>
             <td className="min-w-64 px-4 py-3 text-muted">
               {/* Chips carry breaks and in-progress tools; other states keep their sentence. */}
               {r.state !== "breaks" && r.state !== "in-progress" && <div>{r.reason}</div>}
               <StateFacts blockedBy={r.blockedBy} tags={r.tags} />
+              {r.unreleased && <div className="mt-1 text-xs"><span className="font-medium text-status-done">Unreleased:</span> {r.unreleased}</div>}
               {r.computed && <div className="mt-0.5 text-xs">Otherwise: {hardforkStateLabel(r.computed, nodeRelease)}</div>}
               {r.links.length > 0 && <TrackingLinks links={r.links} compact />}
             </td>

@@ -8,8 +8,14 @@ import { TRACKER_STATES } from "./boundary";
  * reads them from GitHub into tracking-state.json, so the YAML (and its comments) is never rewritten.
  */
 export interface Dismissal { reason: string; date?: string }
+/**
+ * Dijkstra work that is done or nearly done (a branch, an open or merged PR, a release candidate) but that downstream
+ * tools cannot consume yet: unreleased, prerelease only, or in a fork. `note` says what it is and where; `date` when it
+ * was last checked.
+ */
+export interface Unreleased { note: string; date?: string }
 export interface TrackingLink { url: string; note?: string }
-export interface ToolTracking { dismissed?: Dismissal; links: TrackingLink[] }
+export interface ToolTracking { dismissed?: Dismissal; unreleased?: Unreleased; links: TrackingLink[] }
 export type TrackingRegister = Map<string, ToolTracking>;
 
 export type LinkState = (typeof TRACKER_STATES)[number];
@@ -48,6 +54,16 @@ export const linkLabel = (url: string) => {
   return fork ? `${fork.fork}@${fork.branch}` : url.replace(/^https?:\/\//, "");
 };
 
+const FIELDS = new Set(["dismissed", "unreleased", "links"]);
+
+/** An optional YYYY-MM-DD date; an unquoted YAML date arrives as a Date. */
+function dated(value: unknown, label: string): { date?: string } {
+  const date = value instanceof Date ? value.toISOString().slice(0, 10) : value;
+  if (date === undefined || date === null) return {};
+  if (typeof date !== "string" || !DATE.test(date)) throw new Error(`${label} must be a YYYY-MM-DD date`);
+  return { date };
+}
+
 /** `known` is the classified tool ids: a typo in a tool key fails the build instead of silently showing nothing. */
 export function parseTracking(raw: unknown, known: ReadonlySet<string>): TrackingRegister {
   const root = raw == null ? {} : object(raw, "tracking");
@@ -57,13 +73,16 @@ export function parseTracking(raw: unknown, known: ReadonlySet<string>): Trackin
     const at = `tracking.tools.${id}`;
     if (!known.has(id)) throw new Error(`${at}: unknown tool ${id}`);
     const entry = value == null ? {} : object(value, at);
-    for (const key of Object.keys(entry)) if (key !== "dismissed" && key !== "links") throw new Error(`${at}: unknown field ${key}`);
+    for (const key of Object.keys(entry)) if (!FIELDS.has(key)) throw new Error(`${at}: unknown field ${key}`);
     let dismissed: Dismissal | undefined;
     if (entry.dismissed != null) {
       const d = typeof entry.dismissed === "string" ? { reason: entry.dismissed } : object(entry.dismissed, `${at}.dismissed`);
-      const date = d.date instanceof Date ? d.date.toISOString().slice(0, 10) : d.date;
-      if (date !== undefined && (typeof date !== "string" || !DATE.test(date))) throw new Error(`${at}.dismissed.date must be a YYYY-MM-DD date`);
-      dismissed = { reason: text(d.reason, `${at}.dismissed.reason`), ...(date && { date }) };
+      dismissed = { reason: text(d.reason, `${at}.dismissed.reason`), ...dated(d.date, `${at}.dismissed.date`) };
+    }
+    let unreleased: Unreleased | undefined;
+    if (entry.unreleased != null) {
+      const u = typeof entry.unreleased === "string" ? { note: entry.unreleased } : object(entry.unreleased, `${at}.unreleased`);
+      unreleased = { note: text(u.note, `${at}.unreleased.note`), ...dated(u.date, `${at}.unreleased.date`) };
     }
     const seen = new Set<string>();
     const links = (entry.links == null ? [] : list(entry.links, `${at}.links`)).map((l, i): TrackingLink => {
@@ -74,8 +93,8 @@ export function parseTracking(raw: unknown, known: ReadonlySet<string>): Trackin
       seen.add(url);
       return { url, ...(link.note != null && { note: text(link.note, `${at}.links[${i}].note`) }) };
     });
-    if (!dismissed && !links.length) continue;
-    out.set(id, { ...(dismissed && { dismissed }), links });
+    if (!dismissed && !unreleased && !links.length) continue;
+    out.set(id, { ...(dismissed && { dismissed }), ...(unreleased && { unreleased }), links });
   }
   return out;
 }

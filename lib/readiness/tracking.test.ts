@@ -29,8 +29,28 @@ tools:
   assert.throws(() => yaml("tools:\n  namii: { dismissed: x }"), /unknown tool namii/);
   assert.throws(() => yaml("tools:\n  nami: { dismised: x }"), /unknown field dismised/);
   assert.throws(() => yaml("tools:\n  nami: { dismissed: { date: 2026-10-22 } }"), /reason must be a nonempty string/);
+  assert.throws(() => yaml("tools:\n  nami: { unreleased: { date: 2026-11-24 } }"), /note must be a nonempty string/);
+  assert.throws(() => yaml("tools:\n  nami: { unreleased: { note: x, date: soon } }"), /YYYY-MM-DD/);
   assert.throws(() => yaml("tools:\n  nami: { links: [http://example.com] }"), /https URL/);
   assert.throws(() => yaml("tools:\n  nami: { links: [https://a.io/x, https://a.io/x] }"), /listed twice/);
+});
+
+test("unreleased work is read in full or shorthand form and kept beside the state", () => {
+  const register = yaml(`
+tools:
+  nami:
+    unreleased: { note: Release candidate, date: 2026-11-24 }
+  ogmios:
+    unreleased: Fork branch
+`);
+  assert.deepEqual(register.get("nami"), { unreleased: { note: "Release candidate", date: "2026-11-24" }, links: [] });
+  assert.deepEqual(register.get("ogmios"), { unreleased: { note: "Fork branch" }, links: [] });
+  const site = dijkstraSite();
+  const ogmios = site.classification.tools.get("ogmios")!;
+  const state = toolState({ ...site, tracking: register }, ogmios);
+  assert.deepEqual(state.unreleased, { note: "Fork branch" });
+  assert.equal(state.state, toolState({ ...site, tracking: new Map() }, ogmios).state, "it does not change the state");
+  assert.equal(toolState({ ...site, tracking: new Map() }, ogmios).unreleased, undefined);
 });
 
 test("GitHub links get a short label; other links keep their address", () => {

@@ -65,6 +65,17 @@ case "${1:-}" in
     new=$(cli query protocol-parameters "${M[@]}" | jq -c '[keys[] | select(test("^(maxRefScriptSizePer|refScriptCost|maxPledgeLeverage|minPoolMargin|leios|maxEndorserBlock|peras|refInputsCost)"))]')
     served=$(curl -s "$BF/epochs/latest/parameters" | jq -c --argjson new "$new" '. as $p | [$new[] | gsub("(?<c>[A-Z])"; "_\(.c | ascii_downcase)") as $k | select($p | has($k))]')
     echo "node's new Dijkstra parameters: $(jq length <<<"$new") $new; served by Blockfrost: $served"
+    # Guards and balance intervals (advanced.sh, from cardano-cli 11.7): only checked when advanced.sh built them.
+    for n in dijkstra-native-guard dijkstra-plutusv4-guard dijkstra-balance-interval; do
+      [ -f "$W/$n.signed" ] || continue
+      t=$(txid "$W/$n.signed")
+      echo "## $n $t: db-sync $(indexed "$t"); blockfrost /txs: HTTP $(curl -s -o /dev/null -w '%{http_code}' "$BF/txs/$t")"
+    done
+    if [ -f "$W/dijkstra-plutusv4-guard.signed" ]; then
+      t=$(txid "$W/dijkstra-plutusv4-guard.signed")
+      echo "blockfrost /txs/<plutusv4-guard>/redeemers: $(curl -s "$BF/txs/$t/redeemers" | jq -c '[.[]? | {purpose, script_hash, unit_mem, unit_steps}]') (OpenAPI purpose enum: spend, mint, cert, reward, vote, propose)"
+      echo "blockfrost /txs/<plutusv4-guard>: $(curl -s "$BF/txs/$t" | jq -c '{valid_contract, redeemer_count}')"
+    fi
     echo "## era summary"
     echo "/network/eras: HTTP $(curl -s -o /dev/null -w '%{http_code}' "$BF/network/eras")"
     docker logs dijkstra-blockfrost 2>&1 | grep -m1 'Error in /network/eras' | cut -c1-200 ;;

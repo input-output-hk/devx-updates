@@ -8,7 +8,7 @@ import { readJson } from "./store";
 import type { ClassificationRegister } from "./surface-collect";
 import { READINESS, targetVersions, UPSTREAM_TOOLS, type Readiness, type ToolClassification } from "./surfaces";
 import { unlockReport, type UnlockReport } from "./unlocks";
-import { linkLabel, loadTracking, parseTrackingState, type Dismissal, type LinkInfo, type TrackingRegister } from "./tracking";
+import { linkLabel, loadTracking, parseTrackingState, type Dismissal, type LinkInfo, type TrackingRegister, type Unreleased } from "./tracking";
 import { parseUpgradeRegister, type UpgradeRegister } from "./upgrades";
 
 /**
@@ -78,14 +78,17 @@ export interface Waiting { via: string; status: Readiness; unread: boolean; tool
 const SETTLED = new Set(["released", "verified", "upstream", "unassessed"]);
 
 export function waitingLinks(site: DijkstraSite, only?: string): Waiting[] {
-  const decided = new Set(site.leads.leads.flatMap((l) => l.surfaces.map((s) => `${l.tool}\0${l.via}\0${s}`)));
+  const decisions = new Map(site.leads.leads.flatMap((l) => l.surfaces.map((s) => [`${l.tool}\0${l.via}\0${s}`, l.decision] as const)));
   const groups = new Map<string, Waiting>();
   for (const tool of site.classification.tools.values()) {
     if (only && tool.id !== only) continue;
     for (const s of tool.surfaces) for (const c of s.channels) {
       const via = c.via.split("@")[0];
       if (c.scope !== "shipped" || (c.channel !== "dependency" && c.channel !== "service") || SETTLED.has(c.readiness) || via === tool.id) continue;
-      if (decided.has(`${tool.id}\0${via}\0${s.surface}`)) continue;
+      // A decided gap is a blocker (or undetermined) elsewhere. Without a verdict, only not-reached ends the wait: a
+      // confirmed reach into a component whose work is unreleased still waits on it.
+      const decision = decisions.get(`${tool.id}\0${via}\0${s.surface}`);
+      if (decision && (c.readiness === "gap" || decision === "not-reached")) continue;
       // A component can be a gap on some surfaces and without a verdict on others: those are separate groups.
       const unread = c.readiness === "gap", key = `${via}\0${unread}`;
       const group = groups.get(key) ?? { via, status: c.readiness, unread, tools: [] };
@@ -125,6 +128,8 @@ export interface ToolState {
   /** Upstream components whose missing fix blocks the tool, and short facts for chips; both empty when dismissed. */
   blockedBy: Blocker[]; tags: StateTag[];
   computed?: Exclude<HardforkState, "dismissed">; dismissed?: Dismissal; links: ToolLink[];
+  /** Dijkstra work done or nearly done that downstream cannot consume yet (tracking.yaml); independent of the state. */
+  unreleased?: Unreleased;
 }
 
 export const toolLinks = (site: DijkstraSite, id: string): ToolLink[] =>
@@ -215,8 +220,9 @@ function computedState(site: DijkstraSite, tool: ToolClassification): Computed {
 export function toolState(site: DijkstraSite, tool: ToolClassification): Omit<ToolState, "dependents" | "reachedBy"> {
   const computed = computedState(site, tool);
   const links = toolLinks(site, tool.id);
-  const dismissed = site.tracking.get(tool.id)?.dismissed;
-  return dismissed ? { tool: tool.id, state: "dismissed", reason: dismissed.reason, blockedBy: [], tags: [], computed: computed.state, dismissed, links } : { ...computed, links };
+  const { dismissed, unreleased } = site.tracking.get(tool.id) ?? {};
+  const extra = { links, ...(unreleased && { unreleased }) };
+  return dismissed ? { tool: tool.id, state: "dismissed", reason: dismissed.reason, blockedBy: [], tags: [], computed: computed.state, dismissed, ...extra } : { ...computed, ...extra };
 }
 
 /**

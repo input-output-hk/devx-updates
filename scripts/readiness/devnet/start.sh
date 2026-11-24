@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Download the tagged 11.2.0 node, generate a one-pool testnet that forks to Dijkstra at epoch 2, and run it
+# Download the tagged 11.2.1 node, generate a one-pool testnet that forks to Dijkstra at epoch 2, and run it
 # in the foreground. The fork trigger leaves the protocol version at 10; hardfork.sh raises it to 12.
 set -euo pipefail
 . "$(dirname "$0")/env.sh"
