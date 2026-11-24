@@ -667,9 +667,33 @@
    "state": "open",
    "checked": "2026-11-24"
   },
+  "https://github.com/vacuumlabs/cardano-hw-cli/pull/220": {
+   "kind": "pull",
+   "title": "feat: support the optional BLS key in pool registration certificates",
+   "state": "open",
+   "checked": "2026-11-24"
+  },
+  "https://github.com/vacuumlabs/cardano-hw-cli/pull/221": {
+   "kind": "pull",
+   "title": "feat: support Dijkstra guards (CIP-112)",
+   "state": "open",
+   "checked": "2026-11-24"
+  },
   "https://github.com/vacuumlabs/cardano-hw-interop-lib/issues/38": {
    "kind": "issue",
    "title": "Get cardano-hw-interop-lib ready for the Dijkstra hard fork",
+   "state": "open",
+   "checked": "2026-11-24"
+  },
+  "https://github.com/vacuumlabs/cardano-hw-interop-lib/pull/39": {
+   "kind": "pull",
+   "title": "feat: support the optional BLS key in pool registration certificates",
+   "state": "open",
+   "checked": "2026-11-24"
+  },
+  "https://github.com/vacuumlabs/cardano-hw-interop-lib/pull/40": {
+   "kind": "pull",
+   "title": "Support guards in the credentials encoding (CIP-112)",
    "state": "open",
    "checked": "2026-11-24"
   }

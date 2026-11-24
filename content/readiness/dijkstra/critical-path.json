@@ -1,0 +1,717 @@
+{
+ "schemaVersion": 1,
+ "frozen": "2026-11-11",
+ "source": "The /map/dijkstra fix-order graph of the 2026-11-11 assessment (repository commit 6f9abc1, unlocks.json generated 2026-11-11T18:25:57Z), with the tools each fix unlocked then. Boxes, arrows and layout stay as they were; only each box's state is read from the current data.",
+ "graph": {
+  "nodes": [
+   {
+    "id": "cardano-db-sync",
+    "kind": "fix",
+    "step": 1,
+    "added": 3,
+    "unlocked": 3,
+    "column": 0,
+    "row": 3,
+    "waitsOn": [],
+    "critical": true
+   },
+   {
+    "id": "blockfrost",
+    "kind": "fix",
+    "step": 2,
+    "added": 13,
+    "unlocked": 16,
+    "column": 1,
+    "row": 2,
+    "waitsOn": [
+     "cardano-db-sync"
+    ],
+    "critical": true
+   },
+   {
+    "id": "ogmios",
+    "kind": "fix",
+    "step": 3,
+    "added": 10,
+    "unlocked": 26,
+    "column": 0,
+    "row": 5,
+    "waitsOn": [],
+    "critical": true
+   },
+   {
+    "id": "koios",
+    "kind": "fix",
+    "step": 4,
+    "added": 10,
+    "unlocked": 36,
+    "column": 1,
+    "row": 3,
+    "waitsOn": [
+     "cardano-db-sync"
+    ],
+    "critical": true
+   },
+   {
+    "id": "kupo",
+    "kind": "fix",
+    "step": 5,
+    "added": 7,
+    "unlocked": 43,
+    "column": 1,
+    "row": 4,
+    "waitsOn": [
+     "ogmios"
+    ],
+    "critical": true
+   },
+   {
+    "id": "service:maestro",
+    "kind": "fix",
+    "step": 6,
+    "added": 6,
+    "unlocked": 49,
+    "column": 0,
+    "row": 4,
+    "waitsOn": [],
+    "critical": false
+   },
+   {
+    "id": "pallas",
+    "kind": "fix",
+    "step": 7,
+    "added": 5,
+    "unlocked": 54,
+    "column": 0,
+    "row": 10,
+    "waitsOn": [],
+    "critical": false
+   },
+   {
+    "id": "cardano-serialization-lib-csl",
+    "kind": "fix",
+    "step": 8,
+    "added": 4,
+    "unlocked": 58,
+    "column": 0,
+    "row": 6,
+    "waitsOn": [],
+    "critical": false
+   },
+   {
+    "id": "aiken",
+    "kind": "fix",
+    "step": 10,
+    "added": 3,
+    "unlocked": 65,
+    "column": 0,
+    "row": 2,
+    "waitsOn": [],
+    "critical": false
+   },
+   {
+    "id": "ledgerjs-hw-app-cardano",
+    "kind": "fix",
+    "step": 11,
+    "added": 2,
+    "unlocked": 67,
+    "column": 0,
+    "row": 8,
+    "waitsOn": [],
+    "critical": false
+   },
+   {
+    "id": "cardano-js-sdk",
+    "kind": "fix",
+    "step": 12,
+    "added": 2,
+    "unlocked": 69,
+    "column": 2,
+    "row": 4,
+    "waitsOn": [
+     "ogmios",
+     "blockfrost",
+     "ledgerjs-hw-app-cardano"
+    ],
+    "critical": false
+   },
+   {
+    "id": "bloxbean-cardano-client-library",
+    "kind": "fix",
+    "step": 14,
+    "added": 1,
+    "unlocked": 72,
+    "column": 2,
+    "row": 2,
+    "waitsOn": [
+     "kupo",
+     "blockfrost",
+     "koios"
+    ],
+    "critical": true
+   },
+   {
+    "id": "yaci",
+    "kind": "fix",
+    "step": 15,
+    "added": 2,
+    "unlocked": 74,
+    "column": 3,
+    "row": 4,
+    "waitsOn": [
+     "bloxbean-cardano-client-library"
+    ],
+    "critical": true
+   },
+   {
+    "id": "scalus",
+    "kind": "fix",
+    "step": 16,
+    "added": 2,
+    "unlocked": 76,
+    "column": 3,
+    "row": 3,
+    "waitsOn": [
+     "bloxbean-cardano-client-library"
+    ],
+    "critical": true
+   },
+   {
+    "id": "cquisitor-lib",
+    "kind": "fix",
+    "step": 17,
+    "added": 1,
+    "unlocked": 77,
+    "column": 2,
+    "row": 3,
+    "waitsOn": [
+     "cardano-serialization-lib-csl",
+     "blockfrost",
+     "koios"
+    ],
+    "critical": true
+   },
+   {
+    "id": "whisky",
+    "kind": "fix",
+    "step": 18,
+    "added": 1,
+    "unlocked": 78,
+    "column": 3,
+    "row": 2,
+    "waitsOn": [
+     "cquisitor-lib",
+     "service:maestro",
+     "aiken"
+    ],
+    "critical": true
+   },
+   {
+    "id": "cardano-hw-interop-lib",
+    "kind": "fix",
+    "step": 20,
+    "added": 1,
+    "unlocked": 80,
+    "column": 0,
+    "row": 9,
+    "waitsOn": [],
+    "critical": false
+   },
+   {
+    "id": "cardano-multiplatform-lib-cml",
+    "kind": "fix",
+    "step": 21,
+    "added": 2,
+    "unlocked": 82,
+    "column": 0,
+    "row": 7,
+    "waitsOn": [],
+    "critical": false
+   },
+   {
+    "id": "mithril",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 8,
+    "waitsOn": [
+     "pallas"
+    ],
+    "critical": false
+   },
+   {
+    "id": "meshjs-mesh-sdk",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 2,
+    "waitsOn": [
+     "scalus",
+     "cardano-js-sdk",
+     "whisky"
+    ],
+    "critical": true
+   },
+   {
+    "id": "pycardano",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 1,
+    "waitsOn": [
+     "kupo",
+     "blockfrost"
+    ],
+    "critical": false
+   },
+   {
+    "id": "lucid-evolution",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 5,
+    "waitsOn": [
+     "scalus",
+     "cardano-multiplatform-lib-cml"
+    ],
+    "critical": true
+   },
+   {
+    "id": "blaze",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 3,
+    "waitsOn": [
+     "cardano-js-sdk",
+     "kupo",
+     "service:maestro"
+    ],
+    "critical": false
+   },
+   {
+    "id": "yaci-store",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 4,
+    "waitsOn": [
+     "scalus",
+     "yaci"
+    ],
+    "critical": true
+   },
+   {
+    "id": "hydra",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 0,
+    "waitsOn": [
+     "blockfrost"
+    ],
+    "critical": false
+   },
+   {
+    "id": "dolos",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 9,
+    "waitsOn": [
+     "pallas"
+    ],
+    "critical": false
+   },
+   {
+    "id": "cardano-hw-cli",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 7,
+    "waitsOn": [
+     "cardano-serialization-lib-csl",
+     "cardano-hw-interop-lib",
+     "ledgerjs-hw-app-cardano"
+    ],
+    "critical": false
+   },
+   {
+    "id": "yaci-devkit",
+    "kind": "target",
+    "step": 0,
+    "added": 0,
+    "unlocked": 0,
+    "column": 4,
+    "row": 6,
+    "waitsOn": [
+     "yaci"
+    ],
+    "critical": true
+   }
+  ],
+  "edges": [
+   {
+    "from": "blockfrost",
+    "to": "cardano-db-sync",
+    "critical": true
+   },
+   {
+    "from": "koios",
+    "to": "cardano-db-sync",
+    "critical": true
+   },
+   {
+    "from": "kupo",
+    "to": "ogmios",
+    "critical": true
+   },
+   {
+    "from": "cardano-js-sdk",
+    "to": "ogmios",
+    "critical": false
+   },
+   {
+    "from": "cardano-js-sdk",
+    "to": "blockfrost",
+    "critical": false
+   },
+   {
+    "from": "cardano-js-sdk",
+    "to": "ledgerjs-hw-app-cardano",
+    "critical": false
+   },
+   {
+    "from": "bloxbean-cardano-client-library",
+    "to": "kupo",
+    "critical": true
+   },
+   {
+    "from": "bloxbean-cardano-client-library",
+    "to": "blockfrost",
+    "critical": true
+   },
+   {
+    "from": "bloxbean-cardano-client-library",
+    "to": "koios",
+    "critical": true
+   },
+   {
+    "from": "yaci",
+    "to": "bloxbean-cardano-client-library",
+    "critical": true
+   },
+   {
+    "from": "scalus",
+    "to": "bloxbean-cardano-client-library",
+    "critical": true
+   },
+   {
+    "from": "cquisitor-lib",
+    "to": "cardano-serialization-lib-csl",
+    "critical": false
+   },
+   {
+    "from": "cquisitor-lib",
+    "to": "blockfrost",
+    "critical": true
+   },
+   {
+    "from": "cquisitor-lib",
+    "to": "koios",
+    "critical": true
+   },
+   {
+    "from": "whisky",
+    "to": "cquisitor-lib",
+    "critical": true
+   },
+   {
+    "from": "whisky",
+    "to": "service:maestro",
+    "critical": false
+   },
+   {
+    "from": "whisky",
+    "to": "aiken",
+    "critical": false
+   },
+   {
+    "from": "mithril",
+    "to": "pallas",
+    "critical": false
+   },
+   {
+    "from": "meshjs-mesh-sdk",
+    "to": "scalus",
+    "critical": true
+   },
+   {
+    "from": "meshjs-mesh-sdk",
+    "to": "cardano-js-sdk",
+    "critical": false
+   },
+   {
+    "from": "meshjs-mesh-sdk",
+    "to": "whisky",
+    "critical": true
+   },
+   {
+    "from": "pycardano",
+    "to": "kupo",
+    "critical": false
+   },
+   {
+    "from": "pycardano",
+    "to": "blockfrost",
+    "critical": false
+   },
+   {
+    "from": "lucid-evolution",
+    "to": "scalus",
+    "critical": true
+   },
+   {
+    "from": "lucid-evolution",
+    "to": "cardano-multiplatform-lib-cml",
+    "critical": false
+   },
+   {
+    "from": "blaze",
+    "to": "cardano-js-sdk",
+    "critical": false
+   },
+   {
+    "from": "blaze",
+    "to": "kupo",
+    "critical": false
+   },
+   {
+    "from": "blaze",
+    "to": "service:maestro",
+    "critical": false
+   },
+   {
+    "from": "yaci-store",
+    "to": "scalus",
+    "critical": true
+   },
+   {
+    "from": "yaci-store",
+    "to": "yaci",
+    "critical": true
+   },
+   {
+    "from": "hydra",
+    "to": "blockfrost",
+    "critical": false
+   },
+   {
+    "from": "dolos",
+    "to": "pallas",
+    "critical": false
+   },
+   {
+    "from": "cardano-hw-cli",
+    "to": "cardano-serialization-lib-csl",
+    "critical": false
+   },
+   {
+    "from": "cardano-hw-cli",
+    "to": "cardano-hw-interop-lib",
+    "critical": false
+   },
+   {
+    "from": "cardano-hw-cli",
+    "to": "ledgerjs-hw-app-cardano",
+    "critical": false
+   },
+   {
+    "from": "yaci-devkit",
+    "to": "yaci",
+    "critical": true
+   }
+  ],
+  "independent": [
+   {
+    "id": "gouroboros",
+    "kind": "fix",
+    "step": 9,
+    "added": 4,
+    "unlocked": 62,
+    "column": 0,
+    "row": 0,
+    "waitsOn": [],
+    "critical": false
+   },
+   {
+    "id": "cardano-wallet",
+    "kind": "fix",
+    "step": 13,
+    "added": 2,
+    "unlocked": 71,
+    "column": 0,
+    "row": 1,
+    "waitsOn": [],
+    "critical": false
+   },
+   {
+    "id": "buildooor",
+    "kind": "fix",
+    "step": 19,
+    "added": 1,
+    "unlocked": 79,
+    "column": 0,
+    "row": 2,
+    "waitsOn": [],
+    "critical": false
+   }
+  ],
+  "columns": 5,
+  "rows": 11
+ },
+ "added": {
+  "cardano-db-sync": [
+   "adapools-xyz",
+   "adastat-api",
+   "metis"
+  ],
+  "blockfrost": [
+   "blockfrost-cardano-cli",
+   "blockfrost-go",
+   "cardano-ctf",
+   "cardano-go",
+   "cardano-wallet-interface",
+   "go-cardano-serialization",
+   "intelliada",
+   "plutus-halo2-verifier-gen",
+   "plutus-pioneer-program",
+   "sc-tools",
+   "sundae-sdk",
+   "use-cardano",
+   "zhuli"
+  ],
+  "ogmios": [
+   "blockfrost-js",
+   "blockfrost-python",
+   "cab",
+   "epora-wallet",
+   "iris",
+   "kogmios",
+   "naumachia",
+   "ogmiosdotnet",
+   "ogmiosdotnet-blockchainevents",
+   "xogmios"
+  ],
+  "koios": [
+   "cf-java-rewards-calculation",
+   "create-evolution-app",
+   "cscli",
+   "govtool",
+   "guild-operators-suite",
+   "koios-cli",
+   "koios-go-client",
+   "koios-java-client",
+   "koios-python",
+   "odatano"
+  ],
+  "kupo": [
+   "apollo",
+   "cardano-mcp",
+   "cardano-web3-js",
+   "chrysalis",
+   "dandelion-apis",
+   "dexter",
+   "midgard"
+  ],
+  "service:maestro": [
+   "cardano-cli-guru",
+   "cardanokit",
+   "lucid",
+   "minswap-sdk",
+   "nmkr-studio-api",
+   "rum"
+  ],
+  "pallas": [
+   "boros",
+   "cardaminal",
+   "cncli",
+   "lace-anatomy",
+   "mumak"
+  ],
+  "cardano-serialization-lib-csl": [
+   "cardano-dev-wallet",
+   "cardano-rosetta-legacy",
+   "csl-mobile-bridge",
+   "masumi"
+  ],
+  "gouroboros": [
+   "adder",
+   "cardano-node-api",
+   "dingo",
+   "txtop"
+  ],
+  "aiken": [
+   "de-uplc",
+   "de-uplc-web",
+   "sutra"
+  ],
+  "ledgerjs-hw-app-cardano": [
+   "bursa",
+   "yoroi"
+  ],
+  "cardano-js-sdk": [
+   "blaze",
+   "lace"
+  ],
+  "cardano-wallet": [
+   "cardano-wallet-js",
+   "daedalus"
+  ],
+  "bloxbean-cardano-client-library": [
+   "cardano-client-bindings"
+  ],
+  "yaci": [
+   "yaci-bridge",
+   "yaci-devkit"
+  ],
+  "scalus": [
+   "yaci-store",
+   "yano"
+  ],
+  "cquisitor-lib": [
+   "cquisitor"
+  ],
+  "whisky": [
+   "hydra-sdk"
+  ],
+  "buildooor": [
+   "gerolamo"
+  ],
+  "cardano-hw-interop-lib": [
+   "cardano-hw-cli"
+  ],
+  "cardano-multiplatform-lib-cml": [
+   "cardano-ibc-incubator",
+   "nami"
+  ]
+ }
+}

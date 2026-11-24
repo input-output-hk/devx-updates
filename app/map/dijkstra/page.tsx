@@ -5,7 +5,7 @@ import { dijkstraSite, toolLinks, toolStates, toolUpgrade, waitingLinks, type Ha
 import HardforkToolList, { type HardforkRow } from "@/components/readiness/HardforkToolList";
 import UnreleasedDot, { UNRELEASED_LABEL, UNRELEASED_MEANING } from "@/components/readiness/UnreleasedDot";
 import FixPathGraph, { UnlockCurve, type FixInfo, type FixWork } from "@/components/readiness/FixPathGraph";
-import { fixGraph } from "@/lib/readiness/fix-graph";
+import { criticalPath, pathStatus } from "@/lib/readiness/critical-path";
 import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
 import rawGraph from "@/data/cardano-graph.json";
 import type { Graph } from "@/lib/map-types";
@@ -69,13 +69,17 @@ export default function DijkstraPage() {
   // dismissed. Those that are not fixes themselves become targets at the end of the critical path.
   const usage = (id: string) => { const u = NODES.get(id)?.communityUsage; return u != null && u > DAPP_USAGE ? u : undefined; };
   const stateOf = new Map(rows.map((r) => [r.tool, r.state]));
-  const dappFacing = rows.filter((r) => usage(r.tool) !== undefined && gapped.has(r.tool) && r.state !== "dismissed").map((r) => r.tool);
-  const graph = fixGraph(unlocks, dappFacing);
+  // The critical path is fixed (critical-path.json): its boxes and arrows stay; only each box's status is read here.
+  const path = criticalPath();
+  const graph = path.graph;
+  const status = pathStatus(site, path);
+  const boxes = [...graph.nodes, ...graph.independent];
+  const doneBoxes = boxes.filter((n) => n.kind === "fix" ? status.get(n.id) === "done" : stateOf.get(n.id) === "ready").length;
   const usedName = (id: string) => NODES.get(id)?.name ?? id;
   const noSourceUsed = [...classification.tools.values()].filter((t) => usage(t.id) !== undefined && t.scan.status === "no-public-source").map((t) => usedName(t.id));
   const unconfirmedUsed = rows.filter((r) => usage(r.tool) !== undefined && !gapped.has(r.tool)).map((r) => usedName(r.tool));
   const targetIds = graph.nodes.filter((n) => n.kind === "target").map((n) => n.id);
-  const fixIds = unlocks.fixOrder.map((f) => f.component);
+  const fixIds = [...new Set([...unlocks.fixOrder.map((f) => f.component), ...boxes.filter((n) => n.kind === "fix").map((n) => n.id)])];
   const fixNames = Object.fromEntries(fixIds.map((id) => [id, id.startsWith(RETIRED) ? `Move off ${NODES.get(id.slice(RETIRED.length))?.name ?? id.slice(RETIRED.length)}` : NODES.get(id)?.name ?? id]));
   const fixHref = Object.fromEntries(fixIds.map((id) => [id, `/map/readiness/${id.startsWith(RETIRED) ? id.slice(RETIRED.length) : id}`]));
   // Tools with a confirmed gap that no fix unlocks: the fixes themselves, tools with their own code to change, and
@@ -85,13 +89,13 @@ export default function DijkstraPage() {
   const fixSet = new Set(fixIds);
   const ownCode = unfreed.filter((b) => !fixSet.has(b.tool) && b.blockers.some((x) => x.kind === "own-gap")).length;
   const rest = { fixes: unfreed.filter((b) => fixSet.has(b.tool)).length, own: ownCode, upgrade: unfreed.filter((b) => !fixSet.has(b.tool)).length - ownCode };
-  const fixWork = Object.fromEntries(fixIds.map((id): [string, FixWork] => [id, id.startsWith(RETIRED) ? "retired" : toolLinks(site, id).length ? "tracked" : "none"]));
+  const fixWork = Object.fromEntries(fixIds.map((id): [string, FixWork] => [id, status.get(id) ?? (id.startsWith(RETIRED) ? "retired" : toolLinks(site, id).length ? "tracked" : "none")]));
   const unreleasedOf = new Map(rows.flatMap((r) => (r.unreleased ? [[r.tool, r.unreleased] as const] : [])));
-  const fixes: Record<string, FixInfo> = Object.fromEntries(unlocks.fixOrder.map((f) => [f.component, {
-    name: fixNames[f.component], href: fixHref[f.component], work: fixWork[f.component],
-    ...(unreleasedOf.has(f.component) && { unreleased: unreleasedOf.get(f.component) }),
-    added: f.added.map((t) => ({ id: t, name: NODES.get(t)?.name ?? t })),
-    ...(usage(f.component) !== undefined && { usage: usage(f.component) }),
+  const fixes: Record<string, FixInfo> = Object.fromEntries(boxes.filter((n) => n.kind === "fix").map((n) => [n.id, {
+    name: fixNames[n.id], href: fixHref[n.id], work: fixWork[n.id],
+    ...(unreleasedOf.has(n.id) && { unreleased: unreleasedOf.get(n.id) }),
+    added: path.added[n.id].map((t) => ({ id: t, name: NODES.get(t)?.name ?? t })),
+    ...(usage(n.id) !== undefined && { usage: usage(n.id) }),
   }]));
   const ownGap = (id: string) => unlocks.blockers.some((b) => b.tool === id && b.blockers.some((x) => x.kind === "own-gap"));
   for (const id of targetIds) {
@@ -150,10 +154,15 @@ export default function DijkstraPage() {
           boxes and arrows are the critical path: {graph.nodes.filter((n) => n.critical).length} components where each fix
           has to land before the next can.
         </p>
+        <p className="mt-2 text-muted">
+          The path is fixed as it stood on {path.frozen}, so it shows what has been unlocked and what is left: later runs
+          change only each box&apos;s color and status, and every box turns green once its Dijkstra support is released.{" "}
+          <span className="font-medium text-foreground">{doneBoxes} of {boxes.filter((n) => !n.id.startsWith(RETIRED)).length} boxes are green.</span>
+        </p>
         <ul className="mt-4 grid gap-3 text-sm sm:grid-cols-3">{([
           ["Columns", "How many upstream fixes must land before a box can start. Everything in one column can run in parallel."],
           ["Arrows", "From a fix to what waits on it. Links already implied through another fix are left out."],
-          ["Last column", `Tools used by more than ${DAPP_USAGE}% of developers, with a confirmed gap. The blue badge is that share.`],
+          ["Last column", `Tools used by more than ${DAPP_USAGE}% of developers that had a confirmed gap on ${path.frozen}. The blue badge is that share.`],
         ] as const).map(([title, text]) => (
           <li key={title} className="rounded-xl border border-border bg-surface px-4 py-3">
             <div className="font-medium">{title}</div>
@@ -164,14 +173,15 @@ export default function DijkstraPage() {
           <summary className="cursor-pointer text-muted hover:text-foreground">How the order and the last column are chosen</summary>
           <ul className="mt-2 list-disc space-y-1.5 pl-5 text-muted">
             <li>
-              The number in a box is its step in the fix order. Each step adds the fix that unlocks the most tools on top of
+              The number in a box is its step in the {path.frozen} fix order. Each step adds the fix that unlocks the most tools on top of
               the earlier ones; a tool is unlocked once all its upstream blockers are fixed, and a fix that waits on another
               is counted together with it.
             </li>
             <li>
-              {unlocks.components.length} components have a confirmed gap; only these {unlocks.fixOrder.length} unlock another
-              tool. The other {unlocks.components.length - unlocks.fixOrder.length} only repair themselves, and the widely used
-              ones among them are in the last column.
+              The boxes are the {boxes.filter((n) => n.kind === "fix").length} fixes of the {path.frozen} order and the widely used
+              tools waiting on them. Each run recomputes the order (the step chart below; today {unlocks.fixOrder.length} of{" "}
+              {unlocks.components.length} components with a confirmed gap unlock another tool). A component that later leaves the
+              order stays on the path, and a blocker found later is not added.
             </li>
             <li>
               Usage comes from the State of the Developer Ecosystem 2025 survey (109 answers). Widely used but not shown:

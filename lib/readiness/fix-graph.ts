@@ -82,14 +82,17 @@ export function fixGraph(report: Pick<UnlockReport, "fixOrder"> & { blockers: { 
   columns.forEach((col) => col.forEach((id, i) => row.set(id, i)));
   for (let sweep = 0; sweep < 4; sweep++) {
     for (const col of sweep % 2 ? [...columns].reverse() : columns) {
-      const want = new Map(col.map((id) => {
+      // A node with no neighbours (a target that waits on no fix) has no row to aim for: it goes below the linked
+      // ones, in the next free row, instead of holding the top rows and pushing the rest of the layout down.
+      const unlinked = (id: string) => !neighbours.get(id)!.length;
+      const want = new Map(col.filter((id) => !unlinked(id)).map((id) => {
         const n = neighbours.get(id)!;
-        return [id, n.length ? n.reduce((s, o) => s + row.get(o)!, 0) / n.length : row.get(id)!];
+        return [id, n.reduce((s, o) => s + row.get(o)!, 0) / n.length];
       }));
-      col.sort((a, b) => want.get(a)! - want.get(b)! || order(a) - order(b));
+      col.sort((a, b) => Number(unlinked(a)) - Number(unlinked(b)) || (want.get(a) ?? 0) - (want.get(b) ?? 0) || order(a) - order(b));
       // Keep the wanted spacing where it fits, but never overlap: each node at least one row below the previous.
       let next = 0;
-      for (const id of col) { const r = Math.max(next, Math.round(want.get(id)!)); row.set(id, r); next = r + 1; }
+      for (const id of col) { const r = unlinked(id) ? next : Math.max(next, Math.round(want.get(id)!)); row.set(id, r); next = r + 1; }
     }
     // Pull the whole layout back to row 0 after each sweep.
     const min = Math.min(...linked.map((id) => row.get(id)!));
