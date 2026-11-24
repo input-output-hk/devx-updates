@@ -63,3 +63,27 @@ test("fix graph: targets take a last column and the longest chains end at them",
   assert.ok(by.has("pallas") && !g.independent.some((n) => n.id === "pallas"), "a fix a target waits on is linked");
   assert.deepEqual(g.nodes.filter((n) => n.critical).map((n) => n.id).sort(), ["blockfrost", "db-sync", "mesh", "scalus"], "the chain to the deepest target");
 });
+
+test("fix graph: a target that waits on no fix goes below the linked ones and leaves no empty rows", () => {
+  const g = fixGraph({
+    fixOrder: [
+      { component: "db-sync", added: [], unlocked: 0 },
+      { component: "blockfrost", added: ["x"], unlocked: 1 },
+      { component: "koios", added: ["y"], unlocked: 2 },
+      { component: "scalus", added: [], unlocked: 2 },
+    ],
+    blockers: [
+      { tool: "blockfrost", blockers: up("db-sync") },
+      { tool: "koios", blockers: up("db-sync") },
+      { tool: "scalus", blockers: up("blockfrost") },
+      { tool: "mesh", blockers: up("scalus") },
+      { tool: "lucid", blockers: up("koios") },
+    ],
+  }, ["ogmios", "kupo", "mesh", "lucid"]);
+  const by = new Map(g.nodes.map((n) => [n.id, n]));
+  const targets = g.nodes.filter((n) => n.kind === "target").sort((a, b) => a.row - b.row).map((n) => n.id);
+  assert.deepEqual(targets.slice(-2).sort(), ["kupo", "ogmios"], "unlinked targets come last in their column");
+  assert.ok(by.get("ogmios")!.waitsOn.length === 0 && by.get("kupo")!.waitsOn.length === 0);
+  const used = new Set(g.nodes.map((n) => n.row));
+  for (let r = 0; r < g.rows; r++) assert.ok(used.has(r), `row ${r} holds a box`);
+});
