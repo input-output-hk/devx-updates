@@ -1,0 +1,33 @@
+cardano-client-lib 0.8.0-pre8
+adv-split                            head 83a3: decoded, 1 inputs, 8 outputs, id 7ff5b2d13eae2732…, re-encode differs (head 84a3)
+conway-legacy-reg                    head 84a4: decoded, 1 inputs, 1 outputs, id 739f570faa998fdd…, re-encode exact
+conway-metadata                      head 84a4: decoded, 1 inputs, 1 outputs, id 987b7e4c800a7c44…, re-encode differs (head 84a4)
+conway-payment                       head 84a3: decoded, 1 inputs, 1 outputs, id 1ddbc9b94110c272…, re-encode exact
+conway-reg-with-deposit              head 84a4: decoded, 1 inputs, 1 outputs, id 50cdb84e9418b262…, re-encode exact
+conway-required-signer               head 84a4: decoded, 1 inputs, 1 outputs, id cd4781f1af458f27…, re-encode exact
+dijkstra-balance-interval            head 83a4: decoded, 1 inputs, 1 outputs, id bfdd55b6742ca984…, re-encode exact
+dijkstra-balance-interval-unmet      head 83a4: decoded, 1 inputs, 1 outputs, id a7fb63a5108327ea…, re-encode exact
+dijkstra-direct-deposit              head 83a4: decoded, 1 inputs, 1 outputs, id 9fe8ac1c3cf38790…, re-encode exact
+dijkstra-metadata                    head 83a4: decoded, 1 inputs, 1 outputs, id bc6b36f000f6e4f9…, re-encode differs (head 84a4)
+dijkstra-native-guard                head 83a4: decoded, 1 inputs, 1 outputs, id 03666e3029c32718…, re-encode exact
+dijkstra-payment                     head 83a3: decoded, 1 inputs, 1 outputs, id 6b4ac3dc5f74a903…, re-encode differs (head 84a3)
+dijkstra-plutusv4-guard              head 83a6: decoded, 1 inputs, 1 outputs, id f0f359bb25e12d72…, re-encode differs (head 83a6)
+dijkstra-plutusv4-reference-script   head 83a3: decoded, 1 inputs, 1 outputs, id 27266d0a03105a53…, re-encode differs (head 84a3)
+dijkstra-reg-with-deposit            head 83a4: decoded, 1 inputs, 1 outputs, id 5e5cc532015cc2a9…, re-encode differs (head 84a4)
+dijkstra-sub-transaction             head 83a4: decoded, 1 inputs, 1 outputs, id caa270da2e964edb…, re-encode exact
+split                                head 83a3: decoded, 1 inputs, 10 outputs, id 89a0365c75e92fa6…, re-encode differs (head 84a3)
+mempool-split                        head 83a3: decoded, 1 inputs, 10 outputs, id 89a0365c75e92fa6…, re-encode differs (head 84a3)
+mempool-conway-payment               head 83a3: decoded, 1 inputs, 1 outputs, id 1ddbc9b94110c272…, re-encode differs (head 84a3)
+mempool-conway-reg-with-deposit      head 83a4: decoded, 1 inputs, 1 outputs, id 50cdb84e9418b262…, re-encode differs (head 84a4)
+mempool-conway-required-signer       head 83a4: decoded, 1 inputs, 1 outputs, id cd4781f1af458f27…, re-encode differs (head 84a4)
+mempool-conway-metadata              head 83a4: decoded, 1 inputs, 1 outputs, id 987b7e4c800a7c44…, re-encode differs (head 84a4)
+mempool-dijkstra-payment             head 83a3: decoded, 1 inputs, 1 outputs, id 6b4ac3dc5f74a903…, re-encode differs (head 84a3)
+mempool-dijkstra-reg-with-deposit    head 83a4: decoded, 1 inputs, 1 outputs, id 5e5cc532015cc2a9…, re-encode differs (head 84a4)
+mempool-dijkstra-metadata            head 83a4: decoded, 1 inputs, 1 outputs, id bc6b36f000f6e4f9…, re-encode differs (head 84a4)
+mempool-adv-split                    head 83a3: decoded, 1 inputs, 8 outputs, id 7ff5b2d13eae2732…, re-encode differs (head 84a3)
+mempool-dijkstra-direct-deposit      head 83a4: decoded, 1 inputs, 1 outputs, id 9fe8ac1c3cf38790…, re-encode exact
+mempool-dijkstra-sub-transaction     head 83a4: decoded, 1 inputs, 1 outputs, id caa270da2e964edb…, re-encode exact
+mempool-dijkstra-plutusv4-reference-script head 83a3: decoded, 1 inputs, 1 outputs, id 27266d0a03105a53…, re-encode differs (head 84a3)
+mempool-dijkstra-native-guard        head 83a4: decoded, 1 inputs, 1 outputs, id 03666e3029c32718…, re-encode exact
+mempool-dijkstra-plutusv4-guard      head 83a6: decoded, 1 inputs, 1 outputs, id f0f359bb25e12d72…, re-encode differs (head 83a6)
+mempool-dijkstra-balance-interval    head 83a4: decoded, 1 inputs, 1 outputs, id bfdd55b6742ca984…, re-encode exact

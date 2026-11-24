@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
   "run": {
-    "date": "2026-11-09",
+    "date": "2026-11-23",
     "node": {
       "repo": "IntersectMBO/cardano-node",
-      "revision": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899",
-      "build": "Official 11.2.0 Linux amd64 release asset; SHA256 8b287e300ffb2063522fc33d50da6ecee8fa10fc7445c906fae0ca9783db8e03 (GitHub marks this tag as a prerelease)."
+      "revision": "90bc1cd9380a78a63091ff673f8c5693152c8f60",
+      "build": "Official 11.2.1 Linux amd64 release asset; SHA256 88276ed753f460ee876c03c305ad68de9e4a16945f7c741e08130bf296791174 (GitHub marks this tag as a prerelease)."
     },
-    "cli": "cardano-cli 11.6.0.0 from the same release archive",
+    "cli": "cardano-cli 11.7.0.0 from the same release archive",
     "setup": [
       "One stake pool, three DReps, no constitutional committee, testnet magic 42, 200-slot epochs of 0.1 s, generated with cardano-testnet create-env.",
       "ExperimentalHardForksEnabled and TestDijkstraHardForkAtEpoch 2 in the generated versioned configuration. The epoch trigger changes the era but initially leaves protocol version 10. Two governance actions raised it to 11 then 12.",
-      "The recorded transaction matrix ran after checking protocol version 12. It now has 25 encodings: the 9 signed envelopes and 8 mempool encodings of the earlier matrix, plus a direct deposit, a top-level transaction carrying a signed sub-transaction and an output holding a PlutusV4 reference script (advanced.sh), with their split and mempool encodings. The 11.2.0 CLI has no options for guards or balance intervals, so those stay unexercised.",
-      "Ogmios and Kupo first rejected the versioned configuration envelope. Their subsequent protocol checks use an equivalent flattened legacy configuration. db-sync also needs Protocol and LastKnownBlockVersion fields plus a Shelley genesis copy rounded to Byron whole-second startTime (under one second difference).",
-      "Only what ran on 2026-11-09 is recorded; nothing is carried over from 2026-11-01, whose results stay in the archived assessment. Version labels name exactly what ran: current releases and release candidates, Pallas main, and txtop's latest release with its gouroboros pin raised. Historical patched controls were not rerun.",
-      "Raw logs, fixtures, resolved build inputs and checksums are retained under content/readiness/dijkstra-runs/2026-11-09/. No signing keys or credentials are retained.",
-      "Not run: Koios (its Dijkstra branch reads the db-sync tables, and db-sync stops before the advanced transactions), guards and balance intervals (no CLI support), executing a PlutusV4 script, and the versioned-configuration check for Ogmios and Kupo. Pass means only the capability and cases named by that check."
+      "The recorded transaction matrix ran after checking protocol version 12. It has 32 encodings: the 25 of the 2026-11-09 matrix plus a native guard, a PlutusV4 guard and an account balance interval (cardano-cli 11.7 added the options), with their mempool encodings, and a balance interval the account does not meet, which the node rejects.",
+      "Ogmios and Kupo, releases and forks, were run with a flattened legacy configuration equivalent to the versioned one, as on 11.2.0, when both rejected the versioned envelope; that rejection was not re-tested on 11.2.1. db-sync needs Protocol and LastKnownBlockVersion fields plus a Shelley genesis copy rounded to Byron whole-second startTime.",
+      "Only what ran on 2026-11-23 is recorded, plus a rerun of the IntersectMBO Ogmios and Kupo forks at newer commits on 2026-11-24 against the same chain, served by a plain node (forks.sh relay) because cardano-testnet cannot restart an old chain; the 2026-11-09 to 2026-11-11 results stay in the archived assessment. Version labels name exactly what ran: current releases and prereleases, Pallas main, the IntersectMBO Ogmios and Kupo forks, blockfrost-platform main, and txtop's latest release with its gouroboros pin raised.",
+      "Raw logs, fixtures, resolved build inputs and checksums are retained under content/readiness/dijkstra-runs/2026-11-23/. No signing keys, mnemonics or credentials are retained.",
+      "Not run: Koios (it reads the db-sync tables, and db-sync stops before the advanced transactions), required top-level guards, the historical patched gouroboros controls and cardano-node-api, and the Ogmios v7.0.0 and Kupo v2.12 releases against the versioned configuration (on 2026-11-24 Kupo fork e9ef0be3 read it and synced; Ogmios fork 20c383a2 exited asking for ByronGenesisFile and ShelleyGenesisFile). Pass means only the capability and cases named by that check."
     ],
     "recipe": "scripts/readiness/devnet/README.md"
   },
   "checks": [
     {
       "id": "fork-to-pv12",
-      "title": "Node 11.2.0 forks to Dijkstra and reaches protocol version 12",
+      "title": "Node 11.2.1 forks to Dijkstra and reaches protocol version 12",
       "summary": "The chain entered Dijkstra at the configured epoch and two governance hard forks raised the protocol version to 12. The protocol-parameter query returns 54 parameters.",
       "results": [
         {
@@ -44,7 +44,7 @@
           "kind": "change",
           "id": "query-pparams-encoding",
           "outcome": "pass",
-          "note": "cardano-cli 11.6.0.0 decodes 54 parameters through local state query."
+          "note": "cardano-cli 11.7.0.0 decodes 54 parameters through local state query."
         }
       ],
       "observed": [
@@ -60,7 +60,7 @@
     {
       "id": "n2c-handshake",
       "title": "The node accepts only node-to-client V23; current clients connect",
-      "summary": "The node refuses V16 to V22 and accepts V23. gouroboros v0.218.2, Ogmios v7.0.0, Kupo v2.12 and cardano-db-sync 13.8.0.0 complete the handshake; each one's later decoding is a separate check.",
+      "summary": "Node 11.2.1 refuses V16-V22 and accepts V23, like 11.2.0. gouroboros v0.221.0, Ogmios v7.0.0, Kupo v2.12 and cardano-db-sync 13.8.0.0 complete the handshake.",
       "results": [
         {
           "kind": "change",
@@ -70,7 +70,7 @@
         {
           "kind": "component",
           "id": "gouroboros",
-          "version": "v0.218.2",
+          "version": "v0.221.0",
           "outcome": "pass"
         },
         {
@@ -96,10 +96,10 @@
         }
       ],
       "observed": [
-        "handshake-node.log:\noffered V16..V22: refused, reason VersionMismatch ['V23']\noffered V23..V23: accepted V23 [42, False]",
-        "handshake-v0.218.2.log:\nhandshake ok; mempool capacity 25294848 size 0 transactions 0",
-        "services.log:\nogmios exit 1; era at start: \"currentEra\":\"dijkstra\"\nkupo exit 1; last logged roll-forward slot: none logged",
-        "service-layer.log:\ndb-sync exited; blocks indexed: 143, highest: 142, epoch_param rows: 15"
+        "handshake-node.log:\noffered V16..V22: refused, reason VersionMismatch ['V23']\n\noffered V23..V23: accepted V23 [42, False]",
+        "handshake-v0.221.0.log:\nhandshake ok; mempool capacity 25294848 size 0 transactions 0",
+        "services.log:\nogmios v7.0.0 (b3a830a1)\nogmios exit 1; era at start: \"currentEra\":\"dijkstra\"\nkupo v2.12.0+491918\nkupo exit 1; last logged roll-forward slot: none logged",
+        "service-layer.log:\ndb-sync exited; blocks indexed: 188, highest: 187, epoch_param rows: 18"
       ],
       "recipe": [
         "scripts/readiness/devnet/handshake.py",
@@ -111,7 +111,7 @@
     {
       "id": "cross-era-submission",
       "title": "Conway and Dijkstra transactions submitted after the fork",
-      "summary": "As on 2026-11-01: Conway payment, deposit registration, key-hash required signer and metadata are accepted after the fork; the deposit-less registration is rejected; Dijkstra payment, deposit registration and metadata are accepted. The mempool returns every accepted transaction in the three-element Dijkstra form.",
+      "summary": "At protocol version 12 the node accepts Conway-built and Dijkstra-built transactions, keeps both in the mempool in the three-element form, and rejects the deposit-less registration certificate, as on 11.2.0.",
       "results": [
         {
           "kind": "change",
@@ -127,12 +127,12 @@
           "kind": "change",
           "id": "removed-encodings",
           "outcome": "pass",
-          "note": "Only the deposit-less registration was exercised."
+          "note": "Only the deposit-less registration was exercised here; ccl-quicktx covers deregistration."
         }
       ],
       "observed": [
-        "transactions.log:\nTransaction successfully submitted. Transaction hash is:\n## conway-payment (conway build-raw)\nenvelope: Tx ConwayEra 84a3\nTransaction successfully submitted. Transaction hash is:\n## conway-legacy-reg (conway build-raw)\nenvelope: Tx ConwayEra 84a4\nError: The era of the node and the tx do not match. The node is running in the Dijkstra era, but the transaction is for the Conway era.\n## conway-reg-with-deposit (conway build-raw)\nenvelope: Tx ConwayEra 84a4\nTransaction successfully submitted. Transaction hash is:\n## conway-required-signer (conway build-raw)\nenvelope: Tx ConwayEra 84a4\nTransaction successfully submitted. Transaction hash is:\n## conway-metadata (conway build-raw)\nenvelope: Tx ConwayEra 84a4\nTransaction successfully submitted. Transaction hash is:\n## dijkstra-payment (dijkstra build-raw)\nenvelope: Tx DijkstraEra 83a3\nTransaction successfully submitted. Transaction hash is:\n## dijkstra-legacy-reg (dijkstra build-raw)\nError: /tmp/dj-1109/work/tx/kd0.cert: TextEnvelope decode error: DecoderErrorDeserialiseFailure \"DijkstraTxCert DijkstraEra\" (DeserialiseFailure 2 \"Certificates without deposits are no longer supported\")\n## dijkstra-reg-with-deposit (dijkstra build-raw)\nenvelope: Tx DijkstraEra 83a4\nTransaction successfully submitted. Transaction hash is:\n## dijkstra-metadata (dijkstra build-raw)\nenvelope: Tx DijkstraEra 83a4\nTransaction successfully submitted. Transaction hash is:",
-        "transactions-labeled.txt (mempool lines, first 40 characters):\nmempool-split 83a300d90102818258201fa028\nmempool-conway-payment 83a300d9010281825\nmempool-conway-reg-with-deposit 83a400d9\nmempool-conway-required-signer 83a400d90\nmempool-conway-metadata 83a400d901028182\nmempool-dijkstra-payment 83a300d90102818\nmempool-dijkstra-reg-with-deposit 83a400\nmempool-dijkstra-metadata 83a400d9010281\nmempool-adv-split 83a300d901028182582027\nmempool-dijkstra-direct-deposit 83a400d9\nmempool-dijkstra-sub-transaction 83a400d\nmempool-dijkstra-plutusv4-reference-scri"
+        "transactions.log:\n## conway-payment (conway build-raw)\nenvelope: Tx ConwayEra 84a3\n## conway-legacy-reg (conway build-raw)\nenvelope: Tx ConwayEra 84a4\nError: The era of the node and the tx do not match. The node is running in the Dijkstra era, but the transaction is for the Conway era.\n## conway-reg-with-deposit (conway build-raw)\nenvelope: Tx ConwayEra 84a4\n## conway-required-signer (conway build-raw)\nenvelope: Tx ConwayEra 84a4\n## conway-metadata (conway build-raw)\nenvelope: Tx ConwayEra 84a4\n## dijkstra-payment (dijkstra build-raw)\nenvelope: Tx DijkstraEra 83a3\n## dijkstra-legacy-reg (dijkstra build-raw)\nErr",
+        "tx-decode-v0.221.0.log:\nmempool-split                  head 83a3: type 6: decoded\nmempool-conway-payment         head 83a3: type 6: decoded\nmempool-conway-reg-with-deposit head 83a4: type 6: decoded\nmempool-conway-required-signer head 83a4: type 6: decoded"
       ],
       "recipe": [
         "scripts/readiness/devnet/transactions.sh",
@@ -141,14 +141,14 @@
     },
     {
       "id": "advanced-transactions",
-      "title": "Direct deposit, sub-transaction and PlutusV4 reference script are accepted",
-      "summary": "New in this run. The node accepts a direct deposit into a registered account (the account balance rises by the deposit), a top-level transaction carrying one signed sub-transaction, and an output holding a PlutusV4 reference script. The script is not executed. These encodings are the fixtures the codec checks below decode.",
+      "title": "Direct deposits, sub-transactions, guards, balance intervals and PlutusV4 are accepted",
+      "summary": "cardano-cli 11.7.0.0 builds every Dijkstra body feature this run exercised, and the node accepts them: a direct deposit (the account balance rose to 2 ADA), a top-level transaction carrying a signed sub-transaction, an output holding a PlutusV4 reference script, a native guard, a PlutusV4 guard whose script ran in phase two (the collateral stayed unspent), and an account balance interval. A balance interval the account does not meet is rejected with BalancesOutsideAccountBalanceIntervals.",
       "results": [
         {
           "kind": "change",
           "id": "account-enhancements",
           "outcome": "pass",
-          "note": "Direct deposit only; balance intervals are not in the 11.2.0 CLI."
+          "note": "A direct deposit and an account balance interval; an unmet interval is rejected."
         },
         {
           "kind": "change",
@@ -158,13 +158,19 @@
         },
         {
           "kind": "change",
+          "id": "guards",
+          "outcome": "pass",
+          "note": "A native signature guard and a PlutusV4 guard on body key 14; required top-level guards were not exercised."
+        },
+        {
+          "kind": "change",
           "id": "plutus-v4",
           "outcome": "pass",
-          "note": "A PlutusV4 reference script is stored; no V4 script was executed."
+          "note": "A PlutusV4 reference script is stored, and an always-succeeding PlutusV4 script runs as a guard."
         }
       ],
       "observed": [
-        "advanced.log:\nTransaction successfully submitted. Transaction hash is:\n## dijkstra-direct-deposit (build-raw)\nenvelope: Tx DijkstraEra 83a4\nTransaction successfully submitted. Transaction hash is:\nbalance before inclusion: 2000000\naccount after deposit: {\"address\":\"stake_test1urqln5v2xe0ml8evucc7whh32j8ps8qehl4w0r4wajklu0q3nel3e\",\"govActionDeposits\":{},\"rewardAccountBalance\":4000000,\"stakeRegistrationDeposit\":400000}\n## dijkstra-sub-transaction (sub-transaction build-raw, embedded)\nsub-transaction: Witnessed SubTx DijkstraEra 83a2\nenvelope: Tx DijkstraEra 83a4\nTransaction successfully submitted. Transaction hash is:\n## dijkstra-plutusv4-reference-script (build-raw)\nenvelope: Tx DijkstraEra 83a3\nTransaction successfully submitted. Transaction hash is:"
+        "advanced.log:\n## dijkstra-direct-deposit (build-raw)\nenvelope: Tx DijkstraEra 83a4\naccount after deposit: {\"address\":\"stake_test1uperz4a39776mz9xdumlyq64cj8jm30rj55szpz6wpqqg6sn5hpkx\",\"govActionDeposits\":{},\"rewardAccountBalance\":2000000,\"stakeRegistrationDeposit\":400000}\n## dijkstra-sub-transaction (sub-transaction build-raw, embedded)\nenvelope: Tx DijkstraEra 83a4\n## dijkstra-plutusv4-reference-script (build-raw)\nenvelope: Tx DijkstraEra 83a3\n## dijkstra-native-guard (build-raw)\nenvelope: Tx DijkstraEra 83a4\n## dijkstra-plutusv4-guard (build-raw)\nenvelope: Tx DijkstraEra 83a6\n## dijkstra-balance-interval (build-raw)\nenvelope: Tx DijkstraEra 83a4\n## dijkstra-balance-interval-unmet (build-raw, expected rejection)\nenvelope: Tx DijkstraEra 83a4\nError: Error while submitting tx: ShelleyTxValidationError ShelleyBasedEraDijkstra (DijkstraApplyTxError (LedgerFailure (DijkstraEntitiesFailure (BalancesOutside"
       ],
       "recipe": [
         "scripts/readiness/devnet/advanced.sh"
@@ -172,8 +178,8 @@
     },
     {
       "id": "block-shape",
-      "title": "The node's Dijkstra block: non-segregated body, ten-field header; gouroboros v0.218.2 decodes it",
-      "summary": "The tagged node still emits a two-element Dijkstra block with a non-segregated body and a ten-field header. gouroboros v0.218.2 (the fix shipped in v0.217.0) decodes all 205 Dijkstra blocks; v0.213.x and v0.216.3 failed on the first one on 2026-11-01.",
+      "title": "The node's Dijkstra block: non-segregated body, ten-field header; gouroboros v0.221.0 decodes it",
+      "summary": "Node 11.2.1 still emits a two-element Dijkstra block with a non-segregated body and a ten-field header whose protocol version reads 12.0 (the 11.3 header version of 11.2.1 applies only without experimental hard forks). gouroboros v0.221.0 decodes all 205 Dijkstra blocks it synced.",
       "results": [
         {
           "kind": "change",
@@ -189,13 +195,13 @@
         {
           "kind": "component",
           "id": "gouroboros",
-          "version": "v0.218.2",
+          "version": "v0.221.0",
           "outcome": "pass"
         }
       ],
       "observed": [
-        "block-shape.log:\narray[2]\n  [0] array[2]\n    [0] array[10]\n      [0] 15\n      [1] 425\n      [2] bytes[32]\n      [3] bytes[32]\n      [4] bytes[32]\n      [5] array[2]\n      [6] 4\n      [7] bytes[32]\n      [8] array[4]\n      [9] array[2]\n    [1] bytes[448]\n  [1] array[3]\n    [0] array[0]\n\n    [1] None\n    [2] None\n(consumed 854 of 854 bytes)",
-        "chain-v0.218.2.log:\ntip slot 4414\n    15  Conway: block decoded\n   205  Dijkstra: block decoded\n    19  Dijkstra: transaction DetermineTransactionType: unknown transaction type; forced Dijkstra decode: failed to decode TxIsValid: CBOR value is not a boolean"
+        "block-shape.log:\narray[2]\n  [0] array[2]\n    [0] array[10]\n      [0] 15\n      [1] 411\n      [2] bytes[32]\n      [3] bytes[32]\n      [4] bytes[32]\n      [5] array[2]\n      [6] 4\n      [7] bytes[32]\n      [8] array[4]\n      [9] array[2]\n    [1] bytes[448]\n  [1] array[3]\n    [0] array[0]\n\n    [1] None\n    [2] None\n(consumed 854 of 854 bytes)",
+        "chain-v0.221.0.log:\ntip slot 4364\n    15  Conway: block decoded\n   205  Dijkstra: block decoded\n    19  Dijkstra: transaction DetermineTransactionType: unknown transaction type; forced Dijkstra decode: failed to decode TxIsValid: CBOR value is not a boolean"
       ],
       "recipe": [
         "scripts/readiness/devnet/probe/main.go",
@@ -204,8 +210,8 @@
     },
     {
       "id": "service-decoding",
-      "title": "Ogmios and Kupo still stop at the first Dijkstra block",
-      "summary": "No new release since 2026-11-01. Ogmios v7.0.0 and Kupo v2.12 connect with the flattened configuration and exit on the first Dijkstra block.",
+      "title": "Ogmios and Kupo releases still stop at the first Dijkstra block",
+      "summary": "Ogmios v7.0.0 and Kupo v2.12, built on node 11.0.1, exit at the first Dijkstra block of node 11.2.1 with a chain-sync DeserialiseFailure, as on 11.2.0.",
       "results": [
         {
           "kind": "component",
@@ -229,19 +235,19 @@
     },
     {
       "id": "tx-era-detection",
-      "title": "gouroboros v0.218.2 reports ordinary Dijkstra transactions as Conway",
-      "summary": "DetermineTransactionType now returns Conway (type 6) for ordinary three-element Dijkstra transactions instead of an error, and Dijkstra (type 7) only when the body has a Dijkstra-only key, as in the direct deposit and sub-transaction. In blocks, tx.Cbor() returns each Dijkstra transaction in the four-element Conway shape, which gouroboros's own decoder then rejects, so tools that pass transaction bytes on from blocks get bytes that are not on chain.",
+      "title": "gouroboros v0.221.0 reports ordinary Dijkstra transactions as Conway",
+      "summary": "DetermineTransactionType in v0.221.0 returns Conway (type 6) for every three-element Dijkstra transaction without a Dijkstra-only field, and Dijkstra (type 7) only for direct deposits, sub-transactions, guards and balance intervals. Chain sync decodes every block but fails to re-decode the 19 transactions in Dijkstra blocks.",
       "results": [
         {
           "kind": "component",
           "id": "gouroboros",
-          "version": "v0.218.2",
+          "version": "v0.221.0",
           "outcome": "fail"
         }
       ],
       "observed": [
-        "tx-decode-v0.218.2.log:\ndijkstra-metadata              head 83a4: type 6: decoded\ndijkstra-payment               head 83a3: type 6: decoded\ndijkstra-reg-with-deposit      head 83a4: type 6: decoded\nsplit                          head 83a3: type 6: decoded\ndijkstra-direct-deposit        head 83a4: type 7: decoded\ndijkstra-plutusv4-reference-script head 83a3: type 6: decoded\ndijkstra-sub-transaction       head 83a4: type 7: decoded\nmempool-dijkstra-payment       head 83a3: type 6: decoded\nmempool-dijkstra-reg-with-deposit head 83a4: type 6: decoded\nmempool-dijkstra-metadata      head 83a4: type 6: decoded\nmempool-dijkstra-direct-deposit head 83a4: type 7: decoded\nmempool-dijkstra-sub-transaction head 83a4: type 7: decoded\nmempool-dijkstra-plutusv4-reference-script head 83a3: type 6: decoded",
-        "chain-v0.218.2.log:\n    19  Dijkstra: transaction DetermineTransactionType: unknown transaction type; forced Dijkstra decode: failed to decode TxIsValid: CBOR value is not a boolean"
+        "tx-decode-v0.221.0.log:\ndijkstra-balance-interval      head 83a4: type 7: decoded\ndijkstra-direct-deposit        head 83a4: type 7: decoded\ndijkstra-metadata              head 83a4: type 6: decoded\ndijkstra-native-guard          head 83a4: type 7: decoded\ndijkstra-payment               head 83a3: type 6: decoded\nmempool-dijkstra-payment       head 83a3: type 6: decoded\nmempool-dijkstra-metadata      head 83a4: type 6: decoded\nmempool-dijkstra-direct-deposit head 83a4: type 7: decoded\nmempool-dijkstra-native-guard  head 83a4: type 7: decoded\nmempool-dijkstra-balance-interval head 83a4: type 7: decoded",
+        "chain-v0.221.0.log:\ntip slot 4364\n    15  Conway: block decoded\n   205  Dijkstra: block decoded\n    19  Dijkstra: transaction DetermineTransactionType: unknown transaction type; forced Dijkstra decode: failed to decode TxIsValid: CBOR value is not a boolean"
       ],
       "recipe": [
         "scripts/readiness/devnet/probe/main.go",
@@ -251,8 +257,8 @@
     },
     {
       "id": "tool-upgrades",
-      "title": "txtop's latest release connects as released and with gouroboros v0.218.2",
-      "summary": "txtop v0.17.0 (gouroboros v0.215.0) and the same release raised to gouroboros v0.218.2 both connect and show mempool sizes. Neither listed the test payment, which was in a block before txtop refreshed, so its transaction list is not established either way.",
+      "title": "txtop's latest release connects as released and with gouroboros v0.221.0",
+      "summary": "txtop v0.17.0 (gouroboros v0.215.0) and the same release raised to gouroboros v0.221.0 both connect and show mempool sizes. Neither listed the test payment, which was in a block before txtop refreshed, so its transaction list is not established either way.",
       "results": [
         {
           "kind": "tool",
@@ -264,13 +270,13 @@
         {
           "kind": "tool",
           "id": "txtop",
-          "version": "v0.17.0 with gouroboros v0.218.2",
+          "version": "v0.17.0 with gouroboros v0.221.0",
           "outcome": "pass",
           "note": "Connects and shows mempool sizes only."
         }
       ],
       "observed": [
-        "txtop-release.log:\ntxtop-release: Mempool capacity (bytes): 25294848\ntxtop-release lists the Dijkstra payment aa388c126e0fd997: no; errors drawn:\ntxtop-raised: Mempool capacity (bytes): 25294848\ntxtop-raised lists the Dijkstra payment 558836bca7a86a4f: no; errors drawn:"
+        "txtop-release.log:\ntxtop-release: Mempool capacity (bytes): 25294848\ntxtop-release lists the Dijkstra payment a462a5e51129842e: no; errors drawn:\ntxtop-raised: Mempool capacity (bytes): 25294848\ntxtop-raised lists the Dijkstra payment c467cda814140017: no; errors drawn:"
       ],
       "recipe": [
         "scripts/readiness/devnet/tools.sh"
@@ -278,27 +284,27 @@
     },
     {
       "id": "pallas-chain-sync",
-      "title": "Pallas v1.5.0-rc.1 and main decode no Dijkstra block from the node",
-      "summary": "Both now carry the Dijkstra era behind the unstable feature (PR #849), but expect an eleventh header field (block_body_contains_leios_cert) the 11.2.0 node does not emit, so every Dijkstra block fails; the Conway blocks decode.",
+      "title": "Pallas v1.5.0-rc.3 and main decode no Dijkstra block from the node",
+      "summary": "Built with the unstable feature, Pallas v1.5.0-rc.3 (0e187bc5) and main (0b17c8f6) decode every Conway block and no Dijkstra block: the header decoder requires the twelve fields of the target CDDL, and the node emits ten.",
       "results": [
         {
           "kind": "component",
           "id": "pallas",
-          "version": "v1.5.0-rc.1",
+          "version": "v1.5.0-rc.3",
           "outcome": "fail",
           "note": "Built with the unstable feature."
         },
         {
           "kind": "component",
           "id": "pallas",
-          "version": "main 3da6ff9f",
+          "version": "main 0b17c8f6",
           "outcome": "fail",
           "note": "Built with the unstable feature."
         }
       ],
       "observed": [
-        "pallas-chain-v1.5.0-rc.1.log:\nera tag 7: 15 blocks decoded, 0 transactions, 0 failed\nera tag 8: 0 blocks decoded, 0 transactions, 418 failed\n  first failure: block 856 bytes: Invalid CBOR structure: missing value at index 10 (HeaderBody::block_body_contains_leios_cert) in map or array starting at position 4",
-        "pallas-chain-main.log:\nera tag 7: 15 blocks decoded, 0 transactions, 0 failed\nera tag 8: 0 blocks decoded, 0 transactions, 418 failed\n  first failure: block 856 bytes: Invalid CBOR structure: missing value at index 10 (HeaderBody::block_body_contains_leios_cert) in map or array starting at position 4"
+        "pallas-chain-v1.5.0-rc.3.log:\nera tag 7: 15 blocks decoded, 0 transactions, 0 failed\nera tag 8: 0 blocks decoded, 0 transactions, 970 failed\n  first failure: block 856 bytes: Invalid CBOR structure: missing value at index 10 (HeaderBody::block_body_contains_leios_cert) in map or array starting at position 4",
+        "pallas-chain-main.log:\nera tag 7: 15 blocks decoded, 0 transactions, 0 failed\nera tag 8: 0 blocks decoded, 0 transactions, 324 failed\n  first failure: block 856 bytes: Invalid CBOR structure: missing value at index 10 (HeaderBody::block_body_contains_leios_cert) in map or array starting at position 4"
       ],
       "recipe": [
         "scripts/readiness/devnet/pallas-probe/main.rs",
@@ -308,25 +314,25 @@
     {
       "id": "pallas-transactions",
       "title": "Pallas decodes every Dijkstra transaction when told the era",
-      "summary": "With decode_for_era(Era::Dijkstra) and the unstable feature, v1.5.0-rc.1 and main decode all 12 Dijkstra encodings, including the direct deposit, the sub-transaction and the PlutusV4 reference script. MultiEraTx::decode still cannot detect the era of any of them.",
+      "summary": "decode_for_era(Era::Dijkstra) reads all 32 encodings, guards and balance intervals included, except the Conway deposit-less registration that Dijkstra removed. MultiEraTx::decode still reports an unknown structure for every three-element transaction.",
       "results": [
         {
           "kind": "component",
           "id": "pallas",
-          "version": "v1.5.0-rc.1",
+          "version": "v1.5.0-rc.3",
           "outcome": "pass",
           "note": "Only through decode_for_era(Era::Dijkstra) with the unstable feature; MultiEraTx::decode still fails."
         },
         {
           "kind": "component",
           "id": "pallas",
-          "version": "main 3da6ff9f",
+          "version": "main 0b17c8f6",
           "outcome": "pass",
           "note": "Only through decode_for_era(Era::Dijkstra) with the unstable feature; MultiEraTx::decode still fails."
         }
       ],
       "observed": [
-        "pallas-txs-v1.5.0-rc.1.log:\ndijkstra-metadata              head 83a4: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\ndijkstra-payment               head 83a3: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\ndijkstra-reg-with-deposit      head 83a4: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\ndijkstra-direct-deposit        head 83a4: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\ndijkstra-plutusv4-reference-script head 83a3: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\ndijkstra-sub-transaction       head 83a4: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\nmempool-dijkstra-payment       head 83a3: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\nmempool-dijkstra-reg-with-deposit head 83a4: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\nmempool-dijkstra-metadata      head 83a4: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\nmempool-dijkstra-direct-deposit head 83a4: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\nmempool-dijkstra-sub-transaction head 83a4: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs\nmempool-dijkstra-plutusv4-reference-script head 83a3: decode: Unknown CBOR structure; forced Dijkstra decode: ok, 1 inputs"
+        "pallas-txs-v1.5.0-rc.3.log:\ndijkstra-balance-interval      head 83a4: decode: Unknown CBOR structure: 83a400d901028182582089a0365c75e92fa69a30711df4b7b10e696bd7581c6fdc038c7c321f6bcc6d1e06018182581d60b35429f9464f375a9b0ca5dc7d5d1982e2e14a; forced D\ndijkstra-native-guard          head 83a4: decode: Unknown CBOR structure: 83a400d90102818258207ff5b2d13eae2732c8e61185a639cc1c25636279b77d05fd4334eeb1e7f35df404018182581d60b35429f9464f375a9b0ca5dc7d5d1982e2e14a; forced D\ndijkstra-plutusv4-guard        head 83a6: decode: Unknown CBOR structure: 83a600d90102818258207ff5b2d13eae2732c8e61185a639cc1c25636279b77d05fd4334eeb1e7f35df4050dd90102818258207ff5b2d13eae2732c8e61185a639cc1c25; forced D\nmempool-dijkstra-native-guard  head 8"
       ],
       "recipe": [
         "scripts/readiness/devnet/pallas-probe/main.rs",
@@ -338,7 +344,7 @@
     {
       "id": "cml-decoding",
       "title": "CML 6.2.0 decodes no Dijkstra block or transaction",
-      "summary": "No new release. CML decodes the Conway control block but none of the 247 Dijkstra blocks and none of the three-element Dijkstra transactions, including the three advanced ones.",
+      "summary": "CML 6.2.0, still the newest release, decodes the Conway control block and none of the 336 Dijkstra blocks, and rejects every three-element transaction.",
       "results": [
         {
           "kind": "component",
@@ -348,8 +354,8 @@
         }
       ],
       "observed": [
-        "cml-blocks.log:\nera tag 7: 1 blocks; MultiEraBlock decoded 1, Conway Block decoded 1\nera tag 8: 247 blocks; MultiEraBlock decoded 0, Conway Block decoded 0\n  first MultiEraBlock failure: Deserialization: No variant matched\n  first Conway Block failure: Deserialization: Definite length mismatch: found 2",
-        "cml-txs.log:\ndijkstra-metadata              head 83a4: decode: Deserialization: Definite length mismatch: found 3\ndijkstra-payment               head 83a3: decode: Deserialization: Definite length mismatch: found 3\ndijkstra-reg-with-deposit      head 83a4: decode: Deserialization: Definite length mismatch: found 3\ndijkstra-direct-deposit        head 83a4: decode: Deserialization: Definite length mismatch: found 3\ndijkstra-plutusv4-reference-script head 83a3: decode: Deserialization: Definite length mismatch: found 3\ndijkstra-sub-transaction       head 83a4: decode: Deserialization: Definite length mismatch: found 3"
+        "cml-blocks.log:\nera tag 7: 1 blocks; MultiEraBlock decoded 1, Conway Block decoded 1\nera tag 8: 336 blocks; MultiEraBlock decoded 0, Conway Block decoded 0\n  first MultiEraBlock failure: Deserialization: No variant matched\n  first Conway Block failure: Deserialization: Definite length mismatch: found 2",
+        "cml-txs.log:\ndijkstra-native-guard          head 83a4: decode: Deserialization: Definite length mismatch: found 3\ndijkstra-payment               head 83a3: decode: Deserialization: Definite length mismatch: found 3"
       ],
       "recipe": [
         "scripts/readiness/devnet/cml-probe/main.rs",
@@ -358,18 +364,19 @@
     },
     {
       "id": "js-sdk-transactions",
-      "title": "@cardano-sdk/core 0.47.1 round-trips and reads every encoding",
-      "summary": "All 25 encodings decode and re-encode exactly. The typed reader returns the direct deposit, the sub-transaction and a PlutusV4 reference script, so the round-trip is not only preserved bytes. Guards and balance intervals were not exercised.",
+      "title": "@cardano-sdk/core 0.47.1 reads every encoding except balance intervals",
+      "summary": "@cardano-sdk/core 0.47.1 decodes and re-encodes byte for byte 29 of the 32 encodings, including direct deposits, a sub-transaction, native and PlutusV4 guards and a PlutusV4 reference script, and reads their new fields. It fails on all three balance-interval encodings: it reads body key 26 keyed by credential, while the node keys it by reward account, as the target CDDL does.",
       "results": [
         {
           "kind": "component",
           "id": "cardano-js-sdk",
           "version": "@cardano-sdk/core 0.47.1",
-          "outcome": "pass"
+          "outcome": "fail",
+          "note": "Balance intervals (body key 26) are keyed by credential instead of reward account."
         }
       ],
       "observed": [
-        "js-sdk-txs.log:\n@cardano-sdk/core 0.47.1\ndijkstra-direct-deposit            head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 65814c11bf322034…, round-trip exact; directDeposits 1\ndijkstra-plutusv4-reference-script head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 7c183f0341b1a281…, round-trip exact; reference script PlutusV4\ndijkstra-sub-transaction           head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 4a6db05a4f7436ba…, round-trip exact; subTransactions 1"
+        "js-sdk-txs.log:\ndijkstra-balance-interval          head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-balance-interval-unmet    head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-native-guard              head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 03666e3029c32718…, round-trip exact; guards 1\ndijkstra-plutusv4-guard            head 83a6: decoded, 1 inputs, 0 certificates, isValid true, id 876e9a66743a5879…, round-trip exact; guards 1\ndijkstra-sub-transaction           head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id caa270da2e96"
       ],
       "recipe": [
         "scripts/readiness/devnet/js-probe/probe.cjs",
@@ -379,29 +386,27 @@
     },
     {
       "id": "db-sync-and-blockfrost",
-      "title": "cardano-db-sync 13.8.0.0 indexes Dijkstra blocks until the first PlutusV4 script; Blockfrost v7.0.0 serves them",
-      "summary": "db-sync 13.8.0.0 decodes Dijkstra blocks with no decoder failures and indexes the Dijkstra payment, registration and metadata transactions and protocol version 12 parameters. It then exits on block 147's PlutusV4 reference script, which it cannot store: the database's scripttype enum has no plutusV4 value, and its indexed chain ends at block 142. The direct deposit in the same block and the later sub-transaction are therefore not reached. Blockfrost RYO v7.0.0 (prerelease) on that database serves the Dijkstra blocks, transactions and protocol version 12; its /network/eras endpoint throws.",
+      "title": "cardano-db-sync 13.8.0.0 indexes Dijkstra blocks until the first PlutusV4 script; Blockfrost v7.0.1 serves them",
+      "summary": "On node 11.2.1, db-sync 13.8.0.0 indexes Conway and Dijkstra blocks with no decoder failure until the first PlutusV4 script, where its scripttype enum has no plutusV4 value. Blockfrost v7.0.1 serves the indexed blocks, transactions and protocol version 12; /network/eras answers HTTP 500.",
       "results": [
         {
           "kind": "component",
           "id": "cardano-db-sync",
           "version": "13.8.0.0",
           "outcome": "fail",
-          "note": "Stops at the first PlutusV4 script; direct deposits and sub-transactions not reached."
+          "note": "Stops at the first PlutusV4 script."
         },
         {
           "kind": "component",
           "id": "blockfrost",
-          "version": "v7.0.0",
+          "version": "v7.0.1",
           "outcome": "fail",
-          "note": "Serves Dijkstra blocks and transactions; /network/eras throws on protocol version 12."
+          "note": "Serves Dijkstra blocks and transactions; /network/eras fails on protocol version 12."
         }
       ],
       "observed": [
-        "service-layer.log:\nnode tip: {\"epoch\":211,\"era\":\"Dijkstra\",\"block\":2052}\ndb-sync exited; blocks indexed: 143, highest: 142, epoch_param rows: 15\ndb-sync 13.8.0.0 chain-sync decoder failures: 0\ndb-sync errors logged: 6",
-        "service-layer.log (db-sync error, shortened):\nServerError \"22P02\" \"invalid input value for enum scripttype: \\\"plutusV4\\\"\"",
-        "service-layer.log:\nblockfrost image: blockfrost/backend-ryo:v7.0.0@sha256:2db3d989228863b559cbff46dc16dd8ac168c0337704775b88cff68fa51f6a7e\nblockfrost /blocks/latest: {\"height\":142,\"slot\":2810,\"epoch\":14}\nblockfrost /epochs/latest/parameters: {\"epoch\":14,\"protocol_major_ver\":12}\nblockfrost /network/eras: {}\nconway-payment                       db-sync indexed; blockfrost block 115\ndijkstra-metadata                    db-sync indexed; blockfrost block 115\ndijkstra-payment                     db-sync indexed; blockfrost block 115\ndijkstra-reg-with-deposit            db-sync indexed; blockfrost block 115\ndijkstra-direct-deposit              db-sync missing; blockfrost The requested component has not been found.\ndijkstra-plutusv4-reference-script   db-sync missing; blockfrost The requested component has not been found.\ndijkstra-sub-transaction             db-sync missing; blockfrost The requested component has not been found.",
-        "blockfrost-v7-errors.log:\n19:56:45 2|server  | 2026-11-09T19:56:45: Error in /network/eras. TypeError: Cannot read properties of undefined (reading 'is_era_hardfork')"
+        "service-layer.log:\nnode tip: {\"epoch\":67,\"era\":\"Dijkstra\",\"block\":688}\ndb-sync exited; blocks indexed: 188, highest: 187, epoch_param rows: 18\ndb-sync 13.8.0.0 chain-sync decoder failures: 0\nblockfrost /blocks/latest: {\"height\":187,\"slot\":3499,\"epoch\":17}\nblockfrost /epochs/latest/parameters: {\"epoch\":17,\"protocol_major_ver\":12}\nblockfrost /network/eras: {}",
+        "db-sync-enum.log:\ninvalid input value for enum scripttype: \"plutusV4\""
       ],
       "recipe": [
         "scripts/readiness/devnet/service-layer.sh"
@@ -409,8 +414,8 @@
     },
     {
       "id": "csl-decoding",
-      "title": "CSL 17.0.0 and 15.0.3 decode no Dijkstra block or advanced transaction",
-      "summary": "No new release. Neither version decodes a Dijkstra block; ordinary Dijkstra transactions decode but re-encode with the legacy fourth element, and the direct deposit, sub-transaction and PlutusV4 reference script fail to decode.",
+      "title": "CSL 17.0.0, 15.0.3 and 18.0.0-beta.1 decode no Dijkstra block or advanced transaction",
+      "summary": "All three versions decode plain Dijkstra transactions only by re-encoding them in the four-element form, and fail on every direct deposit, sub-transaction, guard, balance interval and PlutusV4 reference script, and on all 336 Dijkstra blocks. 18.0.0-beta.1, published on npm without a GitHub release, behaves like 17.0.0.",
       "results": [
         {
           "kind": "component",
@@ -423,11 +428,17 @@
           "id": "cardano-serialization-lib-csl",
           "version": "15.0.3",
           "outcome": "fail"
+        },
+        {
+          "kind": "component",
+          "id": "cardano-serialization-lib-csl",
+          "version": "18.0.0-beta.1",
+          "outcome": "fail"
         }
       ],
       "observed": [
-        "csl17-blocks.log:\ncardano-serialization-lib 17.0.0\n247 blocks (type 8 = Dijkstra):\n  247  Block error: Deserialization failed in Block because: Definite length mismatch: found 2; FixedBlock error: Deserialization: Definite length mismatch: found 2",
-        "csl17-txs.log:\ndijkstra-metadata                    head 83a4: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id ba9d566b15f40aba…\ndijkstra-payment                     head 83a3: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 11336636dfb1218b…\ndijkstra-reg-with-deposit            head 83a4: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 9603458937a36b50…\ndijkstra-direct-deposit              head 83a4: Transaction error: Deserialization failed in Transaction.body.TransactionBody because: Found unexpected key 25; FixedTransaction error: Deserialization failed in Transaction.body.TransactionBody because: Found unexpected key 25\ndijkstra-plutusv4-reference-script   head 83a3: Transaction error: Deserialization failed in Transaction.body.TransactionBody.outputs.TransactionOutputs.TransactionOutput.TransactionOutput.script_ref.ScriptRef.ScriptRefEnum bec; FixedTransaction error: Deserialization failed in Transaction.body.TransactionBody.outputs.TransactionOutputs.TransactionOutput.TransactionOutput.script_ref.ScriptRef.ScriptRefEnum bec\ndijkstra-sub-transaction             head 83a4: Transaction error: Deserialization failed in Transaction.body.TransactionBody because: Found unexpected key 23; FixedTransaction error: Deserialization failed in Transaction.body.TransactionBody because: Found unexpected key 23\nmempool-dijkstra-payment             head 83a3: Transaction decoded, 1 inputs, re-encode differs; FixedTransaction decoded, id 11336636dfb1218b…"
+        "csl18b-txs.log:\ndijkstra-balance-interval            head 83a4: Transaction error: Deserialization failed in Transaction.body.TransactionBody because: Found unexpected key 26; FixedTransaction error: Deserialization failed in Transactio\ndijkstra-native-guard                head 83a4: Transaction error: Deserialization failed in Transaction.body.TransactionBody.required_signers.Ed25519KeyHashes.Ed25519KeyHash because: Invalid cbor: not the right type, ex\ndijkstra-plutusv4-guard              head 83a6: Transaction error: Deserialization failed in Transaction.body.TransactionBody.required_signers.Ed25519KeyHashe",
+        "csl18b-blocks.log:\ncardano-serialization-lib 18.0.0-beta.1\n336 blocks (type 8 = Dijkstra):\n  336  Block error: Deserialization failed in Block because: Definite length mismatch: found 2; FixedBlock error: Deserialization: Definite length mismatch: found 2"
       ],
       "recipe": [
         "scripts/readiness/devnet/csl-probe/probe.cjs",
@@ -437,7 +448,7 @@
     {
       "id": "pycardano-transactions",
       "title": "PyCardano 0.19.2 fails on Dijkstra metadata and every advanced body",
-      "summary": "No new release. Payment and registration round-trip exactly; Dijkstra metadata, the direct deposit (body key 25), the sub-transaction (body key 23) and the PlutusV4 script fail.",
+      "summary": "PyCardano 0.19.2, still the newest release, decodes plain Dijkstra payments but fails on Dijkstra transactions with metadata, direct deposits, sub-transactions, guards, balance intervals and PlutusV4 scripts.",
       "results": [
         {
           "kind": "component",
@@ -447,7 +458,7 @@
         }
       ],
       "observed": [
-        "pycardano-txs.log:\npycardano 0.19.2\ndijkstra-metadata                    head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(259, {0: {674: {'msg': ['devnet']}}}) in any valid type from (<class 'bool'>, <class 'NoneType'>).\ndijkstra-payment                     head 83a3: decoded, 1 inputs, id 11336636dfb1218b…, re-encode exact\ndijkstra-reg-with-deposit            head 83a4: decoded, 1 inputs, id 9603458937a36b50…, re-encode exact\ndijkstra-direct-deposit              head 83a4: error: DeserializeException: Unexpected map key 25 in CBOR.\ndijkstra-plutusv4-reference-script   head 83a3: error: ValueError: No Plutus script class found for version 4\ndijkstra-sub-transaction             head 83a4: error: DeserializeException: Unexpected map key 23 in CBOR."
+        "pycardano-txs.log:\ndijkstra-balance-interval            head 83a4: error: DeserializeException: Unexpected map key 26 in CBOR.\ndijkstra-balance-interval-unmet      head 83a4: error: DeserializeException: Unexpected map key 26 in CBOR.\ndijkstra-metadata                    head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(259, {0: {674: {'msg': ['devnet']}}}) in any valid type from (<class 'bool'>, <class 'NoneType'>).\ndijkstra-native-guard                head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(258, [[1, b\"4R\\x1a\\xdc}M\\xc4\\xa9sa\\x13\\x90|TT\\xb8\\xa0E\\xb8u'\\"
       ],
       "recipe": [
         "scripts/readiness/devnet/py-probe/probe.py"
@@ -455,14 +466,15 @@
     },
     {
       "id": "jvm-codecs",
-      "title": "cardano-client-lib drops the new body fields; Yaci decodes no Dijkstra block",
-      "summary": "New in this run. cardano-client-lib 0.8.0-pre7 decodes every transaction, but drops the direct deposit and the sub-transaction, so the transaction id it computes for them differs from the id on chain; it re-encodes every Dijkstra transaction with the legacy fourth element. 0.7.3 also fails on Dijkstra metadata. Yaci 0.5.0-pre15 decodes a Conway control block and none of the 247 Dijkstra blocks.",
+      "title": "cardano-client-lib 0.8.0-pre8 reads Dijkstra transactions; Yaci 0.5.0-pre17 decodes every Dijkstra block",
+      "summary": "Yaci 0.5.0-pre17 decodes all 336 Dijkstra blocks and their transaction bodies, and a Conway control block. cardano-client-lib 0.8.0-pre8 reads the direct deposit, sub-transaction, guards and balance interval and, read with Era.Dijkstra, gives the on-chain id and an exact re-encoding for 31 of 32 encodings; the PlutusV4 guard transaction gets another id because the model re-encodes its body keys in its own order (RawTx gives the right id). Read without an era, plain Dijkstra transactions are re-encoded in the four-element Conway shape. 0.7.3 fails on guards and Dijkstra metadata.",
       "results": [
         {
           "kind": "component",
           "id": "bloxbean-cardano-client-library",
-          "version": "0.8.0-pre7",
-          "outcome": "fail"
+          "version": "0.8.0-pre8",
+          "outcome": "fail",
+          "note": "One wrong transaction id (PlutusV4 guard); era-less reading re-encodes the Conway shape."
         },
         {
           "kind": "component",
@@ -473,46 +485,61 @@
         {
           "kind": "component",
           "id": "yaci",
-          "version": "0.5.0-pre15",
-          "outcome": "fail"
+          "version": "0.5.0-pre17",
+          "outcome": "pass"
         }
       ],
       "observed": [
-        "ccl-0.8.0-pre7-txs.log:\ncardano-client-lib 0.8.0-pre7\ndijkstra-payment                     head 83a3: decoded, 1 inputs, 1 outputs, id 11336636dfb1218b…, re-encode differs (head 84a3)\ndijkstra-direct-deposit              head 83a4: decoded, 1 inputs, 1 outputs, id 94d0f0a8e197a9cf…, re-encode differs (head 84a3)\ndijkstra-sub-transaction             head 83a4: decoded, 1 inputs, 1 outputs, id cafafa4b0635dba3…, re-encode differs (head 84a3)",
-        "transactions-labeled.txt ids (txid.py): dijkstra-direct-deposit 65814c11bf322034…, dijkstra-sub-transaction 4a6db05a4f7436ba…",
-        "ccl-0.7.3-txs.log:\ndijkstra-metadata                    head 83a4: error: IndexOutOfBoundsException: Index 3 out of bounds for length 3",
-        "yaci-0.5.0-pre15-blocks.log:\nyaci 0.5.0-pre15\n247 blocks, 0 transaction bodies in decoded blocks\n   247  era tag 8: failed\n  first failure: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.Map (co.nstant.in.cbor.model.Array and co.nstant.in.cbor.model.Map are in unnamed module of load"
+        "yaci-0.5.0-pre17-blocks.log:\nyaci 0.5.0-pre17\n337 blocks, 19 transaction bodies in decoded blocks\n     1  era Conway: block decoded\n   336  era Dijkstra: block decoded",
+        "ccl-0.8.0-pre8-era-decode.log:\ndijkstra-payment                             raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact\ndijkstra-plutusv4-guard                      raw id = chain | era-less: model id ≠ chain (f0f359bb25e1…), re-encode differs(83a6), guards=1 | Dijkstra: model id ≠ chain (f0f359bb25e1…), re-encode differs(83a6), guards=1",
+        "ccl-0.7.3-txs.log:\ndijkstra-metadata                    head 83a4: error: IndexOutOfBoundsException: Index 3 out of bounds for length 3\ndijkstra-native-guard                head 83a4: error: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.ByteString (co.nstant.in.cbor.model.Array and co.nstant.\ndijkstra-plutusv4-guard              head 83a6: error: ClassCastException: class co.nstant.in.cbor.model.Array cannot be cast to class co.nstant.in.cbor.model.ByteString (co.nstant.in.cbor.model.Array and co.nstant."
       ],
       "recipe": [
         "scripts/readiness/devnet/jvm-probe/run.sh",
         "scripts/readiness/devnet/jvm-probe/CclProbe.java",
-        "scripts/readiness/devnet/jvm-probe/YaciProbe.java"
+        "scripts/readiness/devnet/jvm-probe/YaciProbe.java",
+        "scripts/readiness/devnet/jvm-probe/ccl-e2e/BranchProbe.java"
       ]
     },
     {
       "id": "fork-chain-sync",
-      "title": "The IntersectMBO forks of Ogmios and Kupo read Dijkstra blocks; Kupo stops at sub-transactions",
-      "summary": "Run on 2026-11-10 against the same 11.2.0 chain. The forks are not merged upstream or released. Ogmios master 2f9b5d14 syncs all 2356 Dijkstra blocks without a decode error. Kupo master bdb44975 indexes every block and test transaction up to block 186, including the direct deposit, then stops with an explicit error at the first transaction carrying a sub-transaction.",
+      "title": "The IntersectMBO forks of Ogmios and Kupo read every Dijkstra block and transaction",
+      "summary": "Not merged upstream or released. Ogmios master 54bb8c1c (2026-11-23) and 20c383a2 (2026-11-24) sync all Dijkstra blocks of the 11.2.1 devnet and return full Dijkstra transactions: direct deposits as credits, guards, balance intervals, sub-transactions, PlutusV4 redeemers and scripts. Kupo master ee51691d (2026-11-23) stopped with an explicit error at the first transaction carrying a sub-transaction; e9ef0be3 (2026-11-24, PR #19) indexes the whole chain, including the sub-transaction's own output and its later spend.",
       "results": [
         {
           "kind": "component",
           "id": "ogmios",
-          "version": "IntersectMBO fork 2f9b5d14",
+          "version": "IntersectMBO fork 54bb8c1c",
           "outcome": "pass",
-          "note": "Chain sync from origin to the tip; transaction contents are checked separately (fork-ogmios-api)"
+          "note": "Chain sync from origin to the tip with every Dijkstra field."
+        },
+        {
+          "kind": "component",
+          "id": "ogmios",
+          "version": "IntersectMBO fork 20c383a2",
+          "outcome": "pass",
+          "note": "Chain sync from origin to the tip with every Dijkstra field (2026-11-24)."
         },
         {
           "kind": "component",
           "id": "kupo",
-          "version": "IntersectMBO fork bdb44975",
+          "version": "IntersectMBO fork ee51691d",
           "outcome": "fail",
-          "note": "Stops at block 187: sub-transactions are not indexed yet"
+          "note": "Stops at the first sub-transaction: not indexed yet"
+        },
+        {
+          "kind": "component",
+          "id": "kupo",
+          "version": "IntersectMBO fork e9ef0be3",
+          "outcome": "pass",
+          "note": "Indexes every block to the tip, sub-transaction outputs included (2026-11-24)."
         }
       ],
       "observed": [
-        "ogmios-chain-sync.log:\ntip slot 49023\nblocks per era {\"conway\":15,\"dijkstra\":2356}\nchain sync reached the tip\ntx conway-legacy-reg: not on chain",
-        "kupo-full-chain.log:\nkupo nightly+bdb449\nlast logged roll-forward slot: 3526\n{\"Kupo\":{\"tag\":\"KupoUnexpectedError\",\"exception\":\"Dijkstra transaction 4a6db05a4f7436ba27aba60f08399e06bbde7fd528e3b83c58e531f6dc06c219 carries sub-transactions, which Kupo does not index yet.\"}}",
-        "kupo-before-sub-transaction.log (chain truncated after block 186):\ndijkstra-metadata: 1 outputs indexed, slot 2302\ndijkstra-payment: 1 outputs indexed, slot 2302\ndijkstra-reg-with-deposit: 1 outputs indexed, slot 2302\ndijkstra-direct-deposit: 1 outputs indexed, slot 3710\nerrors: 0"
+        "ogmios-fork-chain-sync.log:\nblocks per era {\"conway\":15,\"dijkstra\":534}\nchain sync reached the tip\ntx dijkstra-balance-interval: dijkstra block 190; fields accountBalanceIntervals,fee,id,inputs,outputs,signatories,spends\ntx dijkstra-balance-interval-unmet: not on chain\ntx dijkstra-native-guard: dijkstra block 190; fields fee,guards,id,inputs,outputs,scripts,signatories,spends\ntx dijkstra-plutusv4-guard: dijkstra block 190; fields collaterals,fee,guards,id,inputs,outputs,redeemers,scriptIntegrityHash,scripts,signatories,spends\ntx dijkstra-sub-transaction: dijkstra block 190; fields fee,id,inputs,outputs,signatories,spends",
+        "kupo-fork-full-chain.log:\nlast logged roll-forward slot: 2374\n{\"Kupo\":{\"tag\":\"KupoUnexpectedError\",\"exception\":\"Dijkstra transaction caa270da2e964edb17b1e80598ec475f07c217582ea1fa488b1ff31239241217 carries sub-transactions, which Kupo does not index yet.\"}}",
+        "ogmios-fork-20c383a2-chain-sync.log:\nblocks per era {\"conway\":15,\"dijkstra\":2409}\nchain sync reached the tip\ntx dijkstra-sub-transaction: dijkstra block 190; fields fee,id,inputs,outputs,signatories,spends,subTransactions",
+        "kupo-fork-e9ef0be3-full-chain.log:\ndijkstra-sub-transaction: 1 outputs indexed\nsplit: 10 outputs indexed\nlast logged roll-forward slot: 47773\n# sub-transaction output (matches/*@02cfa999...)\n{\"transaction_id\":\"02cfa999c835380f0f9953ff903b39f0aff5954473432fd40b73f974e6b384d4\",\"output_index\":0,...,\"spent_at\":{\"slot_no\":11844,\"transaction_id\":\"486c36425dcd2174fff43635c6263e80980b352d369d94a1c17bd0ad00c5c688\",...}}"
       ],
       "recipe": [
         "scripts/readiness/devnet/forks.sh",
@@ -521,30 +548,40 @@
     },
     {
       "id": "fork-ogmios-api",
-      "title": "The Ogmios fork returns Dijkstra transactions as an id only and drops mempool clients",
-      "summary": "Run on 2026-11-10 with Ogmios IntersectMBO fork 2f9b5d14. Each Dijkstra transaction in chain sync carries only its id (the fork's encoder is a stub). Submitting a Dijkstra payment works and returns the right id, but a rejected submission and mempool monitoring hit another stub and drop the client's connection. The protocol-parameters query is unavailable in Dijkstra.",
+      "title": "The Ogmios fork evaluates, submits, follows the mempool and, from 20c383a2, answers Dijkstra protocol parameters",
+      "summary": "Ogmios fork 54bb8c1c evaluates a PlutusV4 guard, submits a Dijkstra payment with the right id, lists it through acquireMempool and nextTransaction, and answers a repeated submission with a ledger error instead of dropping the connection (fixed by PR #24); queryLedgerState/protocolParameters answered \"Query unavailable in the current era\". Fork 20c383a2 (PR #41, 2026-11-24, against the relayed chain) passes the same API steps and answers protocolParameters with all 54 node parameters at the node's values, including the Leios and Peras parameters, refInputsCostPerMultiAssetPolicy and the PlutusV4 cost model.",
       "results": [
         {
           "kind": "component",
           "id": "ogmios",
-          "version": "IntersectMBO fork 2f9b5d14",
+          "version": "IntersectMBO fork 54bb8c1c",
           "outcome": "fail",
-          "note": "Transaction contents, protocol parameters and mempool monitoring are not implemented for Dijkstra"
+          "note": "Dijkstra protocol parameters are not implemented."
+        },
+        {
+          "kind": "component",
+          "id": "ogmios",
+          "version": "IntersectMBO fork 20c383a2",
+          "outcome": "pass",
+          "note": "Dijkstra protocol parameters match the node's."
         }
       ],
       "observed": [
-        "ogmios-chain-sync.log:\ntx dijkstra-metadata: dijkstra block 115; fields id,spends\ntx dijkstra-payment: dijkstra block 115; fields id,spends\ntx dijkstra-reg-with-deposit: dijkstra block 115; fields id,spends\ntx dijkstra-direct-deposit: dijkstra block 185; fields id,spends\ntx dijkstra-plutusv4-reference-script: dijkstra block 187; fields id,spends\ntx dijkstra-sub-transaction: dijkstra block 187; fields id,spends\nqueryLedgerState/protocolParameters: ERROR {\"code\":2002,\"message\":\"Query unavailable in the current era.\"}",
-        "ogmios-api.log:\nevaluateTransaction: []\nsubmitTransaction: {\"transaction\":{\"id\":\"1969dbd744acc57c1c6b88d657b18940d49f2c9fa68f43a2905a802757d3988f\"}} (the id cardano-cli computed)\nclient: connection dropped, no JSON-RPC reply\n{\"WebSocket\":{\"exception\":\"TODO(dijkstra): toRawTxIdHash Dijkstra arm (GenTxIdDijkstra)\",\"tag\":\"WebSocketUnknownException\"}}\nclient: connection dropped, no JSON-RPC reply\n{\"WebSocket\":{\"exception\":\"TODO(dijkstra): toRawTxIdHash Dijkstra arm (GenTxIdDijkstra)\",\"tag\":\"WebSocketUnknownException\"}}\nMissing 'ByronGenesisFile' and/or 'ShelleyGenesisFile' from Cardano's configuration?"
+        "ogmios-fork-api.log:\npayment id (cardano-cli): f669378da02e2af2f0c9a7915da743cde65ca42f055781c62f1150c803244296\nevaluateTransaction (payment): ok []\nevaluateTransaction (PlutusV4 guard): ok [{\"validator\":{\"index\":0,\"purpose\":\"guard\"},\"budget\":{\"memory\":500,\"cpu\":64100}}]\nsubmitTransaction (payment): ok {\"transaction\":{\"id\":\"f669378da02e2af2f0c9a7915da743cde65ca42f055781c62f1150c803244296\"}}\nacquireMempool: ok {\"acquired\":\"mempool\",\"slot\":11125}\nsizeOfMempool: ok {\"maxCapacity\":{\"bytes\":25294848},\"currentSize\":{\"bytes\":239},\"transactions\":{\"count\":1}}\nnextTransaction: ok {\"transaction\":{\"id\":\"f669378da02e2af2f0c9a7915da743cde65ca42f055781c62f1150c803244296\",\"spends\":\"inputs\",\"inputs\":[{\"transaction\":{\"id\":\"7ff5b2d13eae2732c8e61185a639cc1c25636279b77d05fd4334eeb1e7f35d\nreleaseMempool: ok {\"released\":\"mempool\"}\nsubmitTransaction (same payment again): ERROR {\"code\":3173,\"message\":\"All inputs of the transaction a",
+        "ogmios-fork-chain-sync.log:\nqueryLedgerState/protocolParameters: ERROR {\"code\":2002,\"message\":\"Query unavailable in the current era.\"}",
+        "ogmios-fork-20c383a2-chain-sync.log:\nqueryLedgerState/protocolParameters: ok {\"minFeeCoefficient\":1,\"minFeeConstant\":{\"ada\":{\"lovelace\":0}},\"minFeeReferenceScripts\":{\"base\":15,\"range\":25600,\"multiplier\":1.2},...",
+        "ogmios-fork-20c383a2-api.log:\nevaluateTransaction (PlutusV4 guard): ok [{\"validator\":{\"index\":0,\"purpose\":\"guard\"},\"budget\":{\"memory\":500,\"cpu\":64100}}]\nsubmitTransaction (payment): ok {\"transaction\":{\"id\":\"fccb54462a77afbbfa2f30263ed1b1ebbad9f63a3d319c3beb7bae0c9b3cd045\"}}\nsubmitTransaction (same payment again): ERROR {\"code\":3173,\"message\":\"All inputs of the transaction are already spent. ...\"}"
       ],
       "recipe": [
         "scripts/readiness/devnet/forks.sh",
+        "scripts/readiness/devnet/ogmios-probe/api.mjs",
         "scripts/readiness/devnet/ogmios-probe/probe.mjs"
       ]
     },
     {
       "id": "blockfrost-dijkstra-data",
-      "title": "Past db-sync's PlutusV4 stop, Blockfrost v7.0.0 serves wrong UTxOs and balances for sub-transactions and direct deposits",
-      "summary": "Run on 2026-11-11 on a fresh 11.2.0 devnet built with the same recipe, plus a payment that spends the sub-transaction's output. db-sync 13.8.0.0 again exits at the first PlutusV4 script. With plutusV4 added to its scripttype enum by hand, it indexes the PlutusV4 script, the direct deposit and the transaction carrying the sub-transaction, but records nothing of the sub-transaction, and it exits with TxId not found on the payment that spends the sub-transaction's output. On that data Blockfrost RYO v7.0.0 still lists the output the sub-transaction spent as unspent and returns 404 for the sub-transaction. It reports 0 for an account the node credits with a 2 ADA direct deposit, and types the PlutusV4 script as plutusV4, which its OpenAPI enum does not allow. It serves none of the 23 new protocol parameters, and /network/eras returns HTTP 500.",
+      "title": "Past db-sync's PlutusV4 stop, Blockfrost v7.0.1 serves wrong UTxOs and balances for sub-transactions and direct deposits",
+      "summary": "With plutusV4 added to db-sync's enum by hand (this experiment's workaround), db-sync 13.8.0.0 indexes the PlutusV4 script, direct deposit, guards and balance interval but not the sub-transaction, and exits on the first spend of the sub-transaction's output. Blockfrost v7.0.1 then answers as v7.0.0 did: /txs/<sub-transaction> is 404, the output it spent is still listed and its new output is missing, the direct deposit is missing from the account, the PlutusV4 script type is outside the API schema, and none of the 23 new parameters is served. New in this run: a PlutusV4 guard's redeemer has purpose guard, outside the schema, and an empty script_hash.",
       "results": [
         {
           "kind": "component",
@@ -556,17 +593,14 @@
         {
           "kind": "component",
           "id": "blockfrost",
-          "version": "v7.0.0",
+          "version": "v7.0.1",
           "outcome": "fail",
-          "note": "Wrong UTxO set after a sub-transaction, direct deposits missing from balances, plutusV4 script type outside the API schema, no Dijkstra parameters, /network/eras HTTP 500."
+          "note": "Wrong UTxO set after a sub-transaction, direct deposits missing from balances, plutusV4 and guard outside the API schema, no Dijkstra parameters, /network/eras HTTP 500."
         }
       ],
       "observed": [
-        "service-layer.log:\ndb-sync exited; blocks indexed: 77, highest: 76, epoch_param rows: 8\ndijkstra-direct-deposit              db-sync missing; blockfrost The requested component has not been found.\ndijkstra-plutusv4-reference-script   db-sync missing; blockfrost The requested component has not been found.\ndijkstra-sub-transaction             db-sync missing; blockfrost The requested component has not been found.",
-        "db-sync-resumed.log (after ALTER TYPE scripttype ADD VALUE 'plutusV4'; the hash is 4d6d05ed…, the sub-transaction's id):\nError SNErrDefault: \"TxId not found for hash: \\\"Mm\\\\ENQ\\\\237\\\\149\\\\212\\\\194)\\\\ENQ\\\\188J…\\\"\"",
-        "blockfrost-probe.log:\ndb-sync: top-level with sub-transaction indexed, sub-transaction missing, spend of its output missing\n/txs/<top>/utxos: {\"inputs\":[\"3a7c211d#2\"],\"outputs\":[\"49700000\"]}\n/txs/<sub>: 404\nnode: split#1 unspent? false; sub#0 unspent? false\nblockfrost /addresses/<addr>/utxos: split outputs listed [1,4]; sub#0 listed false",
-        "blockfrost-probe.log:\nnode: rewardAccountBalance 2000000\nblockfrost /accounts/<stake>: {\"active\":false,\"controlled_amount\":\"0\",\"withdrawable_amount\":\"0\"}\nblockfrost /txs/<dd>: {\"fees\":\"300000\",\"deposit\":\"0\",\"withdrawal_count\":0} utxos {\"in\":[\"50000000\"],\"out\":[\"47700000\"]}",
-        "blockfrost-probe.log:\nblockfrost /scripts/<hash>: {\"type\":\"plutusV4\",\"serialised_size\":6} (OpenAPI enum: timelock, plutusV1, plutusV2, plutusV3)\nnode: {\"parameters\":54,\"costModels\":[\"PlutusV1\",\"PlutusV2\",\"PlutusV3\",\"PlutusV4\"]}\nblockfrost /epochs/latest/parameters: {\"protocol_major_ver\":12,\"fields\":56,\"cost_models_raw\":[\"PlutusV1\",\"PlutusV2\",\"PlutusV3\",\"PlutusV4\"],\"plutusV4_entries\":251}\nnode's new Dijkstra parameters: 23 […]; served by Blockfrost: []\n/network/eras: HTTP 500"
+        "blockfrost-resume.log:\ndb-sync stopped at block 187\nALTER TYPE\nnode tip: {\"block\":875}\ndb-sync exited; highest block indexed: 604",
+        "blockfrost-probe.log:\n## sub-transaction: top-level caa270da2e964edb17b1e80598ec475f07c217582ea1fa488b1ff31239241217 carries sub-transaction 02cfa999c835380f0f9953ff903b39f0aff5954473432fd40b73f974e6b384d4 (spends split#1, pays 50 ADA)\n/txs/<top>/utxos: {\"inputs\":[\"7ff5b2d1#2\"],\"outputs\":[\"49700000\"]}\n/txs/<sub>: 404\nnode: split#1 unspent? false; sub#0 unspent? false\nblockfrost /addresses/<addr>/utxos: split outputs listed [1,6]; sub#0 listed false\nnode: rewardAccountBalance 2000000\nblockfrost /accounts/<stake>: {\"active\":false,\"controlled_amount\":\"0\",\"withdrawable_amount\":\"0\"}\nblockfrost /txs/<dd>: {\"fees\":\"300000\",\"deposit\":\"0\",\"withdrawal_count\":0} utxos {\"in\":[\"50000000\"],\"out\":[\"47700000\"]}\nblockfrost /scripts/<hash>: {\"type\":\"plutusV4\",\"serialised_size\":6} (OpenAPI enum: timelock, plutusV1, plutusV2, plutusV3)\nblockfrost /scripts/<hash>/cbor: {\"cbor\":\"450101002499\"}\nnode: {\"parameters\":54,\"costModels\":[\"PlutusV1\",\"PlutusV2\",\"PlutusV3\",\"PlutusV4\"]}\nblockfrost /epochs/latest/parameters: {\"protocol_major"
       ],
       "recipe": [
         "scripts/readiness/devnet/service-layer.sh",
@@ -576,7 +610,7 @@
     {
       "id": "blockfrost-platform-submit",
       "title": "blockfrost-platform cannot submit Dijkstra transactions: 1.0.0 cannot connect, main rejects them before the node",
-      "summary": "Run on 2026-11-11. blockfrost-platform 1.0.0, its latest release, uses a Pallas that offers node-to-client V10 to V16, which node 11.2.0 refuses. Main (842cf323, unreleased) offers V23, but /tx/submit first decodes every body as a Conway transaction with Pallas 3e87e6c7. Run on the 25 encodings of the 2026-11-09 matrix, that check passes the 5 Conway four-element encodings and answers the 20 three-element ones with HTTP 400 before the node sees them. Those are every Dijkstra-built transaction and every mempool re-encoding. The 400 body has the shape of a node decode failure.",
+      "summary": "blockfrost-platform 1.0.0's version set (V10-V16) is refused by node 11.2.1. Main (d5a48256, the same Pallas pin as 842cf323) connects with V23, and its /tx/submit pre-check accepts the 5 Conway four-element encodings and rejects all 27 three-element ones with HTTP 400.",
       "results": [
         {
           "kind": "component",
@@ -588,14 +622,14 @@
         {
           "kind": "component",
           "id": "blockfrost",
-          "version": "blockfrost-platform main 842cf323",
+          "version": "blockfrost-platform main d5a48256",
           "outcome": "fail",
           "note": "Rejects every three-element transaction at /tx/submit; Conway four-element transactions pass."
         }
       ],
       "observed": [
-        "platform-handshake.log:\n# blockfrost-platform 1.0.0 (Pallas ed422bc0): VersionTable::v10_and_above offers V10..V16\noffered V10..V16: refused, reason VersionMismatch ['V23']\n# blockfrost-platform main 842cf323 (Pallas 3e87e6c7): v10_and_above offers V10..V23\noffered V10..V23: accepted V23 [42, False]",
-        "platform-submit.log (25 lines: 5 accepted, 20 rejected; three shown):\nconway-payment                           accepted: forwarded to the node\ndijkstra-payment                         rejected, HTTP 400: {\"tag\":\"TxSubmitFail\",\"contents\":{\"tag\":\"TxCmdTxReadError\",\"contents\":[\"DecoderErrorDeser…\nmempool-conway-payment                   rejected, HTTP 400: …"
+        "platform-handshake.log:\n## blockfrost-platform 1.0.0 version set (V10-V16)\noffered V10..V16: refused, reason VersionMismatch ['V23']\n\n## blockfrost-platform main version set (V10-V23)\noffered V10..V23: accepted V23 [42, False]",
+        "platform-submit.log:\nconway-payment                           accepted: forwarded to the node\ndijkstra-payment                         rejected, HTTP 400: {\"tag\":\"TxSubmitFail\",\"contents\":{\"tag\":\"TxCmdTxReadError\",\"contents\":[\"DecoderErrorDeserialiseFailure \\\"Shelley Tx\\\" (DeserialiseFailure 195 (\\\"unexpected typ"
       ],
       "recipe": [
         "scripts/readiness/devnet/platform-probe/src/main.rs",
@@ -605,12 +639,12 @@
     {
       "id": "ccl-quicktx",
       "title": "cardano-client-lib releases build Dijkstra payments, but QuickTx stake registration is rejected",
-      "summary": "Run on 2026-11-11 on a fresh devnet from the same 11.2.0 release, raised to protocol version 12. Transactions were built, signed and submitted by cardano-client-lib through cardano-submit-api. In 0.7.3 and 0.8.0-pre7, payments, metadata and a PlutusV3 lock and spend are accepted. QuickTx registerStakeAddress and deregisterStakeAddress write the deposit-less certificates (types 0 and 1), which the node rejects with an era mismatch. The Conway RegCert and UnregCert certificates are accepted from both releases. 0.7.3 writes a duplicate vkey witness when one key signs twice, which the node also rejects; 0.8.0-pre7 removes the duplicate.",
+      "summary": "Transactions built, signed and submitted by cardano-client-lib through cardano-submit-api 11.2.1. In 0.8.0-pre8 and 0.7.3, payments, metadata and a PlutusV3 lock and spend are accepted; QuickTx registerStakeAddress and deregisterStakeAddress still write the deposit-less certificates, which the node rejects with an era mismatch, while the RegCert and UnregCert models are accepted. 0.7.3 also writes a duplicate vkey witness when one key signs twice and a wrong script integrity hash when two spent outputs share a datum hash; both are rejected, and 0.8.0-pre8 has neither problem.",
       "results": [
         {
           "kind": "component",
           "id": "bloxbean-cardano-client-library",
-          "version": "0.8.0-pre7",
+          "version": "0.8.0-pre8",
           "outcome": "fail",
           "note": "QuickTx stake registration and deregistration are rejected"
         },
@@ -619,7 +653,7 @@
           "id": "bloxbean-cardano-client-library",
           "version": "0.7.3",
           "outcome": "fail",
-          "note": "QuickTx stake registration and deregistration, and duplicate vkey witnesses, are rejected"
+          "note": "QuickTx stake registration and deregistration, duplicate vkey witnesses and shared datum hashes are rejected"
         },
         {
           "kind": "change",
@@ -629,9 +663,8 @@
         }
       ],
       "observed": [
-        "e2e-0.8.0-pre7.log (second block, after harness fixes):\npay            head 84a3 certs -                      OK\nmeta           head 84a4 certs -                      OK\nreg-legacy     head 84a4 certs StakeRegistration      REJECTED(400) EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}\nreg-new        head 84a4 certs RegCert                OK\nlock-v3        head 84a3 certs -                      OK\nspend-v3       head 84a7 certs -                      OK\ndereg-legacy   head 84a4 certs StakeDeregistration    REJECTED(400) EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}\ndereg-new      head 84a4 certs UnregCert              OK",
-        "e2e-0.7.3.log:\npay            OK\nmeta           OK\nreg-legacy     certs StakeRegistration      REJECTED(400) EraMismatch\nreg-new        certs RegCert                OK\nlock-v3        OK\nspend-v3       OK\ndereg-legacy   certs StakeDeregistration    REJECTED(400) EraMismatch\ndereg-new      certs UnregCert              OK",
-        "e2e-dups.log:\n# 0.8.0-pre7\ndup-signer     head 84a3 certs - vkeys 1              OK\n# 0.7.3\ndup-signer     head 84a3 certs - vkeys 2              REJECTED(400) EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}"
+        "ccl-e2e-0.8.0-pre8.log:\nreg-legacy     head 84a4 certs StakeRegistration vkeys 1 REJECTED(400) {\"contents\":{\"contents\":{\"contents\":\"EraMismatch {ledgerEraName = \\\"Dijkstra\\\", otherEraName = \\\"Conway\\\"}\",\"tag\":\"TxValidationEraMismatch\"},\"tag\":\"T\nreg-new        head 84a4 certs RegCert vkeys 2        OK \"4aa8675f214d04a579db3d9ed0ad4707a755a210c3a91a8eee7a0328245fb732\"\ndereg-legacy   head 84a4 certs StakeDeregistration vkeys 2 REJECTED(400) {\"contents\":{\"contents\":{\"contents\":\"EraMismatch {ledgerEraName = \\\"Dijkstra\\\", otherEraName = \\\"Conway\\\"}\",\"tag\":\"TxValidationEraMismatch\"},\"tag\":\ndereg-new      head 84a4 certs UnregCert vkeys 2      OK \"1e1cf1b309eb1bb33fa6498e33270bca779d3216d6c0b19ab2d7662ce8f6ab8b\"",
+        "ccl-e2e-dups.log:\ndup-signer     head 84a3 certs - vkeys 1              OK \"c911a0f0b593685a0600babc9719a22eebc614ea93f134c8bd00dbee8ca6ddce\"\nspend-hash2    head 84a7 certs - vkeys 1              OK \"83ef55522888392711c6d1860c7c428d9becbcaf8c630b2060bc76c406bd3b3a\"\ndup-signer     head 84a3 certs - vkeys 2              REJECTED(400) {\"contents\":{\"contents\":{\"contents\":\"EraMismatch {ledgerEraName = \\\"Dijkstra\\\", otherEraName = \\\"Conway\\\"}\",\"tag\":\"TxValidationEraMismatch\"},\"tag\":\"TxCm\nspend-hash2    BUILD-ERROR IllegalStateException: need two outputs with datum hash, have 1\n## 0.7.3 (spend-hash2 rerun once the two locked outputs are in a block)\nspend-hash2    BUILD-ERROR IllegalStateException: need two outputs w"
       ],
       "recipe": [
         "scripts/readiness/devnet/jvm-probe/ccl-e2e/E2E.java",
@@ -639,49 +672,47 @@
       ]
     },
     {
-      "id": "ccl-branch-transactions",
-      "title": "The cardano-client-lib Dijkstra branch builds every new transaction feature; signing a Transaction object drops them",
-      "summary": "Run on 2026-11-11 on the same devnet as ccl-quicktx, with draft PR #748 (feat/ledger-cbor d3324ec3, unmerged and unreleased) built locally. Transactions built with the branch's Dijkstra models and written with serialize(Era.Dijkstra) are accepted: a three-element payment, a direct deposit, a key-hash guard, an account balance interval, a PlutusV4 reference script, a PlutusV4 lock and spend, and a top-level transaction with one sub-transaction. A missing guard witness and a balance outside the interval are rejected. TransactionSigner.sign(Transaction, key) re-reads the signed bytes without an era and drops the Dijkstra fields, so a direct deposit signed that way is rejected. Read with Era.Dijkstra, all 25 encodings of the 2026-11-09 corpus give the on-chain id; read without an era, the direct deposit and the sub-transaction still give a wrong id.",
+      "id": "ccl-dijkstra-transactions",
+      "title": "cardano-client-lib 0.8.0-pre8 builds every Dijkstra transaction feature it models",
+      "summary": "Built with the Dijkstra models released in 0.8.0-pre8 and written with serialize(Era.Dijkstra), these were accepted: a three-element payment, a direct deposit, a key-hash guard, an account balance interval, a PlutusV4 reference script, a PlutusV4 lock and spend, and a top-level transaction with one sub-transaction. Signing through the Transaction object now keeps the Dijkstra fields (the 2026-11-11 branch build dropped them). A missing guard witness and a balance outside the interval are rejected.",
       "results": [
         {
           "kind": "component",
           "id": "bloxbean-cardano-client-library",
-          "version": "feat/ledger-cbor d3324ec3",
-          "outcome": "fail",
-          "note": "Every Dijkstra feature built with the models is accepted; signing a Transaction object drops them"
+          "version": "0.8.0-pre8",
+          "outcome": "pass"
         },
         {
           "kind": "change",
           "id": "guards",
           "outcome": "pass",
-          "note": "A key-hash guard on body key 14; a guard without its witness is rejected. Required top-level guards and script guards were not exercised."
+          "note": "A key-hash guard on body key 14; a guard without its witness is rejected."
         },
         {
           "kind": "change",
           "id": "account-enhancements",
           "outcome": "pass",
-          "note": "A direct deposit (the account balance rose by 5 ADA) and an account balance interval; a balance outside the interval is rejected."
+          "note": "A direct deposit and an account balance interval; a balance outside the interval is rejected."
         },
         {
           "kind": "change",
           "id": "plutus-v4",
           "outcome": "pass",
-          "note": "A PlutusV4 script was executed: an always-succeeding V4 script locked and spent with a V4 cost model in the script data hash."
+          "note": "An always-succeeding V4 script locked and spent with a V4 cost model in the script data hash."
         },
         {
           "kind": "change",
           "id": "nested-transactions",
           "outcome": "pass",
-          "note": "One sub-transaction without scripts, built with the branch's models."
+          "note": "One sub-transaction without scripts."
         }
       ],
       "observed": [
-        "branch-build.log:\npay            head 83a3, body kept, OK\ndd             head 83a4, body kept, OK\ndd-modelsign   head 83a3, BODY CHANGED BY SIGNING, REJECTED(400) ValueNotConservedUTxO\nguard          head 83a4, body kept, OK\nguard-fail     head 83a4, body kept, REJECTED(400) MissingVKeyWitnessesUTXOW\nabi-ok         head 83a4, body kept, OK\nabi-fail       head 83a4, body kept, REJECTED(400) BalancesOutsideAccountBalanceIntervals\nv4ref          head 83a3, body kept, OK\nlock-v4        head 83a3, body kept, OK\nspend-v4       head 83a5, body kept, OK\nsub            head 83a4, body kept, OK",
-        "branch-decode.log:\nmempool-dijkstra-direct-deposit              raw id = chain | era-less: model id ≠ chain (94d0f0a8e197…), re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact, directDeposits=1\nmempool-dijkstra-sub-transaction             raw id = chain | era-less: model id ≠ chain (cafafa4b0635…), re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact, subTxs=1"
+        "ccl-0.8.0-pre8-dijkstra-build.log:\npay            head 83a3, body kept, OK \"96d7f5fc0217b2176e9ada83158e802b99485975d870f4fa9ce62dd64306872b\"\ndd             head 83a4, body kept, REJECTED(400) {\"contents\":{\"contents\":{\"contents\":{\"era\":\"ShelleyBasedEraDijkstra\",\"error\":[\"LedgerFailure (DijkstraEntitiesFailure (DirectDepositAccountsMissing (DirectDeposits {unDi\nguard          head 83a4, body kept, OK \"795b28de9e9d5b258468c612a2209233d764ecd97808486786882ec35f910307\"\nv4ref          head 83a3, body kept, OK \"3f8b02c676734d7d9d988eddaa90a727462e5db5031c8db8c29b1b753c748a67\"\nsub            head 83a4, body kept, OK \"41f00929b01d6ba528d06a7342d5ffddc0bad856e7a0ff62bbeb0e7a56a1e565\"\ndd             head 83a4, body kept, OK \"f5bb2972ea26830a78b7e9cfa4107f3b3bd5a87104f7970fc1677a92817774a2\""
       ],
       "recipe": [
         "scripts/readiness/devnet/jvm-probe/ccl-e2e/BranchProbe.java",
-        "scripts/readiness/devnet/jvm-probe/ccl-e2e/cp.sh"
+        "scripts/readiness/devnet/jvm-probe/ccl-e2e/E2E.java"
       ]
     }
   ]

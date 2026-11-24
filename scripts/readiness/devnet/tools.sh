@@ -28,7 +28,7 @@ txtop-release)
   checkout txtop blinklabs-io/txtop cc1ebf8210647952e3f0b90301e49c199c273675 # v0.17.0
   (cd "$S/txtop" && go build -o "$DEVNET_DIR/txtop-release" .)
   rm -rf "$S/txtop-raised" && cp -r "$S/txtop" "$S/txtop-raised"
-  (cd "$S/txtop-raised" && go get "github.com/blinklabs-io/gouroboros@${2:-v0.218.2}" && go build -o "$DEVNET_DIR/txtop-raised" .)
+  (cd "$S/txtop-raised" && go get "github.com/blinklabs-io/gouroboros@${2:-v0.221.0}" && go build -o "$DEVNET_DIR/txtop-raised" .)
   # Put a Dijkstra payment in the mempool so the transaction list has something to decode.
   W=$DEVNET_DIR/work/txtop; rm -rf "$W"; mkdir -p "$W"
   IN=$(cli query utxo --address "$ADDR" "${M[@]}" --output-json | jq -r 'to_entries | max_by(.value.value.lovelace) | .key')

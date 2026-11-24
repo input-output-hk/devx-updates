@@ -1,0 +1,27 @@
+# 2026-11-24: IntersectMBO/ogmios master 20c383a280ba7265a471ad6a7127aa63b3be00d8 (PR #41), forks.sh relay on the 2026-11-23 chain
+# build: nix build of #ogmios from cache.iog.io, ogmios --version "nightly (20c383a2)", bin/ogmios sha256 f30363c6fbe60b463b430ed3797308f52ba2cfe7268ed3124b08a0c9437d400a
+tip slot 47773
+blocks per era {"conway":15,"dijkstra":2409}
+chain sync reached the tip
+tx adv-split: dijkstra block 187; fields fee,id,inputs,outputs,signatories,spends
+tx conway-legacy-reg: not on chain
+tx conway-metadata: dijkstra block 125; fields fee,id,inputs,metadata,outputs,signatories,spends
+tx conway-payment: dijkstra block 125; fields fee,id,inputs,outputs,signatories,spends
+tx conway-reg-with-deposit: dijkstra block 125; fields certificates,fee,id,inputs,outputs,signatories,spends
+tx conway-required-signer: dijkstra block 125; fields fee,guards,id,inputs,outputs,requiredExtraSignatories,signatories,spends
+tx dijkstra-balance-interval: dijkstra block 190; fields accountBalanceIntervals,fee,id,inputs,outputs,signatories,spends
+tx dijkstra-balance-interval-unmet: not on chain
+tx dijkstra-direct-deposit: dijkstra block 189; fields credits,fee,id,inputs,outputs,signatories,spends
+tx dijkstra-metadata: dijkstra block 125; fields fee,id,inputs,metadata,outputs,signatories,spends
+tx dijkstra-native-guard: dijkstra block 190; fields fee,guards,id,inputs,outputs,scripts,signatories,spends
+tx dijkstra-payment: dijkstra block 125; fields fee,id,inputs,outputs,signatories,spends
+tx dijkstra-plutusv4-guard: dijkstra block 190; fields collaterals,fee,guards,id,inputs,outputs,redeemers,scriptIntegrityHash,scripts,signatories,spends
+tx dijkstra-plutusv4-reference-script: dijkstra block 190; fields fee,id,inputs,outputs,signatories,spends
+tx dijkstra-reg-with-deposit: dijkstra block 125; fields certificates,fee,id,inputs,outputs,signatories,spends
+tx dijkstra-sub-transaction: dijkstra block 190; fields fee,id,inputs,outputs,signatories,spends,subTransactions
+tx split: dijkstra block 124; fields fee,id,inputs,outputs,signatories,spends
+queryLedgerState/eraSummaries: ok [{"start":{"time":{"seconds":0},"slot":0,"epoch":0},"end":{"time":{"seconds":0},"slot":0,"epoch":0},"parameters":{"epochLength":50,"slotLength":{"milliseconds":
+queryLedgerState/protocolParameters: ok {"minFeeCoefficient":1,"minFeeConstant":{"ada":{"lovelace":0}},"minFeeReferenceScripts":{"base":15,"range":25600,"multiplier":1.2},"maxBlockBodySize":{"bytes":6
+queryLedgerState/epoch: ok 238
+queryLedgerState/tip: ok {"slot":47773,"id":"eef257f9b3b3906b6863e834de95b8b13f171fabd4e4350a3d775f0616d54b0d"}
+queryNetwork/genesisConfiguration: ok {"era":"shelley","startTime":"2026-11-23T16:31:04.580995395Z","networkMagic":42,"network":"testnet","activeSlotsCoefficient":"1/20","securityParameter":5,"epoch

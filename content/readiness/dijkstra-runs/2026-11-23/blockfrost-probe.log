@@ -1,0 +1,25 @@
+db-sync: top-level with sub-transaction indexed, sub-transaction missing, spend of its output missing
+## sub-transaction: top-level caa270da2e964edb17b1e80598ec475f07c217582ea1fa488b1ff31239241217 carries sub-transaction 02cfa999c835380f0f9953ff903b39f0aff5954473432fd40b73f974e6b384d4 (spends split#1, pays 50 ADA)
+/txs/<top>/utxos: {"inputs":["7ff5b2d1#2"],"outputs":["49700000"]}
+/txs/<sub>: 404
+node: split#1 unspent? false; sub#0 unspent? false
+blockfrost /addresses/<addr>/utxos: split outputs listed [1,6]; sub#0 listed false
+## direct deposit 9fe8ac1c3cf38790f48a134048db0d59ae31c89c35661f8498e739437190741a into stake_test1uperz4a39776mz9xdumlyq64cj8jm30rj55szpz6wpqqg6sn5hpkx
+node: rewardAccountBalance 2000000
+blockfrost /accounts/<stake>: {"active":false,"controlled_amount":"0","withdrawable_amount":"0"}
+blockfrost /txs/<dd>: {"fees":"300000","deposit":"0","withdrawal_count":0} utxos {"in":["50000000"],"out":["47700000"]}
+## PlutusV4 reference script in 27266d0a03105a5392104b5c25e6ee371df519fca2449a7df1089157f46d47e3
+blockfrost /scripts/<hash>: {"type":"plutusV4","serialised_size":6} (OpenAPI enum: timelock, plutusV1, plutusV2, plutusV3)
+blockfrost /scripts/<hash>/cbor: {"cbor":"450101002499"}
+## protocol parameters
+node: {"parameters":54,"costModels":["PlutusV1","PlutusV2","PlutusV3","PlutusV4"]}
+blockfrost /epochs/latest/parameters: {"protocol_major_ver":12,"fields":56,"cost_models_raw":["PlutusV1","PlutusV2","PlutusV3","PlutusV4"],"plutusV4_entries":251}
+node's new Dijkstra parameters: 23 ["leiosAnnouncementPeriodLength","leiosCommitteeSize","leiosDiffusionPeriodLength","leiosQuorumStakeThreshold","leiosVotePeriodLength","maxEndorserBlockExecutionUnits","maxEndorserBlockReferencesSize","maxEndorserBlockTxsSize","maxPledgeLeverage","maxRefScriptSizePerBlock","maxRefScriptSizePerEndorserBlock","maxRefScriptSizePerTx","minPoolMargin","perasBootstrapRound","perasCertBoost","perasHealingFactor","perasMinCandidateBlockAge","perasQuorumThresholdSafetyMargin","perasTargetCommitteeSize","refInputsCostPerDatumByte","refInputsCostPerMultiAssetPolicy","refScriptCostMultiplier","refScriptCostStride"]; served by Blockfrost: []
+## dijkstra-native-guard 03666e3029c32718a955ea34137227ee76c83ee8baf061b503231781a14ad6d4: db-sync indexed; blockfrost /txs: HTTP 200
+## dijkstra-plutusv4-guard 876e9a66743a5879d8a9b84a7c2ff595b8679c0e39fa0bc7b377bf46841ec742: db-sync indexed; blockfrost /txs: HTTP 200
+## dijkstra-balance-interval bfdd55b6742ca984aeb904d3c1618b6aea2b3170bd73930fff0fd8b96958b306: db-sync indexed; blockfrost /txs: HTTP 200
+blockfrost /txs/<plutusv4-guard>/redeemers: [{"purpose":"guard","script_hash":"","unit_mem":"20000","unit_steps":"2000000"}] (OpenAPI purpose enum: spend, mint, cert, reward, vote, propose)
+blockfrost /txs/<plutusv4-guard>: {"valid_contract":true,"redeemer_count":1}
+## era summary
+/network/eras: HTTP 500
+16:54:27 1|server  | 2026-11-23T16:54:27: Error in /network/eras. TypeError: Cannot read properties of undefined (reading 'is_era_hardfork')

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { citationUrl, dependencyTarget, devnetResults, dijkstraSite, toolLeads, toolState, toolStates } from "./dijkstra-site";
+import { citationUrl, dependencyTarget, devnetResults, dijkstraSite, toolLeads, toolState, toolStates, waitingLinks } from "./dijkstra-site";
 import { hardforkStateLabel } from "./hardfork-states";
 
 test("a channel's via names the catalog tool it reaches", () => {
@@ -37,7 +37,7 @@ test("each tool touching a changed surface gets one hardfork state, most reached
   }
   const node = by.get("cardano-node")!;
   assert.ok(node.reachedBy.includes("meshjs-mesh-sdk") && !node.dependents.includes("meshjs-mesh-sdk"), "reached through the tools it uses");
-  assert.equal(by.get("ogmios")?.state, "breaks", "a confirmed own gap breaks");
+  assert.equal(by.get("cardano-db-sync")?.state, "breaks", "a confirmed own gap breaks");
   assert.deepEqual(states.filter((s) => s.state === "target-component").map((s) => s.tool).sort(),
     ["cardano-cli", "cardano-node", "cardano-submit-api", "cardano-testnet"], "only the four reference components receive the target label");
   assert.equal(by.get("plutus-plutus-core")?.state, "ready", "released support with nothing open is ready");
@@ -52,6 +52,20 @@ test("each tool touching a changed surface gets one hardfork state, most reached
   assert.deepEqual(pick(states, ["amaru", "mithril", "pallas"]), ["pallas", "mithril", "amaru"], "equal reach falls back to direct dependents");
   assert.deepEqual(pick(states, ["blaze", "plutarch"]), ["blaze", "plutarch"], "equal counts fall back to the id");
   assert.deepEqual(pick(toolStates(site, (id) => (id === "plutarch" ? 1 : 0)), ["blaze", "plutarch"]), ["plutarch", "blaze"], "the weight breaks ties");
+});
+
+test("a confirmed reach into a component without a verdict waits on it; only not-reached clears the wait", () => {
+  const site = dijkstraSite();
+  // iris reads Ogmios chain sync (confirmed); Ogmios's transaction encoding is in progress in the IntersectMBO fork.
+  const iris = toolState(site, site.classification.tools.get("iris")!);
+  assert.equal(iris.state, "unverified");
+  assert.match(iris.reason, /Waits on a verdict for ogmios/, "confirmed but not yet a gap: waiting, not cleared");
+  const ogmios = waitingLinks(site).find((w) => w.via === "ogmios" && !w.unread)!;
+  assert.ok(ogmios.tools.some((t) => t.tool === "iris" && t.surfaces.includes("transaction-encoding")));
+  // A not-reached decision on the same kind of channel clears it.
+  const cleared = structuredClone(site);
+  for (const l of cleared.leads.leads) if (l.tool === "iris" && l.via === "ogmios") l.decision = "not-reached";
+  assert.ok(!waitingLinks(cleared, "iris").some((w) => w.via === "ogmios"));
 });
 
 test("target membership does not assert a capability pass or hide a failure", () => {

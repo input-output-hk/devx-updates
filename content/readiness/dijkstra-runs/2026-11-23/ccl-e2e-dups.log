@@ -1,0 +1,19 @@
+## 0.8.0-pre8
+# cardano-client-lib 0.8.0-pre8  account addr_test1qze668p3wrfew6dgpf2r3v4uykhay9trufpcjh9fyl47fdf2j9tap9rrmpk3952z8cv03gamj328f9dvhc0t8qkdjnrqzlrxwv  stake stake_test1uq4fz47sj33asmgj69prux8c5waeg4r5jkktu84nstxef3sw3hea9
+dup-signer     head 84a3 certs - vkeys 1              OK "c911a0f0b593685a0600babc9719a22eebc614ea93f134c8bd00dbee8ca6ddce"
+lock-hash2     head 84a3 certs - vkeys 1              OK "5b007d27daa910d0e1ed7701d7b10eb01cc438a47da5887b3d073876ad5f0031"
+  datums in witness set: 1
+spend-hash2    head 84a7 certs - vkeys 1              OK "83ef55522888392711c6d1860c7c428d9becbcaf8c630b2060bc76c406bd3b3a"
+## 0.7.3
+# cardano-client-lib 0.7.3  account addr_test1qze668p3wrfew6dgpf2r3v4uykhay9trufpcjh9fyl47fdf2j9tap9rrmpk3952z8cv03gamj328f9dvhc0t8qkdjnrqzlrxwv  stake stake_test1uq4fz47sj33asmgj69prux8c5waeg4r5jkktu84nstxef3sw3hea9
+dup-signer     head 84a3 certs - vkeys 2              REJECTED(400) {"contents":{"contents":{"contents":"EraMismatch {ledgerEraName = \"Dijkstra\", otherEraName = \"Conway\"}","tag":"TxValidationEraMismatch"},"tag":"TxCmdTxSubmitValidationError"},"tag":"TxSubmitFail"}
+lock-hash2     head 84a3 certs - vkeys 1              OK "7b11a73e7be4619035ff6436e970237733af0a75b2c37ab574bff8f7fe55dba4"
+spend-hash2    BUILD-ERROR IllegalStateException: need two outputs with datum hash, have 1
+## 0.7.3 (spend-hash2 rerun once the two locked outputs are in a block)
+# cardano-client-lib 0.7.3  account addr_test1qze668p3wrfew6dgpf2r3v4uykhay9trufpcjh9fyl47fdf2j9tap9rrmpk3952z8cv03gamj328f9dvhc0t8qkdjnrqzlrxwv  stake stake_test1uq4fz47sj33asmgj69prux8c5waeg4r5jkktu84nstxef3sw3hea9
+spend-hash2    BUILD-ERROR IllegalStateException: need two outputs with datum hash, have 1
+## 0.7.3 second lock (its QuickTx merged the two 10 and 11 ADA outputs of the first lock into one 21 ADA output), then spend-hash2
+# cardano-client-lib 0.7.3  account addr_test1qze668p3wrfew6dgpf2r3v4uykhay9trufpcjh9fyl47fdf2j9tap9rrmpk3952z8cv03gamj328f9dvhc0t8qkdjnrqzlrxwv  stake stake_test1uq4fz47sj33asmgj69prux8c5waeg4r5jkktu84nstxef3sw3hea9
+lock-hash2     head 84a3 certs - vkeys 1              OK "210c27a1145ecf05b5e2e31cc669fa9bf463e98c64379d38e75fc39352ab73ad"
+  datums in witness set: 1
+spend-hash2    head 84a7 certs - vkeys 1              REJECTED(400) {"contents":{"contents":{"contents":{"era":"ShelleyBasedEraDijkstra","error":["LedgerFailure (DijkstraUtxowFailure (ScriptIntegrityHashMismatch Mismatch (RelEQ) {supplied: SJust (SafeHash \"810d77b8f9a03221cb88454819dc99ecc2043160b3739c4f0466e45d6085c04e\"), expected: SJust (SafeHash \"2a9d4631a0c54a95c6632c314a7ddea413e7b87a2c34518124eb339f4f84bf16\")} (SJust \"\\162\\130\\NUL\\NUL\\130\\SOH\\130\\SUB\\NUL\\RS\\132\\128\\SUB/\\175\\b\\NUL\\130\\NUL\\SOH\\130\\SOH\\130\\SUB\\NUL\\RS\\132\\128\\SUB/\\175\\b\\NUL\\217\\SOH\\STX\\129\\a\\161\\STX\\152\\251\\SUB\\NUL\\SOH\\137\\180\\EM\\SOH\\164\\SOH\\SOH\\EM\\ETX\\232\\CAN\\173\\NUL\\SOH\\EM\\ETX\\232\\EM\\234\\&5\\EOT\\SOH\\EM+\\175\\CAN \\SUB…

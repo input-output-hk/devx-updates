@@ -1,0 +1,3 @@
+offered V16..V22: refused, reason VersionMismatch ['V23']
+
+offered V23..V23: accepted V23 [42, False]

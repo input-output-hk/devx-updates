@@ -3,6 +3,7 @@ import Link from "next/link";
 import { DIJKSTRA, DijkstraFrame } from "@/components/readiness/DijkstraParts";
 import { dijkstraSite, toolLinks, toolStates, toolUpgrade, waitingLinks, type HardforkState, type Waiting } from "@/lib/readiness/dijkstra-site";
 import HardforkToolList, { type HardforkRow } from "@/components/readiness/HardforkToolList";
+import UnreleasedDot, { UNRELEASED_LABEL, UNRELEASED_MEANING } from "@/components/readiness/UnreleasedDot";
 import FixPathGraph, { UnlockCurve, type FixInfo, type FixWork } from "@/components/readiness/FixPathGraph";
 import { fixGraph } from "@/lib/readiness/fix-graph";
 import { HARDFORK_STATES } from "@/lib/readiness/hardfork-states";
@@ -57,7 +58,7 @@ export default function DijkstraPage() {
   const confirmedChanges = changeOutcomes.filter((o) => o.length && !o.includes("fail")).length;
   const rows: HardforkRow[] = toolStates(site, (id) => NODES.get(id)?.starsNum ?? 0).map((t) => ({
     tool: t.tool, name: NODES.get(t.tool)?.name ?? t.tool, category: NODES.get(t.tool)?.categoryLabel ?? "", state: t.state, reason: t.reason, blockedBy: t.blockedBy, tags: t.tags, dependents: t.dependents.length, reachedBy: t.reachedBy.length,
-    links: t.links, ...(t.computed && { computed: t.computed }),
+    links: t.links, ...(t.computed && { computed: t.computed }), ...(t.unreleased && { unreleased: t.unreleased.note }),
   }));
   const states = (Object.keys(HARDFORK_STATES) as HardforkState[]).map((s) => [s, rows.filter((r) => r.state === s).length] as const);
   // A confirmed gap is a lead decision or, for a boundary component, a cited gap in its own code: both become blockers.
@@ -85,8 +86,10 @@ export default function DijkstraPage() {
   const ownCode = unfreed.filter((b) => !fixSet.has(b.tool) && b.blockers.some((x) => x.kind === "own-gap")).length;
   const rest = { fixes: unfreed.filter((b) => fixSet.has(b.tool)).length, own: ownCode, upgrade: unfreed.filter((b) => !fixSet.has(b.tool)).length - ownCode };
   const fixWork = Object.fromEntries(fixIds.map((id): [string, FixWork] => [id, id.startsWith(RETIRED) ? "retired" : toolLinks(site, id).length ? "tracked" : "none"]));
+  const unreleasedOf = new Map(rows.flatMap((r) => (r.unreleased ? [[r.tool, r.unreleased] as const] : [])));
   const fixes: Record<string, FixInfo> = Object.fromEntries(unlocks.fixOrder.map((f) => [f.component, {
     name: fixNames[f.component], href: fixHref[f.component], work: fixWork[f.component],
+    ...(unreleasedOf.has(f.component) && { unreleased: unreleasedOf.get(f.component) }),
     added: f.added.map((t) => ({ id: t, name: NODES.get(t)?.name ?? t })),
     ...(usage(f.component) !== undefined && { usage: usage(f.component) }),
   }]));
@@ -95,6 +98,7 @@ export default function DijkstraPage() {
     const state = stateOf.get(id)!;
     fixes[id] = {
       name: NODES.get(id)?.name ?? id, href: `/map/readiness/${id}`, work: "none", added: [], usage: usage(id),
+      ...(unreleasedOf.has(id) && { unreleased: unreleasedOf.get(id) }),
       target: { state: SHORT_STATE[state], own: ownGap(id), color: STATE_COLOR[state] },
     };
   }
@@ -104,7 +108,7 @@ export default function DijkstraPage() {
   return <DijkstraFrame title="Dijkstra hardfork readiness" current={DIJKSTRA}>
       <p className="text-muted">
         Which tools the Dijkstra hardfork breaks, through which dependency, and what each upstream fix unlocks. Every
-        decision quotes the shipped code it rests on, read at a pinned revision. A devnet run of tagged node 11.2.0
+        decision quotes the shipped code it rests on, read at a pinned revision. A devnet run of tagged node {String(changes.target.nodeRelease)}{" "}
         checks the changes and a first set of components against a real chain; a tool without a confirmed gap is
         still not a pass unless it passed there.
       </p>
@@ -192,6 +196,8 @@ export default function DijkstraPage() {
             </dt>
             <dd className="mb-1.5 text-muted sm:mb-0">{STATE_MEANING[s]}</dd>
           </div>)}
+          <dt className="inline-flex items-center gap-1.5 self-start font-medium text-status-done"><UnreleasedDot />{UNRELEASED_LABEL}</dt>
+          <dd className="mb-1.5 text-muted sm:mb-0">Next to a tool&apos;s name, whatever its state. {UNRELEASED_MEANING}</dd>
         </dl>
         <HardforkToolList rows={rows} nodeRelease={String(changes.target.nodeRelease)} />
       </section>
@@ -199,7 +205,7 @@ export default function DijkstraPage() {
       <section aria-labelledby="deeper" className="scroll-mt-24">
         <h2 id="deeper" className="font-display text-2xl font-semibold">Go deeper</h2>
         <div className="mt-4 grid gap-3 md:grid-cols-3">{([
-          ["devnet", "Devnet run", `${devnet.checks.length} checks on the tagged node 11.2.0; ${results.filter((r) => r.outcome === "fail").length} of ${results.length} results failed, ${confirmedChanges} changes confirmed, ${contradicted} contradicted.`],
+          ["devnet", "Devnet run", `${devnet.checks.length} checks on the tagged node ${String(changes.target.nodeRelease)}; ${results.filter((r) => r.outcome === "fail").length} of ${results.length} results failed, ${confirmedChanges} changes confirmed, ${contradicted} contradicted.`],
           ["changes", "What Dijkstra changes", `${changes.changes.length} cited changes on ${changes.surfaces.length} surfaces, and ${changes.unchanged.length} areas checked and unchanged.`],
           ["evidence", "Evidence", `${decisions(confirmed)} confirmed decisions on ${confirmedTools.length} tools with their quotes, ${decisions(others)} not reached or undetermined, ${unlocks.bumpReady.length} upgrades ready, and ${count(unread) + count(open)} tools with a link still waiting on a component verdict.`],
         ] as const).map(([path, title, text]) => (

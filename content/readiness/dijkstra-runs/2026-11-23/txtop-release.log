@@ -1,0 +1,20 @@
+go: github.com/blinklabs-io/gouroboros@v0.221.0 requires go >= 1.26.11; switching to go1.26.11
+go: downloading golang.org/x/term v0.48.0
+go: downloading golang.org/x/text v0.44.0
+go: upgraded go 1.26.10 => 1.26.11
+go: upgraded github.com/blinklabs-io/gouroboros v0.215.0 => v0.221.0
+go: upgraded github.com/blinklabs-io/plutigo v0.9.7 => v0.13.0
+go: upgraded github.com/btcsuite/btcd/btcec/v2 v2.5.0 => v2.5.1
+go: upgraded github.com/decred/dcrd/dcrec/secp256k1/v4 v4.4.0 => v4.4.1
+go: upgraded github.com/fxamacker/cbor/v2 v2.9.6 => v2.10.0
+go: added github.com/klauspost/compress v1.20.4
+go: upgraded golang.org/x/crypto v0.58.0 => v0.59.0
+go: upgraded golang.org/x/sys v0.49.0 => v0.50.0
+go: upgraded golang.org/x/term v0.47.0 => v0.48.0
+go: upgraded golang.org/x/text v0.43.0 => v0.44.0
+Transaction successfully submitted. Transaction hash is:
+txtop-release: Mempool capacity (bytes): 25294848
+txtop-release lists the Dijkstra payment a462a5e51129842e: no; errors drawn: 
+Transaction successfully submitted. Transaction hash is:
+txtop-raised: Mempool capacity (bytes): 25294848
+txtop-raised lists the Dijkstra payment c467cda814140017: no; errors drawn: 

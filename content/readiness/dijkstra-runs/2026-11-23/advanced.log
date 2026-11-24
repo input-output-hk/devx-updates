@@ -1,0 +1,41 @@
+Transaction successfully submitted. Transaction hash is:
+## dijkstra-direct-deposit (build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"9fe8ac1c3cf38790f48a134048db0d59ae31c89c35661f8498e739437190741a"}
+
+balance before inclusion: 0
+account after deposit: {"address":"stake_test1uperz4a39776mz9xdumlyq64cj8jm30rj55szpz6wpqqg6sn5hpkx","govActionDeposits":{},"rewardAccountBalance":2000000,"stakeRegistrationDeposit":400000}
+
+## dijkstra-sub-transaction (sub-transaction build-raw, embedded)
+sub-transaction: Witnessed SubTx DijkstraEra 83a2
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"caa270da2e964edb17b1e80598ec475f07c217582ea1fa488b1ff31239241217"}
+
+## dijkstra-plutusv4-reference-script (build-raw)
+envelope: Tx DijkstraEra 83a3
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"27266d0a03105a5392104b5c25e6ee371df519fca2449a7df1089157f46d47e3"}
+
+## dijkstra-native-guard (build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"03666e3029c32718a955ea34137227ee76c83ee8baf061b503231781a14ad6d4"}
+
+## dijkstra-plutusv4-guard (build-raw)
+envelope: Tx DijkstraEra 83a6
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"876e9a66743a5879d8a9b84a7c2ff595b8679c0e39fa0bc7b377bf46841ec742"}
+
+## dijkstra-balance-interval (build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"bfdd55b6742ca984aeb904d3c1618b6aea2b3170bd73930fff0fd8b96958b306"}
+
+## dijkstra-balance-interval-unmet (build-raw, expected rejection)
+envelope: Tx DijkstraEra 83a4
+Command failed: transaction submit
+Error: Error while submitting tx: ShelleyTxValidationError ShelleyBasedEraDijkstra (DijkstraApplyTxError (LedgerFailure (DijkstraEntitiesFailure (BalancesOutsideAccountBalanceIntervals (NonEmptyMap (fromList [(AccountAddress {aaNetworkId = Testnet, aaId = AccountId {unAccountId = KeyHashObj (KeyHash {unKeyHash = "723157b12fbdad88a66f37f20355c48f2dc5e3952901045a7040046a"})}},(Coin 2000000,AccountBalanceLowerBound (Coin 1000000000000)))])))) :| []))
+
+

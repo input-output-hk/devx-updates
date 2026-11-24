@@ -1,0 +1,9 @@
+payment id (cardano-cli): f669378da02e2af2f0c9a7915da743cde65ca42f055781c62f1150c803244296
+evaluateTransaction (payment): ok []
+evaluateTransaction (PlutusV4 guard): ok [{"validator":{"index":0,"purpose":"guard"},"budget":{"memory":500,"cpu":64100}}]
+submitTransaction (payment): ok {"transaction":{"id":"f669378da02e2af2f0c9a7915da743cde65ca42f055781c62f1150c803244296"}}
+acquireMempool: ok {"acquired":"mempool","slot":11125}
+sizeOfMempool: ok {"maxCapacity":{"bytes":25294848},"currentSize":{"bytes":239},"transactions":{"count":1}}
+nextTransaction: ok {"transaction":{"id":"f669378da02e2af2f0c9a7915da743cde65ca42f055781c62f1150c803244296","spends":"inputs","inputs":[{"transaction":{"id":"7ff5b2d13eae2732c8e61185a639cc1c25636279b77d05fd4334eeb1e7f35df4"},"index":7}],"outputs":[{"address":"addr_test1vze4g20ege8nwk5mpjjacl2arxpw9c22j7wullgwqvcfjecwgc93y","value":{"ada":{"lovelace":5000000}}},{"address":"addr_test1vze4g20ege8nwk5mpjjacl2arxpw9c22j7w
+releaseMempool: ok {"released":"mempool"}
+submitTransaction (same payment again): ERROR {"code":3173,"message":"All inputs of the transaction are already spent. This usually means that the transaction has already been included in the ledger, so there's no need to submit it again."}

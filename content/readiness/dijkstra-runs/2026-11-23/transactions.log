@@ -1,0 +1,47 @@
+Transaction successfully submitted. Transaction hash is:
+## conway-payment (conway build-raw)
+envelope: Tx ConwayEra 84a3
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"1ddbc9b94110c2723633246c2519c064cdb9f5d9aba54f7074130a7fdb1b5426"}
+
+## conway-legacy-reg (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Command failed: transaction submit
+Error: The era of the node and the tx do not match. The node is running in the Dijkstra era, but the transaction is for the Conway era.
+
+
+## conway-reg-with-deposit (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"50cdb84e9418b26200c359cb6b587152cea5217f40ca63c10371970b70a9a362"}
+
+## conway-required-signer (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"cd4781f1af458f27b57c12a65141fc5abf5ee450574ba5d0a3f60335a3fa4903"}
+
+## conway-metadata (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"987b7e4c800a7c44fb40d83c6012d310cbb793baa2dcb164011e07f0472105ba"}
+
+## dijkstra-payment (dijkstra build-raw)
+envelope: Tx DijkstraEra 83a3
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"6b4ac3dc5f74a903dac719f8eccd581a7298166b6010c921d2cb40e493e704d7"}
+
+## dijkstra-legacy-reg (dijkstra build-raw)
+Command failed: transaction build-raw
+Error: /tmp/dijkstra-11.2.1/work/tx/kd0.cert: TextEnvelope decode error: DecoderErrorDeserialiseFailure "DijkstraTxCert DijkstraEra" (DeserialiseFailure 2 "Certificates without deposits are no longer supported")
+CallStack (from HasCallStack):
+
+## dijkstra-reg-with-deposit (dijkstra build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"5e5cc532015cc2a9af7b1906538fbaa7881e4c7053a1182f557ad06a40212d09"}
+
+## dijkstra-metadata (dijkstra build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"bc6b36f000f6e4f90efa846ac9d04d2266fca4a66795f3b52fe39459aa73f149"}
+

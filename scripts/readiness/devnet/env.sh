@@ -1,10 +1,10 @@
 # Shared settings for the Dijkstra devnet recipe. Source it; every script does.
 # DEVNET_DIR must stay short: the node socket path has to fit in 108 bytes.
-DEVNET_DIR=${DEVNET_DIR:-/tmp/dijkstra-11.2.0}
-NODE_REVISION=dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899
-# Official 11.2.0 prerelease; the digest is published with the GitHub release asset.
-NODE_TARBALL=https://github.com/IntersectMBO/cardano-node/releases/download/11.2.0/cardano-node-11.2.0-linux-amd64.tar.gz
-NODE_SHA256=8b287e300ffb2063522fc33d50da6ecee8fa10fc7445c906fae0ca9783db8e03
+DEVNET_DIR=${DEVNET_DIR:-/tmp/dijkstra-11.2.1}
+NODE_REVISION=90bc1cd9380a78a63091ff673f8c5693152c8f60
+# Official 11.2.1 prerelease; the digest is published with the GitHub release asset.
+NODE_TARBALL=https://github.com/IntersectMBO/cardano-node/releases/download/11.2.1/cardano-node-11.2.1-linux-amd64.tar.gz
+NODE_SHA256=88276ed753f460ee876c03c305ad68de9e4a16945f7c741e08130bf296791174
 E=$DEVNET_DIR/env
 B=$DEVNET_DIR/node/bin
 SOCKET=$E/socket/node1/sock

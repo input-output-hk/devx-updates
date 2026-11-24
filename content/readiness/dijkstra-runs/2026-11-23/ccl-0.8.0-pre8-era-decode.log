@@ -1,0 +1,33 @@
+# branch feat/ledger-cbor: era-less deserialize vs deserialize(bytes, Era.Dijkstra)
+adv-split                                    raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+conway-legacy-reg                            raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id error CborSerializationException: A StakeRegistration certificate (tag 0) cannot be written in Dijkstra
+conway-metadata                              raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode differs(83a4)
+conway-payment                               raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id = chain, re-encode differs(83a3)
+conway-reg-with-deposit                      raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id = chain, re-encode differs(83a4)
+conway-required-signer                       raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id = chain, re-encode differs(83a4)
+dijkstra-balance-interval                    raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id = chain, re-encode exact
+dijkstra-balance-interval-unmet              raw id = chain | era-less: model id = chain, re-encode exact | Dijkstra: model id = chain, re-encode exact
+dijkstra-direct-deposit                      raw id = chain | era-less: model id = chain, re-encode exact, directDeposits=1 | Dijkstra: model id = chain, re-encode exact, directDeposits=1
+dijkstra-metadata                            raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode exact
+dijkstra-native-guard                        raw id = chain | era-less: model id = chain, re-encode exact, guards=1 | Dijkstra: model id = chain, re-encode exact, guards=1
+dijkstra-payment                             raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+dijkstra-plutusv4-guard                      raw id = chain | era-less: model id ≠ chain (f0f359bb25e1…), re-encode differs(83a6), guards=1 | Dijkstra: model id ≠ chain (f0f359bb25e1…), re-encode differs(83a6), guards=1
+dijkstra-plutusv4-reference-script           raw id = chain | era-less: model id = chain, re-encode differs(84a3), scriptRef=8204 | Dijkstra: model id = chain, re-encode exact, scriptRef=8204
+dijkstra-reg-with-deposit                    raw id = chain | era-less: model id = chain, re-encode differs(84a4) | Dijkstra: model id = chain, re-encode exact
+dijkstra-sub-transaction                     raw id = chain | era-less: model id = chain, re-encode exact, subTxs=1 | Dijkstra: model id = chain, re-encode exact, subTxs=1
+split                                        raw id = chain | era-less: model id = chain, re-encode differs(84a3) | Dijkstra: model id = chain, re-encode exact
+mempool-split                                raw id 89a0365c75e9… | era-less: model id 89a0365c75e9…, re-encode differs(84a3) | Dijkstra: model id 89a0365c75e9…, re-encode exact
+mempool-conway-payment                       raw id 1ddbc9b94110… | era-less: model id 1ddbc9b94110…, re-encode differs(84a3) | Dijkstra: model id 1ddbc9b94110…, re-encode exact
+mempool-conway-reg-with-deposit              raw id 50cdb84e9418… | era-less: model id 50cdb84e9418…, re-encode differs(84a4) | Dijkstra: model id 50cdb84e9418…, re-encode exact
+mempool-conway-required-signer               raw id cd4781f1af45… | era-less: model id cd4781f1af45…, re-encode differs(84a4) | Dijkstra: model id cd4781f1af45…, re-encode exact
+mempool-conway-metadata                      raw id 987b7e4c800a… | era-less: model id 987b7e4c800a…, re-encode differs(84a4) | Dijkstra: model id 987b7e4c800a…, re-encode exact
+mempool-dijkstra-payment                     raw id 6b4ac3dc5f74… | era-less: model id 6b4ac3dc5f74…, re-encode differs(84a3) | Dijkstra: model id 6b4ac3dc5f74…, re-encode exact
+mempool-dijkstra-reg-with-deposit            raw id 5e5cc532015c… | era-less: model id 5e5cc532015c…, re-encode differs(84a4) | Dijkstra: model id 5e5cc532015c…, re-encode exact
+mempool-dijkstra-metadata                    raw id bc6b36f000f6… | era-less: model id bc6b36f000f6…, re-encode differs(84a4) | Dijkstra: model id bc6b36f000f6…, re-encode exact
+mempool-adv-split                            raw id 7ff5b2d13eae… | era-less: model id 7ff5b2d13eae…, re-encode differs(84a3) | Dijkstra: model id 7ff5b2d13eae…, re-encode exact
+mempool-dijkstra-direct-deposit              raw id 9fe8ac1c3cf3… | era-less: model id 9fe8ac1c3cf3…, re-encode exact, directDeposits=1 | Dijkstra: model id 9fe8ac1c3cf3…, re-encode exact, directDeposits=1
+mempool-dijkstra-sub-transaction             raw id caa270da2e96… | era-less: model id caa270da2e96…, re-encode exact, subTxs=1 | Dijkstra: model id caa270da2e96…, re-encode exact, subTxs=1
+mempool-dijkstra-plutusv4-reference-script   raw id 27266d0a0310… | era-less: model id 27266d0a0310…, re-encode differs(84a3), scriptRef=8204 | Dijkstra: model id 27266d0a0310…, re-encode exact, scriptRef=8204
+mempool-dijkstra-native-guard                raw id 03666e3029c3… | era-less: model id 03666e3029c3…, re-encode exact, guards=1 | Dijkstra: model id 03666e3029c3…, re-encode exact, guards=1
+mempool-dijkstra-plutusv4-guard              raw id 876e9a66743a… | era-less: model id f0f359bb25e1…, re-encode differs(83a6), guards=1 | Dijkstra: model id f0f359bb25e1…, re-encode differs(83a6), guards=1
+mempool-dijkstra-balance-interval            raw id bfdd55b6742c… | era-less: model id bfdd55b6742c…, re-encode exact | Dijkstra: model id bfdd55b6742c…, re-encode exact

@@ -1,0 +1,9 @@
+go version go1.26.10 linux/amd64
+rustc 1.99.0 (b940084d7 2026-09-28) (built from a source tarball)
+node v24.21.0
+openjdk version "25.0.4.1" 2026-08-18
+Apache Maven 3.10.0 (c43a36b8d67be7e0805a411bc0898af1a51f5472)
+Python 3.14.8
+ogmios fork: nightly (54bb8c1c) (IntersectMBO/ogmios 54bb8c1cd02b081314a2c5a48149b0ca338e39ce, nix build from cache.iog.io)
+kupo fork: nightly+ee5169 (IntersectMBO/kupo ee51691d4d8e286bf4a69deafe5817e1c2329212)
+blockfrost-platform main d5a48256cd054b276d4ab92aaab9f3461640efc8 (Pallas pin 3e87e6c704a6c3fac7ef02a633465592fd2730f0)

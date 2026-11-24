@@ -1,0 +1,5 @@
+## blockfrost-platform 1.0.0 version set (V10-V16)
+offered V10..V16: refused, reason VersionMismatch ['V23']
+
+## blockfrost-platform main version set (V10-V23)
+offered V10..V23: accepted V23 [42, False]

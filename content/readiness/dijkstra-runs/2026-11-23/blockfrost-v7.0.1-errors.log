@@ -1,0 +1,2 @@
+Error in /network/eras. TypeError: Cannot read properties of undefined (reading 'is_era_hardfork')
+Error: Release called on client which has already been released to the pool.

@@ -1,0 +1,33 @@
+pycardano 0.19.2
+adv-split                            head 83a3: decoded, 1 inputs, id 7ff5b2d13eae2732…, re-encode exact
+conway-legacy-reg                    head 84a4: decoded, 1 inputs, id 739f570faa998fdd…, re-encode exact
+conway-metadata                      head 84a4: decoded, 1 inputs, id 987b7e4c800a7c44…, re-encode exact
+conway-payment                       head 84a3: decoded, 1 inputs, id 1ddbc9b94110c272…, re-encode exact
+conway-reg-with-deposit              head 84a4: decoded, 1 inputs, id 50cdb84e9418b262…, re-encode exact
+conway-required-signer               head 84a4: decoded, 1 inputs, id cd4781f1af458f27…, re-encode exact
+dijkstra-balance-interval            head 83a4: error: DeserializeException: Unexpected map key 26 in CBOR.
+dijkstra-balance-interval-unmet      head 83a4: error: DeserializeException: Unexpected map key 26 in CBOR.
+dijkstra-direct-deposit              head 83a4: error: DeserializeException: Unexpected map key 25 in CBOR.
+dijkstra-metadata                    head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(259, {0: {674: {'msg': ['devnet']}}}) in any valid type from (<class 'bool'>, <class 'NoneType'>).
+dijkstra-native-guard                head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(258, [[1, b"4R\x1a\xdc}M\xc4\xa9sa\x13\x90|TT\xb8\xa0E\xb8u'\x01\xf95\x10\x90}]"]]) in any valid type from (typing.List[pycar
+dijkstra-payment                     head 83a3: decoded, 1 inputs, id 6b4ac3dc5f74a903…, re-encode exact
+dijkstra-plutusv4-guard              head 83a6: error: DeserializeException: Cannot deserialize object: CBORTag(258, [[1, b'1\xa7\x87\x86\xb5\x98\x9d\xc6\xfd-J\xb1[)pi\xe9A\x06\xec\xac\xce\xb8\xeb)\xe1\xb6\x81']]) in any valid type from 
+dijkstra-plutusv4-reference-script   head 83a3: error: ValueError: No Plutus script class found for version 4
+dijkstra-reg-with-deposit            head 83a4: decoded, 1 inputs, id 5e5cc532015cc2a9…, re-encode exact
+dijkstra-sub-transaction             head 83a4: error: DeserializeException: Unexpected map key 23 in CBOR.
+split                                head 83a3: decoded, 1 inputs, id 89a0365c75e92fa6…, re-encode exact
+mempool-split                        head 83a3: decoded, 1 inputs, id 89a0365c75e92fa6…, re-encode exact
+mempool-conway-payment               head 83a3: decoded, 1 inputs, id 1ddbc9b94110c272…, re-encode exact
+mempool-conway-reg-with-deposit      head 83a4: decoded, 1 inputs, id 50cdb84e9418b262…, re-encode exact
+mempool-conway-required-signer       head 83a4: decoded, 1 inputs, id cd4781f1af458f27…, re-encode exact
+mempool-conway-metadata              head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(259, {0: {674: {'msg': ['devnet']}}}) in any valid type from (<class 'bool'>, <class 'NoneType'>).
+mempool-dijkstra-payment             head 83a3: decoded, 1 inputs, id 6b4ac3dc5f74a903…, re-encode exact
+mempool-dijkstra-reg-with-deposit    head 83a4: decoded, 1 inputs, id 5e5cc532015cc2a9…, re-encode exact
+mempool-dijkstra-metadata            head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(259, {0: {674: {'msg': ['devnet']}}}) in any valid type from (<class 'bool'>, <class 'NoneType'>).
+mempool-adv-split                    head 83a3: decoded, 1 inputs, id 7ff5b2d13eae2732…, re-encode exact
+mempool-dijkstra-direct-deposit      head 83a4: error: DeserializeException: Unexpected map key 25 in CBOR.
+mempool-dijkstra-sub-transaction     head 83a4: error: DeserializeException: Unexpected map key 23 in CBOR.
+mempool-dijkstra-plutusv4-reference-script head 83a3: error: ValueError: No Plutus script class found for version 4
+mempool-dijkstra-native-guard        head 83a4: error: DeserializeException: Cannot deserialize object: CBORTag(258, [[1, b"4R\x1a\xdc}M\xc4\xa9sa\x13\x90|TT\xb8\xa0E\xb8u'\x01\xf95\x10\x90}]"]]) in any valid type from (typing.List[pycar
+mempool-dijkstra-plutusv4-guard      head 83a6: error: DeserializeException: Cannot deserialize object: CBORTag(258, [[1, b'1\xa7\x87\x86\xb5\x98\x9d\xc6\xfd-J\xb1[)pi\xe9A\x06\xec\xac\xce\xb8\xeb)\xe1\xb6\x81']]) in any valid type from 
+mempool-dijkstra-balance-interval    head 83a4: error: DeserializeException: Unexpected map key 26 in CBOR.

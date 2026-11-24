@@ -1,0 +1,2985 @@
+{
+  "before": {
+    "date": "2026-11-09",
+    "node": "dac0d7ab2dfdee1f9eda901589e3c6ac8eaa1899"
+  },
+  "after": {
+    "date": "2026-11-23",
+    "node": "90bc1cd9380a78a63091ff673f8c5693152c8f60"
+  },
+  "tools": [
+    {
+      "tool": "iris",
+      "before": "breaks",
+      "after": "unverified",
+      "reason": "Waits on a verdict for ogmios"
+    },
+    {
+      "tool": "nview",
+      "before": null,
+      "after": "unverified",
+      "reason": "Own code and dependencies read, no confirmed gap; not run against Dijkstra"
+    },
+    {
+      "tool": "ogmiosdotnet-blockchainevents",
+      "before": "breaks",
+      "after": "unverified",
+      "reason": "Waits on a verdict for ogmios"
+    },
+    {
+      "tool": "plu-ts",
+      "before": "breaks",
+      "after": "unverified",
+      "reason": "Waits on a verdict for koios"
+    },
+    {
+      "tool": "yaci",
+      "before": "breaks",
+      "after": "in-progress",
+      "reason": "Dijkstra support underway, not released"
+    },
+    {
+      "tool": "yaci-bridge",
+      "before": "breaks",
+      "after": "unverified",
+      "reason": "Waits on a verdict for yaci"
+    }
+  ],
+  "components": [
+    {
+      "component": "cardano-js-sdk",
+      "surfaces": [
+        {
+          "surface": "transaction-encoding",
+          "before": "in-progress",
+          "after": "gap"
+        }
+      ]
+    },
+    {
+      "component": "julc",
+      "surfaces": [
+        {
+          "surface": "plutus-script-context",
+          "before": "no-evidence",
+          "after": "gap"
+        }
+      ]
+    },
+    {
+      "component": "meshjs-mesh-sdk",
+      "surfaces": [
+        {
+          "surface": "transaction-rules",
+          "before": "no-evidence",
+          "after": "in-progress"
+        }
+      ]
+    },
+    {
+      "component": "ogmios",
+      "surfaces": [
+        {
+          "surface": "transaction-encoding",
+          "before": "gap",
+          "after": "in-progress"
+        },
+        {
+          "surface": "plutus-language",
+          "before": "gap",
+          "after": "in-progress"
+        }
+      ]
+    },
+    {
+      "component": "plu-ts",
+      "surfaces": [
+        {
+          "surface": "plutus-language",
+          "before": "no-evidence",
+          "after": "released"
+        },
+        {
+          "surface": "plutus-script-context",
+          "before": "gap",
+          "after": "released"
+        }
+      ]
+    },
+    {
+      "component": "yaci",
+      "surfaces": [
+        {
+          "surface": "era-identity",
+          "before": "gap",
+          "after": "in-progress"
+        },
+        {
+          "surface": "block-encoding",
+          "before": "gap",
+          "after": "in-progress"
+        }
+      ]
+    }
+  ],
+  "runtime": [
+    {
+      "key": "advanced-transactions/change/account-enhancements/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "advanced-transactions/change/guards/",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "advanced-transactions/change/nested-transactions/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "advanced-transactions/change/plutus-v4/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "block-shape/change/block-body-non-segregated/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "block-shape/change/header-version-info/",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "block-shape/component/gouroboros/v0.218.2",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "block-shape/component/gouroboros/v0.221.0",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "blockfrost-dijkstra-data/component/blockfrost/v7.0.0",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "blockfrost-dijkstra-data/component/blockfrost/v7.0.1",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "blockfrost-dijkstra-data/component/cardano-db-sync/13.8.0.0",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "blockfrost-platform-submit/component/blockfrost/blockfrost-platform 1.0.0",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "blockfrost-platform-submit/component/blockfrost/blockfrost-platform main 842cf323",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "blockfrost-platform-submit/component/blockfrost/blockfrost-platform main d5a48256",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "ccl-branch-transactions/change/account-enhancements/",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "ccl-branch-transactions/change/guards/",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "ccl-branch-transactions/change/nested-transactions/",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "ccl-branch-transactions/change/plutus-v4/",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "ccl-branch-transactions/component/bloxbean-cardano-client-library/feat/ledger-cbor d3324ec3",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "ccl-dijkstra-transactions/change/account-enhancements/",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "ccl-dijkstra-transactions/change/guards/",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "ccl-dijkstra-transactions/change/nested-transactions/",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "ccl-dijkstra-transactions/change/plutus-v4/",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "ccl-dijkstra-transactions/component/bloxbean-cardano-client-library/0.8.0-pre8",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "ccl-quicktx/change/removed-encodings/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "ccl-quicktx/component/bloxbean-cardano-client-library/0.7.3",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "ccl-quicktx/component/bloxbean-cardano-client-library/0.8.0-pre7",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "ccl-quicktx/component/bloxbean-cardano-client-library/0.8.0-pre8",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "cml-decoding/component/cardano-multiplatform-lib-cml/6.2.0",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "cross-era-submission/change/mempool-cross-era/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "cross-era-submission/change/mempool-tx-is-valid/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "cross-era-submission/change/removed-encodings/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "csl-decoding/component/cardano-serialization-lib-csl/15.0.3",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "csl-decoding/component/cardano-serialization-lib-csl/17.0.0",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "csl-decoding/component/cardano-serialization-lib-csl/18.0.0-beta.1",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "db-sync-and-blockfrost/component/blockfrost/v7.0.0",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "db-sync-and-blockfrost/component/blockfrost/v7.0.1",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "db-sync-and-blockfrost/component/cardano-db-sync/13.8.0.0",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "fork-chain-sync/component/kupo/IntersectMBO fork bdb44975",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "fork-chain-sync/component/kupo/IntersectMBO fork ee51691d",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "fork-chain-sync/component/ogmios/IntersectMBO fork 2f9b5d14",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "fork-chain-sync/component/ogmios/IntersectMBO fork 54bb8c1c",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "fork-ogmios-api/component/ogmios/IntersectMBO fork 2f9b5d14",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "fork-ogmios-api/component/ogmios/IntersectMBO fork 54bb8c1c",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "fork-to-pv12/change/dijkstra-genesis-config/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "fork-to-pv12/change/era-dijkstra/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "fork-to-pv12/change/protocol-parameters/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "fork-to-pv12/change/query-pparams-encoding/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "js-sdk-transactions/component/cardano-js-sdk/@cardano-sdk/core 0.47.1",
+      "before": "pass",
+      "after": "fail"
+    },
+    {
+      "key": "jvm-codecs/component/bloxbean-cardano-client-library/0.7.3",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "jvm-codecs/component/bloxbean-cardano-client-library/0.8.0-pre7",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "jvm-codecs/component/bloxbean-cardano-client-library/0.8.0-pre8",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "jvm-codecs/component/yaci/0.5.0-pre15",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "jvm-codecs/component/yaci/0.5.0-pre17",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "n2c-handshake/change/n2c-only-v23/",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "n2c-handshake/component/cardano-db-sync/13.8.0.0",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "n2c-handshake/component/gouroboros/v0.218.2",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "n2c-handshake/component/gouroboros/v0.221.0",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "n2c-handshake/component/kupo/v2.12",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "n2c-handshake/component/ogmios/v7.0.0",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "pallas-chain-sync/component/pallas/main 0b17c8f6",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "pallas-chain-sync/component/pallas/main 3da6ff9f",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "pallas-chain-sync/component/pallas/v1.5.0-rc.1",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "pallas-chain-sync/component/pallas/v1.5.0-rc.3",
+      "before": null,
+      "after": "fail"
+    },
+    {
+      "key": "pallas-transactions/component/pallas/main 0b17c8f6",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "pallas-transactions/component/pallas/main 3da6ff9f",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "pallas-transactions/component/pallas/v1.5.0-rc.1",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "pallas-transactions/component/pallas/v1.5.0-rc.3",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "pycardano-transactions/component/pycardano/v0.19.2",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "service-decoding/component/kupo/v2.12",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "service-decoding/component/ogmios/v7.0.0",
+      "before": "fail",
+      "after": "fail"
+    },
+    {
+      "key": "tool-upgrades/tool/txtop/v0.17.0 (gouroboros v0.215.0)",
+      "before": "pass",
+      "after": "pass"
+    },
+    {
+      "key": "tool-upgrades/tool/txtop/v0.17.0 with gouroboros v0.218.2",
+      "before": "pass",
+      "after": null
+    },
+    {
+      "key": "tool-upgrades/tool/txtop/v0.17.0 with gouroboros v0.221.0",
+      "before": null,
+      "after": "pass"
+    },
+    {
+      "key": "tx-era-detection/component/gouroboros/v0.218.2",
+      "before": "fail",
+      "after": null
+    },
+    {
+      "key": "tx-era-detection/component/gouroboros/v0.221.0",
+      "before": null,
+      "after": "fail"
+    }
+  ],
+  "states": {
+    "total": {
+      "before": 206,
+      "after": 207
+    },
+    "states": [
+      {
+        "state": "target-component",
+        "before": 4,
+        "after": 4
+      },
+      {
+        "state": "ready",
+        "before": 4,
+        "after": 4
+      },
+      {
+        "state": "breaks",
+        "before": 112,
+        "after": 107
+      },
+      {
+        "state": "in-progress",
+        "before": 8,
+        "after": 9
+      },
+      {
+        "state": "unverified",
+        "before": 44,
+        "after": 49
+      },
+      {
+        "state": "dismissed",
+        "before": 34,
+        "after": 34
+      }
+    ]
+  },
+  "fixOrder": {
+    "steps": [
+      {
+        "component": "cardano-db-sync",
+        "step": 1,
+        "previousStep": 1,
+        "unlocked": 3
+      },
+      {
+        "component": "blockfrost",
+        "step": 2,
+        "previousStep": 2,
+        "unlocked": 20
+      },
+      {
+        "component": "koios",
+        "step": 3,
+        "previousStep": 4,
+        "unlocked": 29
+      },
+      {
+        "component": "ogmios",
+        "step": 4,
+        "previousStep": 3,
+        "unlocked": 34
+      },
+      {
+        "component": "kupo",
+        "step": 5,
+        "previousStep": 5,
+        "unlocked": 41
+      },
+      {
+        "component": "service:maestro",
+        "step": 6,
+        "previousStep": 6,
+        "unlocked": 47
+      },
+      {
+        "component": "pallas",
+        "step": 7,
+        "previousStep": 7,
+        "unlocked": 52
+      },
+      {
+        "component": "cardano-serialization-lib-csl",
+        "step": 8,
+        "previousStep": 8,
+        "unlocked": 56
+      },
+      {
+        "component": "gouroboros",
+        "step": 9,
+        "previousStep": 9,
+        "unlocked": 60
+      },
+      {
+        "component": "aiken",
+        "step": 10,
+        "previousStep": 10,
+        "unlocked": 63
+      },
+      {
+        "component": "ledgerjs-hw-app-cardano",
+        "step": 11,
+        "previousStep": 11,
+        "unlocked": 65
+      },
+      {
+        "component": "cardano-js-sdk",
+        "step": 12,
+        "previousStep": 12,
+        "unlocked": 67
+      },
+      {
+        "component": "bloxbean-cardano-client-library",
+        "step": 13,
+        "previousStep": 14,
+        "unlocked": 69
+      },
+      {
+        "component": "cardano-wallet",
+        "step": 14,
+        "previousStep": 13,
+        "unlocked": 71
+      },
+      {
+        "component": "cquisitor-lib",
+        "step": 15,
+        "previousStep": 17,
+        "unlocked": 72
+      },
+      {
+        "component": "whisky",
+        "step": 16,
+        "previousStep": 18,
+        "unlocked": 73
+      },
+      {
+        "component": "buildooor",
+        "step": 17,
+        "previousStep": 19,
+        "unlocked": 74
+      },
+      {
+        "component": "cardano-hw-interop-lib",
+        "step": 18,
+        "previousStep": 20,
+        "unlocked": 75
+      },
+      {
+        "component": "cardano-multiplatform-lib-cml",
+        "step": 19,
+        "previousStep": 21,
+        "unlocked": 77
+      },
+      {
+        "component": "scalus",
+        "step": 20,
+        "previousStep": 16,
+        "unlocked": 78
+      },
+      {
+        "component": "julc",
+        "step": 21,
+        "previousStep": null,
+        "unlocked": 79
+      }
+    ],
+    "removed": [
+      "yaci"
+    ],
+    "unlocked": {
+      "before": 82,
+      "after": 79
+    }
+  },
+  "grid": {
+    "surfaces": [
+      "era-identity",
+      "block-encoding",
+      "transaction-encoding",
+      "transaction-rules",
+      "plutus-language",
+      "plutus-script-context",
+      "protocol-parameters",
+      "stake-pool-registration",
+      "node-to-client-protocol",
+      "consensus-participation"
+    ],
+    "rows": [
+      {
+        "component": "cardano-db-sync",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "released",
+            "after": "released"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "released",
+            "after": "released"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": "verified",
+            "after": "verified"
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "blockfrost",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "koios",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "ogmios",
+        "criticalPath": true,
+        "changed": true,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "in-progress"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": "gap",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": "verified",
+            "after": "verified"
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "kupo",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": "verified",
+            "after": "verified"
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "pallas",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": "released",
+            "after": "released"
+          },
+          {
+            "surface": "consensus-participation",
+            "before": "in-progress",
+            "after": "in-progress"
+          }
+        ]
+      },
+      {
+        "component": "cardano-serialization-lib-csl",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "gouroboros",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "verified",
+            "after": "verified"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "released",
+            "after": "released"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "released",
+            "after": "released"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "released",
+            "after": "released"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "released",
+            "after": "released"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "released",
+            "after": "released"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": "verified",
+            "after": "verified"
+          },
+          {
+            "surface": "consensus-participation",
+            "before": "released",
+            "after": "released"
+          }
+        ]
+      },
+      {
+        "component": "aiken",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "ledgerjs-hw-app-cardano",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "plutus-language",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "cardano-js-sdk",
+        "criticalPath": true,
+        "changed": true,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "in-progress",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "bloxbean-cardano-client-library",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "cardano-wallet",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-language",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "cquisitor-lib",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "whisky",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "buildooor",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "cardano-hw-interop-lib",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "cardano-multiplatform-lib-cml",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "scalus",
+        "criticalPath": true,
+        "changed": false,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "julc",
+        "criticalPath": true,
+        "changed": true,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": "no-evidence",
+            "after": "gap"
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "yaci",
+        "criticalPath": true,
+        "changed": true,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "gap",
+            "after": "in-progress"
+          },
+          {
+            "surface": "block-encoding",
+            "before": "gap",
+            "after": "in-progress"
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "in-progress",
+            "after": "in-progress"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": "released",
+            "after": "released"
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "meshjs-mesh-sdk",
+        "criticalPath": false,
+        "changed": true,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": "no-evidence",
+            "after": "in-progress"
+          },
+          {
+            "surface": "plutus-language",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": "gap",
+            "after": "gap"
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      },
+      {
+        "component": "plu-ts",
+        "criticalPath": false,
+        "changed": true,
+        "cells": [
+          {
+            "surface": "era-identity",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "block-encoding",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "transaction-encoding",
+            "before": "no-evidence",
+            "after": "no-evidence"
+          },
+          {
+            "surface": "transaction-rules",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "plutus-language",
+            "before": "no-evidence",
+            "after": "released"
+          },
+          {
+            "surface": "plutus-script-context",
+            "before": "gap",
+            "after": "released"
+          },
+          {
+            "surface": "protocol-parameters",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "stake-pool-registration",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "node-to-client-protocol",
+            "before": null,
+            "after": null
+          },
+          {
+            "surface": "consensus-participation",
+            "before": null,
+            "after": null
+          }
+        ]
+      }
+    ]
+  },
+  "subjects": [
+    {
+      "check": "jvm-codecs",
+      "title": "cardano-client-lib 0.8.0-pre8 reads Dijkstra transactions; Yaci 0.5.0-pre17 decodes every Dijkstra block",
+      "kind": "component",
+      "id": "yaci",
+      "before": [
+        {
+          "version": "0.5.0-pre15",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "0.5.0-pre17",
+          "outcome": "pass"
+        }
+      ],
+      "change": "now-passes"
+    },
+    {
+      "check": "js-sdk-transactions",
+      "title": "@cardano-sdk/core 0.47.1 reads every encoding except balance intervals",
+      "kind": "component",
+      "id": "cardano-js-sdk",
+      "before": [
+        {
+          "version": "@cardano-sdk/core 0.47.1",
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": "@cardano-sdk/core 0.47.1",
+          "outcome": "fail"
+        }
+      ],
+      "change": "now-fails"
+    },
+    {
+      "check": "ccl-dijkstra-transactions",
+      "title": "cardano-client-lib 0.8.0-pre8 builds every Dijkstra transaction feature it models",
+      "kind": "change",
+      "id": "account-enhancements",
+      "before": [],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "first-tested"
+    },
+    {
+      "check": "ccl-dijkstra-transactions",
+      "title": "cardano-client-lib 0.8.0-pre8 builds every Dijkstra transaction feature it models",
+      "kind": "component",
+      "id": "bloxbean-cardano-client-library",
+      "before": [],
+      "after": [
+        {
+          "version": "0.8.0-pre8",
+          "outcome": "pass"
+        }
+      ],
+      "change": "first-tested"
+    },
+    {
+      "check": "advanced-transactions",
+      "title": "Direct deposits, sub-transactions, guards, balance intervals and PlutusV4 are accepted",
+      "kind": "change",
+      "id": "guards",
+      "before": [],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "first-tested"
+    },
+    {
+      "check": "ccl-dijkstra-transactions",
+      "title": "cardano-client-lib 0.8.0-pre8 builds every Dijkstra transaction feature it models",
+      "kind": "change",
+      "id": "guards",
+      "before": [],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "first-tested"
+    },
+    {
+      "check": "ccl-dijkstra-transactions",
+      "title": "cardano-client-lib 0.8.0-pre8 builds every Dijkstra transaction feature it models",
+      "kind": "change",
+      "id": "nested-transactions",
+      "before": [],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "first-tested"
+    },
+    {
+      "check": "ccl-dijkstra-transactions",
+      "title": "cardano-client-lib 0.8.0-pre8 builds every Dijkstra transaction feature it models",
+      "kind": "change",
+      "id": "plutus-v4",
+      "before": [],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "first-tested"
+    },
+    {
+      "check": "blockfrost-dijkstra-data",
+      "title": "Past db-sync's PlutusV4 stop, Blockfrost v7.0.1 serves wrong UTxOs and balances for sub-transactions and direct deposits",
+      "kind": "component",
+      "id": "blockfrost",
+      "before": [
+        {
+          "version": "v7.0.0",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "v7.0.1",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "blockfrost-platform-submit",
+      "title": "blockfrost-platform cannot submit Dijkstra transactions: 1.0.0 cannot connect, main rejects them before the node",
+      "kind": "component",
+      "id": "blockfrost",
+      "before": [
+        {
+          "version": "blockfrost-platform 1.0.0",
+          "outcome": "fail"
+        },
+        {
+          "version": "blockfrost-platform main 842cf323",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "blockfrost-platform 1.0.0",
+          "outcome": "fail"
+        },
+        {
+          "version": "blockfrost-platform main d5a48256",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "db-sync-and-blockfrost",
+      "title": "cardano-db-sync 13.8.0.0 indexes Dijkstra blocks until the first PlutusV4 script; Blockfrost v7.0.1 serves them",
+      "kind": "component",
+      "id": "blockfrost",
+      "before": [
+        {
+          "version": "v7.0.0",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "v7.0.1",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "ccl-quicktx",
+      "title": "cardano-client-lib releases build Dijkstra payments, but QuickTx stake registration is rejected",
+      "kind": "component",
+      "id": "bloxbean-cardano-client-library",
+      "before": [
+        {
+          "version": "0.8.0-pre7",
+          "outcome": "fail"
+        },
+        {
+          "version": "0.7.3",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "0.8.0-pre8",
+          "outcome": "fail"
+        },
+        {
+          "version": "0.7.3",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "jvm-codecs",
+      "title": "cardano-client-lib 0.8.0-pre8 reads Dijkstra transactions; Yaci 0.5.0-pre17 decodes every Dijkstra block",
+      "kind": "component",
+      "id": "bloxbean-cardano-client-library",
+      "before": [
+        {
+          "version": "0.8.0-pre7",
+          "outcome": "fail"
+        },
+        {
+          "version": "0.7.3",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "0.8.0-pre8",
+          "outcome": "fail"
+        },
+        {
+          "version": "0.7.3",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "csl-decoding",
+      "title": "CSL 17.0.0, 15.0.3 and 18.0.0-beta.1 decode no Dijkstra block or advanced transaction",
+      "kind": "component",
+      "id": "cardano-serialization-lib-csl",
+      "before": [
+        {
+          "version": "17.0.0",
+          "outcome": "fail"
+        },
+        {
+          "version": "15.0.3",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "17.0.0",
+          "outcome": "fail"
+        },
+        {
+          "version": "15.0.3",
+          "outcome": "fail"
+        },
+        {
+          "version": "18.0.0-beta.1",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "block-shape",
+      "title": "The node's Dijkstra block: non-segregated body, ten-field header; gouroboros v0.221.0 decodes it",
+      "kind": "component",
+      "id": "gouroboros",
+      "before": [
+        {
+          "version": "v0.218.2",
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": "v0.221.0",
+          "outcome": "pass"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "n2c-handshake",
+      "title": "The node accepts only node-to-client V23; current clients connect",
+      "kind": "component",
+      "id": "gouroboros",
+      "before": [
+        {
+          "version": "v0.218.2",
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": "v0.221.0",
+          "outcome": "pass"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "tx-era-detection",
+      "title": "gouroboros v0.221.0 reports ordinary Dijkstra transactions as Conway",
+      "kind": "component",
+      "id": "gouroboros",
+      "before": [
+        {
+          "version": "v0.218.2",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "v0.221.0",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "fork-chain-sync",
+      "title": "The IntersectMBO forks of Ogmios and Kupo read Dijkstra blocks; Kupo stops at sub-transactions",
+      "kind": "component",
+      "id": "kupo",
+      "before": [
+        {
+          "version": "IntersectMBO fork bdb44975",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "IntersectMBO fork ee51691d",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "fork-chain-sync",
+      "title": "The IntersectMBO forks of Ogmios and Kupo read Dijkstra blocks; Kupo stops at sub-transactions",
+      "kind": "component",
+      "id": "ogmios",
+      "before": [
+        {
+          "version": "IntersectMBO fork 2f9b5d14",
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": "IntersectMBO fork 54bb8c1c",
+          "outcome": "pass"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "fork-ogmios-api",
+      "title": "The Ogmios fork evaluates, submits and follows the mempool; Dijkstra protocol parameters are still unavailable",
+      "kind": "component",
+      "id": "ogmios",
+      "before": [
+        {
+          "version": "IntersectMBO fork 2f9b5d14",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "IntersectMBO fork 54bb8c1c",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "pallas-chain-sync",
+      "title": "Pallas v1.5.0-rc.3 and main decode no Dijkstra block from the node",
+      "kind": "component",
+      "id": "pallas",
+      "before": [
+        {
+          "version": "v1.5.0-rc.1",
+          "outcome": "fail"
+        },
+        {
+          "version": "main 3da6ff9f",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "v1.5.0-rc.3",
+          "outcome": "fail"
+        },
+        {
+          "version": "main 0b17c8f6",
+          "outcome": "fail"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "pallas-transactions",
+      "title": "Pallas decodes every Dijkstra transaction when told the era",
+      "kind": "component",
+      "id": "pallas",
+      "before": [
+        {
+          "version": "v1.5.0-rc.1",
+          "outcome": "pass"
+        },
+        {
+          "version": "main 3da6ff9f",
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": "v1.5.0-rc.3",
+          "outcome": "pass"
+        },
+        {
+          "version": "main 0b17c8f6",
+          "outcome": "pass"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "tool-upgrades",
+      "title": "txtop's latest release connects as released and with gouroboros v0.221.0",
+      "kind": "tool",
+      "id": "txtop",
+      "before": [
+        {
+          "version": "v0.17.0 (gouroboros v0.215.0)",
+          "outcome": "pass"
+        },
+        {
+          "version": "v0.17.0 with gouroboros v0.218.2",
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": "v0.17.0 (gouroboros v0.215.0)",
+          "outcome": "pass"
+        },
+        {
+          "version": "v0.17.0 with gouroboros v0.221.0",
+          "outcome": "pass"
+        }
+      ],
+      "change": "new-version"
+    },
+    {
+      "check": "ccl-branch-transactions",
+      "title": "The cardano-client-lib Dijkstra branch builds every new transaction feature; signing a Transaction object drops them",
+      "kind": "change",
+      "id": "account-enhancements",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [],
+      "change": "not-rerun"
+    },
+    {
+      "check": "ccl-branch-transactions",
+      "title": "The cardano-client-lib Dijkstra branch builds every new transaction feature; signing a Transaction object drops them",
+      "kind": "component",
+      "id": "bloxbean-cardano-client-library",
+      "before": [
+        {
+          "version": "feat/ledger-cbor d3324ec3",
+          "outcome": "fail"
+        }
+      ],
+      "after": [],
+      "change": "not-rerun"
+    },
+    {
+      "check": "ccl-branch-transactions",
+      "title": "The cardano-client-lib Dijkstra branch builds every new transaction feature; signing a Transaction object drops them",
+      "kind": "change",
+      "id": "guards",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [],
+      "change": "not-rerun"
+    },
+    {
+      "check": "ccl-branch-transactions",
+      "title": "The cardano-client-lib Dijkstra branch builds every new transaction feature; signing a Transaction object drops them",
+      "kind": "change",
+      "id": "nested-transactions",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [],
+      "change": "not-rerun"
+    },
+    {
+      "check": "ccl-branch-transactions",
+      "title": "The cardano-client-lib Dijkstra branch builds every new transaction feature; signing a Transaction object drops them",
+      "kind": "change",
+      "id": "plutus-v4",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [],
+      "change": "not-rerun"
+    },
+    {
+      "check": "advanced-transactions",
+      "title": "Direct deposits, sub-transactions, guards, balance intervals and PlutusV4 are accepted",
+      "kind": "change",
+      "id": "account-enhancements",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "block-shape",
+      "title": "The node's Dijkstra block: non-segregated body, ten-field header; gouroboros v0.221.0 decodes it",
+      "kind": "change",
+      "id": "block-body-non-segregated",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "blockfrost-dijkstra-data",
+      "title": "Past db-sync's PlutusV4 stop, Blockfrost v7.0.1 serves wrong UTxOs and balances for sub-transactions and direct deposits",
+      "kind": "component",
+      "id": "cardano-db-sync",
+      "before": [
+        {
+          "version": "13.8.0.0",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "13.8.0.0",
+          "outcome": "fail"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "db-sync-and-blockfrost",
+      "title": "cardano-db-sync 13.8.0.0 indexes Dijkstra blocks until the first PlutusV4 script; Blockfrost v7.0.1 serves them",
+      "kind": "component",
+      "id": "cardano-db-sync",
+      "before": [
+        {
+          "version": "13.8.0.0",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "13.8.0.0",
+          "outcome": "fail"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "n2c-handshake",
+      "title": "The node accepts only node-to-client V23; current clients connect",
+      "kind": "component",
+      "id": "cardano-db-sync",
+      "before": [
+        {
+          "version": "13.8.0.0",
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": "13.8.0.0",
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "cml-decoding",
+      "title": "CML 6.2.0 decodes no Dijkstra block or transaction",
+      "kind": "component",
+      "id": "cardano-multiplatform-lib-cml",
+      "before": [
+        {
+          "version": "6.2.0",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "6.2.0",
+          "outcome": "fail"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "fork-to-pv12",
+      "title": "Node 11.2.1 forks to Dijkstra and reaches protocol version 12",
+      "kind": "change",
+      "id": "dijkstra-genesis-config",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "fork-to-pv12",
+      "title": "Node 11.2.1 forks to Dijkstra and reaches protocol version 12",
+      "kind": "change",
+      "id": "era-dijkstra",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "block-shape",
+      "title": "The node's Dijkstra block: non-segregated body, ten-field header; gouroboros v0.221.0 decodes it",
+      "kind": "change",
+      "id": "header-version-info",
+      "before": [
+        {
+          "version": null,
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "fail"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "n2c-handshake",
+      "title": "The node accepts only node-to-client V23; current clients connect",
+      "kind": "component",
+      "id": "kupo",
+      "before": [
+        {
+          "version": "v2.12",
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": "v2.12",
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "service-decoding",
+      "title": "Ogmios and Kupo releases still stop at the first Dijkstra block",
+      "kind": "component",
+      "id": "kupo",
+      "before": [
+        {
+          "version": "v2.12",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "v2.12",
+          "outcome": "fail"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "cross-era-submission",
+      "title": "Conway and Dijkstra transactions submitted after the fork",
+      "kind": "change",
+      "id": "mempool-cross-era",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "cross-era-submission",
+      "title": "Conway and Dijkstra transactions submitted after the fork",
+      "kind": "change",
+      "id": "mempool-tx-is-valid",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "n2c-handshake",
+      "title": "The node accepts only node-to-client V23; current clients connect",
+      "kind": "change",
+      "id": "n2c-only-v23",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "advanced-transactions",
+      "title": "Direct deposits, sub-transactions, guards, balance intervals and PlutusV4 are accepted",
+      "kind": "change",
+      "id": "nested-transactions",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "n2c-handshake",
+      "title": "The node accepts only node-to-client V23; current clients connect",
+      "kind": "component",
+      "id": "ogmios",
+      "before": [
+        {
+          "version": "v7.0.0",
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": "v7.0.0",
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "service-decoding",
+      "title": "Ogmios and Kupo releases still stop at the first Dijkstra block",
+      "kind": "component",
+      "id": "ogmios",
+      "before": [
+        {
+          "version": "v7.0.0",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "v7.0.0",
+          "outcome": "fail"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "advanced-transactions",
+      "title": "Direct deposits, sub-transactions, guards, balance intervals and PlutusV4 are accepted",
+      "kind": "change",
+      "id": "plutus-v4",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "fork-to-pv12",
+      "title": "Node 11.2.1 forks to Dijkstra and reaches protocol version 12",
+      "kind": "change",
+      "id": "protocol-parameters",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "pycardano-transactions",
+      "title": "PyCardano 0.19.2 fails on Dijkstra metadata and every advanced body",
+      "kind": "component",
+      "id": "pycardano",
+      "before": [
+        {
+          "version": "v0.19.2",
+          "outcome": "fail"
+        }
+      ],
+      "after": [
+        {
+          "version": "v0.19.2",
+          "outcome": "fail"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "fork-to-pv12",
+      "title": "Node 11.2.1 forks to Dijkstra and reaches protocol version 12",
+      "kind": "change",
+      "id": "query-pparams-encoding",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "ccl-quicktx",
+      "title": "cardano-client-lib releases build Dijkstra payments, but QuickTx stake registration is rejected",
+      "kind": "change",
+      "id": "removed-encodings",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    },
+    {
+      "check": "cross-era-submission",
+      "title": "Conway and Dijkstra transactions submitted after the fork",
+      "kind": "change",
+      "id": "removed-encodings",
+      "before": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "after": [
+        {
+          "version": null,
+          "outcome": "pass"
+        }
+      ],
+      "change": "unchanged"
+    }
+  ]
+}

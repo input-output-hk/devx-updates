@@ -1,0 +1,25 @@
+tip slot 10722
+blocks per era {"conway":15,"dijkstra":534}
+chain sync reached the tip
+tx adv-split: dijkstra block 187; fields fee,id,inputs,outputs,signatories,spends
+tx conway-legacy-reg: not on chain
+tx conway-metadata: dijkstra block 125; fields fee,id,inputs,metadata,outputs,signatories,spends
+tx conway-payment: dijkstra block 125; fields fee,id,inputs,outputs,signatories,spends
+tx conway-reg-with-deposit: dijkstra block 125; fields certificates,fee,id,inputs,outputs,signatories,spends
+tx conway-required-signer: dijkstra block 125; fields fee,guards,id,inputs,outputs,requiredExtraSignatories,signatories,spends
+tx dijkstra-balance-interval: dijkstra block 190; fields accountBalanceIntervals,fee,id,inputs,outputs,signatories,spends
+tx dijkstra-balance-interval-unmet: not on chain
+tx dijkstra-direct-deposit: dijkstra block 189; fields credits,fee,id,inputs,outputs,signatories,spends
+tx dijkstra-metadata: dijkstra block 125; fields fee,id,inputs,metadata,outputs,signatories,spends
+tx dijkstra-native-guard: dijkstra block 190; fields fee,guards,id,inputs,outputs,scripts,signatories,spends
+tx dijkstra-payment: dijkstra block 125; fields fee,id,inputs,outputs,signatories,spends
+tx dijkstra-plutusv4-guard: dijkstra block 190; fields collaterals,fee,guards,id,inputs,outputs,redeemers,scriptIntegrityHash,scripts,signatories,spends
+tx dijkstra-plutusv4-reference-script: dijkstra block 190; fields fee,id,inputs,outputs,signatories,spends
+tx dijkstra-reg-with-deposit: dijkstra block 125; fields certificates,fee,id,inputs,outputs,signatories,spends
+tx dijkstra-sub-transaction: dijkstra block 190; fields fee,id,inputs,outputs,signatories,spends,subTransactions
+tx split: dijkstra block 124; fields fee,id,inputs,outputs,signatories,spends
+queryLedgerState/eraSummaries: ok [{"start":{"time":{"seconds":0},"slot":0,"epoch":0},"end":{"time":{"seconds":0},"slot":0,"epoch":0},"parameters":{"epochLength":50,"slotLength":{"milliseconds":
+queryLedgerState/protocolParameters: ERROR {"code":2002,"message":"Query unavailable in the current era."}
+queryLedgerState/epoch: ok 53
+queryLedgerState/tip: ok {"slot":10722,"id":"c18bd635762946348aa58074a31d2074350f3f3f516e1766d61ef70cc6cb775c"}
+queryNetwork/genesisConfiguration: ok {"era":"shelley","startTime":"2026-11-23T16:31:04.580995395Z","networkMagic":42,"network":"testnet","activeSlotsCoefficient":"1/20","securityParameter":5,"epoch

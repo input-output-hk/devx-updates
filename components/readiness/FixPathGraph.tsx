@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { FixGraph, FixNode } from "@/lib/readiness/fix-graph";
+import UnreleasedDot, { UNRELEASED_LABEL } from "./UnreleasedDot";
 
 /** Whether a blocking component has Dijkstra work on record (an issue, PR or branch), or is a provider to move off. */
 export type FixWork = "tracked" | "none" | "retired";
@@ -13,6 +14,8 @@ export interface FixInfo {
   usage?: number;
   /** For a target (a tool DApps build on that is not a fix itself): its state, whether its own code must change too, and the state's colors. */
   target?: { state: string; own: boolean; color: string };
+  /** Dijkstra work done or nearly done that downstream cannot consume yet: drawn as a green dot. */
+  unreleased?: string;
 }
 
 const COL = 240, NODE_W = 196, NODE_H = 46, ROW = 60, HEAD = 28, PAD = 2;
@@ -28,24 +31,38 @@ const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1)}…`
 const tools = (n: number) => `${n} ${n === 1 ? "tool" : "tools"}`;
 
 function Badge({ x, y, usage }: { x: number; y: number; usage: number }) {
-  const label = `${usage}%`, w = 10 + label.length * 6.6;
+  const label = `${usage}%`, w = badgeWidth(usage);
   return <g aria-hidden>
     <rect x={x - w} y={y} width={w} height={17} rx={8.5} fill="var(--viz-1)" />
     <text x={x - w / 2} y={y + 12.5} fontSize={10.5} fontWeight={600} textAnchor="middle" fill="#fff">{label}</text>
   </g>;
 }
 
+const badgeWidth = (usage: number) => 10 + `${usage}%`.length * 6.6;
+
+/** The green dot in a box's top-right corner, left of the usage badge when there is one. */
+function Dot({ x, y, info }: { x: number; y: number; info: FixInfo }) {
+  if (!info.unreleased) return null;
+  const right = x + NODE_W - 8 - (info.usage !== undefined ? badgeWidth(info.usage) + 6 : 0);
+  return <g aria-hidden>
+    <circle cx={right - 5} cy={y + 14.5} r={7} fill="var(--status-done)" fillOpacity={0.25} />
+    <circle cx={right - 5} cy={y + 14.5} r={4.5} fill="var(--status-done)" />
+  </g>;
+}
+const unreleasedText = (info: FixInfo) => (info.unreleased ? ` ${UNRELEASED_LABEL}: ${info.unreleased}.` : "");
+
 function TargetNode({ node, x, y, info, selected, onSelect }: { node: FixNode; x: number; y: number; info: FixInfo; selected: boolean; onSelect: () => void }) {
   const t = info.target!;
   return <g role="button" tabIndex={0} aria-pressed={selected} className="cursor-pointer outline-none [&:focus-visible>rect]:stroke-[3]"
     onClick={onSelect} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(); } }}>
-    <title>{`${info.name}: used by ${info.usage}% of surveyed developers. ${t.state}${t.own ? "; its own code must change too" : ""}. Select for details.`}</title>
+    <title>{`${info.name}: used by ${info.usage}% of surveyed developers. ${t.state}${t.own ? "; its own code must change too" : ""}.${unreleasedText(info)} Select for details.`}</title>
     <rect x={x} y={y} width={NODE_W} height={NODE_H} rx={NODE_H / 2} fill={selected ? "var(--surface-2)" : "var(--surface)"}
       stroke={t.color} strokeWidth={selected ? 3 : node.critical ? 2.5 : 1.5} />
     <circle cx={x + 16} cy={y + 15} r={4} fill={t.color} />
-    <text x={x + 26} y={y + 19} fontSize={13} fontWeight={600} fill="var(--foreground)">{clip(info.name, 15)}</text>
+    <text x={x + 26} y={y + 19} fontSize={13} fontWeight={600} fill="var(--foreground)">{clip(info.name, info.unreleased ? 13 : 15)}</text>
     <text x={x + 16} y={y + 36} fontSize={11.5} fill="var(--muted)">{t.state}{t.own ? " · own code too" : ""}</text>
     {info.usage !== undefined && <Badge x={x + NODE_W - 8} y={y + 6} usage={info.usage} />}
+    <Dot x={x} y={y} info={info} />
   </g>;
 }
 
@@ -54,16 +71,17 @@ function Node({ node, x, y, info, selected, onSelect }: { node: FixNode; x: numb
   const w = WORK[info.work];
   return <g role="button" tabIndex={0} aria-pressed={selected} className="cursor-pointer outline-none [&:focus-visible>rect]:stroke-[3]"
     onClick={onSelect} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(); } }}>
-    <title>{`${info.name}: step ${node.step}, frees ${tools(node.added)} (${node.unlocked} in total by then). ${w.label}. Select for details.`}</title>
+    <title>{`${info.name}: step ${node.step}, frees ${tools(node.added)} (${node.unlocked} in total by then). ${w.label}.${unreleasedText(info)} Select for details.`}</title>
     <rect x={x} y={y} width={NODE_W} height={NODE_H} rx={8} fill={selected ? "var(--surface-2)" : "var(--surface)"} stroke={w.stroke}
       strokeWidth={selected ? 3 : node.critical ? 2.5 : 1.25} strokeDasharray={w.dash} />
     <text x={x + 10} y={y + 19} fontSize={13} fontWeight={600} fill="var(--foreground)">
-      <tspan fill="var(--muted)" fontWeight={500}>{node.step}.</tspan> {clip(info.name, info.usage !== undefined ? 18 : 23)}
+      <tspan fill="var(--muted)" fontWeight={500}>{node.step}.</tspan> {clip(info.name, (info.usage !== undefined ? 18 : 23) - (info.unreleased ? 2 : 0))}
     </text>
     <text x={x + 10} y={y + 36} fontSize={11.5} fill="var(--muted)">
       {node.added > 0 ? `+${tools(node.added)} · ${node.unlocked} total` : `no tool on its own · ${node.unlocked} total`}
     </text>
     {info.usage !== undefined && <Badge x={x + NODE_W - 8} y={y + 6} usage={info.usage} />}
+    <Dot x={x} y={y} info={info} />
   </g>;
 }
 
@@ -148,6 +166,9 @@ export default function FixPathGraph({ graph, fixes }: { graph: FixGraph; fixes:
           {WORK[k].label}
         </span>
       ))}
+      {everything.some((n) => fixes[n.id].unreleased) && <span className="inline-flex items-center gap-1.5">
+        <UnreleasedDot />{UNRELEASED_LABEL}: done or nearly done, not consumable downstream yet
+      </span>}
       <span className="inline-flex items-center gap-1.5">
         <svg width="22" height="12" aria-hidden><line x1="1" y1="6" x2="21" y2="6" stroke="var(--foreground)" strokeWidth="2" /></svg>
         Longest chain: bold box and arrow
@@ -176,6 +197,10 @@ export default function FixPathGraph({ graph, fixes }: { graph: FixGraph; fixes:
   </figure>;
 }
 
+const UnreleasedLine = ({ info }: { info: FixInfo }) => info.unreleased ? <p className="mt-2 flex items-start gap-2 text-sm">
+  <span className="mt-1.5"><UnreleasedDot /></span><span><span className="font-medium text-status-done">{UNRELEASED_LABEL}:</span> <span className="text-muted">{info.unreleased}</span></span>
+</p> : null;
+
 function FixDetail({ node, fixes, graph, onClose }: { node: FixNode; fixes: Record<string, FixInfo>; graph: FixGraph; onClose: () => void }) {
   const info = fixes[node.id];
   if (node.kind === "target") {
@@ -193,6 +218,7 @@ function FixDetail({ node, fixes, graph, onClose }: { node: FixNode; fixes: Reco
         {node.waitsOn.length ? `Waits on ${node.waitsOn.map((id) => fixes[id].name).join(", ")} (and what those wait on).` : "Waits on no fix in the order."}
         {t.own ? " Its own code must change too, so the upstream fixes are needed but not enough." : " Nothing in its own code is confirmed to change: once these fixes land, it is unlocked."}
       </p>
+      <UnreleasedLine info={info} />
     </div>;
   }
   const waitedBy = graph.edges.filter((e) => e.to === node.id).map((e) => e.from);
@@ -212,6 +238,7 @@ function FixDetail({ node, fixes, graph, onClose }: { node: FixNode; fixes: Reco
       {node.waitsOn.length ? `Waits on ${names(node.waitsOn)}. ` : "Can start now. "}
       {waitedBy.length ? `${names(waitedBy)} ${waitedBy.length === 1 ? "waits" : "wait"} on it.` : "No other fix waits on it."}
     </p>
+    <UnreleasedLine info={info} />
     <h4 className="mt-3 text-sm font-medium">
       {node.added ? `Unlocks ${tools(node.added)} at step ${node.step} (${node.unlocked} in total by then)` : `Unlocks no tool by itself at step ${node.step}`}
     </h4>
