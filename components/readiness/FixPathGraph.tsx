@@ -5,8 +5,11 @@ import { useState } from "react";
 import type { FixGraph, FixNode } from "@/lib/readiness/fix-graph";
 import UnreleasedDot, { UNRELEASED_LABEL } from "./UnreleasedDot";
 
-/** Whether a blocking component has Dijkstra work on record (an issue, PR or branch), or is a provider to move off. */
-export type FixWork = "tracked" | "none" | "retired";
+/**
+ * A box's status on the fixed critical path: its Dijkstra support released (`done`), work on record (an issue, PR,
+ * branch or unreleased work), none, or a provider to move off.
+ */
+export type FixWork = "done" | "tracked" | "none" | "retired";
 /** What the page knows about each fix: display name, its page, tracked work, and the tools it adds in the order. */
 export interface FixInfo {
   name: string; href: string; work: FixWork; added: { id: string; name: string }[];
@@ -22,6 +25,7 @@ const COL = 240, NODE_W = 196, NODE_H = 46, ROW = 60, HEAD = 28, PAD = 2;
 const WORK: Record<FixWork, { stroke: string; label: string; dash?: string }> = {
   none: { stroke: "var(--status-blocked)", label: "No Dijkstra work tracked" },
   tracked: { stroke: "var(--status-progress)", label: "Dijkstra work tracked (issue, PR or branch)" },
+  done: { stroke: "var(--status-done)", label: "Fixed: Dijkstra support released" },
   retired: { stroke: "var(--muted)", label: "Deprecated provider: tools move off it", dash: "4 3" },
 };
 const COLUMN_TITLE = (c: number) => (c === 0 ? "Can start now" : `After ${c} ${c === 1 ? "fix" : "fixes"} upstream`);
@@ -262,7 +266,7 @@ export function UnlockCurve({ steps, names, rest }: {
   const half = steps.findIndex((s) => s.unlocked >= max / 2) + 1;
   const ticks = Array.from({ length: top / 20 + 1 }, (_, i) => i * 20);
   return <figure className="mt-4 rounded-xl border border-border bg-surface p-4">
-    <figcaption className="text-sm font-medium">Tools unlocked as fixes ship, in the fix order</figcaption>
+    <figcaption className="text-sm font-medium">Tools unlocked as fixes ship, in the current fix order</figcaption>
     <p className="mt-1 text-xs text-muted">
       The first {half} fixes unlock half of the {max}; the last {steps.length - steps.findIndex((s) => s.unlocked >= max * 0.8) - 1} add
       the final fifth. Of the other {rest.fixes + rest.own + rest.upgrade} tools with a confirmed gap, {rest.fixes} are
