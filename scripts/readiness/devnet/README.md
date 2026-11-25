@@ -52,7 +52,10 @@ socket paths are limited to 108 bytes.
    > $DEVNET_DIR/blocks.txt` dumps every raw block for the codecs without a node client:
    `build-cml-probe.sh 6.2.0 $DEVNET_DIR/cml-probe-6.2.0`, then `cml-probe-6.2.0 blocks < blocks.txt` and
    `... decode < labeled`. For cardano-js-sdk, `npm install --ignore-scripts @cardano-sdk/core@0.47.1` (still the newest) into its own
-   directory and run `node js-probe/probe.cjs <that directory> < labeled`. The text envelopes from step 5
+   directory and run `node js-probe/probe.cjs <that directory> < labeled`. Its code is maintained in lace-sdk as
+   `@laceio/cardano` since October 2026: install a version of that into another directory and run
+   `node js-probe/probe.cjs <that directory> @laceio/cardano < labeled` (rerun 2026-11-25 for 0.1.1 and
+   0.2.0-canary.3). The text envelopes from step 5
    (`jq -r .cborHex $DEVNET_DIR/work/tx/*.signed`, each line prefixed with a name) are decoded the same way.
 10. Service layer (rerun 2026-11-01). `./service-layer.sh` runs cardano-db-sync 13.7.2.1 on a `postgres:16` container
     (port 5433) against the devnet for 150 s, then Blockfrost RYO v6.8.2 on its database (port 3100), and prints

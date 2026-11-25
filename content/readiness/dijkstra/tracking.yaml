@@ -344,7 +344,16 @@ tools:
         note: Leios mini-protocols
       - url: https://github.com/bloxbean/yaci/tree/next-leios
   cardano-js-sdk:
+    unreleased:
+      note: "The code moved to lace-sdk and is published as @laceio/cardano, a rename of the @cardano-sdk packages: most dependents move by changing imports. Its 0.2.0-canary.3 prerelease decodes every Dijkstra encoding of the 11.2.1 devnet, balance intervals included, and reads parameter-update keys 38-56. The newest stable release, 0.1.1, is the @cardano-sdk/core 0.47.1 code and fails on balance intervals; @cardano-sdk/* will get no Dijkstra fixes."
+      date: 2026-11-25
     links:
+      - url: https://github.com/input-output-hk/lace-sdk
+        note: "Where the code lives now, as @laceio/cardano"
+      - url: https://github.com/input-output-hk/lace-sdk/releases/tag/%40laceio%2Fcardano%400.2.0-canary.0
+        note: "Prerelease notes listing the Dijkstra work"
+      - url: https://sdk.lace.io/docs/learn/cardano-domain-layer/
+        note: "Moving a project from @cardano-sdk to @laceio/cardano"
       - url: https://github.com/input-output-hk/cardano-js-sdk/issues/1759
         note: Update Dijkstra definitions
       - url: https://github.com/input-output-hk/cardano-js-sdk/pull/1735

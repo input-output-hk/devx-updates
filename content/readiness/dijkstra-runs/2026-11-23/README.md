@@ -44,6 +44,22 @@ cannot restart an old chain). The `54bb8c1c` and `ee51691d` logs above are kept 
 
 Neither fork's work is merged upstream or released.
 
+## @laceio/cardano rerun (2026-11-25)
+
+cardano-js-sdk's code moved to [input-output-hk/lace-sdk](https://github.com/input-output-hk/lace-sdk) in October 2026
+and is published as `@laceio/cardano`: `@laceio/cardano/core` is `@cardano-sdk/core` under a new name, with the same
+exports. The `@cardano-sdk` packages stay published at the versions it was taken from and are to be deprecated, so
+Dijkstra fixes reach dependents only after they move. `js-probe/probe.cjs` now takes the package as an argument and
+decoded this run's `transactions-labeled.txt` offline; its `@cardano-sdk/core` 0.47.1 output is unchanged.
+
+| Package | Result |
+| --- | --- |
+| `@laceio/cardano` 0.1.1 (latest) | Same output as `@cardano-sdk/core` 0.47.1, line for line: fails on the three balance-interval encodings. |
+| `@laceio/cardano` 0.2.0-canary.3 (prerelease, 2026-11-24) | **Decodes and re-encodes byte for byte all 32 encodings**, balance intervals included, and every transaction id matches `transaction-ids.json`. |
+
+Logs: `lace-cardano-0.1.1-txs.log`, `lace-cardano-0.2.0-canary.3-txs.log`; locks in
+`build-inputs/codecs-lace-cardano-*-package-lock.json`.
+
 ## Files
 
 - `transactions-labeled.txt`, `transaction-ids.json`: 32 envelope and mempool encodings; every mempool id matches its
