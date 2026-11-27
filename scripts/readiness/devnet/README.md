@@ -113,6 +113,14 @@ socket paths are limited to 108 bytes.
     platform-probe/Cargo.toml`, then `platform-probe < labeled`. `handshake.py` with `10,...,16` and `10,...,23`
     reproduces the version sets of the platform's 1.0.0 release and main.
 
+15. db-sync builds (added 2026-11-27). After step 14's `spend-sub`, `db-sync.sh run NAME BIN SCHEMA_DIR` runs any
+    cardano-db-sync binary from genesis on its own Postgres 16 container (port `PGPORT_HOST`, default 5434): a release,
+    or a nix build of master or a branch, such as `nix build github:IntersectMBO/cardano-db-sync/<rev>#cardano-db-sync`,
+    with `schema/` from the same revision. Builds older than 13.8.0.0 need `LEGACY_LOGGING=1`. `db-sync.sh resume NAME`
+    adds `plutusV4` to `scripttype` by hand and restarts it. `db-sync.sh report NAME` lists every test transaction as
+    indexed or missing, and checks the sub-transaction, the direct deposit, the guard redeemers and the new parameters
+    against the node. `db-sync.sh stop NAME` removes the container. Run: `content/readiness/dijkstra-runs/2026-11-27-db-sync/`.
+
 ## Retained evidence and determinism
 
 The current run is in `content/readiness/dijkstra-runs/2026-11-23/` (node 11.2.1); the 11.2.0 runs are in

@@ -1,0 +1,12 @@
+cardano-db-sync 13.7.2.1 - linux-x86_64 - ghc-9.10
+git revision 72e067fa064af549a00d263c890c179989cf4f40
+node tip: {"epoch":39,"era":"Dijkstra","block":395,"slot":7923}
+db-sync still running after 150s
+blocks indexed: 27, highest block_no: 26, highest slot: 395
+schema_version: 16 61 6
+decoder failures: 30
+error/exception lines: 58
+[31m[db-sync-node:Error:193][0m [2026-11-27 11:32:13.61 UTC] ChainSyncWithBlocksPtcl: DecoderFailure (ChainSync (HardForkBlock (': * ByronBlock (': * (ShelleyBlock (TPraos StandardCrypto) ShelleyEra) (': * (ShelleyBlock (TPraos StandardCrypto) AllegraEra) (': * (ShelleyBlock (TPraos StandardCrypto) MaryEra) (': * (ShelleyBlock (TPraos StandardCrypto) AlonzoEra) (': * (ShelleyBlock (Praos StandardCrypto) BabbageEra) (': * (ShelleyBlock (Praos StandardCrypto) ConwayEra) (': * (ShelleyBlock (Praos2 StandardCrypto) DijkstraEra) ('[] *)))))))))) (Tip HardForkBlock (': * ByronBlock (': * (ShelleyBlock (TPraos StandardCrypto) ShelleyEra) (': * (ShelleyBlock (TPraos StandardCrypto) AllegraEra) (':
+[31m[db-sync-node:Error:316][0m [2026-11-27 11:32:18.63 UTC] recvMsgRollBackward: AsyncCancelled
+[31m[db-sync-node:Error:311][0m [2026-11-27 11:32:18.63 UTC] ChainSyncWithBlocksPtcl: DecoderFailure (ChainSync (HardForkBlock (': * ByronBlock (': * (ShelleyBlock (TPraos StandardCrypto) ShelleyEra) (': * (ShelleyBlock (TPraos StandardCrypto) AllegraEra) (': * (ShelleyBlock (TPraos StandardCrypto) MaryEra) (': * (ShelleyBlock (TPraos StandardCrypto) AlonzoEra) (': * (ShelleyBlock (Praos StandardCrypto) BabbageEra) (': * (ShelleyBlock (Praos StandardCrypto) ConwayEra) (': * (ShelleyBlock (Praos2 StandardCrypto) DijkstraEra) ('[] *)))))))))) (Tip HardForkBlock (': * ByronBlock (': * (ShelleyBlock (TPraos StandardCrypto) ShelleyEra) (': * (ShelleyBlock (TPraos StandardCrypto) AllegraEra) (':
+[31m[db-sync-node:Error:327][0m [2026-11-27 11:32:23.65 UTC] recvMsgRollBackward: AsyncCancelled

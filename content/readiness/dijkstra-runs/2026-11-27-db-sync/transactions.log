@@ -1,0 +1,47 @@
+Transaction successfully submitted. Transaction hash is:
+## conway-payment (conway build-raw)
+envelope: Tx ConwayEra 84a3
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"89d45c27006ca9288c5fc4318f2c8602ca00233c36ea4898a057a71cc9c277de"}
+
+## conway-legacy-reg (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Command failed: transaction submit
+Error: The era of the node and the tx do not match. The node is running in the Dijkstra era, but the transaction is for the Conway era.
+
+
+## conway-reg-with-deposit (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"a17719e2660caf7cbb176ff7220aed9d6a967d2356aa59ec961af8dc7bb84146"}
+
+## conway-required-signer (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"11bd39abc920b7657106a4f4b0748585ef2b0e8bf146ec9c251435a52ba9bcca"}
+
+## conway-metadata (conway build-raw)
+envelope: Tx ConwayEra 84a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"1dfe0f557bce039169a1ef6f7a132079b71272f565b0f754cd300d94ed6b119a"}
+
+## dijkstra-payment (dijkstra build-raw)
+envelope: Tx DijkstraEra 83a3
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"87778dc3e4118649e28aa463a5c7416e0ee0244922e166de996463716c432da4"}
+
+## dijkstra-legacy-reg (dijkstra build-raw)
+Command failed: transaction build-raw
+Error: /tmp/dj-dbsync/work/tx/kd0.cert: TextEnvelope decode error: DecoderErrorDeserialiseFailure "DijkstraTxCert DijkstraEra" (DeserialiseFailure 2 "Certificates without deposits are no longer supported")
+CallStack (from HasCallStack):
+
+## dijkstra-reg-with-deposit (dijkstra build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"d75aaae64c78985ef44c8b0d9f97785a74d8574a7d5ecc90d1090d0d7e3035c3"}
+
+## dijkstra-metadata (dijkstra build-raw)
+envelope: Tx DijkstraEra 83a4
+Transaction successfully submitted. Transaction hash is:
+{"txhash":"7b49b2f0e852565d9004c0f16f9e6a5185b9c131665fd2125ae2e5bda5ff8e86"}
+

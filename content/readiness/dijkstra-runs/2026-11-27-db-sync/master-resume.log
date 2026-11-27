@@ -1,0 +1,12 @@
+db-sync stopped at block 81
+ALTER TYPE
+node tip: {"epoch":11,"era":"Dijkstra","block":125,"slot":2310}
+db-sync exited
+blocks indexed: 86, highest block_no: 85, highest slot: 1512
+schema_version: 16 55 6
+decoder failures: 0
+error/exception lines: 4
+[2026-11-27 11:25:20.8112Z][devbox:DBSync.Message](Error,168) Error SNErrDefault: "TxId not found for hash: \"{\\SI.\\SYN'\\232\\186\\188\\249B!\\236/\\150\\220\\219\\214\\212\\133\\ETX\\146\\182Pw&^J#/\\DC2.O\"":
+[2026-11-27 11:25:20.8112Z][devbox:DBSync.Message](Error,168) runDbThread: Error SNErrDefault: "TxId not found for hash: \"{\\SI.\\SYN'\\232\\186\\188\\249B!\\236/\\150\\220\\219\\214\\212\\133\\ETX\\146\\182Pw&^J#/\\DC2.O\"":
+[2026-11-27 11:25:20.8116Z][devbox:DBSync.Message](Error,181) ChainSyncWithBlocksPtcl: AsyncCancelled
+cardano-db-sync: Error SNErrDefault: "TxId not found for hash: \"{\\SI.\\SYN'\\232\\186\\188\\249B!\\236/\\150\\220\\219\\214\\212\\133\\ETX\\146\\182Pw&^J#/\\DC2.O\"":

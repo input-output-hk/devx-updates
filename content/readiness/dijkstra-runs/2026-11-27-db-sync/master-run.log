@@ -1,0 +1,12 @@
+cardano-db-sync 13.9.0.0 - linux-x86_64 - ghc-9.6
+git revision c49b7268a2f33ed0eb2e3341ad8fa15005fddfad
+node tip: {"epoch":11,"era":"Dijkstra","block":121,"slot":2224}
+db-sync exited
+blocks indexed: 82, highest block_no: 81, highest slot: 1458
+schema_version: 16 55 6
+decoder failures: 0
+error/exception lines: 5
+[2026-11-27 11:25:12.5716Z][devbox:DBSync.Message](Warning,168) Database transaction error: DbSessionError {dbSessionErrCallStack = DbCallStack {dbCsFncName = "insertScript", dbCsModule = "Cardano.DbSync.Era.Universal.Insert.Other", dbCsFile = "src/Cardano/DbSync/Era/Universal/Insert/Other.hs", dbCsLine = 188, dbCsCallChain = []}, dbSessionErrMsg = "ResultError (ServerError \"22P02\" \"invalid input value for enum scripttype: \\\"plutusV4\\\"\" Nothing Nothing Nothing)\n QueryError \"INSERT INTO script (tx_id, hash, type, json, bytes, serialised_size) VALUES ($1, $2, $3::scripttype, $4::jsonb, $5, $6) ON CONFLICT (hash) DO UPDATE SET hash = EXCLUDED.hash RETURNING id\" [\"24\",\"\\\"1\\\\167
+[2026-11-27 11:25:12.5717Z][devbox:DBSync.Message](Error,168) Error SNErrDbSessionErr: 
+[2026-11-27 11:25:12.5718Z][devbox:DBSync.Message](Error,168) runDbThread: Error SNErrDbSessionErr: 
+[2026-11-27 11:25:12.5720Z][devbox:DBSync.Message](Error,181) ChainSyncWithBlocksPtcl: AsyncCancelled

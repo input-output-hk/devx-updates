@@ -1,0 +1,15 @@
+node        cardano-node 11.2.1 90bc1cd9380a78a63091ff673f8c5693152c8f60, CLI 11.7.0.0 (official prerelease asset,
+            sha256 88276ed753f460ee876c03c305ad68de9e4a16945f7c741e08130bf296791174)
+chain       a fresh devnet built on 2026-11-27 with start.sh, hardfork.sh 11, hardfork.sh 12, transactions.sh,
+            advanced.sh and `blockfrost.sh spend-sub`; Dijkstra from epoch 2, protocol version 12.0
+db-sync     master c49b7268a2f33ed0eb2e3341ad8fa15005fddfad (13.9.0.0), nix build
+            github:IntersectMBO/cardano-db-sync/<rev>#cardano-db-sync, substituted from cache.iog.io
+            /nix/store/3nvs8csy03nfz3flb78spy8r6795rcla-cardano-db-sync-exe-cardano-db-sync-13.9.0.0
+            bin/cardano-db-sync sha256 1dce0642411596ba48ffe8ab89b39e1ed2cf68562aadc5cd96105c8f020b13bd
+            schema: schema/ at the same revision
+db-sync     leios-w42 72e067fa064af549a00d263c890c179989cf4f40 (reports 13.7.2.1, ghc 9.10), same nix build; the
+            executable was built locally, its dependencies came from cache.iog.io
+            /nix/store/ayk2zfrky5lf943d88a3sjjc7ij4a59x-cardano-db-sync-exe-cardano-db-sync-13.7.2.1
+            bin/cardano-db-sync sha256 cca7e513f36300a98215dd935d9d07435145e3a7003551b52a2014e39f10c5df
+            schema: schema/ at the same revision
+postgres    postgres:16@sha256:5db6dac2ef5dcff512f4f00a009c3c332b9f2f28f24277175bf3e4a3d02ef83a
