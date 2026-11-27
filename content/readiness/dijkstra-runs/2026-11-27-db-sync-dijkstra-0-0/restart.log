@@ -1,0 +1,9 @@
+db-sync stopped at block 3862
+ALTER TYPE
+NOTICE:  enum label "plutusV4" already exists, skipping
+node tip: {"epoch":387,"era":"Dijkstra","block":3892,"slot":77417}
+db-sync still running after 60s
+blocks indexed: 3894, highest block_no: 3893, highest slot: 77446
+schema_version: 17 53 6
+decoder failures: 0
+error/exception lines: 0

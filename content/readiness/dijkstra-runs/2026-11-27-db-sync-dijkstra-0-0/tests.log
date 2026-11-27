@@ -1,0 +1,796 @@
+# nix checks.x86_64-linux of 8b548af1, re-run locally: nix build --rebuild github:IntersectMBO/cardano-db-sync/<rev>#checks.x86_64-linux.<check>
+# exit=1 with 'may not be deterministic' means the suite ran and passed, but its output (timings) differs from the cached Hydra result
+cardano-db:test:test rerun exit=0 (447s): 
+cardano-db-sync:test:test rerun exit=1 (461s): 
+cardano-db:test:test-db rerun exit=1 (82s): cardano-db-test-test-db> All 21 tests passed (5.41s) 
+cardano-chain-gen:test:cardano-chain-gen rerun exit=1 (684s): cardano-chain-gen-test-cardano-chain-gen> All 156 tests passed (603.85s) 
+hlint rerun exit=0 (67s): 
+shellcheck rerun exit=0 (4s): 
+fourmolu rerun exit=0 (12s): 
+
+## cardano-db_test_test
+checking outputs of '/nix/store/bwmkkm0d5lfrz814kq979fp2090v8am4-cardano-db-test-test-13.8.0.0-check.drv'...
+Running phase: unpackPhase
+unpacking source archive /nix/store/4zy5d9f6a22nwlr32ll9pfd9fvx3mi0x-source-cardano-db-test-test-root
+source root is source-cardano-db-test-test-root
+Running phase: patchPhase
+Running phase: buildPhase
+/nix/store/4mmkmk041i0wb35zcm8knp10sl49sspm-cardano-db-test-test-13.8.0.0/bin:
+patching script interpreter paths in /build/tmp.kFsx1NdWpH/bin
+━━━ Test.Property.Upstream ━━━
+  ✓ prop_isRedeemAddress passed 2 tests.
+  ✓ 1 succeeded.
+━━━ Test.Property.Cardano.Db.ErrorRender ━━━
+  ✓ prop_lookupErrorShowsMessageOnly passed 1 test.
+  ✓ prop_sessionErrorHasNoRawRecordDump passed 1 test.
+  ✓ 2 succeeded.
+━━━ Test.Property.Cardano.Db.Migration ━━━
+  ✓ prop_roundtrip_MigrationVersion passed 100 tests.
+  ✓ prop_roundtrip_renderMigrationVersion_no_spaces passed 100 tests.
+  ✓ 2 succeeded.
+━━━ Test.Property.Cardano.Db.Types ━━━
+  ✓ prop_roundtrip_Ada_via_JSON passed 5000 tests.
+  ✓ prop_AssetFingerprint passed 1 test.
+  ✓ prop_roundtrip_DbInt65 passed 5000 tests.
+  ✓ prop_DbInt65_edge_cases passed 100 tests.
+  ✓ prop_roundtrip_DbLovelace passed 5000 tests.
+  ✓ prop_roundtrip_DbWord64 passed 5000 tests.
+  ✓ prop_word128_decoder_handles_normalised_scientific passed 1 test.
+  ✓ prop_word128_roundtrip_via_normalised_scientific passed 5000 tests.
+  ✓ prop_word128_roundtrip_trailing_zeros passed 1 test.
+  ✓ 9 succeeded.
+
+## cardano-db-sync_test_test
+checking outputs of '/nix/store/a6p7npkfjnjp6c3706f2ba2bwfg7dw2v-cardano-db-sync-test-test-13.8.0.0-check.drv'...
+Running phase: unpackPhase
+unpacking source archive /nix/store/6cqdass2cck62834n9l5jydp6w797zxl-source-cardano-db-sync-test-test-root
+source root is source-cardano-db-sync-test-test-root
+Running phase: patchPhase
+Running phase: buildPhase
+/nix/store/1z89npr0j8vix67h30czd0r4n1f84l4l-cardano-db-sync-test-test-13.8.0.0/bin:
+patching script interpreter paths in /build/tmp.vYsxrLVSq0/bin
+━━━ Cardano.DbSync.Util.Bech32 ━━━
+  ✓ serialiseVerKeyVrfToBech32 simple passed 100 tests.
+  ✓ serialiseVerKeyVrfToBech32 roundtrip passed 100 tests.
+  ✓ serialiseStakePoolHashKeyToBech32 simple passed 100 tests.
+  ✓ serialiseStakePoolKeyHashToBech32 roundtrip passed 100 tests.
+  ✓ 4 succeeded.
+━━━ Cardano.DbSync.Util.Address ━━━
+  ✓ serialiseAddress byron simple passed 100 tests.
+  ✓ serialiseAddress byron roundtrip passed 100 tests.
+  ✓ serialiseAddress shelley simple passed 100 tests.
+  ✓ serialiseAddress shelley roundtrip passed 100 tests.
+    mainnet 54% ██████████▊········· ✓ 10%
+    testnet 46% █████████▏·········· ✓ 10%
+  ✓ serialiseRewardAccount simple passed 100 tests.
+  ✓ serialiseRewardAccount roundtrip passed 100 tests.
+    mainnet 49% █████████▊·········· ✓ 10%
+    testnet 51% ██████████▏········· ✓ 10%
+  ✓ 6 succeeded.
+━━━ Cardano.DbSync.Util.CborTest ━━━
+  ✓ serialiseTxMetadataToCbor simple passed 100 tests.
+  ✓ serialiseTxMetadataToCbor roundtrip passed 100 tests.
+    number 65% █████████████······· ✓ 10%
+    bytes  68% █████████████▌······ ✓ 10%
+    text   65% █████████████······· ✓ 10%
+    list   66% █████████████▏······ ✓ 10%
+    map    70% ██████████████······ ✓ 10%
+  ✓ 2 succeeded.
+━━━ Cardano.DbSync.Era.Shelley.Generic.Script ━━━
+  ✓ multisigToJSON simple passed 100 tests.
+  ✓ multisigToJSON negative passed 100 tests.
+  ✓ multisigToJSON roundtrip passed 100 tests.
+  ✓ timelockToJSON simple passed 100 tests.
+  ✓ timelockToJSON negative passed 100 tests.
+  ✓ timelockToJSON roundtrip passed 100 tests.
+  ✓ dijkstraToJSON simple passed 100 tests.
+  ✓ dijkstraToJSON guard passed 100 tests.
+  ✓ dijkstraToJSON negative passed 100 tests.
+  ✓ dijkstraToJSON roundtrip passed 100 tests.
+  ✓ 10 succeeded.
+━━━ Cardano.DbSync.Era.Shelley.Generic.ScriptData ━━━
+  ✓ scriptDataToJSON simple passed 100 tests.
+  ✓ scriptDataToJSON negative passed 100 tests.
+  ✓ scriptDataToJSON roundtrip passed 100 tests.
+  ✓ 3 succeeded.
+━━━ Cardano.DbSync ━━━
+  ✓ extractSyncOptions passes prune consume migration passed 100 tests.
+    tx out enabled   82% ████████████████▍··· ✓ 5%
+    tx out disabled  82% ████████████████▍··· ✓ 5%
+    tx out bootstrap 18% ███▌················ ✓ 5%
+    tx out prune     18% ███▌················ ✓ 5%
+    tx out consumed  26% █████▏·············· ✓ 5%
+  ✓ extractSyncOptions passes tx out disable passed 100 tests.
+    tx out enabled   82% ████████████████▍··· ✓ 5%
+    tx out disabled  82% ████████████████▍··· ✓ 5%
+    tx out bootstrap 18% ███▌················ ✓ 5%
+    tx out prune     18% ███▌················ ✓ 5%
+    tx out consumed  26% █████▏·············· ✓ 5%
+  ✓ extractSyncOptions passes offchain pool data passed 100 tests.
+  ✓ extractSyncOptions passes governance passed 100 tests.
+  ✓ 4 succeeded.
+━━━ Cardano.DbSync.Config.Types ━━━
+  ✓ SyncInsertConfig FromJSON passed 100 tests.
+  ✓ SyncInsertConfig roundtrip passed 100 tests.
+    full          23% ████▌··············· ✓ 5%
+    only utxo     14% ██▊················· ✓ 5%
+    only gov      17% ███▍················ ✓ 5%
+    disable all   22% ████▍··············· ✓ 5%
+    custom config 24% ████▊··············· ✓ 5%
+  ✓ isTxEnabled passed 100 tests.
+  ✓ hasLedger passed 100 tests.
+  ✓ shouldUseLedger passed 100 tests.
+  ✓ isShelleyEnabled passed 100 tests.
+  ✓ isMultiAssetEnabled passed 100 tests.
+  ✓ isMetadataEnabled passed 100 tests.
+  ✓ isPlutusEnabled passed 100 tests.
+  ✓ 9 succeeded.
+━━━ Cardano.DbSync.Api ━━━
+  ✓ extractInsertOptions passed 100 tests.
+    full        27% █████▍·············· ✓ 5%
+    only utxo   22% ████▍··············· ✓ 5%
+    only gov    11% ██▏················· ✓ 5%
+    disable all 23% ████▌··············· ✓ 5%
+    config      17% ███▍················ ✓ 5%
+  ✓ extractInsertOptions rewards passed 100 tests.
+    full        27% █████▍·············· ✓ 5%
+    only utxo   22% ████▍··············· ✓ 5%
+    only gov    11% ██▏················· ✓ 5%
+    disable all 23% ████▌··············· ✓ 5%
+    config      17% ███▍················ ✓ 5%
+  ✓ 2 succeeded.
+━━━ Cardano.DbSync.OffChain.Vote ━━━
+  ✓ parseAndValidateVoteData handles valid CIP-119 format passed 1 test.
+  ✓ parseAndValidateVoteData handles invalid CIP format (type error) passed 1 test.
+  ✓ parseAndValidateVoteData handles valid JSON but invalid structure passed 1 test.
+  ✓ parseAndValidateVoteData handles unparseable JSON passed 1 test.
+  ✓ image contentUrl base64 data URI keeps its prefix (#1966) passed 1 test.
+  ✓ 5 succeeded.
+━━━ Cardano.DbSync.OffChain.Http ━━━
+  ✓ parseOffChainUrl rejects localhost-family hosts by default passed 1 test.
+  ✓ parseOffChainUrl accepts localhost-family hosts when allowPrivate=True passed 1 test.
+  ✓ parseOffChainUrl accepts public hosts in either mode passed 1 test.
+  ✓ parseOffChainUrl rejects non-HTTP schemes in either mode passed 1 test.
+  ✓ isPrivateAddr classifies IPv4, IPv6, and IPv4-mapped IPv6 addresses passed 1 test.
+  ✓ 5 succeeded.
+━━━ Cardano.DbSync.Util ━━━
+  ✓ sanitiseUrl encodes NUL as %00 passed 1 test.
+  ✓ sanitiseUrl leaves NUL-free text unchanged passed 100 tests.
+  ✓ sanitiseUrl output never contains NUL passed 100 tests.
+  ✓ sanitiseUrl preserves distinctness of NUL-bearing URLs passed 100 tests.
+  ✓ sanitiseUrl collides a raw NUL with a literal %00 passed 1 test.
+  ✓ jsonHasNul finds NUL in strings, keys and nested values passed 1 test.
+  ✓ jsonHasNul is False for NUL-free JSON passed 100 tests.
+  ✓ stripJsonNuls removes every NUL passed 100 tests.
+  ✓ stripJsonNuls leaves NUL-free JSON unchanged passed 100 tests.
+  ✓ encoded stripJsonNuls has no \u0000 escape passed 100 tests.
+  ✓ encoding a NUL does produce the escape Postgres rejects passed 1 test.
+  ✓ containsUnicodeNul matches only the NUL escape passed 1 test.
+  ✓ jsonbNestingExceeded accepts a document at the limit passed 1 test.
+  ✓ jsonbNestingExceeded rejects one level past the limit passed 1 test.
+  ✓ jsonbNestingExceeded ignores brackets inside strings passed 1 test.
+  ✓ jsonbNestingExceeded accepts ordinary JSON passed 100 tests.
+  ✓ jsonNumberUnstorable follows Postgres numeric range passed 1 test.
+  ✓ jsonNumberUnstorable is False for ordinary numbers passed 100 tests.
+  ✓ unstorableAsJsonb names the limit that was hit passed 1 test.
+  ✓ unstorableAsJsonb accepts storable JSON passed 100 tests.
+  ✓ stripJsonNuls removes the reason a NUL is refused passed 100 tests.
+  ✓ 21 succeeded.
+━━━ Cardano.DbSync.Config.Node ━━━
+  ✓ the flat (v1) node configuration parses passed 1 test.
+  ✓ the nested (v2) node configuration parses passed 1 test.
+  ✓ both layouts of the same configuration are read alike passed 1 test.
+  ✓ ByronProtocolVersion is the only setting the layouts differ on passed 1 test.
+  ✓ flattening leaves a v1 configuration untouched passed 1 test.
+  ✓ flattening drops the sections that configure the node passed 1 test.
+  ✓ PBftSignatureThreshold is still read when present passed 1 test.
+  ✓ a missing required key names the key and the layout passed 1 test.
+  ✓ 8 succeeded.
+error: derivation '/nix/store/a6p7npkfjnjp6c3706f2ba2bwfg7dw2v-cardano-db-sync-test-test-13.8.0.0-check.drv' may not be deterministic: output "/nix/store/cnjfpmnfh9dbnvccg99846hk84kz970y-cardano-db-sync-test-test-13.8.0.0-check" differs
+
+## cardano-db_test_test-db
+checking outputs of '/nix/store/z5107i0zmqr6mgwcpvf66s65y7157sqm-cardano-db-test-test-db-13.8.0.0-check.drv'...
+Running phase: unpackPhase
+unpacking source archive /nix/store/7yy05705zxn1knz2hjk0q5pgg8zd5ksi-source-cardano-db-test-test-db-root
+source root is source-cardano-db-test-test-db-root
+Running phase: patchPhase
+Running phase: buildPhase
+pre-check
+The files belonging to this database system will be owned by user "nixbld".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.UTF-8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+creating directory /build/db-dir ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default "max_connections" ... 100
+selecting default "shared_buffers" ... 128MB
+selecting default time zone ... UTC
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+initdb: warning: enabling "trust" authentication for local connections
+initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /build/db-dir -l logfile start
+
+2026-11-27 13:43:32.681 UTC [33] LOG:  starting PostgreSQL 17.7 on x86_64-pc-linux-gnu, compiled by clang version 20.1.8, 64-bit
+2026-11-27 13:43:32.684 UTC [33] LOG:  listening on Unix socket "/build/.s.PGSQL.5432"
+2026-11-27 13:43:32.691 UTC [37] LOG:  database system was shut down at 2026-11-27 13:43:32 UTC
+2026-11-27 13:43:32.696 UTC [33] LOG:  database system is ready to accept connections
+PostgreSQL server is verified to be started.
+total 32K
+drwxr-xr-x  4 nixbld nixbld 4.0K Jan  1  1970 source-cardano-db-test-test-db-root
+-rw-------  1 nixbld nixbld  21K Nov 27 13:43 env-vars
+drwx------ 19 nixbld nixbld 4.0K Nov 27 13:43 db-dir
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema' -> '../schema'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0000-20190730.sql' -> '../schema/migration-1-0000-20190730.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0001-20190730.sql' -> '../schema/migration-1-0001-20190730.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0002-20190912.sql' -> '../schema/migration-1-0002-20190912.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0003-20200211.sql' -> '../schema/migration-1-0003-20200211.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0004-20201026.sql' -> '../schema/migration-1-0004-20201026.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0005-20210311.sql' -> '../schema/migration-1-0005-20210311.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0006-20210531.sql' -> '../schema/migration-1-0006-20210531.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0007-20210611.sql' -> '../schema/migration-1-0007-20210611.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0008-20210727.sql' -> '../schema/migration-1-0008-20210727.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0009-20210727.sql' -> '../schema/migration-1-0009-20210727.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0010-20230612.sql' -> '../schema/migration-1-0010-20230612.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0011-20230814.sql' -> '../schema/migration-1-0011-20230814.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0012-20240211.sql' -> '../schema/migration-1-0012-20240211.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0013-20240318.sql' -> '../schema/migration-1-0013-20240318.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0014-20240411.sql' -> '../schema/migration-1-0014-20240411.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0015-20240724.sql' -> '../schema/migration-1-0015-20240724.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0016-20261028.sql' -> '../schema/migration-1-0016-20261028.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0017-20261029.sql' -> '../schema/migration-1-0017-20261029.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0001-20211003.sql' -> '../schema/migration-2-0001-20211003.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0002-20211007.sql' -> '../schema/migration-2-0002-20211007.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0003-20211013.sql' -> '../schema/migration-2-0003-20211013.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0004-20211014.sql' -> '../schema/migration-2-0004-20211014.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0005-20211018.sql' -> '../schema/migration-2-0005-20211018.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0006-20220105.sql' -> '../schema/migration-2-0006-20220105.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0007-20220118.sql' -> '../schema/migration-2-0007-20220118.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0008-20220126.sql' -> '../schema/migration-2-0008-20220126.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0009-20220207.sql' -> '../schema/migration-2-0009-20220207.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0010-20220225.sql' -> '../schema/migration-2-0010-20220225.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0011-20220318.sql' -> '../schema/migration-2-0011-20220318.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0012-20220502.sql' -> '../schema/migration-2-0012-20220502.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0013-20220505.sql' -> '../schema/migration-2-0013-20220505.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0014-20220505.sql' -> '../schema/migration-2-0014-20220505.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0015-20220505.sql' -> '../schema/migration-2-0015-20220505.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0016-20220524.sql' -> '../schema/migration-2-0016-20220524.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0017-20220526.sql' -> '../schema/migration-2-0017-20220526.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0018-20220604.sql' -> '../schema/migration-2-0018-20220604.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0019-20220615.sql' -> '../schema/migration-2-0019-20220615.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0020-20220919.sql' -> '../schema/migration-2-0020-20220919.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0021-20221019.sql' -> '../schema/migration-2-0021-20221019.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0022-20221020.sql' -> '../schema/migration-2-0022-20221020.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0023-20221019.sql' -> '../schema/migration-2-0023-20221019.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0024-20221020.sql' -> '../schema/migration-2-0024-20221020.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0025-20221020.sql' -> '../schema/migration-2-0025-20221020.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0026-20231017.sql' -> '../schema/migration-2-0026-20231017.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0027-20230713.sql' -> '../schema/migration-2-0027-20230713.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0028-20240117.sql' -> '../schema/migration-2-0028-20240117.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0029-20240117.sql' -> '../schema/migration-2-0029-20240117.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0030-20240108.sql' -> '../schema/migration-2-0030-20240108.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0031-20240117.sql' -> '../schema/migration-2-0031-20240117.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0032-20230815.sql' -> '../schema/migration-2-0032-20230815.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0033-20231009.sql' -> '../schema/migration-2-0033-20231009.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0034-20240301.sql' -> '../schema/migration-2-0034-20240301.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0035-20240308.sql' -> '../schema/migration-2-0035-20240308.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0036-20240318.sql' -> '../schema/migration-2-0036-20240318.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0037-20240403.sql' -> '../schema/migration-2-0037-20240403.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0038-20240603.sql' -> '../schema/migration-2-0038-20240603.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0039-20240703.sql' -> '../schema/migration-2-0039-20240703.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0040-20240626.sql' -> '../schema/migration-2-0040-20240626.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0041-20240711.sql' -> '../schema/migration-2-0041-20240711.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0042-20240808.sql' -> '../schema/migration-2-0042-20240808.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0043-20240828.sql' -> '../schema/migration-2-0043-20240828.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0044-20240912.sql' -> '../schema/migration-2-0044-20240912.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0045-20250708.sql' -> '../schema/migration-2-0045-20250708.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0046-20250223.sql' -> '../schema/migration-2-0046-20250223.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0047-20260421.sql' -> '../schema/migration-2-0047-20260421.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0048-20260520.sql' -> '../schema/migration-2-0048-20260520.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0049-20260604.sql' -> '../schema/migration-2-0049-20260604.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0050-20260617.sql' -> '../schema/migration-2-0050-20260617.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0051-20260709.sql' -> '../schema/migration-2-0051-20260709.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0052-20261028.sql' -> '../schema/migration-2-0052-20261028.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0053-20261029.sql' -> '../schema/migration-2-0053-20261029.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0001-20190816.sql' -> '../schema/migration-3-0001-20190816.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0002-20200521.sql' -> '../schema/migration-3-0002-20200521.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0003-20240121.sql' -> '../schema/migration-3-0003-20240121.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0004-20240603.sql' -> '../schema/migration-3-0004-20240603.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-9999-20200728.sql' -> '../schema/migration-3-9999-20200728.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0001-20200702.sql' -> '../schema/migration-4-0001-20200702.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0002-20200810.sql' -> '../schema/migration-4-0002-20200810.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0003-20210116.sql' -> '../schema/migration-4-0003-20210116.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0004-20210116.sql' -> '../schema/migration-4-0004-20210116.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0005-20211022.sql' -> '../schema/migration-4-0005-20211022.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0006-20220118.sql' -> '../schema/migration-4-0006-20220118.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0007-20220528.sql' -> '../schema/migration-4-0007-20220528.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0008-20240604.sql' -> '../schema/migration-4-0008-20240604.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0009-20250223.sql' -> '../schema/migration-4-0009-20250223.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0010-20261029.sql' -> '../schema/migration-4-0010-20261029.sql'
+NOTICE:  empty string is not a valid password, clearing password
+CREATE ROLE
+ALTER ROLE
+CREATE DATABASE
+You are now connected to database "nixbld" as user "postgres".
+ALTER SCHEMA
+/nix/store/4i77l38hs29s0lb1lf8ijfsa39n72n34-cardano-db-test-test-db-13.8.0.0/bin:
+patching script interpreter paths in /build/tmp.ZzKKBtL4xj/bin
+Database
+  Migration
+    Migration script names do not clash:                      OK
+    Migration is idempotent:                                  OK (0.99s)
+    Migration validation - unknown official migration found:  OK
+    Migration validation - mismatched hash for migration:     OK
+    Migration validation - mismatched hash for migration 2:   OK
+  EpochBlockTxs
+    epoch block tx count is looked up by block id:            OK
+  Insert
+    Insert zeroth block:                                      OK (0.35s)
+    Insert first block:                                       OK (0.35s)
+    Insert twice:                                             OK (0.35s)
+    Insert foreign key missing:                               OK (0.35s)
+    Insert pool relay with large port:                        OK (0.02s)
+    Off-chain vote data re-fetch does not duplicate children: OK (0.38s)
+  TotalSupply
+    Initial supply correct:                                   OK (0.36s)
+  TxOutQuery
+    queryTxOutputs decodes an enterprise output:              OK (0.39s)
+    utxo-set query decodes an enterprise output:              OK (0.39s)
+  EpochCalc
+    epoch view decodes Word128 sums with trailing zeros:      OK (0.39s)
+    epoch view aggregates realistic large sums:               OK (0.37s)
+  Transaction
+    An action returning Left is rolled back:                  OK (0.36s)
+    An action returning Right is committed:                   OK (0.01s)
+    An action that throws is rolled back:                     OK (0.34s)
+  PGConfig
+    Reading PGPass file:                                      OK
+
+All 21 tests passed (5.41s)
+post-check
+Dumping schema to db_schema.sql
+2026-11-27 13:43:48.457 UTC [33] LOG:  received smart shutdown request
+Adding to build products...
+2026-11-27 13:43:48.461 UTC [33] LOG:  background worker "logical replication launcher" (PID 40) exited with exit code 1
+error: derivation '/nix/store/z5107i0zmqr6mgwcpvf66s65y7157sqm-cardano-db-test-test-db-13.8.0.0-check.drv' may not be deterministic: output "/nix/store/p9qjw2r3xjcg3r9nd0znp42lbrb1vfj8-cardano-db-test-test-db-13.8.0.0-check" differs
+
+## cardano-chain-gen_test_cardano-chain-gen
+checking outputs of '/nix/store/qy1jz5n6zcxlz5s9y8w3cgaqa2hia3mx-cardano-chain-gen-test-cardano-chain-gen-13.8.0.0-check.drv'...
+Running phase: unpackPhase
+unpacking source archive /nix/store/lvp89iz3mfn2ws8gf130r35vp555p3yl-source-cardano-chain-gen-test-cardano-chain-gen-root
+source root is source-cardano-chain-gen-test-cardano-chain-gen-root
+Running phase: patchPhase
+Running phase: buildPhase
+pre-check
+The files belonging to this database system will be owned by user "nixbld".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.UTF-8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+creating directory /build/db-dir ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default "max_connections" ... 100
+selecting default "shared_buffers" ... 128MB
+selecting default time zone ... UTC
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+initdb: warning: enabling "trust" authentication for local connections
+initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /build/db-dir -l logfile start
+
+2026-11-27 13:44:59.010 UTC [33] LOG:  starting PostgreSQL 17.7 on x86_64-pc-linux-gnu, compiled by clang version 20.1.8, 64-bit
+2026-11-27 13:44:59.012 UTC [33] LOG:  listening on Unix socket "/build/.s.PGSQL.5432"
+2026-11-27 13:44:59.020 UTC [37] LOG:  database system was shut down at 2026-11-27 13:44:58 UTC
+2026-11-27 13:44:59.026 UTC [33] LOG:  database system is ready to accept connections
+PostgreSQL server is verified to be started.
+total 32K
+drwxr-xr-x  4 nixbld nixbld 4.0K Jan  1  1970 source-cardano-chain-gen-test-cardano-chain-gen-root
+-rw-------  1 nixbld nixbld  24K Nov 27 13:44 env-vars
+drwx------ 19 nixbld nixbld 4.0K Nov 27 13:44 db-dir
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0000-20190730.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0000-20190730.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0001-20190730.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0001-20190730.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0002-20190912.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0002-20190912.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0003-20200211.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0003-20200211.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0004-20201026.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0004-20201026.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0005-20210311.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0005-20210311.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0006-20210531.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0006-20210531.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0007-20210611.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0007-20210611.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0008-20210727.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0008-20210727.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0009-20210727.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0009-20210727.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0010-20230612.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0010-20230612.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0011-20230814.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0011-20230814.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0012-20240211.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0012-20240211.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0013-20240318.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0013-20240318.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0014-20240411.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0014-20240411.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0015-20240724.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0015-20240724.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0016-20261028.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0016-20261028.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0017-20261029.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-1-0017-20261029.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0001-20211003.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0001-20211003.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0002-20211007.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0002-20211007.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0003-20211013.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0003-20211013.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0004-20211014.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0004-20211014.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0005-20211018.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0005-20211018.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0006-20220105.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0006-20220105.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0007-20220118.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0007-20220118.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0008-20220126.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0008-20220126.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0009-20220207.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0009-20220207.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0010-20220225.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0010-20220225.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0011-20220318.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0011-20220318.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0012-20220502.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0012-20220502.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0013-20220505.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0013-20220505.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0014-20220505.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0014-20220505.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0015-20220505.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0015-20220505.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0016-20220524.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0016-20220524.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0017-20220526.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0017-20220526.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0018-20220604.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0018-20220604.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0019-20220615.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0019-20220615.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0020-20220919.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0020-20220919.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0021-20221019.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0021-20221019.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0022-20221020.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0022-20221020.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0023-20221019.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0023-20221019.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0024-20221020.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0024-20221020.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0025-20221020.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0025-20221020.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0026-20231017.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0026-20231017.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0027-20230713.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0027-20230713.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0028-20240117.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0028-20240117.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0029-20240117.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0029-20240117.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0030-20240108.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0030-20240108.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0031-20240117.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0031-20240117.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0032-20230815.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0032-20230815.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0033-20231009.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0033-20231009.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0034-20240301.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0034-20240301.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0035-20240308.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0035-20240308.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0036-20240318.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0036-20240318.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0037-20240403.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0037-20240403.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0038-20240603.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0038-20240603.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0039-20240703.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0039-20240703.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0040-20240626.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0040-20240626.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0041-20240711.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0041-20240711.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0042-20240808.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0042-20240808.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0043-20240828.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0043-20240828.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0044-20240912.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0044-20240912.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0045-20250708.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0045-20250708.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0046-20250223.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0046-20250223.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0047-20260421.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0047-20260421.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0048-20260520.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0048-20260520.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0049-20260604.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0049-20260604.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0050-20260617.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0050-20260617.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0051-20260709.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0051-20260709.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0052-20261028.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0052-20261028.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0053-20261029.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-2-0053-20261029.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0001-20190816.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0001-20190816.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0002-20200521.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0002-20200521.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0003-20240121.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0003-20240121.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0004-20240603.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-0004-20240603.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-9999-20200728.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-3-9999-20200728.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0001-20200702.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0001-20200702.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0002-20200810.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0002-20200810.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0003-20210116.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0003-20210116.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0004-20210116.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0004-20210116.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0005-20211022.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0005-20211022.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0006-20220118.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0006-20220118.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0007-20220528.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0007-20220528.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0008-20240604.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0008-20240604.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0009-20250223.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0009-20250223.sql'
+'/nix/store/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0010-20261029.sql' -> '../schema/dbw6j6jq80mirdb4djflaqm2wlh73ssd-schema/migration-4-0010-20261029.sql'
+NOTICE:  empty string is not a valid password, clearing password
+CREATE ROLE
+ALTER ROLE
+CREATE DATABASE
+You are now connected to database "nixbld" as user "postgres".
+ALTER SCHEMA
+/nix/store/nb70wj12xwc2dmrhxr7swnz4mid39yks-cardano-chain-gen-test-cardano-chain-gen-13.8.0.0/bin:
+patching script interpreter paths in /build/tmp.kKA5gvgDY9/bin
+cardano-chain-gen
+  Conway unit tests
+    config
+      conway genesis and hash:                                                             OK (0.23s)
+OK (0.08s)
+OK (0.13s)
+WOK (0.08s)
+ARNING: ignoring the logging keys defa      default insert config:                                                               ultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK
+OK
+      simple
+WARNING: ignoring tOK (1.14s)
+he        sync one block:                                                                     logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.04s)
+OK (1.02s)
+WARNIOK (1.06s)
+        node restart:                                                                      NG: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (7.67s)
+OK (8.10s)
+      jsonb-in-schema
+OK (1.44s)
+OK (1.27s)
+OK (1.52s)
+      Schema
+OK (1.98s)
+OK (1.60s)
+      tx-out
+OK (1.62s)
+OK (2.45s)
+OK (2.39s)
+WA        pruning should keep some tx:                                                       RNING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WAROK (1.85s)
+        prune and rollback one block:                                                      NING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.64s)
+OK (2.58s)
+OK (2.37s)
+OK (2.32s)
+WARNING: ignoring the        restart with new consumed set to false:                                             logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WARNING: ignoriOK (7.63s)
+ng         set prune flag, restart missing prune flag:                                        the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (7.65s)
+WAOK (7.64s)
+RNIN      tx-out with use_address_table config
+        basic prune, with use_address_table config:                                        G: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.72s)
+OK (2.82s)
+OK (2.18s)
+OK (2.02s)
+WARNING:         prune and rollback one block, with use_address_table config:                       ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.54s)
+OK (2.59s)
+WARNIOK (2.40s)
+        no pruning same block, with use_address_table config:                              NG: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.21s)
+WARNOK (7.59s)
+ING: ignoring the logging keys defau        set prune flag, restart missing prune flag, with use_address_table config:         ltBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WARNINGOK (7.60s)
+: ig        set bootstrap flag, restart missing bootstrap flag, with use_address_table config: noring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WOK (7.63s)
+        populate db then reset with use_address_table config config active:                ARNING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (7.60s)
+    Command Line Arguments
+      config
+        fails if incorrect config file given:                                              OK
+    Epoch
+OK (1.65s)
+OK (1.30s)
+WARNING      Epoch current view updates live within an epoch:                                     : ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.30s)
+WARN      Epoch rollback refreshes epoch_finalized:                                            ING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.91s)
+OK (2.45s)
+OK (2.33s)
+    rollbacks
+2026-11-27 13:47:19.910 UTC [6836] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+OK (1.43s)
+w      sync bigger chain:                                                                   ay/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.49s)
+OK (3.26s)
+OK (3.81s)
+WARNING:       big rollback executed lazily:                                                        ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.69s)
+WARNOK (2.69s)
+ING      rollback while rollbacking:                                                          : ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.88s)
+OK (2.18s)
+OK (2.21s)
+WARNIN      rollback full tx:                                                                    G: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.21s)
+OK (1.83s)
+OK (3.24s)
+OK (3.23s)
+OK (3.12s)
+    different configs
+OK (4.26s)
+WARNI      genesis config without stakes:                                                       NG: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway-no-stakes/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WOK (4.15s)
+    blocks with txs
+      simple tx:                                                                           ARNING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WARNINGOK (1.10s)
+      simple tx in Shelley era:                                                            : ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-shelley/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.06s)
+OK (1.07s)
+OK (1.06s)
+OK (1.06s)
+OK (1.20s)
+OK (1.32s)
+WAR      tx with metadata disabled:                                                           NING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.32s)
+OK (1.33s)
+    stake addresses
+OK (1.36s)
+OK (1.04s)
+OK (1.05s)
+OK (1.06s)
+OK (1.07s)
+WARNING: ignoring       stake address pointers. Use before registering.:                                     the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WAOK (1.04s)
+RN      stake address pointers have NULL stake_address_id in Conway:                         ING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.10s)
+OK (1.03s)
+OK (1.06s)
+    stake distribution
+OK (1.49s)
+OK (3.07s)
+OK (3.11s)
+WARNING:OK (9.45s)
+       many delegations:                                                                    ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (34.17s)
+OK (34.18s)
+    rewards
+OK (1.78s)
+OK (1.60s)
+OK (1.62s)
+    plutus send scripts
+OK (1.45s)
+2026-11-27 13:49:59.602 UTC [35] LOG:  checkpoint starting: time
+OK (1.07s)
+OK (1.04s)
+OK (1.03s)
+OK (1.05s)
+OK (1.08s)
+OK (1.06s)
+OK (1.79s)
+WARNING: ignoring the l      multiple scripts unlocked same block:                                                ogging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WOK (1.08s)
+      multiple scripts failed:                                                             ARNING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.08s)
+OK (1.11s)
+    Inline and reference
+OK (1.46s)
+OK (1.07s)
+W      inline datum with noncanonical CBOR:                                                 ARNING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.13s)
+OK (1.16s)
+OK (1.12s)
+OK (1.19s)
+OK (1.97s)
+OK (1.09s)
+WARNING: ignoring the loggin      reference input to output which is not spent:                                        g keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.11s)
+OK (1.10s)
+OK (1.08s)
+OK (1.08s)
+OK (1.08s)
+    Hard Fork
+OK (1.72s)
+WARNING: ignorin      fork from Babbage to Conway and rollback:                                            g the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway-hf-epoch1/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+2026-11-27 13:50:29.046 UTC [18086] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+OK (1.40s)
+OK (1.81s)
+    Governance
+WAOK (1.63s)
+RNING: ignori      new committee member:                                                                ng the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.56s)
+OK (1.41s)
+WAOK (2.48s)
+R      rollback new committee member proposal:                                              NING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.05s)
+WARNIOK (1.59s)
+      NUL in anchor url:                                                                   NG: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.62s)
+WAOK (1.56s)
+RNING: ig      parameter change:                                                                    noring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.55s)
+OK (1.58s)
+WARNINGOK (2.22s)
+      rollback hardfork:                                                                   : ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-conway/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.52s)
+OK (2.75s)
+  Babbage unit tests
+    simple
+OK (1.30s)
+OK (1.09s)
+OK (1.13s)
+WOK (1.20s)
+      node restart:                                                                        ARNING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WARNINOK (7.72s)
+      node restart boundary:                                                               G: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+WAROK (7.99s)
+    blocks with txs
+NING: ig      simple tx:                                                                           noring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.11s)
+OK (1.11s)
+WAR      consume utxo same block:                                                             NING: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.04s)
+    rewards
+WAOK (3.61s)
+RNIN      rewards with reregistration. Fixed in Babbage.:                                      G: ignoring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (2.42s)
+OK (1.20s)
+OK (1.37s)
+WAOK (1.39s)
+RNING: ign      rollback on epoch boundary:                                                          oring the logging keys defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.56s)
+OK (1.29s)
+  Alonzo unit tests
+    config
+OK
+OK
+    simple
+WARNING: ignOK (1.21s)
+oring the logging keys      sync one block:                                                                       defaultBackends, defaultScribes, minSeverity, options, rotation, setupBackends, setupScribes in test/testfiles/config-alonzo/test-db-sync-config.json: they configure iohk-monitoring, which db-sync no longer uses. Logging is running on the default configuration, everything at Info severity to stdout. See config/mainnet-config.yaml for the TraceOptions format that replaces them.
+OK (1.03s)
+OK (1.05s)
+OK (1.03s)
+    blocks with txs
+OK (1.30s)
+OK (1.03s)
+2026-11-27 13:51:53.083 UTC [24246] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+2026-11-27 13:52:15.869 UTC [24745] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+2026-11-27 13:52:29.388 UTC [24915] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+2026-11-27 13:53:16.246 UTC [25456] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+2026-11-27 13:53:38.916 UTC [25955] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+2026-11-27 13:53:58.253 UTC [25964] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+2026-11-27 13:54:15.278 UTC [26325] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+2026-11-27 13:54:22.015 UTC [26333] WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+2026-11-27 13:54:31.926 UTC [35] LOG:  checkpoint complete: wrote 4789 buffers (29.2%); 0 WAL file(s) added, 0 removed, 26 recycled; write=269.455 s, sync=2.437 s, total=272.324 s; sync files=64936, longest=0.010 s, average=0.001 s; distance=430471 kB, estimate=430471 kB; lsn=0/1F408C50, redo lsn=0/1B9ABAA0
+2026-11-27 13:54:42.386 UTC [27025] LOG:  could not send data to client: Broken pipe
+2026-11-27 13:54:42.386 UTC [27025] FATAL:  connection to client lost
+2026-11-27 13:54:59.964 UTC [35] LOG:  checkpoint starting: time
+OK (214.40s)
+    +++ OK, passed 20 tests.
+
+    Commands (113 in total):
+    17.7% AssertBlockNo
+    17.7% RollForward
+    17.7% StartDBSync
+    16.8% RollBack
+    16.8% StopDBSync
+    13.3% RestartNode
+
+All 156 tests passed (603.85s)
+post-check
+Dumping schema to db_schema.sql
+2026-11-27 13:55:13.138 UTC [33] LOG:  received smart shutdown request
+Adding to build products...
+buildPhase completed in 10 minutes 15 seconds
+error: derivation '/nix/store/qy1jz5n6zcxlz5s9y8w3cgaqa2hia3mx-cardano-chain-gen-test-cardano-chain-gen-13.8.0.0-check.drv' may not be deterministic: output "/nix/store/w9rbwkhxa1ykzp6v389kbvkg8z4vlpp5-cardano-chain-gen-test-cardano-chain-gen-13.8.0.0-check" differs
+
+## hlint
+checking outputs of '/nix/store/zkb4pqxcazrqhgbzhfsvrfay36masv4i-hlint-check.drv'...
+No hints
+
+## shellcheck
+checking outputs of '/nix/store/ldpm92g5jc5g0l9gcr10517fvncfph0f-shellcheck.drv'...
+./dev-tools/monitoring/scripts/start-monitoring.sh [ PASSED ]
+./dev-tools/profiling/scripts/start-profiling.sh [ PASSED ]
+./dev-tools/profiling/scripts/build-profiling.sh [ PASSED ]
+./scripts/postgresql-test.sh [ PASSED ]
+./scripts/secp256k1-setup.sh [ PASSED ]
+./scripts/fourmolize.sh [ PASSED ]
+./scripts/postgresql-setup.sh [ PASSED ]
+./scripts/check-and-fix-epoch-table.sh [ PASSED ]
+./scripts/run-everything-tmux.sh [ PASSED ]
+./scripts/run-schema-checks.sh [ PASSED ]
+Total Failed Files: 0
+
+## fourmolu
+checking outputs of '/nix/store/bnsg8jr470m3kv50yl79bz803ggx8aa2-fourmolu-check.drv'...
+Loaded config from: /nix/store/7fvw0kpqnfv7kh4q7g10v7f3ss2kxv6s-source/fourmolu.yaml

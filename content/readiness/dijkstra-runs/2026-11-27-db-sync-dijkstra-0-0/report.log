@@ -1,0 +1,50 @@
+scripttype enum: multisig,timelock,plutusV1,plutusV2,plutusV3,plutusV4
+## every submitted transaction
+conway-legacy-reg                    54ee094fecebb606 MISSING
+conway-metadata                      1dfe0f557bce0391 indexed
+conway-payment                       89d45c27006ca928 indexed
+conway-reg-with-deposit              a17719e2660caf7c indexed
+conway-required-signer               11bd39abc920b765 indexed
+dijkstra-metadata                    7b49b2f0e852565d indexed
+dijkstra-payment                     87778dc3e4118649 indexed
+dijkstra-reg-with-deposit            d75aaae64c78985e indexed
+split                                c94d5d7482598e43 indexed
+dijkstra-balance-interval            d912bf4966ff318d indexed
+dijkstra-direct-deposit              c2fa179c31729d55 indexed
+dijkstra-native-guard                ce3da21b416667c7 indexed
+dijkstra-plutusv4-guard              7b5eb9de10fea0ed indexed
+dijkstra-plutusv4-reference-script   a323e29b10e63eaa indexed
+dijkstra-sub-transaction             38e5e3f4f9982890 indexed
+split                                e4132c2d26d3e1b2 indexed
+spend-subtx-output                   cb881ea179d81a9b indexed
+(sub-transaction itself)             7b0f2e1627e8babc indexed
+## sub-transaction
+node: split#1 unspent? false; sub#0 unspent? false
+db-sync: tx_in rows of top-level tx: 1, tx_out rows: 1
+db-sync: split#1 consumed by any tx_in? t
+db-sync: sub-transaction parent is the top-level tx? t; its tx_in rows: 1, tx_out rows: 1
+db-sync: split#1 consumed by the sub-transaction? t; sub#0 consumed by spend-subtx-output? t
+## direct deposit
+node: stake_test1uphxndkttypz9cvl8zzmq72xyz2kmvk77y6l50crzvhxh6q9dcksc rewardAccountBalance 2000000
+db-sync: tx out_sum/fee/deposit 47700000 300000 0; inputs 50000000
+db-sync: tables with a deposit/direct column: direct_deposit
+db-sync: direct_deposit rows of the tx: stake_test1uphxndkttypz9cvl8zzmq72xyz2kmvk77y6l50crzvhxh6q9dcksc 2000000
+## PlutusV4 reference script and guards
+db-sync script rows by type: plutusV4=1 timelock=1
+db-sync timelock scripts with JSON: 1 of 1
+db-sync redeemers of plutusv4-guard tx: guard script_hash=NULL mem=20000
+redeemer purpose enum: spend,mint,cert,reward,vote,propose,guard
+db-sync tx_guard rows of native-guard tx: index=0 credential=8ca8fb907e7b9b8a5e4158e619a539e88f86d8b72be8f2b0a44c8095 has_script=true
+db-sync tx_guard rows of plutusv4-guard tx: index=0 credential=31a78786b5989dc6fd2d4ab15b297069e94106ecacceb8eb29e1b681 has_script=true
+db-sync tx_required_guard rows (all txs): 0
+## account balance interval
+db-sync rows of balance-interval tx: stake_test1uphxndkttypz9cvl8zzmq72xyz2kmvk77y6l50crzvhxh6q9dcksc starting=false lower=1 upper=NULL exact=NULL
+## pool BLS key (pool-bls.sh) and Leios certificates (none on this chain)
+pool_update.bls_key: column present, non-null rows: 2
+dijkstra-pool-bls                    503b3236b1859307 indexed
+db-sync pool_update of the tx: bls_key matches node: true, bls_key_pop matches node: true
+leios_cert rows: 0, blocks with has_leios_cert: 0
+## protocol parameters
+node protocolVersion: {"major":12,"minor":0}; db-sync latest epoch_param: 389 12 0
+node's new Dijkstra parameter fields: 24; stored with the node's value: 24; wrong or missing: none
+PlutusV4 cost model in epoch_param: true
