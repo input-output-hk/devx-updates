@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import ForceGraph2D from "react-force-graph-2d";
+import ForceGraph2D, { type ForceGraphMethods, type LinkObject, type NodeObject } from "react-force-graph-2d";
 import { forceX, forceY, forceCollide } from "d3-force";
 import Nav from "@/components/Nav";
 import rawGraph from "@/data/cardano-graph.json";
@@ -135,7 +135,7 @@ function useThemeMode(): Mode {
 }
 
 export default function GraphMap() {
-    const fgRef = useRef<any>(null);
+    const fgRef = useRef<ForceGraphMethods<NodeObject<ToolNode>, LinkObject<ToolNode, ToolLink>> | undefined>(undefined);
     const stageRef = useRef<HTMLDivElement>(null);
     const firstFit = useRef(false);
 
@@ -266,13 +266,6 @@ export default function GraphMap() {
         );
         fg.d3ReheatSimulation();
     }, [anchors, radius]);
-
-    // Repaint when the theme flips. The node/label paints read `pal` via
-    // closure, but once the simulation has cooled the canvas is idle, so nudge
-    // force-graph to redraw the scene with the new palette.
-    useEffect(() => {
-        fgRef.current?.refresh?.();
-    }, [mode]);
 
     // ---- filtering ----
     const matches = (n: ToolNode): boolean => {
@@ -530,23 +523,22 @@ export default function GraphMap() {
                 </div>
             ) : (
             <div className="stage" ref={stageRef}>
-                <ForceGraph2D
+                <ForceGraph2D<ToolNode, ToolLink>
                     ref={fgRef}
                     width={dims.w}
                     height={dims.h}
                     graphData={data}
                     backgroundColor={pal.bg}
-                    nodeLabel={(n: any) => `${n.name} · ${n.statusLabel}`}
-                    nodeCanvasObject={paintNode as any}
-                    nodePointerAreaPaint={paintPointer as any}
-                    onRenderFramePre={((ctx: CanvasRenderingContext2D, scale: number) =>
-                        paintClusterLabels(ctx, scale)) as any}
-                    linkColor={linkColor as any}
-                    linkWidth={linkWidth as any}
-                    linkDirectionalArrowLength={linkArrow as any}
+                    nodeLabel={(n) => `${n.name} · ${n.statusLabel}`}
+                    nodeCanvasObject={paintNode}
+                    nodePointerAreaPaint={paintPointer}
+                    onRenderFramePre={(ctx, scale) => paintClusterLabels(ctx, scale)}
+                    linkColor={linkColor}
+                    linkWidth={linkWidth}
+                    linkDirectionalArrowLength={linkArrow}
                     linkDirectionalArrowRelPos={1}
-                    onNodeClick={(n: any) => focusNode(n.id)}
-                    onNodeHover={(n: any) => setHovered(n ? n.id : null)}
+                    onNodeClick={(n) => focusNode(n.id)}
+                    onNodeHover={(n) => setHovered(n ? n.id : null)}
                     onBackgroundClick={() => setSelected(null)}
                     cooldownTicks={120}
                     onEngineStop={() => {
