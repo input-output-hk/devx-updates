@@ -1,7 +1,3 @@
-<!--
-Draft for IntersectMBO/cardano-db-sync. Before posting, replace DEVX_COMMIT with the devx-updates commit that contains
-scripts/readiness/devnet/db-sync.sh and content/readiness/dijkstra-runs/2026-11-27-db-sync (neither is on main yet).
--->
 
 # Dijkstra hard fork readiness
 
@@ -54,13 +50,13 @@ stores protocol version 12.0 and the PlutusV4 cost model.
 
 **To reproduce:**
 The devnet scripts are in
-[`scripts/readiness/devnet`](https://github.com/input-output-hk/devx-updates/tree/DEVX_COMMIT/scripts/readiness/devnet).
+[`scripts/readiness/devnet`](https://github.com/input-output-hk/devx-updates/tree/02f57e45b3b414b1c9fde95780b88d33a4e074b1/scripts/readiness/devnet).
 Its README builds the devnet and the test transactions (`start.sh`, `hardfork.sh`, `transactions.sh`, `advanced.sh` and
 `blockfrost.sh spend-sub`).
-[`db-sync.sh`](https://github.com/input-output-hk/devx-updates/blob/DEVX_COMMIT/scripts/readiness/devnet/db-sync.sh)
+[`db-sync.sh`](https://github.com/input-output-hk/devx-updates/blob/02f57e45b3b414b1c9fde95780b88d33a4e074b1/scripts/readiness/devnet/db-sync.sh)
 runs any db-sync binary from genesis (`run`), applies the enum workaround (`resume`), and checks each transaction and
 feature against the node (`report`). Logs from the run:
-[`2026-11-27-db-sync`](https://github.com/input-output-hk/devx-updates/tree/DEVX_COMMIT/content/readiness/dijkstra-runs/2026-11-27-db-sync).
+[`2026-11-27-db-sync`](https://github.com/input-output-hk/devx-updates/tree/02f57e45b3b414b1c9fde95780b88d33a4e074b1/content/readiness/dijkstra-runs/2026-11-27-db-sync).
 
 ## Issues
 
