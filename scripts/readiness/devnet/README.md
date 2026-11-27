@@ -117,9 +117,12 @@ socket paths are limited to 108 bytes.
     cardano-db-sync binary from genesis on its own Postgres 16 container (port `PGPORT_HOST`, default 5434): a release,
     or a nix build of master or a branch, such as `nix build github:IntersectMBO/cardano-db-sync/<rev>#cardano-db-sync`,
     with `schema/` from the same revision. Builds older than 13.8.0.0 need `LEGACY_LOGGING=1`. `db-sync.sh resume NAME`
-    adds `plutusV4` to `scripttype` by hand and restarts it. `db-sync.sh report NAME` lists every test transaction as
-    indexed or missing, and checks the sub-transaction, the direct deposit, the guard redeemers and the new parameters
-    against the node. `db-sync.sh stop NAME` removes the container. Run: `content/readiness/dijkstra-runs/2026-11-27-db-sync/`.
+    adds `plutusV4` to `scripttype` by hand and restarts it (with the value already there, it is a plain restart).
+    `db-sync.sh report NAME` lists every test transaction as indexed or missing, and checks the sub-transaction, the
+    direct deposit, the guards, the balance interval, the pool BLS key and the values of the new parameters against the
+    node, using the Dijkstra tables when the build has them. `db-sync.sh stop NAME` removes the container. Optionally,
+    before `report`, `pool-bls.sh` re-registers pool1 with its current parameters and a fresh BLS key. Runs:
+    `content/readiness/dijkstra-runs/2026-11-27-db-sync/` (master, leios-w42) and `2026-11-27-db-sync-dijkstra-0-0/`.
 
 ## Retained evidence and determinism
 

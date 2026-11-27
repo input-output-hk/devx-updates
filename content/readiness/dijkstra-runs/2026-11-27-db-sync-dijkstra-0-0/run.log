@@ -1,0 +1,8 @@
+cardano-db-sync 13.8.0.0 - linux-x86_64 - ghc-9.6
+git revision 8b548af13f62785ced9fd1daeb6f1dca6e278447
+node tip: {"epoch":368,"era":"Dijkstra","block":3730,"slot":73796}
+db-sync still running after 240s
+blocks indexed: 3731, highest block_no: 3730, highest slot: 73796
+schema_version: 17 53 6
+decoder failures: 0
+error/exception lines: 0

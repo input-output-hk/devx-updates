@@ -1,0 +1,14 @@
+node        cardano-node 11.2.1 90bc1cd9380a78a63091ff673f8c5693152c8f60, CLI 11.7.0.0 (official prerelease asset,
+            sha256 88276ed753f460ee876c03c305ad68de9e4a16945f7c741e08130bf296791174)
+chain       the same devnet as 2026-11-27-db-sync (start.sh, hardfork.sh 11, hardfork.sh 12, transactions.sh,
+            advanced.sh, `blockfrost.sh spend-sub`), plus two pool1 re-registrations with a BLS key from pool-bls.sh;
+            the report covers the second (503b3236…)
+db-sync     tag dijkstra-0-0 (annotated, signed, "Dijkstra-net non production", 2026-10-30), commit
+            8b548af13f62785ced9fd1daeb6f1dca6e278447; 11 commits on master's merge base ccb9c0f4, on no branch;
+            reports 13.8.0.0, ghc 9.6; pins cardano-node dac0d7ab (the "prepare 11.2" merge, 59 commits before 11.2.1)
+            nix build github:IntersectMBO/cardano-db-sync/<rev>#cardano-db-sync, from cache.iog.io
+            /nix/store/j2idijkwdbjmgdvjq9j65qw8qspz5q74-cardano-db-sync-exe-cardano-db-sync-13.8.0.0
+            bin/cardano-db-sync sha256 289a6062aa1044ebe7f9d6c06ed237eebd9d573abdd06a16a8245239cae678be
+            schema: schema/ at the same revision (schema_version 17 53 6)
+tests       nix checks.x86_64-linux of the same revision, re-run locally with `nix build --rebuild`
+postgres    postgres:16@sha256:5db6dac2ef5dcff512f4f00a009c3c332b9f2f28f24277175bf3e4a3d02ef83a
