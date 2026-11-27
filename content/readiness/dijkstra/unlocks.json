@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-24T15:44:44.824Z",
+ "generatedAt": "2026-11-26T19:49:25.510Z",
  "bumpReady": [
   {
    "tool": "kupo",
@@ -218,7 +218,6 @@
     {
      "tool": "cardano-js-sdk",
      "stillBlockedBy": [
-      "cardano-js-sdk (own gap)",
       "blockfrost",
       "ledgerjs-hw-app-cardano"
      ]
@@ -373,7 +372,6 @@
      "tool": "blaze",
      "stillBlockedBy": [
       "blaze (own gap)",
-      "cardano-js-sdk",
       "blockfrost"
      ]
     },
@@ -476,13 +474,6 @@
      ]
     },
     {
-     "tool": "cardano-hw-cli",
-     "stillBlockedBy": [
-      "cardano-hw-interop-lib",
-      "ledgerjs-hw-app-cardano"
-     ]
-    },
-    {
      "tool": "cardano-rosetta-legacy",
      "stillBlockedBy": [
       "cardano-db-sync"
@@ -549,14 +540,12 @@
     {
      "tool": "cardano-hw-cli",
      "stillBlockedBy": [
-      "cardano-serialization-lib-csl",
       "cardano-hw-interop-lib"
      ]
     },
     {
      "tool": "cardano-js-sdk",
      "stillBlockedBy": [
-      "cardano-js-sdk (own gap)",
       "cardano-db-sync",
       "blockfrost"
      ]
@@ -564,14 +553,12 @@
     {
      "tool": "lace",
      "stillBlockedBy": [
-      "cardano-js-sdk",
       "blockfrost"
      ]
     },
     {
      "tool": "nami",
      "stillBlockedBy": [
-      "cardano-js-sdk",
       "blockfrost",
       "cardano-hw-interop-lib",
       "cardano-multiplatform-lib-cml"
@@ -678,7 +665,6 @@
     {
      "tool": "nami",
      "stillBlockedBy": [
-      "cardano-js-sdk",
       "blockfrost",
       "ledgerjs-hw-app-cardano",
       "cardano-hw-interop-lib"
@@ -702,14 +688,12 @@
     {
      "tool": "cardano-hw-cli",
      "stillBlockedBy": [
-      "cardano-serialization-lib-csl",
       "ledgerjs-hw-app-cardano"
      ]
     },
     {
      "tool": "nami",
      "stillBlockedBy": [
-      "cardano-js-sdk",
       "blockfrost",
       "ledgerjs-hw-app-cardano",
       "cardano-multiplatform-lib-cml"
@@ -750,7 +734,6 @@
     {
      "tool": "blaze",
      "stillBlockedBy": [
-      "cardano-js-sdk",
       "blockfrost",
       "service:maestro"
      ]
@@ -828,25 +811,6 @@
    "downstream": [],
    "ownGap": [
     "era-identity",
-    "transaction-encoding"
-   ]
-  },
-  {
-   "component": "cardano-js-sdk",
-   "unlocks": [],
-   "partial": [
-    {
-     "tool": "cardano-js-sdk",
-     "stillBlockedBy": [
-      "cardano-db-sync",
-      "blockfrost",
-      "ledgerjs-hw-app-cardano"
-     ]
-    }
-   ],
-   "downstream": [],
-   "ownGap": [
-    "protocol-parameters",
     "transaction-encoding"
    ]
   },
@@ -1086,7 +1050,6 @@
      "tool": "meshjs-mesh-sdk",
      "stillBlockedBy": [
       "scalus",
-      "cardano-js-sdk",
       "whisky",
       "blockfrost"
      ]
@@ -1311,21 +1274,23 @@
    "unlocked": 55
   },
   {
+   "component": "ledgerjs-hw-app-cardano",
+   "added": [
+    "bursa",
+    "cardano-js-sdk",
+    "lace",
+    "yoroi"
+   ],
+   "unlocked": 59
+  },
+  {
    "component": "aiken",
    "added": [
     "de-uplc",
     "de-uplc-web",
     "sutra"
    ],
-   "unlocked": 58
-  },
-  {
-   "component": "ledgerjs-hw-app-cardano",
-   "added": [
-    "bursa",
-    "yoroi"
-   ],
-   "unlocked": 60
+   "unlocked": 62
   },
   {
    "component": "bloxbean-cardano-client-library",
@@ -1333,7 +1298,7 @@
     "cardano-client-bindings",
     "yaci-devkit"
    ],
-   "unlocked": 62
+   "unlocked": 64
   },
   {
    "component": "cardano-wallet",
@@ -1341,42 +1306,35 @@
     "cardano-wallet-js",
     "daedalus"
    ],
-   "unlocked": 64
+   "unlocked": 66
   },
   {
    "component": "cquisitor-lib",
    "added": [
     "cquisitor"
    ],
-   "unlocked": 65
+   "unlocked": 67
   },
   {
    "component": "whisky",
    "added": [
     "hydra-sdk"
    ],
-   "unlocked": 66
-  },
-  {
-   "component": "cardano-js-sdk",
-   "added": [
-    "lace"
-   ],
-   "unlocked": 67
+   "unlocked": 68
   },
   {
    "component": "buildooor",
    "added": [
     "gerolamo"
    ],
-   "unlocked": 68
+   "unlocked": 69
   },
   {
    "component": "cardano-hw-interop-lib",
    "added": [
     "cardano-hw-cli"
    ],
-   "unlocked": 69
+   "unlocked": 70
   },
   {
    "component": "cardano-multiplatform-lib-cml",
@@ -1384,21 +1342,21 @@
     "cardano-ibc-incubator",
     "nami"
    ],
-   "unlocked": 71
+   "unlocked": 72
   },
   {
    "component": "scalus",
    "added": [
     "yaci-store"
    ],
-   "unlocked": 72
+   "unlocked": 73
   },
   {
    "component": "julc",
    "added": [
     "yano"
    ],
-   "unlocked": 73
+   "unlocked": 74
   }
  ],
  "blockers": [
@@ -1647,14 +1605,6 @@
      "surfaces": [
       "plutus-language",
       "protocol-parameters"
-     ]
-    },
-    {
-     "via": "cardano-js-sdk",
-     "kind": "upstream-fix",
-     "surfaces": [
-      "protocol-parameters",
-      "transaction-encoding"
      ]
     },
     {
@@ -2140,16 +2090,6 @@
    "boundary": false,
    "blockers": [
     {
-     "via": "cardano-serialization-lib-csl",
-     "kind": "upstream-fix",
-     "surfaces": [
-      "plutus-language",
-      "protocol-parameters",
-      "stake-pool-registration",
-      "transaction-encoding"
-     ]
-    },
-    {
      "via": "cardano-hw-interop-lib",
      "kind": "upstream-fix",
      "surfaces": [
@@ -2248,14 +2188,6 @@
    "tool": "cardano-js-sdk",
    "boundary": true,
    "blockers": [
-    {
-     "via": "cardano-js-sdk",
-     "kind": "own-gap",
-     "surfaces": [
-      "protocol-parameters",
-      "transaction-encoding"
-     ]
-    },
     {
      "via": "cardano-db-sync",
      "kind": "upstream-fix",
@@ -3935,14 +3867,6 @@
    "boundary": false,
    "blockers": [
     {
-     "via": "cardano-js-sdk",
-     "kind": "upstream-fix",
-     "surfaces": [
-      "protocol-parameters",
-      "transaction-encoding"
-     ]
-    },
-    {
      "via": "blockfrost",
      "kind": "upstream-fix",
      "surfaces": [
@@ -4246,14 +4170,6 @@
      ]
     },
     {
-     "via": "cardano-js-sdk",
-     "kind": "upstream-fix",
-     "surfaces": [
-      "protocol-parameters",
-      "transaction-encoding"
-     ]
-    },
-    {
      "via": "whisky",
      "kind": "upstream-fix",
      "surfaces": [
@@ -4423,14 +4339,6 @@
    "tool": "nami",
    "boundary": false,
    "blockers": [
-    {
-     "via": "cardano-js-sdk",
-     "kind": "upstream-fix",
-     "surfaces": [
-      "protocol-parameters",
-      "transaction-encoding"
-     ]
-    },
     {
      "via": "blockfrost",
      "kind": "upstream-fix",

@@ -34,7 +34,8 @@ export const LOCK_RULES: LockRule[] = [
   { component: "pallas", names: /^pallas(?:-network2?)?$/ },
   { component: "pallas", names: PALLAS_CODECS, excludeSurfaces: ["node-to-client-protocol", "consensus-participation"] },
   { component: "gouroboros", names: /^github\.com\/blinklabs-io\/gouroboros$/ },
-  { component: "cardano-js-sdk", names: /^@cardano-sdk\/[a-z-]+$/ },
+  // cardano-js-sdk's code is maintained in lace-sdk and published as @laceio/cardano since October 2026: the same project.
+  { component: "cardano-js-sdk", names: /^@cardano-sdk\/[a-z-]+$|^@laceio\/cardano(?:-ledger|-trezor)?$/ },
   { component: "bloxbean-cardano-client-library", names: /^com\.bloxbean\.cardano:cardano-client-(?:lib|core|backend|quicktx|plutus|transaction-spec|crypto|address|metadata|supplier|common|function)$/ },
   { component: "yaci", names: /^com\.bloxbean\.cardano:yaci(?:-core|-helper)?$/ },
   { component: "pycardano", names: /^pycardano$/ },

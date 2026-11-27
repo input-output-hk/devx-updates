@@ -1,26 +1,29 @@
 // Decode raw transactions from the Dijkstra devnet with @cardano-sdk/core the way wallets and providers do:
 // Serialization.Transaction.fromCbor, then toCore(), then a byte-exact re-encode and the transaction id.
 //
-//   node js-probe/probe.cjs SDK_DIR < LINES   "name hex" per line; SDK_DIR holds node_modules/@cardano-sdk/core
+//   node js-probe/probe.cjs SDK_DIR [PACKAGE] < LINES   "name hex" per line; SDK_DIR holds node_modules/PACKAGE
 //
+// PACKAGE is @cardano-sdk/core (the default) or @laceio/cardano, where cardano-js-sdk's code is maintained since
+// October 2026; its core module is the ./core subpath and exports the same names.
 // cardano-js-sdk has no block codec, so only transactions are probed.
 const { createRequire } = require('node:module');
 const fs = require('node:fs');
 const path = require('node:path');
 const readline = require('node:readline');
 
-const sdkDir = process.argv[2];
-if (!sdkDir) {
-  console.error('usage: node probe.cjs SDK_DIR < LINES');
+const [sdkDir, pkg = '@cardano-sdk/core'] = process.argv.slice(2);
+const entry = { '@cardano-sdk/core': '@cardano-sdk/core', '@laceio/cardano': '@laceio/cardano/core' }[pkg];
+if (!sdkDir || !entry) {
+  console.error('usage: node probe.cjs SDK_DIR [@cardano-sdk/core | @laceio/cardano] < LINES');
   process.exit(1);
 }
 const req = createRequire(path.join(path.resolve(sdkDir), 'package.json'));
-const { Serialization, Cardano } = req('@cardano-sdk/core');
+const { Serialization, Cardano } = req(entry);
 // The package's exports map hides package.json, so read it from disk.
 const version = JSON.parse(
-  fs.readFileSync(path.join(sdkDir, 'node_modules/@cardano-sdk/core/package.json'), 'utf8')
+  fs.readFileSync(path.join(sdkDir, 'node_modules', pkg, 'package.json'), 'utf8')
 ).version;
-console.log(`@cardano-sdk/core ${version}`);
+console.log(`${pkg} ${version}`);
 
 const short = (e) => String(e && e.message ? e.message : e).slice(0, 160);
 

@@ -713,7 +713,7 @@
       "observed": {
         "branch": "master",
         "revision": "48019e49c826ea77d81be0e2d2907f94406f5e04",
-        "date": "2026-11-23",
+        "date": "2026-11-25",
         "release": {
           "tag": "@cardano-sdk/web-extension@0.39.46",
           "date": "2026-09-25"
@@ -729,7 +729,7 @@
             "stake-pool-registration"
           ],
           "status": "in-progress",
-          "summary": "@cardano-sdk/core 0.47.0 released Dijkstra serialization (guards, sub-transactions, direct deposits, balance intervals, PlutusV4) against an earlier definition; issue #1759 asks to bring it up to date and batch-aware inspection (PR #1739) is still open. On the 2026-11-23 devnet, 0.47.1 reads and re-encodes byte for byte every encoding except the balance intervals below, including direct deposits, a sub-transaction, native and PlutusV4 guards and a PlutusV4 reference script (devnet check js-sdk-transactions).",
+          "summary": "The code moved to input-output-hk/lace-sdk in October 2026 and is published there as @laceio/cardano; @cardano-sdk/* stays published unchanged at the versions it was taken from (core 0.47.1), so Dijkstra fixes reach dependents only through that package. @cardano-sdk/core 0.47.0 released Dijkstra serialization (guards, sub-transactions, direct deposits, balance intervals, PlutusV4) against an earlier definition; issue #1759 asks to bring it up to date and batch-aware inspection (PR #1739) is still open there. @laceio/cardano 0.2.0-canary.0 onwards (prerelease) adds the pool BLS key, PlutusV4 witness scripts, required top-level guards, batch-aware inspection and a builder for sub-transactions, guards, direct deposits and balance intervals. On the 2026-11-23 devnet, @cardano-sdk/core 0.47.1 reads and re-encodes byte for byte every encoding except balance intervals (devnet check js-sdk-transactions). No stable @laceio/cardano release has the Dijkstra work: 0.1.1, the newest, is 0.47.1's code.",
           "evidence": [
             {
               "kind": "source",
@@ -764,6 +764,27 @@
               "kind": "devnet",
               "check": "js-sdk-transactions",
               "version": "@cardano-sdk/core 0.47.1"
+            },
+            {
+              "kind": "source",
+              "repo": "input-output-hk/lace-sdk",
+              "revision": "65aa9debc5c9efcb903c10ec05cd93c7924020e6",
+              "path": "packages/lib/cardano-core/src/Serialization/Certificates/PoolParams/PoolParams.ts",
+              "line": 554,
+              "quote": "blsKey(): Cardano.PoolBlsKey | undefined {"
+            },
+            {
+              "kind": "source",
+              "repo": "input-output-hk/lace-sdk",
+              "revision": "65aa9debc5c9efcb903c10ec05cd93c7924020e6",
+              "path": "packages/lib/cardano-core/src/Serialization/TransactionWitnessSet/TransactionWitnessSet.ts",
+              "line": 556,
+              "quote": "setPlutusV4Scripts("
+            },
+            {
+              "kind": "devnet",
+              "check": "js-sdk-transactions",
+              "version": "@laceio/cardano 0.2.0-canary.3"
             }
           ]
         },
@@ -771,8 +792,8 @@
           "surfaces": [
             "protocol-parameters"
           ],
-          "status": "gap",
-          "summary": "Protocol-parameter updates stop at key 37; the target adds keys 38-56.",
+          "status": "in-progress",
+          "summary": "@cardano-sdk/core 0.47.1 and cardano-js-sdk master stop protocol-parameter updates at key 37; the target adds keys 38-56. @laceio/cardano 0.2.0-canary.0 onwards (prerelease, the same code maintained in lace-sdk) reads and writes keys 38-56 and skips unknown keys unless strict. No stable release has it.",
           "evidence": [
             {
               "kind": "source",
@@ -781,6 +802,14 @@
               "path": "packages/core/src/Serialization/Update/ProtocolParamUpdate.ts",
               "line": 123,
               "quote": "//   , ? 37: positive_interval      ; refScript cost multiplier"
+            },
+            {
+              "kind": "source",
+              "repo": "input-output-hk/lace-sdk",
+              "revision": "65aa9debc5c9efcb903c10ec05cd93c7924020e6",
+              "path": "packages/lib/cardano-core/src/Serialization/Update/ProtocolParamUpdate.ts",
+              "line": 908,
+              "quote": "params.#refInputsCostPerDatumByte = reader.readInt();"
             }
           ]
         },
@@ -788,8 +817,8 @@
           "surfaces": [
             "transaction-encoding"
           ],
-          "status": "gap",
-          "summary": "The body reader keys account balance intervals (key 26) by credential, as an earlier definition did; the target keys them by reward account, and node 11.2.1 writes them that way. 0.47.1 fails on every transaction with a balance interval (\"Major type mismatch, expected type 4 but got 2\"), and master still has the same reader. Issue #1759 asks for the definitions to be updated (devnet check js-sdk-transactions).",
+          "status": "in-progress",
+          "summary": "@cardano-sdk/core 0.47.1 keys account balance intervals (body key 26) by credential, as an earlier definition did; the target keys them by reward account, and node 11.2.1 writes them that way. 0.47.1 fails on every transaction with a balance interval (\"Major type mismatch, expected type 4 but got 2\"), cardano-js-sdk master still has that reader, and so does @laceio/cardano 0.1.1. @laceio/cardano 0.2.0-canary.3 (prerelease, lace-sdk) reads them by reward account and decodes all 32 devnet encodings with the on-chain id and an exact re-encoding (devnet check js-sdk-transactions). No stable release has it, and dependents on @cardano-sdk/core must move to @laceio/cardano to get it.",
           "evidence": [
             {
               "kind": "source",
@@ -818,6 +847,24 @@
               "kind": "devnet",
               "check": "js-sdk-transactions",
               "version": "@cardano-sdk/core 0.47.1"
+            },
+            {
+              "kind": "source",
+              "repo": "input-output-hk/lace-sdk",
+              "revision": "65aa9debc5c9efcb903c10ec05cd93c7924020e6",
+              "path": "packages/lib/cardano-core/src/Serialization/TransactionBody/Utils.ts",
+              "line": 149,
+              "quote": "if (!RewardAddress.fromAddress(address))"
+            },
+            {
+              "kind": "devnet",
+              "check": "js-sdk-transactions",
+              "version": "@laceio/cardano 0.1.1"
+            },
+            {
+              "kind": "devnet",
+              "check": "js-sdk-transactions",
+              "version": "@laceio/cardano 0.2.0-canary.3"
             }
           ]
         }

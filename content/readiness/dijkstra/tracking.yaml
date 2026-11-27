@@ -185,6 +185,10 @@ tools:
     dismissed:
       reason: Abandoned; no activity since 2024-04.
       date: 2026-10-26
+  yoroi:
+    dismissed:
+      reason: Deprecated by Emurgo.
+      date: 2026-11-27
   pallas:
     unreleased:
       note: "v1.5.0-rc.3 (release candidate) decodes every Dijkstra encoding of the 11.2.1 devnet behind the unstable feature; open PR #875 moves its definitions to the 11.2 ledger. The newest stable release, v1.4.0, has none of it."
@@ -251,6 +255,8 @@ tools:
     links:
       - url: https://github.com/Emurgo/cardano-serialization-lib/issues/763
         note: Checklist of what's left for Dijkstra
+      - url: https://www.npmjs.com/package/@fivebinaries/coin-selection/v/3.0.0
+        note: "Hardware wallets don't decode transactions with CSL. Ledger (ledgerjs-hw-app-cardano) doesn't depend on it. Trezor Connect reaches it only through this package, which builds payment transactions for coin selection and fee estimates; Lace, Daedalus, Nami and AdaLite reach it the same way."
   cardano-cli:
     links:
       - url: https://github.com/IntersectMBO/cardano-cli/pull/1439
@@ -344,7 +350,16 @@ tools:
         note: Leios mini-protocols
       - url: https://github.com/bloxbean/yaci/tree/next-leios
   cardano-js-sdk:
+    unreleased:
+      note: "The code moved to lace-sdk and is published as @laceio/cardano, a rename of the @cardano-sdk packages: most dependents move by changing imports. Its 0.2.0-canary.3 prerelease decodes every Dijkstra encoding of the 11.2.1 devnet, balance intervals included, and reads parameter-update keys 38-56. The newest stable release, 0.1.1, is the @cardano-sdk/core 0.47.1 code and fails on balance intervals; @cardano-sdk/* will get no Dijkstra fixes."
+      date: 2026-11-25
     links:
+      - url: https://github.com/input-output-hk/lace-sdk
+        note: "Where the code lives now, as @laceio/cardano"
+      - url: https://github.com/input-output-hk/lace-sdk/releases/tag/%40laceio%2Fcardano%400.2.0-canary.0
+        note: "Prerelease notes listing the Dijkstra work"
+      - url: https://sdk.lace.io/docs/learn/cardano-domain-layer/
+        note: "Moving a project from @cardano-sdk to @laceio/cardano"
       - url: https://github.com/input-output-hk/cardano-js-sdk/issues/1759
         note: Update Dijkstra definitions
       - url: https://github.com/input-output-hk/cardano-js-sdk/pull/1735
@@ -463,6 +478,8 @@ tools:
         note: Dijkstra guards (CIP-112)
       - url: https://github.com/vacuumlabs/cardano-hw-cli/pull/220
         note: Optional pool BLS key
+      - url: https://github.com/vacuumlabs/cardano-hw-cli/blob/31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c/src/transaction/transaction.ts#L1
+        note: "v1.20.0 parses user-supplied transactions with cardano-hw-interop-lib, not CSL. CSL is used only for addresses and key hashes and, for Keystone, native scripts, key derivation and reading the device's vkey witnesses."
   cometa-js:
     unreleased:
       note: "2.0.0-rc.4 (release candidate) has Dijkstra builders, sub-transactions, PlutusV4 and the new protocol parameters; the pool BLS key is missing."

@@ -31,6 +31,21 @@ test("a component reached only through a declared catalog component is that comp
     "without a declaration the nearest component, Mesh, is the link");
 });
 
+test("@laceio/cardano is cardano-js-sdk under its new name; @laceio/sdk is not", () => {
+  const lock = JSON.stringify({ lockfileVersion: 3, packages: {
+    "": { dependencies: { "@laceio/sdk": "^0.1", "@laceio/cardano": "^0.1", "@laceio/cardano-ledger": "^0.1" } },
+    "node_modules/@laceio/sdk": {},
+    "node_modules/@laceio/cardano": {},
+    "node_modules/@laceio/cardano-ledger": {},
+  } }, null, 2);
+  const links = (content: string) => transitiveLinks(tool(), [{ path: "package-lock.json", content }]).map((l) => [l.component, l.package]);
+  assert.deepEqual(links(lock), [["cardano-js-sdk", "@laceio/cardano"]]);
+  const ledgerOnly = JSON.stringify({ lockfileVersion: 3, packages: { "": { dependencies: { "@laceio/cardano-ledger": "^0.1" } }, "node_modules/@laceio/cardano-ledger": {} } });
+  assert.deepEqual(links(ledgerOnly), [["cardano-js-sdk", "@laceio/cardano-ledger"]]);
+  const sdkOnly = JSON.stringify({ lockfileVersion: 3, packages: { "": { dependencies: { "@laceio/sdk": "^0.1" } }, "node_modules/@laceio/sdk": {} } });
+  assert.deepEqual(links(sdkOnly), []);
+});
+
 test("Cargo workspace crates are the root; Pallas codec crates exclude the protocol surfaces", () => {
   const lock = [
     "[[package]]", 'name = "gateway"', 'version = "0.1.0"', "dependencies = [", ' "chain-follower",', "]", "",

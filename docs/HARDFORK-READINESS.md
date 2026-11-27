@@ -31,11 +31,11 @@ The register formats and findings are in
 | Boundary | `boundary.json` | 61 components, 281 evidence items; 44 gap, 3 no-evidence, 10 in-progress, 4 released |
 | Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source; 62 revisions changed |
 | Transitive links | `transitive.json` | 27 lockfile-only component links in 26 tools |
-| Leads | `leads.json` | 732 entries, 1,631 surface decisions (590 confirmed, 1,000 not reached, 41 undetermined); none unreviewed, stale or orphaned |
-| Unlocks | `unlocks.json` | 19 fixes unlock 73 tools; Marlowe, Marconi, Midgard, Ogmios and Kupo are bump-ready by pin comparison |
+| Leads | `leads.json` | 730 entries, 1,631 surface decisions (586 confirmed, 1,004 not reached, 41 undetermined); none unreviewed, stale or orphaned |
+| Unlocks | `unlocks.json` | 18 fixes unlock 74 tools; Marlowe, Marconi, Midgard, Ogmios and Kupo are bump-ready by pin comparison |
 | Upgrades | `upgrades.json` | 13 readings: 8 own-work, 3 prepared, 2 generic |
-| Devnet | `devnet.json` | 22 checks, 57 results, 24 failing (node 11.2.1, 2026-11-23; Ogmios and Kupo forks rerun 2026-11-24) |
-| Site | `/map/dijkstra` | 207 tools: 105 break, 10 in progress, 4 ready, 4 target components, 50 not verified, 34 dismissed |
+| Devnet | `devnet.json` | 22 checks, 59 results, 25 failing (node 11.2.1, 2026-11-23; Ogmios and Kupo forks rerun 2026-11-24, @laceio/cardano 2026-11-25) |
+| Site | `/map/dijkstra` | 207 tools: 103 break, 11 in progress, 4 ready, 4 target components, 50 not verified, 35 dismissed |
 | History | `/map/dijkstra/history` | Ten tool-state changes; of 30 same-version runtime results, 29 matched and one changed because new cases were added (@cardano-sdk/core 0.47.1 on balance intervals) |
 | Dependency graph | `data/readiness/` | Existing 55 native profiles retained and replayed; broad native collection remains paused |
 
@@ -248,18 +248,17 @@ listed prerequisites first:
 | 5 | pallas | 47 |
 | 6 | cardano-serialization-lib-csl | 51 |
 | 7 | gouroboros | 55 |
-| 8 | aiken | 58 |
-| 9 | ledgerjs-hw-app-cardano | 60 |
-| 10 | bloxbean-cardano-client-library | 62 |
-| 11 | cardano-wallet | 64 |
-| 12 | cquisitor-lib | 65 |
-| 13 | whisky | 66 |
-| 14 | cardano-js-sdk | 67 |
-| 15 | buildooor | 68 |
-| 16 | cardano-hw-interop-lib | 69 |
-| 17 | cardano-multiplatform-lib-cml | 71 |
-| 18 | scalus | 72 |
-| 19 | julc | 73 |
+| 8 | ledgerjs-hw-app-cardano | 59 |
+| 9 | aiken | 62 |
+| 10 | bloxbean-cardano-client-library | 64 |
+| 11 | cardano-wallet | 66 |
+| 12 | cquisitor-lib | 67 |
+| 13 | whisky | 68 |
+| 14 | buildooor | 69 |
+| 15 | cardano-hw-interop-lib | 70 |
+| 16 | cardano-multiplatform-lib-cml | 72 |
+| 17 | scalus | 73 |
+| 18 | julc | 74 |
 
 Marlowe, Marconi and Midgard (cardano-api; the current target API is 11.12.0.0) and Ogmios and Kupo (ouroboros-consensus 5.4.0.0) have a released upstream fix by the pin comparison. This is not a new dependency solve.
 `upgrades.json` records, from quoted shipped code, whether each bump-ready
@@ -288,7 +287,7 @@ named version and capability; the 11.2.0 runs are in the archived assessments.
 | `pallas-chain-sync` | v1.5.0-rc.3 and main 0b17c8f6 decode Conway, but no Dijkstra block. |
 | `pallas-transactions` | Both decode all 32 encodings with an explicit era and unstable; era detection still fails. |
 | `cml-decoding` | CML 6.2.0 decodes the Conway control; no Dijkstra block or three-element transaction. |
-| `js-sdk-transactions` | Fails: @cardano-sdk/core 0.47.1 round-trips 29 of 32 encodings, guards included, but cannot decode balance intervals (keyed by credential instead of reward account). |
+| `js-sdk-transactions` | Fails: @cardano-sdk/core 0.47.1 round-trips 29 of 32 encodings, guards included, but cannot decode balance intervals (keyed by credential instead of reward account); @laceio/cardano 0.1.1, the same code, fails the same way. Rerun 2026-11-25: the @laceio/cardano 0.2.0-canary.3 prerelease round-trips all 32 with the on-chain ids. |
 | `db-sync-and-blockfrost` | db-sync 13.8.0.0 indexes Dijkstra blocks, then exits on the first PlutusV4 script; Blockfrost RYO v7.0.1 serves the indexed data, but /network/eras answers HTTP 500. |
 | `csl-decoding` | CSL 17.0.0, 15.0.3 and 18.0.0-beta.1 decode no Dijkstra block or new body; re-encoding adds the legacy fourth element. |
 | `pycardano-transactions` | PyCardano 0.19.2 fails on Dijkstra metadata and on every new body. |
@@ -451,7 +450,7 @@ The site is a static export; a malformed register fails the build.
    representative consumers per surface; extend the completed 11.2.0 matrix to advanced Dijkstra transactions.
    Next codecs by tools blocked on reading alone: cardano-client-lib,
    ledgerjs-hw-app-cardano (on Speculos), Scalus, Aiken's `uplc` and the
-   cardano-js-sdk parameter-update path. Settle the 43 undetermined decisions
+   cardano-js-sdk parameter-update path (in `@laceio/cardano` 0.2.0 once stable). Settle the 43 undetermined decisions
    by execution where possible (bursa's Keystone signing, argus-cardano-sync
    through Chrysalis, hydra-pay's bundled configs).
    Hand-built transactions with body keys 23-27 would exercise the codec gaps

@@ -2136,7 +2136,7 @@
       "stars": "238",
       "repo": "input-output-hk/cardano-js-sdk",
       "repoUrl": "https://github.com/input-output-hk/cardano-js-sdk",
-      "description": "IOG's TypeScript SDK for wallet platforms: key management, hardware-wallet support, tx building and providers. Underpins Lace and other tools.",
+      "description": "IOG's TypeScript SDK for wallet platforms: key management, hardware-wallet support, tx building and providers. Underpins Lace and other tools. Since October 2026 its code is maintained in input-output-hk/lace-sdk and published as @laceio/cardano; dependents should move to it (a rename of the imports for most code), as the @cardano-sdk packages are to be deprecated.",
       "features": [
         "Key management",
         "HW wallet support",
@@ -2176,7 +2176,7 @@
       "agentReadiness": "low",
       "reviewed": false,
       "reviewedAt": null,
-      "notes": null,
+      "notes": "2026-11-25: the same project now lives in input-output-hk/lace-sdk (@laceio/cardano, @laceio/cardano-ledger, @laceio/cardano-trezor). Kept under its cardano-js-sdk id.",
       "communityUsage": 28,
       "communityRank": 10,
       "lastCommit": "2026-07-22",

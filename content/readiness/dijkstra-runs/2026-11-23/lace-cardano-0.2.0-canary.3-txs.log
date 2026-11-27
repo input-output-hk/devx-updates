@@ -1,0 +1,33 @@
+@laceio/cardano 0.2.0-canary.3
+adv-split                          head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 7ff5b2d13eae2732…, round-trip exact
+conway-legacy-reg                  head 84a4: decoded, 1 inputs, 1 certificates, isValid true, id 739f570faa998fdd…, round-trip exact
+conway-metadata                    head 84a4: decoded, 1 inputs, 0 certificates, isValid true, id 987b7e4c800a7c44…, round-trip exact
+conway-payment                     head 84a3: decoded, 1 inputs, 0 certificates, isValid true, id 1ddbc9b94110c272…, round-trip exact
+conway-reg-with-deposit            head 84a4: decoded, 1 inputs, 1 certificates, isValid true, id 50cdb84e9418b262…, round-trip exact
+conway-required-signer             head 84a4: decoded, 1 inputs, 0 certificates, isValid true, id cd4781f1af458f27…, round-trip exact
+dijkstra-balance-interval          head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id bfdd55b6742ca984…, round-trip exact; accountBalanceIntervals 1
+dijkstra-balance-interval-unmet    head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id a7fb63a5108327ea…, round-trip exact; accountBalanceIntervals 1
+dijkstra-direct-deposit            head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 9fe8ac1c3cf38790…, round-trip exact; directDeposits 1
+dijkstra-metadata                  head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id bc6b36f000f6e4f9…, round-trip exact
+dijkstra-native-guard              head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 03666e3029c32718…, round-trip exact; guards 1
+dijkstra-payment                   head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 6b4ac3dc5f74a903…, round-trip exact
+dijkstra-plutusv4-guard            head 83a6: decoded, 1 inputs, 0 certificates, isValid true, id 876e9a66743a5879…, round-trip exact; guards 1
+dijkstra-plutusv4-reference-script head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 27266d0a03105a53…, round-trip exact; reference script PlutusV4
+dijkstra-reg-with-deposit          head 83a4: decoded, 1 inputs, 1 certificates, isValid true, id 5e5cc532015cc2a9…, round-trip exact
+dijkstra-sub-transaction           head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id caa270da2e964edb…, round-trip exact; subTransactions 1
+split                              head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 89a0365c75e92fa6…, round-trip exact
+mempool-split                      head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 89a0365c75e92fa6…, round-trip exact
+mempool-conway-payment             head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 1ddbc9b94110c272…, round-trip exact
+mempool-conway-reg-with-deposit    head 83a4: decoded, 1 inputs, 1 certificates, isValid true, id 50cdb84e9418b262…, round-trip exact
+mempool-conway-required-signer     head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id cd4781f1af458f27…, round-trip exact
+mempool-conway-metadata            head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 987b7e4c800a7c44…, round-trip exact
+mempool-dijkstra-payment           head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 6b4ac3dc5f74a903…, round-trip exact
+mempool-dijkstra-reg-with-deposit  head 83a4: decoded, 1 inputs, 1 certificates, isValid true, id 5e5cc532015cc2a9…, round-trip exact
+mempool-dijkstra-metadata          head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id bc6b36f000f6e4f9…, round-trip exact
+mempool-adv-split                  head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 7ff5b2d13eae2732…, round-trip exact
+mempool-dijkstra-direct-deposit    head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 9fe8ac1c3cf38790…, round-trip exact; directDeposits 1
+mempool-dijkstra-sub-transaction   head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id caa270da2e964edb…, round-trip exact; subTransactions 1
+mempool-dijkstra-plutusv4-reference-script head 83a3: decoded, 1 inputs, 0 certificates, isValid true, id 27266d0a03105a53…, round-trip exact; reference script PlutusV4
+mempool-dijkstra-native-guard      head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 03666e3029c32718…, round-trip exact; guards 1
+mempool-dijkstra-plutusv4-guard    head 83a6: decoded, 1 inputs, 0 certificates, isValid true, id 876e9a66743a5879…, round-trip exact; guards 1
+mempool-dijkstra-balance-interval  head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id bfdd55b6742ca984…, round-trip exact; accountBalanceIntervals 1

@@ -364,8 +364,8 @@
     },
     {
       "id": "js-sdk-transactions",
-      "title": "@cardano-sdk/core 0.47.1 reads every encoding except balance intervals",
-      "summary": "@cardano-sdk/core 0.47.1 decodes and re-encodes byte for byte 29 of the 32 encodings, including direct deposits, a sub-transaction, native and PlutusV4 guards and a PlutusV4 reference script, and reads their new fields. It fails on all three balance-interval encodings: it reads body key 26 keyed by credential, while the node keys it by reward account, as the target CDDL does.",
+      "title": "@cardano-sdk/core 0.47.1 reads every encoding except balance intervals; @laceio/cardano 0.2.0-canary.3 reads all",
+      "summary": "@cardano-sdk/core 0.47.1 decodes and re-encodes byte for byte 29 of the 32 encodings, including direct deposits, a sub-transaction, native and PlutusV4 guards and a PlutusV4 reference script, and reads their new fields. It fails on all three balance-interval encodings: it reads body key 26 keyed by credential, while the node keys it by reward account, as the target CDDL does. cardano-js-sdk's code is now maintained in lace-sdk as @laceio/cardano; rerun on 2026-11-25 against this run's encodings, its 0.1.1 release gives the same output as 0.47.1 line for line, and the 0.2.0-canary.3 prerelease decodes and re-encodes byte for byte all 32 with the on-chain ids, including the three balance intervals.",
       "results": [
         {
           "kind": "component",
@@ -373,10 +373,25 @@
           "version": "@cardano-sdk/core 0.47.1",
           "outcome": "fail",
           "note": "Balance intervals (body key 26) are keyed by credential instead of reward account."
+        },
+        {
+          "kind": "component",
+          "id": "cardano-js-sdk",
+          "version": "@laceio/cardano 0.1.1",
+          "outcome": "fail",
+          "note": "Same code as @cardano-sdk/core 0.47.1: balance intervals keyed by credential."
+        },
+        {
+          "kind": "component",
+          "id": "cardano-js-sdk",
+          "version": "@laceio/cardano 0.2.0-canary.3",
+          "outcome": "pass",
+          "note": "Prerelease. All 32 encodings, balance intervals included."
         }
       ],
       "observed": [
-        "js-sdk-txs.log:\ndijkstra-balance-interval          head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-balance-interval-unmet    head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-native-guard              head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 03666e3029c32718…, round-trip exact; guards 1\ndijkstra-plutusv4-guard            head 83a6: decoded, 1 inputs, 0 certificates, isValid true, id 876e9a66743a5879…, round-trip exact; guards 1\ndijkstra-sub-transaction           head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id caa270da2e96"
+        "js-sdk-txs.log:\ndijkstra-balance-interval          head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-balance-interval-unmet    head 83a4: decode: Major type mismatch, expected type 4 but got 2\ndijkstra-native-guard              head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id 03666e3029c32718…, round-trip exact; guards 1\ndijkstra-plutusv4-guard            head 83a6: decoded, 1 inputs, 0 certificates, isValid true, id 876e9a66743a5879…, round-trip exact; guards 1\ndijkstra-sub-transaction           head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id caa270da2e96",
+        "lace-cardano-0.2.0-canary.3-txs.log:\n@laceio/cardano 0.2.0-canary.3\ndijkstra-balance-interval          head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id bfdd55b6742ca984…, round-trip exact; accountBalanceIntervals 1\ndijkstra-balance-interval-unmet    head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id a7fb63a5108327ea…, round-trip exact; accountBalanceIntervals 1\ndijkstra-sub-transaction           head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id caa270da2e964edb…, round-trip exact; subTransactions 1\nmempool-dijkstra-balance-interval  head 83a4: decoded, 1 inputs, 0 certificates, isValid true, id bfdd55b6742ca984…, round-trip exact; accountBalanceIntervals 1"
       ],
       "recipe": [
         "scripts/readiness/devnet/js-probe/probe.cjs",

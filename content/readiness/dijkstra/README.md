@@ -121,7 +121,7 @@ archived assessments and on `/map/dijkstra/history`.
 | `pallas-chain-sync` | v1.5.0-rc.3 and main 0b17c8f6 decode Conway, but no Dijkstra block. |
 | `pallas-transactions` | Both decode all 32 encodings with an explicit era and unstable; era detection still fails. |
 | `cml-decoding` | CML 6.2.0 decodes the Conway control; no Dijkstra block or three-element transaction. |
-| `js-sdk-transactions` | Fails: @cardano-sdk/core 0.47.1 round-trips 29 of 32 encodings, guards included, but cannot decode balance intervals (keyed by credential instead of reward account). |
+| `js-sdk-transactions` | Fails: @cardano-sdk/core 0.47.1 round-trips 29 of 32 encodings, guards included, but cannot decode balance intervals (keyed by credential instead of reward account); @laceio/cardano 0.1.1, the same code, fails the same way. Rerun 2026-11-25: the @laceio/cardano 0.2.0-canary.3 prerelease round-trips all 32 with the on-chain ids. |
 | `db-sync-and-blockfrost` | db-sync 13.8.0.0 indexes Dijkstra blocks, then exits on the first PlutusV4 script; Blockfrost RYO v7.0.1 serves the indexed data, but /network/eras answers HTTP 500. |
 | `csl-decoding` | CSL 17.0.0, 15.0.3 and 18.0.0-beta.1 decode no Dijkstra block or new body; re-encoding adds the legacy fourth element. |
 | `pycardano-transactions` | PyCardano 0.19.2 fails on Dijkstra metadata and on every new body. |
@@ -160,9 +160,9 @@ records URL, state and date.
 
 | Worst status | Components |
 | --- | --- |
-| gap | 44: cardano-serialization-lib-csl, cardano-multiplatform-lib-cml, pallas, gouroboros, cardano-js-sdk, bloxbean-cardano-client-library, pycardano, cometa-js, buildooor, ouroboros-miniprotocols-ts, cardano-data-lite, evolution-sdk, cardanosharp, typhonjs, whisky, elm-cardano, cquisitor-lib, ledgerjs-hw-app-cardano, cardano-hw-interop-lib, cardano-db-sync, cardano-wallet, oura, dolos, carp, scrolls, cf-ledger-sync, cardano-graphql, koios, blockfrost, cardano-rosetta-java, mithril, hydra, aiken, opshin, helios, scalus, uplc-turbo, julc, meshjs-mesh-sdk, lucid-evolution, atlas, cardano-transaction-lib-ctl, kuber, blaze |
+| gap | 43: cardano-serialization-lib-csl, cardano-multiplatform-lib-cml, pallas, gouroboros, bloxbean-cardano-client-library, pycardano, cometa-js, buildooor, ouroboros-miniprotocols-ts, cardano-data-lite, evolution-sdk, cardanosharp, typhonjs, whisky, elm-cardano, cquisitor-lib, ledgerjs-hw-app-cardano, cardano-hw-interop-lib, cardano-db-sync, cardano-wallet, oura, dolos, carp, scrolls, cf-ledger-sync, cardano-graphql, koios, blockfrost, cardano-rosetta-java, mithril, hydra, aiken, opshin, helios, scalus, uplc-turbo, julc, meshjs-mesh-sdk, lucid-evolution, atlas, cardano-transaction-lib-ctl, kuber, blaze |
 | no-evidence | 3: ouroboros-network-js, plu-ts, cncli |
-| in-progress | 10: yaci, apollo, amaru, dingo, ogmios, kupo, yaci-store, adder, utxorpc, yaci-devkit |
+| in-progress | 11: cardano-js-sdk, yaci, apollo, amaru, dingo, ogmios, kupo, yaci-store, adder, utxorpc, yaci-devkit |
 | released | 4: cardano-c, plutus-plutus-core, plutarch, plutigo |
 
 
@@ -179,6 +179,21 @@ parameters without the BLS key, era tables ending at Conway, script contexts
 without V4's fields, and Pallas or Yaci versions that cannot decode Dijkstra
 blocks. Transaction rules stay `no-evidence` unless code specific to a rule
 change was found.
+
+What changed on 2026-11-25 (cardano-js-sdk is maintained as lace-sdk):
+
+- cardano-js-sdk's code moved to [input-output-hk/lace-sdk](https://github.com/input-output-hk/lace-sdk) in October 2026
+  and is published as `@laceio/cardano` (with `@laceio/cardano-ledger` and `@laceio/cardano-trezor`). It is the same
+  project, so it keeps its `cardano-js-sdk` id here. `@laceio/cardano/core` exports every name `@cardano-sdk/core` does,
+  and most dependents move by renaming imports; the fluent transaction builder, `CmlBip32Ed25519` and two CIP-8 helpers
+  are not carried over. The `@cardano-sdk` packages stay published at the versions it was taken from and are to be
+  deprecated: Dijkstra fixes ship only in `@laceio/cardano`, so dependents have to move to get them. Lockfile links now
+  count `@laceio/cardano*` as cardano-js-sdk; the manifest rule follows at the next full rescan, as changing it
+  invalidates the scan cache (no catalog tool depends on `@laceio` yet).
+- Transaction encoding and protocol parameters move from gap to in-progress; cardano-js-sdk is now in progress on every
+  surface. The `@laceio/cardano` 0.2.0-canary.3 prerelease decodes and re-encodes byte for byte all 32 encodings of the
+  2026-11-23 devnet with the on-chain ids, balance intervals included, and reads parameter-update keys 38–56. Its newest
+  stable release, 0.1.1, is `@cardano-sdk/core` 0.47.1's code and fails the same way. Nothing stable has the work yet.
 
 What changed on 2026-11-24 (fork rerun on the 2026-11-23 chain):
 
@@ -323,7 +338,12 @@ the lines it rests on:
 - `not-reached`: shipped code uses that dependency outside the gap.
 - `undetermined`: source reading cannot decide; execution or additional evidence is needed.
 
-732 entries, 1,631 surface decisions (590 confirmed, 1,000 not reached, 41 undetermined); none is unreviewed, stale or orphaned.
+730 entries, 1,631 surface decisions (586 confirmed, 1,004 not reached, 41 undetermined); none is unreviewed, stale or orphaned.
+
+On 2026-11-26, cardano-hw-cli's CSL decisions were re-read and merged into one `not-reached`: v1.20.0 decodes
+transaction files, witnesses and cost models with cardano-hw-interop-lib, and uses CSL only for key hashes, addresses
+and, for Keystone, native scripts, key derivation and the device's vkey signatures. It still waits on
+cardano-hw-interop-lib and ledgerjs-hw-app-cardano; the fix order is unchanged.
 
 On 2026-11-23, 227 stale leads moved to the newly classified revisions because every cited file was unchanged or changed
 only outside the cited hunk; 19 were re-read by hand (Oura and Dolos now pin Pallas 1.5.0-rc.3, still confirmed; Yano now
@@ -368,7 +388,7 @@ The first pass (170 decisions) confirmed **21 tools outside the boundary**:
 | gouroboros below v0.213.0 | txtop, cardano-node-api (archived), Bursa, IBC incubator | txtop and cardano-node-api open node-to-client connections without V23; all four decode transactions or blocks with pre-target ledger types |
 | ouroboros-miniprotocols-ts | Gerolamo | its own node-to-client responder offers only V16–V19, so 11.2 clients cannot connect |
 | cardano-wallet | Daedalus, cardano-wallet-js | both run on the wallet's REST API, whose backend cannot connect to 11.2 |
-| CSL (no PlutusV4) | Yoroi, cardano-dev-wallet, cardano-hw-cli, Hydra SDK, Masumi, cardano-rosetta-legacy (archived), csl-mobile-bridge | decode transactions or witnesses they did not build; csl-mobile-bridge re-exports the API |
+| CSL (no PlutusV4) | Yoroi (deprecated), cardano-dev-wallet, Hydra SDK, Masumi, cardano-rosetta-legacy (archived), csl-mobile-bridge | decode transactions or witnesses they did not build; csl-mobile-bridge re-exports the API |
 | cardano-js-sdk (parameter keys stop at 37) | Lace, Nami (archived) | decode transactions with parameter updates for keys 38–56 |
 | Scalus (no V4 evaluation) | Yano | evaluates scripts through Scalus |
 | cardano-api below 11.8 | Marlowe, Marconi, sc-tools, Midgard | follow the node or build and submit transactions fixed to the Conway era |
@@ -499,25 +519,26 @@ on its own and put Blockfrost first, which it cannot be without db-sync.
 | 5 | pallas | 47 |
 | 6 | cardano-serialization-lib-csl | 51 |
 | 7 | gouroboros | 55 |
-| 8 | aiken | 58 |
-| 9 | ledgerjs-hw-app-cardano | 60 |
-| 10 | bloxbean-cardano-client-library | 62 |
-| 11 | cardano-wallet | 64 |
-| 12 | cquisitor-lib | 65 |
-| 13 | whisky | 66 |
-| 14 | cardano-js-sdk | 67 |
-| 15 | buildooor | 68 |
-| 16 | cardano-hw-interop-lib | 69 |
-| 17 | cardano-multiplatform-lib-cml | 71 |
-| 18 | scalus | 72 |
-| 19 | julc | 73 |
+| 8 | ledgerjs-hw-app-cardano | 59 |
+| 9 | aiken | 62 |
+| 10 | bloxbean-cardano-client-library | 64 |
+| 11 | cardano-wallet | 66 |
+| 12 | cquisitor-lib | 67 |
+| 13 | whisky | 68 |
+| 14 | buildooor | 69 |
+| 15 | cardano-hw-interop-lib | 70 |
+| 16 | cardano-multiplatform-lib-cml | 72 |
+| 17 | scalus | 73 |
+| 18 | julc | 74 |
 
 On 2026-11-23 Blockfrost's step grew, because its 49 consumers that read transaction data or submit through it now count
 (the gap was recorded on 2026-11-11 but its consumers were first read in this refresh). Yaci left the order: its
 consumers wait on their own pins and on cardano-client-lib. On 2026-11-24 Blaze's record was corrected (own PlutusV4 and
 protocol-parameter gaps), so cardano-js-sdk no longer unlocks it and the order unlocks 78 tools instead of 79. On 2026-11-24 Ogmios and Kupo
 left the order (both in progress); the remaining 19 steps unlock 73 tools. Earlier steps grew because tools that had
-waited on Ogmios or Kupo as well are now unlocked by their other fixes.
+waited on Ogmios or Kupo as well are now unlocked by their other fixes. On 2026-11-25 cardano-js-sdk left the order (in
+progress as @laceio/cardano, see above): Lace and cardano-js-sdk itself now wait only on ledgerjs among the fixes, which moves
+up a step, and the remaining 18 steps unlock 74 tools.
 
 Tools that are boundary components with a gap of their own (Mesh, Lucid
 Evolution, Evolution SDK, Blaze, yaci-store, Adder, Hydra and others) are never
