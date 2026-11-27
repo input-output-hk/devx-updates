@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import Nav from "@/components/Nav";
 import rawGraph from "@/data/cardano-graph.json";
 import { Graph, ToolNode, Status, STATUS_COLORS, CATEGORY_COLORS, READINESS_LABEL, AGENT_READINESS, isOSS } from "@/lib/map-types";
@@ -414,7 +414,7 @@ function RowGroup({
         <td className="num">{n.stars ?? "—"}</td>
         <td className="num" title={n.communityRank ? `rank #${n.communityRank} by community usage` : ""}>
           {n.communityUsage != null ? (
-            <span className="comm-bar" style={{ ["--w" as any]: Math.min(100, n.communityUsage) + "%" }}>
+            <span className="comm-bar" style={{ "--w": Math.min(100, n.communityUsage) + "%" } as CSSProperties}>
               {n.communityUsage}%
             </span>
           ) : "—"}

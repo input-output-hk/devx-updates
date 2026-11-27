@@ -13,7 +13,16 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     ".readiness/**",
+    // Local worktrees, each a full copy of the repo with its own build output.
+    ".claude/**",
   ]),
+  // `({ node, ...props })` drops a prop before spreading the rest onto an element.
+  { rules: { "@typescript-eslint/no-unused-vars": ["warn", { ignoreRestSiblings: true }] } },
+  // The devnet probes are CommonJS on purpose: they run with plain `node`.
+  {
+    files: ["**/*.cjs"],
+    rules: { "@typescript-eslint/no-require-imports": "off" },
+  },
 ]);
 
 export default eslintConfig;

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
 const NAV = [
@@ -27,12 +27,10 @@ function navLinkClass(active: boolean): string {
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // Close the mobile menu whenever the route changes (i.e. a link was tapped).
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  // The mobile menu stays open only on the route it was opened on, so tapping a
+  // link (a route change) closes it.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const menuOpen = openOn === pathname;
 
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-background/85 backdrop-blur">
@@ -66,7 +64,7 @@ export function SiteHeader() {
           {/* Mobile: hamburger toggles the dropdown menu below. */}
           <button
             type="button"
-            onClick={() => setMenuOpen((v) => !v)}
+            onClick={() => setOpenOn(menuOpen ? null : pathname)}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
