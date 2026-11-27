@@ -338,7 +338,12 @@ the lines it rests on:
 - `not-reached`: shipped code uses that dependency outside the gap.
 - `undetermined`: source reading cannot decide; execution or additional evidence is needed.
 
-732 entries, 1,631 surface decisions (590 confirmed, 1,000 not reached, 41 undetermined); none is unreviewed, stale or orphaned.
+730 entries, 1,631 surface decisions (586 confirmed, 1,004 not reached, 41 undetermined); none is unreviewed, stale or orphaned.
+
+On 2026-11-26, cardano-hw-cli's CSL decisions were re-read and merged into one `not-reached`: v1.20.0 decodes
+transaction files, witnesses and cost models with cardano-hw-interop-lib, and uses CSL only for key hashes, addresses
+and, for Keystone, native scripts, key derivation and the device's vkey signatures. It still waits on
+cardano-hw-interop-lib and ledgerjs-hw-app-cardano; the fix order is unchanged.
 
 On 2026-11-23, 227 stale leads moved to the newly classified revisions because every cited file was unchanged or changed
 only outside the cited hunk; 19 were re-read by hand (Oura and Dolos now pin Pallas 1.5.0-rc.3, still confirmed; Yano now
@@ -383,7 +388,7 @@ The first pass (170 decisions) confirmed **21 tools outside the boundary**:
 | gouroboros below v0.213.0 | txtop, cardano-node-api (archived), Bursa, IBC incubator | txtop and cardano-node-api open node-to-client connections without V23; all four decode transactions or blocks with pre-target ledger types |
 | ouroboros-miniprotocols-ts | Gerolamo | its own node-to-client responder offers only V16–V19, so 11.2 clients cannot connect |
 | cardano-wallet | Daedalus, cardano-wallet-js | both run on the wallet's REST API, whose backend cannot connect to 11.2 |
-| CSL (no PlutusV4) | Yoroi, cardano-dev-wallet, cardano-hw-cli, Hydra SDK, Masumi, cardano-rosetta-legacy (archived), csl-mobile-bridge | decode transactions or witnesses they did not build; csl-mobile-bridge re-exports the API |
+| CSL (no PlutusV4) | Yoroi (deprecated), cardano-dev-wallet, Hydra SDK, Masumi, cardano-rosetta-legacy (archived), csl-mobile-bridge | decode transactions or witnesses they did not build; csl-mobile-bridge re-exports the API |
 | cardano-js-sdk (parameter keys stop at 37) | Lace, Nami (archived) | decode transactions with parameter updates for keys 38–56 |
 | Scalus (no V4 evaluation) | Yano | evaluates scripts through Scalus |
 | cardano-api below 11.8 | Marlowe, Marconi, sc-tools, Midgard | follow the node or build and submit transactions fixed to the Conway era |

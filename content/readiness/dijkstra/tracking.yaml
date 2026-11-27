@@ -185,6 +185,10 @@ tools:
     dismissed:
       reason: Abandoned; no activity since 2024-04.
       date: 2026-10-26
+  yoroi:
+    dismissed:
+      reason: Deprecated by Emurgo.
+      date: 2026-11-27
   pallas:
     unreleased:
       note: "v1.5.0-rc.3 (release candidate) decodes every Dijkstra encoding of the 11.2.1 devnet behind the unstable feature; open PR #875 moves its definitions to the 11.2 ledger. The newest stable release, v1.4.0, has none of it."
@@ -251,6 +255,8 @@ tools:
     links:
       - url: https://github.com/Emurgo/cardano-serialization-lib/issues/763
         note: Checklist of what's left for Dijkstra
+      - url: https://www.npmjs.com/package/@fivebinaries/coin-selection/v/3.0.0
+        note: "Hardware wallets don't decode transactions with CSL. Ledger (ledgerjs-hw-app-cardano) doesn't depend on it. Trezor Connect reaches it only through this package, which builds payment transactions for coin selection and fee estimates; Lace, Daedalus, Nami and AdaLite reach it the same way."
   cardano-cli:
     links:
       - url: https://github.com/IntersectMBO/cardano-cli/pull/1439
@@ -472,6 +478,8 @@ tools:
         note: Dijkstra guards (CIP-112)
       - url: https://github.com/vacuumlabs/cardano-hw-cli/pull/220
         note: Optional pool BLS key
+      - url: https://github.com/vacuumlabs/cardano-hw-cli/blob/31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c/src/transaction/transaction.ts#L1
+        note: "v1.20.0 parses user-supplied transactions with cardano-hw-interop-lib, not CSL. CSL is used only for addresses and key hashes and, for Keystone, native scripts, key derivation and reading the device's vkey witnesses."
   cometa-js:
     unreleased:
       note: "2.0.0-rc.4 (release candidate) has Dijkstra builders, sub-transactions, PlutusV4 and the new protocol parameters; the pool BLS key is missing."

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-25T14:00:38.296Z",
+ "generatedAt": "2026-11-26T19:49:25.510Z",
  "bumpReady": [
   {
    "tool": "kupo",
@@ -474,13 +474,6 @@
      ]
     },
     {
-     "tool": "cardano-hw-cli",
-     "stillBlockedBy": [
-      "cardano-hw-interop-lib",
-      "ledgerjs-hw-app-cardano"
-     ]
-    },
-    {
      "tool": "cardano-rosetta-legacy",
      "stillBlockedBy": [
       "cardano-db-sync"
@@ -547,7 +540,6 @@
     {
      "tool": "cardano-hw-cli",
      "stillBlockedBy": [
-      "cardano-serialization-lib-csl",
       "cardano-hw-interop-lib"
      ]
     },
@@ -696,7 +688,6 @@
     {
      "tool": "cardano-hw-cli",
      "stillBlockedBy": [
-      "cardano-serialization-lib-csl",
       "ledgerjs-hw-app-cardano"
      ]
     },
@@ -2098,16 +2089,6 @@
    "tool": "cardano-hw-cli",
    "boundary": false,
    "blockers": [
-    {
-     "via": "cardano-serialization-lib-csl",
-     "kind": "upstream-fix",
-     "surfaces": [
-      "plutus-language",
-      "protocol-parameters",
-      "stake-pool-registration",
-      "transaction-encoding"
-     ]
-    },
     {
      "via": "cardano-hw-interop-lib",
      "kind": "upstream-fix",

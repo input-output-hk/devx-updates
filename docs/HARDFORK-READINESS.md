@@ -31,11 +31,11 @@ The register formats and findings are in
 | Boundary | `boundary.json` | 61 components, 281 evidence items; 44 gap, 3 no-evidence, 10 in-progress, 4 released |
 | Classification | `classification.json` | 268 tools: 227 scanned, 41 without public source; 62 revisions changed |
 | Transitive links | `transitive.json` | 27 lockfile-only component links in 26 tools |
-| Leads | `leads.json` | 732 entries, 1,631 surface decisions (590 confirmed, 1,000 not reached, 41 undetermined); none unreviewed, stale or orphaned |
+| Leads | `leads.json` | 730 entries, 1,631 surface decisions (586 confirmed, 1,004 not reached, 41 undetermined); none unreviewed, stale or orphaned |
 | Unlocks | `unlocks.json` | 18 fixes unlock 74 tools; Marlowe, Marconi, Midgard, Ogmios and Kupo are bump-ready by pin comparison |
 | Upgrades | `upgrades.json` | 13 readings: 8 own-work, 3 prepared, 2 generic |
 | Devnet | `devnet.json` | 22 checks, 59 results, 25 failing (node 11.2.1, 2026-11-23; Ogmios and Kupo forks rerun 2026-11-24, @laceio/cardano 2026-11-25) |
-| Site | `/map/dijkstra` | 207 tools: 104 break, 11 in progress, 4 ready, 4 target components, 50 not verified, 34 dismissed |
+| Site | `/map/dijkstra` | 207 tools: 103 break, 11 in progress, 4 ready, 4 target components, 50 not verified, 35 dismissed |
 | History | `/map/dijkstra/history` | Ten tool-state changes; of 30 same-version runtime results, 29 matched and one changed because new cases were added (@cardano-sdk/core 0.47.1 on balance intervals) |
 | Dependency graph | `data/readiness/` | Existing 55 native profiles retained and replayed; broad native collection remains paused |
 

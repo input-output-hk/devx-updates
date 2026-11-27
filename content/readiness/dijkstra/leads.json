@@ -283,11 +283,50 @@
       "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
       "via": "cardano-serialization-lib-csl",
       "surfaces": [
-        "plutus-language"
+        "plutus-language",
+        "block-encoding",
+        "protocol-parameters",
+        "stake-pool-registration",
+        "transaction-encoding"
       ],
-      "decision": "confirmed",
-      "summary": "Witness handling decodes witness sets with CSL and validates Plutus witnesses and cost models of user-supplied transactions.",
+      "decision": "not-reached",
+      "summary": "Transaction files, including their witnesses and cost models, are decoded with cardano-hw-interop-lib, not CSL. CSL hashes keys and parses addresses and, for Keystone, builds native scripts, derives keys and reads the vkey signatures from the witness set the device returns.",
       "evidence": [
+        {
+          "repo": "vacuumlabs/cardano-hw-cli",
+          "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
+          "path": "src/commandExecutor.ts",
+          "line": 205,
+          "quote": "const tx = InteropLib.decodeTx(txCbor)"
+        },
+        {
+          "repo": "vacuumlabs/cardano-hw-cli",
+          "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
+          "path": "src/transaction/transactionValidation.ts",
+          "line": 229,
+          "quote": "InteropLib.decodeTx(txCbor),"
+        },
+        {
+          "repo": "vacuumlabs/cardano-hw-cli",
+          "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
+          "path": "src/crypto-providers/util.ts",
+          "line": 252,
+          "quote": "cardanoSerialization.PublicKey.from_bytes(pubKey).hash().to_bytes(),"
+        },
+        {
+          "repo": "vacuumlabs/cardano-hw-cli",
+          "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
+          "path": "src/crypto-providers/util.ts",
+          "line": 717,
+          "quote": "address = cardanoSerialization.Address.from_bech32(addressStr)"
+        },
+        {
+          "repo": "vacuumlabs/cardano-hw-cli",
+          "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
+          "path": "src/crypto-providers/keystoneCryptoProvider.ts",
+          "line": 364,
+          "quote": "return cardanoSerialization.NativeScript.new_script_pubkey(scriptPubkey)"
+        },
         {
           "repo": "vacuumlabs/cardano-hw-cli",
           "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
@@ -298,9 +337,9 @@
         {
           "repo": "vacuumlabs/cardano-hw-cli",
           "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
-          "path": "src/transaction/transactionValidation.ts",
-          "line": 189,
-          "quote": "const extractCostModels = ("
+          "path": "src/crypto-providers/keystoneUtils.ts",
+          "line": 462,
+          "quote": "const result = vkeywitnesses?.map((witness) => ({"
         }
       ]
     },
@@ -13392,60 +13431,6 @@
           "path": "webext/src/lib/CIP30/WalletApi.ts",
           "line": 342,
           "quote": "argsDecoded: [CSL.Transaction.from_hex(tx), partialSign],"
-        }
-      ]
-    },
-    {
-      "tool": "cardano-hw-cli",
-      "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
-      "via": "cardano-serialization-lib-csl",
-      "surfaces": [
-        "protocol-parameters",
-        "stake-pool-registration",
-        "transaction-encoding"
-      ],
-      "decision": "confirmed",
-      "summary": "Transaction files supplied by the user are decoded with CSL, whose body decoder rejects keys beyond 22, parameter updates beyond key 33 and pool certificates with a BLS key (pool registration signing included).",
-      "evidence": [
-        {
-          "repo": "vacuumlabs/cardano-hw-cli",
-          "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
-          "path": "src/crypto-providers/keystoneUtils.ts",
-          "line": 458,
-          "quote": "CardanoSerializationLib.TransactionWitnessSet.from_hex("
-        },
-        {
-          "repo": "vacuumlabs/cardano-hw-cli",
-          "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
-          "path": "src/transaction/transactionValidation.ts",
-          "line": 189,
-          "quote": "const extractCostModels = ("
-        }
-      ]
-    },
-    {
-      "tool": "cardano-hw-cli",
-      "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
-      "via": "cardano-serialization-lib-csl",
-      "surfaces": [
-        "block-encoding"
-      ],
-      "decision": "not-reached",
-      "summary": "CSL decodes transactions here, not blocks.",
-      "evidence": [
-        {
-          "repo": "vacuumlabs/cardano-hw-cli",
-          "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
-          "path": "src/crypto-providers/keystoneUtils.ts",
-          "line": 458,
-          "quote": "CardanoSerializationLib.TransactionWitnessSet.from_hex("
-        },
-        {
-          "repo": "vacuumlabs/cardano-hw-cli",
-          "revision": "31aa179c8bcc9b22a600cd3d3a8661f62f46dd8c",
-          "path": "src/transaction/transactionValidation.ts",
-          "line": 189,
-          "quote": "const extractCostModels = ("
         }
       ]
     },
