@@ -1,0 +1,36 @@
+scripttype enum: multisig,timelock,plutusV1,plutusV2,plutusV3,plutusV4
+## every submitted transaction
+conway-legacy-reg                    54ee094fecebb606 MISSING
+conway-metadata                      1dfe0f557bce0391 indexed
+conway-payment                       89d45c27006ca928 indexed
+conway-reg-with-deposit              a17719e2660caf7c indexed
+conway-required-signer               11bd39abc920b765 indexed
+dijkstra-metadata                    7b49b2f0e852565d indexed
+dijkstra-payment                     87778dc3e4118649 indexed
+dijkstra-reg-with-deposit            d75aaae64c78985e indexed
+split                                c94d5d7482598e43 indexed
+dijkstra-balance-interval            d912bf4966ff318d indexed
+dijkstra-direct-deposit              c2fa179c31729d55 indexed
+dijkstra-native-guard                ce3da21b416667c7 indexed
+dijkstra-plutusv4-guard              7b5eb9de10fea0ed indexed
+dijkstra-plutusv4-reference-script   a323e29b10e63eaa indexed
+dijkstra-sub-transaction             38e5e3f4f9982890 indexed
+split                                e4132c2d26d3e1b2 indexed
+spend-subtx-output                   cb881ea179d81a9b MISSING
+(sub-transaction itself)             7b0f2e1627e8babc MISSING
+## sub-transaction
+node: split#1 unspent? false; sub#0 unspent? false
+db-sync: tx_in rows of top-level tx: 1, tx_out rows: 1
+db-sync: split#1 consumed by any tx_in? f
+## direct deposit
+node: stake_test1uphxndkttypz9cvl8zzmq72xyz2kmvk77y6l50crzvhxh6q9dcksc rewardAccountBalance 2000000
+db-sync: tx out_sum/fee/deposit 47700000 300000 0; inputs 50000000
+db-sync: tables with a deposit/direct column: none
+## PlutusV4 reference script and guards
+db-sync script rows by type: timelock=1 plutusV4=1
+db-sync redeemers of plutusv4-guard tx: guard script_hash=NULL mem=20000
+redeemer purpose enum: spend,mint,cert,reward,vote,propose,guard
+## protocol parameters
+node protocolVersion: {"major":12,"minor":0}; db-sync latest epoch_param: 7 12 0
+node's new Dijkstra parameters: 23; with an epoch_param column: 0; missing: leiosAnnouncementPeriodLength leiosCommitteeSize leiosDiffusionPeriodLength leiosQuorumStakeThreshold leiosVotePeriodLength maxEndorserBlockExecutionUnits maxEndorserBlockReferencesSize maxEndorserBlockTxsSize maxPledgeLeverage maxRefScriptSizePerBlock maxRefScriptSizePerEndorserBlock maxRefScriptSizePerTx minPoolMargin perasBootstrapRound perasCertBoost perasHealingFactor perasMinCandidateBlockAge perasQuorumThresholdSafetyMargin perasTargetCommitteeSize refInputsCostPerDatumByte refInputsCostPerMultiAssetPolicy refScriptCostMultiplier refScriptCostStride
+PlutusV4 cost model in epoch_param: true
