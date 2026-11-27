@@ -1,0 +1,303 @@
+id,name,category,status,community_usage_percent,stars,degree,usage_points,stars_points,connectivity_points,score,score_low,score_high,rank_within_category,missing_inputs,review_state
+blockfrost,Blockfrost,api,active,72,0,14,43.200000,0.000000,10.769231,53.969231,53.969231,53.969231,1,,candidate
+blockfrost-backend-ryo,Blockfrost Backend (RYO),api,active,45,85,1,27.000000,1.629801,0.769231,29.399031,29.399031,29.399031,2,,candidate
+koios,Koios,api,active,23,22,11,13.800000,0.829156,8.461538,23.090695,23.090695,23.090695,3,,outside-candidate-cut
+maestro,Maestro,api,active,21,0,3,12.600000,0.000000,2.307692,14.907692,14.907692,14.907692,4,,outside-candidate-cut
+taptools-api,TapTools API,api,maintenance,19,0,1,11.400000,0.000000,0.769231,12.169231,12.169231,12.169231,5,,outside-candidate-cut
+nmkr-studio-api,NMKR Studio API,api,active,7,0,0,4.200000,0.000000,0.000000,4.200000,4.200000,4.200000,6,,outside-candidate-cut
+anvil,Anvil,api,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+cardano-on-bigquery,Cardano on BigQuery,api,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+dandelion-apis,Dandelion APIs,api,abandoned,,13,4,,0.637377,3.076923,,3.714301,63.714301,,communityUsage,unranked-missing-inputs
+dexhunter,DexHunter,api,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+getblock,GetBlock,api,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+nftcdn,NFTCDN,api,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+nownodes,NOWNodes,api,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+sundaeswap-api,SundaeSwap API,api,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+tangocrypto,TangoCrypto,api,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+app-5am.earth,5am.earth,app,unknown,,,0,,,0.000000,,0.000000,70.000000,,communityUsage;starsNum,unranked-missing-inputs
+app-cswap,CSWAP,app,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+app-dano-finance,Dano Finance,app,unknown,,,4,,,3.076923,,3.076923,73.076923,,communityUsage;starsNum,unranked-missing-inputs
+app-fms-by-trivolve,FMS by Trivolve,app,unknown,,,0,,,0.000000,,0.000000,70.000000,,communityUsage;starsNum,unranked-missing-inputs
+app-hosky,Hosky,app,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+app-indianchain-by-trivolve,Indianchain by Trivolve,app,unknown,,,0,,,0.000000,,0.000000,70.000000,,communityUsage;starsNum,unranked-missing-inputs
+app-indigo-protocol,Indigo Protocol,app,unknown,,,0,,,0.000000,,0.000000,70.000000,,communityUsage;starsNum,unranked-missing-inputs
+app-liqwid-finance,Liqwid Finance,app,unknown,,,4,,,3.076923,,3.076923,73.076923,,communityUsage;starsNum,unranked-missing-inputs
+app-minswap,Minswap,app,unknown,,,7,,,5.384615,,5.384615,75.384615,,communityUsage;starsNum,unranked-missing-inputs
+app-muesliswap,MuesliSwap,app,unknown,,,8,,,6.153846,,6.153846,76.153846,,communityUsage;starsNum,unranked-missing-inputs
+app-shadowbook,Shadowbook,app,unknown,,,0,,,0.000000,,0.000000,70.000000,,communityUsage;starsNum,unranked-missing-inputs
+app-spectrum-finance,Spectrum Finance,app,unknown,,,3,,,2.307692,,2.307692,72.307692,,communityUsage;starsNum,unranked-missing-inputs
+app-splash,Splash Protocol,app,unknown,,,6,,,4.615385,,4.615385,74.615385,,communityUsage;starsNum,unranked-missing-inputs
+app-sundaeswap,SundaeSwap,app,unknown,,,5,,,3.846154,,3.846154,73.846154,,communityUsage;starsNum,unranked-missing-inputs
+app-uverify,UVerify,app,unknown,,,6,,,4.615385,,4.615385,74.615385,,communityUsage;starsNum,unranked-missing-inputs
+app-vyfinance,VyFinance,app,unknown,,,0,,,0.000000,,0.000000,70.000000,,communityUsage;starsNum,unranked-missing-inputs
+app-wayup,Wayup,app,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+app-wingriders,WingRiders,app,unknown,,,6,,,4.615385,,4.615385,74.615385,,communityUsage;starsNum,unranked-missing-inputs
+demeter,Demeter,dev,active,34,0,5,20.400000,0.000000,3.846154,24.246154,24.246154,24.246154,1,,candidate
+yaci-devkit,Yaci DevKit,dev,active,23,69,3,13.800000,1.468418,2.307692,17.576110,17.576110,17.576110,2,,outside-candidate-cut
+blockfrost-cardano-cli,Blockfrost cardano-cli,dev,abandoned,,24,1,,0.866025,0.769231,,1.635256,61.635256,,communityUsage,unranked-missing-inputs
+cardano-academy,Cardano Academy,dev,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+cardano-caniuse,Cardano CanIUse,dev,abandoned,,15,0,,0.684653,0.000000,,0.684653,60.684653,,communityUsage,unranked-missing-inputs
+cardano-cli-guru,Cardano CLI Guru,dev,abandoned,,1,1,,0.176777,0.769231,,0.946007,60.946007,,communityUsage,unranked-missing-inputs
+cardano-ctf,Cardano CTF,dev,active,,34,1,,1.030776,0.769231,,1.800007,61.800007,,communityUsage,unranked-missing-inputs
+cardano-dev-wallet,Cardano Dev Wallet,dev,maintenance,,13,1,,0.637377,0.769231,,1.406608,61.406608,,communityUsage,unranked-missing-inputs
+cardano-launcher,cardano-launcher,dev,active,,34,2,,1.030776,1.538462,,2.569238,62.569238,,communityUsage,unranked-missing-inputs
+cardano-mcp,Cardano MCP,dev,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+cardano-testnet,cardano-testnet,dev,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+cardanovsc,CardanoVSC,dev,maintenance,,1,1,,0.176777,0.769231,,0.946007,60.946007,,communityUsage,unranked-missing-inputs
+cbor-app,cbor.app,dev,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+clb,CLB Emulator,dev,active,,10,1,,0.559017,0.769231,,1.328248,61.328248,,communityUsage,unranked-missing-inputs
+cquisitor,CQuisitor,dev,active,,38,2,,1.089725,1.538462,,2.628186,62.628186,,communityUsage,unranked-missing-inputs
+create-evolution-app,create-evolution-app,dev,maintenance,,5,1,,0.395285,0.769231,,1.164515,61.164515,,communityUsage,unranked-missing-inputs
+datum-explorer,Datum Explorer,dev,active,,1,0,,0.176777,0.000000,,0.176777,60.176777,,communityUsage,unranked-missing-inputs
+de-uplc,de-uplc,dev,active,,6,1,,0.433013,0.769231,,1.202243,61.202243,,communityUsage,unranked-missing-inputs
+de-uplc-web,de-uplc-web,dev,active,,2,2,,0.250000,1.538462,,1.788462,61.788462,,communityUsage,unranked-missing-inputs
+devx,devx,dev,active,,51,0,,1.262438,0.000000,,1.262438,61.262438,,communityUsage,unranked-missing-inputs
+frankenwallet,Frankenwallet,dev,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+hypothesis,Hypothesis,dev,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+intelliada,IntelliADA,dev,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+jambhala,Jambhala,dev,maintenance,,26,1,,0.901388,0.769231,,1.670619,61.670619,,communityUsage,unranked-missing-inputs
+koios-cli,Koios CLI,dev,abandoned,,6,1,,0.433013,0.769231,,1.202243,61.202243,,communityUsage,unranked-missing-inputs
+kuberide,KuberIDE,dev,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+lace-anatomy,Lace Anatomy,dev,maintenance,,23,0,,0.847791,0.000000,,0.847791,60.847791,,communityUsage,unranked-missing-inputs
+marlowe-playground,Marlowe Playground,dev,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+mesh-mimir,Mesh Mimir,dev,active,,2,1,,0.250000,0.769231,,1.019231,61.019231,,communityUsage,unranked-missing-inputs
+metadraft,MetaDraft,dev,maintenance,,4,0,,0.353553,0.000000,,0.353553,60.353553,,communityUsage,unranked-missing-inputs
+mockfrost,Mockfrost,dev,active,,21,0,,0.810093,0.000000,,0.810093,60.810093,,communityUsage,unranked-missing-inputs
+naumachia,Naumachia,dev,abandoned,,55,0,,1.311011,0.000000,,1.311011,61.311011,,communityUsage,unranked-missing-inputs
+pix,Pix,dev,abandoned,,37,0,,1.075291,0.000000,,1.075291,61.075291,,communityUsage,unranked-missing-inputs
+plutarch-context-builder,plutarch-context-builder,dev,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+plutarch-quickcheck,plutarch-quickcheck,dev,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+plutarch-unit,plutarch-unit,dev,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+plutip,Plutip,dev,maintenance,,55,3,,1.311011,2.307692,,3.618703,63.618703,,communityUsage,unranked-missing-inputs
+plutus-cborhex-automation,plutus-cborhex-automation,dev,abandoned,,16,0,,0.707107,0.000000,,0.707107,60.707107,,communityUsage,unranked-missing-inputs
+plutus-pioneer-program,Plutus Pioneer Program,dev,active,,1369,1,,6.540738,0.769231,,7.309968,67.309968,,communityUsage,unranked-missing-inputs
+plutus-playground,Plutus Playground,dev,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+pytest,pytest,dev,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+quickcheck-contractmodel,quickcheck-contractmodel,dev,active,,7,0,,0.467707,0.000000,,0.467707,60.467707,,communityUsage,unranked-missing-inputs
+quickcheck-dynamic,quickcheck-dynamic,dev,active,,35,0,,1.045825,0.000000,,1.045825,61.045825,,communityUsage,unranked-missing-inputs
+sorbet,Sorbet,dev,active,,16,0,,0.707107,0.000000,,0.707107,60.707107,,communityUsage,unranked-missing-inputs
+testnet-faucet,Testnet Faucet,dev,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+toolkit-for-cardano,Toolkit for Cardano,dev,abandoned,,134,2,,2.046338,1.538462,,3.584800,63.584800,,communityUsage,unranked-missing-inputs
+vodka,Vodka,dev,active,,30,1,,0.968246,0.769231,,1.737477,61.737477,,communityUsage,unranked-missing-inputs
+vscode-aiken,Aiken for VS Code,dev,active,,20,1,,0.790569,0.769231,,1.559800,61.559800,,communityUsage,unranked-missing-inputs
+1694-io,1694.io,gov,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+catalyst-core,catalyst-core,gov,active,,0,2,,0.000000,1.538462,,1.538462,61.538462,,communityUsage,unranked-missing-inputs
+catalyst-toolbox,catalyst-toolbox,gov,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+catalyst-voices,Catalyst Voices,gov,active,,40,1,,1.118034,0.769231,,1.887265,61.887265,,communityUsage,unranked-missing-inputs
+govtool,GovTool,gov,active,,20,1,,0.790569,0.769231,,1.559800,61.559800,,communityUsage,unranked-missing-inputs
+zhuli,ZhuLi,gov,maintenance,,7,1,,0.467707,0.769231,,1.236938,61.236938,,communityUsage,unranked-missing-inputs
+cardano-db-sync,cardano-db-sync,idx,active,30,317,10,18.000000,3.147420,7.692308,28.839727,28.839727,28.839727,1,,candidate
+kupo,Kupo,idx,active,25,138,7,15.000000,2.076656,5.384615,22.461271,22.461271,22.461271,2,,candidate
+yaci-store,Yaci Store,idx,active,18,49,6,10.800000,1.237437,4.615385,16.652821,16.652821,16.652821,3,,candidate
+dolos,Dolos,idx,active,14,133,1,8.400000,2.038688,0.769231,11.207919,11.207919,11.207919,4,,outside-candidate-cut
+oura,Oura,idx,active,7,289,3,4.200000,3.005204,2.307692,9.512896,9.512896,9.512896,5,,outside-candidate-cut
+cardano-graphql,cardano-graphql,idx,active,6,263,2,3.600000,2.866836,1.538462,8.005298,8.005298,8.005298,6,,outside-candidate-cut
+scrolls,Scrolls,idx,maintenance,4,105,1,2.400000,1.811422,0.769231,4.980653,4.980653,4.980653,7,,outside-candidate-cut
+adder,Adder,idx,active,3,38,1,1.800000,1.089725,0.769231,3.658956,3.658956,3.658956,8,,outside-candidate-cut
+iris,Iris,idx,active,2,0,0,1.200000,0.000000,0.000000,1.200000,1.200000,1.200000,9,,outside-candidate-cut
+argus-cardano-sync,Argus (Cardano.Sync),idx,active,,8,1,,0.500000,0.769231,,1.269231,61.269231,,communityUsage,unranked-missing-inputs
+carp,Carp,idx,maintenance,,107,2,,1.828592,1.538462,,3.367054,63.367054,,communityUsage,unranked-missing-inputs
+cf-ledger-sync,cf-ledger-sync,idx,maintenance,,27,1,,0.918559,0.769231,,1.687789,61.687789,,communityUsage,unranked-missing-inputs
+marconi,Marconi,idx,active,,14,1,,0.661438,0.769231,,1.430669,61.430669,,communityUsage,unranked-missing-inputs
+minswap-self-hosted-syncer,Minswap self-hosted syncer,idx,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+mumak,Mumak,idx,maintenance,,19,1,,0.770552,0.769231,,1.539783,61.539783,,communityUsage,unranked-missing-inputs
+ogmiosdotnet-blockchainevents,OgmiosDotnet.BlockchainEvents,idx,active,,5,2,,0.395285,1.538462,,1.933746,61.933746,,communityUsage,unranked-missing-inputs
+pg-cardano,pg_cardano,idx,active,,12,0,,0.612372,0.000000,,0.612372,60.612372,,communityUsage,unranked-missing-inputs
+yano,Yano,idx,active,,3,1,,0.306186,0.769231,,1.075417,61.075417,,communityUsage,unranked-missing-inputs
+cexplorer,Cexplorer,infra,active,35,0,0,21.000000,0.000000,0.000000,21.000000,21.000000,21.000000,1,,candidate
+cardanoscan-api,Cardanoscan API,infra,active,30,0,0,18.000000,0.000000,0.000000,18.000000,18.000000,18.000000,2,,candidate
+cardano-token-registry,Cardano Token Registry,infra,active,13,304,0,7.800000,3.082207,0.000000,10.882207,10.882207,10.882207,3,,outside-candidate-cut
+ada-handle,ADA Handle,infra,active,14,0,0,8.400000,0.000000,0.000000,8.400000,8.400000,8.400000,4,,outside-candidate-cut
+offchain-metadata-tools,offchain-metadata-tools,infra,active,4,50,0,2.400000,1.250000,0.000000,3.650000,3.650000,3.650000,5,,outside-candidate-cut
+cardano-rosetta-java,cardano-rosetta-java,infra,active,1,27,2,0.600000,0.918559,1.538462,3.057020,3.057020,3.057020,6,,outside-candidate-cut
+adapools-xyz,adapools.xyz,infra,experimental,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+adastat-api,AdaStat,infra,active,,11,0,,0.586302,0.000000,,0.586302,60.586302,,communityUsage,unranked-missing-inputs
+cardano-name-service-cns,Cardano Name Service (CNS),infra,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+cardano-rosetta-legacy,cardano-rosetta (legacy),infra,archived,,97,2,,1.741049,1.538462,,3.279510,63.279510,,communityUsage,unranked-missing-inputs
+cardanopress,Cardanopress,infra,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+gimbalabs,Gimbalabs,infra,active,,0,2,,0.000000,1.538462,,1.538462,61.538462,,communityUsage,unranked-missing-inputs
+hyperledger-identus,Hyperledger Identus,infra,active,,94,1,,1.713914,0.769231,,2.483144,62.483144,,communityUsage,unranked-missing-inputs
+keria,KERIA,infra,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+masumi,Masumi,infra,active,,14,9,,0.661438,6.923077,,7.584515,67.584515,,communityUsage,unranked-missing-inputs
+masumi-registry-service,Masumi Registry Service,infra,active,,6,2,,0.433013,1.538462,,1.971474,61.971474,,communityUsage,unranked-missing-inputs
+odatano,ODATANO,infra,active,,11,1,,0.586302,0.769231,,1.355533,61.355533,,communityUsage,unranked-missing-inputs
+pool-pm,pool.pm,infra,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+sokosumi,Sokosumi,infra,active,,11,2,,0.586302,1.538462,,2.124764,62.124764,,communityUsage,unranked-missing-inputs
+veridian-wallet,Veridian Wallet,infra,active,,143,1,,2.113942,0.769231,,2.883173,62.883173,,communityUsage,unranked-missing-inputs
+x402-cardano,x402 Cardano,infra,active,,2,1,,0.250000,0.769231,,1.019231,61.019231,,communityUsage,unranked-missing-inputs
+hydra,Hydra,l2,active,18,337,4,10.800000,3.245189,3.076923,17.122112,17.122112,17.122112,1,,candidate
+mithril,Mithril,l2,active,18,152,2,10.800000,2.179449,1.538462,14.517911,14.517911,14.517911,2,,outside-candidate-cut
+balius,Balius,l2,maintenance,,35,1,,1.045825,0.769231,,1.815056,61.815056,,communityUsage,unranked-missing-inputs
+cardano-ibc-incubator,Cardano IBC Incubator,l2,active,,30,1,,0.968246,0.769231,,1.737477,61.737477,,communityUsage,unranked-missing-inputs
+hydra-pay,Hydra Pay,l2,abandoned,,39,1,,1.103970,0.769231,,1.873201,61.873201,,communityUsage,unranked-missing-inputs
+leios-peras,Leios / Peras,l2,research,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+metis,Metis,l2,active,,20,1,,0.790569,0.769231,,1.559800,61.559800,,communityUsage,unranked-missing-inputs
+midgard,Midgard,l2,active,,24,2,,0.866025,1.538462,,2.404487,62.404487,,communityUsage,unranked-missing-inputs
+midnight,Midnight,l2,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+milkomeda-c1,Milkomeda C1,l2,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+partner-chains,Partner Chains,l2,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+cardano-cli,cardano-cli,node,active,73,72,6,43.800000,1.500000,4.615385,49.915385,49.915385,49.915385,1,,candidate
+ogmios,Ogmios,node,active,35,326,15,21.000000,3.191786,11.538462,35.730248,35.730248,35.730248,2,,candidate
+cardano-wallet,cardano-wallet,node,maintenance,19,822,5,11.400000,5.068284,3.846154,20.314438,20.314438,20.314438,3,,outside-candidate-cut
+yaci,Yaci,node,active,17,32,5,10.200000,1.000000,3.846154,15.046154,15.046154,15.046154,4,,outside-candidate-cut
+gouroboros,gOuroboros,node,active,9,83,6,5.400000,1.610512,4.615385,11.625897,11.625897,11.625897,5,,outside-candidate-cut
+dingo,Dingo,node,active,4,45,3,2.400000,1.185854,2.307692,5.893546,5.893546,5.893546,6,,outside-candidate-cut
+amaru,Amaru,node,active,,105,1,,1.811422,0.769231,,2.580653,62.580653,,communityUsage,unranked-missing-inputs
+boros,Boros,node,active,,19,1,,0.770552,0.769231,,1.539783,61.539783,,communityUsage,unranked-missing-inputs
+cardano-node,cardano-node,node,active,,3200,39,,10.000000,30.000000,,40.000000,100.000000,,communityUsage,unranked-missing-inputs
+cardano-node-api,Cardano Node API,node,active,,16,2,,0.707107,1.538462,,2.245568,62.245568,,communityUsage,unranked-missing-inputs
+cardano-submit-api,cardano-submit-api,node,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+gerolamo,Gerolamo,node,active,,5,1,,0.395285,0.769231,,1.164515,61.164515,,communityUsage,unranked-missing-inputs
+kogmios,Kogmios,node,active,,7,1,,0.467707,0.769231,,1.236938,61.236938,,communityUsage,unranked-missing-inputs
+ogmiosdotnet,OgmiosDotnet,node,active,,0,2,,0.000000,1.538462,,1.538462,61.538462,,communityUsage,unranked-missing-inputs
+ouroboros-miniprotocols-ts,ouroboros-miniprotocols-ts,node,active,,15,2,,0.684653,1.538462,,2.223115,62.223115,,communityUsage,unranked-missing-inputs
+ouroboros-network-js,ouroboros-network-js,node,active,,19,1,,0.770552,0.769231,,1.539783,61.539783,,communityUsage,unranked-missing-inputs
+utxorpc,UTxORPC,node,active,,34,4,,1.030776,3.076923,,4.107699,64.107699,,communityUsage,unranked-missing-inputs
+xogmios,Xogmios,node,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+cardano-signer,cardano-signer,ops,active,16,55,0,9.600000,1.311011,0.000000,10.911011,10.911011,10.911011,1,,candidate
+cncli,cncli,ops,active,7,57,1,4.200000,1.334635,0.769231,6.303866,6.303866,6.303866,2,,candidate
+cardano-up,cardano-up,ops,active,7,25,1,4.200000,0.883883,0.769231,5.853114,5.853114,5.853114,3,,outside-candidate-cut
+nview,nview,ops,active,6,40,1,3.600000,1.118034,0.769231,5.487265,5.487265,5.487265,4,,outside-candidate-cut
+txtop,txtop,ops,active,3,25,1,1.800000,0.883883,0.769231,3.453114,3.453114,3.453114,5,,outside-candidate-cut
+cardano-node-audit,Cardano Node Audit,ops,maintenance,,7,1,,0.467707,0.769231,,1.236938,61.236938,,communityUsage,unranked-missing-inputs
+cf-java-rewards-calculation,cf-java-rewards-calculation,ops,active,,21,0,,0.810093,0.000000,,0.810093,60.810093,,communityUsage,unranked-missing-inputs
+guild-operators-suite,Guild Operators Suite,ops,active,,365,1,,3.377314,0.769231,,4.146545,64.146545,,communityUsage,unranked-missing-inputs
+stakepool-operator-scripts,StakePool Operator Scripts,ops,active,,281,1,,2.963317,0.769231,,3.732548,63.732548,,communityUsage,unranked-missing-inputs
+charli3,Charli3,oracle,active,5,0,0,3.000000,0.000000,0.000000,3.000000,3.000000,3.000000,1,,candidate
+orcfax,Orcfax,oracle,active,5,0,0,3.000000,0.000000,0.000000,3.000000,3.000000,3.000000,1,,candidate
+cardano-open-oracle-protocol,Cardano Open Oracle Protocol (COOP),oracle,abandoned,,21,1,,0.810093,0.769231,,1.579323,61.579323,,communityUsage,unranked-missing-inputs
+pyth-lazer-cardano,Pyth Lazer (Cardano),oracle,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+aiken,Aiken,sc,active,76,584,23,45.600000,4.272002,17.692308,67.564310,67.564310,67.564310,1,,candidate
+opshin,OpShin,sc,active,7,168,4,4.200000,2.291288,3.076923,9.568211,9.568211,9.568211,2,,candidate
+scalus,Scalus,sc,active,9,105,2,5.400000,1.811422,1.538462,8.749884,8.749884,8.749884,3,,candidate
+plutarch,Plutarch,sc,active,6,134,4,3.600000,2.046338,3.076923,8.723261,8.723261,8.723261,4,,outside-candidate-cut
+plu-ts,plu-ts,sc,active,9,0,3,5.400000,0.000000,2.307692,7.707692,7.707692,7.707692,5,,outside-candidate-cut
+plinth-plutus-tx,Plinth (Plutus Tx),sc,active,8,0,3,4.800000,0.000000,2.307692,7.107692,7.107692,7.107692,6,,outside-candidate-cut
+helios,Helios,sc,active,6,148,1,3.600000,2.150581,0.769231,6.519812,6.519812,6.519812,7,,outside-candidate-cut
+marlowe,Marlowe,sc,active,3,99,3,1.800000,1.758906,2.307692,5.866598,5.866598,5.866598,8,,outside-candidate-cut
+gastronomy,Gastronomy,sc,active,3,21,2,1.800000,0.810093,1.538462,4.148554,4.148554,4.148554,9,,outside-candidate-cut
+aicone,Aicone,sc,active,,10,1,,0.559017,0.769231,,1.328248,61.328248,,communityUsage,unranked-missing-inputs
+aiken-linked-list,Aiken Linked List,sc,abandoned,,4,1,,0.353553,0.769231,,1.122784,61.122784,,communityUsage,unranked-missing-inputs
+aiken-stdlib,Aiken Standard Library,sc,active,,59,1,,1.357848,0.769231,,2.127078,62.127078,,communityUsage,unranked-missing-inputs
+cardinal,Cardinal,sc,maintenance,,17,0,,0.728869,0.000000,,0.728869,60.728869,,communityUsage,unranked-missing-inputs
+gnark-cardano,gnark-cardano,sc,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+hebi,Hebi,sc,archived,,5,2,,0.395285,1.538462,,1.933746,61.933746,,communityUsage,unranked-missing-inputs
+imperator,Imperator,sc,archived,,28,1,,0.935414,0.769231,,1.704645,61.704645,,communityUsage,unranked-missing-inputs
+julc,JuLC,sc,active,,7,1,,0.467707,0.769231,,1.236938,61.236938,,communityUsage,unranked-missing-inputs
+merkle-patricia-forestry,Merkle Patricia Forestry,sc,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+pebble,Pebble,sc,active,,179,1,,2.365111,0.769231,,3.134342,63.134342,,communityUsage,unranked-missing-inputs
+pluthon,Pluthon,sc,active,,8,1,,0.500000,0.769231,,1.269231,61.269231,,communityUsage,unranked-missing-inputs
+plutigo,Plutigo,sc,active,,38,1,,1.089725,0.769231,,1.858956,61.858956,,communityUsage,unranked-missing-inputs
+pluto,Pluto,sc,experimental,,32,1,,1.000000,0.769231,,1.769231,61.769231,,communityUsage,unranked-missing-inputs
+plutonomy,Plutonomy,sc,abandoned,,39,1,,1.103970,0.769231,,1.873201,61.873201,,communityUsage,unranked-missing-inputs
+plutus-halo2-verifier-gen,plutus-halo2-verifier-gen,sc,active,,12,2,,0.612372,1.538462,,2.150834,62.150834,,communityUsage,unranked-missing-inputs
+plutus-plutus-core,Plutus / Plutus Core,sc,active,,1600,29,,7.071068,22.307692,,29.378760,89.378760,,communityUsage,unranked-missing-inputs
+plutus-simple-model,plutus-simple-model,sc,archived,,31,1,,0.984251,0.769231,,1.753482,61.753482,,communityUsage,unranked-missing-inputs
+purus,Purus,sc,maintenance,,8,1,,0.500000,0.769231,,1.269231,61.269231,,communityUsage,unranked-missing-inputs
+shrinker,Shrinker,sc,abandoned,,5,1,,0.395285,0.769231,,1.164515,61.164515,,communityUsage,unranked-missing-inputs
+smartcode-verifier,SmartCode Verifier,sc,active,,9,0,,0.530330,0.000000,,0.530330,60.530330,,communityUsage,unranked-missing-inputs
+telchar,Telchar,sc,maintenance,,13,1,,0.637377,0.769231,,1.406608,61.406608,,communityUsage,unranked-missing-inputs
+uplc-turbo,uplc-turbo,sc,active,,7,1,,0.467707,0.769231,,1.236938,61.236938,,communityUsage,unranked-missing-inputs
+zeroj,ZeroJ,sc,active,,2,0,,0.250000,0.000000,,0.250000,60.250000,,communityUsage,unranked-missing-inputs
+meshjs-mesh-sdk,MeshJS (Mesh SDK),sdk,active,37,270,9,22.200000,2.904738,6.923077,32.027814,32.027814,32.027814,1,,candidate
+lucid-evolution,Lucid Evolution,sdk,active,33,87,7,19.800000,1.648863,5.384615,26.833479,26.833479,26.833479,2,,candidate
+lucid,Lucid,sdk,maintenance,27,359,9,16.200000,3.349440,6.923077,26.472517,26.472517,26.472517,3,,candidate
+cardano-js-sdk,cardano-js-sdk,sdk,active,28,238,4,16.800000,2.727178,3.076923,22.604101,22.604101,22.604101,4,,candidate
+cardano-serialization-lib-csl,cardano-serialization-lib (CSL),sdk,active,17,250,12,10.200000,2.795085,9.230769,22.225854,22.225854,22.225854,5,,candidate
+cardano-multiplatform-lib-cml,cardano-multiplatform-lib (CML),sdk,active,15,105,9,9.000000,1.811422,6.923077,17.734499,17.734499,17.734499,6,,candidate
+pallas,Pallas,sdk,active,17,203,6,10.200000,2.518680,4.615385,17.334065,17.334065,17.334065,7,,outside-candidate-cut
+bech32,bech32,sdk,active,25,49,1,15.000000,1.237437,0.769231,17.006668,17.006668,17.006668,8,,outside-candidate-cut
+cardano-addresses,cardano-addresses,sdk,active,19,161,1,11.400000,2.243045,0.769231,14.412276,14.412276,14.412276,9,,outside-candidate-cut
+pycardano,PyCardano,sdk,active,13,253,2,7.800000,2.811805,1.538462,12.150267,12.150267,12.150267,10,,outside-candidate-cut
+blaze,Blaze,sdk,active,11,66,4,6.600000,1.436141,3.076923,11.113064,11.113064,11.113064,11,,outside-candidate-cut
+cardano-transaction-lib-ctl,cardano-transaction-lib (CTL),sdk,active,10,93,4,6.000000,1.704773,3.076923,10.781696,10.781696,10.781696,12,,outside-candidate-cut
+bloxbean-cardano-client-library,Bloxbean Cardano Client Library,sdk,active,4,132,8,2.400000,2.031010,6.153846,10.584856,10.584856,10.584856,13,,outside-candidate-cut
+tx3,Tx3,sdk,active,12,69,1,7.200000,1.468418,0.769231,9.437648,9.437648,9.437648,14,,outside-candidate-cut
+evolution-sdk,Evolution SDK,sdk,active,8,18,3,4.800000,0.750000,2.307692,7.857692,7.857692,7.857692,15,,outside-candidate-cut
+apollo,Apollo,sdk,active,7,28,0,4.200000,0.935414,0.000000,5.135414,5.135414,5.135414,16,,outside-candidate-cut
+atlas,Atlas,sdk,active,3,74,2,1.800000,1.520691,1.538462,4.859152,4.859152,4.859152,17,,outside-candidate-cut
+elm-cardano,Elm Cardano,sdk,active,3,27,1,1.800000,0.918559,0.769231,3.487789,3.487789,3.487789,18,,outside-candidate-cut
+cardano-c,Cardano-C,sdk,active,2,25,1,1.200000,0.883883,0.769231,2.853114,2.853114,2.853114,19,,outside-candidate-cut
+dexter,Dexter,sdk,active,4,0,0,2.400000,0.000000,0.000000,2.400000,2.400000,2.400000,20,,outside-candidate-cut
+buildooor,buildooor,sdk,active,1,9,1,0.600000,0.530330,0.769231,1.899561,1.899561,1.899561,21,,outside-candidate-cut
+cometa-js,Cometa.js,sdk,active,1,0,1,0.600000,0.000000,0.769231,1.369231,1.369231,1.369231,22,,outside-candidate-cut
+sutra,Sutra,sdk,active,1,0,1,0.600000,0.000000,0.769231,1.369231,1.369231,1.369231,22,,outside-candidate-cut
+bip32ed25519,bip32ed25519,sdk,active,,18,1,,0.750000,0.769231,,1.519231,61.519231,,communityUsage,unranked-missing-inputs
+blockfrost-go,Blockfrost Go SDK,sdk,active,,25,1,,0.883883,0.769231,,1.653114,61.653114,,communityUsage,unranked-missing-inputs
+blockfrost-js,Blockfrost JS SDK,sdk,active,,108,3,,1.837117,2.307692,,4.144810,64.144810,,communityUsage,unranked-missing-inputs
+blockfrost-python,Blockfrost Python SDK,sdk,active,,75,1,,1.530931,0.769231,,2.300162,62.300162,,communityUsage,unranked-missing-inputs
+bot-plutus-interface,Bot Plutus Interface,sdk,abandoned,,21,0,,0.810093,0.000000,,0.810093,60.810093,,communityUsage,unranked-missing-inputs
+cab,CAB (Cardano App Backend),sdk,maintenance,,6,0,,0.433013,0.000000,,0.433013,60.433013,,communityUsage,unranked-missing-inputs
+cardano-api-haskell,Cardano API,sdk,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+cardano-client-bindings,Cardano Client Lib Native Bindings,sdk,active,,3,1,,0.306186,0.769231,,1.075417,61.075417,,communityUsage,unranked-missing-inputs
+cardano-crypto-js,cardano-crypto.js,sdk,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+cardano-data-lite,cardano-data-lite,sdk,active,,4,1,,0.353553,0.769231,,1.122784,61.122784,,communityUsage,unranked-missing-inputs
+cardano-go,cardano-go,sdk,abandoned,,58,0,,1.346291,0.000000,,1.346291,61.346291,,communityUsage,unranked-missing-inputs
+cardano-python-emesik,cardano-python (emesik),sdk,abandoned,,112,0,,1.870829,0.000000,,1.870829,61.870829,,communityUsage,unranked-missing-inputs
+cardano-wallet-js,cardano-wallet-js,sdk,abandoned,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+cardano-wallet-sdk-dart,Cardano Wallet SDK (Dart),sdk,abandoned,,38,0,,1.089725,0.000000,,1.089725,61.089725,,communityUsage,unranked-missing-inputs
+cardano-web3-js,cardano-web3-js,sdk,active,,47,1,,1.211920,0.769231,,1.981151,61.981151,,communityUsage,unranked-missing-inputs
+cardanocli-js,cardanocli-js,sdk,abandoned,,177,1,,2.351861,0.769231,,3.121092,63.121092,,communityUsage,unranked-missing-inputs
+cardanokit,CardanoKit,sdk,active,,17,1,,0.728869,0.769231,,1.498100,61.498100,,communityUsage,unranked-missing-inputs
+cardanosharp,CardanoSharp,sdk,maintenance,,0,4,,0.000000,3.076923,,3.076923,63.076923,,communityUsage,unranked-missing-inputs
+cardanosharp-koios,CardanoSharp.Koios,sdk,abandoned,,6,2,,0.433013,1.538462,,1.971474,61.971474,,communityUsage,unranked-missing-inputs
+cddl-codegen,cddl-codegen,sdk,active,,0,2,,0.000000,1.538462,,1.538462,61.538462,,communityUsage,unranked-missing-inputs
+chrysalis,Chrysalis,sdk,active,,9,0,,0.530330,0.000000,,0.530330,60.530330,,communityUsage,unranked-missing-inputs
+cquisitor-lib,cquisitor-lib,sdk,active,,2,1,,0.250000,0.769231,,1.019231,61.019231,,communityUsage,unranked-missing-inputs
+csl-mobile-bridge,CSL Mobile Bridge,sdk,active,,21,1,,0.810093,0.769231,,1.579323,61.579323,,communityUsage,unranked-missing-inputs
+dab,DAB,sdk,abandoned,,36,1,,1.060660,0.769231,,1.829891,61.829891,,communityUsage,unranked-missing-inputs
+geniusyield-sdk,GeniusYield SDK (dex-lucid),sdk,active,,1,1,,0.176777,0.769231,,0.946007,60.946007,,communityUsage,unranked-missing-inputs
+gin,gin,sdk,active,,7,1,,0.467707,0.769231,,1.236938,61.236938,,communityUsage,unranked-missing-inputs
+go-cardano-serialization,go-cardano-serialization,sdk,abandoned,,35,0,,1.045825,0.000000,,1.045825,61.045825,,communityUsage,unranked-missing-inputs
+hydra-sdk,hydra-sdk,sdk,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+koios-go-client,Koios Go Client,sdk,abandoned,,11,1,,0.586302,0.769231,,1.355533,61.355533,,communityUsage,unranked-missing-inputs
+koios-java-client,Koios Java Client,sdk,maintenance,,19,1,,0.770552,0.769231,,1.539783,61.539783,,communityUsage,unranked-missing-inputs
+koios-python,Koios Python,sdk,abandoned,,19,1,,0.770552,0.769231,,1.539783,61.539783,,communityUsage,unranked-missing-inputs
+kuber,Kuber,sdk,active,,54,3,,1.299038,2.307692,,3.606730,63.606730,,communityUsage,unranked-missing-inputs
+lambda-buffers,LambdaBuffers,sdk,active,,32,0,,1.000000,0.000000,,1.000000,61.000000,,communityUsage,unranked-missing-inputs
+libcardano,libcardano,sdk,active,,3,0,,0.306186,0.000000,,0.306186,60.306186,,communityUsage,unranked-missing-inputs
+maestro-typescript-sdk,Maestro TypeScript SDK,sdk,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+marlowe-ts-sdk,Marlowe TS SDK,sdk,maintenance,,23,1,,0.847791,0.769231,,1.617022,61.617022,,communityUsage,unranked-missing-inputs
+minswap-sdk,Minswap SDK,sdk,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+muesliswap-cardano-python-utilities,MuesliSwap Cardano Python utilities,sdk,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+ogmios-client-schema,Ogmios client/schema,sdk,unknown,,,2,,,1.538462,,1.538462,71.538462,,communityUsage;starsNum,unranked-missing-inputs
+ogmios-python-client,Ogmios Python client,sdk,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+plutus-chain-index-ledger-libraries,Plutus chain-index/ledger libraries,sdk,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+rum,rum,sdk,active,,12,1,,0.612372,0.769231,,1.381603,61.381603,,communityUsage,unranked-missing-inputs
+sc-tools,sc-tools (Convex),sdk,active,,20,1,,0.790569,0.769231,,1.559800,61.559800,,communityUsage,unranked-missing-inputs
+spectrum-dex-sdk,Spectrum DEX SDK (Haskell),sdk,abandoned,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+splash-cml-fork,CML fork,sdk,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+sundae-sdk,SundaeSwap SDK,sdk,active,,19,1,,0.770552,0.769231,,1.539783,61.539783,,communityUsage,unranked-missing-inputs
+typhonjs,Typhonjs,sdk,active,,64,2,,1.414214,1.538462,,2.952675,62.952675,,communityUsage,unranked-missing-inputs
+whisky,whisky,sdk,active,,16,4,,0.707107,3.076923,,3.784030,63.784030,,communityUsage,unranked-missing-inputs
+wingriders-dex-serializer,WingRiders dex-serializer,sdk,unknown,,,1,,,0.769231,,0.769231,70.769231,,communityUsage;starsNum,unranked-missing-inputs
+yaci-bridge,Yaci Bridge,sdk,active,,2,1,,0.250000,0.769231,,1.019231,61.019231,,communityUsage,unranked-missing-inputs
+cardano-hw-cli,cardano-hw-cli,wallet,active,14,73,2,8.400000,1.510381,1.538462,11.448842,11.448842,11.448842,1,,candidate
+weld,Weld,wallet,active,1,31,3,0.600000,0.984251,2.307692,3.891943,3.891943,3.891943,2,,outside-candidate-cut
+bursa,Bursa,wallet,active,1,10,1,0.600000,0.559017,0.769231,1.928248,1.928248,1.928248,3,,outside-candidate-cut
+adalite,AdaLite,wallet,active,,231,1,,2.686773,0.769231,,3.456004,63.456004,,communityUsage,unranked-missing-inputs
+begin,Begin,wallet,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+cardaminal,Cardaminal,wallet,active,,10,0,,0.559017,0.000000,,0.559017,60.559017,,communityUsage,unranked-missing-inputs
+cardano-connect-with-wallet,Cardano Connect with Wallet,wallet,active,,90,9,,1.677051,6.923077,,8.600128,68.600128,,communityUsage,unranked-missing-inputs
+cardano-dapp-wallet-connector,cardano-dapp-wallet-connector,wallet,active,,9,2,,0.530330,1.538462,,2.068792,62.068792,,communityUsage,unranked-missing-inputs
+cardano-hw-interop-lib,cardano-hw-interop-lib,wallet,active,,5,1,,0.395285,0.769231,,1.164515,61.164515,,communityUsage,unranked-missing-inputs
+cardano-peer-connect,Cardano Peer Connect,wallet,active,,18,1,,0.750000,0.769231,,1.519231,61.519231,,communityUsage,unranked-missing-inputs
+cardano-wallet-interface,cardano-wallet-interface,wallet,abandoned,,38,0,,1.089725,0.000000,,1.089725,61.089725,,communityUsage,unranked-missing-inputs
+cardanosharp-blazor,CardanoSharp Blazor,wallet,maintenance,,14,1,,0.661438,0.769231,,1.430669,61.430669,,communityUsage,unranked-missing-inputs
+cscli,cscli,wallet,abandoned,,17,1,,0.728869,0.769231,,1.498100,61.498100,,communityUsage,unranked-missing-inputs
+cshell,CShell,wallet,active,,19,0,,0.770552,0.000000,,0.770552,60.770552,,communityUsage,unranked-missing-inputs
+daedalus,Daedalus,wallet,active,,1243,2,,6.232475,1.538462,,7.770937,67.770937,,communityUsage,unranked-missing-inputs
+epora-wallet,Epora,wallet,experimental,,1,1,,0.176777,0.769231,,0.946007,60.946007,,communityUsage,unranked-missing-inputs
+eternl,Eternl,wallet,active,,0,4,,0.000000,3.076923,,3.076923,63.076923,,communityUsage,unranked-missing-inputs
+flint,Flint,wallet,archived,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+gamechanger-gcscript,GameChanger / GCScript,wallet,active,,4,0,,0.353553,0.000000,,0.353553,60.353553,,communityUsage,unranked-missing-inputs
+gero-wallet,Gero Wallet,wallet,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+lace,Lace,wallet,active,,50,3,,1.250000,2.307692,,3.557692,63.557692,,communityUsage,unranked-missing-inputs
+ledgerjs-hw-app-cardano,ledgerjs-hw-app-cardano,wallet,active,,30,0,,0.968246,0.000000,,0.968246,60.968246,,communityUsage,unranked-missing-inputs
+nami,Nami,wallet,archived,,372,4,,3.409545,3.076923,,6.486469,66.486469,,communityUsage,unranked-missing-inputs
+nufi,NuFi,wallet,active,,9,1,,0.530330,0.769231,,1.299561,61.299561,,communityUsage,unranked-missing-inputs
+typhon,Typhon,wallet,active,,0,2,,0.000000,1.538462,,1.538462,61.538462,,communityUsage,unranked-missing-inputs
+use-cardano,use-cardano,wallet,abandoned,,16,1,,0.707107,0.769231,,1.476338,61.476338,,communityUsage,unranked-missing-inputs
+utxos,UTxOS,wallet,active,,0,0,,0.000000,0.000000,,0.000000,60.000000,,communityUsage,unranked-missing-inputs
+vespr,Vespr,wallet,active,,0,1,,0.000000,0.769231,,0.769231,60.769231,,communityUsage,unranked-missing-inputs
+yoroi,Yoroi,wallet,active,,179,2,,2.365111,1.538462,,3.903573,63.903573,,communityUsage,unranked-missing-inputs

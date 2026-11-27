@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://github.com/HarmonicLabs/plu-ts",
+    "checked_at_utc": "2026-10-20T11:03:46.620770+00:00",
+    "status": 200,
+    "final_url": "https://github.com/HarmonicLabs/pebble",
+    "repository_nwo": "HarmonicLabs/pebble"
+  },
+  {
+    "url": "https://github.com/SAIB-Inc/Cardano.Sync",
+    "checked_at_utc": "2026-10-20T11:04:01.118970+00:00",
+    "status": 200,
+    "final_url": "https://github.com/SAIB-Inc/Argus",
+    "repository_nwo": "SAIB-Inc/Argus"
+  },
+  {
+    "url": "https://github.com/bloxbean/cardano-client-bindings",
+    "checked_at_utc": "2026-10-20T11:04:20.560854+00:00",
+    "status": 200,
+    "final_url": "https://github.com/bloxbean/mesmo",
+    "repository_nwo": "bloxbean/mesmo"
+  },
+  {
+    "url": "https://github.com/cardano-foundation/keria",
+    "checked_at_utc": "2026-10-20T11:04:33.378512+00:00",
+    "status": 200,
+    "final_url": "https://github.com/veridian-id/keria",
+    "repository_nwo": "veridian-id/keria"
+  },
+  {
+    "url": "https://github.com/cardano-foundation/veridian-wallet",
+    "checked_at_utc": "2026-10-20T11:04:33.980510+00:00",
+    "status": 200,
+    "final_url": "https://github.com/veridian-id/veridian-wallet",
+    "repository_nwo": "veridian-id/veridian-wallet"
+  },
+  {
+    "url": "https://github.com/input-output-hk/catalyst-core",
+    "checked_at_utc": "2026-10-20T11:04:40.644939+00:00",
+    "status": 200,
+    "final_url": "https://github.com/cardano-foundation/catalyst-core",
+    "repository_nwo": "cardano-foundation/catalyst-core"
+  },
+  {
+    "url": "https://github.com/input-output-hk/catalyst-toolbox",
+    "checked_at_utc": "2026-10-20T11:04:41.153696+00:00",
+    "status": 200,
+    "final_url": "https://github.com/cardano-foundation/catalyst-toolbox",
+    "repository_nwo": "cardano-foundation/catalyst-toolbox"
+  },
+  {
+    "url": "https://github.com/input-output-hk/mithril",
+    "checked_at_utc": "2026-10-20T11:04:43.398635+00:00",
+    "status": 200,
+    "final_url": "https://github.com/IntersectMBO/mithril",
+    "repository_nwo": "IntersectMBO/mithril"
+  },
+  {
+    "url": "https://github.com/input-output-hk/plutus",
+    "checked_at_utc": "2026-10-20T11:04:44.446211+00:00",
+    "status": 200,
+    "final_url": "https://github.com/IntersectMBO/plutus",
+    "repository_nwo": "IntersectMBO/plutus"
+  },
+  {
+    "url": "https://github.com/mpizenberg/elm-cardano",
+    "checked_at_utc": "2026-10-20T11:04:53.021596+00:00",
+    "status": 200,
+    "final_url": "https://github.com/elm-cardano/elm-cardano",
+    "repository_nwo": "elm-cardano/elm-cardano"
+  },
+  {
+    "url": "https://github.com/txpipe/cardaminal",
+    "checked_at_utc": "2026-10-20T11:05:00.623677+00:00",
+    "status": 200,
+    "final_url": "https://github.com/IntersectMBO/cardaminal",
+    "repository_nwo": "IntersectMBO/cardaminal"
+  },
+  {
+    "url": "https://github.com/xray-network/cardano-web3-js",
+    "checked_at_utc": "2026-10-20T11:05:08.072557+00:00",
+    "status": 200,
+    "final_url": "https://github.com/xray-network/xray-js",
+    "repository_nwo": "xray-network/xray-js"
+  },
+  {
+    "url": "https://marketplace.visualstudio.com/CardanoVSC",
+    "checked_at_utc": "2026-10-20T11:05:08.108893+00:00",
+    "error": "HTTP Error 404: Not Found",
+    "status": 404
+  }
+]
