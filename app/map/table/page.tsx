@@ -18,6 +18,7 @@ const STATUS_ORDER: Record<Status, number> = {
   archived: 4,
   experimental: 5,
   research: 6,
+  unknown: 7,
 };
 
 export default function TablePage() {
